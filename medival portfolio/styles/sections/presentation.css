@@ -1,0 +1,160 @@
+/* ===== Presentation Section (About the Craftsman) ===== */
+
+#presentation {
+  position: relative;
+}
+
+.presentation-container {
+  margin: 0 auto;
+  padding: var(--p-md1, 20px);
+  display: grid;
+  grid-template-columns: 1fr 8fr;
+  grid-gap: var(--spacing-lg, 20px);
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg, 20px);
+}
+
+.portrait-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 10px solid transparent;
+  background: var(--parchment, #f5e6ca);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  animation: frameFloat 5s ease-in-out infinite;
+}
+
+.portrait-frame:hover {
+  box-shadow: 0 0 30px var(--gold-light, #f0c75e),
+    inset 0 0 20px rgba(210, 180, 140, 0.5);
+  transform: scale(1.03);
+}
+
+.portrait-frame img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
+  animation: wizardGlow 3s infinite alternate;
+}
+
+.description-scroll {
+  flex: 2;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: var(--border-rad-sm, 10px);
+  background-image: url("https://www.transparenttextures.com/patterns/parchment.png");
+  border: 8px solid transparent;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transform-origin: top center;
+  animation: unrollScroll 1.5s ease-out;
+}
+
+.scroll-content {
+  position: relative;
+  z-index: 1;
+
+  background: rgba(245, 238, 220, 0.9);
+  border: 2px solid var(--gold, #d4af37);
+  border-radius: var(--border-rad-sm, 10px);
+  padding: var(--m-lg1, 30px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(50px);
+  opacity: 0;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.scroll-content.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.scroll-title {
+  text-align: left;
+  margin-bottom: var(--m-md1, 20px);
+  color: var(--rust, #8c3a2b);
+}
+
+.scroll-content p {
+  margin-bottom: var(--m-sm2, 15px);
+  font-size: var(--fs-sm, 16px);
+}
+
+.drop-cap .initial {
+  float: left;
+  font-family: var(--font-medieval, "MedievalSharp", cursive);
+  font-size: calc(var(--fs-vlg, 36px) * 2);
+  line-height: 0.7;
+  margin-right: var(--m-sm0, 5px);
+  color: var(--brown, #8b4513);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-separator {
+  height: 5px;
+  width: 30%;
+  margin: var(--spacing-md) 0;
+  background: #0009;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.7;
+}
+
+@media (max-width: 1000px) {
+  .presentation-container {
+    grid-template-columns: 1fr;
+    grid-gap: var(--spacing-md, 10px);
+    text-align: center;
+  }
+
+  .portrait-frame {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto var(--m-md1, 20px);
+  }
+
+  .scroll-content {
+    padding: var(--m-sm2, 15px);
+  }
+
+  .scroll-content p {
+    font-size: var(--fs-vsm, 14px);
+  }
+
+  .scroll-title {
+    text-align: center;
+  }
+}
+
+/* Small mobiles (≤ 480px) */
+@media (max-width: 480px) {
+  .portrait-frame {
+    width: 180px;
+    height: 180px;
+  }
+
+  .scroll-content {
+    padding: var(--p-sm1, 10px);
+  }
+
+  .scroll-content p {
+    font-size: var(--fs-vsm, 12px);
+  }
+
+  .drop-cap .initial {
+    font-size: calc(var(--fs-lg, 32px) * 1.5);
+    margin-right: var(--m-sm0, 5px);
+  }
+}

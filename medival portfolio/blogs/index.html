@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Scribe's Chronicles</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <div class="container">
+        <a href="#" class="logo">Mouad the Coder</a>
+        <ul>
+          <li>
+            <a href="../" target="_blank">Portfolio</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <section class="intro">
+    <div class="intro-container">
+      <h1 class="scroll-title">
+        📜 The Scribe&#x27;s Chronicles
+      </h1>
+      <div class="intro-container-desc">
+        <h2>Welcome, Traveler!</h2>
+        <p>
+          Herein lies my collection of arcane knowledge, coding adventures, and technical
+          grimoires. These scrolls contain the wisdom I&#x27;ve gathered throughout my journey in
+          the mystical realms of programming. May they guide you on your own quest for knowledge.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="blogs">
+    <div class="container-blogs" id="blog-posts">
+      <article>
+        <div class="article-images">
+          <img src="https://images.unsplash.com/photo-1484417894907-623942c8ee29" alt="Blog thumbnail"
+            keywords="medieval, manuscript, coding, javascript" />
+        </div>
+        <div class="article-desc">
+          <h3 class="title">The Ancient Art of JavaScript</h3>
+          <p class="date">Published on the 15th day of Moonfall, 2023</p>
+          <p class="desc">
+            Discover the mystical powers of JavaScript and how to harness them for your own magical creations. This
+            scroll reveals secrets known only to the most dedicated of code wizards.
+          </p>
+          <a href="#" class="readmore">
+            Read Scroll
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="pagination">
+    <div class="pagination-container-flex">
+      <div class="pagination-container" id="blog-pagination">
+        <a href="#" class="pagination-container-link">&lt;</a>
+        <a href="#" class="pagination-container-link active">1</a>
+        <a href="#" class="pagination-container-link">2</a>
+        <a href="#" class="pagination-container-link">3</a>
+        <a href="#" class="pagination-container-link">&gt;</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <p>
+        Crafted with ancient wisdom by Mouad the Coder | © The Year of the Dragon&#x27;s Moon, 2023
+      </p>
+      <div class="footer-container-icon">
+        <a href="#">
+          <i class="fa-brands fa-github"></i>git
+        </a>
+        <a href="#">
+          <i class="fa-brands fa-linkedin"></i>linkedin
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="image-viewer" id="image-viewer">
+    <div class="img-container" id="image-viewer-container">
+      <img src="../media/city_medieval_night.png" alt="test" />
+    </div>
+    <div class="close-btn" id="image-viewer-close">x</div>
+  </div>
+
+  <div id="alert-container" class="alert-container"></div>
+
+  <script type="module" src="./script.js" defer></script>
+
+</body>
+
+</html>

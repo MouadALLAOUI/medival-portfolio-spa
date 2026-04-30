@@ -1,0 +1,532 @@
+/* ===== PROJECTS SECTION ===== */
+
+#projects .parchment {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.projects-template {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.projects-container {
+  width: 100%;
+  border-right-width: 2px;
+  border-color: rgba(146, 64, 14, 0.5);
+  overflow-y: auto;
+  max-height: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.projects-container.active {
+  border-right-width: 0px;
+}
+
+.project-cards-title {
+  font-size: 24px;
+  line-height: 31.200000000000003px;
+  color: rgb(253 230 138 / 1);
+  margin-bottom: 24px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  border-bottom-width: 2px;
+  border-color: rgba(180, 83, 9, 0.2);
+  padding-bottom: 12px;
+}
+
+.project-cards-container {
+  position: relative;
+  display: grid;
+  margin-top: 10px;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 14px;
+  overflow: hidden auto;
+  width: 100%;
+  max-height: 90vh;
+}
+
+.projects-container.active .project-cards-container {
+  max-height: 320px;
+}
+
+.project-card {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-image: linear-gradient(to bottom, #1c1917, #292524);
+  border-radius: 14px;
+  padding: 10px;
+  border-width: 2px;
+  border-color: rgba(180, 83, 9, 0.2);
+  transform: scale(1);
+  transition-duration: 0.7s;
+  cursor: url("../../media/cursor/WenrexaAssetsMagicCursorsPack/36x36px/Cursor\ Settings\ Green.png"),
+    pointer;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: var(--bg-img, url("../../media/download.png"));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover::before {
+  opacity: 0.35; /* slightly more visible on hover */
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.99;
+  }
+
+  50% {
+    opacity: 0.9;
+  }
+}
+
+.project-card:hover {
+  border-color: rgb(245 158 11 / 1);
+  transform: translateY(-4px) rotate(1deg);
+  opacity: 1;
+  color: rgb(251 191 36 / 1);
+  color: rgb(254 243 199 / 1);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.project-card:active {
+  cursor: url("../../media/cursor/WenrexaAssetsMagicCursorsPack/36x36px/Cursor\ Settings\ Red.png"),
+    pointer;
+  opacity: 0.7;
+  filter: blur(1px);
+}
+
+.project-card .project-title {
+  font-family: "Uncial Antiqua", cursive;
+  font-size: 20px;
+  color: rgb(253 230 138 / 1);
+  margin-bottom: 8px;
+  letter-spacing: 0.025em;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  text-shadow: 0 0 6px rgba(255, 170, 0, 0.5);
+}
+
+.project-card .project-description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  font-style: italic;
+  color: hsla(48, 97%, 77%, 0.8);
+}
+
+.project-card .tech-stack {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+  z-index: 10;
+}
+
+.project-card .tech-item {
+  font-family: var(--font-body, "Lora");
+  padding: 4px 8px;
+  font-size: 12px;
+  line-height: 19.200000000000003px;
+  border-radius: 9999px;
+  background-color: rgba(146, 64, 14, 0.4);
+  border-width: 1px;
+  border-color: rgba(217, 119, 6, 0.3);
+  transition: all 0.3s ease;
+}
+
+.project-card .tech-item:hover {
+  border-width: 2px;
+}
+
+.project-card .project-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  text-wrap: nowrap;
+  width: 90%;
+  height: 40px;
+  overflow: hidden;
+  background-color: rgba(146, 64, 14, 0.6);
+  border-width: 2px;
+  border-color: rgba(217, 119, 6, 0.6);
+  border-radius: 9999px;
+  color: rgb(253 230 138 / 1);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: url("../../media/cursor/WenrexaAssetsMagicCursorsPack/36x36px/Cursor\ Attack\ Friends.png"),
+    pointer;
+  z-index: 10;
+  text-decoration: none;
+  gap: var(--spacing-sm);
+  font-family: var(--font-medieval, "MedievalSharp", cursive);
+  padding: 0 7px;
+}
+
+.project-card .project-link:hover {
+  background-color: rgb(180 83 9 / 1);
+  border-color: rgb(251 191 36 / 1);
+  box-shadow: 0 0 #0000, 0 0 #0000, 0 0 12px rgba(245, 158, 11, 0.3);
+  width: 100%;
+}
+
+.project-card .project-link:active {
+  background: linear-gradient(
+    to right,
+    var(--gold, #d4af37),
+    var(--rust-light, #b05a46)
+  );
+  box-shadow: 0 0 -10px var(--gold, #d4af37);
+  transform: translateZ(-20px);
+  cursor: url("../../media/cursor/WenrexaAssetsMagicCursorsPack/36x36px/Cursor\ Attack\ Enemy.png"),
+    pointer;
+}
+
+.project-card .project-link-icon {
+  position: relative;
+  font-size: 20px;
+  transition: all 0.6s ease;
+}
+
+.project-card .project-link:hover .project-link-icon {
+  transform: rotate(360deg) scale(1.2);
+  filter: drop-shadow(0 0 8px var(--gold, #d4af37));
+}
+
+.projects-overview {
+  position: relative;
+  max-height: 80vh;
+  height: 0;
+  width: 100%;
+  background-image: linear-gradient(to bottom, #1c1917, #292524);
+  padding: 24px 5px;
+  margin-top: 14px;
+  border-width: 0.2px;
+  border-color: rgba(180, 83, 9, 0.3);
+  overflow: hidden auto;
+  transform: translate(0, 0) rotate(0) skewX(0) skewY(0) scaleX(0) scaleY(0);
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.projects-overview.active {
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+  height: 100%;
+}
+
+.projects-overview .title {
+  font-size: 30px;
+  line-height: 36px;
+  color: rgb(253 230 138 / 1);
+  margin-bottom: 16px;
+  letter-spacing: 0.05em;
+  border-bottom-width: 2px;
+  border-color: rgba(217, 119, 6, 0.3);
+  padding-bottom: 12px;
+  transition: all 0.5 cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.projects-overview .title:hover {
+  border-color: rgb(245 158 11 / 1);
+}
+
+.projects-overview .thumbnail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 24px;
+  overflow: hidden;
+  border-width: 2px;
+  border-color: rgba(217, 119, 6, 0.5);
+  margin-bottom: 24px;
+  transition-duration: 0.5s;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 #0000, 0 0 #0000, 0 0 20px rgba(59, 130, 246, 0.3);
+  max-height: 320px;
+}
+
+.projects-overview .thumbnail:hover {
+  border-color: rgb(245 158 11 / 1);
+}
+
+.projects-overview .thumbnail img {
+  aspect-ratio: 16/9;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  transform: translate(0, 0) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
+  transition: transform 0.7 cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.projects-overview .thumbnail img:hover {
+  transform: scale(1.05);
+}
+
+.projects-overview .tech-stack {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px auto;
+}
+
+.projects-overview .tech-item {
+  padding: 4px 8px;
+  font-size: 12px;
+  line-height: 19.200000000000003px;
+  border-radius: 9999px;
+  background-color: rgba(146, 64, 14, 0.4);
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(217, 119, 6, 0.3);
+  transition: all 300ms ease-in-out;
+}
+
+.projects-overview .tech-item:hover {
+  border-width: 2px;
+}
+
+.projects-overview > h3 {
+  font-size: 20px;
+  line-height: 28px;
+  color: rgb(252 211 77 / 1);
+  margin-bottom: 12px;
+  letter-spacing: 0.025em;
+}
+
+.projects-overview > p {
+  color: rgb(254 243 199 / 0.9);
+  margin-bottom: 24px;
+  font-family: sans-serif;
+}
+
+.projects-overview > ul,
+.projects-overview > ol {
+  position: relative;
+  margin-bottom: 24px;
+  padding-left: 32px;
+  color: rgb(254 243 199 / 0.9);
+}
+
+.projects-overview > ul li,
+.projects-overview > ol li {
+  display: flex;
+  align-items: flex-start;
+}
+
+.projects-overview > ul li::before {
+  content: "✦";
+  position: absolute;
+  left: 10px;
+}
+
+.overview-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+a.overview-link,
+span.overview-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background-color: rgba(146, 64, 14, 0.5);
+  color: rgb(253 230 138 / 1);
+  border-radius: 24px;
+  border-width: 1px;
+  border-color: rgba(217, 119, 6, 0.5);
+  transition: all 0.5s ease;
+  box-shadow: 0 2px 5px var(--shadow);
+  transform: translate(0, 0) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  cursor: url("../../media/cursor/WenrexaAssetsMagicCursorsPack/36x36px/Cursor\ Attack\ Enemy.png"),
+    pointer;
+}
+
+a.overview-link:hover,
+span.overview-link:hover {
+  background-color: rgb(180 83 9 / 1);
+  color: rgb(254 243 199 / 1);
+  border-color: rgb(245 158 11 / 1);
+  transform: translateY(-4px);
+  box-shadow: 0 0 #0000, 0 0 #0000, 0 0 10px rgba(255, 170, 0, 0.4);
+}
+
+.overview-link.disabled:hover {
+  cursor: url("../../media/cursor/WenrexaAssetsMagicCursorsPack/36x36px/Cursor\ Cannot\ Use.png"),
+    not-allowed;
+}
+
+.overview-link span {
+  font-size: 24px;
+  line-height: 1;
+}
+
+@media (min-width: 768px) {
+  .projects-template {
+    flex-direction: row;
+    padding: 10px;
+  }
+
+  .projects-container {
+    width: 100%;
+    max-height: none;
+    border-right-width: 0;
+  }
+
+  .projects-container.active {
+    border-right-width: 2px;
+    padding: 0 16px;
+    width: 30%;
+    max-height: 80vh;
+  }
+
+  .projects-container .project-cards-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-height: none;
+  }
+
+  .projects-container.active .project-cards-container {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    max-height: 80vh;
+    display: block;
+  }
+
+  .projects-container.active .project-cards-container .project-card {
+    margin-bottom: 15px;
+  }
+
+  .project-card .project-link {
+    width: 100%;
+  }
+
+  .project-cards-title {
+    font-size: 20px;
+    line-height: 36px;
+  }
+
+  .projects-overview {
+    width: 0;
+    margin-top: 0;
+    padding: 0;
+    height: 100%;
+    border-radius: 24px;
+  }
+
+  .projects-overview.active {
+    width: 70%;
+    padding: 16px;
+    margin-left: 10px;
+  }
+
+  .projects-overview .title {
+    font-size: 36px;
+    line-height: 41.4px;
+  }
+
+  .imgs-gal {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .projects-template {
+    padding: 16px;
+  }
+
+  .projects-container {
+    width: 100%;
+    max-height: none;
+    border-right-width: 0;
+    padding: 0 16px;
+  }
+
+  .projects-container.active {
+    border-right-width: 2px;
+    width: 30%;
+    max-height: none;
+    max-height: 80vh;
+  }
+
+  .project-card {
+    min-height: 200px;
+  }
+
+  .projects-container .project-cards-container {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-height: none;
+  }
+
+  .projects-container.active .project-cards-container {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    max-height: none;
+  }
+
+  .project-card .project-title {
+    line-height: 28px;
+  }
+  .project-card .project-description {
+    line-height: 21px;
+    margin-bottom: 12px;
+  }
+
+  .project-card .project-link {
+    width: 40px;
+  }
+
+  .project-card .project-link:hover {
+    width: 90%;
+  }
+
+  .projects-overview {
+    width: 0;
+    margin-top: 0;
+    padding: 0;
+    border-radius: 24px;
+  }
+  .projects-overview.active {
+    width: 70%;
+    padding: 24px;
+  }
+}

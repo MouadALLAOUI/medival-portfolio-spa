@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMREF | Portfolio Magique</title>
+  <!-- Importing Medieval/Classic Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet">
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-logo">CMREF</div>
+    <ul class="nav-links">
+      <li><a onclick="navigate('home')" id="link-home">Accueil</a></li>
+      <li><a onclick="navigate('semester')" id="link-semester">Semestre 1</a></li>
+      <li><a onclick="navigate('msp')" id="link-msp">MSP</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content Area for SPA -->
+  <main id="app">
+
+    <!-- ========================================== -->
+    <!-- PAGE 1: ACCUEIL (Home / Profile)           -->
+    <!-- ========================================== -->
+    <div id="page-home" class="page active-page">
+
+      <section class="container">
+        <div class="parchment-box">
+          <div class="profile-container">
+            <div class="profile-portrait">
+              🧙‍♂️
+            </div>
+            <div class="profile-bio">
+              <h1>Mouad allaoui</h1>
+              <p>En tant que développeur passionné par l'art du code et l'informatique, je suis constamment en quête de
+                nouvelles connaissances. J'aime concevoir des architectures robustes et des interfaces envoûtantes. Je
+                mets mes compétences à la disposition des projets les plus ambitieux, forgeant des solutions adaptées à
+                chaque quête.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- <section class="container">
+        <div class="parchment-box reveal">
+          <iframe
+            src="https://docs.google.com/viewer?url=https://drive.google.com/uc?id=1zvkDZ_jp0fBQILaSpkeSHsuZK4e95Je0&embedded=true"
+            style="width:100%; height:700px; border:none;" allow="autoplay">
+          </iframe>
+        </div>
+      </section> -->
+
+      <section class="container">
+        <h2 class="section-title reveal">Éducation</h2>
+        <div class="parchment-box reveal">
+          <div class="skills-grid">
+            <div class="skill-card">
+              <h3>Data Science</h3>
+              <p>Cadi Ayyad University</p>
+              <div class="stars">Sorcellerie des Données</div>
+            </div>
+            <div class="skill-card">
+              <h3>Faculté des Sciences Semlalia</h3>
+              <p>Marrakech</p>
+              <div class="stars">Licence Fondamentale</div>
+            </div>
+            <div class="skill-card">
+              <h3>1er Lycée Militaire Royal</h3>
+              <p>Kenitra</p>
+              <div class="stars">Discipline & Rigueur</div>
+            </div>
+            <div class="skill-card">
+              <h3>FST Marrakech</h3>
+              <p>Faculté des Sciences et Techniques</p>
+              <div class="stars">Génie Informatique</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container">
+        <h2 class="section-title reveal">L'expérience Professionnelle</h2>
+        <div class="parchment-box reveal">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">Période Récente</div>
+              <div class="timeline-title">PFE Master : Gestion de Données et Sécurité</div>
+              <p>Développement d'une plateforme sécurisée de bout en bout pour la hiérarchisation des données dans un
+                grand réseau d'alchimistes (entreprise).</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Années Précédentes</div>
+              <div class="timeline-title">PFE Licence : Faculté des Sciences Semlalia</div>
+              <p>Élaboration d'un système de suivi et de gestion de l'inventaire. Conception d'interfaces magiques pour
+                les utilisateurs.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container">
+        <h2 class="section-title reveal">Sport</h2>
+        <div class="parchment-box reveal">
+          <div class="gallery-grid">
+            <div class="gallery-item"><span>🥋</span>
+              <p>Arts Martiaux</p>
+            </div>
+            <div class="gallery-item"><span>🏃‍♂️</span>
+              <p>Athlétisme</p>
+            </div>
+            <div class="gallery-item"><span>🤸‍♂️</span>
+              <p>Gymnastique</p>
+            </div>
+            <div class="gallery-item"><span>🏆</span>
+              <p>Compétitions</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- PAGE 2: SEMESTRE 1                         -->
+    <!-- ========================================== -->
+    <div id="page-semester" class="page">
+      <section class="container">
+        <div class="parchment-box">
+          <h1 class="section-title dark" style="width: 100%; margin-bottom: 3rem;">Réalisations - Semestre 1</h1>
+
+          <!-- Module 1 -->
+          <div class="module-block">
+            <h3 class="module-title">Module : Planification des apprentissages (Pr. Tanta)</h3>
+            <div class="slides-grid">
+              <div class="slide-item">Document 1:<br>Introduction</div>
+              <div class="slide-item">Document 2:<br>Méthodologie</div>
+              <div class="slide-item">Document 3:<br>Évaluation</div>
+              <div class="slide-item">Document 4:<br>Conclusion</div>
+            </div>
+          </div>
+
+          <!-- Module 2 -->
+          <div class="module-block">
+            <h3 class="module-title">Module : INF1 (Pr. Daoudi)</h3>
+            <div class="slides-grid">
+              <div class="slide-item" style="grid-column: 1 / -1; height: 300px;">
+                Les Mémoires Des Ordinateurs<br>(Présentation Principale)
+              </div>
+            </div>
+          </div>
+
+          <!-- Module 3 -->
+          <div class="module-block">
+            <h3 class="module-title">Module : TICE (Pr. Serrar)</h3>
+            <div class="slides-grid">
+              <div class="slide-item" style="grid-column: 1 / -1; height: 250px;">
+                Portail d'intégration des TICE<br>(Vidéo / Interface)
+              </div>
+            </div>
+          </div>
+
+          <!-- Module 4 -->
+          <div class="module-block">
+            <h3 class="module-title">Module : Didactique (Pr. Daoudi)</h3>
+            <div class="slides-grid">
+              <div class="slide-item" style="grid-column: 1 / -1; height: 250px;">
+                La Pédagogie & La Pédagogie Informatique<br>(Parchemin Pédagogique)
+              </div>
+            </div>
+          </div>
+
+          <!-- Module 5 -->
+          <div class="module-block">
+            <h3 class="module-title">Module : Méthodologie de recherche (Pr. Rjdou?)</h3>
+            <div class="slides-grid">
+              <div class="slide-item">Chapitre 1 :<br>Hypothèses</div>
+              <div class="slide-item">Chapitre 2 :<br>Analyse</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- PAGE 3: MSP (Mise en Situation Pro)        -->
+    <!-- ========================================== -->
+    <div id="page-msp" class="page">
+      <section class="container">
+        <div class="parchment-box">
+          <h1 class="section-title dark" style="width: 100%; text-transform: uppercase;">Mise en Situation
+            Professionnelle</h1>
+
+          <div class="msp-header">
+            <div>Nom du lycée : <span>Abou abbas sebti</span></div>
+            <div>Nom de professeur : <span>MOUBARRAA SANAA</span></div>
+          </div>
+
+          <!-- MSP Sub-Navigation (Tabs) -->
+          <div class="tabs-nav">
+            <button class="tab-btn active-tab" onclick="switchTab('presentation')">Présentation</button>
+            <button class="tab-btn" onclick="switchTab('observations')">Observations</button>
+            <button class="tab-btn" onclick="switchTab('documents')">Documents</button>
+          </div>
+
+          <!-- TAB 1: Présentation -->
+          <div id="tab-presentation" class="tab-content active-content">
+            <div class="lycee-img-placeholder">
+              [ Image: Lycée Abou Al Abass Essabti ]
+            </div>
+
+            <div class="text-block">
+              <h3>Remerciement :</h3>
+              <p>Je tiens d'abord à remercier vivement notre encadrante Mme. MOUBARRAA SANAA, qui a bien voulu nous
+                encadrer et qui n'a pas hésité de nous accorder ses aides et ses conseils. Mes remerciements sont
+                également exprimés à tous les formateurs du centre CMREF pour leurs efforts et leurs conseils.</p>
+            </div>
+
+            <div class="text-block">
+              <h3>Introduction :</h3>
+              <p>Le stage d'enseignement constitue une étape importante du cursus universitaire. C'est pour nous,
+                stagiaire, l'occasion de tester nos capacités à intégrer une équipe, à prendre des initiatives et à
+                assumer sa propre autonomie au-delà d'une simple description des tâches effectuées. Il revient de
+                rencontrer des différentes réalités au sein de l'école d'accueil et en tant que stagiaire, on est censé
+                de s'y habituer car cela fait preuve du séjour passé au sein de l'école d'accueil. Sur ce au départ il y
+                a complexité des notions à enseigner et l'adaptation des salles de classe ainsi que la non maitrise des
+                élèves et parfois il y a une maitrise souple des tous ces points précités dans certaines classes. Les
+                points précités feront objets de constats au courant de ce rapport.</p>
+              <br>
+              <p>Le principal objectif de notre stage d'enseignement est de nous amener à bien comprendre la réalité de
+                la vie professionnelle en prestant en tant que professeur des cours et surtout enseigner convenablement
+                les cours d'informatique aux élèves de l'école secondaire.</p>
+            </div>
+
+            <div class="text-block">
+              <h3>Information générale :</h3>
+              <p style="margin-bottom: 1rem;"><a href="#" style="text-decoration: underline;">FB:
+                  https://www.facebook.com/officiel.sebti/</a></p>
+
+              <div style="overflow-x: auto;">
+                <table class="medieval-table">
+                  <thead>
+                    <tr>
+                      <th>Etablissement</th>
+                      <th>Année de création</th>
+                      <th>Nombre de salle</th>
+                      <th>Nom de Directeur</th>
+                      <th>Nom de professeur encadrant</th>
+                      <th>Nombre des élèves en 2020</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Abou El Abbas Sebti</td>
+                      <td>1984</td>
+                      <td>43 normales et une salle génie</td>
+                      <td>Mr. ELKHALOUFIE Mustapha</td>
+                      <td>Pr MOUBARRAA SANAA</td>
+                      <td>3420</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: Observations -->
+          <div id="tab-observations" class="tab-content">
+            <div class="text-block" style="text-align: center; padding: 4rem 0;">
+              <h3>Le Grimoire des Observations</h3>
+              <p>Les notes et constats effectués lors des séances d'enseignement seront transcrits ici.</p>
+            </div>
+          </div>
+
+          <!-- TAB 3: Documents -->
+          <div id="tab-documents" class="tab-content">
+            <div class="text-block" style="text-align: center; padding: 4rem 0;">
+              <h3>Les Archives</h3>
+              <p>Les documents officiels, fiches pédagogiques, et parchemins d'évaluation seront stockés dans cette
+                chambre forte.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>Forgé avec la magie du code | &copy; L'année du Dragon, 2026</p>
+  </footer>
+
+  <!-- type="module" -->
+  <script src="./script.js" defer></script>
+</body>
+
+</html>

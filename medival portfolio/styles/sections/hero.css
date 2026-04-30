@@ -1,0 +1,125 @@
+/* ===== HERO SECTION (chatbot) ===== */
+
+:root {
+  --crystal-ball-wh: 150px;
+  --crystal-ball-bg: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.8),
+    rgba(30, 144, 255, 0.4),
+    rgba(147, 112, 219, 0.6)
+  );
+  --crystal-ball-bg-after: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.8) 1px,
+      transparent 1px
+    ),
+    radial-gradient(circle, rgba(147, 112, 219, 0.6) 1px, transparent 1px),
+    radial-gradient(circle, rgba(30, 144, 255, 0.4) 1px, transparent 1px);
+}
+
+.hero-title {
+  font-size: var(--fs-title, 48px);
+  text-align: center;
+  margin-bottom: var(--m-md1, 20px);
+  color: var(--brown, #8b4513);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  animation: titleFloat 4s ease-in-out infinite;
+}
+
+.crystal-ball {
+  width: var(--crystal-ball-wh);
+  height: var(--crystal-ball-wh);
+  background: var(--crystal-ball-bg, #6f6f6f);
+  border-radius: 50%;
+  margin: 0 auto var(--m-md1, 20px);
+  box-shadow: 0 0 20px rgba(147, 112, 219, 0.6),
+    inset 0 0 20px rgba(255, 255, 255, 0.5);
+  position: relative;
+  cursor: url("../../media/cursor/WenrexaAssetsMagicCursorsPack/36x36px/Cursor\ Magic\ Use\ Blue.png"),
+    auto;
+  animation: crystalGlow 5s infinite alternate,
+    crystalFloat 6s ease-in-out infinite, titleFloat 4s ease-in-out infinite;
+}
+
+.crystal-ball::before {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 20px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  filter: blur(2px);
+  transform: rotate(45deg);
+}
+
+/* Crystal ball particles */
+.crystal-ball::after {
+  content: "";
+  position: absolute;
+  width: calc(var(--crystal-ball-wh, 150px) + var(--spacing-lg, 20px));
+  height: calc(var(--crystal-ball-wh, 150px) + var(--spacing-lg, 20px));
+  top: -15px;
+  left: -15px;
+  background-image: var(--crystal-ball-bg-after, #ccc9);
+  background-size: var(--spacing-md, 10px) var(--spacing-md, 10px);
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: particleRotate 10s linear infinite;
+  pointer-events: none;
+}
+
+.hero-subtitle {
+  text-align: center;
+  font-size: var(--fs-sm, 16px);
+  margin-bottom: var(--m-md1, 20px);
+  font-style: italic;
+  animation: fadeInUp 1s ease-out, titleFloat 4s ease-in-out infinite;
+}
+
+/* -------------------------*/
+
+/* Large mobiles / small tablets (≤ 768px) */
+@media (max-width: 768px) {
+  :root {
+    --crystal-ball-wh: 110px;
+  }
+
+  .hero-title {
+    margin-bottom: var(--m-sm1, 10px);
+    font-size: calc(var(--fs-title, 48px) * 0.7);
+  }
+
+  .hero-subtitle {
+    margin-bottom: var(--m-sm1, 10px);
+    font-size: calc(var(--fs-sm, 16px) * 0.9);
+  }
+
+  .crystal-ball {
+    margin-bottom: var(--m-sm1, 10px);
+    --crystal-ball-wh: 100px;
+  }
+
+  .crystal-ball::after {
+    width: calc(var(--crystal-ball-wh, 100px) + var(--spacing-md, 10px));
+    height: calc(var(--crystal-ball-wh, 100px) + var(--spacing-md, 10px));
+    top: -2.5px;
+    left: -2.5px;
+  }
+}
+
+/* Small mobiles (≤ 480px) */
+@media (max-width: 480px) {
+  :root {
+    --crystal-ball-wh: 80px;
+  }
+
+  .hero-title {
+    font-size: var(--fs-smd, 20px);
+  }
+
+  .hero-subtitle {
+    font-size: var(--fs-vsm, 12px);
+  }
+}
