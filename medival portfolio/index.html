@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="manifest"
+			href="./manifest.json"
+			crossorigin="use-credentials"
+		/>
+		<link
+			rel="shortcut icon"
+			href="./media/favicon.ico"
+			type="image/x-icon"
+		/>
+		<title>Mouad the Coder | Medieval Portfolio</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=IM+Fell+English+SC&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="./styles/fonts.css" />
+		<link rel="stylesheet" href="./styles/global.css" />
+		<link rel="stylesheet" href="./styles/style.css" />
+		<link rel="stylesheet" href="./styles/headernav.css" />
+		<link rel="stylesheet" href="./styles/sections/hero.css" />
+		<link rel="stylesheet" href="./styles/sections/presentation.css" />
+		<link rel="stylesheet" href="./styles/sections/skills.css" />
+		<link rel="stylesheet" href="./styles/sections/project.css" />
+		<link rel="stylesheet" href="./styles/sections/about.css" />
+		<link rel="stylesheet" href="./styles/sections/contact.css" />
+		<link rel="stylesheet" href="./styles/chatbot.css" />
+		<link rel="stylesheet" href="./styles/blogs.css" />
+		<script src="./scripts/animation.js" defer></script>
+		<script type="module" src="./scripts/script.js" defer></script>
+	</head>
+
+	<body>
+		<div class="body-container" id="body-container">
+			<div class="alert-bar">
+				<p>
+					Welcome to the portfolio of Mouad the Coder! this portfolio
+					is still under development thank you for your understanding
+				</p>
+			</div>
+
+			<!-- navigation -->
+			<nav class="nav-container" id="nav-container">
+				<div class="nav-title">
+					<img src="./media/favicon.ico" alt="logo" />
+					<p>Mouad the Coder</p>
+				</div>
+				<div class="nav-scroll">
+					<div class="nav-links">
+						<a href="#hero" class="nav-link">Oracle</a>
+						<a href="#presentation" class="nav-link"
+							>The Craftsman</a
+						>
+						<a href="#skills" class="nav-link">Scroll of Skills</a>
+						<a href="#projects" class="nav-link">Tech Quests</a>
+						<a
+							href="#hobbies"
+							class="nav-link"
+							data-i18n="nav.hobbies"
+							>Beyond Code</a
+						>
+						<a
+							href="#design"
+							class="nav-link"
+							data-i18n="nav.design"
+							>Design Forge</a
+						>
+						<a href="#about" class="nav-link">Coding Lore</a>
+						<a href="#contact" class="nav-link">Send Raven</a>
+						<a
+							href="#"
+							class="nav-link nav-settings-btn"
+							id="open-settings"
+							data-i18n="nav.settings"
+							aria-haspopup="dialog"
+							aria-controls="settings-modal"
+							>Rune Settings</a
+						>
+						<a href="./CMREF" class="nav-link" target="_blank"
+							>CMREF Portfolio</a
+						>
+						<a href="./blogs" class="nav-link" target="_blank"
+							>My blogs</a
+						>
+						<a
+							href="./fallingletters"
+							class="nav-link"
+							target="_blank"
+							title="desktop"
+							style="background-color: #667eea"
+							>Kids Typing Game</a
+						>
+
+						<style>
+							@media (max-width: 900px) {
+								a.nav-link[title='desktop'] {
+									display: none !important;
+								}
+							}
+						</style>
+					</div>
+				</div>
+				<div class="nav-actions">
+					<button
+						class="nav-gear-btn"
+						id="open-settings-gear"
+						type="button"
+						aria-label="Open settings"
+						aria-haspopup="dialog"
+						aria-controls="settings-modal"
+					>
+						⚙
+					</button>
+				</div>
+				<div class="nav-toggle">
+					<button class="mobile-menu-btn">☰</button>
+				</div>
+			</nav>
+			<!-- hero section -->
+			<main>
+				<!-- Hero Section with AI Chatbot -->
+				<section id="hero" class="section hero-section">
+					<div class="parchment-container">
+						<h1 class="hero-title">Mouad the Coder</h1>
+						<div class="crystal-ball"></div>
+						<p class="hero-subtitle">
+							Ask the Oracle anything about Mouad
+						</p>
+
+						<div class="chat-container" id="chat-container">
+							<div class="chat-header" id="chat-header">
+								The Oracle's Crystal Ball
+							</div>
+							<div class="chat-messages" id="chat-messages">
+								<div class="message bot-message">
+									<div class="info-panel">
+										<h3>
+											<svg
+												width="24"
+												height="24"
+												viewBox="0 0 24 24"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<path
+													d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+													stroke="var(--primary)"
+													stroke-width="2"
+												/>
+												<path
+													d="M12 16V12"
+													stroke="var(--primary)"
+													stroke-width="2"
+													stroke-linecap="round"
+												/>
+												<path
+													d="M12 8H12.01"
+													stroke="var(--primary)"
+													stroke-width="2"
+													stroke-linecap="round"
+												/>
+											</svg>
+											How to use this chatbot:
+										</h3>
+										<ul>
+											<li>
+												<strong>Ask questions:</strong>
+												About the context or general
+												inquiries about Mouad the Coder
+											</li>
+											<li>
+												<strong
+													>Follow-up
+													questions:</strong
+												>
+												The bot remembers the last 3
+												interactions (under
+												construction)
+											</li>
+										</ul>
+										<div class="instructions">
+											<p>
+												<strong
+													>is it worth asking:</strong
+												>
+												yes of course it worth it i work
+												my brain out to build it even
+												there still some needed
+												improvement I am working on but
+												thank you for using our simple
+												chatbot
+											</p>
+										</div>
+									</div>
+								</div>
+								<div
+									class="message bot-message warning-message"
+								>
+									Greetings, seeker! I am the Oracle. Ask me
+									anything about Mouad the Coder and his
+									mystical coding powers.
+									<div>
+										This chatbot is still under development
+										and training. Thank you for your
+										understanding.
+									</div>
+								</div>
+							</div>
+
+							<div class="chat-input" id="chat-input">
+								<textarea
+									type="text"
+									class="scroll-input"
+									id="user-input"
+									name="userQuestion"
+									aria-label="Ask the Oracle"
+									placeholder="Inquire about skills, projects, or experience..."
+									aria-multiline="false"
+								></textarea>
+
+								<button id="askButton" class="wax-seal-button">
+									ASK
+								</button>
+							</div>
+							<div class="suggestion-box" id="suggestions">
+								<div class="suggestion">Who is Mouad?</div>
+								<div class="suggestion">List projects</div>
+								<div class="suggestion">
+									List cybersecurity project?
+								</div>
+							</div>
+							<div
+								class="context-indicator"
+								id="context-indicator"
+							>
+								<div>
+									Current Context:
+									<strong id="contextStatus"
+										>Default Profile</strong
+									>
+								</div>
+								<div class="context-stats">
+									<div class="stat-box">
+										Paragraphs
+										<span class="stat-value" id="paraCount"
+											>0</span
+										>
+									</div>
+									<div class="stat-box">
+										Sentences
+										<span
+											class="stat-value"
+											id="sentenceCount"
+											>0</span
+										>
+									</div>
+									<div class="stat-box">
+										Entities
+										<span
+											class="stat-value"
+											id="entityCount"
+											>0</span
+										>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<script
+						type="module"
+						src="./scripts/chatbot.js"
+						defer
+					></script>
+				</section>
+
+				<!-- Presentation Section -->
+				<section id="presentation" class="section presentation-section">
+					<div class="parchment-container">
+						<h2 class="section-title">The Wizard's Grimoire</h2>
+
+						<div class="presentation-container">
+							<div class="portrait-frame">
+								<img
+									src="./media/mouad-pic.png"
+									alt="Portrait of Mouad"
+									class="wizard-icon"
+								/>
+							</div>
+
+							<div
+								class="description-scroll combined-legendary-bio"
+							>
+								<div class="scroll-content visible">
+									<h2 class="scroll-title">
+										🛡️ The Knight Behind the Code
+									</h2>
+
+									<p class="drop-cap">
+										<span class="initial">G</span>reetings,
+										fellow travelers of the digital realm! I
+										am <strong>Mouad the Coder</strong>, a
+										modern-day craftsman and conjurer of
+										immersive digital experiences. My
+										journey began in the ancient lands of
+										HTML, where I first learned to structure
+										the foundations of the web — a
+										discipline I now wield with the
+										precision of a master blacksmith.
+									</p>
+
+									<div class="scroll-separator"></div>
+
+									<p>
+										Through tireless study and quests across
+										countless frameworks and languages, I
+										have mastered many magical tools: the
+										elegant spells of JavaScript, the
+										powerful incantations of Python, and the
+										flexible artistry of React. These are my
+										sword and shield in battle against the
+										dragons of complexity and inefficiency.
+									</p>
+
+									<div class="scroll-separator"></div>
+
+									<p>
+										Like a knight sworn to protect the
+										realm, I champion clean code, secure
+										architecture, and user-friendly design.
+										Whether working solo or with fellow
+										warriors, my mission is to forge
+										applications that blend ancient design
+										wisdom with cutting-edge technology —
+										digital creations that stand the test of
+										time.
+									</p>
+
+									<div class="scroll-separator"></div>
+
+									<p>
+										When not crafting code, I delve into
+										technological tomes, explore uncharted
+										tools, or share knowledge with
+										apprentice developers. My quest is
+										ongoing — to solve real-world problems
+										with creativity, precision, and
+										technical excellence.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section id="languages" class="section">
+					<div class="section-content">
+						<div class="parchment visible" id="languages-parch">
+							<h2 class="section-title">Tongues of the Realm</h2>
+							<p class="section-intro">
+								Languages I speak + proficiency:
+							</p>
+
+							<div
+								class="languages-grid"
+								id="languages-grid"
+							></div>
+						</div>
+					</div>
+					<script
+						type="module"
+						src="./scripts/languages.js"
+						defer
+					></script>
+				</section>
+
+				<!-- Skills Section -->
+				<section id="skills" class="section">
+					<div class="section-content">
+						<div class="parchment visible" id="skills-parchment">
+							<h2 class="section-title">
+								Arcane Codex of Skills
+							</h2>
+							<p class="section-intro">
+								Through years of arcane study and mystical
+								practice, I have mastered these powerful arts:
+								<code>click card bellow for more details</code>
+							</p>
+
+							<div class="skills-template">
+								<div
+									class="skills-filter"
+									aria-label="Skills category filter"
+								>
+									<button
+										class="skills-filter-btn active"
+										type="button"
+										data-skill-group="general"
+									>
+										General
+									</button>
+									<button
+										class="skills-filter-btn"
+										type="button"
+										data-skill-group="specialized"
+									>
+										Specialized
+									</button>
+								</div>
+								<div class="skills-grid-container">
+									<div class="skills-grid"></div>
+									<div class="pagination"></div>
+								</div>
+								<div class="skills-overview"></div>
+							</div>
+						</div>
+						<script
+							type="module"
+							src="./scripts/skills.js"
+							defer
+						></script>
+					</div>
+				</section>
+
+				<!-- Projects Section -->
+				<section id="projects" class="section">
+					<div class="parchment visible" id="projects-parch">
+						<div>
+							<h2 class="section-title">Tech Quests</h2>
+							<p class="section-intro">
+								Journeys undertaken and artifacts forged through
+								mystical coding rituals:
+								<code>click card bellow for more details</code>
+							</p>
+						</div>
+						<div class="projects-template">
+							<!-- here will be top 5 project -->
+							<div class="projects-container"></div>
+							<div class="projects-overview"></div>
+							<!-- here will be see more button (new page)-->
+						</div>
+					</div>
+					<script
+						type="module"
+						src="./scripts/projects.js"
+						defer
+					></script>
+				</section>
+
+				<section id="learning" class="section">
+					<div class="section-content">
+						<div class="parchment visible" id="learning-parch">
+							<div>
+								<h2 class="section-title">Learning Grimoire</h2>
+								<p class="section-intro">
+									Learning materials I’ve crafted (PDFs,
+									slides, and study scrolls):
+								</p>
+							</div>
+							<div class="learning-grid" id="learning-grid"></div>
+						</div>
+					</div>
+					<script
+						type="module"
+						src="./scripts/learning.js"
+						defer
+					></script>
+				</section>
+
+				<section id="hobbies" class="section">
+					<div class="section-content">
+						<div class="parchment visible" id="hobbies-parch">
+							<h2 class="section-title" data-i18n="hobbies.title">
+								Beyond the Code
+							</h2>
+							<p class="section-intro" data-i18n="hobbies.intro">
+								What I do beyond programming—habits that sharpen
+								the mind and keep the wizard grounded.
+							</p>
+
+							<div class="hobbies-grid" id="hobbies-grid"></div>
+						</div>
+					</div>
+					<script
+						type="module"
+						src="./scripts/hobbies.js"
+						defer
+					></script>
+				</section>
+
+				<section id="design" class="section">
+					<div class="section-content">
+						<div class="parchment visible" id="design-parch">
+							<h2 class="section-title" data-i18n="design.title">
+								The Design Forge
+							</h2>
+							<p class="section-intro" data-i18n="design.intro">
+								Figma and Canva artifacts—UI drafts, prototypes,
+								and visual scrolls forged for real quests.
+							</p>
+
+							<div class="design-grid" id="design-grid"></div>
+						</div>
+					</div>
+					<script
+						type="module"
+						src="./scripts/designs.js"
+						defer
+					></script>
+				</section>
+
+				<!-- preference Section -->
+				<!-- <section id="preference" class="section" style="display: none;">
+        <div class="parchment" id="preference-parch">
+          <div>
+            <h2 class="section-title">Learning grimoire</h2>
+            <p class="section-intro">some of Grimoire created to help developers learn and grow:</p>
+          </div>
+          <div class="preference-template">
+            <div class="preference-overview"></div>
+            <div class="preference-container"></div>
+          </div>
+  
+        </div>
+      </section> -->
+
+				<!-- About Section  (Coding Lore) -->
+				<section id="about" class="section">
+					<div class="section-content">
+						<div class="parchment visible" id="about-parch">
+							<h2 class="section-title">Coding Lore</h2>
+							<p class="section-intro">
+								The chronicles of my journey through the realms
+								of technology:
+								<code>click card bellow for more details</code>
+							</p>
+
+							<div class="timeline"></div>
+
+							<div class="philosophy">
+								<p>
+									"I believe that code is a form of magic that
+									transforms ideas into reality. Like the
+									wizards of old who carefully crafted their
+									spells, I approach each project with
+									precision, creativity, and a commitment to
+									excellence. My mission is to create digital
+									experiences that feel intuitive and
+									enchanting, solving real problems while
+									delighting users with thoughtful
+									interactions and beautiful design."
+								</p>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Contact Section -->
+				<section id="contact" class="section">
+					<div class="section-content">
+						<div
+							class="parchment contact-section visible"
+							id="contact-parch"
+						>
+							<h2>Send a Raven</h2>
+							<p class="section-intro">
+								Seek my counsel or propose an alliance through
+								these mystical channels:
+							</p>
+
+							<div class="contact-container">
+								<div class="contact-form">
+									<form
+										id="contact-form"
+										action="https://formsubmit.co/moadallaoui1@gmail.com"
+										method="POST"
+									>
+										<div class="form-group">
+											<label for="name">Your Name</label>
+											<input
+												name="name"
+												type="text"
+												id="name"
+												placeholder="Enter your noble name"
+												required
+											/>
+										</div>
+
+										<div class="form-group">
+											<label for="email"
+												>Pigeon Address</label
+											>
+											<input
+												name="email"
+												type="email"
+												id="email"
+												placeholder="What realm shall the raven call home? (your email)"
+												required
+											/>
+										</div>
+
+										<div class="form-group">
+											<label for="message"
+												>Your Message</label
+											>
+											<textarea
+												name="message"
+												id="message"
+												rows="5"
+												placeholder="Inscribe your message here..."
+												required
+											></textarea>
+										</div>
+
+										<input
+											type="hidden"
+											name="_next"
+											value="https://mouadallaoui.netlify.app/thankyou.html"
+										/>
+
+										<button
+											type="submit"
+											class="wax-seal"
+											id="seal-btn"
+										></button>
+									</form>
+								</div>
+
+								<div class="contact-info">
+									<h3>Guild Connections</h3>
+									<p>
+										Seek me in these digital realms where I
+										share my arcane knowledge:
+									</p>
+
+									<div class="social-links">
+										<a
+											href="https://github.com/MouadALLAOUI"
+											class="social-link"
+											title="GitHub"
+											target="_blank"
+											>⌖</a
+										>
+										<a
+											href="https://www.linkedin.com/in/mouad-allaoui-975514223/"
+											class="social-link"
+											title="LinkedIn"
+											target="_blank"
+											>🕴</a
+										>
+										<!-- <a href="#" class="social-link" title="Twitter" target="_blank">🐦</a>
+                  <a href="#" class="social-link" title="CodePen" target="_blank">✍</a> -->
+									</div>
+
+									<h3 style="margin-top: 30px">
+										Raven Delivery
+									</h3>
+									<p>
+										For urgent matters, dispatch a raven to:
+									</p>
+									<p
+										class="inline-code"
+										data-target="code-100101110"
+										id="code-100101110"
+										style="
+											font-family: 'Cinzel', serif;
+											margin-top: 10px;
+											user-select: text;
+										"
+									>
+										moadallaoui1@gmail.com
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
+			<!-- Footer -->
+			<footer>
+				<p>
+					© 2023 Mouad the Coder | Crafted with magical code and
+					enchanted pixels
+				</p>
+				<p>
+					This grimoire shall not be copied without express permission
+					from the wizard
+				</p>
+			</footer>
+		</div>
+
+		<div class="image-viewer" id="image-viewer">
+			<div class="img-container" id="image-viewer-container">
+				<img src="./media/city_medieval_night.png" alt="test" />
+			</div>
+			<div class="close-btn" id="image-viewer-close">x</div>
+		</div>
+
+		<div id="alert-container" class="alert-container"></div>
+
+		<div class="settings-modal" id="settings-modal" aria-hidden="true">
+			<div class="settings-backdrop" data-settings-close></div>
+			<div
+				class="settings-panel"
+				role="dialog"
+				aria-modal="true"
+				aria-labelledby="settings-title"
+			>
+				<div class="settings-header">
+					<h2 id="settings-title" data-i18n="settings.title">
+						Rune Settings
+					</h2>
+					<button
+						type="button"
+						class="settings-close"
+						data-settings-close
+						aria-label="Close"
+					>
+						✕
+					</button>
+				</div>
+				<div class="settings-body">
+					<div class="settings-row">
+						<label
+							class="settings-label"
+							for="settings-theme"
+							data-i18n="settings.theme"
+							>Theme</label
+						>
+						<select id="settings-theme" class="settings-select">
+							<option
+								value="night"
+								data-i18n="settings.theme.night"
+							>
+								Night
+							</option>
+							<option value="day" data-i18n="settings.theme.day">
+								Day
+							</option>
+						</select>
+					</div>
+					<div class="settings-row">
+						<label
+							class="settings-label"
+							for="settings-lang"
+							data-i18n="settings.language"
+							>Language</label
+						>
+						<select id="settings-lang" class="settings-select">
+							<option value="en">English</option>
+							<option value="fr">Français</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="module" src="./scripts/settings.js" defer></script>
+	</body>
+</html>

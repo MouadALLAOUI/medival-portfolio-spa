@@ -1,0 +1,61 @@
+export const achievements = [
+    {
+        id: "explorer",
+        title: "Realm Explorer",
+        desc: "Visit the main realms of the portfolio.",
+        category: "Exploration",
+        type: "counter",
+        target: 5,
+        unit: "pages",
+        badge: "🧭",
+    },
+    {
+        id: "scribe",
+        title: "Scribe of Chronicles",
+        desc: "Read blog scrolls and gather knowledge.",
+        category: "Learning",
+        type: "counter",
+        target: 3,
+        unit: "blogs",
+        badge: "📜",
+    },
+    {
+        id: "librarian",
+        title: "Keeper of PDFs",
+        desc: "Open and study PDF scrolls inside the site.",
+        category: "Learning",
+        type: "counter",
+        target: 2,
+        unit: "pdfs",
+        badge: "🗂️",
+    },
+    {
+        id: "apprentice",
+        title: "Typing Apprentice",
+        desc: "Practice the Kids Typing Game and improve speed.",
+        category: "Training",
+        type: "checklist",
+        steps: ["Play one session", "Finish a run", "Reach 90% accuracy"],
+        badge: "⌨️",
+    },
+    {
+        id: "craftsman",
+        title: "Grimoire Reader",
+        desc: "Read the Wizard's Grimoire section.",
+        category: "Exploration",
+        type: "boolean",
+        badge: "🛡️",
+    },
+    {
+        id: "questmaster",
+        title: "Quest Master",
+        desc: "Open a project case study and review screenshots.",
+        category: "Projects",
+        type: "checklist",
+        steps: ["Open a project", "Open screenshots", "Open external link"],
+        badge: "⚔️",
+    },
+];
+
+export default achievements;
+
