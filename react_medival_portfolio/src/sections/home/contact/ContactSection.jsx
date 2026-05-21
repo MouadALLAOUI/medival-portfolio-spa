@@ -1,82 +1,76 @@
-import { useState } from 'react';
-import CSection from "../../../templates/Section";
-import { useSettings } from '../../../lib/useSettings';
-import { useAlerts } from '../../../lib/useAlerts';
-
-function ContactSection() {
-  const { t } = useSettings();
-  const { showAlert } = useAlerts();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate raven flying animation
-    setTimeout(() => {
-      showAlert('Your raven has been dispatched!', 'success');
-      setIsSubmitting(false);
-      e.target.reset();
-    }, 1500);
-  };
-
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText('mouad.allaoui@example.com');
-    showAlert('Email address copied to clipboard!', 'info');
-  };
-
+const ContactSection = () => {
   return (
-    <CSection id="contact" title={t('home.contact.title')} subtitle={t('home.contact.subtitle')}>
-      <div className="contact-container">
-        <form className="contact-form" onSubmit={handleSubmit} action="https://formsubmit.co/your-email@example.com" method="POST">
-          <div className="form-group">
-            <label htmlFor="name">{t('home.contact.name')}</label>
-            <input type="text" id="name" name="name" required />
+    <section id="contact" className="section">
+      <div className="section-content">
+        <div className="parchment contact-section visible" id="contact-parch">
+          <h2>Send a Raven</h2>
+          <p className="section-intro">Seek my counsel or propose an alliance through these mystical channels:</p>
+
+          <div className="contact-container">
+            <div className="contact-form">
+              <form id="contact-form" action="https://formsubmit.co/moadallaoui1@gmail.com" method="POST">
+                <div className="form-group">
+                  <label htmlFor="name">Your Name</label>
+                  <input name="name" type="text" id="name" placeholder="Enter your noble name" required />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="email">Pigeon Address</label>
+                  <input
+                    name="email"
+                    type="email"
+                    id="email"
+                    placeholder="What realm shall the raven call home? (your email)"
+                    required
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="message">Your Message</label>
+                  <textarea name="message" id="message" rows="5" placeholder="Inscribe your message here..." required></textarea>
+                </div>
+
+                <input type="hidden" name="_next" value="https://mouadallaoui.netlify.app/thankyou.html" />
+
+                <button type="submit" className="wax-seal" id="seal-btn"></button>
+              </form>
+            </div>
+
+            <div className="contact-info">
+              <h3>Guild Connections</h3>
+              <p>Seek me in these digital realms where I share my arcane knowledge:</p>
+
+              <div className="social-links">
+                <a href="https://github.com/MouadALLAOUI" className="social-link" title="GitHub" target="_blank" rel="noreferrer">
+                  ⌖
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/mouad-allaoui-975514223/"
+                  className="social-link"
+                  title="LinkedIn"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  🕴
+                </a>
+              </div>
+
+              <h3 style={{ marginTop: '30px' }}>Raven Delivery</h3>
+              <p>For urgent matters, dispatch a raven to:</p>
+              <p
+                className="inline-code"
+                data-target="code-100101110"
+                id="code-100101110"
+                style={{ fontFamily: 'Cinzel, serif', marginTop: '10px', userSelect: 'text' }}
+              >
+                moadallaoui1@gmail.com
+              </p>
+            </div>
           </div>
-
-          <div className="form-group">
-            <label htmlFor="email">{t('home.contact.email')}</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="message">{t('home.contact.message')}</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-          </div>
-
-          <button type="submit" className="wax-seal-btn" disabled={isSubmitting}>
-            {isSubmitting ? (
-              <span className="raven-flying">🕊️ Sending...</span>
-            ) : (
-              <span>🔒 Seal & Send</span>
-            )}
-          </button>
-        </form>
-
-        <div className="social-links">
-          <h4>{t('home.contact.social')}</h4>
-          <div className="social-icons">
-            <a href="https://github.com/MouadALLAOUI" target="_blank" rel="noopener noreferrer" className="social-icon">
-              GitHub
-            </a>
-            <a href="https://linkedin.com/in/mouad-allaoui" target="_blank" rel="noopener noreferrer" className="social-icon">
-              LinkedIn
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-              Twitter
-            </a>
-          </div>
-        </div>
-
-        <div className="email-copy">
-          <p>{t('home.contact.direct')}</p>
-          <button className="email-btn" onClick={handleCopyEmail}>
-            📧 mouad.allaoui@example.com
-          </button>
         </div>
       </div>
-    </CSection>
+    </section>
   );
-}
+};
 
 export default ContactSection;
