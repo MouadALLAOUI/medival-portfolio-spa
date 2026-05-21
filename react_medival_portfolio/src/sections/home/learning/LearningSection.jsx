@@ -1,11 +1,10 @@
-import CSection from "../../../templates/Section";
 import DynamicCard from '../../../components/card';
 import { PRESETS } from '../../../config/presets';
 import learning from '../../../data/learning';
 import { usePdfViewer } from '../../../lib/usePdfViewer';
 import { useAchievements } from '../../../lib/useAchievements';
 
-function LearningSection() {
+const LearningSection = () => {
   const { openPdf } = usePdfViewer();
   const { trackEvent } = useAchievements();
 
@@ -17,19 +16,22 @@ function LearningSection() {
   };
 
   return (
-    <CSection id="learning" title="Learning & Knowledge" subtitle="Scrolls of wisdom and scholarly pursuits">
-      <div className="learning-grid">
-        {learning.map((item) => (
-          <DynamicCard
-            key={item.id}
-            item={item}
-            config={PRESETS.LEARNING}
-            onClick={() => handleCardClick(item)}
-          />
-        ))}
+    <section id="learning" className="section">
+      <div className="section-content">
+        <div className="parchment visible" id="learning-parch">
+          <div>
+            <h2 className="section-title">Learning Grimoire</h2>
+            <p className="section-intro">Learning materials I’ve crafted (PDFs, slides, and study scrolls):</p>
+          </div>
+          <div className="learning-grid" id="learning-grid">
+            {learning.map((item) => (
+              <DynamicCard key={item.id} item={item} config={PRESETS.LEARNING} onClick={() => handleCardClick(item)} />
+            ))}
+          </div>
+        </div>
       </div>
-    </CSection>
+    </section>
   );
-}
+};
 
 export default LearningSection;
