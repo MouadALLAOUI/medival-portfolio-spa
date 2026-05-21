@@ -1,4 +1,5 @@
 import CSection from "../../../templates/Section";
+import Chatbot from "../../../components/CHATBOT/chatbot";
 
 export default function HeroSection() {
     return (
@@ -6,7 +7,12 @@ export default function HeroSection() {
             <h1 className="hero-title text-5xl text-center mb-10 text-shadow-2xs text-shadow-slate-100 animate-title-float" >
                 Mouad the Coder
             </h1>
-            <div className="crystal-ball" />
+
+            {/* Chatbot Container - replaces simple crystal ball */}
+            <div className="w-full max-w-2xl h-[500px] mb-6">
+                <Chatbot />
+            </div>
+
             <p className="hero-subtitle animate-fadeinout-float mb-2 text-lg text-center text-shadow-2xs text-shadow-slate-100">
                 Ask the Oracle anything about Mouad
             </p>
