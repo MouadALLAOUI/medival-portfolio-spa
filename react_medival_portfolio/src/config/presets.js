@@ -18,6 +18,12 @@ export const PRESETS = {
         titleKey: "caption",
         imageKey: "src"
     },
+    HOBBIES: {
+        baseClass: "hobbies-card",
+        titleKey: "title",
+        descKey: "desc",
+        iconKey: "icon"
+    },
     LEARNING: {
         baseClass: "learning-card",
         titleKey: "title",
