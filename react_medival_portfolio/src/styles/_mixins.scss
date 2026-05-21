@@ -1,0 +1,25 @@
+@mixin parchment-panel {
+  border: 12px solid transparent;
+  box-shadow: 0 0 20px var(--shadow, #0002);
+}
+
+@mixin medieval-border-glow {
+  background: linear-gradient(45deg, var(--rust), var(--torchlight), var(--gold), var(--parchment));
+  background-size: 400% 400%;
+}
+
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: var(--scroll-gw);
+    height: var(--scroll-gh);
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--dark-gray);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: var(--scroll-gw);
+  }
+}

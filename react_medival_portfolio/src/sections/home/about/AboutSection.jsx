@@ -1,49 +1,40 @@
-import { useState } from 'react';
-import CSection from "../../../templates/Section";
 import timelines from '../../../data/timelines';
-import { useSettings } from '../../../lib/useSettings';
 
-function AboutSection() {
-  const { t } = useSettings();
-  const [activeId, setActiveId] = useState(null);
-
-  const handleTimelineClick = (id) => {
-    setActiveId(activeId === id ? null : id);
-  };
-
+const AboutSection = () => {
   return (
-    <CSection id="about" title={t('home.about.title')} subtitle={t('home.about.subtitle')}>
-      <div className="timeline-container">
-        <div className="timeline">
-          {timelines.map((item) => (
-            <div
-              key={item.id}
-              className={`timeline-item ${activeId === item.id ? 'active' : ''}`}
-              onClick={() => handleTimelineClick(item.id)}
-            >
-              <div className="timeline-marker"></div>
-              <div className="timeline-content">
-                <span className="timeline-year">{item.year}</span>
-                <h3 className="timeline-title">{item.title}</h3>
-                <p className="timeline-desc">{item.desc}</p>
-                {activeId === item.id && (
-                  <div className="timeline-detail">
-                    <p>{item.detailledDesc}</p>
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
+    <section id="about" className="section">
+      <div className="section-content">
+        <div className="parchment visible" id="about-parch">
+          <h2 className="section-title">Coding Lore</h2>
+          <p className="section-intro">
+            The chronicles of my journey through the realms of technology:
+            <code>click card bellow for more details</code>
+          </p>
 
-        <div className="philosophy-quote">
-          <blockquote>
-            "Code is poetry written in logic. Each function a verse, each module a stanza, each application an epic tale."
-          </blockquote>
+          <div className="timeline">
+            {timelines.map((item) => (
+              <div key={item.id} className="timeline-item">
+                <div className="timeline-content">
+                  <div className="timeline-year">{item.year}</div>
+                  <h3 className="timeline-title">{item.title}</h3>
+                  <p>{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="philosophy">
+            <p>
+              "I believe that code is a form of magic that transforms ideas into reality. Like the wizards of old who
+              carefully crafted their spells, I approach each project with precision, creativity, and a commitment to
+              excellence. My mission is to create digital experiences that feel intuitive and enchanting, solving real
+              problems while delighting users with thoughtful interactions and beautiful design."
+            </p>
+          </div>
         </div>
       </div>
-    </CSection>
+    </section>
   );
-}
+};
 
 export default AboutSection;
