@@ -33,13 +33,13 @@ export default function SettingsModal({ isOpen, onClose }) {
     <div className="settings-modal-overlay fixed inset-0 z-[1000] bg-black/70 flex items-center justify-center animate-fade-in">
       <div
         ref={modalRef}
-        className="settings-modal parchment-container max-w-md w-full mx-4 rounded-lg shadow-2xl border-2 border-gold-600 animate-scale-in"
+        className="settings-modal parchment-container max-w-md w-full mx-4 rounded-lg shadow-2xl border-2 border-gold animate-scale-in"
         role="dialog"
         aria-modal="true"
         aria-labelledby="settings-title"
       >
-        <div className="modal-header flex justify-between items-center p-6 border-b-2 border-gold-600/30">
-          <h2 id="settings-title" className="text-2xl font-medieval text-gold-700">
+        <div className="modal-header flex justify-between items-center p-6 border-b-2 border-gold/30">
+          <h2 id="settings-title" className="text-2xl font-medieval text-gold">
             ⚙️ Rune Settings
           </h2>
           <button
@@ -62,8 +62,8 @@ export default function SettingsModal({ isOpen, onClose }) {
                 onClick={() => setTheme('day')}
                 className={`theme-btn flex-1 p-4 rounded-lg border-2 transition-all duration-300
                   ${theme === 'day'
-                    ? 'border-gold-600 bg-yellow-100 shadow-lg scale-105'
-                    : 'border-gray-400 bg-gray-100 hover:border-gold-400'
+                    ? 'border-gold bg-yellow-100 shadow-lg scale-105'
+                    : 'border-gray-400 bg-gray-100 hover:border-gold-light'
                   }`}
               >
                 <span className="text-2xl block mb-2">☀️</span>
@@ -73,8 +73,8 @@ export default function SettingsModal({ isOpen, onClose }) {
                 onClick={() => setTheme('night')}
                 className={`theme-btn flex-1 p-4 rounded-lg border-2 transition-all duration-300
                   ${theme === 'night'
-                    ? 'border-gold-600 bg-indigo-900 shadow-lg scale-105'
-                    : 'border-gray-400 bg-gray-100 hover:border-gold-400'
+                    ? 'border-gold bg-indigo-900 shadow-lg scale-105'
+                    : 'border-gray-400 bg-gray-100 hover:border-gold-light'
                   }`}
               >
                 <span className="text-2xl block mb-2">🌙</span>
@@ -93,8 +93,8 @@ export default function SettingsModal({ isOpen, onClose }) {
                 onClick={() => setLanguage('en')}
                 className={`language-btn flex-1 p-4 rounded-lg border-2 transition-all duration-300
                   ${language === 'en'
-                    ? 'border-gold-600 bg-blue-100 shadow-lg scale-105'
-                    : 'border-gray-400 bg-gray-100 hover:border-gold-400'
+                    ? 'border-gold bg-blue-100 shadow-lg scale-105'
+                    : 'border-gray-400 bg-gray-100 hover:border-gold-light'
                   }`}
               >
                 <span className="text-2xl block mb-2">🇬🇧</span>
@@ -104,8 +104,8 @@ export default function SettingsModal({ isOpen, onClose }) {
                 onClick={() => setLanguage('fr')}
                 className={`language-btn flex-1 p-4 rounded-lg border-2 transition-all duration-300
                   ${language === 'fr'
-                    ? 'border-gold-600 bg-red-100 shadow-lg scale-105'
-                    : 'border-gray-400 bg-gray-100 hover:border-gold-400'
+                    ? 'border-gold bg-red-100 shadow-lg scale-105'
+                    : 'border-gray-400 bg-gray-100 hover:border-gold-light'
                   }`}
               >
                 <span className="text-2xl block mb-2">🇫🇷</span>
@@ -115,10 +115,10 @@ export default function SettingsModal({ isOpen, onClose }) {
           </div>
         </div>
 
-        <div className="modal-footer p-6 border-t-2 border-gold-600/30 text-center">
+        <div className="modal-footer p-6 border-t-2 border-gold/30 text-center">
           <button
             onClick={onClose}
-            className="px-8 py-3 bg-gold-600 hover:bg-gold-700 text-white font-medieval rounded-lg transition-colors shadow-lg"
+            className="px-8 py-3 bg-gold hover:bg-gold-light text-white font-medieval rounded-lg transition-colors shadow-lg"
           >
             ✨ Apply Runes
           </button>

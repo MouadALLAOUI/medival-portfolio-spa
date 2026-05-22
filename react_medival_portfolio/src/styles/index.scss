@@ -1,7 +1,9 @@
-@use './variables';
-@use './mixins';
-@use './animations';
-@use './base';
-@use './components';
-
 @import 'tailwindcss';
+@config '../../tailwind.config.js';
+
+@import './variables';
+@import './mixins';
+@import './animations';
+@import './base';
+@import './components';
+
