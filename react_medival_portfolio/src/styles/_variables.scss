@@ -69,6 +69,22 @@ $crimson: #8b1538;
   --scroll-gw: 5px;
   --scroll-gh: 3px;
 
+  --border-rad-sm: 10px;
+  --crystal-ball-wh: 150px;
+  --color-oracle-glass: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.8),
+    rgba(30, 144, 255, 0.4),
+    rgba(147, 112, 219, 0.6)
+  );
+  --color-oracle-sparkles: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.8) 1px,
+      transparent 1px
+    ),
+    radial-gradient(circle, rgba(147, 112, 219, 0.6) 1px, transparent 1px),
+    radial-gradient(circle, rgba(30, 144, 255, 0.4) 1px, transparent 1px);
+
   --body-bg: linear-gradient(45deg, #242424, #3a2921);
   --body-bg-before: radial-gradient(circle, rgba(139, 69, 19, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%);
 }

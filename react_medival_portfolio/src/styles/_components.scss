@@ -61,7 +61,8 @@
 
     .parchment-container {
         /* Layout & Base Styles */
-        @apply relative grow w-full h-full rounded-[var(--border-rad-sm)];
+        @apply relative grow w-full h-full;
+        border-radius: var(--border-rad-sm);
         box-shadow: 0 0 20px var(--shadow, #0002);
         transition: transform 0.5s ease-in-out;
         transform-style: preserve-3d;
@@ -73,8 +74,10 @@
         /* The Magical Glow (::before) */
         &::before {
             content: "";
-            @apply absolute -inset-[5px] -z-10 opacity-60 blur-[5px] rounded-[calc(var(--border-rad-sm)+5px)];
-            @apply animate-glowing-border bg-[length:400%_400%];
+            @apply absolute -inset-[5px] -z-10 opacity-60 blur-[5px];
+            border-radius: calc(var(--border-rad-sm) + 5px);
+            animation: glowingBorder 10s ease infinite;
+            @apply bg-[length:400%_400%];
 
             /* Gradient using your theme colors */
             background: linear-gradient(45deg,
@@ -101,7 +104,8 @@
 
         &::before {
             content: "";
-            @apply absolute -inset-[10px] border-2 border-gold rounded-[5px] pointer-events-none -z-10 animate-parchment-glow;
+            @apply absolute -inset-[10px] border-2 border-gold rounded-[5px] pointer-events-none -z-10;
+            animation: parchment-glow 3s ease-in-out infinite alternate;
         }
 
         &::after {
@@ -117,13 +121,15 @@
     }
 
     .section-title {
-        @apply relative block mx-auto text-center w-fit text-[2.5rem] mb-[var(--spacing-xl)] font-medieval;
+        @apply relative block mx-auto text-center w-fit text-[2.5rem] font-medieval;
+        margin-bottom: var(--spacing-xl);
         color: var(--color-rust);
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 
         &::after {
             content: "";
-            @apply absolute -bottom-1 left-0 w-full h-[1px] animate-border-glow;
+            @apply absolute -bottom-1 left-0 w-full h-[1px];
+            animation: borderGlow 4s ease-in-out infinite;
 
             background: linear-gradient(to right, transparent, var(--color-gold), transparent);
         }
@@ -183,7 +189,9 @@
 
     /* ===== HERO SECTION (chatbot) ===== */
     .crystal-ball {
-        @apply relative w-40 h-40 rounded-full bg-oracle-glass shadow-lg mx-auto animate-oracle-glow cursor-magic-blue;
+        @apply relative w-40 h-40 rounded-full shadow-lg mx-auto cursor-magic-blue;
+        background: var(--color-oracle-glass);
+        animation: crystalGlow 5s infinite alternate;
 
         &::before {
             @apply absolute bg-white/80 blur-[2px] rotate-45 rounded-full content-[""];
@@ -196,7 +204,7 @@
 
         &::after {
             @apply absolute rounded-full opacity-50 pointer-events-none content-[""];
-            @apply animate-particle-rotate;
+            animation: particleRotate 10s linear infinite;
 
             /* Sizing calculation using your variables */
             width: calc(var(--crystal-ball-wh, 150px) + 20px);
@@ -223,7 +231,8 @@
 
     .portrait-frame {
         @apply relative overflow-hidden rounded-full border-[10px] border-transparent transition-all duration-300;
-        @apply flex items-center justify-center mx-auto bg-parchment animate-frame-float;
+        @apply flex items-center justify-center mx-auto bg-parchment;
+        animation: frameFloat 5s ease-in-out infinite;
         width: 300px;
         height: 300px;
 
@@ -238,13 +247,15 @@
         }
 
         img {
-            @apply w-full aspect-square object-cover grayscale hover:grayscale-0 rounded-full animate-wizard-glow;
+            @apply w-full aspect-square object-cover grayscale hover:grayscale-0 rounded-full;
+            animation: wizardGlow 3s infinite alternate;
         }
     }
 
     .description-scroll {
         @apply relative rounded-[5px] border-[8px] border-transparent shadow-lg origin-top;
-        @apply bg-white/50 animate-unroll-scroll;
+        @apply bg-white/50;
+        animation: unrollScroll 1.5s ease-out;
         background-image: var(--bg-pattern-parchment-texture);
     }
 
@@ -448,10 +459,12 @@
     }
 
     .project-detail-panel {
-        @apply fixed inset-0 z-[1000] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-fade-in;
+        @apply fixed inset-0 z-[1000] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4;
+        animation: fade-in 0.3s ease-out forwards;
 
         .detail-content {
-            @apply relative max-w-4xl w-full max-h-[90vh] overflow-y-auto bg-parchment rounded-lg border-4 border-gold shadow-2xl p-6 animate-slide-up;
+            @apply relative max-w-4xl w-full max-h-[90vh] overflow-y-auto bg-parchment rounded-lg border-4 border-gold shadow-2xl p-6;
+            animation: slide-up 0.4s ease-out forwards;
 
             .close-btn {
                 @apply absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-rust text-parchment rounded-full border-2 border-gold hover:bg-gold hover:text-dark-brown transition-colors cursor-pointer z-10;
@@ -759,7 +772,8 @@
         @apply fixed bottom-4 left-1/2 -translate-x-1/2 z-[2000] flex flex-col gap-2;
 
         .alert-box {
-            @apply px-6 py-4 rounded-lg shadow-lg border-2 animate-slide-up min-w-[280px] text-center;
+            @apply px-6 py-4 rounded-lg shadow-lg border-2 min-w-[280px] text-center;
+            animation: slide-up 0.4s ease-out forwards;
 
             &.alert-success {
                 @apply bg-green-900/90 text-parchment border-green-500;
@@ -792,7 +806,8 @@
         @apply fixed inset-0 z-[3000] flex items-center justify-center bg-black/95 backdrop-blur-sm;
 
         .viewer-image {
-            @apply max-w-[90vw] max-h-[90vh] object-contain animate-zoom-in;
+            @apply max-w-[90vw] max-h-[90vh] object-contain;
+            animation: zoom-in 0.3s ease-out;
         }
 
         .viewer-close {
@@ -826,7 +841,8 @@
         @apply fixed inset-0 z-[4000] flex items-center justify-center bg-black/70 backdrop-blur-sm;
 
         .settings-modal {
-            @apply relative w-full max-w-md p-6 bg-parchment rounded-lg border-4 border-gold shadow-2xl animate-scale-in;
+            @apply relative w-full max-w-md p-6 bg-parchment rounded-lg border-4 border-gold shadow-2xl;
+            animation: scale-in 0.3s ease-out forwards;
 
             .modal-header {
                 @apply text-center mb-6;
@@ -933,7 +949,8 @@
     }
 
     .oracle-icon {
-        @apply text-xl animate-oracle-glow;
+        @apply text-xl;
+        animation: crystalGlow 5s infinite alternate;
     }
 
     .context-indicator {
@@ -981,7 +998,8 @@
     }
 
     .message {
-        @apply flex flex-col max-w-[85%] animate-slide-up;
+        @apply flex flex-col max-w-[85%];
+        animation: slide-up 0.4s ease-out forwards;
 
         &.user-message {
             @apply self-end items-end;
@@ -998,7 +1016,7 @@
 
             .message-content {
                 @apply bg-gradient-to-br from-slate-800 to-slate-900 text-parchment rounded-t-lg rounded-br-lg;
-                border: 1px solid var(--color-gold/50);
+                border: 1px solid rgba(212, 175, 55, 0.5);
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
             }
 

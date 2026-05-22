@@ -40,44 +40,48 @@ const Chatbot = () => {
   const onAsk = () => sendQuestion(userInput);
 
   return (
-    <div className="chat-container" id="chat-container">
-      <div className="chat-header" id="chat-header">
+    <div className="chatbot-container" id="chat-container">
+      <div className="chatbot-header" id="chat-header">
         The Oracle&apos;s Crystal Ball
       </div>
 
       <div className="chat-messages" id="chat-messages">
         <div className="message bot-message">
-          <div className="info-panel">
-            <h3>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="var(--primary)" strokeWidth="2" />
-                <path d="M12 16V12" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" />
-                <path d="M12 8H12.01" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" />
-              </svg>
-              How to use this chatbot:
-            </h3>
-            <ul>
-              <li>
-                <strong>Ask questions:</strong>
-                {' '}About the context or general inquiries about Mouad the Coder
-              </li>
-              <li>
-                <strong>Follow-up questions:</strong>
-                {' '}The bot remembers the last 3 interactions (under construction)
-              </li>
-            </ul>
-            <div className="instructions">
-              <p>
-                <strong>is it worth asking:</strong>
-                {' '}yes of course it worth it i work my brain out to build it even there still some needed improvement I am working on but thank you for using our simple chatbot
-              </p>
+          <div className="message-content">
+            <div className="info-panel">
+              <h3>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="var(--primary)" strokeWidth="2" />
+                  <path d="M12 16V12" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M12 8H12.01" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+                How to use this chatbot:
+              </h3>
+              <ul>
+                <li>
+                  <strong>Ask questions:</strong>
+                  {' '}About the context or general inquiries about Mouad the Coder
+                </li>
+                <li>
+                  <strong>Follow-up questions:</strong>
+                  {' '}The bot remembers the last 3 interactions (under construction)
+                </li>
+              </ul>
+              <div className="instructions">
+                <p>
+                  <strong>is it worth asking:</strong>
+                  {' '}yes of course it worth it i work my brain out to build it even there still some needed improvement I am working on but thank you for using our simple chatbot
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
         <div className="message bot-message warning-message">
-          Greetings, seeker! I am the Oracle. Ask me anything about Mouad the Coder and his mystical coding powers.
-          <div>This chatbot is still under development and training. Thank you for your understanding.</div>
+          <div className="message-content">
+            Greetings, seeker! I am the Oracle. Ask me anything about Mouad the Coder and his mystical coding powers.
+            <div className="mt-1">This chatbot is still under development and training. Thank you for your understanding.</div>
+          </div>
         </div>
 
         {messages.map((message, index) => (
@@ -85,15 +89,17 @@ const Chatbot = () => {
             key={`${message.role}-${index}`}
             className={`message ${message.role === 'user' ? 'user-message' : 'bot-message'} ${message.type ? `${message.type}-message` : ''}`}
           >
-            {message.text}
+            <div className="message-content">
+              {message.text}
+            </div>
           </div>
         ))}
       </div>
 
-      <div className="chat-input" id="chat-input">
+      <div className="chat-input-container" id="chat-input">
         <textarea
           type="text"
-          className="scroll-input"
+          className="chat-input"
           id="user-input"
           name="userQuestion"
           aria-label="Ask the Oracle"
@@ -109,12 +115,12 @@ const Chatbot = () => {
           }}
         ></textarea>
 
-        <button id="askButton" className="wax-seal-button" onClick={onAsk}>
+        <button id="askButton" className="ask-button" onClick={onAsk}>
           ASK
         </button>
       </div>
 
-      <div className="suggestion-box" id="suggestions">
+      <div className="suggestions" id="suggestions">
         {DEFAULT_SUGGESTIONS.map((suggestion) => (
           <div
             key={suggestion}

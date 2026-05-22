@@ -19,7 +19,7 @@ export default function ImageViewer() {
   return (
     <div className="image-viewer-overlay fixed inset-0 z-[1000] bg-black/90 flex items-center justify-center animate-fade-in">
       <button
-        className="close-btn absolute top-4 right-4 text-white text-4xl hover:text-gold-400 transition-colors z-10"
+        className="close-btn absolute top-4 right-4 text-white text-4xl hover:text-gold-light transition-colors z-10"
         onClick={closeImage}
         aria-label="Close image viewer"
       >
@@ -29,7 +29,7 @@ export default function ImageViewer() {
         <img
           src={src}
           alt="Full size image"
-          className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl border-2 border-gold-500"
+          className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl border-2 border-gold"
         />
       </div>
     </div>

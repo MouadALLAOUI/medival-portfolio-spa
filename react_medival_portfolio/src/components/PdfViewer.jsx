@@ -22,7 +22,7 @@ export default function PdfViewer() {
         <div className="pdf-header flex justify-between items-center p-4 bg-gray-800 text-white">
           <h3 className="text-lg font-medieval truncate">{title}</h3>
           <button
-            className="close-btn text-2xl hover:text-gold-400 transition-colors"
+            className="close-btn text-2xl hover:text-gold-light transition-colors"
             onClick={closePdf}
             aria-label="Close PDF viewer"
           >

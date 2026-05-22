@@ -18,3 +18,13 @@
 @keyframes quillFloat { 0%,100%{transform:translateY(0) rotate(-3deg)} 50%{transform:translateY(-6px) rotate(3deg)} }
 @keyframes titleGlow { 0%,100%{ text-shadow:0 0 8px rgba(212,175,55,.5)} 50%{ text-shadow:0 0 16px rgba(212,175,55,.9)} }
 @keyframes pulse { 0%{transform:scale(1)} 50%{transform:scale(1.05)} 100%{transform:scale(1)} }
+
+@keyframes parchment-glow {
+  0% {
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.4), inset 0 0 10px rgba(210, 180, 140, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.8), inset 0 0 20px rgba(210, 180, 140, 0.5);
+  }
+}
+
