@@ -3,16 +3,10 @@
 // import { useEffect } from "react";
 // import { useAchievements } from "../../lib/useAchievements";
 
-import ContactSection from "../../sections/home/contact/ContactSection";
-import DesignSection from "../../sections/home/design/DesignSection";
 import HeroSection from "../../sections/home/hero/heroSection";
-import HobbiesSection from "../../sections/home/hobbies/HobbiesSection";
 import LanguagesSection from "../../sections/home/languages/LanguagesSection";
 import PresentationSection from "../../sections/home/presentation/presentation";
 import SkillsSection from "../../sections/home/skills/skillsSection";
-import ProjectsSection from "../../sections/home/projects/ProjectsSection";
-import LearningSection from "../../sections/home/learning/LearningSection";
-import AboutSection from "../../sections/home/about/AboutSection";
 
 export default function Home() {
     // const { showAlert } = useAlerts();
@@ -71,12 +65,6 @@ export default function Home() {
             <PresentationSection />
             <LanguagesSection />
             <SkillsSection />
-            <ProjectsSection />
-            <DesignSection />
-            <HobbiesSection />
-            <LearningSection />
-            <AboutSection />
-            <ContactSection />
         </main>
     )
 }
