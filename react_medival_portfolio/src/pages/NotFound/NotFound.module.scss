@@ -1,0 +1,170 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.container {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  background: var(--bg-primary);
+}
+
+.parchmentPanel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2.5rem;
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+  transition: all var(--transition);
+
+  &:hover {
+    box-shadow: var(--card-shadow-hover);
+  }
+
+  // Medieval parchment theme overrides
+  :global([data-theme="medieval"]) & {
+    background: rgba(244, 228, 188, 0.95);
+    box-shadow: 0 10px 30px rgba(44, 24, 16, 0.25);
+    border: 12px solid transparent;
+    border-image: var(--border-decoration);
+    border-radius: 4px;
+    padding: 2.5rem 2rem;
+
+    &:hover {
+      box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15), 0 10px 30px rgba(44, 24, 16, 0.3);
+    }
+  }
+
+  @include mobile {
+    padding: 2rem 1.25rem;
+  }
+}
+
+// ── Decorative Crest ───────────────────────────────────────
+.crest {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+
+  .parchmentPanel:hover & {
+    transform: rotate(15deg) scale(1.05);
+  }
+
+  :global([data-theme="medieval"]) & {
+    background: rgba(201, 168, 76, 0.15);
+    border-color: var(--gold);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+  }
+}
+
+.crestIcon {
+  font-size: 2.25rem;
+  line-height: 1;
+}
+
+// ── Headers ────────────────────────────────────────────────
+.headerBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  color: var(--text-primary);
+  line-height: 1.2;
+  font-weight: 700;
+
+  :global([data-theme="medieval"]) & {
+    color: var(--dark-brown);
+  }
+}
+
+.subtitle {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+
+  :global([data-theme="medieval"]) & {
+    color: var(--brown);
+  }
+}
+
+// ── Divider ───────────────────────────────────────────────
+.divider {
+  width: 80%;
+  height: 1px;
+  background: var(--border);
+
+  :global([data-theme="medieval"]) & {
+    background: rgba(201, 168, 76, 0.4);
+    height: 2px;
+    border-radius: 1px;
+  }
+}
+
+// ── Description ───────────────────────────────────────────
+.description {
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  white-space: pre-line;
+
+  :global([data-theme="medieval"]) & {
+    color: var(--dark-brown);
+    font-style: italic;
+  }
+}
+
+// ── Return Button ─────────────────────────────────────────
+.returnBtn {
+  margin-top: 1rem;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition);
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-light);
+    transform: translateY(-1px);
+  }
+
+  :global([data-theme="medieval"]) & {
+    border: 2px solid var(--gold);
+    background: var(--dark-brown);
+    color: var(--parchment);
+
+    &:hover {
+      background: var(--brown);
+      color: var(--gold-light);
+      border-color: var(--gold-light);
+      box-shadow: 0 4px 12px rgba(44, 24, 16, 0.4);
+    }
+  }
+}

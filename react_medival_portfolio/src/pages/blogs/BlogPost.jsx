@@ -1,50 +1,73 @@
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { blogs } from '../../data/blogs.data';
 import { markdownToHtml } from '../../lib/utils/markdownToHtml';
 import { useAlerts } from '../../lib/useAlerts';
+import { useSettings } from '../../lib/useSettings';
 import { useCodeCopy } from '../../lib/hooks/useCodeCopy';
 import { useImageViewer } from '../../lib/useImageViewer';
+import { formatDate } from '../../lib/utils/dateFormatter';
+import BlogCard from '../../components/BlogCard/BlogCard';
 import styles from './BlogPost.module.scss';
 import { isFirstVisit } from '../../lib/utils/visitTracker';
-
-function formatDate(date) {
-  if (!date) return '__-__-__';
-  const months = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December',
-  ];
-  const pad = (n) => String(n).padStart(2, '0');
-  const suffix = (d) => {
-    if (d > 3 && d < 21) return 'th';
-    switch (d % 10) {
-      case 1: return 'st';
-      case 2: return 'nd';
-      case 3: return 'rd';
-      default: return 'th';
-    }
-  };
-  const { hh, mm, dd, MM, yyyy } = date;
-  return `${pad(dd)}${suffix(dd)} Day of ${months[MM - 1]}, Year ${yyyy} at ${pad(hh)}:${pad(mm)}`;
-}
 
 export default function BlogPost() {
   const { slug } = useParams();
   const { showAlert } = useAlerts();
+  const { t, language } = useSettings();
   const { copyCode } = useCodeCopy();
   const { openImage } = useImageViewer();
   const contentRef = useRef(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [bookmarks, setBookmarks] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('mp_bookmarks') || '[]');
+    } catch {
+      return [];
+    }
+  });
 
-  const post = blogs.find((b) => b.slug === slug);
-  const currentIndex = blogs.findIndex((b) => b.slug === slug);
+  // Filter drafts unless in local development environment
+  const isDev = import.meta.env.DEV;
+  const visibleBlogs = blogs.filter((b) => !b.isDraft || isDev);
 
-  const prevPost = currentIndex > 0 ? blogs[currentIndex - 1] : blogs[blogs.length - 1];
-  const nextPost = currentIndex < blogs.length - 1 ? blogs[currentIndex + 1] : blogs[0];
+  const post = visibleBlogs.find((b) => b.slug === slug);
+  const currentIndex = visibleBlogs.findIndex((b) => b.slug === slug);
+
+  const prevPost = currentIndex > 0 ? visibleBlogs[currentIndex - 1] : visibleBlogs[visibleBlogs.length - 1];
+  const nextPost = currentIndex < visibleBlogs.length - 1 ? visibleBlogs[currentIndex + 1] : visibleBlogs[0];
+
+  // Select top 2 related posts sharing matching tags
+  const relatedPosts = visibleBlogs
+    .filter((b) => b.slug !== slug)
+    .map((b) => {
+      const matches = b.tags.filter((tag) => post?.tags.includes(tag)).length;
+      return { post: b, matches };
+    })
+    .sort((a, b) => b.matches - a.matches)
+    .slice(0, 2)
+    .map((item) => item.post);
+
+  const isBookmarked = bookmarks.includes(slug);
+
+  const toggleBookmark = () => {
+    let updated;
+    if (isBookmarked) {
+      updated = bookmarks.filter((s) => s !== slug);
+      showAlert(t('BLOGS.post.bookmarkRemovedAlert'), 'chaos', 2500);
+    } else {
+      updated = [...bookmarks, slug];
+      showAlert(t('BLOGS.post.bookmarkAddedAlert'), 'royal', 2500);
+    }
+    setBookmarks(updated);
+    localStorage.setItem('mp_bookmarks', JSON.stringify(updated));
+  };
 
   useEffect(() => {
+    if (!post) return;
     if (!isFirstVisit(`blog_${slug}`)) return;
-    showAlert('Entering the Chamber of Arcane Writings', 'greeting', 2000);
-  }, [slug, showAlert]);
+    showAlert(t('BLOGS.post.enteringAlert'), 'greeting', 2000);
+  }, [slug, showAlert, t, post]);
 
   // Delegate copy-btn and inline-code clicks within the rendered markdown
   useEffect(() => {
@@ -73,6 +96,22 @@ export default function BlogPost() {
     return () => document.removeEventListener('click', onClick);
   }, [copyCode]);
 
+  // Scroll Progress handler
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalScroll <= 0) {
+        setScrollProgress(0);
+        return;
+      }
+      const progress = (window.scrollY / totalScroll) * 100;
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   // Wire images inside the rendered markdown to open in ImageViewer
   useEffect(() => {
     const container = contentRef.current;
@@ -99,12 +138,27 @@ export default function BlogPost() {
 
   return (
     <div className={styles['postPage']}>
+      {/* Scroll Progress Bar */}
+      <div className={styles.progressContainer}>
+        <div className={styles.progressBar} style={{ width: `${scrollProgress}%` }} />
+      </div>
+
       {post ? (
         <>
-          {/* Back Nav Links */}
-          <div style={{ display: 'flex', gap: '1.25rem', marginBottom: '1.5rem' }}>
-            <Link to="/blogs" className={styles['back-link']}>📚 Return to Library</Link>
-            <Link to="/home" className={styles['back-link']}>🏰 Kingdom</Link>
+          {/* Back Nav Links & Bookmark Button */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+            <div style={{ display: 'flex', gap: '1.25rem' }}>
+              <Link to="/blogs" className={styles['back-link']}>{t('BLOGS.post.backToLibrary')}</Link>
+              <Link to="/home" className={styles['back-link']}>{t('BLOGS.post.backToHome')}</Link>
+            </div>
+            <button
+              type="button"
+              className={`${styles['bookmark-btn']} ${isBookmarked ? styles['bookmarked'] : ''}`}
+              onClick={toggleBookmark}
+              aria-label={isBookmarked ? t('BLOGS.post.bookmarkRemove') : t('BLOGS.post.bookmarkAdd')}
+            >
+              {isBookmarked ? '🔖 ' + t('BLOGS.post.bookmarkRemove').replace('🔥 ', '') : '🏷️ ' + t('BLOGS.post.bookmarkAdd').replace('✨ ', '')}
+            </button>
           </div>
 
           {/* ── Post Header ── */}
@@ -113,8 +167,8 @@ export default function BlogPost() {
               {post.logo} {post.title}
             </h1>
             <div className={styles['postMeta']}>
-              <span>📜 Penned on the {formatDate(post.date)}</span>
-              <span>⏱ {post.readTime}</span>
+              <span>{t('BLOGS.post.pennedOn', { date: formatDate(post.date, t, language) })}</span>
+              <span>⏱ {t('BLOGS.list.readTime', { time: post.readTime.replace(' min read', '') })}</span>
               {post.tags.map((tag) => (
                 <span key={tag} className={styles['tag-pill']}>{tag}</span>
               ))}
@@ -127,6 +181,7 @@ export default function BlogPost() {
               src={post.thumbnail}
               alt={post.title}
               className={styles['postCover']}
+              loading="lazy"
             />
           )}
 
@@ -135,28 +190,59 @@ export default function BlogPost() {
             <div dangerouslySetInnerHTML={{ __html: markdownToHtml(post.blogcontent.content) }} />
           </article>
 
+          {/* ── Related scrolls ── */}
+          {relatedPosts.length > 0 && (
+            <section className={styles['relatedSection']}>
+              <h3 className={styles['relatedTitle']}>
+                {t('BLOGS.post.relatedTitle') || '📖 You Might Also Like'}
+              </h3>
+              <div className={styles['relatedGrid']}>
+                {relatedPosts.map((relatedBlog) => (
+                  <BlogCard
+                    key={relatedBlog.id}
+                    blog={relatedBlog}
+                    isBookmarked={bookmarks.includes(relatedBlog.slug)}
+                    onToggleBookmark={(slugToToggle) => {
+                      let updated;
+                      if (bookmarks.includes(slugToToggle)) {
+                        updated = bookmarks.filter((s) => s !== slugToToggle);
+                        showAlert(t('BLOGS.post.bookmarkRemovedAlert'), 'chaos', 2500);
+                      } else {
+                        updated = [...bookmarks, slugToToggle];
+                        showAlert(t('BLOGS.post.bookmarkAddedAlert'), 'royal', 2500);
+                      }
+                      setBookmarks(updated);
+                      localStorage.setItem('mp_bookmarks', JSON.stringify(updated));
+                    }}
+                  />
+                ))}
+              </div>
+            </section>
+          )}
+
           {/* ── Prev / Next Navigation ── */}
           <nav className={styles['postNav']}>
             <Link
               to={`/blogs/${prevPost.slug}`}
               className={styles['postNavBtn']}
             >
-              &lt; Previous Scroll
+              &lt; {t('BLOGS.post.prev')}
             </Link>
             <Link
               to={`/blogs/${nextPost.slug}`}
               className={styles['postNavBtn']}
             >
-              Next Scroll &gt;
+              {t('BLOGS.post.next')} &gt;
             </Link>
           </nav>
         </>
       ) : (
         <div style={{ textAlign: 'center', padding: '4rem 0' }}>
-          <p style={{ fontSize: '1.2rem', marginBottom: '1rem', color: 'var(--text-secondary)' }}>The scroll you seek has vanished into the void.</p>
-          <Link to="/blogs" style={{ fontFamily: 'var(--font-cinzel)', color: 'var(--accent)', fontWeight: 'bold' }}>⬅️ Back to all scrolls</Link>
+          <p style={{ fontSize: '1.2rem', marginBottom: '1rem', color: 'var(--text-secondary)' }}>{t('BLOGS.post.notFound')}</p>
+          <Link to="/blogs" style={{ fontFamily: 'var(--font-cinzel)', color: 'var(--accent)', fontWeight: 'bold' }}>{t('BLOGS.post.backToAllScrolls')}</Link>
         </div>
       )}
     </div>
   );
 }
+

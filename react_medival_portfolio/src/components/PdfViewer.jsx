@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { usePdfViewer } from '../lib/usePdfViewer';
+import { useSettings } from '../lib/useSettings';
 import styles from './PdfViewer.module.scss';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
@@ -14,6 +15,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 export default function PdfViewer() {
   const { isOpen, url, title, closePdf } = usePdfViewer();
+  const { t } = useSettings();
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -85,17 +87,17 @@ export default function PdfViewer() {
           <button
             className={styles['close-btn']}
             onClick={closePdf}
-            aria-label="Close PDF viewer"
+            aria-label={t('COMMON.settings.closeBtn') || "Close PDF viewer"}
           >
             ×
           </button>
         </div>
         <div className={styles['pdf-frame']}>
-          {loading && <div className={styles['pdf-loading']}>🔮 Unrolling scroll...</div>}
+          {loading && <div className={styles['pdf-loading']}>{t('COMMON.pdfViewer.loading')}</div>}
 
           {!checkingFile && !fileExists ? (
             <div className={styles['pdf-error-msg']}>
-              ⚠️ The requested PDF file does not exist or has been lost to time.
+              {t('COMMON.pdfViewer.errorNotFound')}
             </div>
           ) : (
             <Document
@@ -109,12 +111,12 @@ export default function PdfViewer() {
               loading=""
               error={
                 <div className={styles['pdf-error-msg']}>
-                  ⚠️ The requested scroll could not be parsed or is corrupted.
+                  {t('COMMON.pdfViewer.errorCorrupted')}
                 </div>
               }
               noData={
                 <div className={styles['pdf-error-msg']}>
-                  No scroll specified.
+                  {t('COMMON.pdfViewer.errorNoData')}
                 </div>
               }
             >
@@ -137,7 +139,7 @@ export default function PdfViewer() {
               disabled={pageNumber <= 1}
               className={styles['pdf-nav-btn']}
             >
-              ← Previous
+              {t('COMMON.pdfViewer.previous')}
             </button>
             <span className={styles['pdf-page-indicator']}>{pageNumber} / {numPages}</span>
             <button
@@ -145,7 +147,7 @@ export default function PdfViewer() {
               disabled={pageNumber >= numPages}
               className={styles['pdf-nav-btn']}
             >
-              Next →
+              {t('COMMON.pdfViewer.next')}
             </button>
           </div>
         )}

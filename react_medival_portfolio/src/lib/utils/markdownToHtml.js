@@ -148,8 +148,15 @@ function parseInline(html) {
   html = applyRegex(html, /\*(.*?)\*/gim, "<em>$1</em>");
   html = applyRegex(html, /_(.*?)_/gim, "<em>$1</em>");
   html = applyRegex(html, /~~(.*?)~~/gim, "<del>$1</del>");
-  html = applyRegex(html, /!\[(.*?)\]\((.*?)\)/gim, '<img src="$2" alt="$1">');
-  html = applyRegex(html, /\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  html = applyRegex(html, /!\[(.*?)\]\((.*?)\)/gim, (match, alt, src) => {
+    let finalAlt = alt.trim();
+    if (!finalAlt) {
+      const isFr = typeof document !== 'undefined' && document.documentElement.lang === 'fr';
+      finalAlt = isFr ? 'Illustration arcane du parchemin' : 'Arcane scroll illustration';
+    }
+    return `<img src="${src}" alt="${finalAlt}" loading="lazy">`;
+  });
+  html = applyRegex(html, /\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
   html = applyRegex(html, /`(.*?)`/gim, (_, code) => {
     const codeId = "code-" + Math.random().toString(36).slice(2, 11);
     return `<code class="inline-code" id="${codeId}" data-target="${codeId}" title="Click to copy">${escapeHtml(code)}</code>`;

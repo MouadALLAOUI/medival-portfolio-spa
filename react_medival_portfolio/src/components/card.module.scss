@@ -169,6 +169,20 @@
     }
 }
 
+.learning-card {
+    composes: skill-card;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.hobby-card {
+    composes: skill-card;
+}
+
+.language-card {
+    composes: skill-card;
+}
+
 .proficiency {
     display: flex;
     gap: 0.25rem;

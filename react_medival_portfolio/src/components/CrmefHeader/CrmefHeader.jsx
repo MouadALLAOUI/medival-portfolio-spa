@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import SettingsModal from '../SettingsModal';
+import { useSettings } from '../../lib/useSettings';
 import styles from './CrmefHeader.module.scss';
 
-const CRMEF_NAV = [
-  { label: 'Accueil', href: '#accueil' },
-  { label: 'Semestre 1', href: '#semestre1' },
-  { label: 'MSP', href: '#msp' },
-  { label: 'home', href: '/' },
-];
-
 const CrmefHeader = () => {
+  const { t } = useSettings();
   const [menuOpen, setMenuOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const location = useLocation();
   const [activeHash, setActiveHash] = useState('#accueil');
+
+  const CRMEF_NAV = [
+    { label: t('CRMEF.header.accueil'), href: '#accueil' },
+    { label: t('CRMEF.header.semester1'), href: '#semestre1' },
+    { label: t('CRMEF.header.msp'), href: '#msp' },
+    { label: t('COMMON.nav.home'), href: '/' },
+  ];
 
   useEffect(() => {
     const hash = location.hash || '#accueil';
@@ -45,7 +47,7 @@ const CrmefHeader = () => {
         <button
           className={styles.settingsBtn}
           onClick={() => setSettingsOpen(true)}
-          aria-label="Settings"
+          aria-label={t('COMMON.nav.settingsGear')}
           type="button"
         >
           ⚙️
@@ -53,7 +55,7 @@ const CrmefHeader = () => {
         <button
           className={styles.menuBtn}
           onClick={() => setMenuOpen(p => !p)}
-          aria-label="Toggle menu"
+          aria-label={menuOpen ? t('COMMON.nav.closeMenu') || "Close navigation menu" : t('COMMON.nav.toggleMenu') || "Toggle navigation menu"}
           type="button"
         >
           {menuOpen ? '×' : '☰'}
@@ -66,7 +68,7 @@ const CrmefHeader = () => {
         showTheme={true}
         showPdfMode={true}
         showPdfReadingMode={true}
-        title="⚙️ CRMEF Settings"
+        title={t('CRMEF.header.title')}
       />
     </header>
   );
