@@ -1,0 +1,134 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-primary);
+  z-index: 9998;
+  overflow: hidden;
+
+  :global([data-theme="medieval"]) & {
+    background: radial-gradient(circle, rgba(44, 24, 16, 0.95) 0%, rgba(20, 10, 5, 0.98) 100%),
+                url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23222222" /><path d="M0,0 L100,100 M100,0 L0,100" stroke="%23333333" stroke-width="1" /></svg>');
+  }
+}
+
+.loaderContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  text-align: center;
+}
+
+// ── Arcane Sigil Wheel ──────────────────────────────────────
+.sigilContainer {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sigilOuter {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px dashed var(--accent);
+  border-radius: 50%;
+  animation: spinClockwise 12s linear infinite;
+
+  :global([data-theme="medieval"]) & {
+    border-color: var(--gold);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+  }
+}
+
+.sigilInner {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  border: 1.5px solid var(--accent-secondary);
+  border-radius: 50%;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  animation: spinCounterClockwise 6s linear infinite;
+
+  :global([data-theme="medieval"]) & {
+    border-color: var(--rust);
+    border-left-color: transparent;
+    border-right-color: transparent;
+    box-shadow: 0 0 10px rgba(140, 58, 43, 0.1);
+  }
+}
+
+.sigilCore {
+  font-size: 2.5rem;
+  line-height: 1;
+  animation: pulseGlow 2s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// ── Status Text ───────────────────────────────────────────
+.statusText {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: 0.05em;
+  animation: pulseText 2s ease-in-out infinite;
+
+  :global([data-theme="medieval"]) & {
+    color: var(--gold-light);
+    text-shadow: 0 0 8px rgba(240, 199, 94, 0.4);
+  }
+}
+
+// ── Keyframe Animations ─────────────────────────────────────
+@keyframes spinClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinCounterClockwise {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 5px var(--accent));
+  }
+  50% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 15px var(--accent-hover));
+  }
+}
+
+@keyframes pulseText {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}

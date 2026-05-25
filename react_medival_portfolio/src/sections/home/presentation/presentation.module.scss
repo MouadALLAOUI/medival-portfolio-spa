@@ -101,7 +101,7 @@
     border-radius: 10px;
   }
 
-  &.visible {
+  &:global(.visible) {
     transform: translateY(0);
     opacity: 1;
   }

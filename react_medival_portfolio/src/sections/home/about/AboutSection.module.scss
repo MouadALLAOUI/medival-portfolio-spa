@@ -31,6 +31,16 @@
   margin-bottom: 50px;
   width: calc(50% - 40px);
 
+  // Scroll reveal initial states
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+  &:global(.visible) {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   &:nth-child(odd) {
     left: 0;
   }
@@ -166,5 +176,64 @@
 
   .timeline-year {
     font-size: 1.2rem;
+  }
+}
+
+/* 📜 Click-to-Expand Timeline Chronicles details styling */
+.expand-arrow {
+  font-size: 0.85em;
+  color: var(--color-gold, #d4af37);
+  transition: all 0.2s ease;
+  display: inline-block;
+  margin-left: 0.35rem;
+}
+
+.timeline-desc {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.timeline-details-pane {
+  margin-top: 1rem;
+  margin-bottom: 0.75rem;
+  animation: unrollScroll 0.4s ease-out;
+}
+
+.pane-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-gold, #d4af37), transparent);
+  margin-bottom: 0.75rem;
+}
+
+.pane-content {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  font-style: italic;
+  text-align: justify;
+  margin: 0;
+}
+
+.expand-hint {
+  display: block;
+  text-align: right;
+  font-size: 0.75rem;
+  font-family: var(--font-cinzel), serif;
+  color: var(--color-rust, #8b5a2b);
+  margin-top: 0.75rem;
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:hover {
+    color: var(--color-gold, #d4af37);
+  }
+}
+
+.timeline-content {
+  &.expanded {
+    border-color: var(--color-gold, #d4af37) !important;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3) !important;
   }
 }

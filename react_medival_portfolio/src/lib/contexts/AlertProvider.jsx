@@ -19,6 +19,7 @@ const typeToIcon = {
 export default function AlertProvider({ children }) {
     const [alerts, setAlerts] = useState([]);
     const counterRef = useRef(1);
+    const pendingAlerts = useRef(new Set());
 
     const removeAlert = useCallback((id) => {
         setAlerts((prev) => prev.filter((a) => a.id !== id));
@@ -34,10 +35,22 @@ export default function AlertProvider({ children }) {
 
     const showAlert = useCallback(
         (message, type = "info", durationMs = 3000) => {
+            const key = `${message}__${type}`;
+            if (pendingAlerts.current.has(key)) return null;
+
+            pendingAlerts.current.add(key);
+
             const id = counterRef.current++;
             const icon = typeToIcon[type] || "✨";
             setAlerts((prev) => [{ id, message, type, icon, isLeaving: false }, ...prev]);
+            
             window.setTimeout(() => dismissAlert(id), durationMs);
+
+            // Allow the same alert to trigger again after it has dismissed and animated out (cooldown)
+            window.setTimeout(() => {
+                pendingAlerts.current.delete(key);
+            }, durationMs + 500);
+
             return id;
         },
         [dismissAlert]

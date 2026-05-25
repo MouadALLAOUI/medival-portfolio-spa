@@ -418,6 +418,7 @@ export default function FallingLetters() {
               <input
                 type="number"
                 id="gameTimer"
+                name="gameTimer"
                 min="30"
                 max="3600"
                 value={gameTimer}
@@ -446,6 +447,7 @@ export default function FallingLetters() {
                     <input
                       type="checkbox"
                       id={`letter-${letter}`}
+                      name="practiceLetters"
                       checked={selectedLetters.includes(letter)}
                       onChange={() => handleLetterCheckboxToggle(letter)}
                       className="cursor-pointer scale-110"
@@ -461,6 +463,7 @@ export default function FallingLetters() {
               <input
                 type="text"
                 id="customLetters"
+                name="customLetters"
                 placeholder="e.g., ABCDEF"
                 maxLength="26"
                 value={customLettersInput}
@@ -474,6 +477,7 @@ export default function FallingLetters() {
               <input
                 type="checkbox"
                 id="reducePointsOnMiss"
+                name="reducePointsOnMiss"
                 checked={reducePointsOnMiss}
                 onChange={(e) => setReducePointsOnMiss(e.target.checked)}
                 className="cursor-pointer scale-125"

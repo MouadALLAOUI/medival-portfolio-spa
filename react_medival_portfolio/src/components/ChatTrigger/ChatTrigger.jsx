@@ -1,8 +1,10 @@
 import { useChat } from '../../lib/contexts/ChatProvider';
+import { useSettings } from '../../lib/useSettings';
 import styles from './ChatTrigger.module.scss';
 
 const ChatTrigger = () => {
   const { isOpen, openChat, hasUnread } = useChat();
+  const { t } = useSettings();
 
   if (isOpen) return null;
 
@@ -10,7 +12,7 @@ const ChatTrigger = () => {
     <button
       className={styles['trigger']}
       onClick={openChat}
-      aria-label="Open chat with the Oracle"
+      aria-label={t('COMMON.chatbot.triggerAria')}
       id="chat-trigger-btn"
     >
       <span className={styles['icon']}>🔮</span>

@@ -28,7 +28,7 @@ function DynamicCard({ item, config = {}, onClick }) {
         </div>
     );
 
-    const mappedBaseClass = styles[baseClass] || baseClass;
+    const mappedBaseClass = baseClass.split(" ").map(cls => styles[cls] || cls).join(" ");
 
     return (
         <ContainerTag
@@ -45,7 +45,7 @@ function DynamicCard({ item, config = {}, onClick }) {
             </div>
 
             {imageKey && item && item[imageKey] && (
-                <img src={item[imageKey]} alt={item[titleKey]} className={styles['card-media']} />
+                <img src={item[imageKey]} alt={item[titleKey]} className={styles['card-media']} loading="lazy" />
             )}
 
             {item && item.levelLabel && <p className={styles['card-meta']}>{item.levelLabel}</p>}

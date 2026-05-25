@@ -55,6 +55,14 @@ export const achievements = [
         steps: ["Open a project", "Open screenshots", "Open external link"],
         badge: "⚔️",
     },
+    {
+        id: "easteregg",
+        title: "Arcane Secrets",
+        desc: "Discover the hidden scrolls via the secret context menu.",
+        category: "Exploration",
+        type: "boolean",
+        badge: "🔮",
+    },
 ];
 
 export default achievements;

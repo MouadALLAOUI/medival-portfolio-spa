@@ -1,43 +1,68 @@
+import { useState } from 'react';
 import timelines from '../../../data/timelines';
+import { useSettings } from '../../../lib/useSettings';
 import styles from './AboutSection.module.scss';
 import CSection from '../../../templates/Section';
 
 const AboutSection = () => {
+  const { t } = useSettings();
+  const [expandedId, setExpandedId] = useState(null);
+
+  const toggleExpand = (id) => {
+    setExpandedId((prev) => (prev === id ? null : id));
+  };
+
   return (
-    <CSection id="about" title="Coding Lore" className="section" classname="section">
-      <div className="section-content">
-        <div className="parchment visible" id="about-parch">
-          <h2 className="section-title">Coding Lore</h2>
-          <p className="section-intro">
-            The chronicles of my journey through the realms of technology:
-            <code>click card bellow for more details</code>
-          </p>
+    <CSection id="about" title={t('HOME.ABOUT.title')} subtitle={t('HOME.ABOUT.subtitle')} classname="about">
+      <div className={styles['timeline-wrapper']}>
+        <div className={styles['timeline']}>
+          {timelines.map((item) => {
+            const isExpanded = expandedId === item.id;
+            const itemTitle = t(`HOME.ABOUT.timelines.${item.id}.title`) || item.title;
+            const itemDesc = t(`HOME.ABOUT.timelines.${item.id}.desc`) || item.desc;
+            const itemDetails = t(`HOME.ABOUT.timelines.${item.id}.detailledDesc`) || item.detailledDesc;
 
-          <div className={styles['timeline-wrapper']}>
-            <div className={styles['timeline']}>
-              {timelines.map((item) => (
+            return (
+              <div
+                key={item.id}
+                className={`${styles['timeline-item']} timeline-item-reveal`}
+              >
                 <div
-                  key={item.id}
-                  className={styles['timeline-item']}
+                  className={`${styles['timeline-content']} ${isExpanded ? styles['expanded'] : ''}`}
+                  onClick={() => toggleExpand(item.id)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') toggleExpand(item.id); }}
+                  aria-expanded={isExpanded}
+                  aria-label={`Chronicle of ${item.year}: ${itemTitle}. Click to ${isExpanded ? 'collapse' : 'expand'} details.`}
                 >
-                  <div className={styles['timeline-content']}>
-                    <div className={styles['timeline-year']}>{item.year}</div>
-                    <h3 className={styles['timeline-title']}>{item.title}</h3>
-                    <p>{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+                  <div className={styles['timeline-year']}>{item.year}</div>
+                  <h3 className={styles['timeline-title']}>
+                    {itemTitle}
+                    <span className={styles['expand-arrow']}>{isExpanded ? ' ▴' : ' ▾'}</span>
+                  </h3>
+                  <p className={styles['timeline-desc']}>{itemDesc}</p>
 
-            <div className={styles['philosophy']}>
-              <p>
-                "I believe that code is a form of magic that transforms ideas into reality. Like the wizards of old who
-                carefully crafted their spells, I approach each project with precision, creativity, and a commitment to
-                excellence. My mission is to create digital experiences that feel intuitive and enchanting, solving real
-                problems while delighting users with thoughtful interactions and beautiful design."
-              </p>
-            </div>
-          </div>
+                  {isExpanded && (
+                    <div className={styles['timeline-details-pane']}>
+                      <div className={styles['pane-divider']} />
+                      <p className={styles['pane-content']}>{itemDetails}</p>
+                    </div>
+                  )}
+
+                  <span className={styles['expand-hint']}>
+                    {isExpanded ? t('HOME.ABOUT.readLess') : t('HOME.ABOUT.readMore')}
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className={styles['philosophy']}>
+          <p>
+            "{t('HOME.ABOUT.philosophy')}"
+          </p>
         </div>
       </div>
     </CSection>

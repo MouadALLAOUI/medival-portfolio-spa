@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useAchievements } from "../../lib/useAchievements";
 import { useCodeCopy } from "../../lib/hooks/useCodeCopy";
 import { isFirstVisit } from "../../lib/utils/visitTracker";
+import { useSettings } from "../../lib/useSettings";
 
 import HeroSection from "../../sections/home/hero/heroSection";
 import PresentationSection from "../../sections/home/presentation/presentation";
@@ -20,18 +21,41 @@ export default function Home() {
     const { showAlert } = useAlerts();
     const { trackVisit } = useAchievements();
     const { copyCode } = useCodeCopy();
+    const { t } = useSettings();
     const location = useLocation();
 
     useEffect(() => {
         if (!isFirstVisit('home')) return;
-        showAlert("Welcome to my palace, hope you find whatever you desire", "royal", 3000);
-        showAlert("this portfolio is still under development thank you for your understanding", "chaos", 4000);
-        showAlert("current section under development is projects", "info", 4000);
-    }, [showAlert]);
+        showAlert(t('COMMON.alerts.welcomeHome'), "royal", 4500);
+    }, [showAlert, t]);
 
     useEffect(() => {
         trackVisit(`${location.pathname}${location.hash || ""}`);
     }, [location.pathname, location.hash, trackVisit]);
+
+    useEffect(() => {
+        const observerOptions = {
+            root: document.getElementById("body-container") || null,
+            rootMargin: "0px 0px -10% 0px",
+            threshold: 0.1,
+        };
+
+        const revealCallback = (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(revealCallback, observerOptions);
+        const elementsToReveal = document.querySelectorAll(".parchment, .scroll-content, .timeline-item-reveal");
+        elementsToReveal.forEach((el) => observer.observe(el));
+
+        return () => {
+            elementsToReveal.forEach((el) => observer.unobserve(el));
+        };
+    }, []);
 
     useEffect(() => {
         const onClick = (e) => {
@@ -65,8 +89,7 @@ export default function Home() {
         <div>
             <div className="alert-bar">
                 <p>
-                    Welcome to the portfolio of Mouad the Coder! this portfolio
-                    is still under development thank you for your understanding
+                    {t('COMMON.alerts.developmentAlertBar')}
                 </p>
             </div>
             <HeroSection />

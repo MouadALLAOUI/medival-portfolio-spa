@@ -1,6 +1,7 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Layouts from '../templates/layouts';
+import LoadingScreen from '../components/LoadingScreen/LoadingScreen';
 
 const Home = lazy(() => import('../pages/home/home'));
 const ThankYou = lazy(() => import('../pages/thankyou/thankyou'));
@@ -9,16 +10,11 @@ const BlogsPage = lazy(() => import('../pages/blogs/BlogsPage'));
 const BlogPost = lazy(() => import('../pages/blogs/BlogPost'));
 const FallingLetters = lazy(() => import('../pages/fallingletters/fallingletters'));
 const SettingsPage = lazy(() => import('../pages/Settings/SettingsPage'));
+const NotFound = lazy(() => import('../pages/NotFound/NotFound'));
 
 export default function AppRoutes() {
   return (
-    <Suspense
-      fallback={
-        <div className="min-h-[60vh] grid place-items-center text-parchment font-cinzel text-[18px]">
-          Loading scroll…
-        </div>
-      }
-    >
+    <Suspense fallback={<LoadingScreen />}>
       <Routes>
         <Route path="/" element={<Layouts />}>
           <Route index element={<Home />} />
@@ -28,10 +24,10 @@ export default function AppRoutes() {
           <Route path="blogs/:slug" element={<BlogPost />} />
           <Route path="fallingletters" element={<FallingLetters />} />
           <Route path="settings" element={<SettingsPage />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
         <Route path="CRMEF" element={<CRMEF />} />
         <Route path="crmef" element={<CRMEF />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Suspense>
   );

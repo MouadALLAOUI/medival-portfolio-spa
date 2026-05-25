@@ -1,35 +1,32 @@
-@use '../../../styles/variables' as *;
-@use '../../../styles/mixins' as *;
-
 .section {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .sectionHeader {
-  padding: 1.25rem 1.5rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid var(--border);
-  background: var(--bg-secondary);
+
+  :global([data-theme="medieval"]) & {
+    border-bottom-color: rgba(201, 168, 76, 0.3);
+  }
 }
 
 .sectionTitle {
   font-family: var(--font-heading);
-  font-size: 1rem;
+  font-size: 1.25rem;
   color: var(--text-primary);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.35rem;
 }
 
 .sectionDesc {
-  font-size: 0.8rem;
+  font-size: 0.825rem;
   color: var(--text-muted);
 }
 
 .settingsList {
-  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
 }

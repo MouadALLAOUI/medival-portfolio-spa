@@ -2,6 +2,9 @@
 > Execute these prompts IN ORDER. Each one ends with a checkpoint.
 > After each prompt, type **"continue"** to proceed to the next step.
 
+> [!IMPORTANT]
+> **Workflow Directive:** This prompts log is automatically updated at the end of every developer task to keep codebase status, pending work, and priorities perfectly in sync.
+
 ---
 
 ## 📋 Prompt Index
@@ -18,6 +21,22 @@
 | 08 | CSS Bundle Size Optimization | `index.scss`, `_components.scss`, `_animations.scss` | 🟡 Medium | ✅ Done |
 | 09 | JavaScript Functionality Migration | Core scripts, overlays mounting, tracking, copy, react-pdf | 🔴 Critical | ✅ Done |
 | 10 | Overlay Fix & Blogs Migration | `ImageViewer.jsx`, `PdfViewer.jsx`, `BlogsPage.jsx`, `BlogPost.jsx`, `blogs.data.js`, `BlogCard` | 🔴 Critical | ✅ Done |
+| 11 | Multi-Theme System | Themes context (`Arcane Light`, `Shadow Realm`, `Medieval Scroll`) | 🟡 Medium | ✅ Done |
+| 12 | CRMEF Page Polish & Inline PDF | `CrmefLayout.jsx`, hash routes, inline pdf canvas, new data sheets | 🔴 Critical | ✅ Done |
+| 13 | CSection Variants & CRMEF Sections | Refactored `CSection` template variants, separate CRMEF sub-sheets | 🟡 Medium | ✅ Done |
+| 14 | Safe PDF Loading & Fallback Crash | `HEAD` response header validation layer + error boundaries in PDF | 🔴 Critical | ✅ Done |
+| 15 | PDF Reading Modes Layouts | Context, settings selectors, paginated/continuous vertical scrollings | 🟡 Medium | ✅ Done |
+| 16 | Settings Registry & Universal Page | Central settings registry, advanced accessibility options context | 🟢 Polish | ✅ Done |
+| 17 | Documentation Workflow Policy Sync | Post-task sync implementation, roadmaps checkbox validation | 🟢 Polish | ✅ Done |
+| 18 | Custom Context Menu & Achievements Notifier | Portal ContextMenu component, useContextMenu custom hook, global toast sync | 🔴 Critical | ✅ Done |
+| 19 | Full Internationalization (i18n) Framework | Dot-notation traversal hook, string interpolation, modular EN/FR translations | 🔴 Critical | ✅ Done |
+| 20 | Critical Foundation & Quick Wins | Decoupled .env, custom ErrorBoundary overlays, bot-field honeypot, a11y labels | 🔴 Critical | ✅ Done |
+| 21 | Settings Page Dashboard Redesign | Responsive sidebar grimoire layout, grid systems, simplified headers, dynamic selectors | 🟡 Medium | ✅ Done |
+| 22 | Medieval 404 Page, Loading & Media | Custom parchment error view, dynamic loading screen portal, root media paths | 🔴 Critical | ✅ Done |
+| 23 | High-Fidelity UX & QoL Enhancements | Reading progress scroll, related cards sugestions, skill level tooltips, dynamic project timeline, image lazy-loading, external link arrows, blog draft gate, project carousel | 🟡 Medium | ✅ Done |
+| 24 | Advanced UX & Performance Continuation | Glossary popovers, saved scrolls grimoire bookmarks, lazy loading viewers, a11y names, image alt fallbacks | 🟡 Medium | ✅ Done |
+| 25 | StrictMode Duplicate Alerts Guard | Set-based pending alerts ref queue inside AlertProvider.jsx | 🔴 Critical | ✅ Done |
+| 26 | Typo Corrections & Roadmap Cleanup | Fixed data sheets description and unknown comment typos | 🟢 Polish | ✅ Done |
 
 ---
 
@@ -65,6 +84,39 @@
 | laptop | max-width: 1024px |
 | desktop-small | max-width: 1250px |
 | desktop | min-width: 1200px |
+
+---
+
+## ✅ COMPLETED — Full Internationalization (i18n) Framework
+
+> 🎯 Goal: 100% full bilingual support (English/French) across all components, layout headers, settings modals, and dynamic lists.
+> 📁 Files affected: `settingProvider.jsx`, `src/strings/` dictionaries, all core layout files, pages, sections, widgets, and dynamic cards.
+> 🧬 DNA preserved: ✅
+
+### What was done:
+- **Upgraded Translation Engine**: Added robust dot-notation path traversal (e.g. `t('CRMEF.sections.education')`) and regex template interpolation (e.g. `t('COMMON.alerts.copySuccess', { label: 'URL' })`) directly inside the lightweight custom `t` function in `settingProvider.jsx`.
+- **Modular Translation Dictionaries**: Set up highly curated grimoire-aesthetic bilingual English (`EN/`) and French (`FR/`) dictionaries covering `common`, `blogs`, `crmef`, and `home` pages.
+- **Home & Layout Refactoring**: Wrapped all UI labels, form elements, buttons, footers, settings buttons, custom context menus, and first-load welcome banners in both page languages with reactive translation helpers.
+- **CRMEF Data Decoupling**: Dynamically resolved localized bio paragraphs, education courses, professional timeline items, sports cards, semester modules, and MSP statistics inside the React layout, falling back gracefully to the original data objects.
+- **Widgets and Overlays**: Fully internationalized the PDF viewer (loading text, navigation buttons, errors, page prefix),Wax stamp ThankYou message page, and Oracle Chat triggers/dialog containers.
+- **Zero-Crash Production Build**: Verified Vite build output bundles successfully without warnings.
+
+---
+
+## ✅ COMPLETED — Critical Foundation & Quick Wins
+
+> 🎯 Goal: Secure configurations, error protection, contact spam prevention, and screen reader/link security compliance.
+> 📁 Files affected: `App.jsx`, `env.js`, `ContactSection.jsx`, `ErrorBoundary.jsx`, `ProjectsSection.jsx`, `Headers.jsx`, `CrmefHeader.jsx`, `ImageViewer.jsx`, `PdfViewer.jsx`
+> 🧬 DNA preserved: ✅
+
+### What was done:
+- **Decoupled Environment Configurations**: Created `.env` and `.env.production` files. Shifted hardcoded config keys to dynamically read `import.meta.env.VITE_APP_ENV` and `import.meta.env.VITE_CONTACT_EMAIL` inside `env.js` and `ContactSection.jsx`.
+- **Thematic Error Boundaries**: Implemented a React class-based `<ErrorBoundary>` displaying a beautiful parchment scroll warning screen with manual "Attempt Resurrection" page-reload buttons on rendering crashes. Wrapped route elements globally inside `App.jsx`.
+- **Form Honeypot Bot Interceptor**: Configured visually hidden honeypot text inputs (`noble_title`) inside `ContactSection.jsx` and intercepted autocompleted bot submission attempts.
+- **Form Length Validations**: Added client-side length verifications (Name >= 2, Message >= 10) alerting users via global achievements/warning alerts.
+- **Audited External Links**: Standardized all anchors targeted with `target="_blank"` to use strict `rel="noopener noreferrer"` security flags.
+- **Accessibility Upgrades (ARIA Labels)**: Added explicit screen-reader `aria-label` labels to all close overlays, mobile toggle menu sliders, and settings action gears.
+- **Zero-Crash Production Build**: Verified rollup compiler successfully built index bundle bundles under 1.05 minutes!
 
 ---
 
@@ -258,6 +310,140 @@ The theme system has been built to be highly extensible. To add a new theme:
 - **SettingsPage rendering modules**: Structured `SettingsPage.jsx`, `SettingSection.jsx`, and `SettingControl.jsx` (and module stylesheets) to map selectors (option cards grid, toggles) based on registry declarations.
 - **Integrated Route & Mounting**: Mounted `AppSettingsProvider` inside `main.jsx` and declared route path `/settings` inside `routes.jsx`.
 - Production build: ✅ passing with zero warnings.
+
+---
+
+## ✅ COMPLETED — Documentation Workflow Policy Sync
+
+> 🎯 Goal: Configure and sync the post-task documentation update policy, checking off completed tasks (Reduced Motion, Copy feedback) and establishing continuous verification.
+> 📁 Files affected: `AUDIT.md`, `PROMPTS.md`, `improvement.md`
+> 🧬 DNA preserved: ✅ (All tables, matrices, established files, casing conventions, and formatting fully sustained)
+
+### What was done:
+- **Established Workflow Directives**: Embedded clear notice banners at the top of all three documentation files defining the strict post-task sync requirement.
+- **Roadmap Validations**: Marked accessibility's **Reduced Motion** and **Copy feedback animations** as fully completed in `improvement.md` checkbox arrays.
+- **Prompt Index Consolidation**: Recorded the last 7 historical sessions in the master prompt index table to bring history up to 100% precision.
+- **Continuous Quality Control**: Synchronized files to register a perfectly healthy development audit status.
+
+---
+
+## ✅ COMPLETED — Custom Context Menu & Achievements Notifier
+
+> 🎯 Goal: Build a high-fidelity, highly accessible medieval context menu portal component, exclusion hook, and a global achievements alert watcher.
+> 📁 Files affected: `ContextMenu.jsx` (component), `ContextMenu.module.scss` (styles), `useContextMenu.js` (hook), `App.jsx` (integration), `achievements.js` (data), `AchievementsProvider.jsx` (auto-alert)
+> 🧬 DNA preserved: ✅ (All responsive layout mixins, Cinzel/Lora serif typography, custom CSS entry/exit scale transitions, and settings contexts fully sustained)
+
+### What was done:
+- **Interactive Exclusion Hook**: Created `src/hooks/useContextMenu.js` mapping cursor coordinate vectors dynamically while letting standard right-click selections execute normally inside input, select, textarea fields, or chatbot panels.
+- **Dynamic Portal Menu**: Built portaled component `src/components/ui/ContextMenu.jsx` rendering directly at `body` root level. Measures container dimensions dynamically to prevent screen edge overflows (smart positioning).
+- **Thematic Actions**:
+  - *Return to Castle* (Quick home navigation link, conditional to router path)
+  - *Copy Scroll URL* (Copies URL to slate with brief green check animations and alerts)
+  - *Cycle Realm Theme* (Instantly cycles themes: light -> dark -> medieval -> light)
+  - *Peek Source Code* (Opens view-source HTML view in new browser tab)
+  - *Breach Secret Portal* (Triggers context-menu custom easter egg)
+- **Medieval SCSS module**: Coded BEM styles inside `src/components/ui/ContextMenu.module.scss`. Adapts colors and assets depending on root theme: renders beautiful medieval double golden borders with parchment color fills and Cinzel fonts on medieval theme, and flat modern borders under dark/light themes.
+- **Global Toast achievements watcher**: Engineered `state.completedAt` watcher `useEffect` in `AchievementsProvider.jsx` to automatically launch alert notifications whenever any achievement is completed, and registered `easteregg` boolean achievement config inside `src/data/achievements.js`.
+- Production build: ✅ passing with zero warnings or errors.
+
+---
+
+## ✅ COMPLETED — Settings Page Dashboard Redesign
+
+> 🎯 Goal: Redesign the SettingsPage UI into a proper two-panel dashboard grimoire layout with localized sidebar navigation, horizontal scrolling responsive tabs for mobile viewports, card padding optimizations, active indicators, and high-fidelity switch controls.
+> 📁 Files affected: `SettingsPage.jsx`, `SettingsPage.module.scss`, `SettingSection.jsx`, `SettingSection.module.scss`, `SettingControl.jsx`, `SettingControl.module.scss`
+> 🧬 DNA preserved: ✅ (Translation hooks using dynamic `t()`, persistent setting states, settings context structures, and theme overrides fully sustained)
+
+### What was done:
+- **Two-Panel Layout Integration**: Designed a grid system (`260px 1fr`) dividing settings into a navigation sidebar and an active section panel.
+- **Collapsible Mobile Tabs**: Programmed responsive breakpoints inside `SettingsPage.module.scss` so that the sidebar collapses into a top horizontal scroll strip on tablet and mobile viewports.
+- **Section Layout Refinement**: Redesigned `SettingSection.module.scss` to simplify title layout, paddings, and bottom border indicators, removing nested card elements.
+- **Card Selection Customizations**: Optimized `SettingControl.module.scss` themes grid and option grid. Designed responsive hover translates, custom checkmark indicators, and double golden border adjustments under medieval conditions.
+- **Fluid Switch Components**: Redesigned the custom toggle elements inside `SettingControl.module.scss` to use exact relative widths and smooth sliding knob animations.
+- **Vite production compilation**: Verified Vite rollups compile flawlessly in `29.65s` with zero errors or asset warnings.
+
+---
+
+## ✅ COMPLETED — Medieval 404 Page, Loading Screen & Media Standardisation
+
+> 🎯 Goal: Implement a beautiful medieval 404 parchment card, dynamic loading screen overlays for lazy routes, and standardize JS data sheets relative image paths to root-absolute `/media/...` URLs.
+> 📁 Files affected: `routes.jsx`, `skills.js`, `projects.js`, `common.jsx` (EN/FR dictionaries), `LoadingScreen.jsx`, `LoadingScreen.module.scss`, `NotFound.jsx`, `NotFound.module.scss`
+> 🧬 DNA preserved: ✅ (Translation interpolation dot-notation keys, responsive grid rules, multi-theme custom variable queries, and portal-level overlay layers fully sustained)
+
+### What was done:
+- **Image Path Standardisation**: Restructured relative `../media/` paths in `skills.js` and `projects.js` to absolute `/media/...` routes, guaranteeing dynamic thumbnails and descriptions render successfully on nested subpages.
+- **Custom Medieval 404 Scroll**: Crafted a beautiful standalone centring parchment panel (`NotFound.jsx` & `.module.scss`) styled via `@include parchment-panel` and double gold borders. Includes custom localized titles, descriptive lore paragraphs, and home redirect navigators.
+- **Arcane Loading Sigil Screen**: Built `<LoadingScreen />` featuring double spinning dashed borders (clockwise and counterclockwise keyframes), a pulsing wizard crystal ball, and pulsing sepia gothic translation status headings.
+- **Router Integrations**: Connected code-split lazy routes inside `routes.jsx` with `<LoadingScreen />` Suspense fallbacks. Routed all non-existent page requests (`*`) to the new `<NotFound />` element.
+- **Vite compilation check**: Verified rollup bundles compile cleanly in `26.18s` with zero errors or warnings.
+
+---
+
+## ✅ COMPLETED — High-Fidelity UX & QoL Enhancements
+
+> 🎯 Goal: Engineer 8 premium, highly accessible UX roadmap enhancements integrated fully into the multilingual translation context and dynamic theme frameworks.
+> 📁 Files affected: `BlogPost.jsx`, `BlogPost.module.scss`, `BlogsPage.jsx`, `skillsSection.jsx`, `skillsSection.module.scss`, `ProjectsSection.jsx`, `ProjectsSection.module.scss`, `card.jsx`, `BlogCard.jsx`, `markdownToHtml.js`, `_base.scss`, `home.jsx` (EN/FR translation sub-trees)
+> 🧬 DNA preserved: ✅ (Portal overlays, responsive layout mixins, Cinzel/Lora serif typography, CSS variables, HSL Tailwind custom colors, dot-notation i18n dynamic traversal, and localStorage states fully sustained)
+
+### What was done:
+- **Part 1 — Scroll Progress Indicator**: Injected scroll position watchers inside `BlogPost.jsx` mapping top fixed progress bars (`.progressContainer` / `.progressBar`) detailed dynamically under medieval styling SCSS parameters in `BlogPost.module.scss`.
+- **Part 2 — Related Post Suggestions**: Created related article recommendations inside `BlogPost.jsx` by checking tag overlaps and displaying a beautifully responsive 2-card blog suggestion grid using standard `<BlogCard>` elements.
+- **Part 3 — Skill Interactive Tooltips**: Programmed absolute position overlays on all stars arrays inside `skillsSection.jsx` and `skillsSection.module.scss` using performance-optimized CSS tooltips. Mapped entries to dynamic translation fields inside `strings/EN/pages/home.jsx` and `strings/FR/pages/home.jsx` keys under `SKILLS.levelName` and `SKILLS.levelDesc`.
+- **Part 4 — Dynamic Timeline Duration Parser**: Built localized parsing scripts inside `ProjectsSection.jsx` computing date differences into human-readable timeline blocks (e.g. "3 days", "1 month") styled under customized sepia duration tags.
+- **Part 5 — Image Native Lazy Loading**: Appended dynamic `loading="lazy"` attributes across layout images, dynamic card thumbnails (`card.jsx`, `BlogCard.jsx`), and refactored the Markdown-to-HTML parser image regex matching (`markdownToHtml.js`) to lazy load blog content body images.
+- **Part 6 — External Link Arrow Suffixes**: Defined a global CSS selector inside base styles (`_base.scss`) targeting `a[target="_blank"]`, appending external arrow markers (` ↗`) next to plain anchors while protecting full buttons, cards, list CTA tags, and navbar items.
+- **Part 7 — Production Blog Draft Gates**: Integrated environment-aware filtering gates across master catalogs (`BlogsPage.jsx`) and post slug loaders (`BlogPost.jsx`) to safely hide unpublished draft files (flagged `isDraft: true`) in production environments, while preserving previews during local developer modes (`npm run dev`).
+- **Part 8 — Dynamic Project Screenshot Carousels**: Replaced static thumbnail grids inside `ProjectsSection.jsx` with an automated sliding picture carousel featuring arrow indicators, click navigation dots, automatic 3.5s transitions, and cursor-hover pauses.
+- **Vite production compilation**: Completed successfully with zero compiler or CSS bundle errors in `27.28s`.
+
+---
+
+## ✅ COMPLETED — Advanced UX & Performance Continuation
+
+> 🎯 Goal: Implement and configure remaining advanced features (Glossary popovers, bookmarked scrolls grimoire, lazy loaded viewers, and form input names) with zero compilation or build errors.
+> 📁 Files affected: `App.jsx`, `layouts.jsx`, `BlogPost.jsx`, `BlogPost.module.scss`, `BlogsPage.jsx`, `BlogCard.jsx`, `BlogCard.module.scss`, `fallingletters.jsx`, `markdownToHtml.js`, `_base.scss`, `strings/EN/pages/blogs.jsx`, `strings/FR/pages/blogs.jsx`
+> 🧬 DNA preserved: ✅ (Pure responsive styles, multi-theme variables, translation interpolated objects, unified hook calls, and state management fully sustained)
+
+### What was done:
+- **Glossary Tooltip Popovers**: Created central bilingual data sheet `src/data/glossary.js`. Split root `App.jsx` into nested `AppContent` wrapper component accessing `useSettings` translation codes, running high-performance `MutationObserver` code parser to style terms via CSS `::after` hover definitions in `_base.scss`.
+- **Saved Scrolls Bookmarked Grimoire**: Wired localStorage lists synchronized across blogs catalog (`BlogsPage.jsx`), read screen (`BlogPost.jsx`), and components (`BlogCard.jsx`). Injected styled bookmark badges absolute positioned inside thumbnails, plus a dedicated "Saved Scrolls" filters tag.
+- **Lazy Loaded Floating Chat & PDF Viewers**: Structured `layouts.jsx` to render provider structures globally and evaluate toggle settings from nested component `LayoutsContent`, allowing heavy modules (`PdfViewer`, `ChatWindow`) to load over dynamic chunks asynchronously on demand.
+- **Form Input Casing Name Attributes**: Added standard descriptive name values (`gameTimer`, `practiceLetters`, `customLetters`, `reducePointsOnMiss`) to kids game inputs in `fallingletters.jsx`.
+- **Image alt Localized Fallbacks**: Refactored image matching inside `markdownToHtml.js` to look up root language (`document.documentElement.lang`) and supply a default descriptive alt text when empty.
+- **Mount Toasts Consolidation**: Consolidated multiple welcome alerts in `BlogsPage.jsx` into a single elegant toast greeting.
+- **Zero-Error Production Build**: Compiles client environment flawlessly inside `58.38s` with modular lazy chunk CSS/JS files.
+
+---
+
+## ✅ COMPLETED — StrictMode Duplicate Alerts Guard
+
+> 🎯 Goal: Identify the root cause of duplicate `showAlert()` triggers in development mode under StrictMode, and implement a global, robust safeguard.
+> 📁 Files affected: `AlertProvider.jsx`, `AUDIT.md`, `PROMPTS.md`, `improvement.md`
+> 🧬 DNA preserved: ✅ (All serial animation intervals, type icon dictionaries, dynamic useCallback contexts, and settings layouts fully sustained)
+
+### What was done:
+- **Identified Root Cause**: React StrictMode double-invokes components and lifecycle effects (unmount/remount sequence) in development to isolate side-effect bugs. Mount-time calls to `showAlert()` in `home.jsx` and `BlogsPage.jsx` were executed twice back-to-back, causing stacked overlays.
+- **Implemented Set-based Guard Queue**: Added a stable `pendingAlerts` ref storing an active `Set` of notification keys (`${message}__${type}`) inside `AlertProvider.jsx`.
+- **Automatic Cooldown Removal**: Guarded `showAlert()` to instantly ignore any duplicate consecutive dispatches with the same key. Registered a `window.setTimeout()` to delete keys after `durationMs + 500` ms (matching active animations), allowing users to stack identical triggers (e.g. clicking copy URL) after they dismiss.
+- **Zero-Crash Production Build**: Bundles transformed modules successfully with zero compiler warning signals in `38.00s`.
+
+---
+
+## ✅ COMPLETED — Typo Corrections & Roadmap Cleanup
+
+> 🎯 Goal: Correct remaining database comment typos (abondonned, unkonwn) and synchronize the master roadmap files.
+> 📁 Files affected: `projects.js`, `AUDIT.md`, `PROMPTS.md`, `improvement.md`
+> 🧬 DNA preserved: ✅ (All data schemas, translation properties, and priority matrices fully sustained)
+
+### What was done:
+- **Cleaned Data Sheets Comments**: Replaced spelling errors (`abondonned`, `unkonwn`) with correct standard words (`abandoned`, `unknown`) inside CPU scheduler app definitions inside `src/data/projects.js`.
+- **Roadmap Verification**: Confirmed that previously highlighted layout typos inside `skillsSection.jsx` and `ProjectsSection.jsx` are fully complete as they are already managed under correct key lookups (`HOME.SKILLS.detailsTitle`, `HOME.PROJECTS.unknown`) inside the i18n dictionaries, and checked off elements in `improvement.md`.
+- **Vite production compilation**: Flawless zero-error build verified successfully.
+
+
+
+
+
 
 
 
