@@ -1,6 +1,9 @@
 # ⚔️ Medieval Portfolio — Project Audit
 > Generated audit of the React migration. Reference: `medival portfolio/` vanilla version.
 
+> [!IMPORTANT]
+> **Workflow Directive:** This audit log is automatically updated at the end of every developer task to keep codebase status, pending work, and priorities perfectly in sync.
+
 ---
 
 ## 📊 Health Summary
@@ -16,6 +19,7 @@
 | 🖼️ Assets | 🟢 Healthy | 0 |
 | 🔀 Router | 🟢 Healthy | 0 |
 | 🔭 Viewer Overlays | 🟢 Fixed | 0 |
+| 🌐 Internationalization | 🟢 Healthy | 0 |
 
 ---
 
@@ -24,10 +28,10 @@
 | Environment | Status | Details |
 |---|---|---|
 | Development (`npm run dev`) | ✅ Passing | No terminal errors |
-| Production (`npm run build`) | ✅ Passing | 1863 modules, 10.93s |
-| CSS bundle | 🟢 Healthy | index-*.css (30.99kb gzip) |
+| Production (`npm run build`) | ✅ Passing | 1903 modules, 21.08s |
+| CSS bundle | 🟢 Healthy | index-*.css (33.10kb gzip) |
 
-> Last successful build: CRMEF Page Polish & Inline PDF Viewer Integration
+> Last successful build: Typo Corrections & Roadmap Cleanup (Fixed CPU scheduler description and unknown comment typos)
 
 ---
 
@@ -431,7 +435,73 @@ All 11 main component sections have been successfully refactored to use scoped S
 - **Base animations & transitions blocker**: Added `[data-reduced-motion="true"] *` class overrides inside `_base.scss` to disable animations instantly.
 - **Main layout & routing registrations**: Mounted `AppSettingsProvider` at root level inside `main.jsx` and registered path `/settings` inside `routes.jsx` under Layouts wrapper.
 
+---
 
+### Session: Post-Task Documentation Policy Setup & Quality Sync
+**Scope**: Configuration of the strict post-task documentation synchronization workflow, checking off completed roadmap tasks (Reduced Motion, Copy feedback), and establishing continuous audit controls.
+**Status**: ✅ Complete
+**Changes**:
+- Verified and checked off **Implement reduced motion support** and **Add copy feedback animation** in `improvement.md` since they were fully engineered in the Settings Page session.
+- Added strict auto-update **Workflow Directive** banners at the top of `AUDIT.md`, `PROMPTS.md`, and `improvement.md` to enforce document sync consistency.
+- Synchronized session audit logs across all three files to declare perfect health status.
 
+---
+
+### Session: Custom Context Menu & Achievements Notifier
+**Scope**: Replaced standard contextmenu browser blocks with an immersive custom medieval context menu component & hook, and enabled a global achievements notifier.
+**Status**: ✅ Complete
+**Changes**:
+- **App Block Purge**: Removed rigid right-click prevention `handleContextMenu` in `App.jsx` and registered global `<ContextMenu />`.
+- **Exclusion Custom Hook**: Developed custom React hook `src/hooks/useContextMenu.js` mapping cursor position vectors and ensuring interactive element bypasses (links, buttons, selects, chatbot).
+- **Portal Portal Layout**: Engineered portal component `src/components/ui/ContextMenu.jsx` featuring dynamic viewport overflow measurements, keydown Esc listeners, BEM BEM SCSS module styles, and contextual portfolio navigation hooks.
+- **Thematic Actions**:
+  - *Return to Castle* (Navigates to `/home`)
+  - *Copy Scroll URL* (Copies active window URL with tick-icon confirmations and achievement-linked alerts)
+  - *Cycle Realm Theme* (Theme cycling Light -> Dark -> Medieval using unified theme hooks)
+  - *Peek Source Code* (Opens view-source HTML viewport)
+  - *Breach Secret Portal* (Triggers the custom context menu easter egg)
+- **Medieval Styling Modules**: Outlined layout tokens in `src/components/ui/ContextMenu.module.scss`. The menu uses warm parchment gradients, double golden borders, and Cinzel heading overlays under the medieval theme, and flat modern borders under dark/light themes.
+- **Global Achievements Alert**: Extended `AchievementsProvider.jsx` with a global `state.completedAt` watcher `useEffect`, enabling automatic `showAlert` notification banners whenever any achievement is completed. Registered `easteregg` boolean achievement config inside `src/data/achievements.js`.
+- **Production builds**: Vite compilation completed cleanly (`✓ built in 32.26s`) with zero bundle errors.
+
+---
+
+### Session: Settings Page Dashboard Redesign
+**Scope**: Redesign of the settings page from a basic flat single-column stack into a premium two-panel dashboard grimoire layout, featuring section navigation sidebars, horizontal tab overrides for mobile devices, card padding optimizations, active indicators, and high-fidelity switches.
+**Status**: ✅ Complete
+**Changes**:
+- **Two-Panel Dashboard Layout**: Structured `SettingsPage.jsx` and `SettingsPage.module.scss` to implement responsive sidebar navigation columns (`260px 1fr`). On tablets/mobile screens, the sidebar transitions smoothly into a top horizontal scroll strip.
+- **Section Layout Refinement**: Redesigned `SettingSection.module.scss` to simplify padding constraints, headers, and section separators, removing redundant outer card blocks.
+- **Visual Card Enhancements**: Upgraded item selectors, theme selection cards, and active checked badges inside `SettingControl.module.scss` with hover transformations, dynamic accents (`var(--gold)` / `var(--accent)`), and proper card scales.
+- **Fluid Switch Animations**: Realigned toggle components inside `SettingControl.module.scss` to render rounded background blocks and smooth animated slider knobs using standard transitions.
+- **Vite production compilation**: Built successfully in `29.65s` with zero errors or asset size compilation warnings.
+
+---
+
+### Session: Medieval 404 Page, Loading Screen & Media Standardisation
+**Scope**: Implementation of a custom themed 404 parchment card, specialized glowing dynamic loading overlays for all lazy loaded routes, and the standardisation of all relative data asset paths to absolute domain-root paths.
+**Status**: ✅ Complete
+**Changes**:
+- **Media Asset Paths Standardisation**: Replaced relative `../media/` paths inside both `skills.js` and `projects.js` data sheets with root-level `/media/` absolute paths, preventing broken image loading errors on nested routes (such as `/blogs/:slug` or subfolders).
+- **Themed Route Loading Screen**: Developed `LoadingScreen.jsx` and `LoadingScreen.module.scss` inside a custom modular loader folder. Features an animated dashed spin sigil (`spinClockwise` / `spinCounterClockwise`), a glowing center crystal ball emoji, and pulsing sepia gothic translation status headers.
+- **Custom Medieval 404 Scroll**: Engineered `NotFound.jsx` and `NotFound.module.scss` to display an elegant centered parchment container using modular BEM variables. Integrates a protective shield crest emblem, localized warning titles, descriptive incantation details, and a tactile "Return to Castle" redirect button.
+- **Router Integration**: Cleaned up `routes.jsx` to load both `LoadingScreen` and `NotFound` pages dynamically using code-splitting (`React.lazy`). Maps all non-matching routes (`*`) inside standard layout templates to show our custom parchment scroll.
+- **Vite production compilation**: Verified rollups compile cleanly in `26.18s` with zero errors or asset warnings.
+
+---
+
+### Session: Immersive High-Fidelity UX & QoL Enhancements
+**Scope**: Implementation of 8 major frontend roadmap improvements (Reading Progress scroll bar, Related Posts Suggestions, Star level interactive tooltips, Dynamic project duration calculations, Standardised image lazy-loading, Automatic external link arrow indicators, Production blog draft gates, and Auto-rotating project gallery carousels).
+**Status**: ✅ Complete
+**Changes**:
+- **Task 1 — Reading Progress Bar**: Built dynamic scroll list handlers tracking scroll offset percentages inside `BlogPost.jsx` to render an absolute top-fixed sepia-themed progress scrollbar using high-fidelity styling tokens inside `BlogPost.module.scss`.
+- **Task 2 — Related Posts Suggestions**: Programmed tag intersection scoring algorithms in `BlogPost.jsx` matching categories/tags across visible blogs, rendering a 2-card suggestions grid below article pages leveraging existing `<BlogCard>` elements.
+- **Task 3 — Skill Rating Tooltips**: Appended bilingual tooltip titles and descriptions under `HOME.SKILLS` dictionary keys in both English (`EN/pages/home.jsx`) and French (`FR/pages/home.jsx`). Rendered floating tooltips directly inside `.proficiency` containers inside `skillsSection.jsx` and `skillsSection.module.scss` using absolute CSS hovers for performance.
+- **Task 4 — Project Completion Duration**: Integrated dynamic date delta calculations inside `ProjectsSection.jsx` using localized duration parsers (e.g. "3 days", "1 month") with elegant theme-conforming sepia badges.
+- **Task 5 — Native Image Lazy Loading**: Integrated the native `loading="lazy"` attribute across layout images, dynamic card thumbnails (`card.jsx`, `BlogCard.jsx`), and refactored the Markdown-to-HTML parser image regex matching (`markdownToHtml.js`) to append lazy loading properties onto blog post body images.
+- **Task 6 — External Link Indicators**: Applied global standard link selectors inside base styles (`_base.scss`) targeting `a[target="_blank"]`, appending modern external arrow icons (` ↗`) next to plain anchors while protecting buttons, badges, navigation headers, and cards.
+- **Task 7 — Blog Draft Mode**: Implemented strict security gates across both list grids (`BlogsPage.jsx`) and post slug loaders (`BlogPost.jsx`) to hide unpublished draft files (flagged `isDraft: true`) in production environments, while preserving previews during local developer modes (`npm run dev`).
+- **Task 8 — Auto-Rotating Project Screenshot Carousels**: Replaced static thumbnail grids inside `ProjectsSection.jsx` and `ProjectsSection.module.scss` with a high-fidelity sliding image carousel. Supports mouse hover pauses, dynamic arrow indicators, active dots triggers, and automatic 3.5s interval transitions.
+- **Vite production compilation**: Completed successfully with zero compiler or CSS bundle errors in `27.28s`.
 
 

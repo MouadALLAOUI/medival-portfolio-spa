@@ -1,0 +1,113 @@
+@use '../../styles/variables' as *;
+@use '../../styles/animations' as *;
+@use '../../styles/mixins' as *;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(14, 8, 4, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 99999;
+  padding: 2rem;
+}
+
+.parchment {
+  background-color: $parchment;
+  background-image: url('/media/parchment.png');
+  background-size: cover;
+  border: 4px double $gold;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 100%;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.15);
+  animation: fadeInScroll 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  color: $dark-brown;
+}
+
+.sealContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba($rust, 0.1) 0%, transparent 70%);
+  margin: 0 auto 1.5rem;
+}
+
+.waxSeal {
+  font-size: 3.5rem;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+  animation: quillFloat 3s ease-in-out infinite;
+}
+
+.title {
+  font-family: $font-cinzel;
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: $dark-brown;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.description {
+  font-family: $font-body;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: #4a3319;
+}
+
+.errorLog {
+  background-color: rgba(26, 14, 6, 0.05);
+  border: 1px dashed rgba($rust, 0.25);
+  border-radius: 6px;
+  padding: 1rem;
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: #721c24;
+  max-height: 150px;
+  overflow-y: auto;
+  text-align: left;
+  margin-bottom: 2rem;
+  white-space: pre-wrap;
+  word-break: break-all;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $gold;
+    border-radius: 3px;
+  }
+}
+
+.resurrectBtn {
+  font-family: $font-cinzel;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: $parchment;
+  background: linear-gradient(135deg, #7c1a16 0%, #4a0c09 100%);
+  border: 2px solid $gold;
+  border-radius: 9999px;
+  padding: 0.75rem 2.25rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(212, 175, 55, 0.3);
+    background: linear-gradient(135deg, #99241f 0%, #61130e 100%);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}

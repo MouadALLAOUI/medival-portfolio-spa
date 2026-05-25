@@ -2,12 +2,12 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { generatePseudoLLMAnswer, initializeSentenceChunks } from '../../lib/chatbot/parser';
 import { useChat } from '../../lib/contexts/ChatProvider';
+import { useSettings } from '../../lib/useSettings';
 import styles from './ChatWindow.module.scss';
-
-const DEFAULT_SUGGESTIONS = ['Who is Mouad?', 'List projects', 'List cybersecurity project?'];
 
 const ChatWindow = () => {
   const { isOpen, isMinimized, closeChat, minimizeChat } = useChat();
+  const { t } = useSettings();
 
   // ── All original chatbot logic ──────────────────────────────────────
   const [messages, setMessages] = useState([]);
@@ -21,6 +21,12 @@ const ChatWindow = () => {
   const inputRef = useRef(null);
 
   const sentenceChunks = useMemo(() => initializeSentenceChunks(), []);
+
+  const DEFAULT_SUGGESTIONS = [
+    t('COMMON.chatbot.suggestions.whoIsMouad') || 'Who is Mouad?',
+    t('COMMON.chatbot.suggestions.listProjects') || 'List projects',
+    t('COMMON.chatbot.suggestions.listCyberProjects') || 'List cybersecurity project?',
+  ];
 
   // Auto-scroll to bottom on every new message
   useEffect(() => {
@@ -55,8 +61,8 @@ const ChatWindow = () => {
     setMessages((prev) => [...prev, { role: 'user', text }]);
   };
 
-  const appendBotMessage = (text, type = '') => {
-    setMessages((prev) => [...prev, { role: 'bot', text, type }]);
+  const appendBotMessage = (text, type = '', contextId = '') => {
+    setMessages((prev) => [...prev, { role: 'bot', text, type, contextId }]);
   };
 
   const sendQuestion = (question) => {
@@ -66,8 +72,8 @@ const ChatWindow = () => {
     appendUserMessage(trimmed);
     setUserInput('');
 
-    const result = generatePseudoLLMAnswer(trimmed, sentenceChunks, []);
-    appendBotMessage(result.text);
+    const result = generatePseudoLLMAnswer(trimmed, sentenceChunks, messages);
+    appendBotMessage(result.text, '', result.contextId);
 
     setContextStatus(result.intent ? result.intent.toUpperCase() : 'Default Profile');
     setParaCount(Math.max(0, Math.round((result.matches || 0) / 2)));
@@ -88,7 +94,7 @@ const ChatWindow = () => {
         <div className={styles['header-info']}>
           <span className={styles['avatar']}>🔮</span>
           <div className={styles['header-text']}>
-            <span className={styles['header-name']}>The Oracle's Crystal Ball</span>
+            <span className={styles['header-name']}>{t('COMMON.chatbot.title')}</span>
             <span className={styles['header-status']}>● Online</span>
           </div>
         </div>
@@ -103,7 +109,7 @@ const ChatWindow = () => {
           <button
             className={styles['close-btn']}
             onClick={closeChat}
-            aria-label="Close chat"
+            aria-label={t('COMMON.chatbot.closeAria')}
           >
             ×
           </button>
@@ -126,15 +132,15 @@ const ChatWindow = () => {
                       <path d="M12 16V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                       <path d="M12 8H12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                     </svg>
-                    How to use this chatbot:
+                    {t('COMMON.chatbot.howToUseTitle') || 'How to use this chatbot:'}
                   </h3>
                   <ul>
-                    <li><strong>Ask questions:</strong> About the context or general inquiries about Mouad the Coder</li>
-                    <li><strong>Follow-up questions:</strong> The bot remembers the last 3 interactions (under construction)</li>
+                    <li><strong>{t('COMMON.chatbot.howToUseAsk') || 'Ask questions:'}</strong> {t('COMMON.chatbot.howToUseAskDesc') || 'About the context or general inquiries about Mouad the Coder'}</li>
+                    <li><strong>{t('COMMON.chatbot.howToUseFollowUp') || 'Follow-up questions:'}</strong> {t('COMMON.chatbot.howToUseFollowUpDesc') || 'The bot remembers the last 3 interactions (under construction)'}</li>
                   </ul>
                   <div className={styles['instructions']}>
                     <p>
-                      <strong>Is it worth asking:</strong> Yes! I work my brain out to build it — even if there are still some improvements needed. Thank you for using our simple chatbot.
+                      <strong>{t('COMMON.chatbot.worthAsking') || 'Is it worth asking:'}</strong> {t('COMMON.chatbot.worthAskingDesc') || 'Yes! I work my brain out to build it — even if there are still some improvements needed. Thank you for using our simple chatbot.'}
                     </p>
                   </div>
                 </div>
@@ -144,8 +150,8 @@ const ChatWindow = () => {
             {/* Greeting */}
             <div className={`${styles['message']} ${styles['bot-message']} ${styles['warning-message']}`}>
               <div className={styles['message-content']}>
-                Greetings, seeker! I am the Oracle. Ask me anything about Mouad the Coder and his mystical coding powers.
-                <div style={{ marginTop: '0.25rem' }}>This chatbot is still under development and training. Thank you for your understanding.</div>
+                {t('COMMON.chatbot.greeting') || 'Greetings, seeker! I am the Oracle. Ask me anything about Mouad the Coder and his mystical coding powers.'}
+                <div style={{ marginTop: '0.25rem' }}>{t('COMMON.chatbot.underDevNotice') || 'This chatbot is still under development and training. Thank you for your understanding.'}</div>
               </div>
             </div>
 
@@ -185,8 +191,8 @@ const ChatWindow = () => {
             <textarea
               ref={inputRef}
               className={styles['input']}
-              aria-label="Ask the Oracle"
-              placeholder="Inquire about skills, projects, or experience..."
+              aria-label={t('COMMON.chatbot.placeholder')}
+              placeholder={t('COMMON.chatbot.placeholder')}
               aria-multiline="false"
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
@@ -198,24 +204,24 @@ const ChatWindow = () => {
               }}
             />
             <button className={styles['send-btn']} onClick={onAsk}>
-              ASK
+              {t('COMMON.chatbot.send')}
             </button>
           </div>
 
           {/* Context indicator */}
           <div className={styles['context-indicator']}>
             <div>
-              Context: <strong>{contextStatus}</strong>
+              {t('COMMON.chatbot.context') || 'Context:'} <strong>{contextStatus}</strong>
             </div>
             <div className={styles['context-stats']}>
               <div className={styles['stat-box']}>
-                Paragraphs <span className={styles['stat-value']}>{paraCount}</span>
+                {t('COMMON.chatbot.statParagraphs') || 'Paragraphs'} <span className={styles['stat-value']}>{paraCount}</span>
               </div>
               <div className={styles['stat-box']}>
-                Sentences <span className={styles['stat-value']}>{sentenceCount}</span>
+                {t('COMMON.chatbot.statSentences') || 'Sentences'} <span className={styles['stat-value']}>{sentenceCount}</span>
               </div>
               <div className={styles['stat-box']}>
-                Entities <span className={styles['stat-value']}>{entityCount}</span>
+                {t('COMMON.chatbot.statEntities') || 'Entities'} <span className={styles['stat-value']}>{entityCount}</span>
               </div>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { blogs, blogTags } from '../../data/blogs.data';
 import { useAlerts } from '../../lib/useAlerts';
+import { useSettings } from '../../lib/useSettings';
 import BlogCard from '../../components/BlogCard/BlogCard';
 import styles from './BlogsPage.module.scss';
 import { isFirstVisit } from '../../lib/utils/visitTracker';
@@ -9,21 +10,29 @@ const POSTS_PER_PAGE = 6;
 
 export default function BlogsPage() {
   const { showAlert } = useAlerts();
+  const { t } = useSettings();
   const [currentPage, setCurrentPage] = useState(1);
   const [activeTag, setActiveTag] = useState(null);
   const [showScroll, setShowScroll] = useState(true);
+  const [bookmarks, setBookmarks] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('mp_bookmarks') || '[]');
+    } catch {
+      return [];
+    }
+  });
+  const [filterBookmarked, setFilterBookmarked] = useState(false);
   const filterRef = useRef(null);
 
   useEffect(() => {
     if (!isFirstVisit('blogs')) return;
-    showAlert('Welcome to my Treasures, hope you find whatever you desire', 'royal', 3000);
-    showAlert('These blogs are still under development — thank you for your understanding', 'chaos', 4500);
-  }, [showAlert]);
+    showAlert(t('BLOGS.list.welcomeAlertConsolidated'), 'royal', 5000);
+  }, [showAlert, t]);
 
   // Reset page when filter changes
   useEffect(() => {
     setCurrentPage(1);
-  }, [activeTag]);
+  }, [activeTag, filterBookmarked]);
 
   // Handle scroll to hide scroll indicator
   useEffect(() => {
@@ -41,9 +50,33 @@ export default function BlogsPage() {
     filterRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  const filteredBlogs = activeTag
-    ? blogs.filter((b) => b.tags.includes(activeTag))
-    : blogs;
+  const handleToggleBookmark = (slug) => {
+    setBookmarks((prev) => {
+      const isBookmarked = prev.includes(slug);
+      let updated;
+      if (isBookmarked) {
+        updated = prev.filter((s) => s !== slug);
+        showAlert(t('BLOGS.post.bookmarkRemovedAlert'), 'chaos', 2500);
+      } else {
+        updated = [...prev, slug];
+        showAlert(t('BLOGS.post.bookmarkAddedAlert'), 'royal', 2500);
+      }
+      localStorage.setItem('mp_bookmarks', JSON.stringify(updated));
+      return updated;
+    });
+  };
+
+  const isDev = import.meta.env.DEV;
+  const visibleBlogs = blogs.filter((b) => !b.isDraft || isDev);
+  const visibleTags = [...new Set(visibleBlogs.flatMap((b) => b.tags))];
+
+  let filteredBlogs = activeTag
+    ? visibleBlogs.filter((b) => b.tags.includes(activeTag))
+    : visibleBlogs;
+
+  if (filterBookmarked) {
+    filteredBlogs = filteredBlogs.filter((b) => bookmarks.includes(b.slug));
+  }
 
   const totalPages = Math.ceil(filteredBlogs.length / POSTS_PER_PAGE);
   const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
@@ -51,6 +84,7 @@ export default function BlogsPage() {
 
   const handleTagClick = (tag) => {
     setActiveTag((prev) => (prev === tag ? null : tag));
+    setFilterBookmarked(false);
   };
 
   return (
@@ -59,14 +93,10 @@ export default function BlogsPage() {
       {/* ── Intro Banner ── */}
       <section className={styles['blogsHero']}>
         <div className={styles['blogsHeroInner']}>
-          <h1 className={styles['scroll-title']}>📜 The Scribe's Chronicles</h1>
+          <h1 className={styles['scroll-title']}>{t('BLOGS.list.title')}</h1>
           <div className={styles['intro-container-desc']}>
-            <h2>Welcome, Traveler!</h2>
-            <p>
-              Herein lies my collection of arcane knowledge, coding adventures, and technical
-              grimoires. These scrolls contain the wisdom I've gathered throughout my journey in
-              the mystical realms of programming. May they guide you on your own quest for knowledge.
-            </p>
+            <h2>{t('BLOGS.list.welcomeTitle')}</h2>
+            <p>{t('BLOGS.list.welcomeDesc')}</p>
           </div>
         </div>
       </section>
@@ -88,12 +118,24 @@ export default function BlogsPage() {
       {/* ── Tag Filter Bar ── */}
       <section ref={filterRef} className={styles['filterBar']}>
         <button
-          className={`${styles['filterTag']} ${activeTag === null ? styles['active'] : ''}`}
-          onClick={() => setActiveTag(null)}
+          className={`${styles['filterTag']} ${activeTag === null && !filterBookmarked ? styles['active'] : ''}`}
+          onClick={() => {
+            setActiveTag(null);
+            setFilterBookmarked(false);
+          }}
         >
-          All Scrolls
+          {t('BLOGS.list.filterAll')}
         </button>
-        {blogTags.map((tag) => (
+        <button
+          className={`${styles['filterTag']} ${filterBookmarked ? styles['active'] : ''}`}
+          onClick={() => {
+            setFilterBookmarked(!filterBookmarked);
+            setActiveTag(null);
+          }}
+        >
+          📖 {t('BLOGS.list.savedScrolls')} ({bookmarks.length})
+        </button>
+        {visibleTags.map((tag) => (
           <button
             key={tag}
             className={`${styles['filterTag']} ${activeTag === tag ? styles['active'] : ''}`}
@@ -109,10 +151,17 @@ export default function BlogsPage() {
         <div className={styles['container-blogs']} id="blog-posts">
           {paginatedBlogs.length > 0 ? (
             paginatedBlogs.map((blog) => (
-              <BlogCard key={blog.id} blog={blog} />
+              <BlogCard
+                key={blog.id}
+                blog={blog}
+                isBookmarked={bookmarks.includes(blog.slug)}
+                onToggleBookmark={handleToggleBookmark}
+              />
             ))
           ) : (
-            <p className={styles['no-results']}>No scrolls found for this tag.</p>
+            <p className={styles['no-results']}>
+              {filterBookmarked ? t('BLOGS.list.noSavedScrolls') : t('BLOGS.list.noResults')}
+            </p>
           )}
         </div>
       </section>
@@ -153,3 +202,4 @@ export default function BlogsPage() {
     </div>
   );
 }
+

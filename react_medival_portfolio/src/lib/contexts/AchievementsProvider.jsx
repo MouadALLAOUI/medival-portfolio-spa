@@ -123,6 +123,20 @@ export default function AchievementsProvider({ children }) {
         stateRef.current = state;
     }, [state]);
 
+    const prevCompletedAtRef = useRef({});
+
+    useEffect(() => {
+        const prevCompleted = prevCompletedAtRef.current;
+        const currentCompleted = state.completedAt || {};
+
+        for (const def of definitions) {
+            if (currentCompleted[def.id] && !prevCompleted[def.id]) {
+                showAlert(`🏆 Achievement Unlocked: ${def.title} — ${def.desc}`, "success", 4000);
+            }
+        }
+        prevCompletedAtRef.current = currentCompleted;
+    }, [state.completedAt, showAlert]);
+
     useEffect(() => {
         let cancelled = false;
         (async () => {

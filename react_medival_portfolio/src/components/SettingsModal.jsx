@@ -26,10 +26,10 @@ const SettingsModal = ({
   showLanguage = true,
   showPdfMode = false,
   extraSections = [],
-  title = '⚙️ Settings',
+  title,
 }) => {
   const { theme, themes, switchTheme } = useTheme();
-  const { language, setLanguage } = useSettings();
+  const { language, setLanguage, t } = useSettings();
   const pdfCtx = usePdfSettings(); // may be null if PdfSettingsProvider not in tree
   const modalRef = useRef(null);
   const navigate = useNavigate();
@@ -58,6 +58,8 @@ const SettingsModal = ({
     navigate('/settings');
   };
 
+  const displayTitle = title || t('COMMON.settings.title');
+
   return createPortal(
     <div className={styles.overlay || styles['settings-modal-overlay']} onClick={onClose}>
       <div
@@ -70,11 +72,11 @@ const SettingsModal = ({
       >
         {/* Header */}
         <div className={styles.header || styles['modal-header']}>
-          <h3 id="settings-title" className={styles.title}>{title}</h3>
+          <h3 id="settings-title" className={styles.title}>{displayTitle}</h3>
           <button
             className={styles.closeBtn || styles['close-btn']}
             onClick={onClose}
-            aria-label="Close settings"
+            aria-label={t('COMMON.settings.closeBtn')}
           >
             ×
           </button>
@@ -85,18 +87,20 @@ const SettingsModal = ({
           {/* Theme Selector */}
           {showTheme && (
             <div className={styles.section || styles['setting-group']}>
-              <h4 className={styles.sectionTitle || styles['group-label']}>🎨 Theme</h4>
+              <h4 className={styles.sectionTitle || styles['group-label']}>{t('COMMON.settings.themeLabel')}</h4>
               <div className={styles.themeGrid || styles['theme-grid']}>
-                {Object.values(themes).map(t => (
+                {Object.values(themes).map(themesItem => (
                   <button
-                    key={t.id}
-                    className={`${styles.themeCard || styles['theme-card']} ${theme === t.id ? (styles.active || styles['active']) : ''}`}
-                    onClick={() => switchTheme(t.id)}
-                    aria-label={`Switch to ${t.label} theme`}
+                    key={themesItem.id}
+                    className={`${styles.themeCard || styles['theme-card']} ${theme === themesItem.id ? (styles.active || styles['active']) : ''}`}
+                    onClick={() => switchTheme(themesItem.id)}
+                    aria-label={t(`COMMON.settings.keys.theme.options.${themesItem.id}.description`)}
                   >
-                    <span className={styles.themeIcon || styles['theme-icon']}>{t.icon}</span>
-                    <span className={styles.themeName || styles['theme-name']}>{t.label}</span>
-                    {theme === t.id && <span className={styles.check || styles['active-check']}>✓</span>}
+                    <span className={styles.themeIcon || styles['theme-icon']}>{themesItem.icon}</span>
+                    <span className={styles.themeName || styles['theme-name']}>
+                      {t(`COMMON.settings.keys.theme.options.${themesItem.id}.label`) || themesItem.label}
+                    </span>
+                    {theme === themesItem.id && <span className={styles.check || styles['active-check']}>✓</span>}
                   </button>
                 ))}
               </div>
@@ -106,7 +110,7 @@ const SettingsModal = ({
           {/* Language Selector */}
           {showLanguage && (
             <div className={styles.section || styles['setting-group']}>
-              <h4 className={styles.sectionTitle || styles['group-label']}>📜 Language</h4>
+              <h4 className={styles.sectionTitle || styles['group-label']}>{t('COMMON.settings.keys.language.label')}</h4>
               <div className={styles.optionButtons || styles['option-buttons']}>
                 <button
                   onClick={() => setLanguage('en')}
@@ -129,8 +133,8 @@ const SettingsModal = ({
           {/* PDF mode section — shown when showPdfMode={true} AND context exists */}
           {showPdfMode && pdfCtx && (
             <div className={styles.section || styles['setting-group']}>
-              <h4 className={styles.sectionTitle || styles['group-label']}>PDF Display</h4>
-              <p className={styles.sectionDesc}>Choose how PDF documents open</p>
+              <h4 className={styles.sectionTitle || styles['group-label']}>{t('COMMON.settings.keys.pdfMode.label')}</h4>
+              <p className={styles.sectionDesc}>{t('COMMON.settings.keys.pdfMode.description')}</p>
               <div className={styles.pdfModeGrid}>
                 {Object.values(PDF_MODES).map(mode => (
                   <button
@@ -139,8 +143,12 @@ const SettingsModal = ({
                     onClick={() => pdfCtx.setPdfMode(mode.id)}
                   >
                     <span className={styles.modeIcon}>{mode.icon}</span>
-                    <span className={styles.modeLabel}>{mode.label}</span>
-                    <span className={styles.modeDesc}>{mode.description}</span>
+                    <span className={styles.modeLabel}>
+                      {t(`COMMON.settings.keys.pdfMode.options.${mode.id}.label`) || mode.label}
+                    </span>
+                    <span className={styles.modeDesc}>
+                      {t(`COMMON.settings.keys.pdfMode.options.${mode.id}.description`) || mode.description}
+                    </span>
                     {pdfCtx.pdfMode === mode.id && <span className={styles.check || styles['active-check']}>✓</span>}
                   </button>
                 ))}
@@ -160,7 +168,7 @@ const SettingsModal = ({
         {/* Footer */}
         <div className={styles.footer}>
           <button className={styles.advancedBtn} onClick={goToSettings}>
-            ⚙️ Advanced Settings
+            {t('COMMON.settings.advancedBtn')}
             <span className={styles.advancedArrow}>→</span>
           </button>
         </div>
@@ -169,5 +177,6 @@ const SettingsModal = ({
     document.body
   );
 };
+
 
 export default SettingsModal;
