@@ -3,6 +3,8 @@ import { PRESETS } from '../../../config/presets';
 import learning from '../../../data/learning';
 import { usePdfViewer } from '../../../lib/usePdfViewer';
 import { useAchievements } from '../../../lib/useAchievements';
+import styles from './LearningSection.module.scss';
+import CSection from '../../../templates/Section';
 
 const LearningSection = () => {
   const { openPdf } = usePdfViewer();
@@ -16,21 +18,21 @@ const LearningSection = () => {
   };
 
   return (
-    <section id="learning" className="section">
+    <CSection id="learning" title="Learning Grimoire" className="section" classname="section">
       <div className="section-content">
         <div className="parchment visible" id="learning-parch">
           <div>
             <h2 className="section-title">Learning Grimoire</h2>
-            <p className="section-intro">Learning materials I’ve crafted (PDFs, slides, and study scrolls):</p>
+            <p className="section-intro">Learning materials I've crafted (PDFs, slides, and study scrolls):</p>
           </div>
-          <div className="learning-grid" id="learning-grid">
+          <div className={styles['learning-grid']} id="learning-grid">
             {learning.map((item) => (
               <DynamicCard key={item.id} item={item} config={PRESETS.LEARNING} onClick={() => handleCardClick(item)} />
             ))}
           </div>
         </div>
       </div>
-    </section>
+    </CSection>
   );
 };
 

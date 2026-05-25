@@ -1,0 +1,112 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.section {
+  width: 100%;
+}
+
+.educationGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+
+  :global([data-theme="medieval"]) & {
+    border-color: var(--border-strong);
+    background: var(--bg-card);
+  }
+
+  @include tablet {
+    grid-template-columns: 1fr;
+  }
+}
+
+.eduCard {
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: background-color var(--transition);
+
+  &:hover {
+    background-color: var(--bg-secondary);
+  }
+
+  // Crosshair dividers for 2-column layout (default)
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+
+  // Remove right border for even items
+  &:nth-child(2n) {
+    border-right: none;
+  }
+
+  // Remove bottom border for the last two items in 2-column layout
+  &:nth-child(n + 3) {
+    border-bottom: none;
+  }
+
+  :global([data-theme="medieval"]) & {
+    border-color: var(--border-strong);
+    
+    &:hover {
+      background-color: rgba(212, 175, 55, 0.05);
+    }
+  }
+
+  // Responsive adjustments for mobile single-column layout
+  @include tablet {
+    border-right: none !important;
+    border-bottom: 1px solid var(--border) !important;
+
+    &:last-child {
+      border-bottom: none !important;
+    }
+  }
+}
+
+.eduTitle {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+
+  :global([data-theme="medieval"]) & {
+    font-family: var(--font-cinzel);
+  }
+}
+
+.eduInstitution {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.eduLocation {
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.eduType {
+  color: var(--accent);
+  font-style: italic;
+  margin-top: 0.75rem;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  :global([data-theme="medieval"]) & {
+    color: var(--accent-secondary);
+  }
+}

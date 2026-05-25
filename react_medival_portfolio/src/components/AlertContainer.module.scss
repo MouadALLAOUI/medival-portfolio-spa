@@ -1,0 +1,133 @@
+@use '../styles/variables' as *;
+@use '../styles/animations' as *;
+@use '../styles/mixins' as *;
+
+.alert-container {
+    position: fixed;
+    /* VIEWPORT-fixed — not trapped by any parent */
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99999;
+    /* above navbar (100), ImageViewer (9999), PdfViewer (9999) */
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 0.5rem;
+    width: clamp(280px, 90vw, 28rem);
+    pointer-events: none;
+    /* container never blocks page clicks */
+
+    .alert-box {
+        min-width: 260px;
+        max-width: 460px;
+        pointer-events: auto;
+        /* individual alert IS clickable for dismiss */
+        cursor: pointer;
+        padding: 1rem 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        color: #fff3e0;
+        text-shadow: 0 0 6px rgba(255, 200, 120, 0.8);
+        border: 2px solid transparent;
+        text-align: center;
+        transform: translateY(-20px) scale(0.9);
+        animation: slide-up 0.4s ease-out forwards;
+        font-family: "Cinzel", "IM Fell English SC", serif;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 12px;
+            border: 2px solid transparent;
+            background: linear-gradient(45deg,
+                    rgba(255, 215, 100, 0.6),
+                    rgba(255, 240, 190, 0.4)) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        &.alert-success {
+            background: linear-gradient(160deg, #2e5e2a, #1a3d1d);
+            border-color: #aaffaa;
+            box-shadow: 0 0 10px #7cff7c, inset 0 0 10px #2c5a2c;
+        }
+
+        &.alert-error {
+            background: linear-gradient(160deg, #5c1111, #3d0606);
+            border-color: #ff8080;
+            box-shadow: 0 0 10px #ff5c5c, inset 0 0 10px #5c1111;
+        }
+
+        &.alert-info {
+            background: linear-gradient(160deg, #1b2a5c, #0d183b);
+            border-color: #89d0ff;
+            box-shadow: 0 0 10px #89d0ff, inset 0 0 10px #1b2a5c;
+        }
+
+        &.alert-warning {
+            background: linear-gradient(160deg, #6b4b0e, #4a2f08);
+            border-color: #ffdb76;
+            box-shadow: 0 0 10px #ffb347, inset 0 0 10px #6b4b0e;
+        }
+
+        &.alert-quest {
+            background: linear-gradient(160deg, #3d2f12, #1f1405);
+            border-color: #ffd36b;
+            box-shadow: 0 0 10px #ffcf66, inset 0 0 10px #3d2f12;
+        }
+
+        &.alert-arcane {
+            background: linear-gradient(160deg, #2e006b, #130033);
+            border-color: #c27cff;
+            box-shadow: 0 0 12px #b97aff, inset 0 0 10px #2e006b;
+        }
+
+        &.alert-divine {
+            background: linear-gradient(160deg, #fff8d6, #d6b85c);
+            border-color: #fff4a3;
+            color: #3d2c00;
+            text-shadow: none;
+            box-shadow: 0 0 12px #fff3b0, inset 0 0 10px #d6b85c;
+        }
+
+        &.alert-royal {
+            background: linear-gradient(160deg, #3e1a5f, #1b082b);
+            border-color: #d0a6ff;
+            box-shadow: 0 0 12px #b97aff, inset 0 0 10px #3e1a5f;
+        }
+
+        &.alert-cursed {
+            background: linear-gradient(160deg, #0d0d0d, #2c0000);
+            border-color: #a30000;
+            box-shadow: 0 0 15px #a30000, inset 0 0 15px #1a0000;
+            text-shadow: 0 0 8px #ff0000;
+        }
+
+        &.alert-neutral {
+            background: linear-gradient(160deg, #5a4a36, #3c3125);
+            border-color: #d2b48c;
+            box-shadow: 0 0 10px #c2a679, inset 0 0 10px #5a4a36;
+        }
+
+        &.alert-greeting {
+            background-color: rgba(88, 28, 135, 0.9);
+            color: var(--color-parchment);
+            border-color: #a855f7;
+        }
+
+        &.alert-chaos {
+            background-color: rgba(124, 45, 18, 0.9);
+            color: var(--color-parchment);
+            border-color: #f97316;
+        }
+    }
+
+    /* On small screens keep centred, tighten side padding */
+    @include mobile {
+        bottom: 1rem;
+        width: clamp(260px, 92vw, 26rem);
+    }
+}
