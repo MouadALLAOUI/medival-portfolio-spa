@@ -1,0 +1,210 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.section {
+  width: 100%;
+}
+
+.mspHeader {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+  font-size: 1.2rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.25rem;
+  color: var(--text-secondary);
+  gap: 1rem;
+
+  :global([data-theme="medieval"]) & {
+    border-bottom-color: var(--border-strong);
+  }
+}
+
+.mspValue {
+  color: var(--accent);
+  font-weight: bold;
+  font-family: var(--font-heading);
+
+  :global([data-theme="medieval"]) & {
+    color: var(--gold);
+    font-family: var(--font-cinzel);
+  }
+}
+
+.tabsNav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.tabBtn {
+  background: transparent;
+  border: 2px solid var(--border-strong);
+  color: var(--text-primary);
+  padding: 0.8rem 2rem;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+
+  &:hover {
+    background: var(--bg-tertiary);
+  }
+
+  &.activeTab {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--text-inverse);
+  }
+
+  :global([data-theme="medieval"]) & {
+    border-color: var(--border-strong);
+
+    &:hover {
+      background: rgba(212, 175, 55, 0.05);
+    }
+
+    &.activeTab {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--text-inverse);
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+.tabContent {
+  width: 100%;
+  animation: fadeIn 0.4s ease;
+}
+
+.centerContent {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.lyceePlaceholder {
+  width: 100%;
+  max-width: 600px;
+  height: 300px;
+  background-color: var(--bg-tertiary);
+  border: 4px solid var(--border-strong);
+  margin: 0 auto 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  color: var(--text-secondary);
+  font-weight: 700;
+  box-shadow: var(--card-shadow);
+  border-radius: var(--radius);
+
+  :global([data-theme="medieval"]) & {
+    background-color: var(--bg-card);
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+}
+
+.textBlock {
+  margin-bottom: 2.5rem;
+  width: 100%;
+}
+
+.tabSubTitle {
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 1.35rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  padding-bottom: 4px;
+
+  :global([data-theme="medieval"]) & {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+    font-family: var(--font-cinzel);
+  }
+}
+
+.tabText {
+  font-family: var(--font-primary);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  text-align: justify;
+  white-space: pre-line;
+
+  :global([data-theme="medieval"]) & {
+    font-family: var(--font-body);
+  }
+}
+
+.facebookLink {
+  margin-bottom: 1.5rem;
+  
+  a {
+    color: var(--accent);
+    font-weight: 700;
+    text-decoration: underline;
+    transition: color var(--transition);
+
+    &:hover {
+      color: var(--accent-hover);
+    }
+  }
+
+  :global([data-theme="medieval"]) & a {
+    color: var(--gold);
+  }
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+}
+
+.medievalTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+
+  th, td {
+    border: 1px solid var(--border);
+    padding: 1rem;
+    text-align: center;
+    font-family: var(--font-primary);
+  }
+
+  th {
+    background-color: var(--bg-tertiary);
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    font-weight: 700;
+  }
+
+  :global([data-theme="medieval"]) & {
+    background-color: var(--bg-card);
+
+    th, td {
+      border: 1px solid var(--border-strong);
+    }
+
+    th {
+      background-color: rgba(212, 175, 55, 0.05);
+      color: var(--gold);
+      font-family: var(--font-cinzel);
+    }
+  }
+}

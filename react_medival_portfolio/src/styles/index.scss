@@ -6,6 +6,7 @@
 @import './animations';
 @import './base';
 @import './components';
+@import './markdown';
 
 @theme {
 	/* Fonts */
@@ -19,20 +20,20 @@
 	--font-size-title: clamp(36px, 3vw, 48px);
 
 	/* Colors - Consolidated Palette */
-	--color-parchment: #f5e6ca;
-	--color-parchment-dark: #e8d5b0;
-	--color-gold: #d4af37;
-	--color-gold-light: #f0c75e;
-	--color-rust: #8c3a2b;
-	--color-rust-light: #b05a46;
-	--color-forest: #2c5e1a;
-	--color-forest-2: #4f9336;
-	--color-brown: #8b4513;
-	--color-dark-brown: #3a2921;
-	--color-dark-gray: #242424;
-	--color-torchlight: #ff9d00;
-	--color-magic-blue: #1e90ff;
-	--color-magic-purple: #9370db;
+	--color-parchment: var(--parchment);
+	--color-parchment-dark: var(--parchment-dark);
+	--color-gold: var(--gold);
+	--color-gold-light: var(--gold-light);
+	--color-rust: var(--rust);
+	--color-rust-light: var(--rust-light);
+	--color-forest: var(--forest);
+	--color-forest-2: var(--forest-2);
+	--color-brown: var(--brown);
+	--color-dark-brown: var(--dark-brown);
+	--color-dark-gray: var(--dark-gray);
+	--color-torchlight: var(--torchlight);
+	--color-magic-blue: var(--magic-blue);
+	--color-magic-purple: var(--magic-purple);
 
 	/* Custom Variables (Not necessarily utility classes) */
 	--scroll-gw: 5px;
@@ -133,6 +134,6 @@ html[data-theme='day'] {
 	border-radius: var(--scroll-gw);
 }
 
-@import './animations.scss';
-@import './base.scss';
-@import './components.scss';
+// @import './animations.scss';
+// @import './base.scss';
+// @import './components.scss';

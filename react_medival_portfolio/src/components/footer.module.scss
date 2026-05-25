@@ -1,0 +1,22 @@
+@use '../styles/variables' as *;
+@use '../styles/animations' as *;
+@use '../styles/mixins' as *;
+
+/* ===== MEDIEVAL FOOTER ===== */
+.medieval-footer {
+  background: rgba(0, 0, 0, 0.9);
+  color: var(--color-gold-light);
+  text-align: center;
+  padding: 1.25rem;
+  font-family: var(--font-cinzel);
+  border-top: 2px solid var(--color-gold);
+
+  p {
+    margin: 0.25rem 0;
+    font-size: 0.875rem;
+
+    &:first-child {
+      font-size: 1rem;
+    }
+  }
+}

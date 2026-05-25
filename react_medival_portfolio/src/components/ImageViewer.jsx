@@ -1,8 +1,10 @@
 import { useImageViewer } from '../lib/useImageViewer';
 import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import styles from './ImageViewer.module.scss';
 
 export default function ImageViewer() {
-  const { isOpen, src, closeImage } = useImageViewer();
+  const { isOpen, src, isMobile, closeImage } = useImageViewer();
 
   useEffect(() => {
     const handleEscape = (e) => {
@@ -16,22 +18,23 @@ export default function ImageViewer() {
 
   if (!isOpen || !src) return null;
 
-  return (
-    <div className="image-viewer-overlay fixed inset-0 z-[1000] bg-black/90 flex items-center justify-center animate-fade-in">
+  return createPortal(
+    <div className={styles['image-viewer-overlay']} onClick={closeImage}>
       <button
-        className="close-btn absolute top-4 right-4 text-white text-4xl hover:text-gold-light transition-colors z-10"
+        className={styles['close-btn']}
         onClick={closeImage}
         aria-label="Close image viewer"
       >
         ×
       </button>
-      <div className="image-container max-w-5xl max-h-[90vh] p-4 animate-rotate-in">
+      <div className={styles['image-container']} onClick={(e) => e.stopPropagation()}>
         <img
           src={src}
           alt="Full size image"
-          className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl border-2 border-gold"
+          className={`${styles['viewer-image']} ${isMobile ? styles['portrait'] : ''}`}
         />
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

@@ -1,0 +1,178 @@
+@use '../styles/tailwind-setup' as *;
+@use '../styles/variables' as *;
+@use '../styles/animations' as *;
+@use '../styles/mixins' as *;
+
+.section {
+    margin: 20px;
+}
+
+.medieval_section {
+    /* Base Layout */
+    @apply relative flex flex-col min-h-[90vh] overflow-hidden rounded-lg shadow-md transition-all duration-300;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+
+    /* Common pseudo-element setup */
+    &::before {
+        content: "";
+        @apply absolute inset-0 -z-10 bg-local;
+        opacity: 0;
+        transition: opacity 300ms ease;
+    }
+
+    /* Odd Child Styling */
+    &:nth-child(odd) {
+        :global([data-theme="medieval"]) & {
+            @apply bg-parchment-dark backdrop-opacity-80;
+            cursor: var(--cursor-friend-var, auto);
+
+            &::before {
+                opacity: 1;
+                background-color: #f5e6ca;
+                background-image: var(--bg-pattern-medieval-odd);
+                background-size: 20px 35px;
+                background-position: 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
+            }
+        }
+    }
+
+    /* Even Child Styling */
+    &:nth-child(even) {
+        :global([data-theme="medieval"]) & {
+            @apply bg-parchment backdrop-opacity-80;
+            cursor: var(--cursor-enemy-var, auto);
+
+            &::before {
+                opacity: 1;
+                background-color: #d0bf9e;
+                opacity: 0.9;
+                background-image: var(--bg-pattern-medieval-even);
+                background-position: 29px 0, 29px 0, 0 0, 0 0;
+                background-size: 29px 29px;
+            }
+        }
+    }
+}
+
+.parchment_container {
+    /* Layout & Base Styles */
+    @apply relative grow w-full h-full;
+    border-radius: var(--border-rad-sm);
+    box-shadow: 0 0 20px var(--shadow, #0002);
+    transition: transform 0.5s ease-in-out;
+    transform-style: preserve-3d;
+    border: 1px solid var(--border);
+
+    :global([data-theme="medieval"]) & {
+        border: 12px solid transparent;
+        border-image: var(--border-image-parchment);
+    }
+
+    /* The Magical Glow (::before) */
+    &::before {
+        content: "";
+        @apply absolute -inset-[5px] -z-10 opacity-60 blur-[5px];
+        border-radius: calc(var(--border-rad-sm) + 5px);
+        animation: glowingBorder 10s ease infinite;
+        @apply bg-[length:400%_400%];
+
+        /* Gradient using your theme colors */
+        background: linear-gradient(45deg,
+                var(--color-rust),
+                var(--color-torchlight),
+                var(--color-gold),
+                var(--color-parchment));
+
+        :global([data-theme="light"]) &,
+        :global([data-theme="dark"]) & {
+            display: none;
+        }
+    }
+}
+
+.parchment {
+    @apply relative grow w-full p-8 z-10 transition-all duration-1000 ease-out;
+    /* Scroll Animation initial state */
+    @apply opacity-0 translate-y-12;
+
+    background-color: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--card-shadow);
+
+    :global([data-theme="medieval"]) & {
+        border: 15px solid transparent;
+        box-shadow: 0 10px 30px var(--shadow, #0002),
+            0 0 20px rgba(210, 180, 140, 0.5) inset,
+            0 0 30px rgba(139, 69, 19, 0.3);
+    }
+
+    &.visible {
+        @apply opacity-100 translate-y-0;
+    }
+
+    &::before {
+        content: "";
+        @apply absolute -inset-[10px] border-2 border-gold rounded-[5px] pointer-events-none -z-10;
+        animation: parchment-glow 3s ease-in-out infinite alternate;
+
+        :global([data-theme="light"]) &,
+        :global([data-theme="dark"]) & {
+            display: none;
+        }
+    }
+
+    &::after {
+        content: "";
+        @apply absolute inset-0 opacity-10 pointer-events-none;
+        background: var(--bg-pattern-parchment-svg);
+
+        :global([data-theme="light"]) &,
+        :global([data-theme="dark"]) & {
+            display: none;
+        }
+    }
+}
+
+.section_title {
+    @apply relative block mx-auto text-center w-full text-[2.5rem] font-medieval;
+    margin-bottom: var(--spacing-xl);
+    color: var(--color-rust);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+
+    &::after {
+        content: "";
+        @apply absolute -bottom-1 left-0 w-full h-[1px];
+        animation: borderGlow 4s ease-in-out infinite;
+
+        background: linear-gradient(to right, transparent, var(--color-gold), transparent);
+    }
+}
+
+// ─── CRMEF variant ────────────────────────────────────────
+.crmef {
+  padding: 2rem 0;
+  margin-bottom: 2.5rem;
+  width: 100%;
+
+  .sectionTitle {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--accent);
+    text-align: center;
+    letter-spacing: 0.05em;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+
+    :global([data-theme="medieval"]) & {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+      font-family: var(--font-cinzel);
+    }
+  }
+}
+
+.sectionContent {
+  width: 100%;
+}

@@ -1,0 +1,154 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--navbar-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  background: rgba(18, 11, 8, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid var(--border-strong, var(--parchment-border));
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+
+  :global([data-theme="day"]) & {
+    background: rgba(245, 230, 202, 0.95);
+    border-bottom-color: var(--gold);
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brandIcon {
+  font-size: 1.5rem;
+}
+
+.brandName {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--text-primary);
+
+  :global([data-theme="medieval"]) & {
+    color: var(--gold);
+    font-family: var(--font-cinzel);
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+
+  @include tablet {
+    display: none;
+    position: absolute;
+    top: var(--navbar-height);
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background: rgba(18, 11, 8, 0.98);
+    padding: 2rem;
+    border-bottom: 2px solid var(--border-strong);
+    gap: 1.5rem;
+    box-shadow: var(--card-shadow);
+
+    &.open {
+      display: flex;
+    }
+
+    :global([data-theme="day"]) & {
+      background: rgba(245, 230, 202, 0.98);
+    }
+  }
+}
+
+.navLink {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all var(--transition);
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+
+  &:hover {
+    color: var(--accent, var(--gold));
+  }
+
+  &.active {
+    color: var(--accent, var(--gold));
+    border-bottom-color: var(--accent, var(--gold));
+    text-shadow: 0 0 8px rgba(198, 160, 82, 0.6);
+  }
+
+  :global([data-theme="medieval"]) & {
+    font-family: var(--font-cinzel);
+    color: var(--parchment-val);
+
+    &:hover,
+    &.active {
+      color: var(--gold-val);
+      border-bottom-color: var(--gold-val);
+    }
+  }
+}
+
+.menuBtn {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: color var(--transition);
+
+  &:hover {
+    color: var(--accent);
+  }
+
+  @include tablet {
+    display: block;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.settingsBtn {
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: transform var(--transition, 200ms ease), color var(--transition, 200ms ease);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+
+  &:hover {
+    color: var(--accent, var(--gold));
+    transform: rotate(30deg);
+  }
+
+  :global([data-theme="medieval"]) & {
+    color: var(--gold-val, var(--gold));
+  }
+}
