@@ -72,6 +72,15 @@ a:hover {
   color: var(--gold);
 }
 
+a[target="_blank"]:not([class*="btn"]):not([class*="link"]):not([class*="icon"]):not([class*="card"]):not([class*="readmore"])::after {
+  content: " ↗";
+  font-size: 0.8em;
+  display: inline-block;
+  margin-left: 0.25em;
+  vertical-align: super;
+  line-height: 0;
+}
+
 textarea {
   resize: none;
 }
@@ -114,4 +123,73 @@ html {
   animation-duration: 0.01ms !important;
   animation-iteration-count: 1 !important;
   transition-duration: 0.01ms !important;
-}
+}
+
+/* 📖 Glossary popovers styles */
+.glossary-term {
+  position: relative;
+  border-bottom: 1.5px dashed var(--gold, #d4af37) !important;
+  cursor: help;
+  display: inline-block;
+  
+  &::after {
+    content: attr(data-definition);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.85);
+    background: var(--stone-dark, #2c2416);
+    color: var(--parchment, #f5e6ca);
+    border: 1.5px solid var(--gold, #d4af37);
+    border-radius: 6px;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.78rem;
+    white-space: normal;
+    width: 240px;
+    z-index: 99999;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(212, 175, 55, 0.1);
+    pointer-events: none;
+    font-family: var(--font-body), serif;
+    font-weight: normal;
+    text-transform: none;
+    line-height: 1.4;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.25s;
+    text-shadow: none;
+    text-align: left;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.85);
+    border-width: 6px;
+    border-style: solid;
+    border-color: var(--gold, #d4af37) transparent transparent transparent;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 100000;
+    pointer-events: none;
+    transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.25s;
+  }
+
+  &:hover {
+    color: var(--gold, #d4af37) !important;
+    
+    &::after {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) scale(1);
+    }
+    
+    &::before {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) scale(1);
+    }
+  }
+}
+

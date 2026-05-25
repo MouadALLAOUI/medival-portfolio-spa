@@ -10,8 +10,8 @@ const ENV = {
   },
 };
 
-const APP_ENV = "DEV";
-
 export default function GET_ENV() {
-  return ENV[APP_ENV];
+  // Read from Vite's environment variables. Fallback to DEV if not explicitly set to prod
+  const appEnv = import.meta.env.VITE_APP_ENV === "prod" ? "PROD" : "DEV";
+  return ENV[appEnv];
 }

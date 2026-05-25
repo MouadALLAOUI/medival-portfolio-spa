@@ -1,12 +1,16 @@
+import { useSettings } from '../lib/useSettings';
 import styles from './footer.module.scss';
 
 const Footer = () => {
+    const { t } = useSettings();
+    const currentYear = new Date().getFullYear();
+
     return (
         <footer className={styles['medieval-footer']}>
-            <p>© 2023 Mouad the Coder | Crafted with magical code and enchanted pixels</p>
-            <p>This grimoire shall not be copied without express permission from the wizard</p>
+            <p>{t('COMMON.footer.copyright', { year: currentYear })}</p>
+            <p>{t('COMMON.footer.disclaimer')}</p>
         </footer>
-    )
-}
+    );
+};
 
-export default Footer;
+export default Footer;

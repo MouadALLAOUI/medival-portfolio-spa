@@ -63,6 +63,7 @@
     transition: transform 0.5s ease-in-out;
     transform-style: preserve-3d;
     border: 1px solid var(--border);
+    padding: 2rem;
 
     :global([data-theme="medieval"]) & {
         border: 12px solid transparent;
@@ -91,7 +92,7 @@
     }
 }
 
-.parchment {
+:global(.parchment) {
     @apply relative grow w-full p-8 z-10 transition-all duration-1000 ease-out;
     /* Scroll Animation initial state */
     @apply opacity-0 translate-y-12;
@@ -151,28 +152,28 @@
 
 // ─── CRMEF variant ────────────────────────────────────────
 .crmef {
-  padding: 2rem 0;
-  margin-bottom: 2.5rem;
-  width: 100%;
+    padding: 2rem 0;
+    margin-bottom: 2.5rem;
+    width: 100%;
 
-  .sectionTitle {
-    font-family: var(--font-heading);
-    font-size: 1.25rem;
-    color: var(--accent);
-    text-align: center;
-    letter-spacing: 0.05em;
-    padding-bottom: 0.75rem;
-    margin-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border);
+    .sectionTitle {
+        font-family: var(--font-heading);
+        font-size: 1.25rem;
+        color: var(--accent);
+        text-align: center;
+        letter-spacing: 0.05em;
+        padding-bottom: 0.75rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border);
 
-    :global([data-theme="medieval"]) & {
-      color: var(--gold);
-      border-bottom-color: var(--gold);
-      font-family: var(--font-cinzel);
+        :global([data-theme="medieval"]) & {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+            font-family: var(--font-cinzel);
+        }
     }
-  }
 }
 
 .sectionContent {
-  width: 100%;
-}
+    width: 100%;
+}

@@ -27,6 +27,10 @@ const useSettingValue = (contextKey) => {
 
 const SettingControl = ({ setting }) => {
   const [value, setValue] = useSettingValue(setting.contextKey);
+  const { t } = useSettings();
+
+  const label = t(`COMMON.settings.keys.${setting.id}.label`) || setting.label;
+  const description = t(`COMMON.settings.keys.${setting.id}.description`) || setting.description;
 
   // ── Theme select ─────────────────────────────────────────────
   if (setting.type === 'theme-select') {
@@ -34,20 +38,22 @@ const SettingControl = ({ setting }) => {
     return (
       <div className={styles.control}>
         <div className={styles.controlHeader}>
-          <span className={styles.controlLabel}>{setting.label}</span>
-          <span className={styles.controlDesc}>{setting.description}</span>
+          <span className={styles.controlLabel}>{label}</span>
+          <span className={styles.controlDesc}>{description}</span>
         </div>
         <div className={styles.themeGrid}>
-          {Object.values(themes).map(t => (
+          {Object.values(themes).map(themesItem => (
             <button
-              key={t.id}
-              className={`${styles.themeCard} ${value === t.id ? styles.active : ''}`}
-              onClick={() => setValue(t.id)}
+              key={themesItem.id}
+              className={`${styles.themeCard} ${value === themesItem.id ? styles.active : ''}`}
+              onClick={() => setValue(themesItem.id)}
               type="button"
             >
-              <span className={styles.optionIcon}>{t.icon}</span>
-              <span className={styles.optionLabel}>{t.label}</span>
-              {value === t.id && <span className={styles.check}>✓</span>}
+              <span className={styles.optionIcon}>{themesItem.icon}</span>
+              <span className={styles.optionLabel}>
+                {t(`COMMON.settings.keys.theme.options.${themesItem.id}.label`) || themesItem.label}
+              </span>
+              {value === themesItem.id && <span className={styles.check}>✓</span>}
             </button>
           ))}
         </div>
@@ -60,8 +66,8 @@ const SettingControl = ({ setting }) => {
     return (
       <div className={styles.control}>
         <div className={styles.controlHeader}>
-          <span className={styles.controlLabel}>{setting.label}</span>
-          <span className={styles.controlDesc}>{setting.description}</span>
+          <span className={styles.controlLabel}>{label}</span>
+          <span className={styles.controlDesc}>{description}</span>
         </div>
         <div className={styles.optionsGrid}>
           {setting.options.map(opt => (
@@ -72,9 +78,13 @@ const SettingControl = ({ setting }) => {
               type="button"
             >
               <span className={styles.optionIcon}>{opt.icon}</span>
-              <span className={styles.optionLabel}>{opt.label}</span>
-              {opt.description && (
-                <span className={styles.optionDesc}>{opt.description}</span>
+              <span className={styles.optionLabel}>
+                {t(`COMMON.settings.keys.${setting.id}.options.${opt.id}.label`) || opt.label}
+              </span>
+              {(t(`COMMON.settings.keys.${setting.id}.options.${opt.id}.description`) || opt.description) && (
+                <span className={styles.optionDesc}>
+                  {t(`COMMON.settings.keys.${setting.id}.options.${opt.id}.description`) || opt.description}
+                </span>
               )}
               {value === opt.id && <span className={styles.check}>✓</span>}
             </button>
@@ -90,8 +100,8 @@ const SettingControl = ({ setting }) => {
       <div className={styles.control}>
         <div className={styles.toggleRow}>
           <div className={styles.toggleInfo}>
-            <span className={styles.controlLabel}>{setting.label}</span>
-            <span className={styles.controlDesc}>{setting.description}</span>
+            <span className={styles.controlLabel}>{label}</span>
+            <span className={styles.controlDesc}>{description}</span>
           </div>
           <button
             className={`${styles.toggle} ${value ? styles.toggleOn : ''}`}

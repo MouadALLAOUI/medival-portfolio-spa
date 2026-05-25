@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { usePdfSettings } from '../../lib/contexts/PdfSettingsContext';
+import { useSettings } from '../../lib/useSettings';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 import styles from './PdfViewer.module.scss';
@@ -14,6 +15,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 const PdfViewer = ({ file, label = 'Open Scroll', className }) => {
   const pdfCtx = usePdfSettings();
+  const { t } = useSettings();
   const pdfMode = pdfCtx?.pdfMode || 'modal';
   const pdfReadingMode = pdfCtx?.pdfReadingMode || 'paginated';
 
@@ -103,7 +105,7 @@ const PdfViewer = ({ file, label = 'Open Scroll', className }) => {
                 onClick={() => setPageNumber(p => Math.max(1, p - 1))}
                 disabled={pageNumber <= 1}
               >
-                ← Previous
+                {t('COMMON.pdfViewer.previous')}
               </button>
               <span className={styles.pageInfo}>{pageNumber} / {numPages}</span>
               <button
@@ -112,7 +114,7 @@ const PdfViewer = ({ file, label = 'Open Scroll', className }) => {
                 onClick={() => setPageNumber(p => Math.min(numPages, p + 1))}
                 disabled={pageNumber >= numPages}
               >
-                Next →
+                {t('COMMON.pdfViewer.next')}
               </button>
             </div>
           </div>
@@ -141,7 +143,7 @@ const PdfViewer = ({ file, label = 'Open Scroll', className }) => {
           <div className={styles.separatedStripView}>
             {Array.from({ length: numPages }, (_, i) => (
               <div key={i + 1} className={styles.separatedPage}>
-                <div className={styles.pageNumber}>Page {i + 1}</div>
+                <div className={styles.pageNumber}>{t('COMMON.pdfViewer.pagePrefix')} {i + 1}</div>
                 <Page
                   pageNumber={i + 1}
                   width={getPageWidth()}
@@ -196,40 +198,40 @@ const PdfViewer = ({ file, label = 'Open Scroll', className }) => {
   // Shared PDF document content
   const PdfContent = (
     <div className={styles.pdfContent} key={`${file}-${pdfReadingMode}`}>
-      {loading && <div className={styles.loader}>🔮 Unrolling scroll...</div>}
+      {loading && <div className={styles.loader}>{t('COMMON.pdfViewer.loading')}</div>}
       <div className={styles.pdfFrame}>
         {!checkingFile && !fileExists ? (
           <div className={styles.pdfErrorMsg}>
-            ⚠️ Le fichier PDF demandé n'existe pas ou est introuvable.
+            {t('COMMON.pdfViewer.errorNotFound')}
           </div>
         ) : (
           <Document
-            file={file}
-            onLoadSuccess={({ numPages }) => {
-              setNumPages(numPages);
-              setLoading(false);
-            }}
-            onLoadError={(err) => {
-              console.error('PDF load error:', err);
-              setFileExists(false);
-              setLoading(false);
-            }}
-            loading=""
-            externalLinkTarget="_self"
-            error={
-              <div className={styles.pdfErrorMsg}>
-                ⚠️ Le parchemin n'a pas pu être chargé ou est corrompu.
-              </div>
-            }
-            noData={
-              <div className={styles.pdfErrorMsg}>
-                Aucun parchemin spécifié.
-              </div>
-            }
-          >
-            {fileExists && renderPages()}
-          </Document>
-        )}
+              file={file}
+              onLoadSuccess={({ numPages }) => {
+                setNumPages(numPages);
+                setLoading(false);
+              }}
+              onLoadError={(err) => {
+                console.error('PDF load error:', err);
+                setFileExists(false);
+                setLoading(false);
+              }}
+              loading=""
+              externalLinkTarget="_self"
+              error={
+                <div className={styles.pdfErrorMsg}>
+                  {t('COMMON.pdfViewer.errorCorrupted')}
+                </div>
+              }
+              noData={
+                <div className={styles.pdfErrorMsg}>
+                  {t('COMMON.pdfViewer.errorNoData')}
+                </div>
+              }
+            >
+              {fileExists && renderPages()}
+            </Document>
+          )}
       </div>
     </div>
   );

@@ -1,10 +1,12 @@
 import { useImageViewer } from '../lib/useImageViewer';
+import { useSettings } from '../lib/useSettings';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './ImageViewer.module.scss';
 
 export default function ImageViewer() {
   const { isOpen, src, isMobile, closeImage } = useImageViewer();
+  const { t } = useSettings();
 
   useEffect(() => {
     const handleEscape = (e) => {
@@ -23,7 +25,7 @@ export default function ImageViewer() {
       <button
         className={styles['close-btn']}
         onClick={closeImage}
-        aria-label="Close image viewer"
+        aria-label={t('COMMON.settings.closeBtn') || "Close image viewer"}
       >
         ×
       </button>

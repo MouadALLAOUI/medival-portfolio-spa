@@ -19,9 +19,31 @@ export default function SettingsProvider({ children }) {
     }, [language]);
 
     const t = useCallback(
-        (key) => {
+        (key, params = null) => {
             const dict = translations[language] || translations.en;
-            return dict[key] || translations.en[key] || key;
+            
+            const getNested = (obj, path) => {
+                return path.split('.').reduce((acc, part) => {
+                    return acc && acc[part] !== undefined ? acc[part] : undefined;
+                }, obj);
+            };
+
+            let val = getNested(dict, key);
+            if (val === undefined) {
+                val = getNested(translations.en, key);
+            }
+
+            if (val === undefined) return key;
+
+            if (params && typeof params === 'object') {
+                let interpolated = String(val);
+                Object.entries(params).forEach(([k, v]) => {
+                    interpolated = interpolated.replace(new RegExp(`{{\\s*${k}\\s*}}`, 'g'), String(v));
+                });
+                return interpolated;
+            }
+
+            return val;
         },
         [language]
     );
