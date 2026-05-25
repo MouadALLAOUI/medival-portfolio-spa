@@ -1,0 +1,44 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.section {
+  width: 100%;
+}
+
+.modulesList {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+.moduleItem {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--card-shadow);
+
+  :global([data-theme="medieval"]) & {
+    background: var(--bg-card);
+    border-color: var(--border-strong);
+  }
+}
+
+.moduleName {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  background: var(--bg-tertiary);
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-sm);
+
+  :global([data-theme="medieval"]) & {
+    color: var(--gold);
+    background: rgba(212, 175, 55, 0.05);
+    font-family: var(--font-cinzel);
+  }
+}

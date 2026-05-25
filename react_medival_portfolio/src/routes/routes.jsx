@@ -3,17 +3,12 @@ import { lazy, Suspense } from 'react';
 import Layouts from '../templates/layouts';
 
 const Home = lazy(() => import('../pages/home/home'));
-
-function ComingSoon({ title }) {
-  return (
-    <main className="min-h-[60vh] grid place-items-center px-4">
-      <div className="parchment p-8 text-center max-w-2xl">
-        <h1 className="section-title">{title}</h1>
-        <p>This route exists for parity with the HTML reference and will be migrated next.</p>
-      </div>
-    </main>
-  );
-}
+const ThankYou = lazy(() => import('../pages/thankyou/thankyou'));
+const CRMEF = lazy(() => import('../pages/CRMEF/CrmefPage'));
+const BlogsPage = lazy(() => import('../pages/blogs/BlogsPage'));
+const BlogPost = lazy(() => import('../pages/blogs/BlogPost'));
+const FallingLetters = lazy(() => import('../pages/fallingletters/fallingletters'));
+const SettingsPage = lazy(() => import('../pages/Settings/SettingsPage'));
 
 export default function AppRoutes() {
   return (
@@ -28,12 +23,14 @@ export default function AppRoutes() {
         <Route path="/" element={<Layouts />}>
           <Route index element={<Home />} />
           <Route path="home" element={<Home />} />
-          <Route path="thankyou" element={<ComingSoon title="Thank You" />} />
-          <Route path="CMREF" element={<ComingSoon title="CMREF Portfolio" />} />
-          <Route path="blogs" element={<ComingSoon title="Blogs" />} />
-          <Route path="blogs/blog" element={<ComingSoon title="Blog Details" />} />
-          <Route path="fallingletters" element={<ComingSoon title="Falling Letters" />} />
+          <Route path="thankyou" element={<ThankYou />} />
+          <Route path="blogs" element={<BlogsPage />} />
+          <Route path="blogs/:slug" element={<BlogPost />} />
+          <Route path="fallingletters" element={<FallingLetters />} />
+          <Route path="settings" element={<SettingsPage />} />
         </Route>
+        <Route path="CRMEF" element={<CRMEF />} />
+        <Route path="crmef" element={<CRMEF />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Suspense>

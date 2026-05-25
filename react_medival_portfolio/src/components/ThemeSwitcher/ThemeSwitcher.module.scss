@@ -1,0 +1,90 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.switcher {
+    display: flex;
+    gap: 0.25rem;
+    padding: 0.25rem;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    align-items: center;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+
+    :global([data-theme="medieval"]) & {
+        background: rgba(139, 69, 19, 0.15);
+        border: 2px solid var(--accent);
+        border-radius: var(--radius, 4px);
+    }
+
+    :global([data-theme="dark"]) & {
+        background: rgba(255, 255, 255, 0.05);
+    }
+}
+
+.themeBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.375rem 0.75rem;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 200ms ease;
+    white-space: nowrap;
+
+    :global([data-theme="medieval"]) & {
+        font-family: var(--font-medieval);
+        border-radius: var(--radius, 4px);
+        color: var(--text-secondary);
+    }
+
+    .icon {
+        font-size: 0.95rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .label {
+        @include tablet {
+            display: none; // compact icon-only buttons on mobile
+        }
+    }
+
+    &:hover {
+        color: var(--text-primary);
+        background: rgba(0, 0, 0, 0.03);
+
+        :global([data-theme="dark"]) & {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        :global([data-theme="medieval"]) & {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--accent);
+        }
+    }
+
+    &.active {
+        background: var(--bg-primary);
+        color: var(--accent);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+
+        :global([data-theme="dark"]) & {
+            background: var(--bg-secondary);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        :global([data-theme="medieval"]) & {
+            background: var(--bg-secondary);
+            border: 1px solid var(--accent);
+            box-shadow: none;
+        }
+    }
+}

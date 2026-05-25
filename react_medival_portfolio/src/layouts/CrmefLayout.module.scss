@@ -1,0 +1,22 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.layout {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  padding: calc(var(--navbar-height) + 2rem) var(--section-padding-x) var(--section-padding-y);
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+
+  @include tablet {
+    padding: calc(var(--navbar-height) + 1.5rem) 1.25rem 2rem;
+  }
+}
