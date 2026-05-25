@@ -1,6 +1,36 @@
 @use './mixins' as *;
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -moz-user-select: none;
+  user-select: none;
+  transition:
+    background-color 300ms ease,
+    color 300ms ease,
+    border-color 300ms ease,
+    box-shadow 300ms ease,
+    opacity 300ms ease;
+}
+
+.no-theme-transition,
+.no-transition {
+  transition: none !important;
+}
+
+// Global section rhythm
+.section {
+  padding: var(--section-padding-y) var(--section-padding-x);
+}
+
+// Between sections
+section + section,
+.section + .section {
+  margin-top: var(--section-gap);
+}
 
 html {
   scroll-behavior: smooth;
@@ -24,12 +54,27 @@ body::before {
   background: var(--body-bg-before);
 }
 
-h1,h2,h3,h4,h5,h6 { font-family: var(--font-medieval); }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-medieval);
+}
 
-a { color: var(--brown); text-decoration: none; }
-a:hover { color: var(--gold); }
+a {
+  color: var(--brown);
+  text-decoration: none;
+}
 
-textarea { resize: none; }
+a:hover {
+  color: var(--gold);
+}
+
+textarea {
+  resize: none;
+}
 
 :focus-visible {
   outline: 3px solid var(--gold);
@@ -39,3 +84,34 @@ textarea { resize: none; }
 html {
   @include custom-scrollbar;
 }
+
+/* Body theme variables are dynamically set in _variables.scss based on active data-theme */
+
+::-webkit-scrollbar {
+  width: var(--scroll-gw);
+  height: var(--scroll-gh);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-dark-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: var(--scroll-gw);
+}
+
+.alert-bar {
+  background-color: var(--parchment-dark, #e8d5b0);
+  color: var(--rust-light, #b05a46);
+  padding: var(--spacing-sm);
+  text-align: center;
+  font-family: var(--font-medieval, "MedievalSharp", cursive);
+  font-size: 1rem;
+}
+
+[data-reduced-motion="true"] * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}

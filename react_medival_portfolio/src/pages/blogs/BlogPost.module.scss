@@ -1,0 +1,137 @@
+@use '../../styles/variables' as *;
+@use '../../styles/animations' as *;
+@use '../../styles/mixins' as *;
+
+/* ===== BLOG POST PAGE POLISH ===== */
+.postPage {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 2rem var(--section-padding-x);
+  width: 100%;
+}
+
+.back-link {
+  font-family: var(--font-cinzel);
+  font-size: 0.82rem;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition);
+
+  &:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+  }
+
+  :global([data-theme="medieval"]) & {
+    color: var(--gold-val);
+
+    &:hover {
+      color: var(--gold-light-val);
+    }
+  }
+}
+
+.postHeader {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+
+  :global([data-theme="medieval"]) & {
+    border-bottom-color: var(--gold-val);
+  }
+}
+
+.postTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+
+  :global([data-theme="medieval"]) & {
+    font-family: var(--font-medieval);
+    color: var(--color-brown);
+  }
+}
+
+.postMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.tag-pill {
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.65rem;
+  font-family: var(--font-cinzel);
+  letter-spacing: 0.03em;
+
+  :global([data-theme="medieval"]) & {
+    background: var(--dark-brown-val);
+    color: var(--parchment-val);
+    border-color: var(--gold-val);
+  }
+}
+
+.postCover {
+  width: 100%;
+  border-radius: var(--radius);
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+
+  :global([data-theme="medieval"]) & {
+    border: 3px solid var(--gold-val);
+    box-shadow: 0 4px 16px rgba(44, 24, 16, 0.2);
+  }
+}
+
+.postNav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+
+  :global([data-theme="medieval"]) & {
+    border-top-color: var(--gold-val);
+  }
+}
+
+.postNavBtn {
+  padding: 0.625rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-decoration: none;
+  font-family: var(--font-cinzel);
+  font-weight: 600;
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  :global([data-theme="medieval"]) & {
+    background: var(--color-brown, #8b5a2b);
+    color: var(--color-parchment, #f3e1b8);
+    border-color: var(--color-brown);
+
+    &:hover {
+      background: var(--color-gold, #d4af37);
+      color: var(--color-brown, #8b5a2b);
+      border-color: var(--color-gold);
+    }
+  }
+}

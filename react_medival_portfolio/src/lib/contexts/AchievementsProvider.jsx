@@ -2,6 +2,31 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AchievementsContext } from "./achievements.context.js";
 import { achievements as definitions } from "../../data/achievements";
 import { readAchievementsState, writeAchievementsState } from "../utils/achievementsStorage";
+import GET_ENV from "../../config/env";
+import setCookie, { getCookie } from "../utils/cookies";
+import { useAlerts } from "../useAlerts";
+
+const env = GET_ENV();
+
+async function triggerTrackMe(ip, agent, page, referrer) {
+  if (!env.API_URL) return;
+  try {
+    const response = await fetch(`${env.API_URL}/track.php`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-API-KEY": `${env.API_KEY}`,
+      },
+      body: JSON.stringify({ ip, agent, page, referrer, time: new Date().toISOString() }),
+    });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    console.log("✅ Tracking Response:", data);
+  } catch (error) {
+    console.error("❌ Tracking Error:", error);
+  }
+}
+
 
 const initialState = {
     version: 1,
@@ -42,9 +67,38 @@ function isCompleted(def, state) {
 }
 
 export default function AchievementsProvider({ children }) {
+    const { showAlert } = useAlerts();
     const [state, setState] = useState(initialState);
     const saveTimerRef = useRef(null);
     const stateRef = useRef(state);
+
+    useEffect(() => {
+        const dailyVisited = getCookie("dailyVisitHome");
+        const userAgent = navigator.userAgent;
+        const referrer = document.referrer || "Direct visit";
+        
+        if (!dailyVisited) {
+            const today = new Date().toISOString().split("T")[0];
+            setCookie("dailyVisitHome", today, { expiresAtMidnight: true });
+            showAlert("Welcome to my palace, hope you find whatever you desire", "royal", 3000);
+            showAlert("this portfolio is still under development thank you for your understanding", "chaos", 4000);
+            showAlert("current section under development is projects", "info", 4000);
+            
+            let ip = "0.0.0.0";
+            fetch("https://api.ipify.org?format=json")
+                .then(res => res.json())
+                .then(data => {
+                    ip = data.ip || "0.0.0.0";
+                    triggerTrackMe(ip, userAgent, "home", referrer);
+                })
+                .catch(() => {
+                    triggerTrackMe(ip, userAgent, "home", referrer);
+                });
+        } else {
+            showAlert("Welcome back", "greeting", 2000);
+        }
+    }, [showAlert]);
+
 
     const updateState = useCallback((fn) => {
         setState((prev) => {

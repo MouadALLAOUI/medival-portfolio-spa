@@ -29,28 +29,94 @@ $copper: #b87333;
 $iron: #71797e;
 $crimson: #8b1538;
 
-:root {
-  --parchment: #{$parchment};
-  --parchment-dark: #{$parchment-dark};
-  --parchment-dark-alpha: #{$parchment-dark-alpha};
-  --gold: #{$gold};
-  --gold-light: #{$gold-light};
-  --brown: #{$brown};
-  --dark-brown: #{$dark-brown};
-  --torchlight: #{$torchlight};
-  --magic-blue: #{$magic-blue};
-  --magic-purple: #{$magic-purple};
-  --shadow: #{$shadow};
-  --rust: #{$rust};
-  --rust-light: #{$rust-light};
-  --forest: #{$forest};
-  --forest-2: #{$forest-2};
-  --purple-glow: #{$purple-glow};
-  --glow: #{$glow};
-  --dark-gray: #{$dark-gray};
+/**
+ * THEME SYSTEM SYSTEMA
+ * To add a new theme in the future:
+ * 1. Add an entry to the THEMES object in ThemeProvider.jsx.
+ * 2. Add a `[data-theme="your-theme-id"]` block here in _variables.scss.
+ * 3. Override each semantic CSS custom property (--bg-primary, --accent, etc.).
+ * 4. That is all - the entire system adapts instantly without component changes!
+ */
 
+:root {
+  /* FONT STACK ALIASES */
+  --font-cinzel: #{$font-cinzel};
+  --font-fell: #{$font-fell};
   --font-medieval: #{$font-medieval};
   --font-body: #{$font-body};
+
+  // Backgrounds
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --bg-card: #ffffff;
+
+  // Text
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --text-inverse: #ffffff;
+
+  // Accent
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-light: #eff6ff;
+  --accent-secondary: #7c3aed;
+
+  // Borders
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+
+  // Cards
+  --card-bg: #ffffff;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --card-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.12);
+
+  // Spacing rhythm
+  --section-padding-y: 5rem;
+  --section-padding-x: 2rem;
+  --section-gap: 2rem;
+  --card-padding: 1.5rem;
+  --card-radius: 0.75rem;
+
+  // Typography
+  --font-primary: 'Lora', serif;
+  --font-heading: 'Cinzel', serif;
+
+  // Misc
+  --navbar-height: 64px;
+  --transition: 200ms ease;
+  --radius: 0.75rem;
+  --radius-sm: 0.375rem;
+  --radius-lg: 1rem;
+
+  /* Aliasing local variables to preserve current design logic */
+  --parchment: var(--bg-primary);
+  --parchment-dark: var(--bg-secondary);
+  --parchment-dark-alpha: rgba(248, 250, 252, 0.5);
+  --gold: var(--accent);
+  --gold-light: var(--accent-secondary);
+  --brown: var(--text-secondary);
+  --dark-brown: var(--text-primary);
+  --torchlight: var(--accent-secondary);
+  --magic-blue: var(--accent);
+  --magic-purple: #8b5cf6;
+  --shadow: rgba(0, 0, 0, 0.05);
+  --rust: var(--accent-secondary);
+  --rust-light: #60a5fa;
+  --forest: #10b981;
+  --forest-2: #34d399;
+  --purple-glow: rgba(139, 92, 246, 0.1);
+  --glow: rgba(255, 255, 255, 0.7);
+  --dark-gray: #1e293b;
+
+  --stone-dark: #0f172a;
+  --stone-medium: #1e293b;
+  --stone-light: #334155;
+  --copper: var(--accent);
+  --iron: var(--text-secondary);
+  --crimson: #ef4444;
+
   --fs-header: clamp(22px, 1.8vw, 28px);
   --fs-vsm: clamp(10px, 0.7vw, 12px);
   --fs-sm: clamp(13px, 0.9vw, 16px);
@@ -70,21 +136,204 @@ $crimson: #8b1538;
   --scroll-gh: 3px;
 
   --border-rad-sm: 10px;
-  --crystal-ball-wh: 150px;
-  --color-oracle-glass: radial-gradient(
-    circle at 30% 30%,
-    rgba(255, 255, 255, 0.8),
-    rgba(30, 144, 255, 0.4),
-    rgba(147, 112, 219, 0.6)
-  );
-  --color-oracle-sparkles: radial-gradient(
-      circle,
-      rgba(255, 255, 255, 0.8) 1px,
-      transparent 1px
-    ),
-    radial-gradient(circle, rgba(147, 112, 219, 0.6) 1px, transparent 1px),
-    radial-gradient(circle, rgba(30, 144, 255, 0.4) 1px, transparent 1px);
+  --crystal-ball-wh: 100px;
 
-  --body-bg: linear-gradient(45deg, #242424, #3a2921);
+  --color-oracle-glass: radial-gradient(circle at 30% 30%,
+      rgba(255, 255, 255, 0.8),
+      rgba(37, 99, 235, 0.4),
+      rgba(139, 92, 246, 0.6));
+  --color-oracle-sparkles: radial-gradient(circle,
+      rgba(255, 255, 255, 0.8) 1px,
+      transparent 1px),
+    radial-gradient(circle, rgba(139, 92, 246, 0.6) 1px, transparent 1px),
+    radial-gradient(circle, rgba(37, 99, 235, 0.4) 1px, transparent 1px);
+
+  --body-bg: var(--bg-primary);
+  --body-bg-before: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, var(--bg-primary) 100%);
+
+  --border-decoration: none;
+  --cursor-friend-var: auto;
+  --cursor-enemy-var: auto;
+}
+
+/* SHADOW REALM THEME (Dark Theme) */
+[data-theme="dark"] {
+  // Backgrounds
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --bg-card: #1e293b;
+
+  // Text
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-inverse: #0f172a;
+
+  // Accent
+  --accent: #60a5fa;
+  --accent-hover: #93c5fd;
+  --accent-light: #1e3a5f;
+  --accent-secondary: #a78bfa;
+
+  // Borders
+  --border: #334155;
+  --border-strong: #475569;
+
+  // Cards
+  --card-bg: #1e293b;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --card-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.5);
+
+  // Spacing rhythm
+  --section-padding-y: 5rem;
+  --section-padding-x: 2rem;
+  --section-gap: 2rem;
+  --card-padding: 1.5rem;
+  --card-radius: 0.75rem;
+
+  // Typography
+  --font-primary: 'Lora', serif;
+  --font-heading: 'Cinzel', serif;
+  --radius: 0.75rem;
+
+  --parchment: var(--bg-primary);
+  --parchment-dark: var(--bg-secondary);
+  --parchment-dark-alpha: rgba(30, 41, 59, 0.5);
+  --gold: var(--accent);
+  --gold-light: var(--accent-secondary);
+  --brown: var(--text-secondary);
+  --dark-brown: var(--text-primary);
+  --torchlight: var(--accent-secondary);
+  --magic-blue: var(--accent);
+  --magic-purple: #c084fc;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --rust: var(--accent-secondary);
+  --rust-light: #bfdbfe;
+  --forest: #34d399;
+  --forest-2: #6ee7b7;
+  --purple-glow: rgba(192, 132, 252, 0.1);
+  --glow: rgba(15, 23, 42, 0.7);
+  --dark-gray: #f1f5f9;
+
+  --stone-dark: #0f172a;
+  --stone-medium: #1e293b;
+  --stone-light: #334155;
+  --copper: var(--accent);
+  --iron: var(--text-secondary);
+  --crimson: #f87171;
+
+  --body-bg: var(--bg-primary);
+  --body-bg-before: radial-gradient(circle, rgba(96, 165, 250, 0.05) 0%, var(--bg-primary) 100%);
+
+  --border-decoration: none;
+  --cursor-friend-var: auto;
+  --cursor-enemy-var: auto;
+}
+
+/* MEDIEVAL SCROLL THEME (Existing Theme Preserved Pixel-Perfect) */
+[data-theme="medieval"] {
+  /* Real Medieval constants mapped out as aliases */
+  --parchment-val: #{$parchment};
+  --parchment-dark-val: #{$parchment-dark};
+  --parchment-dark-alpha-val: #{$parchment-dark-alpha};
+  --gold-val: #{$gold};
+  --gold-light-val: #{$gold-light};
+  --brown-val: #{$brown};
+  --dark-brown-val: #{$dark-brown};
+  --torchlight-val: #{$torchlight};
+  --magic-blue-val: #{$magic-blue};
+  --magic-purple-val: #{$magic-purple};
+  --shadow-val: #{$shadow};
+  --rust-val: #{$rust};
+  --rust-light-val: #{$rust-light};
+  --forest-val: #{$forest};
+  --forest-2-val: #{$forest-2};
+  --purple-glow-val: #{$purple-glow};
+  --glow-val: #{$glow};
+  --dark-gray-val: #{$dark-gray};
+
+  --stone-dark-val: #{$stone-dark};
+  --stone-medium-val: #{$stone-medium};
+  --stone-light-val: #{$stone-light};
+  --copper-val: #{$copper};
+  --iron-val: #{$iron};
+  --crimson-val: #{$crimson};
+
+  // Backgrounds
+  --bg-primary: var(--parchment-val);
+  --bg-secondary: var(--parchment-dark-val);
+  --bg-tertiary: var(--parchment-dark-val);
+  --bg-card: rgba(244, 228, 188, 0.8);
+
+  // Text
+  --text-primary: var(--dark-brown-val);
+  --text-secondary: var(--brown-val);
+  --text-muted: var(--brown-val);
+  --text-inverse: var(--parchment-val);
+
+  // Accent
+  --accent: var(--gold-val);
+  --accent-hover: #b45309;
+  --accent-light: rgba(201, 168, 76, 0.1);
+  --accent-secondary: var(--rust-val);
+
+  // Borders
+  --border: rgba(201, 168, 76, 0.3);
+  --border-strong: rgba(201, 168, 76, 0.6);
+
+  // Cards
+  --card-bg: rgba(244, 228, 188, 0.8);
+  --card-shadow: 0 2px 8px rgba(44, 24, 16, 0.2);
+  --card-shadow-hover: 0 4px 16px rgba(44, 24, 16, 0.3);
+
+  // Spacing rhythm
+  --section-padding-y: 5rem;
+  --section-padding-x: 2rem;
+  --section-gap: 2rem;
+  --card-padding: 1.5rem;
+  --card-radius: 0.25rem;
+
+  // Typography
+  --font-primary: var(--font-body);
+  --font-heading: var(--font-medieval);
+  --radius: 0.25rem;
+
+  /* Color mapping values */
+  --parchment: var(--parchment-val);
+  --parchment-dark: var(--parchment-dark-val);
+  --parchment-dark-alpha: var(--parchment-dark-alpha-val);
+  --gold: var(--gold-val);
+  --gold-light: var(--gold-light-val);
+  --brown: var(--brown-val);
+  --dark-brown: var(--dark-brown-val);
+  --torchlight: var(--torchlight-val);
+  --magic-blue: var(--magic-blue-val);
+  --magic-purple: var(--magic-purple-val);
+  --shadow: var(--shadow-val);
+  --rust: var(--rust-val);
+  --rust-light: var(--rust-light-val);
+  --forest: var(--forest-val);
+  --forest-2: var(--forest-2-val);
+  --purple-glow: var(--purple-glow-val);
+  --glow: var(--glow-val);
+  --dark-gray: var(--dark-gray-val);
+
+  --stone-dark: var(--stone-dark-val);
+  --stone-medium: var(--stone-medium-val);
+  --stone-light: var(--stone-light-val);
+  --copper: var(--copper-val);
+  --iron: var(--iron-val);
+  --crimson: var(--crimson-val);
+
+  /* Custom textures and backgrounds */
+  --body-bg:
+    url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" ><rect width="100" height="100" fill="%23222222" /><path d="M0,0 L100,100 M100,0 L0,100" stroke="%23333333" stroke-width="1" /></svg>'),
+    linear-gradient(45deg, var(--stone-dark-val), var(--stone-medium-val));
   --body-bg-before: radial-gradient(circle, rgba(139, 69, 19, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%);
+
+  --border-decoration: var(--border-image-parchment) 30 round;
+
+  --cursor-friend-var: var(--cursor-friend);
+  --cursor-enemy-var: var(--cursor-enemy);
 }

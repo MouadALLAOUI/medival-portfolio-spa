@@ -1,0 +1,10 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/animations' as *;
+@use '../../../styles/mixins' as *;
+
+.accueilContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 100%;
+}

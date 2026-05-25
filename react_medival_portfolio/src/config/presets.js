@@ -24,5 +24,10 @@ export const PRESETS = {
         descKey: "desc",
         isLink: true,
         linkKey: "href"
+    },
+    HOBBIES: {
+        baseClass: "hobby-card",
+        titleKey: "title",
+        descKey: "desc"
     }
 };

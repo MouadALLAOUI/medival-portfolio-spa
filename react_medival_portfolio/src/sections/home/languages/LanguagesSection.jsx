@@ -1,5 +1,7 @@
+import CSection from '../../../templates/Section';
 import DynamicCard from '../../../components/card';
 import { PRESETS } from '../../../config/presets';
+import styles from './LanguagesSection.module.scss';
 
 const localLanguages = [
   { id: 1, icon: '🗣️', name: 'Arabic', levelLabel: 'Native / Bilingual', level: 5 },
@@ -9,19 +11,19 @@ const localLanguages = [
 
 const LanguagesSection = () => {
   return (
-    <section id="languages" className="section">
+    <CSection id="languages" title="Tongues of the Realm" className="section" classname="section">
       <div className="section-content">
         <div className="parchment visible" id="languages-parch">
           <h2 className="section-title">Tongues of the Realm</h2>
           <p className="section-intro">Languages I speak + proficiency:</p>
-          <div className="languages-grid" id="languages-grid">
+          <div className={styles['languages-grid']} id="languages-grid">
             {localLanguages.map((lang) => (
               <DynamicCard key={lang.id} item={lang} config={PRESETS.LANGUAGE} />
             ))}
           </div>
         </div>
       </div>
-    </section>
+    </CSection>
   );
 };
 

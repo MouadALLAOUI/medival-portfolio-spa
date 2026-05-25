@@ -1,0 +1,8 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/animations' as *;
+
+.pageContainer {
+  width: 100%;
+  animation: fadeIn 0.6s ease-out;
+}

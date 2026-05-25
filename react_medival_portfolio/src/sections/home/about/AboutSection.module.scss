@@ -1,0 +1,170 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/animations' as *;
+@use '../../../styles/mixins' as *;
+
+/* ===== ABOUT / TIMELINE SECTION ===== */
+
+.timeline-wrapper {
+  position: relative;
+  max-width: 1000px;
+  margin: 50px auto;
+}
+
+/* Vertical spine */
+.timeline {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--color-gold), var(--color-rust), var(--color-gold));
+    transform: translateX(-50%);
+  }
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 50px;
+  width: calc(50% - 40px);
+
+  &:nth-child(odd) {
+    left: 0;
+  }
+
+  &:nth-child(even) {
+    left: calc(50% + 40px);
+  }
+}
+
+.timeline-content {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius, var(--radius));
+  padding: 1.25rem;
+  box-shadow: var(--card-shadow);
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  :global([data-theme="medieval"]) & {
+    background: rgba(245, 238, 220, 0.9);
+    border: 2px solid var(--color-gold);
+    border-radius: 10px;
+  }
+}
+
+.timeline-year {
+  font-family: var(--font-medieval);
+  color: var(--color-rust);
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.timeline-title {
+  font-family: var(--font-cinzel);
+  color: var(--color-forest);
+  margin-bottom: 10px;
+}
+
+/* Philosophy quote block */
+.philosophy {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius, var(--radius));
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 50px auto 0;
+  position: relative;
+  box-shadow: var(--card-shadow);
+
+  p {
+    padding-left: 15px;
+    font-style: italic;
+    text-align: justify;
+    border-left: 4px solid var(--accent);
+    color: var(--text-secondary);
+  }
+
+  :global([data-theme="medieval"]) & {
+    background: rgba(245, 238, 220, 0.9);
+    border: 2px solid var(--color-gold);
+
+    p {
+      border-left-color: var(--color-gold-light);
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    font-size: 5rem;
+    font-family: serif;
+    color: var(--accent);
+    opacity: 0.3;
+  }
+}
+
+/* ─── Responsive ─── */
+@include desktop-small {
+  .timeline-wrapper {
+    max-width: 800px;
+    margin: 30px auto;
+  }
+
+  .timeline-item {
+    margin-bottom: 20px;
+    width: calc(50% - 30px);
+
+    &:nth-child(even) {
+      left: calc(50% + 30px);
+    }
+  }
+
+  .timeline-content {
+    padding: 15px;
+  }
+
+  .timeline-year {
+    font-size: 1.2rem;
+  }
+
+  .philosophy {
+    padding: 15px;
+    max-width: 800px;
+  }
+}
+
+@include tablet-large {
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item {
+    width: calc(100% - 60px);
+    left: 60px !important;
+  }
+}
+
+@include tablet {
+  .timeline-wrapper {
+    margin: 20px auto;
+  }
+
+  .timeline-content {
+    padding: 10px;
+  }
+
+  .timeline-year {
+    font-size: 1.2rem;
+  }
+}

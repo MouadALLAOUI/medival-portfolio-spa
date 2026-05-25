@@ -1,0 +1,217 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/animations' as *;
+@use '../../../styles/mixins' as *;
+
+/* ===== CONTACT SECTION ===== */
+
+.contact-section {
+  background: var(--bg-secondary);
+
+  :global([data-theme="medieval"]) & {
+    background: var(--color-parchment);
+  }
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 50px;
+  margin-top: 40px;
+}
+
+.contact-form {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 300px;
+
+  h3 {
+    font-family: var(--font-cinzel);
+    color: var(--color-rust);
+    margin-bottom: 12px;
+  }
+}
+
+.form-group {
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-family: var(--font-heading);
+    color: var(--text-secondary);
+
+    :global([data-theme="medieval"]) & {
+      font-family: var(--font-cinzel);
+      color: var(--color-rust);
+    }
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-primary);
+    transition: all 0.3s ease;
+
+    :global([data-theme="medieval"]) & {
+      border: 2px solid var(--color-gold);
+      border-radius: 5px;
+      background: rgba(245, 238, 220, 0.8);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-light, rgba(37,99,235,0.1));
+      background: var(--bg-primary);
+
+      :global([data-theme="medieval"]) & {
+        border-color: var(--color-gold);
+        box-shadow: 0 0 10px rgba(210, 180, 140, 0.7);
+      }
+    }
+  }
+
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+}
+
+/* Wax seal submit button */
+.wax-seal {
+  display: block;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle at 30% 30%, #b05a46, #8c3a2b, #5a1e15);
+  border-radius: 50%;
+  margin: 20px auto;
+  position: relative;
+  box-shadow: 0 0 20px rgba(139, 69, 19, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+
+  &::before {
+    content: 'Send Raven';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Cinzel', serif;
+    color: var(--color-gold-light);
+    font-size: 1rem;
+    text-align: center;
+    width: 80%;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(210, 105, 30, 0.7);
+  }
+}
+
+/* Social links row */
+.social-links {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 30px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  width: 70px;
+  height: 70px;
+  background: var(--color-rust);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: var(--color-gold-light);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 20px rgba(210, 180, 140, 0.7);
+    color: var(--color-gold);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: translateX(-100%);
+    transition: 0.5s;
+  }
+
+  &:hover::before {
+    transform: translateX(100%);
+  }
+}
+
+/* Inline email copy block */
+.email-copy {
+  margin-top: 20px;
+
+  .email-code {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    margin-top: 10px;
+    user-select: text;
+    cursor: pointer;
+    background: #2d2d2d;
+    color: #f8f8f2;
+    padding: 2px 8px;
+    border-radius: 4px;
+    transition: background 0.2s;
+
+    &:hover { background: #a5a5a5; }
+    &.copied { background: #4caf50; color: #fff; }
+  }
+}
+
+/* Raven fly animation */
+.raven {
+  position: fixed;
+  font-size: 3rem;
+  z-index: 10000;
+  pointer-events: none;
+  animation: flyAway 3s ease-in-out forwards;
+}
+
+/* ─── Responsive ─── */
+@include desktop-small {
+  .contact-container { gap: 40px; margin-top: 20px; }
+  .wax-seal { width: 120px; height: 120px; }
+  .social-link { width: 50px; height: 50px; font-size: 1.7rem; }
+}
+
+@include tablet-large {
+  .contact-container { gap: 20px; }
+}
+
+@include tablet {
+  .contact-form,
+  .contact-info { min-width: 100%; }
+  .wax-seal { width: 120px; height: 120px; }
+  .social-links { gap: 10px; }
+  .social-link { width: 60px; height: 60px; font-size: 1.5rem; }
+}

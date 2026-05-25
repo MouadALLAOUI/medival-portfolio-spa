@@ -1,0 +1,118 @@
+/**
+ * Settings Registry
+ * 
+ * To add a new setting in the future:
+ * 1. Add its context/state to the relevant provider
+ * 2. Add one entry here in the correct section
+ * 3. Done — it appears on SettingsPage automatically!
+ */
+
+export const SETTINGS_SECTIONS = [
+  {
+    id: 'appearance',
+    title: '🎨 Appearance',
+    description: 'Visual theme and display preferences',
+    settings: [
+      {
+        id: 'theme',
+        label: 'Theme',
+        description: 'Choose the overall visual style of the portfolio',
+        type: 'theme-select',   // rendered as theme cards grid
+        contextKey: 'theme',   // matches ThemeProvider value key
+      },
+      {
+        id: 'markdownTheme',
+        label: 'Markdown Style',
+        description: 'How blog post and markdown content is styled',
+        type: 'option-select',
+        contextKey: 'markdownTheme',
+        options: [
+          { id: 'default', label: 'Default', icon: '📄', description: 'Matches the active visual theme' },
+          { id: 'github', label: 'GitHub', icon: '🐙', description: 'Clean GitHub-style markdown' },
+          { id: 'medieval', label: 'Medieval Scroll', icon: '📜', description: 'Ornate medieval styling' },
+        ],
+      },
+    ],
+  },
+
+  {
+    id: 'language',
+    title: '🌐 Language',
+    description: 'Interface language preferences',
+    settings: [
+      {
+        id: 'language',
+        label: 'Interface Language',
+        description: 'Language used across the portfolio UI',
+        type: 'option-select',
+        contextKey: 'language',
+        options: [
+          { id: 'en', label: 'English', icon: '🇬🇧', description: '' },
+          { id: 'fr', label: 'Français', icon: '🇫🇷', description: '' },
+          { id: 'ar', label: 'العربية', icon: '🇲🇦', description: '' },
+        ],
+      },
+    ],
+  },
+
+  {
+    id: 'pdf',
+    title: '📄 PDF Viewer',
+    description: 'How PDF documents are opened and displayed',
+    settings: [
+      {
+        id: 'pdfMode',
+        label: 'Opening Mode',
+        description: 'Where PDF documents open when triggered',
+        type: 'option-select',
+        contextKey: 'pdfMode',
+        options: [
+          { id: 'inline', label: 'Inline', icon: '📄', description: 'Expands inside the page' },
+          { id: 'modal', label: 'Modal', icon: '🪟', description: 'Opens in a floating window' },
+          { id: 'newWindow', label: 'New Window', icon: '↗️', description: 'Opens in a new browser tab' },
+        ],
+      },
+      {
+        id: 'pdfReadingMode',
+        label: 'Reading Mode',
+        description: 'How pages are laid out inside the PDF viewer',
+        type: 'option-select',
+        contextKey: 'pdfReadingMode',
+        options: [
+          { id: 'paginated', label: 'Page by Page', icon: '📖', description: 'Navigate one page at a time' },
+          { id: 'longStrip', label: 'Long Strip', icon: '📜', description: 'Continuous vertical scroll' },
+          { id: 'separatedStrip', label: 'Separated Strip', icon: '🗂️', description: 'Scroll with page separators' },
+          { id: 'doublePage', label: 'Double Page', icon: '📚', description: 'Two pages side by side' },
+        ],
+      },
+    ],
+  },
+
+  {
+    id: 'accessibility',
+    title: '♿ Accessibility',
+    description: 'Comfort and accessibility preferences',
+    settings: [
+      {
+        id: 'reducedMotion',
+        label: 'Reduce Motion',
+        description: 'Minimize animations across the portfolio',
+        type: 'toggle',
+        contextKey: 'reducedMotion',
+        defaultValue: false,
+      },
+      {
+        id: 'fontSize',
+        label: 'Font Size',
+        description: 'Base reading size',
+        type: 'option-select',
+        contextKey: 'fontSize',
+        options: [
+          { id: 'small', label: 'Small', icon: 'A', description: '14px base' },
+          { id: 'medium', label: 'Medium', icon: 'A', description: '16px base (default)' },
+          { id: 'large', label: 'Large', icon: 'A', description: '18px base' },
+        ],
+      },
+    ],
+  },
+];

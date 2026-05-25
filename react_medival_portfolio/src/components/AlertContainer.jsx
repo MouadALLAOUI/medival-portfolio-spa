@@ -1,29 +1,31 @@
+import { createPortal } from 'react-dom';
 import { useAlerts } from '../lib/useAlerts';
+import styles from './AlertContainer.module.scss';
 
 const typeClassMap = {
-  success: 'alert-success',
-  error: 'alert-error',
-  warning: 'alert-warning',
-  info: 'alert-info',
-  greeting: 'alert-greeting',
-  chaos: 'alert-chaos',
-  quest: 'alert-greeting',
-  arcane: 'alert-info',
-  divine: 'alert-warning',
-  royal: 'alert-warning',
-  cursed: 'alert-chaos',
+  success: styles['alert-success'],
+  error: styles['alert-error'],
+  warning: styles['alert-warning'],
+  info: styles['alert-info'],
+  greeting: styles['alert-greeting'],
+  chaos: styles['alert-chaos'],
+  quest: styles['alert-greeting'],
+  arcane: styles['alert-info'],
+  divine: styles['alert-warning'],
+  royal: styles['alert-warning'],
+  cursed: styles['alert-chaos'],
 };
 
 export default function AlertContainer() {
   const { alerts, dismissAlert } = useAlerts();
 
-  return (
-    <div className="alert-container w-full max-w-md px-4 pointer-events-none">
+  return createPortal(
+    <div className={styles['alert-container']}>
       {alerts.map((alert) => (
         <div
           key={alert.id}
-          className={`alert-box pointer-events-auto cursor-pointer
-            ${typeClassMap[alert.type] || 'alert-info'}
+          className={`${styles['alert-box']}
+            ${typeClassMap[alert.type] || styles['alert-info']}
             ${alert.isLeaving ? 'animate-slide-down opacity-0' : ''}
           `}
           onClick={() => dismissAlert(alert.id)}
@@ -34,6 +36,7 @@ export default function AlertContainer() {
           </div>
         </div>
       ))}
-    </div>
+    </div>,
+    document.body
   );
 }

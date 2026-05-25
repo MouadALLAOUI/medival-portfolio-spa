@@ -1,3 +1,32 @@
+// match exactly the breakpoints used in the reference CSS
+@mixin mobile {
+  @media (max-width: 480px) { @content; }
+}
+
+@mixin tablet {
+  @media (max-width: 768px) { @content; }
+}
+
+@mixin tablet-large {
+  @media (max-width: 910px) { @content; }
+}
+
+@mixin laptop-medium {
+  @media (max-width: 1000px) { @content; }
+}
+
+@mixin laptop {
+  @media (max-width: 1024px) { @content; }
+}
+
+@mixin desktop-small {
+  @media (max-width: 1250px) { @content; }
+}
+
+@mixin desktop {
+  @media (min-width: 1200px) { @content; }
+}
+
 @mixin parchment-panel {
   border: 12px solid transparent;
   box-shadow: 0 0 20px var(--shadow, #0002);
