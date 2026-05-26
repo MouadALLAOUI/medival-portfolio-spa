@@ -1,3 +1,4 @@
+import { createPortal } from 'react-dom';
 import { useChat } from '../../lib/contexts/ChatProvider';
 import { useSettings } from '../../lib/useSettings';
 import styles from './ChatTrigger.module.scss';
@@ -8,7 +9,7 @@ const ChatTrigger = () => {
 
   if (isOpen) return null;
 
-  return (
+  return createPortal(
     <button
       className={styles['trigger']}
       onClick={openChat}
@@ -17,7 +18,8 @@ const ChatTrigger = () => {
     >
       <span className={styles['icon']}>🔮</span>
       {hasUnread && <span className={styles['badge']} aria-label="Unread messages" />}
-    </button>
+    </button>,
+    document.body
   );
 };
 

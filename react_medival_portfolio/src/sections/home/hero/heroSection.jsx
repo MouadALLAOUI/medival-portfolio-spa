@@ -9,6 +9,11 @@ const HeroSection = () => {
 
   return (
     <CSection id="hero" classname="hero-section">
+      <div className={styles['particles']} aria-hidden="true">
+        {[...Array(12)].map((_, i) => (
+          <div key={i} className={styles['particle']} style={{ '--i': i }}></div>
+        ))}
+      </div>
       <h1 className={styles['hero-title']}>{t('HOME.HERO.title')}</h1>
       <div className={styles['crystal-ball']}></div>
       <p className={styles['hero-subtitle']}>{t('HOME.HERO.subtitle')}</p>

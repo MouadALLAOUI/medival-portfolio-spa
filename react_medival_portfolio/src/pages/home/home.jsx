@@ -2,7 +2,6 @@ import { useLocation } from "react-router-dom";
 import { useAlerts } from "../../lib/useAlerts";
 import { useEffect } from "react";
 import { useAchievements } from "../../lib/useAchievements";
-import { useCodeCopy } from "../../lib/hooks/useCodeCopy";
 import { isFirstVisit } from "../../lib/utils/visitTracker";
 import { useSettings } from "../../lib/useSettings";
 
@@ -19,8 +18,7 @@ import ContactSection from "../../sections/home/contact/ContactSection";
 
 export default function Home() {
     const { showAlert } = useAlerts();
-    const { trackVisit } = useAchievements();
-    const { copyCode } = useCodeCopy();
+    const { trackVisit, incrementCounter } = useAchievements();
     const { t } = useSettings();
     const location = useLocation();
 
@@ -44,6 +42,9 @@ export default function Home() {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add("visible");
+                    if (entry.target.id) {
+                        incrementCounter(`section_seen_${entry.target.id}`);
+                    }
                 }
             });
         };
@@ -57,33 +58,7 @@ export default function Home() {
         };
     }, []);
 
-    useEffect(() => {
-        const onClick = (e) => {
-            const target = e.target;
-            if (!(target instanceof HTMLElement)) return;
 
-            const copyBtn = target.closest(".copy-btn");
-            if (copyBtn instanceof HTMLElement) {
-                const targetId = copyBtn.getAttribute("data-target");
-                if (!targetId) return;
-                const codeElement = document.getElementById(targetId);
-                if (!codeElement) return;
-                const text = codeElement.textContent || "";
-                copyCode(text, "spellbook");
-                return;
-            }
-
-            if (target.classList.contains("inline-code")) {
-                const text = target.textContent || "";
-                target.classList.add("copied");
-                copyCode(text, "inline scroll");
-                window.setTimeout(() => target.classList.remove("copied"), 1200);
-            }
-        };
-
-        document.addEventListener("click", onClick);
-        return () => document.removeEventListener("click", onClick);
-    }, [copyCode]);
 
     return (
         <div>

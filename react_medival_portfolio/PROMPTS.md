@@ -9,39 +9,91 @@
 
 ## 📋 Prompt Index
 
-| # | Step | Target | Priority | Status |
-|---|---|---|---|---|
-| 01 | Fix Config & Import Casing | `App.jsx`, `src/styles/index.scss` | 🔴 Critical | ✅ Done |
-| 02 | Restore Missing Context Hooks | `src/lib/useSettings.jsx`, `src/lib/useImageViewer.jsx`, `src/lib/usePdfViewer.jsx` | 🔴 Critical | ✅ Done |
-| 03 | Recreate Missing Data Sheets | `src/data/projects.js`, `learning.js`, `hobbies.js`, `designs.js`, `timelines.js` | 🔴 Critical | ✅ Done |
-| 04 | Recreate Helpers & NLP Engine | `src/lib/getColorForTag.js`, `src/lib/chatbot/parser.js` | 🔴 Critical | ✅ Done |
-| 05 | Complete Home Landing Layout | `src/pages/home/home.jsx` | 🟡 Warning | ✅ Done |
-| 06 | Complete Sub-Route Layouts | `src/routes/routes.jsx` | 🟡 Warning | ✅ Done |
-| 07 | QA & Polish / Styling Refactor | Entire codebase, SCSS modules, responsive refactor | 🟢 Polish | ✅ Done |
-| 08 | CSS Bundle Size Optimization | `index.scss`, `_components.scss`, `_animations.scss` | 🟡 Medium | ✅ Done |
-| 09 | JavaScript Functionality Migration | Core scripts, overlays mounting, tracking, copy, react-pdf | 🔴 Critical | ✅ Done |
-| 10 | Overlay Fix & Blogs Migration | `ImageViewer.jsx`, `PdfViewer.jsx`, `BlogsPage.jsx`, `BlogPost.jsx`, `blogs.data.js`, `BlogCard` | 🔴 Critical | ✅ Done |
-| 11 | Multi-Theme System | Themes context (`Arcane Light`, `Shadow Realm`, `Medieval Scroll`) | 🟡 Medium | ✅ Done |
-| 12 | CRMEF Page Polish & Inline PDF | `CrmefLayout.jsx`, hash routes, inline pdf canvas, new data sheets | 🔴 Critical | ✅ Done |
-| 13 | CSection Variants & CRMEF Sections | Refactored `CSection` template variants, separate CRMEF sub-sheets | 🟡 Medium | ✅ Done |
-| 14 | Safe PDF Loading & Fallback Crash | `HEAD` response header validation layer + error boundaries in PDF | 🔴 Critical | ✅ Done |
-| 15 | PDF Reading Modes Layouts | Context, settings selectors, paginated/continuous vertical scrollings | 🟡 Medium | ✅ Done |
-| 16 | Settings Registry & Universal Page | Central settings registry, advanced accessibility options context | 🟢 Polish | ✅ Done |
-| 17 | Documentation Workflow Policy Sync | Post-task sync implementation, roadmaps checkbox validation | 🟢 Polish | ✅ Done |
-| 18 | Custom Context Menu & Achievements Notifier | Portal ContextMenu component, useContextMenu custom hook, global toast sync | 🔴 Critical | ✅ Done |
-| 19 | Full Internationalization (i18n) Framework | Dot-notation traversal hook, string interpolation, modular EN/FR translations | 🔴 Critical | ✅ Done |
-| 20 | Critical Foundation & Quick Wins | Decoupled .env, custom ErrorBoundary overlays, bot-field honeypot, a11y labels | 🔴 Critical | ✅ Done |
-| 21 | Settings Page Dashboard Redesign | Responsive sidebar grimoire layout, grid systems, simplified headers, dynamic selectors | 🟡 Medium | ✅ Done |
-| 22 | Medieval 404 Page, Loading & Media | Custom parchment error view, dynamic loading screen portal, root media paths | 🔴 Critical | ✅ Done |
-| 23 | High-Fidelity UX & QoL Enhancements | Reading progress scroll, related cards sugestions, skill level tooltips, dynamic project timeline, image lazy-loading, external link arrows, blog draft gate, project carousel | 🟡 Medium | ✅ Done |
-| 24 | Advanced UX & Performance Continuation | Glossary popovers, saved scrolls grimoire bookmarks, lazy loading viewers, a11y names, image alt fallbacks | 🟡 Medium | ✅ Done |
-| 25 | StrictMode Duplicate Alerts Guard | Set-based pending alerts ref queue inside AlertProvider.jsx | 🔴 Critical | ✅ Done |
-| 26 | Typo Corrections & Roadmap Cleanup | Fixed data sheets description and unknown comment typos | 🟢 Polish | ✅ Done |
+| #   | Step                                        | Target                                                                                                                                                                         | Priority   | Status |
+| --- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | ------ |
+| 01  | Fix Config & Import Casing                  | `App.jsx`, `src/styles/index.scss`                                                                                                                                             | 🔴 Critical | ✅ Done |
+| 02  | Restore Missing Context Hooks               | `src/lib/useSettings.jsx`, `src/lib/useImageViewer.jsx`, `src/lib/usePdfViewer.jsx`                                                                                            | 🔴 Critical | ✅ Done |
+| 03  | Recreate Missing Data Sheets                | `src/data/projects.js`, `learning.js`, `hobbies.js`, `designs.js`, `timelines.js`                                                                                              | 🔴 Critical | ✅ Done |
+| 04  | Recreate Helpers & NLP Engine               | `src/lib/getColorForTag.js`, `src/lib/chatbot/parser.js`                                                                                                                       | 🔴 Critical | ✅ Done |
+| 05  | Complete Home Landing Layout                | `src/pages/home/home.jsx`                                                                                                                                                      | 🟡 Warning  | ✅ Done |
+| 06  | Complete Sub-Route Layouts                  | `src/routes/routes.jsx`                                                                                                                                                        | 🟡 Warning  | ✅ Done |
+| 07  | QA & Polish / Styling Refactor              | Entire codebase, SCSS modules, responsive refactor                                                                                                                             | 🟢 Polish   | ✅ Done |
+| 08  | CSS Bundle Size Optimization                | `index.scss`, `_components.scss`, `_animations.scss`                                                                                                                           | 🟡 Medium   | ✅ Done |
+| 09  | JavaScript Functionality Migration          | Core scripts, overlays mounting, tracking, copy, react-pdf                                                                                                                     | 🔴 Critical | ✅ Done |
+| 10  | Overlay Fix & Blogs Migration               | `ImageViewer.jsx`, `PdfViewer.jsx`, `BlogsPage.jsx`, `BlogPost.jsx`, `blogs.data.js`, `BlogCard`                                                                               | 🔴 Critical | ✅ Done |
+| 11  | Multi-Theme System                          | Themes context (`Arcane Light`, `Shadow Realm`, `Medieval Scroll`)                                                                                                             | 🟡 Medium   | ✅ Done |
+| 12  | CRMEF Page Polish & Inline PDF              | `CrmefLayout.jsx`, hash routes, inline pdf canvas, new data sheets                                                                                                             | 🔴 Critical | ✅ Done |
+| 13  | CSection Variants & CRMEF Sections          | Refactored `CSection` template variants, separate CRMEF sub-sheets                                                                                                             | 🟡 Medium   | ✅ Done |
+| 14  | Safe PDF Loading & Fallback Crash           | `HEAD` response header validation layer + error boundaries in PDF                                                                                                              | 🔴 Critical | ✅ Done |
+| 15  | PDF Reading Modes Layouts                   | Context, settings selectors, paginated/continuous vertical scrollings                                                                                                          | 🟡 Medium   | ✅ Done |
+| 16  | Settings Registry & Universal Page          | Central settings registry, advanced accessibility options context                                                                                                              | 🟢 Polish   | ✅ Done |
+| 17  | Documentation Workflow Policy Sync          | Post-task sync implementation, roadmaps checkbox validation                                                                                                                    | 🟢 Polish   | ✅ Done |
+| 18  | Custom Context Menu & Achievements Notifier | Portal ContextMenu component, useContextMenu custom hook, global toast sync                                                                                                    | 🔴 Critical | ✅ Done |
+| 19  | Full Internationalization (i18n) Framework  | Dot-notation traversal hook, string interpolation, modular EN/FR translations                                                                                                  | 🔴 Critical | ✅ Done |
+| 20  | Critical Foundation & Quick Wins            | Decoupled .env, custom ErrorBoundary overlays, bot-field honeypot, a11y labels                                                                                                 | 🔴 Critical | ✅ Done |
+| 21  | Settings Page Dashboard Redesign            | Responsive sidebar grimoire layout, grid systems, simplified headers, dynamic selectors                                                                                        | 🟡 Medium   | ✅ Done |
+| 22  | Medieval 404 Page, Loading & Media          | Custom parchment error view, dynamic loading screen portal, root media paths                                                                                                   | 🔴 Critical | ✅ Done |
+| 23  | High-Fidelity UX & QoL Enhancements         | Reading progress scroll, related cards sugestions, skill level tooltips, dynamic project timeline, image lazy-loading, external link arrows, blog draft gate, project carousel | 🟡 Medium   | ✅ Done |
+| 24  | Advanced UX & Performance Continuation      | Glossary popovers, saved scrolls grimoire bookmarks, lazy loading viewers, a11y names, image alt fallbacks                                                                     | 🟡 Medium   | ✅ Done |
+| 25  | StrictMode Duplicate Alerts Guard           | Set-based pending alerts ref queue inside AlertProvider.jsx                                                                                                                    | 🔴 Critical | ✅ Done |
+| 26  | Typo Corrections & Roadmap Cleanup          | Fixed data sheets description and unknown comment typos                                                                                                                        | 🟢 Polish   | ✅ Done |
+| 27  | Multi-Language & UX Refactor                | Expand i18n (5 langs), PDF modal, Skills refactor, A11y settings, Context Menu                                                                                                 | 🔴 Critical | ✅ Done |
+| 28  | Final Roadmap Polish & Delight              | RSS gen, Sitemap gen, Easter eggs, Seasonal themes, Sound toggle, Custom cursor, Print styles, Component refactor cleanup                                                       | 🟡 Medium   | ✅ Done |
+| 29  | Achievements System Integration             | provider, achievements definition, unlock logic, portal notifications, and dedicated page                                                                                     | 🔴 Critical | ✅ Done |
 
 ---
 
+## ✅ COMPLETED — Achievements System Integration
 
-## ✅ COMPLETED — JavaScript Functionality Migration
+> 🎯 Goal: Build a complete achievement system for the portfolio app — provider, achievements definition, unlock logic, notification, and a dedicated page.
+> 📁 Files affected: `achievementsRegistry.js`, `AchievementsProvider.jsx`, `AchievementsProvider.module.scss`, `_animations.scss`, `AchievementsPage.jsx`, `AchievementsPage.module.scss`, `AchievementCard.jsx`, `AchievementCard.module.scss`, `XpBar.jsx`, `XpBar.module.scss`, `routes.jsx`, `Headers.jsx`, `home.jsx`, `BlogsPage.jsx`, `BlogPost.jsx`, `CrmefPage.jsx`, `SettingsPage.jsx`, `ChatWindow.jsx`, `ContactSection.jsx`, `ImageViewerProvider.jsx`, `common.jsx` (EN, FR, AR, MEDIEVAL-EN, MEDIEVAL-FR).
+> 🧬 DNA preserved: ✅
+
+### What was done:
+- **Registry & Provider**: Defined 19 medieval achievements inside `achievementsRegistry.js` with XP and secret properties. Built a context provider (`AchievementsProvider.jsx`) loading/saving values in `localStorage`.
+- **Event Listeners**: Configured automatic keydown sequence triggers (Konami Code), midnight sorcerer, 5min idle timers, and 10-rapid clicks on window.
+- **Portaled Notifications**: Displayed slide-in overlays from the bottom-left that stack upwards and automatically drain progress bars over 5s.
+- **Achievements Page**: Designed a dedicated, split-view vault dashboard incorporating levels, active RPG titles, custom categories/rarities filters, and a show-locked toggle.
+- **Global Wiring**: Integrated count triggers and unlocks across all pages (blog list, post details, settings, contact, copy code, pdf, lightbox, seasonal and manual themes).
+- Production build: ✅ passing with sitemap and RSS generation.
+
+---
+
+## ✅ COMPLETED — Final Roadmap Polish & Delight
+
+> 🎯 Goal: Implement all remaining frontend-only improvements from the Medieval Portfolio Roadmap.
+> 📁 Files affected: `package.json`, `generate-rss.js`, `generate-sitemap.js`, `settingProvider.jsx`, `SettingsModal.jsx`, `SettingsModal.module.scss`, `_base.scss`, `presentation.jsx`, `ContextMenu.jsx`, `SkillCard.jsx`, `CrmefEducationSection.jsx`, `CrmefSportsSection.jsx`, `layouts.jsx`.
+> 🧬 DNA preserved: ✅
+
+### What was done:
+- **Build-time Tooling**: Created Node.js scripts for automated RSS feed (`rss.xml`) and Sitemap (`sitemap.xml`) generation, integrated into the `npm run build` process.
+- **Extended Settings & A11y**: Added functional toggles for Custom Cursor and Sound Effects. Integrated Font Size and Reduced Motion controls into the `SettingsModal` and verified their global impact.
+- **Custom Medieval Cursor**: Implemented a themed quill/magic cursor system that respects user preference and automatically disables on interactive elements.
+- **Seasonal Themes**: Added CSS-driven seasonal overrides for Halloween and Christmas that activate automatically based on the current date.
+- **Enhanced Context Menu**: Added a new "Arcane Actions" submenu with Print, View Source, and Secret Unlock capabilities. Added CRMEF to the Navigation submenu.
+- **Universal Component Refactor**: Migrated `SkillCard`, `CrmefEducationSection`, and `CrmefSportsSection` to use the universal `DynamicCard` component, ensuring design consistency across the application.
+- **Delight & Polish**: 
+  - Added a "Secret Portrait" easter egg (5-click trigger).
+  - Enabled the `BackToTop` floating button.
+  - Implemented `@media print` styles for clean physical records of blog posts and projects.
+  - Added external link indicators (`↗`) to all outgoing connections.
+- Production build: ✅ Passing with automated artifact generation.
+
+> 🎯 Goal: Expansion of the i18n system to 5 languages, implementation of a global accessibility engine (font scaling & motion reduction), and a major refactor of the Skills section and Context Menu.
+> 📁 Files affected: `translations.jsx`, `settingProvider.jsx`, `SettingsModal.jsx`, `SettingsPage.jsx`, `LearningSection.jsx`, `skillsSection.jsx`, `FilterBar.jsx`, `SkillCard.jsx`, `card.jsx`, `_base.scss`, `useContextMenu.js`, `ContextMenu.jsx`, and 12 new string files.
+> 🧬 DNA preserved: ✅
+
+### What was done:
+- **5-Language i18n System**: Expanded the portfolio to support English, French, Arabic (RTL), Medieval English, and Medieval French. Created modular string files for each and updated the provider to handle directionality and complex traversal.
+- **Inline PDF Viewer**: Intercepted PDF card clicks in the Learning section to open them in the themed app modal instead of external tabs.
+- **Skills Refactor**: Modularized the Skills section into `FilterBar` and `SkillCard` components. Upgraded the universal `DynamicCard` to support rich variants and hover effects.
+- **Functional Accessibility**:
+  - **Font Size**: Wired the UI slider to a CSS variable `--base-font-size` for global rem-based scaling.
+  - **Reduce Motion**: Implemented a global toggle that disables all CSS and Framer Motion animations via `data-reduced-motion` root attribute.
+- **Advanced Context Menu**: Added nested submenus for navigation and languages, expanded actions (Print, View Source), and enforced the custom menu across all elements (inputs/buttons) while allowing opt-outs via `data-allow-contextmenu`.
+- Production build: ✅ passing with 100% fidelity.
+
+---
 
 > 🎯 Goal: Full JavaScript functionality audit and 100% correct React implementation matching the vanilla code
 > 📁 Files affected: `App.jsx`, `layouts.jsx`, `PdfViewer.jsx`, `ImageViewer.jsx`, `Headers.jsx`, `home.jsx`, `blogPost.jsx`, `AchievementsProvider.jsx`, `cookies.js`, `useCodeCopy.js`, `env.js`
@@ -75,15 +127,15 @@
 - Production build: ✅ Zero errors. Reduced compiled CSS bundle from **166kb** to **124.04kb** total (main index bundle at **87.35kb**, well below the 100kb target).
 
 ### Breakpoints implemented:
-| Mixin | Breakpoint |
-|---|---|
-| mobile | max-width: 480px |
-| tablet | max-width: 768px |
-| tablet-large | max-width: 910px |
+| Mixin         | Breakpoint        |
+| ------------- | ----------------- |
+| mobile        | max-width: 480px  |
+| tablet        | max-width: 768px  |
+| tablet-large  | max-width: 910px  |
 | laptop-medium | max-width: 1000px |
-| laptop | max-width: 1024px |
+| laptop        | max-width: 1024px |
 | desktop-small | max-width: 1250px |
-| desktop | min-width: 1200px |
+| desktop       | min-width: 1200px |
 
 ---
 
@@ -136,7 +188,7 @@ For every section component, compare against `medival portfolio/` reference at t
 
 For each section report:
 | Section | Desktop ✅/❌ | Tablet ✅/❌ | Mobile ✅/❌ | Issues |
-|---|---|---|---|---|
+| ------- | ----------- | ---------- | ---------- | ------ |
 
 Fix every visual discrepancy found. Preserve all code DNA conventions.
 Do not stop between sections. Output all fixes at once.

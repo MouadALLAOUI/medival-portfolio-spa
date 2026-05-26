@@ -1,7 +1,7 @@
 import { createPortal } from 'react-dom';
 import { useRef, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Home, Copy, Check, Sun, Moon, Sparkles, Code, Trophy } from 'lucide-react';
+import { Home, Copy, Check, Sun, Moon, Sparkles, Code, Trophy, ChevronRight, Languages, BookOpen, Briefcase, User, Info, Printer, ExternalLink, Scissors, Clipboard } from 'lucide-react';
 import useContextMenu from '../../hooks/useContextMenu';
 import { useTheme } from '../../lib/contexts/ThemeProvider';
 import { useAchievements } from '../../lib/useAchievements';
@@ -17,17 +17,74 @@ import styles from './ContextMenu.module.scss';
 export default function ContextMenu() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { x, y, visible, closeMenu } = useContextMenu();
+  const { x, y, visible, closeMenu, targetElement } = useContextMenu();
   const { theme, themes, switchTheme } = useTheme();
   const { setBoolean, isCompleted } = useAchievements();
   const { showAlert } = useAlerts();
-  const { t } = useSettings();
+  const { t, language, setLanguage } = useSettings();
 
   const menuRef = useRef(null);
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [copied, setCopied] = useState(false);
   const [shouldRender, setShouldRender] = useState(false);
   const [isHiding, setIsHiding] = useState(false);
+  const [submenuSide, setSubmenuSide] = useState('right');
+  const [activeSubmenu, setActiveSubmenu] = useState(null);
+  const [hoveredItemTop, setHoveredItemTop] = useState(0);
+  const submenuTimeoutRef = useRef(null);
+
+  // Auto-cleanup on close
+  useEffect(() => {
+    if (!visible) {
+      setActiveSubmenu(null);
+      if (submenuTimeoutRef.current) {
+        clearTimeout(submenuTimeoutRef.current);
+        submenuTimeoutRef.current = null;
+      }
+    }
+  }, [visible]);
+
+  // Timeout cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (submenuTimeoutRef.current) {
+        clearTimeout(submenuTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  const handleMouseEnterItem = (submenuName, e) => {
+    if (submenuTimeoutRef.current) {
+      clearTimeout(submenuTimeoutRef.current);
+      submenuTimeoutRef.current = null;
+    }
+    const itemElement = e.currentTarget;
+    const topOffset = itemElement.offsetTop;
+    const scrollContainer = itemElement.parentElement;
+    const scrollTop = scrollContainer ? scrollContainer.scrollTop : 0;
+    
+    setHoveredItemTop(topOffset - scrollTop);
+    setActiveSubmenu(submenuName);
+  };
+
+  const handleMouseLeaveItem = () => {
+    submenuTimeoutRef.current = setTimeout(() => {
+      setActiveSubmenu(null);
+    }, 180); // generous timeout for smooth diagonal mouse movements
+  };
+
+  const handleMouseEnterSubmenu = () => {
+    if (submenuTimeoutRef.current) {
+      clearTimeout(submenuTimeoutRef.current);
+      submenuTimeoutRef.current = null;
+    }
+  };
+
+  const handleMouseLeaveSubmenu = () => {
+    submenuTimeoutRef.current = setTimeout(() => {
+      setActiveSubmenu(null);
+    }, 180);
+  };
 
   // Manage mount/unmount and exit animation timing
   useEffect(() => {
@@ -62,6 +119,13 @@ export default function ContextMenu() {
       if (posY < 12) posY = 12;
 
       setCoords({ x: posX, y: posY });
+
+      // Determine submenu side
+      if (posX + rect.width + 200 > window.innerWidth) {
+        setSubmenuSide('left');
+      } else {
+        setSubmenuSide('right');
+      }
     }
   }, [x, y, shouldRender]);
 
@@ -91,9 +155,119 @@ export default function ContextMenu() {
 
   if (!shouldRender) return null;
 
+  const isInput = targetElement instanceof HTMLInputElement || 
+                  targetElement instanceof HTMLTextAreaElement ||
+                  (targetElement instanceof HTMLElement && targetElement.isContentEditable);
+
+  const getInputActionsStrings = (lang) => {
+    const isFrench = lang === 'fr' || lang === 'medieval-fr';
+    const isArabic = lang === 'ar';
+    const isMedieval = lang === 'medieval-en' || lang === 'medieval-fr';
+    
+    if (isFrench) {
+      return {
+        copy: isMedieval ? 'Dupliquer le parchemin (Copier)' : 'Copier',
+        cut: isMedieval ? 'Trancher le texte (Couper)' : 'Couper',
+        paste: isMedieval ? 'Transcrire le texte (Coller)' : 'Coller',
+        textLabel: isMedieval ? 'parchemin' : 'texte'
+      };
+    }
+    if (isArabic) {
+      return {
+        copy: 'نسخ',
+        cut: 'قص',
+        paste: 'لصق',
+        textLabel: 'النص'
+      };
+    }
+    return {
+      copy: isMedieval ? 'Duplicate Scroll (Copy)' : 'Copy',
+      cut: isMedieval ? 'Sever Text (Cut)' : 'Cut',
+      paste: isMedieval ? 'Scribe Text (Paste)' : 'Paste',
+      textLabel: isMedieval ? 'scroll text' : 'text'
+    };
+  };
+
+  const actionStrings = getInputActionsStrings(language);
+
+  const handleCopyInput = (e) => {
+    e.stopPropagation();
+    if (!targetElement) return;
+    targetElement.focus();
+    try {
+      const success = document.execCommand('copy');
+      if (!success) {
+        const start = targetElement.selectionStart ?? 0;
+        const end = targetElement.selectionEnd ?? 0;
+        const selectedText = targetElement.value ? targetElement.value.substring(start, end) : '';
+        if (selectedText) {
+          navigator.clipboard.writeText(selectedText);
+        }
+      }
+      showAlert(t('COMMON.alerts.copySuccess', { label: actionStrings.textLabel }), 'success', 2000);
+    } catch (err) {
+      console.error(err);
+    }
+    closeMenu();
+  };
+
+  const handleCutInput = (e) => {
+    e.stopPropagation();
+    if (!targetElement) return;
+    targetElement.focus();
+    try {
+      const success = document.execCommand('cut');
+      if (!success) {
+        const start = targetElement.selectionStart ?? 0;
+        const end = targetElement.selectionEnd ?? 0;
+        const val = targetElement.value || '';
+        const selectedText = val.substring(start, end);
+        if (selectedText) {
+          navigator.clipboard.writeText(selectedText);
+          const newVal = val.substring(0, start) + val.substring(end);
+          targetElement.value = newVal;
+          targetElement.setSelectionRange(start, start);
+          
+          const event = new Event('input', { bubbles: true });
+          targetElement.dispatchEvent(event);
+        }
+      }
+    } catch (err) {
+      console.error(err);
+    }
+    closeMenu();
+  };
+
+  const handlePasteInput = (e) => {
+    e.stopPropagation();
+    if (!targetElement) return;
+    targetElement.focus();
+    try {
+      navigator.clipboard.readText().then((clipText) => {
+        const start = targetElement.selectionStart ?? 0;
+        const end = targetElement.selectionEnd ?? 0;
+        const val = targetElement.value || '';
+        const newVal = val.substring(0, start) + clipText + val.substring(end);
+        targetElement.value = newVal;
+
+        const newCursorPos = start + clipText.length;
+        targetElement.setSelectionRange(newCursorPos, newCursorPos);
+
+        const event = new Event('input', { bubbles: true });
+        targetElement.dispatchEvent(event);
+      }).catch(() => {
+        document.execCommand('paste');
+      });
+    } catch (err) {
+      console.error(err);
+      document.execCommand('paste');
+    }
+    closeMenu();
+  };
+
   // Actions
-  const handleNavigateHome = () => {
-    navigate('/home');
+  const handleNavigate = (path) => {
+    navigate(path);
     closeMenu();
   };
 
@@ -119,9 +293,19 @@ export default function ContextMenu() {
     const nextIndex = (currentIndex + 1) % themeCycle.length;
     const nextTheme = themeCycle[nextIndex];
     switchTheme(nextTheme);
-    
+
     const themeLabel = t(`COMMON.settings.keys.theme.options.${nextTheme}.label`) || themes[nextTheme]?.label || nextTheme;
     showAlert(t('COMMON.alerts.themeAltered', { theme: themeLabel }), 'info', 2000);
+    closeMenu();
+  };
+
+  const handleSetLanguage = (lang) => {
+    setLanguage(lang);
+    closeMenu();
+  };
+
+  const handlePrint = () => {
+    window.print();
     closeMenu();
   };
 
@@ -147,6 +331,14 @@ export default function ContextMenu() {
     left: `${coords.x}px`,
   };
 
+  const languages = [
+    { id: 'en', label: 'English', flag: '🇬🇧' },
+    { id: 'fr', label: 'Français', flag: '🇫🇷' },
+    { id: 'ar', label: 'العربية', flag: '🇲🇦' },
+    { id: 'medieval-en', label: t('COMMON.settings.keys.language.options.medieval-en.label'), flag: '📜' },
+    { id: 'medieval-fr', label: t('COMMON.settings.keys.language.options.medieval-fr.label'), flag: '🏰' }
+  ];
+
   return createPortal(
     <div
       ref={menuRef}
@@ -155,85 +347,203 @@ export default function ContextMenu() {
       role="menu"
       aria-label="Custom context menu"
     >
-      {!isAtHome && (
-        <>
-          <button
-            className={styles['menu-item']}
-            onClick={handleNavigateHome}
-            role="menuitem"
-          >
-            <span className={styles['item-left']}>
-              <Home size={15} />
-              <span>{t('COMMON.contextMenu.navigateHome')}</span>
-            </span>
-            <span className={styles['item-shortcut']}>Alt+H</span>
+      <div className={styles['scrollable-menu-items']}>
+        {isInput && (
+          <>
+            <button
+              className={styles['menu-item']}
+              onClick={handleCutInput}
+              role="menuitem"
+            >
+              <span className={styles['item-left']}>
+                <Scissors size={15} />
+                <span>{actionStrings.cut}</span>
+              </span>
+              <span className={styles['item-shortcut']}>Ctrl+X</span>
+            </button>
+            
+            <button
+              className={styles['menu-item']}
+              onClick={handleCopyInput}
+              role="menuitem"
+            >
+              <span className={styles['item-left']}>
+                <Copy size={15} />
+                <span>{actionStrings.copy}</span>
+              </span>
+              <span className={styles['item-shortcut']}>Ctrl+C</span>
+            </button>
+            
+            <button
+              className={styles['menu-item']}
+              onClick={handlePasteInput}
+              role="menuitem"
+            >
+              <span className={styles['item-left']}>
+                <Clipboard size={15} />
+                <span>{actionStrings.paste}</span>
+              </span>
+              <span className={styles['item-shortcut']}>Ctrl+V</span>
+            </button>
+            
+            <div className={styles['menu-divider']} />
+          </>
+        )}
+
+        <div 
+          className={styles['menu-item']}
+          role="menuitem"
+          onMouseEnter={(e) => handleMouseEnterItem('navigate', e)}
+          onMouseLeave={handleMouseLeaveItem}
+        >
+          <span className={styles['item-left']}>
+            <Home size={15} />
+            <span>{t('COMMON.contextMenu.navigateTitle') || 'Navigate'}</span>
+          </span>
+          <ChevronRight size={14} />
+        </div>
+
+        <div className={styles['menu-divider']} />
+
+        <button
+          className={styles['menu-item']}
+          onClick={handleCopyUrl}
+          role="menuitem"
+          disabled={copied}
+        >
+          <span className={styles['item-left']}>
+            {copied ? (
+              <span className={styles['check-container']}>
+                <Check size={15} />
+              </span>
+            ) : (
+              <Copy size={15} />
+            )}
+            <span>{t('COMMON.contextMenu.copyUrl')}</span>
+          </span>
+          <span className={styles['item-shortcut']}>Ctrl+C</span>
+        </button>
+
+        <div 
+          className={styles['menu-item']}
+          role="menuitem"
+          onMouseEnter={(e) => handleMouseEnterItem('language', e)}
+          onMouseLeave={handleMouseLeaveItem}
+        >
+          <span className={styles['item-left']}>
+            <Languages size={15} />
+            <span>{t('COMMON.settings.keys.language.label')}</span>
+          </span>
+          <ChevronRight size={14} />
+        </div>
+
+        <button
+          className={styles['menu-item']}
+          onClick={handleToggleTheme}
+          role="menuitem"
+        >
+          <span className={styles['item-left']}>
+            {theme === 'medieval' ? (
+              <Sparkles size={15} />
+            ) : theme === 'dark' ? (
+              <Sun size={15} />
+            ) : (
+              <Moon size={15} />
+            )}
+            <span>{t('COMMON.contextMenu.cycleTheme')}</span>
+          </span>
+          <span className={styles['item-shortcut']}>Ctrl+T</span>
+        </button>
+
+        <button
+          className={styles['menu-item']}
+          onClick={handlePrint}
+          role="menuitem"
+        >
+          <span className={styles['item-left']}>
+            <Printer size={15} />
+            <span>{t('COMMON.contextMenu.printPage') || 'Print Scroll'}</span>
+          </span>
+          <span className={styles['item-shortcut']}>Ctrl+P</span>
+        </button>
+
+        <button
+          className={styles['menu-item']}
+          onClick={handleViewSource}
+          role="menuitem"
+        >
+          <span className={styles['item-left']}>
+            <Code size={15} />
+            <span>{t('COMMON.contextMenu.viewSource')}</span>
+          </span>
+          <span className={styles['item-shortcut']}>Ctrl+U</span>
+        </button>
+
+        <div className={styles['menu-divider']} />
+
+        <button
+          className={styles['menu-item']}
+          onClick={handleUnlockAchievement}
+          role="menuitem"
+        >
+          <span className={styles['item-left']}>
+            <Trophy size={15} />
+            <span>{t('COMMON.contextMenu.unlockAchievement')}</span>
+          </span>
+          <span className={styles['item-shortcut']}>🔮</span>
+        </button>
+      </div>
+
+      {activeSubmenu === 'navigate' && (
+        <div 
+          className={`${styles.submenu} ${styles[submenuSide]}`}
+          style={{ top: `${hoveredItemTop}px` }}
+          onMouseEnter={handleMouseEnterSubmenu}
+          onMouseLeave={handleMouseLeaveSubmenu}
+        >
+          <button className={styles['menu-item']} onClick={() => handleNavigate('/home')}>
+            <span className={styles['item-left']}><Home size={14} /> {t('COMMON.nav.home')}</span>
           </button>
-          <div className={styles['menu-divider']} />
-        </>
+          <button className={styles['menu-item']} onClick={() => handleNavigate('/blogs')}>
+            <span className={styles['item-left']}><BookOpen size={14} /> {t('COMMON.nav.blogs')}</span>
+          </button>
+          <button className={styles['menu-item']} onClick={() => handleNavigate('/home#projects')}>
+            <span className={styles['item-left']}><Briefcase size={14} /> {t('COMMON.nav.projects')}</span>
+          </button>
+          <button className={styles['menu-item']} onClick={() => handleNavigate('/home#skills')}>
+            <span className={styles['item-left']}><Sparkles size={14} /> {t('COMMON.nav.medieval.skills')}</span>
+          </button>
+          <button className={styles['menu-item']} onClick={() => handleNavigate('/home#about')}>
+            <span className={styles['item-left']}><User size={14} /> {t('COMMON.nav.medieval.about')}</span>
+          </button>
+          <button className={styles['menu-item']} onClick={() => handleNavigate('/crmef')}>
+            <span className={styles['item-left']}><Info size={14} /> {t('COMMON.nav.crmef')}</span>
+          </button>
+        </div>
       )}
 
-      <button
-        className={styles['menu-item']}
-        onClick={handleCopyUrl}
-        role="menuitem"
-        disabled={copied}
-      >
-        <span className={styles['item-left']}>
-          {copied ? (
-            <span className={styles['check-container']}>
-              <Check size={15} />
-            </span>
-          ) : (
-            <Copy size={15} />
-          )}
-          <span>{t('COMMON.contextMenu.copyUrl')}</span>
-        </span>
-        <span className={styles['item-shortcut']}>Ctrl+C</span>
-      </button>
-
-      <button
-        className={styles['menu-item']}
-        onClick={handleToggleTheme}
-        role="menuitem"
-      >
-        <span className={styles['item-left']}>
-          {theme === 'medieval' ? (
-            <Sparkles size={15} />
-          ) : theme === 'dark' ? (
-            <Sun size={15} />
-          ) : (
-            <Moon size={15} />
-          )}
-          <span>{t('COMMON.contextMenu.cycleTheme')}</span>
-        </span>
-        <span className={styles['item-shortcut']}>Ctrl+T</span>
-      </button>
-
-      <button
-        className={styles['menu-item']}
-        onClick={handleViewSource}
-        role="menuitem"
-      >
-        <span className={styles['item-left']}>
-          <Code size={15} />
-          <span>{t('COMMON.contextMenu.viewSource')}</span>
-        </span>
-        <span className={styles['item-shortcut']}>Ctrl+U</span>
-      </button>
-
-      <div className={styles['menu-divider']} />
-
-      <button
-        className={styles['menu-item']}
-        onClick={handleUnlockAchievement}
-        role="menuitem"
-      >
-        <span className={styles['item-left']}>
-          <Trophy size={15} />
-          <span>{t('COMMON.contextMenu.unlockAchievement')}</span>
-        </span>
-        <span className={styles['item-shortcut']}>🔮</span>
-      </button>
+      {activeSubmenu === 'language' && (
+        <div 
+          className={`${styles.submenu} ${styles[submenuSide]}`}
+          style={{ top: `${hoveredItemTop}px` }}
+          onMouseEnter={handleMouseEnterSubmenu}
+          onMouseLeave={handleMouseLeaveSubmenu}
+        >
+          {languages.map(lang => (
+            <button
+              key={lang.id}
+              className={`${styles['menu-item']} ${language === lang.id ? styles.active : ''}`}
+              onClick={() => handleSetLanguage(lang.id)}
+            >
+              <span className={styles['item-left']}>
+                <span>{lang.flag}</span>
+                <span>{lang.label}</span>
+              </span>
+              {language === lang.id && <Check size={12} />}
+            </button>
+          ))}
+        </div>
+      )}
     </div>,
     document.body
   );

@@ -1,21 +1,21 @@
 const CRMEF = {
     header: {
         title: "CRMEF Portfolio",
-        accueil: "Castle / Bio",
-        semester1: "Semester 1 Scrolls",
-        msp: "MSP Chronicles",
+        accueil: "Home / Profile",
+        semester1: "Semester 1 Modules",
+        msp: "MSP Internship",
     },
     profile: {
-        bio: "As a developer passionate about the art of code and computer science, I am constantly in search of new knowledge. I love designing robust architectures and enchanting interfaces. I make my skills available for the most ambitious projects, forging custom solutions for every quest.",
+        bio: "As a developer passionate about programming and computer science, I am constantly looking to improve my knowledge and skills. I enjoy building solid architectures and modern user interfaces. I aim to provide reliable and practical solutions for ambitious projects and real-world challenges.",
     },
     education: {
         items: {
             "data-science": {
                 degree: "Data Science",
-                title: "Data Science Sorcery",
+                title: "Data Science",
                 institution: "Cadi Ayyad University",
-                location: "Faculté des Sciences Semlalia — Marrakech",
-                type: "Fundamental Bachelor's Degree",
+                location: "Faculty of Sciences Semlalia — Marrakech",
+                type: "Bachelor's Degree",
             },
             "fst": {
                 degree: "Computer Engineering",
@@ -38,12 +38,12 @@ const CRMEF = {
             "pfe-master": {
                 period: "Recent Period",
                 title: "Master Thesis: Data Management & Security",
-                description: "Development of an end-to-end secured platform for data hierarchy in a large network of alchemists (enterprise).",
+                description: "Development of a secure end-to-end platform for managing data hierarchy within a large enterprise network.",
             },
             "pfe-licence": {
                 period: "Previous Years",
                 title: "Bachelor Thesis: Faculty of Sciences Semlalia",
-                description: "Elaboration of an inventory tracking and management system. Conception of magical user interfaces.",
+                description: "Development of an inventory tracking and management system with modern user interfaces.",
             }
         }
     },
@@ -57,40 +57,40 @@ const CRMEF = {
     },
     accueil: {
         welcomeTitle: "CRMEF Professional Portal",
-        welcomeDesc: "Welcome to the chronicles of my teacher training, academic modules, and classroom internships.",
-        academicPath: "Academic Path",
-        professionalExp: "Teaching Experience & Quests",
-        sportsExtracurricular: "Extracurricular Valor & Sports",
+        welcomeDesc: "Welcome to the overview of my teacher training, academic modules, and classroom internships.",
+        academicPath: "Academic Background",
+        professionalExp: "Teaching Experience",
+        sportsExtracurricular: "Sports & Activities",
     },
     semester: {
         title: "Semester 1 Training Modules",
-        subtitle: "Theoretical structures, pedagogy lectures, and module assignments.",
-        viewDocument: "Inspect Scroll",
-        closeDocument: "Close Scroll",
-        emptyPdf: "Select a scroll to inspect its content.",
+        subtitle: "Course materials, pedagogy lessons, and module assignments.",
+        viewDocument: "View Document",
+        closeDocument: "Close Document",
+        emptyPdf: "Select a document to view its content.",
         modules: {
             "planification": "Module: Lesson Planning (Pr. Tanta)",
-            "inf1": "Module: INF1 (Pr. Daoudi) - Computer Memory Architectures",
-            "tice": "Module: ICT in Education (Pr. Serrar) - ICT Integration Portal",
+            "inf1": "Module: INF1 (Pr. Daoudi) - Computer Memory Architecture",
+            "tice": "Module: ICT in Education (Pr. Serrar) - ICT Integration",
             "didactique": "Module: Didactics (Pr. Daoudi) - Pedagogy & Didactic Concepts",
             "methodology": "Module: Research Methodology (Pr. Rjdou?)",
         }
     },
     msp: {
         title: "MSP Professional Internship",
-        subtitle: "Chronicles of field observations, teaching trials, and educational reports.",
+        subtitle: "Reports, observations, and teaching practice documentation.",
         tabs: {
             presentation: "Internship Overview",
-            observations: "Field Observations",
-            documents: "Scroll Artifacts",
+            observations: "Classroom Observations",
+            documents: "Documents",
         },
         infoGrid: {
-            establishment: "Host Academy",
-            mentor: "Noble Advisor (Mentor)",
-            duration: "Quest Duration",
-            classLevel: "Target Disciples (Class Levels)",
+            establishment: "Institution",
+            mentor: "Supervisor",
+            duration: "Duration",
+            classLevel: "Class Levels",
         },
-        noDocs: "No internship documents recorded in this grimoire.",
+        noDocs: "No internship documents available.",
         header: {
             lyceeName: "School Name:",
             profName: "Supervising Professor:",
@@ -100,11 +100,11 @@ const CRMEF = {
             introduction: "Introduction:",
             generalInfo: "General Information:",
             fbOfficiel: "🌐 Official Facebook:",
-            remerciementText: "I would like first to warmly thank our supervisor Mrs. MOUBARRAA SANAA, who kindly supervised us and did not hesitate to grant us her help and advice. My thanks are also expressed to all the trainers of the CRMEF center for their efforts and advice.",
-            introductionText: "Teaching internship constitutes an important stage of the university curriculum. It is for us, trainee, the opportunity to test our capacities to integrate a team, to take initiatives and to assume our own autonomy beyond a simple description of the tasks carried out. It is a matter of meeting different realities within the host school, and as trainees, we are supposed to get used to it, as this demonstrates the stay spent in the host school. Thus, at the beginning, there is a complexity in the concepts to be taught, adaptation of the classrooms, and lack of classroom management, while sometimes there is a flexible mastery of all these points in certain classes. The aforementioned points will be the subject of observations in this report.\n\nThe main objective of our teaching internship is to lead us to understand the reality of professional life by serving as a teacher of courses, and especially to properly teach computer science courses to high school students.",
+            remerciementText: "I would first like to sincerely thank our supervisor Mrs. MOUBARRAA SANAA for her support, guidance, and valuable advice throughout this internship. I also thank all the trainers at the CRMEF center for their efforts and continuous support.",
+            introductionText: "The teaching internship is an important stage in the university curriculum. It provides trainee teachers with the opportunity to integrate into a professional environment, take initiatives, and develop autonomy beyond theoretical learning. This experience allows trainees to discover the realities of the classroom, adapt to different teaching situations, and improve classroom management skills.\n\nThe main objective of this internship is to better understand the reality of the teaching profession and especially to learn how to effectively teach computer science courses to high school students.",
         },
         table: {
-            establishment: "Establishment",
+            establishment: "Institution",
             creationYear: "Year Founded",
             roomsCount: "Number of Classrooms",
             directorName: "Director Name",
@@ -113,12 +113,12 @@ const CRMEF = {
             roomsCountValue: "43 standard classrooms and one computer laboratory",
         },
         observations: {
-            title: "🔮 The Grimoire of Observations",
-            desc: "Notes and findings from teaching sessions will be inscribed here.",
+            title: "📝 Observation Notes",
+            desc: "Notes and observations from teaching sessions will be recorded here.",
         },
         documents: {
-            title: "🗝️ The Archives",
-            desc: "Official documents, pedagogical sheets, and evaluation parchments will be stored in this vault.",
+            title: "📂 Documents",
+            desc: "Official documents, lesson plans, and evaluation reports will be stored here.",
         },
     },
     sections: {

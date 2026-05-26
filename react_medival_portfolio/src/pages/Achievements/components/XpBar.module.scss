@@ -1,0 +1,77 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.xpBar {
+  padding: 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
+
+  :global([data-theme="medieval"]) & {
+    background: #f5e6ca;
+    border-color: rgba(139, 69, 19, 0.3);
+  }
+}
+
+.xpHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.level {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-family: var(--font-heading);
+}
+
+.levelTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-family: var(--font-primary);
+  font-style: italic;
+
+  :global([data-theme="medieval"]) & {
+    color: #8b4513;
+  }
+}
+
+.bar {
+  height: 0.5rem;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+  border: 1px solid var(--border);
+
+  :global([data-theme="medieval"]) & {
+    background: #e8d5b0;
+    border-color: rgba(139, 69, 19, 0.2);
+  }
+}
+
+.barFill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: inherit;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.xpFooter {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-primary);
+
+  :global([data-theme="medieval"]) & {
+    color: #8b4513;
+    opacity: 0.8;
+  }
+}
