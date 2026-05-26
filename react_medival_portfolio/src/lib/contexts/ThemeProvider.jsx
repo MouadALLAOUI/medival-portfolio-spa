@@ -29,7 +29,14 @@ const ThemeContext = createContext(null);
 
 const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('portfolio-theme') || 'light';
+    const saved = localStorage.getItem('portfolio-theme');
+    if (saved) return saved;
+
+    // Auto-detect system preference on first load
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+    return 'light';
   });
 
   useEffect(() => {
@@ -49,6 +56,25 @@ const ThemeProvider = ({ children }) => {
 
     localStorage.setItem('portfolio-theme', theme);
   }, [theme]);
+
+  // Day/Night Cycle auto-switch
+  useEffect(() => {
+    const checkTime = () => {
+      const hour = new Date().getHours();
+      const isNight = hour >= 20 || hour < 6;
+      const saved = localStorage.getItem('portfolio-theme');
+
+      // Only auto-switch if user hasn't manually set a theme in this session
+      // or if we want to be more proactive. For now, let's just check if no saved theme.
+      if (!saved) {
+        setTheme(isNight ? 'dark' : 'light');
+      }
+    };
+
+    checkTime();
+    const interval = setInterval(checkTime, 60000 * 30); // Check every 30 mins
+    return () => clearInterval(interval);
+  }, []);
 
   const switchTheme = (themeId) => {
     if (THEMES[themeId]) setTheme(themeId);

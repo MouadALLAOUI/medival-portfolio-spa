@@ -1,0 +1,5 @@
+Contact: mailto:wizard@mouad-portfolio.com
+Expires: 2027-05-26T12:00:00.000Z
+Preferred-Languages: en, fr, ar
+Canonical: https://mouad-portfolio.com/.well-known/security.txt
+Policy: https://mouad-portfolio.com/privacy

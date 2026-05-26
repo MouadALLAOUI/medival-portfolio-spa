@@ -9,8 +9,18 @@ const CRMEF = lazy(() => import('../pages/CRMEF/CrmefPage'));
 const BlogsPage = lazy(() => import('../pages/blogs/BlogsPage'));
 const BlogPost = lazy(() => import('../pages/blogs/BlogPost'));
 const FallingLetters = lazy(() => import('../pages/fallingletters/fallingletters'));
+const PrivacyPage = lazy(() => import('../pages/Privacy/PrivacyPage'));
 const SettingsPage = lazy(() => import('../pages/Settings/SettingsPage'));
+const AchievementsPage = lazy(() => import('../pages/Achievements/AchievementsPage'));
 const NotFound = lazy(() => import('../pages/NotFound/NotFound'));
+
+// Helper to prefetch lazy routes
+export const prefetchRoute = (factory) => {
+  const component = factory();
+  if (component && component.catch) {
+    component.catch(() => { });
+  }
+};
 
 export default function AppRoutes() {
   return (
@@ -23,7 +33,9 @@ export default function AppRoutes() {
           <Route path="blogs" element={<BlogsPage />} />
           <Route path="blogs/:slug" element={<BlogPost />} />
           <Route path="fallingletters" element={<FallingLetters />} />
+          <Route path="privacy" element={<PrivacyPage />} />
           <Route path="settings" element={<SettingsPage />} />
+          <Route path="achievements" element={<AchievementsPage />} />
           <Route path="*" element={<NotFound />} />
         </Route>
         <Route path="CRMEF" element={<CRMEF />} />

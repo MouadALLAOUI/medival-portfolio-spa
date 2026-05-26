@@ -1,38 +1,38 @@
 const COMMON = {
     nav: {
         logoText: "Mouad le Codeur",
-        home: "Château / Accueil",
-        landing: "Aperçu du Fief",
-        projects: "Quêtes Tech",
-        blogs: "Chambre des Chroniques",
+        home: "Accueil",
+        landing: "Aperçu",
+        projects: "Projets",
+        blogs: "Blog",
         crmef: "Portail CRMEF",
-        game: "Royaume Dactylo",
-        settingsGear: "Ouvrir le grimoire des réglages",
+        game: "Jeu de Dactylo",
+        settingsGear: "Ouvrir les paramètres",
         medieval: {
-            hero: "L'Oracle",
-            presentation: "L'Artisan",
-            skills: "Parchemin de Compétences",
-            projects: "Quêtes Tech",
-            about: "Lore du Code",
-            contact: "Envoyer Corbeau",
-            hobbies: "Au-delà du Code",
-            design: "Forge du Design",
-            languages: "Langues du Royaume",
+            hero: "Assistant",
+            presentation: "Présentation",
+            skills: "Compétences",
+            projects: "Projets",
+            about: "À propos",
+            contact: "Contact",
+            hobbies: "Loisirs",
+            design: "Design",
+            languages: "Langues",
         }
     },
     settings: {
-        title: "Grimoire des Réglages",
-        subtitle: "Personnalisez l'expérience de votre portfolio",
+        title: "Paramètres",
+        subtitle: "Personnalisez votre expérience du portfolio",
         backBtn: "← Retour",
-        themeLabel: "Thème du Royaume",
-        langLabel: "Langue / Parler",
-        fontSizeLabel: "Taille de Police du Scribe",
-        motionLabel: "Sort de Mouvement (Animations)",
-        motionActive: "Réduit (Calme)",
-        motionNormal: "Pleine Magie (Animations)",
-        advancedBtn: "⚙️ Paramètres Avancés",
-        applyBtn: "Sauvegarder les Incantations",
-        closeBtn: "Fermer les réglages",
+        themeLabel: "Thème",
+        langLabel: "Langue",
+        fontSizeLabel: "Taille de police",
+        motionLabel: "Animations",
+        motionActive: "Réduction des animations",
+        motionNormal: "Animations complètes",
+        advancedBtn: "⚙️ Paramètres avancés",
+        applyBtn: "Enregistrer",
+        closeBtn: "Fermer les paramètres",
         sections: {
             appearance: {
                 title: "🎨 Apparence",
@@ -40,152 +40,173 @@ const COMMON = {
             },
             language: {
                 title: "🌐 Langue",
-                description: "Préférences linguistiques de l'interface"
+                description: "Préférences de langue de l'interface"
             },
             pdf: {
                 title: "📄 Lecteur PDF",
-                description: "Comment ouvrir et afficher les documents PDF"
+                description: "Mode d'ouverture et d'affichage des documents PDF"
             },
             accessibility: {
                 title: "♿ Accessibilité",
-                description: "Préférences de confort et d'accessibilité"
+                description: "Options de confort et d'accessibilité"
             }
         },
         keys: {
             theme: {
-                label: "Thème du Royaume",
-                description: "Choisissez le style visuel global du portfolio",
+                label: "Thème",
+                description: "Choisir l'apparence générale du portfolio",
                 options: {
-                    light: { label: "Arcane Lumineux", description: "Passer au thème Arcane Lumineux" },
-                    dark: { label: "Royaume des Ombres", description: "Passer au thème Royaume des Ombres" },
-                    medieval: { label: "Parchemin Médiéval", description: "Passer au thème Parchemin Médiéval" }
+                    light: { label: "Clair", description: "Passer au thème clair" },
+                    dark: { label: "Sombre", description: "Passer au thème sombre" },
+                    medieval: { label: "Classique", description: "Passer au thème classique" }
                 }
             },
             markdownTheme: {
                 label: "Style Markdown",
-                description: "Comment le contenu des blogs et du markdown est stylisé",
+                description: "Style d'affichage du contenu des articles et du markdown",
                 options: {
-                    default: { label: "Par Défaut", description: "Correspond au thème visuel actif" },
-                    github: { label: "GitHub", description: "Style markdown propre à la GitHub" },
-                    medieval: { label: "Parchemin Médiéval", description: "Style orné médiéval" }
+                    default: { label: "Par défaut", description: "Suit le thème actif" },
+                    github: { label: "GitHub", description: "Style propre type GitHub" },
+                    medieval: { label: "Classique", description: "Style classique" }
                 }
             },
             language: {
-                label: "Langue de l'Interface",
-                description: "Langue utilisée à travers l'interface du portfolio",
+                label: "Langue de l'interface",
+                description: "Langue utilisée dans tout le portfolio",
                 options: {
                     en: { label: "English", description: "" },
                     fr: { label: "Français", description: "" },
-                    ar: { label: "العربية", description: "" }
+                    ar: { label: "العربية", description: "" },
+                    'medieval-en': { label: "Anglais médiéval", description: "" },
+                    'medieval-fr': { label: "Français médiéval", description: "" }
                 }
             },
             pdfMode: {
-                label: "Mode d'Ouverture",
-                description: "Où ouvrir les documents PDF",
+                label: "Mode d'ouverture",
+                description: "Comment les PDF sont ouverts",
                 options: {
-                    inline: { label: "Déroulement en ligne", description: "S'affiche directement dans la page sous le déclencheur" },
-                    modal: { label: "Portail Arcane (Modale)", description: "S'ouvre dans une fenêtre flottante centrée" },
-                    newWindow: { label: "Plan Extérieur (Nouvel Onglet)", description: "S'ouvre dans un nouvel onglet" }
+                    inline: { label: "Intégré", description: "Affiché directement dans la page" },
+                    modal: { label: "Fenêtre modale", description: "Ouvre une fenêtre centrée" },
+                    newWindow: { label: "Nouvel onglet", description: "Ouvre dans un nouvel onglet" }
                 }
             },
             pdfReadingMode: {
-                label: "Disposition de Lecture",
-                description: "Comment disposer les pages à l'intérieur du lecteur PDF",
+                label: "Mode de lecture",
+                description: "Disposition des pages dans le lecteur PDF",
                 options: {
-                    paginated: { label: "Page par Page", description: "Naviguer une page à la fois" },
-                    longStrip: { label: "Bande Continue", description: "Défilement vertical continu" },
-                    separatedStrip: { label: "Bande Séparée", description: "Défilement avec séparateurs de pages" },
-                    doublePage: { label: "Double Page", description: "Deux pages côte à côte (sur ordinateur)" }
+                    paginated: { label: "Page par page", description: "Navigation page par page" },
+                    longStrip: { label: "Défilement continu", description: "Défilement vertical continu" },
+                    separatedStrip: { label: "Défilement séparé", description: "Pages séparées visuellement" },
+                    doublePage: { label: "Double page", description: "Deux pages côte à côte" }
                 }
             },
             reducedMotion: {
-                label: "Réduire les Mouvements",
-                description: "Minimiser les animations sur l'ensemble du portfolio"
+                label: "Réduction des animations",
+                description: "Réduire ou désactiver les animations"
             },
             fontSize: {
-                label: "Taille de Police",
-                description: "Taille de lecture de base",
+                label: "Taille de police",
+                description: "Taille de base du texte",
                 options: {
-                    small: { label: "Petite", description: "Base de 14px" },
-                    medium: { label: "Moyenne", description: "Base de 16px (par défaut)" },
-                    large: { label: "Grande", description: "Base de 18px" }
+                    small: { label: "Petite", description: "14px" },
+                    medium: { label: "Moyenne", description: "16px (par défaut)" },
+                    large: { label: "Grande", description: "18px" }
                 }
+            },
+            soundEnabled: {
+                label: "Sons",
+                description: "Activer les effets sonores"
             }
         }
     },
     contextMenu: {
-        navigateHome: "Retourner au Château",
-        copyUrl: "Copier l'URL du Parchemin",
-        urlLabel: "L'URL du Parchemin",
-        cycleTheme: "Changer le Thème du Royaume",
-        viewSource: "Examiner le Code Source",
-        unlockAchievement: "Forcer le Portail Secret",
+        navigateTitle: "Navigation",
+        navigateHome: "Retour à l'accueil",
+        copyUrl: "Copier l'URL",
+        urlLabel: "URL",
+        cycleTheme: "Changer de thème",
+        printPage: "Imprimer",
+        viewSource: "Voir le code source",
+        unlockAchievement: "Débloquer un secret",
     },
     pdfViewer: {
-        loading: "🔮 Déroulement du parchemin...",
-        errorNotFound: "⚠️ Le parchemin demandé n'existe pas ou est introuvable.",
-        errorCorrupted: "⚠️ Le parchemin n'a pas pu être chargé ou est corrompu.",
-        errorNoData: "Aucun parchemin spécifié.",
+        loading: "🔮 Chargement du document...",
+        errorNotFound: "⚠️ Document introuvable.",
+        errorCorrupted: "⚠️ Document corrompu ou illisible.",
+        errorNoData: "Aucun document sélectionné.",
         previous: "← Précédent",
         next: "Suivant →",
         pagePrefix: "Page",
     },
     chatbot: {
-        title: "Le Grand Oracle",
-        placeholder: "Consultez l'Oracle sur l'histoire de Mouad...",
-        send: "Consulter",
-        triggerText: "Consulter l'Oracle",
-        triggerAria: "Consulter le grimoire de l'Oracle",
-        closeAria: "Fermer le grimoire de l'Oracle",
+        title: "Assistant",
+        placeholder: "Posez une question sur Mouad...",
+        send: "Envoyer",
+        triggerText: "Ouvrir l'assistant",
+        triggerAria: "Ouvrir l'assistant",
+        closeAria: "Fermer l'assistant",
         suggestions: {
             whoIsMouad: "Qui est Mouad ?",
             listProjects: "Lister les projets",
-            listCyberProjects: "Projets de cybersécurité",
+            listCyberProjects: "Projets cybersécurité",
         },
         howToUseTitle: "Comment utiliser ce chatbot :",
-        howToUseAsk: "Posez des questions :",
-        howToUseAskDesc: "Sur le contexte ou des questions générales sur Mouad le Codeur",
+        howToUseAsk: "Poser des questions :",
+        howToUseAskDesc: "Sur Mouad, ses projets ou des informations générales",
         howToUseFollowUp: "Questions de suivi :",
-        howToUseFollowUpDesc: "L'Oracle se souvient du sujet actif pour une conversation fluide",
-        worthAsking: "Est-ce que ça vaut le coup :",
-        worthAskingDesc: "Oui ! Je me creuse les méninges pour le construire — même s'il reste des améliorations. Merci d'utiliser notre chatbot simple.",
-        greeting: "Salutations, chercheur ! Je suis l'Oracle. Demandez-moi tout ce que vous voulez sur Mouad le Codeur et ses pouvoirs magiques.",
-        underDevNotice: "Ce chatbot est encore en cours d'enchantement et d'entraînement. Merci de votre indulgence.",
+        howToUseFollowUpDesc: "Le chatbot garde le contexte de la conversation",
+        worthAsking: "Est-ce utile ?",
+        worthAskingDesc: "Oui, il est encore en amélioration mais déjà fonctionnel.",
+        greeting: "Bonjour ! Je suis l'assistant. Posez-moi vos questions sur Mouad le Codeur.",
+        underDevNotice: "Ce chatbot est encore en développement.",
         context: "Contexte :",
         statParagraphs: "Paragraphes",
         statSentences: "Phrases",
         statEntities: "Entités",
     },
     alerts: {
-        copySuccess: "{{label}} copié dans le grimoire ! ✅",
-        copyFailed: "Le sort de copie a échoué ! 💀",
-        pdfError: "Le parchemin demandé n'a pas pu être déroulé. Assurez-vous que le fichier existe. 🗂️",
-        welcomeHome: "Bienvenue dans mon palais, j'espère que vous y trouverez tout ce que vous désirez",
-        chaosUnderDev: "ce portfolio est encore en cours d'enchantement, merci de votre indulgence",
-        projectsUnderDev: "la section actuellement en développement est 'Projets'",
-        welcomeBack: "Bon retour, voyageur",
-        themeAltered: "Royaume altéré en {{theme}} ! 🔮",
-        portalAlreadyBreached: "Le Portail Secret a déjà été forcé ! 🛡️",
+        copySuccess: "{{label}} copié avec succès ! ✅",
+        copyFailed: "Échec de la copie ! ❌",
+        pdfError: "Impossible d'ouvrir le document. 🗂️",
+        welcomeHome: "Bienvenue sur mon portfolio, j'espère que vous trouverez ce que vous cherchez",
+        chaosUnderDev: "Ce portfolio est encore en développement",
+        projectsUnderDev: "La section projets est en cours de développement",
+        welcomeBack: "Bon retour",
+        themeAltered: "Thème changé en {{theme}} ! 🎨",
+        portalAlreadyBreached: "Ce secret a déjà été débloqué ! 🛡️",
         dateUnknown: "Date inconnue",
-        developmentAlertBar: "Bienvenue sur le portfolio de Mouad le Codeur ! Ce portfolio est encore en cours d'enchantement, merci de votre indulgence.",
+        developmentAlertBar: "Bienvenue sur le portfolio de Mouad le Codeur ! Encore en développement.",
     },
     footer: {
-        copyright: "© {{year}} Mouad le Codeur | Façonné avec du code magique et des pixels enchantés",
-        disclaimer: "Ce grimoire ne peut être copié sans la permission expresse du sorcier",
+        copyright: "© {{year}} Mouad le Codeur | Créé avec du code et de la créativité",
+        disclaimer: "Ce portfolio ne peut pas être copié sans autorisation",
     },
     thankyou: {
-        title: "📜 Votre Message a été Envoyé !",
-        body: "Un corbeau a pris son envol avec vos mots, noble visiteur.\nJe lirai votre parchemin et vous répondrai en toute hâte dès que les étoiles s'aligneront.",
-        returnBtn: "⬅️ Retourner aux Grandes Archives",
+        title: "📜 Message envoyé !",
+        body: "Votre message a bien été reçu.\nJe vous répondrai dès que possible.",
+        returnBtn: "⬅️ Retour à l'accueil",
+    },
+    achievements: {
+        title: 'Coffre des Succès',
+        subtitle: 'Débloqués · XP',
+        unlocked: 'Débloqué',
+        locked: 'Verrouillé',
+        showLocked: 'Afficher les Verrouillés',
+        category: 'Catégorie',
+        rarity: 'Rareté',
+        allCategories: 'Tout',
+        allRarities: 'Toutes Raretés',
+        xpSuffix: 'XP',
+        empty: 'Aucun succès ne correspond à vos filtres',
+        navLabel: 'Succès',
     },
     notFound: {
-        title: "🛡️ 404 - Parchemin Perdu dans le Néant",
-        subtitle: "Le parchemin que vous cherchez s'est volatilisé de la bibliothèque royale.",
-        description: "Peut-être l'adresse a-t-elle été mal orthographiée, ou la page a été incinérée par le feu d'un dragon. Vérifiez vos coordonnées et réessayez, voyageur.",
-        backBtn: "⬅️ Retourner au Château",
+        title: "🛡️ 404 - Page introuvable",
+        subtitle: "Cette page n'existe pas.",
+        description: "L'URL est incorrecte ou la page a été supprimée.",
+        backBtn: "⬅️ Retour à l'accueil",
     }
 }
-
 
 export {
     COMMON,

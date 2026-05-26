@@ -1,0 +1,317 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/animations' as *;
+
+.page {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 2rem;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+
+  :global([data-theme="medieval"]) & {
+    background: #3a2921;
+    border-bottom-color: var(--gold);
+  }
+
+  @include mobile {
+    padding: 1rem;
+    flex-wrap: wrap;
+  }
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 0.875rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition);
+  flex-shrink: 0;
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  :global([data-theme="medieval"]) & {
+    color: #e8d5b0;
+    border-color: rgba(201, 168, 76, 0.4);
+
+    &:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+  }
+}
+
+.titleBlock {
+  flex: 1;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+
+  :global([data-theme="medieval"]) & {
+    color: var(--gold);
+  }
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+
+  :global([data-theme="medieval"]) & {
+    color: #e8d5b0;
+  }
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  flex: 1;
+  min-height: 0;
+
+  @include laptop {
+    grid-template-columns: 240px 1fr;
+  }
+
+  @include tablet {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sidebar {
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 1.5rem;
+  position: sticky;
+  top: 64px;
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+
+  :global([data-theme="medieval"]) & {
+    background: rgba(44, 24, 16, 0.4);
+    border-right-color: rgba(201, 168, 76, 0.2);
+  }
+
+  @include tablet {
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filterLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  font-family: var(--font-primary);
+  margin-bottom: 0.25rem;
+
+  :global([data-theme="medieval"]) & {
+    color: #e8d5b0;
+    opacity: 0.8;
+  }
+}
+
+.filterBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition);
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  &.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--text-inverse);
+  }
+
+  :global([data-theme="medieval"]) & {
+    background: #f5e6ca;
+    border-color: rgba(139, 69, 19, 0.3);
+    color: #8b4513;
+
+    &:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    &.active {
+      background: #8b4513;
+      border-color: #8b4513;
+      color: #f5e6ca;
+    }
+  }
+}
+
+.toggleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.toggle {
+  width: 2.75rem;
+  height: 1.5rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  padding: 0;
+
+  &.toggleOn {
+    background: var(--accent);
+    border-color: var(--accent);
+
+    .toggleThumb {
+      transform: translateX(1.25rem);
+      background: var(--bg-primary);
+    }
+  }
+
+  :global([data-theme="medieval"]) & {
+    background: #e8d5b0;
+    border-color: rgba(139, 69, 19, 0.3);
+
+    &.toggleOn {
+      background: #8b4513;
+      border-color: #8b4513;
+
+      .toggleThumb {
+        background: #f5e6ca;
+      }
+    }
+  }
+}
+
+.toggleThumb {
+  display: block;
+  width: 1.15rem;
+  height: 1.15rem;
+  border-radius: 50%;
+  background: var(--text-muted);
+  position: absolute;
+  top: 0.1rem;
+  left: 0.1rem;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.content {
+  padding: 2rem;
+  overflow-y: auto;
+  background: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  @include mobile {
+    padding: 1.25rem 1rem;
+  }
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.groupTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 0.5rem;
+
+  :global([data-theme="medieval"]) & {
+    color: #8b4513;
+    border-bottom-color: rgba(139, 69, 19, 0.2);
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+  color: var(--text-muted);
+  background: var(--bg-secondary);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+
+  :global([data-theme="medieval"]) & {
+    background: rgba(232, 213, 176, 0.2);
+    border-color: rgba(139, 69, 19, 0.3);
+    color: #8b4513;
+  }
+}
+
+.emptyIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}

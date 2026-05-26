@@ -17,13 +17,13 @@
 .settings-modal {
   position: relative;
   width: 90vw;
-  max-width: 480px;
+  max-width: 60vw;
   background: var(--bg-card, #fff);
   border-radius: var(--radius-lg, 1rem);
   border: 1px solid var(--border);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
   animation: slideUp 200ms ease-out forwards;
-  
+
   max-height: 85vh;
   overflow-y: auto;
   overflow-x: hidden;
@@ -34,9 +34,11 @@
   &::-webkit-scrollbar {
     width: 6px;
   }
+
   &::-webkit-scrollbar-track {
     background: var(--bg-secondary);
   }
+
   &::-webkit-scrollbar-thumb {
     background: var(--accent);
     border-radius: 3px;
@@ -50,13 +52,25 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px) scale(0.97); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .modal-header {
@@ -146,9 +160,9 @@
 
   &.active {
     border-color: var(--accent);
-    background: var(--accent-light, rgba(37,99,235,0.08));
+    background: var(--accent-light, rgba(37, 99, 235, 0.08));
     color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-light, rgba(37,99,235,0.1));
+    box-shadow: 0 0 0 3px var(--accent-light, rgba(37, 99, 235, 0.1));
   }
 
   :global([data-theme="medieval"]) & {
@@ -209,13 +223,37 @@
 
   &.active {
     border-color: var(--accent);
-    background: var(--accent-light, rgba(37,99,235,0.08));
-    color: var(--accent);
+    background: var(--accent);
+    color: var(--white, #fff);
   }
 
   :global([data-theme="medieval"]) & {
-    font-family: var(--font-body);
+    font-family: var(--font-medieval);
+    font-size: 0.85rem;
   }
+}
+
+.a11y-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: var(--bg-tertiary, rgba(0, 0, 0, 0.03));
+  padding: 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.a11y-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.a11y-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-family: var(--font-primary);
 }
 
 .lang-flag {
@@ -370,9 +408,9 @@
 
   &.active {
     border-color: var(--accent);
-    background: var(--accent-light, rgba(37,99,235,0.08));
+    background: var(--accent-light, rgba(37, 99, 235, 0.08));
     color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-light, rgba(37,99,235,0.1));
+    box-shadow: 0 0 0 3px var(--accent-light, rgba(37, 99, 235, 0.1));
   }
 
   :global([data-theme="medieval"]) & {
@@ -458,5 +496,3 @@
     transform: translateX(4px);
   }
 }
-
-

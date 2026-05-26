@@ -3,11 +3,13 @@ import { createPortal } from 'react-dom';
 import { generatePseudoLLMAnswer, initializeSentenceChunks } from '../../lib/chatbot/parser';
 import { useChat } from '../../lib/contexts/ChatProvider';
 import { useSettings } from '../../lib/useSettings';
+import { useAchievements } from '../../lib/useAchievements';
 import styles from './ChatWindow.module.scss';
 
 const ChatWindow = () => {
   const { isOpen, isMinimized, closeChat, minimizeChat } = useChat();
   const { t } = useSettings();
+  const { unlockAchievement } = useAchievements();
 
   // ── All original chatbot logic ──────────────────────────────────────
   const [messages, setMessages] = useState([]);
@@ -79,6 +81,8 @@ const ChatWindow = () => {
     setParaCount(Math.max(0, Math.round((result.matches || 0) / 2)));
     setSentenceCount(result.matches || 0);
     setEntityCount(result.confidence ? Math.round(result.confidence * 10) : 0);
+
+    unlockAchievement('chatted_with_oracle');
   };
 
   const onAsk = () => sendQuestion(userInput);

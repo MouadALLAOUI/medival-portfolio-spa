@@ -15,7 +15,7 @@ const CrmefHeader = () => {
     { label: t('CRMEF.header.accueil'), href: '#accueil' },
     { label: t('CRMEF.header.semester1'), href: '#semestre1' },
     { label: t('CRMEF.header.msp'), href: '#msp' },
-    { label: t('COMMON.nav.home'), href: '/' },
+    // { label: t('COMMON.nav.home'), href: '/' },
   ];
 
   useEffect(() => {

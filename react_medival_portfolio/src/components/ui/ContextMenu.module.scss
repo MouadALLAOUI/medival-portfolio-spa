@@ -9,14 +9,13 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-sm, 6px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  padding: 0.35rem 0;
   font-family: var(--font-primary, sans-serif);
-  overflow: hidden;
   user-select: none;
-  
+  overflow: visible; // crucial to show submenu aside!
+
   // Custom transition setup (Framer-like AnimatePresence exit handling)
   animation: contextMenuEnter 140ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  
+
   &.hiding {
     animation: contextMenuExit 90ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
@@ -28,11 +27,74 @@
     border: 3px double var(--accent, #d4af37);
     border-radius: 4px;
     box-shadow: 0 8px 30px rgba(58, 41, 33, 0.45);
+    padding: 0.15rem 0;
+  }
+}
+
+.scrollable-menu-items {
+  width: 100%;
+  max-height: 350px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0.35rem 0;
+
+  // Sleek Webkit Custom Scrollbars
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--border, #e2e8f0);
+    border-radius: 3px;
+    &:hover {
+      background: var(--text-muted, #94a3b8);
+    }
+  }
+
+  :global([data-theme="medieval"]) & {
+    &::-webkit-scrollbar-thumb {
+      background: rgba(139, 69, 19, 0.35);
+      &:hover {
+        background: rgba(139, 69, 19, 0.55);
+      }
+    }
+  }
+}
+
+.submenu {
+  position: absolute;
+  background: var(--bg-card, #ffffff);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm, 6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  padding: 0.35rem 0;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  animation: contextMenuEnter 140ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  z-index: 10001;
+
+  &.right {
+    left: calc(100% + 4px);
+  }
+
+  &.left {
+    right: calc(100% + 4px);
+  }
+
+  :global([data-theme="medieval"]) & {
+    background: linear-gradient(135deg, #f5e6ca 0%, #e8d5b0 100%);
+    border: 3px double var(--accent, #d4af37);
+    border-radius: 4px;
     padding: 0.5rem 0;
   }
 }
 
+
 .menu-item {
+  position: relative;
   width: 100%;
   display: flex;
   align-items: center;
@@ -51,6 +113,10 @@
   &:hover {
     background: var(--accent-light, rgba(37, 99, 235, 0.05));
     color: var(--accent);
+
+    >.submenu {
+      display: block;
+    }
   }
 
   &:focus-visible {
@@ -75,6 +141,7 @@
   display: flex;
   align-items: center;
   gap: 0.65rem;
+  flex: 1;
 
   svg {
     width: 15px;
@@ -82,14 +149,14 @@
     stroke-width: 2px;
     color: var(--text-secondary);
     transition: color var(--transition, 200ms ease);
-    
+
     .menu-item:hover & {
       color: var(--accent);
     }
 
     :global([data-theme="medieval"]) & {
       color: var(--text-secondary);
-      
+
       .menu-item:hover & {
         color: var(--accent);
       }
@@ -119,7 +186,7 @@
   align-items: center;
   justify-content: center;
   animation: tickEnter 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  
+
   svg {
     width: 14px;
     height: 14px;
@@ -137,6 +204,7 @@
     opacity: 0;
     transform: scale(0.85);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -148,6 +216,7 @@
     opacity: 1;
     transform: scale(1);
   }
+
   to {
     opacity: 0;
     transform: scale(0.92);
@@ -159,6 +228,7 @@
     opacity: 0;
     transform: scale(0.6) rotate(-15deg);
   }
+
   to {
     opacity: 1;
     transform: scale(1) rotate(0deg);

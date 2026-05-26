@@ -2,8 +2,12 @@ import { useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import skills from '../../../data/skills';
 import { markdownToHtml } from '../../../lib/utils/markdownToHtml';
+import { useAppSettings } from '../../../lib/contexts/AppSettingsContext';
+import { getMarkdownThemeClass } from '../../../lib/markdown/markdownThemes';
 import { useImageViewer } from '../../../lib/useImageViewer';
 import { useSettings } from '../../../lib/useSettings';
+import FilterBar from '../../../components/sections/skills/FilterBar';
+import SkillCard from '../../../components/sections/skills/SkillCard';
 import styles from './skillsSection.module.scss';
 import CSection from '../../../templates/Section';
 
@@ -12,6 +16,8 @@ const SKILLS_PER_PAGE = 8;
 const SkillsSection = () => {
   const { openImage } = useImageViewer();
   const { t } = useSettings();
+  const { markdownTheme } = useAppSettings() || { markdownTheme: 'default' };
+  const mdThemeClass = getMarkdownThemeClass(markdownTheme);
   const [currentGroup, setCurrentGroup] = useState('general');
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedSkill, setSelectedSkill] = useState(null);
@@ -37,6 +43,11 @@ const SkillsSection = () => {
     setSelectedSkill(skill);
   };
 
+  const skillFilters = [
+    { key: 'general', label: t('HOME.SKILLS.general') },
+    { key: 'specialized', label: t('HOME.SKILLS.specialized') },
+  ];
+
   return (
     <CSection
       id="skills"
@@ -47,48 +58,22 @@ const SkillsSection = () => {
       <div className="section-content">
         <div className={styles['skills-template']}>
           {/* Toggle buttons — ABOVE cards */}
-          <div className={styles['toggle-row']} aria-label="Skills category filter">
-            {['general', 'specialized'].map((group) => (
-              <button
-                key={group}
-                className={`${styles['toggle-btn']} ${currentGroup === group ? styles['active'] : ''}`}
-                type="button"
-                onClick={() => onGroupChange(group)}
-              >
-                {t('HOME.SKILLS.' + group)}
-              </button>
-            ))}
-          </div>
+          <FilterBar
+            filters={skillFilters}
+            activeFilter={currentGroup}
+            onFilterChange={onGroupChange}
+          />
 
           {/* Grid + pagination */}
           <div className={styles['skills-grid-container']}>
             <div className={styles['skills-grid']}>
               {paginatedSkills.map((skill) => (
-                <div
+                <SkillCard
                   key={skill.id}
-                  className={styles['skill-card']}
-                  data-skill={`skill-${skill.id}`}
-                  onClick={() => onSkillClick(skill)}
-                >
-                  <div className={styles['skill-name-container']}>
-                    <span className={styles['skill-icon']}>{skill.icon}</span>
-                    <h3 className={styles['skill-name']}>{skill.name}</h3>
-                  </div>
-                  <p className={styles['skill-description']} dangerouslySetInnerHTML={{ __html: skill.description }} />
-                  <div className={styles['proficiency']} title={t('HOME.SKILLS.level', { level: skill.level })}>
-                    {Array.from({ length: 5 }).map((_, idx) => (
-                      <span key={idx} className={`${styles['star']} ${idx < skill.level ? '' : styles['empty']}`}>★</span>
-                    ))}
-                    <div className={styles['tooltip']}>
-                      <span className={styles['tooltip-title']}>
-                        {t(`HOME.SKILLS.levelName.${skill.level}`) || `Level ${skill.level}`}
-                      </span>
-                      <p className={styles['tooltip-desc']}>
-                        {t(`HOME.SKILLS.levelDesc.${skill.level}`)}
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                  skill={skill}
+                  onClick={onSkillClick}
+                  t={t}
+                />
               ))}
             </div>
 
@@ -187,7 +172,7 @@ const SkillsSection = () => {
                 {selectedSkill.overview?.desc && (
                   <div className={styles['modal-details']}>
                     <h3>{t('HOME.SKILLS.detailsTitle')}</h3>
-                    <div className="markdown-content" dangerouslySetInnerHTML={{ __html: markdownToHtml(selectedSkill.overview.desc) }} />
+                    <div className={`markdown-content ${mdThemeClass}`} dangerouslySetInnerHTML={{ __html: markdownToHtml(selectedSkill.overview.desc) }} />
                   </div>
                 )}
               </div>

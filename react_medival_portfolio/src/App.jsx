@@ -4,14 +4,42 @@ import SettingsProvider from './lib/contexts/settingProvider'
 import AchievementsProvider from './lib/contexts/AchievementsProvider'
 import ImageViewerProvider from './lib/contexts/ImageViewerProvider'
 import PdfViewerProvider from './lib/contexts/PdfViewerProvider'
-import AppRoutes from './routes/routes'
+import { useLocation } from 'react-router-dom'
+// import { AnimatePresence } from 'framer-motion'
+import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts'
+import { getActiveSeasonalTheme } from './lib/utils/seasonalThemes'
 import ContextMenu from './components/ui/ContextMenu'
+import AppRoutes from './routes/routes'
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary'
 import { useSettings } from './lib/useSettings'
+import { useAlerts } from './lib/useAlerts'
 import glossary from './data/glossary'
 
 function AppContent() {
   const { language } = useSettings();
+  const { showAlert } = useAlerts();
+  useKeyboardShortcuts();
+
+  // Konami Code Easter Egg
+  useEffect(() => {
+    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    let konamiIndex = 0;
+
+    const handleKeyDown = (e) => {
+      if (e.key === konamiCode[konamiIndex]) {
+        konamiIndex++;
+        if (konamiIndex === konamiCode.length) {
+          showAlert('🧙‍♂️ Secret Scroll Unlocked: Thou art a true master of the arcane!', 'royal', 5000);
+          konamiIndex = 0;
+        }
+      } else {
+        konamiIndex = 0;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [showAlert]);
 
   useEffect(() => {
     const dict = glossary[language] || glossary.en;
@@ -70,6 +98,18 @@ function AppContent() {
 }
 
 function App() {
+  const location = useLocation();
+
+  const seasonalTheme = getActiveSeasonalTheme();
+
+  useEffect(() => {
+    if (seasonalTheme) {
+      document.documentElement.setAttribute('data-seasonal', seasonalTheme);
+    } else {
+      document.documentElement.removeAttribute('data-seasonal');
+    }
+  }, [seasonalTheme]);
+
   return (
     <SettingsProvider>
       <AlertProvider>

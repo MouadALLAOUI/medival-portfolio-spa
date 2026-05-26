@@ -1,0 +1,38 @@
+@use '../../styles/variables' as *;
+
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: var(--color-parchment);
+  border: 2px solid var(--color-gold);
+  color: var(--color-dark-brown);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), var(--shadow-gold-glow);
+  transition: background 0.2s, border-color 0.2s;
+
+  &:hover {
+    background: var(--color-parchment-light);
+    border-color: var(--color-gold-light);
+  }
+
+  :global([data-theme="medieval"]) & {
+    background: linear-gradient(135deg, #f5e6ca 0%, #e8d5b0 100%);
+    border: 3px double var(--color-gold);
+    box-shadow: 0 6px 20px rgba(58, 41, 33, 0.4);
+  }
+
+  @media (max-width: 768px) {
+    bottom: 5rem; // Avoid overlap with mobile nav or chat trigger
+    right: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+  }
+}

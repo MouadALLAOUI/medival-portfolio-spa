@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSettings } from '../../lib/useSettings';
+import { useAchievements } from '../../lib/useAchievements';
 import { SETTINGS_SECTIONS } from '../../lib/settings/settingsRegistry';
 import SettingSection from './components/SettingSection';
 import styles from './SettingsPage.module.scss';
@@ -8,7 +9,12 @@ import styles from './SettingsPage.module.scss';
 const SettingsPage = () => {
   const navigate = useNavigate();
   const { t } = useSettings();
+  const { unlockAchievement } = useAchievements();
   const [activeSection, setActiveSection] = useState(SETTINGS_SECTIONS[0].id);
+
+  useEffect(() => {
+    unlockAchievement('visited_settings');
+  }, [unlockAchievement]);
 
   const current = SETTINGS_SECTIONS.find(s => s.id === activeSection);
 

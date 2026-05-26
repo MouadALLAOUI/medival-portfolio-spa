@@ -27,8 +27,8 @@
 }
 
 // Between sections
-section + section,
-.section + .section {
+section+section,
+.section+.section {
   margin-top: var(--section-gap);
 }
 
@@ -36,6 +36,41 @@ html {
   scroll-behavior: smooth;
   font-family: var(--font-body);
   background: var(--body-bg);
+  font-size: var(--base-font-size, 16px);
+
+  /* Custom Scrollbar */
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 5px;
+    border: 2px solid var(--bg-secondary);
+
+    &:hover {
+      background: var(--text-muted);
+    }
+  }
+
+  &[data-theme="medieval"] {
+    &::-webkit-scrollbar-track {
+      background: var(--dark-brown-val);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--gold-val);
+      border: 2px solid var(--dark-brown-val);
+
+      &:hover {
+        background: var(--gold-light-val);
+      }
+    }
+  }
 }
 
 body {
@@ -43,6 +78,7 @@ body {
   color: var(--dark-brown);
   background: var(--body-bg);
   overflow-x: hidden;
+  cursor: default;
 }
 
 body::before {
@@ -52,6 +88,17 @@ body::before {
   pointer-events: none;
   z-index: -1;
   background: var(--body-bg-before);
+}
+
+[data-theme="medieval"][data-custom-cursor="true"] body {
+  cursor: url('/assets/cursor/WenrexaAssetsMagicCursorsPack/36x36px/Cursor Default.png'), auto;
+
+  a,
+  button,
+  [role="button"],
+  .clickable {
+    cursor: url('/assets/cursor/WenrexaAssetsMagicCursorsPack/36x36px/Cursor Magic Use Blue.png'), pointer;
+  }
 }
 
 h1,
@@ -90,26 +137,6 @@ textarea {
   outline-offset: 3px;
 }
 
-html {
-  @include custom-scrollbar;
-}
-
-/* Body theme variables are dynamically set in _variables.scss based on active data-theme */
-
-::-webkit-scrollbar {
-  width: var(--scroll-gw);
-  height: var(--scroll-gh);
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-dark-gray);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-gold);
-  border-radius: var(--scroll-gw);
-}
-
 .alert-bar {
   background-color: var(--parchment-dark, #e8d5b0);
   color: var(--rust-light, #b05a46);
@@ -119,10 +146,112 @@ html {
   font-size: 1rem;
 }
 
+/* 🎃 Seasonal Themes */
+[data-seasonal="halloween"] {
+  --body-bg: #1a0f00;
+  --color-gold: #ff7518;
+  --color-gold-light: #ffa366;
+  --color-dark-brown: #2e1a00;
+  --accent: #ff7518;
+
+  body::after {
+    content: '🎃';
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    font-size: 3rem;
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 1000;
+  }
+}
+
+[data-seasonal="christmas"] {
+  --body-bg: #0a1f0a;
+  --color-gold: #d42426;
+  --color-gold-light: #ff4d4d;
+  --color-dark-brown: #051405;
+  --accent: #d42426;
+
+  body::after {
+    content: '❄️';
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    font-size: 3rem;
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 1000;
+    animation: rotate 10s linear infinite;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 [data-reduced-motion="true"] * {
   animation-duration: 0.01ms !important;
   animation-iteration-count: 1 !important;
   transition-duration: 0.01ms !important;
+}
+
+
+/* 🖨️ Print Styles */
+@media print {
+
+  .nav,
+  .footer,
+  .settings-gear,
+  .chat-trigger,
+  .back-to-top,
+  .context-menu-container,
+  .searchBar,
+  .filterBar,
+  .pagination,
+  .blog-actions,
+  .project-actions,
+  .share-buttons {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .body-container {
+    display: block !important;
+    overflow: visible !important;
+  }
+
+  .section {
+    page-break-inside: avoid;
+    padding: 2rem 0 !important;
+  }
+
+  a::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8rem;
+    color: #666;
+  }
+
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: black !important;
+  }
 }
 
 /* 📖 Glossary popovers styles */
@@ -131,7 +260,7 @@ html {
   border-bottom: 1.5px dashed var(--gold, #d4af37) !important;
   cursor: help;
   display: inline-block;
-  
+
   &::after {
     content: attr(data-definition);
     position: absolute;
@@ -178,13 +307,13 @@ html {
 
   &:hover {
     color: var(--gold, #d4af37) !important;
-    
+
     &::after {
       opacity: 1;
       visibility: visible;
       transform: translateX(-50%) scale(1);
     }
-    
+
     &::before {
       opacity: 1;
       visibility: visible;
@@ -192,4 +321,34 @@ html {
     }
   }
 }
-
+
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+    cursor: auto !important;
+  }
+
+  nav,
+  .back-to-top,
+  .chat-trigger,
+  .settings-btn,
+  footer,
+  .shareBar,
+  .postNav,
+  .relatedSection {
+    display: none !important;
+  }
+
+  .markdown-content {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  a::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+}

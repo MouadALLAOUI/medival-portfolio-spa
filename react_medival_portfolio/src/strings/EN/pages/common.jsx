@@ -1,37 +1,37 @@
 const COMMON = {
     nav: {
         logoText: "Mouad the Coder",
-        home: "Castle / Home",
-        landing: "Home Overview",
-        projects: "Tech Quests",
-        blogs: "Chamber of Chronicles",
+        home: "Home",
+        landing: "Overview",
+        projects: "Projects",
+        blogs: "Blog",
         crmef: "CRMEF Portal",
-        game: "Typing Realm",
+        game: "Typing Game",
         settingsGear: "Open settings",
         medieval: {
-            hero: "Oracle",
-            presentation: "The Craftsman",
-            skills: "Scroll of Skills",
-            projects: "Tech Quests",
-            about: "Coding Lore",
-            contact: "Send Raven",
-            hobbies: "Beyond Code",
-            design: "Design Forge",
-            languages: "Tongues of the Realm",
+            hero: "Assistant",
+            presentation: "Presentation",
+            skills: "Skills",
+            projects: "Projects",
+            about: "About",
+            contact: "Contact",
+            hobbies: "Hobbies",
+            design: "Design",
+            languages: "Languages",
         }
     },
     settings: {
-        title: "Arcane Settings Grimoire",
+        title: "Settings",
         subtitle: "Customize your portfolio experience",
         backBtn: "← Back",
-        themeLabel: "Realm Theme",
-        langLabel: "Speech / Tongue",
-        fontSizeLabel: "Scribe Font Size",
-        motionLabel: "Motion Spell (Animations)",
-        motionActive: "Reduced (Calm)",
-        motionNormal: "Full Magic (Animations)",
+        themeLabel: "Theme",
+        langLabel: "Language",
+        fontSizeLabel: "Font Size",
+        motionLabel: "Animations",
+        motionActive: "Reduced Motion",
+        motionNormal: "Full Animations",
         advancedBtn: "⚙️ Advanced Settings",
-        applyBtn: "Save Incantations",
+        applyBtn: "Save Settings",
         closeBtn: "Close settings",
         sections: {
             appearance: {
@@ -53,21 +53,21 @@ const COMMON = {
         },
         keys: {
             theme: {
-                label: "Realm Theme",
+                label: "Theme",
                 description: "Choose the overall visual style of the portfolio",
                 options: {
-                    light: { label: "Arcane Light", description: "Switch to Arcane Light theme" },
-                    dark: { label: "Shadow Realm", description: "Switch to Shadow Realm theme" },
-                    medieval: { label: "Medieval Scroll", description: "Switch to Medieval Scroll theme" }
+                    light: { label: "Light", description: "Switch to light theme" },
+                    dark: { label: "Dark", description: "Switch to dark theme" },
+                    medieval: { label: "Classic", description: "Switch to classic theme" }
                 }
             },
             markdownTheme: {
                 label: "Markdown Style",
-                description: "How blog post and markdown content is styled",
+                description: "How blog posts and markdown content are displayed",
                 options: {
                     default: { label: "Default", description: "Matches the active visual theme" },
                     github: { label: "GitHub", description: "Clean GitHub-style markdown" },
-                    medieval: { label: "Medieval Scroll", description: "Ornate medieval styling" }
+                    medieval: { label: "Classic", description: "Classic styled markdown" }
                 }
             },
             language: {
@@ -76,25 +76,41 @@ const COMMON = {
                 options: {
                     en: { label: "English", description: "" },
                     fr: { label: "Français", description: "" },
-                    ar: { label: "العربية", description: "" }
+                    ar: { label: "العربية", description: "" },
+                    'medieval-en': { label: "Classic English", description: "" },
+                    'medieval-fr': { label: "Français Classique", description: "" }
+                }
+            },
+            customCursor: {
+                label: "Custom Cursor",
+                options: {
+                    enabled: { label: "Enabled" },
+                    disabled: { label: "Default Cursor" }
+                }
+            },
+            soundEnabled: {
+                label: "Sound Effects",
+                options: {
+                    enabled: { label: "On" },
+                    disabled: { label: "Muted" }
                 }
             },
             pdfMode: {
                 label: "Opening Mode",
                 description: "Where PDF documents open when triggered",
                 options: {
-                    inline: { label: "Inline Scroll", description: "Expands inside the page below the trigger" },
-                    modal: { label: "Arcane Portal (Modal)", description: "Opens in a centered floating window" },
-                    newWindow: { label: "Outer Plane (New Window)", description: "Opens in a new browser tab" }
+                    inline: { label: "Inline", description: "Expands inside the page below the trigger" },
+                    modal: { label: "Popup Window", description: "Opens in a centered floating window" },
+                    newWindow: { label: "New Tab", description: "Opens in a new browser tab" }
                 }
             },
             pdfReadingMode: {
                 label: "Reading Layout",
-                description: "How pages are laid out inside the PDF viewer",
+                description: "How pages are displayed inside the PDF viewer",
                 options: {
                     paginated: { label: "Page by Page", description: "Navigate one page at a time" },
-                    longStrip: { label: "Long Strip", description: "Continuous vertical scroll" },
-                    separatedStrip: { label: "Separated Strip", description: "Scroll with clear page separators" },
+                    longStrip: { label: "Continuous Scroll", description: "Continuous vertical scroll" },
+                    separatedStrip: { label: "Separated Pages", description: "Scroll with clear page separators" },
                     doublePage: { label: "Double Page", description: "Two pages side by side (desktop)" }
                 }
             },
@@ -103,40 +119,50 @@ const COMMON = {
                 description: "Minimize animations across the portfolio"
             },
             fontSize: {
-                label: "Scribe Font Size",
+                label: "Font Size",
                 description: "Base reading font size",
                 options: {
                     small: { label: "Small", description: "14px base" },
                     medium: { label: "Medium", description: "16px base (default)" },
                     large: { label: "Large", description: "18px base" }
                 }
+            },
+            soundEnabled: {
+                label: "Sound Effects",
+                description: "Enable interface audio feedback"
             }
         }
     },
     contextMenu: {
-        navigateHome: "Return to Castle",
-        copyUrl: "Copy Scroll URL",
-        urlLabel: "Scroll URL",
-        cycleTheme: "Cycle Realm Theme",
-        viewSource: "Peek Source Code",
-        unlockAchievement: "Breach Secret Portal",
+        navigateTitle: "Go to...",
+        navigateHome: "Return Home",
+        copyUrl: "Copy Page URL",
+        actionsTitle: "Actions",
+        printLabel: "Print Page",
+        sourceLabel: "View Source Code",
+        unlockTitle: "Unlock Secret",
+        urlLabel: "URL",
+        cycleTheme: "Switch Theme",
+        printPage: "Print Page",
+        viewSource: "View Source Code",
+        unlockAchievement: "Unlock Hidden Feature",
     },
     pdfViewer: {
-        loading: "🔮 Unrolling scroll...",
-        errorNotFound: "⚠️ The requested scroll does not exist or is untraceable.",
-        errorCorrupted: "⚠️ The scroll could not be unrolled or is corrupted.",
-        errorNoData: "No scroll specified.",
+        loading: "📄 Loading document...",
+        errorNotFound: "⚠️ The requested document could not be found.",
+        errorCorrupted: "⚠️ The document could not be opened or is corrupted.",
+        errorNoData: "No document specified.",
         previous: "← Previous",
         next: "Next →",
         pagePrefix: "Page",
     },
     chatbot: {
-        title: "The Grand Oracle",
-        placeholder: "Consult the Oracle on Mouad's lore...",
-        send: "Consult",
-        triggerText: "Consult Oracle",
-        triggerAria: "Open Oracle grimoire",
-        closeAria: "Close Oracle grimoire",
+        title: "AI Assistant",
+        placeholder: "Ask something about Mouad...",
+        send: "Send",
+        triggerText: "Open Assistant",
+        triggerAria: "Open assistant",
+        closeAria: "Close assistant",
         suggestions: {
             whoIsMouad: "Who is Mouad?",
             listProjects: "List projects",
@@ -144,12 +170,12 @@ const COMMON = {
         },
         howToUseTitle: "How to use this chatbot:",
         howToUseAsk: "Ask questions:",
-        howToUseAskDesc: "About the context or general inquiries about Mouad the Coder",
+        howToUseAskDesc: "About Mouad, his projects, or general information",
         howToUseFollowUp: "Follow-up questions:",
-        howToUseFollowUpDesc: "The bot remembers the active topic context for seamless continuation",
-        worthAsking: "Is it worth asking:",
-        worthAskingDesc: "Yes! I work my brain out to build it — even if there are still some improvements needed. Thank you for using our simple chatbot.",
-        greeting: "Greetings, seeker! I am the Oracle. Ask me anything about Mouad the Coder and his mystical coding powers.",
+        howToUseFollowUpDesc: "The chatbot remembers the active topic for smoother conversations",
+        worthAsking: "Is it worth using:",
+        worthAskingDesc: "Yes! This chatbot was built with effort and is still improving over time. Thanks for trying it.",
+        greeting: "Hello! I’m the AI assistant. Ask me anything about Mouad the Coder and his projects.",
         underDevNotice: "This chatbot is still under development and training. Thank you for your understanding.",
         context: "Context:",
         statParagraphs: "Paragraphs",
@@ -157,35 +183,49 @@ const COMMON = {
         statEntities: "Entities",
     },
     alerts: {
-        copySuccess: "Copied {{label}} to spellbook! ✅",
-        copyFailed: "Copy spell failed! 💀",
-        pdfError: "The requested scroll could not be unrolled. Ensure the file exists. 🗂️",
-        welcomeHome: "Welcome to my palace, hope you find whatever you desire",
-        chaosUnderDev: "this portfolio is still under development thank you for your understanding",
-        projectsUnderDev: "current section under development is projects",
-        welcomeBack: "Welcome back, traveler",
-        themeAltered: "Realm altered to {{theme}}! 🔮",
-        portalAlreadyBreached: "The Secret Portal was already breached! 🛡️",
-        dateUnknown: "Date unknown",
+        copySuccess: "{{label}} copied successfully! ✅",
+        copyFailed: "Copy failed! ❌",
+        pdfError: "The requested document could not be opened. Please make sure the file exists. 🗂️",
+        welcomeHome: "Welcome to my portfolio, hope you find what you're looking for",
+        chaosUnderDev: "This portfolio is still under development. Thank you for your understanding.",
+        projectsUnderDev: "The projects section is currently under development",
+        welcomeBack: "Welcome back",
+        themeAltered: "Theme changed to {{theme}}! 🎨",
+        secretPortraitUnlocked: "🎉 You discovered a hidden feature!",
+        portalAlreadyBreached: "This hidden feature has already been unlocked! 🔒",
+        dateUnknown: "Unknown date",
         developmentAlertBar: "Welcome to the portfolio of Mouad the Coder! This portfolio is still under development, thank you for your understanding.",
     },
     footer: {
-        copyright: "© {{year}} Mouad the Coder | Crafted with magical code and enchanted pixels",
-        disclaimer: "This grimoire shall not be copied without express permission from the wizard",
+        copyright: "© {{year}} Mouad the Coder | Built with code and creativity",
+        disclaimer: "This portfolio may not be copied without permission",
     },
     thankyou: {
-        title: "📜 Your Message Has Been Sent!",
-        body: "A raven has taken flight with your words, noble visitor.\nI shall read your scroll and reply with haste once the stars align.",
-        returnBtn: "⬅️ Return to the Grand Archives",
+        title: "📨 Your Message Has Been Sent!",
+        body: "Your message has been received successfully.\nI’ll review it and get back to you as soon as possible.",
+        returnBtn: "⬅️ Return to Home",
+    },
+    achievements: {
+        title: 'Achievement Vault',
+        subtitle: 'Unlocked · XP',
+        unlocked: 'Unlocked',
+        locked: 'Locked',
+        showLocked: 'Show Locked',
+        category: 'Category',
+        rarity: 'Rarity',
+        allCategories: 'All',
+        allRarities: 'All Rarities',
+        xpSuffix: 'XP',
+        empty: 'No achievements match your filters',
+        navLabel: 'Achievements',
     },
     notFound: {
-        title: "🛡️ 404 - Scroll Lost in the Void",
-        subtitle: "The parchment you seek has vanished from the kingdom's library.",
-        description: "Perhaps the address was misspelled, or the page has been incinerated by dragon fire. Verify your coordinates and try again, traveler.",
-        backBtn: "⬅️ Return to Castle",
+        title: "🛡️ 404 - Page Not Found",
+        subtitle: "The page you are looking for does not exist.",
+        description: "The address may be incorrect, or the page may have been moved or deleted. Please check the URL and try again.",
+        backBtn: "⬅️ Return Home",
     }
 }
-
 
 export {
     COMMON,
