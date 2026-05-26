@@ -8,30 +8,33 @@
 
 ## 📊 Health Summary
 
-| Category | Status | Issues Found |
-|---|---|---|
-| ⚙️ Config Files | 🟢 Healthy | 0 |
-| 🎨 Styles / SCSS | 🟢 Healthy | 0 |
-| 🎨 Multi-Theme System | 🟢 Healthy | 0 |
-| 🧩 Components | 🟢 Healthy | 0 |
-| 📄 Pages | 🟢 Healthy | 0 |
-| 🗃️ Data Files | 🟢 Healthy | 0 |
-| 🖼️ Assets | 🟢 Healthy | 0 |
-| 🔀 Router | 🟢 Healthy | 0 |
-| 🔭 Viewer Overlays | 🟢 Fixed | 0 |
-| 🌐 Internationalization | 🟢 Healthy | 0 |
+| Category                  | Status     | Issues Found |
+| ------------------------- | ---------- | ------------ |
+| ⚙️ Config Files            | 🟢 Healthy  | 0            |
+| 🎨 Styles / SCSS           | 🟢 Healthy  | 0            |
+| 🎨 Multi-Theme System      | 🟢 Healthy  | 0            |
+| 🧩 Components              | 🟢 Healthy  | 0            |
+| 📄 Pages                   | 🟢 Healthy  | 0            |
+| 🗃️ Data Files              | 🟢 Healthy  | 0            |
+| 🖼️ Assets                  | 🟢 Healthy  | 0            |
+| 🔀 Router                  | 🟢 Healthy  | 0            |
+| Telescope Viewer Overlays | 🟢 Fixed    | 0            |
+| 🌐 Internationalization    | 🟢 Expanded | 0            |
+| ♿ Accessibility & UX      | 🟢 Enhanced | 0            |
+| 📜 Build-time Tooling      | 🟢 Added    | 0            |
+| 🏆 Achievements System    | 🟢 Integrated | 0            |
 
 ---
 
 ## 🏗️ Build Status
 
-| Environment | Status | Details |
-|---|---|---|
-| Development (`npm run dev`) | ✅ Passing | No terminal errors |
-| Production (`npm run build`) | ✅ Passing | 1903 modules, 21.08s |
-| CSS bundle | 🟢 Healthy | index-*.css (33.10kb gzip) |
+| Environment                  | Status    | Details                    |
+| ---------------------------- | --------- | -------------------------- |
+| Development (`npm run dev`)  | ✅ Passing | No terminal errors         |
+| Production (`npm run build`) | ✅ Passing | Includes RSS & Sitemap gen |
+| CSS bundle                   | 🟢 Healthy | index-*.css (33.10kb gzip) |
 
-> Last successful build: Typo Corrections & Roadmap Cleanup (Fixed CPU scheduler description and unknown comment typos)
+> Last successful build: Full Achievements System Integration (19 achievements, notifications portal, filterable vault dashboard)
 
 ---
 
@@ -54,11 +57,13 @@
 **Status**: 🟢 Healthy
 - ✅ Correctly configures modern bundler setup: React 19.x, Vite 8.x, Tailwind v4 (`@tailwindcss/postcss`), Sass preprocessor, Zustand, and React Router Dom.
 - ✅ Correct scripts configured (`dev`, `build`, `lint`, `preview`).
+- ✅ Build script enhanced with automated RSS and Sitemap generation.
 
 ### `vite.config.js`
 **Status**: 🟢 Healthy
 - ✅ Correct base path configuration (`./`) for static deployment environments.
 - ✅ Active plugins including `@vitejs/plugin-react` and babel presets.
+- ✅ Bundle visualizer integrated for production analysis.
 
 ### `tailwind.config.js`
 **Status**: 🟢 Healthy
@@ -277,15 +282,15 @@ All 11 main component sections have been successfully refactored to use scoped S
 
 ## ✅ Resolved Issues
 
-| Issue | Fix Applied | Session |
-|---|---|---|
-| SASS @use collision in _base.scss | Switched to @import pattern | Styling Refactor |
-| LightningCSS crash on SVG %23 in _crmef.scss | Converted SVG to base64 | Styling Refactor |
-| LightningCSS crash on SVG %23 in _blogs.scss | Converted SVG to base64 | Styling Refactor |
-| No responsive styles on any section | Full responsive refactor | Styling Refactor |
-| Global SCSS contained component-specific rules | Migrated to per-component modules | Styling Refactor |
+| Issue                                                  | Fix Applied                                                  | Session                       |
+| ------------------------------------------------------ | ------------------------------------------------------------ | ----------------------------- |
+| SASS @use collision in _base.scss                      | Switched to @import pattern                                  | Styling Refactor              |
+| LightningCSS crash on SVG %23 in _crmef.scss           | Converted SVG to base64                                      | Styling Refactor              |
+| LightningCSS crash on SVG %23 in _blogs.scss           | Converted SVG to base64                                      | Styling Refactor              |
+| No responsive styles on any section                    | Full responsive refactor                                     | Styling Refactor              |
+| Global SCSS contained component-specific rules         | Migrated to per-component modules                            | Styling Refactor              |
 | ImageViewer/PdfViewer not rendering on home first load | Switched to `createPortal` → `document.body`; z-index → 9999 | Overlay Fix & Blogs Migration |
-| PdfViewer forced remount on each open (key={url}) | Replaced with `useEffect([url])` internal reset | Overlay Fix & Blogs Migration |
+| PdfViewer forced remount on each open (key={url})      | Replaced with `useEffect([url])` internal reset              | Overlay Fix & Blogs Migration |
 
 ---
 
@@ -327,27 +332,27 @@ All 11 main component sections have been successfully refactored to use scoped S
 
 ## ⚙️ Functionality Audit
 
-| Function | Origin file | React implementation | Status |
-|---|---|---|---|
-| `showAlert` | `alerts.js` | `AlertProvider.jsx` context & `AlertContainer.jsx` | ✅ Active & Rendered |
-| `renderImage` | `viewimage.js` | `ImageViewerProvider.jsx` & `ImageViewer.jsx` | ✅ Active & Rendered |
-| scroll handler | `animation.js` | `Headers.jsx` activeSection window scroll listener | ✅ Active & Rendered |
-| `getColorForTag` | `colors.js` | Scoped utility `src/lib/getColorForTag.js` | ✅ Active |
-| `setCookie` / `getCookie` | `cookies.js` | Pure utility `src/lib/utils/cookies.js` | ✅ Active |
-| `renderDesigns` | `designs.js` | Scoped mapping in `DesignSection.jsx` component | ✅ Active |
-| `renderHobbies` | `hobbies.js` | Scoped mapping in `HobbiesSection.jsx` | ✅ Active |
-| `renderLanguages` | `languages.js` | Scoped mapping in `LanguagesSection.jsx` | ✅ Active |
-| `renderLearning` | `learning.js` | Scoped mapping in `LearningSection.jsx` | ✅ Active |
-| `markdownToHtml` | `markdowntohtml.js` | Custom parser utility `src/lib/utils/markdownToHtml.js` | ✅ Active |
-| `renderProjects` | `projects.js` | Scoped State in `ProjectsSection.jsx` component | ✅ Active |
-| `TrackMe` | `track.js` | Fetch POST request triggered inside `AchievementsProvider.jsx` | ✅ Active |
-| `initSettings` | `settings.js` | `settingProvider.jsx` React context provider | ✅ Active |
-| Expandable timeline | `script.js` | Toggle boolean React state in `AboutSection.jsx` | ✅ Active |
-| Context Menu Blocker | `script.js` | Global contextmenu blocker `useEffect` inside `App.jsx` | ✅ Active |
-| Global Code Copy | `script.js` | Scoped click listener leveraging `useCodeCopy` hook | ✅ Active |
-| `renderBlogs` | `blogs/script.js` | `BlogsPage.jsx` with `BlogCard` grid + tag filter + pagination | ✅ Active |
-| `changeBlog` | `blogs/blog/blogscript.js` | `BlogPost.jsx` prev/next via `useNavigate` + slug routing | ✅ Active |
-| `openImage` in blog | `blogs/blog/blogscript.js` | `useEffect` wiring all `<img>` inside post content to `openImage` | ✅ Active |
+| Function                  | Origin file                | React implementation                                              | Status              |
+| ------------------------- | -------------------------- | ----------------------------------------------------------------- | ------------------- |
+| `showAlert`               | `alerts.js`                | `AlertProvider.jsx` context & `AlertContainer.jsx`                | ✅ Active & Rendered |
+| `renderImage`             | `viewimage.js`             | `ImageViewerProvider.jsx` & `ImageViewer.jsx`                     | ✅ Active & Rendered |
+| scroll handler            | `animation.js`             | `Headers.jsx` activeSection window scroll listener                | ✅ Active & Rendered |
+| `getColorForTag`          | `colors.js`                | Scoped utility `src/lib/getColorForTag.js`                        | ✅ Active            |
+| `setCookie` / `getCookie` | `cookies.js`               | Pure utility `src/lib/utils/cookies.js`                           | ✅ Active            |
+| `renderDesigns`           | `designs.js`               | Scoped mapping in `DesignSection.jsx` component                   | ✅ Active            |
+| `renderHobbies`           | `hobbies.js`               | Scoped mapping in `HobbiesSection.jsx`                            | ✅ Active            |
+| `renderLanguages`         | `languages.js`             | Scoped mapping in `LanguagesSection.jsx`                          | ✅ Active            |
+| `renderLearning`          | `learning.js`              | Scoped mapping in `LearningSection.jsx`                           | ✅ Active            |
+| `markdownToHtml`          | `markdowntohtml.js`        | Custom parser utility `src/lib/utils/markdownToHtml.js`           | ✅ Active            |
+| `renderProjects`          | `projects.js`              | Scoped State in `ProjectsSection.jsx` component                   | ✅ Active            |
+| `TrackMe`                 | `track.js`                 | Fetch POST request triggered inside `AchievementsProvider.jsx`    | ✅ Active            |
+| `initSettings`            | `settings.js`              | `settingProvider.jsx` React context provider                      | ✅ Active            |
+| Expandable timeline       | `script.js`                | Toggle boolean React state in `AboutSection.jsx`                  | ✅ Active            |
+| Context Menu Blocker      | `script.js`                | Global contextmenu blocker `useEffect` inside `App.jsx`           | ✅ Active            |
+| Global Code Copy          | `script.js`                | Scoped click listener leveraging `useCodeCopy` hook               | ✅ Active            |
+| `renderBlogs`             | `blogs/script.js`          | `BlogsPage.jsx` with `BlogCard` grid + tag filter + pagination    | ✅ Active            |
+| `changeBlog`              | `blogs/blog/blogscript.js` | `BlogPost.jsx` prev/next via `useNavigate` + slug routing         | ✅ Active            |
+| `openImage` in blog       | `blogs/blog/blogscript.js` | `useEffect` wiring all `<img>` inside post content to `openImage` | ✅ Active            |
 
 ---
 
@@ -490,18 +495,20 @@ All 11 main component sections have been successfully refactored to use scoped S
 
 ---
 
-### Session: Immersive High-Fidelity UX & QoL Enhancements
-**Scope**: Implementation of 8 major frontend roadmap improvements (Reading Progress scroll bar, Related Posts Suggestions, Star level interactive tooltips, Dynamic project duration calculations, Standardised image lazy-loading, Automatic external link arrow indicators, Production blog draft gates, and Auto-rotating project gallery carousels).
+### Session: Multi-Language Expansion & Immersive UX Refactor
+**Scope**: Expansion of the i18n system to 5 languages, implementation of a global accessibility engine (font scaling & motion reduction), and a major refactor of the Skills section and Context Menu.
 **Status**: ✅ Complete
 **Changes**:
-- **Task 1 — Reading Progress Bar**: Built dynamic scroll list handlers tracking scroll offset percentages inside `BlogPost.jsx` to render an absolute top-fixed sepia-themed progress scrollbar using high-fidelity styling tokens inside `BlogPost.module.scss`.
-- **Task 2 — Related Posts Suggestions**: Programmed tag intersection scoring algorithms in `BlogPost.jsx` matching categories/tags across visible blogs, rendering a 2-card suggestions grid below article pages leveraging existing `<BlogCard>` elements.
-- **Task 3 — Skill Rating Tooltips**: Appended bilingual tooltip titles and descriptions under `HOME.SKILLS` dictionary keys in both English (`EN/pages/home.jsx`) and French (`FR/pages/home.jsx`). Rendered floating tooltips directly inside `.proficiency` containers inside `skillsSection.jsx` and `skillsSection.module.scss` using absolute CSS hovers for performance.
-- **Task 4 — Project Completion Duration**: Integrated dynamic date delta calculations inside `ProjectsSection.jsx` using localized duration parsers (e.g. "3 days", "1 month") with elegant theme-conforming sepia badges.
-- **Task 5 — Native Image Lazy Loading**: Integrated the native `loading="lazy"` attribute across layout images, dynamic card thumbnails (`card.jsx`, `BlogCard.jsx`), and refactored the Markdown-to-HTML parser image regex matching (`markdownToHtml.js`) to append lazy loading properties onto blog post body images.
-- **Task 6 — External Link Indicators**: Applied global standard link selectors inside base styles (`_base.scss`) targeting `a[target="_blank"]`, appending modern external arrow icons (` ↗`) next to plain anchors while protecting buttons, badges, navigation headers, and cards.
-- **Task 7 — Blog Draft Mode**: Implemented strict security gates across both list grids (`BlogsPage.jsx`) and post slug loaders (`BlogPost.jsx`) to hide unpublished draft files (flagged `isDraft: true`) in production environments, while preserving previews during local developer modes (`npm run dev`).
-- **Task 8 — Auto-Rotating Project Screenshot Carousels**: Replaced static thumbnail grids inside `ProjectsSection.jsx` and `ProjectsSection.module.scss` with a high-fidelity sliding image carousel. Supports mouse hover pauses, dynamic arrow indicators, active dots triggers, and automatic 3.5s interval transitions.
-- **Vite production compilation**: Completed successfully with zero compiler or CSS bundle errors in `27.28s`.
+- **Task 1 — 5-Language i18n System**: Created 12 new string files across `MEDIEVAL-EN`, `MEDIEVAL-FR`, and `AR` (Arabic) namespaces. Added RTL support for Arabic via `document.documentElement.dir` logic inside `settingProvider.jsx`. Integrated new language options with flags into both `SettingsModal.jsx` and `SettingsPage.jsx`.
+- **Task 2 — Inline PDF Modal Viewer**: Refactored `LearningSection.jsx` to intercept card clicks and open the existing `<PdfViewer />` modal instead of new browser tabs.
+- **Task 3 — Component Splitting & Reusability**: Extracted `FilterBar.jsx` and `SkillCard.jsx` from the massive Skills section. Upgraded universal `<DynamicCard />` in `card.jsx` to support variants (`parchment`, `dark`, `golden`) and hover effects (`lift`, `glow`).
+- **Task 4 — Functional Accessibility Settings**:
+  - **Font Scaling**: Wired the base font size slider to a CSS variable `--base-font-size` applied to `html` root, enabling global `rem`-based scaling.
+  - **Reduce Motion**: Implemented a global `[data-reduced-motion="true"]` selector that kills all CSS transitions/animations and Framer Motion timelines instantly.
+- **Task 5 — Advanced Context Menu**:
+  - **Submenus**: Added nested navigation and language submenus using absolute-positioned hover portals.
+  - **Global Coverage**: Modified `useContextMenu.js` to prevent the default browser menu on all elements (including inputs and buttons) unless `data-allow-contextmenu` is specified.
+  - **New Actions**: Added "Print Scroll", "View Source", and "Navigate" sub-items.
+- **Vite production compilation**: Verified rollups compile cleanly in `25.84s`.
 
 

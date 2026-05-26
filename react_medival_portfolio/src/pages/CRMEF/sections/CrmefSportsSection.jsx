@@ -1,6 +1,7 @@
 import CSection from '../../../templates/Section';
 import { crmefSports } from '../../../data/crmef.data';
 import { useSettings } from '../../../lib/useSettings';
+import DynamicCard from '../../../components/card';
 import styles from './CrmefSportsSection.module.scss';
 
 const CrmefSportsSection = () => {
@@ -21,10 +22,18 @@ const CrmefSportsSection = () => {
         {crmefSports.map(sport => {
           const tSport = getTranslatedSport(sport);
           return (
-            <div key={tSport.id} className={styles.sportCard}>
+            <DynamicCard
+              key={tSport.id}
+              item={tSport}
+              config={{
+                baseClass: styles.sportCard,
+                titleKey: 'label',
+                variant: 'parchment'
+              }}
+            >
               <span className={styles.sportIcon}>{tSport.icon}</span>
               <span className={styles.sportLabel}>{tSport.label}</span>
-            </div>
+            </DynamicCard>
           );
         })}
       </div>

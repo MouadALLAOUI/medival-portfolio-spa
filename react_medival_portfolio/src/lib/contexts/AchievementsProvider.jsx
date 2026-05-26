@@ -1,303 +1,313 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { AchievementsContext } from "./achievements.context.js";
-import { achievements as definitions } from "../../data/achievements";
-import { readAchievementsState, writeAchievementsState } from "../utils/achievementsStorage";
-import GET_ENV from "../../config/env";
-import setCookie, { getCookie } from "../utils/cookies";
-import { useAlerts } from "../useAlerts";
+import { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
+import { createPortal } from 'react-dom';
+import { ACHIEVEMENTS, RARITY_CONFIG } from '../achievements/achievementsRegistry';
+import { AchievementsContext } from './achievements.context';
+import ThemeProvider from './ThemeProvider';
+import styles from './AchievementsProvider.module.scss';
 
-const env = GET_ENV();
+const STORAGE_KEY = 'portfolio_achievements';
+const COUNTERS_KEY = 'portfolio_achievement_counters';
 
-async function triggerTrackMe(ip, agent, page, referrer) {
-  if (!env.API_URL) return;
-  try {
-    const response = await fetch(`${env.API_URL}/track.php`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-API-KEY": `${env.API_KEY}`,
-      },
-      body: JSON.stringify({ ip, agent, page, referrer, time: new Date().toISOString() }),
+const AchievementsProvider = ({ children }) => {
+  // Load unlocked achievements from localStorage
+  const [unlocked, setUnlocked] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    } catch { return {}; }
+  });
+
+  // Load counters (blogs_read, visit_count, etc.)
+  const [counters, setCounters] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem(COUNTERS_KEY)) || {};
+    } catch { return {}; }
+  });
+
+  // Notification queue
+  const [notifications, setNotifications] = useState([]);
+  const notifIdRef = useRef(0);
+
+  // Keep references to state up to date for event listeners
+  const unlockedRef = useRef(unlocked);
+  const countersRef = useRef(counters);
+
+  useEffect(() => {
+    unlockedRef.current = unlocked;
+  }, [unlocked]);
+
+  useEffect(() => {
+    countersRef.current = counters;
+  }, [counters]);
+
+  // Persist to localStorage
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(unlocked));
+  }, [unlocked]);
+
+  useEffect(() => {
+    localStorage.setItem(COUNTERS_KEY, JSON.stringify(counters));
+  }, [counters]);
+
+  // Dismiss a notification
+  const dismissNotif = useCallback((id) => {
+    setNotifications(prev => prev.filter(n => n.id !== id));
+  }, []);
+
+  // Show unlock notification
+  const showNotification = useCallback((achievement) => {
+    const id = ++notifIdRef.current;
+    setNotifications(prev => [...prev, { id, achievement }]);
+    setTimeout(() => dismissNotif(id), 5000);
+  }, [dismissNotif]);
+
+  // Core unlock function
+  const unlockAchievement = useCallback((achievementId) => {
+    const achievement = ACHIEVEMENTS[achievementId];
+    if (!achievement) return;
+    if (unlockedRef.current[achievementId]) return; // already unlocked
+
+    setUnlocked(prev => {
+      if (prev[achievementId]) return prev;
+      const next = {
+        ...prev,
+        [achievementId]: {
+          unlockedAt: new Date().toISOString(),
+          xp: achievement.xp,
+        },
+      };
+      return next;
     });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
-    console.log("✅ Tracking Response:", data);
-  } catch (error) {
-    console.error("❌ Tracking Error:", error);
-  }
-}
 
+    showNotification(achievement);
+  }, [showNotification]);
 
-const initialState = {
-    version: 1,
-    updatedAt: Date.now(),
-    stats: {
-        visitedPaths: [],
-        blogsRead: 0,
-        pdfOpened: 0,
-    },
-    progress: {},
-    completedAt: {},
+  // Increment a counter and check count-based achievements
+  const incrementCounter = useCallback((key, amount = 1) => {
+    setCounters(prev => {
+      const newVal = (prev[key] || 0) + amount;
+      const updated = { ...prev, [key]: newVal };
+
+      // Check all achievements with count requirements
+      Object.values(ACHIEVEMENTS).forEach(achievement => {
+        if (
+          achievement.requirement?.type === 'count' &&
+          achievement.requirement.key === key &&
+          newVal >= achievement.requirement.target &&
+          !unlockedRef.current[achievement.id]
+        ) {
+          // Use timeout to avoid state update during render
+          setTimeout(() => unlockAchievement(achievement.id), 0);
+        }
+      });
+
+      // Special Check: scrolled all home page sections
+      const homeSections = ['hero', 'presentation', 'languages', 'skills', 'projects', 'learning', 'hobbies', 'design', 'about', 'contact'];
+      const allSeen = homeSections.every(secId => updated[`section_seen_${secId}`]);
+      if (allSeen && !unlockedRef.current['visited_all_sections']) {
+        setTimeout(() => unlockAchievement('visited_all_sections'), 0);
+      }
+
+      return updated;
+    });
+  }, [unlockAchievement]);
+
+  // Legacy/Compatibility support helpers
+  const trackVisit = useCallback((path) => {
+    if (path.includes('/blogs')) {
+      unlockAchievement('visited_blogs');
+    }
+  }, [unlockAchievement]);
+
+  const trackEvent = useCallback((event) => {
+    if (event === 'mp:pdf-opened') {
+      unlockAchievement('opened_pdf');
+    }
+  }, [unlockAchievement]);
+
+  const setBoolean = useCallback((achievementId, done) => {
+    if (done) unlockAchievement(achievementId);
+  }, [unlockAchievement]);
+
+  const isCompleted = useCallback((achievementId) => {
+    return !!unlocked[achievementId];
+  }, [unlocked]);
+
+  const getAchievementProgress = useCallback((achievementId) => {
+    const isUnlocked = !!unlocked[achievementId];
+    return {
+      current: isUnlocked ? 1 : 0,
+      target: 1,
+      percent: isUnlocked ? 1 : 0
+    };
+  }, [unlocked]);
+
+  // Total XP
+  const totalXp = Object.values(unlocked).reduce((sum, a) => sum + (a.xp || 0), 0);
+  const unlockedCount = Object.keys(unlocked).length;
+  const totalCount = Object.keys(ACHIEVEMENTS).length;
+
+  // ── Konami code listener ──────────────────────────────────────
+  useEffect(() => {
+    const sequence = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    let index = 0;
+    const handler = (e) => {
+      if (e.key === sequence[index]) {
+        index++;
+        if (index === sequence.length) {
+          unlockAchievement('konami_code');
+          index = 0;
+        }
+      } else {
+        index = 0;
+      }
+    };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [unlockAchievement]);
+
+  // ── Idle timer ────────────────────────────────────────────────
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      unlockAchievement('idle_wanderer');
+    }, 5 * 60 * 1000); // 5 minutes
+    return () => clearTimeout(timer);
+  }, [unlockAchievement]);
+
+  // ── Night owl ─────────────────────────────────────────────────
+  useEffect(() => {
+    const hour = new Date().getHours();
+    if (hour >= 0 && hour < 4) {
+      unlockAchievement('night_owl');
+    }
+  }, [unlockAchievement]);
+
+  // ── Visit counter ─────────────────────────────────────────────
+  useEffect(() => {
+    unlockAchievement('first_visit');
+    incrementCounter('visit_count');
+    
+    // Check local storage counters on mount directly to unlock returning visitor instantly if applicable
+    try {
+      const prevCounters = JSON.parse(localStorage.getItem(COUNTERS_KEY)) || {};
+      const currentVisits = (prevCounters.visit_count || 0) + 1;
+      if (currentVisits >= 2) {
+        unlockAchievement('returning_visitor');
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, []); // only on mount
+
+  // ── Rapid clicker listener ────────────────────────────────────
+  useEffect(() => {
+    let clicks = [];
+    const handler = () => {
+      const now = Date.now();
+      clicks.push(now);
+      clicks = clicks.filter(t => now - t < 2000);
+      if (clicks.length >= 10) {
+        unlockAchievement('rapid_clicker');
+        clicks = [];
+      }
+    };
+    window.addEventListener('click', handler);
+    return () => window.removeEventListener('click', handler);
+  }, [unlockAchievement]);
+
+  // ── PDF global listener ───────────────────────────────────────
+  useEffect(() => {
+    const onPdfOpened = () => {
+      unlockAchievement('opened_pdf');
+    };
+    window.addEventListener("mp:pdf-opened", onPdfOpened);
+    return () => window.removeEventListener("mp:pdf-opened", onPdfOpened);
+  }, [unlockAchievement]);
+
+  // ── Theme Switcher observer ───────────────────────────────────
+  const themeObj = ThemeProvider.useTheme() || {};
+  const theme = themeObj.theme;
+  const initialThemeRef = useRef(null);
+
+  useEffect(() => {
+    if (!theme) return;
+    
+    // Track every theme tried
+    incrementCounter(`theme_tried_${theme}`);
+
+    // Check if all themes have been tried
+    const allThemes = ['light', 'dark', 'medieval'];
+    const prevCounters = JSON.parse(localStorage.getItem(COUNTERS_KEY)) || {};
+    const updatedCounters = { ...prevCounters, [`theme_tried_${theme}`]: true };
+    const allTried = allThemes.every(id => updatedCounters[`theme_tried_${id}`]);
+    if (allTried) {
+      setTimeout(() => unlockAchievement('tried_all_themes'), 0);
+    }
+
+    // Check for theme switches manually
+    if (!initialThemeRef.current) {
+      initialThemeRef.current = theme;
+    } else if (theme !== initialThemeRef.current) {
+      unlockAchievement('changed_theme');
+    }
+  }, [theme, unlockAchievement]);
+
+  return (
+    <AchievementsContext.Provider value={{
+      unlocked,
+      counters,
+      unlockAchievement,
+      incrementCounter,
+      totalXp,
+      unlockedCount,
+      totalCount,
+      trackVisit,
+      trackEvent,
+      setBoolean,
+      isCompleted,
+      getAchievementProgress
+    }}>
+      {children}
+
+      {/* Achievement notifications — portal to body */}
+      {createPortal(
+        <div className={styles.notifStack}>
+          {notifications.map(notif => (
+            <AchievementNotification
+              key={notif.id}
+              achievement={notif.achievement}
+              onDismiss={() => dismissNotif(notif.id)}
+            />
+          ))}
+        </div>,
+        document.body
+      )}
+    </AchievementsContext.Provider>
+  );
 };
 
-function clamp(n, min, max) {
-    return Math.min(max, Math.max(min, n));
-}
+// ── Notification component ────────────────────────────────────
+const AchievementNotification = ({ achievement, onDismiss }) => {
+  const rarity = RARITY_CONFIG[achievement.rarity];
 
-function getAchievementProgress(def, state) {
-    const saved = state.progress[def.id];
-    if (def.type === "counter") {
-        const current = typeof saved?.current === "number" ? saved.current : 0;
-        return { current, target: def.target, percent: def.target ? clamp(current / def.target, 0, 1) : 0 };
-    }
-    if (def.type === "checklist") {
-        const steps = Array.isArray(def.steps) ? def.steps : [];
-        const checked = Array.isArray(saved?.checked) ? saved.checked : [];
-        const doneCount = steps.reduce((acc, _, i) => acc + (checked[i] ? 1 : 0), 0);
-        const percent = steps.length ? clamp(doneCount / steps.length, 0, 1) : 0;
-        return { current: doneCount, target: steps.length, percent };
-    }
-    const done = Boolean(saved?.done);
-    return { current: done ? 1 : 0, target: 1, percent: done ? 1 : 0 };
-}
+  return (
+    <div
+      className={styles.notif}
+      style={{ '--rarity-color': rarity.color, '--rarity-glow': rarity.glow }}
+      onClick={onDismiss}
+    >
+      <div className={styles.notifIcon}>{achievement.icon}</div>
+      <div className={styles.notifContent}>
+        <div className={styles.notifHeader}>
+          <span className={styles.notifBadge}>Achievement Unlocked</span>
+          <span className={styles.notifRarity}>{rarity.label}</span>
+        </div>
+        <div className={styles.notifTitle}>{achievement.title}</div>
+        <div className={styles.notifDesc}>{achievement.description}</div>
+        <div className={styles.notifXp}>+{achievement.xp} XP</div>
+      </div>
+      <div className={styles.notifProgress} />
+    </div>
+  );
+};
 
-function isCompleted(def, state) {
-    const p = getAchievementProgress(def, state);
-    return p.percent >= 1;
-}
-
-export default function AchievementsProvider({ children }) {
-    const { showAlert } = useAlerts();
-    const [state, setState] = useState(initialState);
-    const saveTimerRef = useRef(null);
-    const stateRef = useRef(state);
-
-    useEffect(() => {
-        const dailyVisited = getCookie("dailyVisitHome");
-        const userAgent = navigator.userAgent;
-        const referrer = document.referrer || "Direct visit";
-        
-        if (!dailyVisited) {
-            const today = new Date().toISOString().split("T")[0];
-            setCookie("dailyVisitHome", today, { expiresAtMidnight: true });
-            showAlert("Welcome to my palace, hope you find whatever you desire", "royal", 3000);
-            showAlert("this portfolio is still under development thank you for your understanding", "chaos", 4000);
-            showAlert("current section under development is projects", "info", 4000);
-            
-            let ip = "0.0.0.0";
-            fetch("https://api.ipify.org?format=json")
-                .then(res => res.json())
-                .then(data => {
-                    ip = data.ip || "0.0.0.0";
-                    triggerTrackMe(ip, userAgent, "home", referrer);
-                })
-                .catch(() => {
-                    triggerTrackMe(ip, userAgent, "home", referrer);
-                });
-        } else {
-            showAlert("Welcome back", "greeting", 2000);
-        }
-    }, [showAlert]);
-
-
-    const updateState = useCallback((fn) => {
-        setState((prev) => {
-            const next = fn(prev);
-            if (!next || typeof next !== "object") return prev;
-            if (next === prev) return prev;
-
-            const nextCompletedAt = { ...(next.completedAt || {}) };
-            const prevCompletedAt = prev.completedAt || {};
-
-            for (const def of definitions) {
-                const wasCompleted = Boolean(prevCompletedAt[def.id]);
-                const nowCompleted = isCompleted(def, next);
-                if (!wasCompleted && nowCompleted) nextCompletedAt[def.id] = Date.now();
-            }
-
-            return { ...next, completedAt: nextCompletedAt };
-        });
-    }, []);
-
-    useEffect(() => {
-        stateRef.current = state;
-    }, [state]);
-
-    const prevCompletedAtRef = useRef({});
-
-    useEffect(() => {
-        const prevCompleted = prevCompletedAtRef.current;
-        const currentCompleted = state.completedAt || {};
-
-        for (const def of definitions) {
-            if (currentCompleted[def.id] && !prevCompleted[def.id]) {
-                showAlert(`🏆 Achievement Unlocked: ${def.title} — ${def.desc}`, "success", 4000);
-            }
-        }
-        prevCompletedAtRef.current = currentCompleted;
-    }, [state.completedAt, showAlert]);
-
-    useEffect(() => {
-        let cancelled = false;
-        (async () => {
-            const loaded = await readAchievementsState();
-            if (cancelled) return;
-            if (loaded && typeof loaded === "object") {
-                setState((prev) => {
-                    const merged = { ...prev, ...loaded };
-                    const visitedCount = Array.isArray(merged.stats?.visitedPaths) ? merged.stats.visitedPaths.length : 0;
-                    const blogsRead = typeof merged.stats?.blogsRead === "number" ? merged.stats.blogsRead : 0;
-                    const pdfOpened = typeof merged.stats?.pdfOpened === "number" ? merged.stats.pdfOpened : 0;
-                    return {
-                        ...merged,
-                        progress: {
-                            ...(merged.progress || {}),
-                            explorer: { ...(merged.progress?.explorer || {}), current: visitedCount },
-                            scribe: { ...(merged.progress?.scribe || {}), current: blogsRead },
-                            librarian: { ...(merged.progress?.librarian || {}), current: pdfOpened },
-                        },
-                    };
-                });
-            }
-        })();
-        return () => {
-            cancelled = true;
-        };
-    }, []);
-
-    useEffect(() => {
-        if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
-        saveTimerRef.current = setTimeout(() => {
-            writeAchievementsState({ ...state, updatedAt: Date.now() });
-        }, 250);
-        return () => {
-            if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
-        };
-    }, [state]);
-
-    useEffect(() => {
-        const onPdfOpened = () => {
-            updateState((prev) => {
-                const nextCount = (prev.stats.pdfOpened || 0) + 1;
-                return {
-                    ...prev,
-                    stats: { ...prev.stats, pdfOpened: nextCount },
-                    progress: { ...prev.progress, librarian: { ...(prev.progress.librarian || {}), current: nextCount } },
-                };
-            });
-        };
-        const onBlogOpened = () => {
-            updateState((prev) => {
-                const nextCount = (prev.stats.blogsRead || 0) + 1;
-                return {
-                    ...prev,
-                    stats: { ...prev.stats, blogsRead: nextCount },
-                    progress: { ...prev.progress, scribe: { ...(prev.progress.scribe || {}), current: nextCount } },
-                };
-            });
-        };
-
-        window.addEventListener("mp:pdf-opened", onPdfOpened);
-        window.addEventListener("mp:blog-opened", onBlogOpened);
-        return () => {
-            window.removeEventListener("mp:pdf-opened", onPdfOpened);
-            window.removeEventListener("mp:blog-opened", onBlogOpened);
-        };
-    }, [updateState]);
-
-    const setCounter = useCallback((id, current) => {
-        updateState((prev) => ({
-            ...prev,
-            progress: { ...prev.progress, [id]: { ...(prev.progress[id] || {}), current: Math.max(0, current) } },
-        }));
-    }, [updateState]);
-
-    const setChecklistStep = useCallback((id, stepIndex, checked) => {
-        updateState((prev) => {
-            const prevChecked = Array.isArray(prev.progress[id]?.checked) ? prev.progress[id].checked : [];
-            const nextChecked = prevChecked.slice();
-            nextChecked[stepIndex] = Boolean(checked);
-            return { ...prev, progress: { ...prev.progress, [id]: { ...(prev.progress[id] || {}), checked: nextChecked } } };
-        });
-    }, [updateState]);
-
-    const setBoolean = useCallback((id, done) => {
-        updateState((prev) => ({
-            ...prev,
-            progress: { ...prev.progress, [id]: { ...(prev.progress[id] || {}), done: Boolean(done) } },
-        }));
-    }, [updateState]);
-
-    const resetAchievement = useCallback((id) => {
-        updateState((prev) => {
-            const nextProgress = { ...prev.progress };
-            const nextCompletedAt = { ...prev.completedAt };
-            delete nextProgress[id];
-            delete nextCompletedAt[id];
-            return { ...prev, progress: nextProgress, completedAt: nextCompletedAt };
-        });
-    }, [updateState]);
-
-    const resetAll = useCallback(() => {
-        updateState((prev) => ({ ...initialState, stats: prev.stats }));
-    }, [updateState]);
-
-    const trackVisit = useCallback((path) => {
-        const normalized = String(path || "");
-        if (!normalized) return;
-
-        updateState((prev) => {
-            const visited = Array.isArray(prev.stats.visitedPaths) ? prev.stats.visitedPaths : [];
-            if (visited.includes(normalized)) return prev;
-            const nextVisited = [...visited, normalized];
-            const nextProgress = { ...prev.progress, explorer: { ...(prev.progress.explorer || {}), current: nextVisited.length } };
-            if (normalized.includes("#presentation") || normalized === "/#presentation" || normalized === "/") {
-                nextProgress.craftsman = { ...(prev.progress.craftsman || {}), done: true };
-            }
-            return { ...prev, stats: { ...prev.stats, visitedPaths: nextVisited }, progress: nextProgress };
-        });
-    }, [updateState]);
-
-    const exportState = useCallback(() => JSON.stringify(stateRef.current, null, 2), []);
-
-    const importState = useCallback((jsonText) => {
-        const parsed = (() => {
-            try {
-                return JSON.parse(jsonText);
-            } catch {
-                return null;
-            }
-        })();
-
-        if (!parsed || typeof parsed !== "object") return false;
-        updateState((prev) => ({ ...prev, ...parsed }));
-        return true;
-    }, [updateState]);
-
-    const value = useMemo(
-        () => ({
-            state,
-            definitions,
-            getAchievementProgress: (id) => {
-                const def = definitions.find((d) => d.id === id);
-                if (!def) return { current: 0, target: 0, percent: 0 };
-                return getAchievementProgress(def, state);
-            },
-            isCompleted: (id) => {
-                const def = definitions.find((d) => d.id === id);
-                return def ? isCompleted(def, state) : false;
-            },
-            setCounter,
-            setChecklistStep,
-            setBoolean,
-            resetAchievement,
-            resetAll,
-            trackVisit,
-            exportState,
-            importState,
-        }),
-        [state, setCounter, setChecklistStep, setBoolean, resetAchievement, resetAll, trackVisit, exportState, importState]
-    );
-
-    return <AchievementsContext.Provider value={value}>{children}</AchievementsContext.Provider>;
-}
+export default AchievementsProvider;

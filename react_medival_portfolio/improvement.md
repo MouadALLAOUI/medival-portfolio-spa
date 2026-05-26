@@ -15,8 +15,8 @@ A categorized list of improvements for the entire application, from critical fix
 - [x] **Implement proper 404 page** - Replace redirect to home with a custom 404 page that matches the medieval theme
 - [x] **Add loading states for lazy routes** - Create a themed loading skeleton/screen instead of simple text in `routes.jsx`
 - [x] **Fix image path inconsistencies** - Standardize image paths (some use `../media`, others use different patterns); consider using Vite's asset handling (using absolute public paths `/media/...` to support nested router views)
-- [ ] **Add meta tags for SEO** - Include dynamic title, description, Open Graph tags, and Twitter cards for each page/route
-- [ ] **Implement proper keyboard navigation** - Add focus management, skip links, and proper tab order throughout the app for accessibility
+- [x] **Add meta tags for SEO** - Include dynamic title, description, Open Graph tags, and Twitter cards for each page/route
+- [x] **Implement proper keyboard navigation** - Add focus management, skip links, and proper tab order throughout the app for accessibility
 - [x] **Fix chatbot conversation history** - The comment mentions "remembers last 3 interactions (under construction)" - actually implement conversation context in `ChatWindow.jsx`
 - [ ] **Add HTTPS enforcement** - Ensure production deployment forces HTTPS connections
 
@@ -25,18 +25,18 @@ A categorized list of improvements for the entire application, from critical fix
 ## 🟠 GREAT IDEAS (High-Value Enhancements)
 
 - [x] **Redesign Settings Page** - Refactored the flat settings UI into a professional two-panel dashboard grimoire layout with localized sidebar nav, smooth animations, and optimized mobile scrolling tab strips.
-- [ ] **Implement dark mode system preference detection** - Auto-detect `prefers-color-scheme` in `ThemeProvider.jsx` on first load
-- [ ] **Add blog search functionality** - Implement full-text search across blog posts in `BlogsPage.jsx`
+- [x] **Implement dark mode system preference detection** - Auto-detect `prefers-color-scheme` in `ThemeProvider.jsx` on first load
+- [x] **Add blog search functionality** - Implement full-text search across blog posts in `BlogsPage.jsx`
 - [ ] **Create admin dashboard** - Build a protected admin area to manage blogs, projects, and skills without code changes
-- [ ] **Add RSS feed for blogs** - Generate `/rss.xml` automatically from `blogs.data.js` for blog subscribers
+- [x] **Add RSS feed for blogs** - Generate `/rss.xml` automatically from `blogs.data.js` for blog subscribers
 - [ ] **Implement blog comments system** - Add comment functionality using Supabase, Disqus, or a custom solution
 - [x] **Add reading progress indicator** - Show scroll progress bar on `BlogPost.jsx` pages
-- [ ] **Create project filtering system** - Add tag/category filters to `ProjectsSection.jsx` like the blog filter
+- [x] **Create project filtering system** - Add tag/category filters to `ProjectsSection.jsx` like the blog filter
 - [ ] **Implement achievement notifications** - Expand `AchievementsProvider` to show toast notifications when achievements are unlocked
-- [ ] **Add social sharing buttons** - Enable sharing blog posts and projects to Twitter, LinkedIn, etc.
-- [ ] **Create sitemap generator** - Auto-generate `sitemap.xml` for better SEO indexing
+- [x] **Add social sharing buttons** - Enable sharing blog posts and projects to Twitter, LinkedIn, etc.
+- [x] **Create sitemap generator** - Auto-generate `sitemap.xml` for better SEO indexing
 - [ ] **Add Google Analytics / Plausible** - Integrate privacy-friendly analytics for visitor insights
-- [ ] **Implement PWA capabilities** - Add service worker, offline support, and install prompt
+- [x] **Implement PWA capabilities** - Add service worker, offline support, and install prompt
 - [ ] **Add content versioning for blogs** - Show "last updated" date and version history for blog posts
 - [ ] **Create newsletter subscription** - Add email signup form integrated with a service like ConvertKit or Mailchimp
 - [x] **Implement related posts suggestion** - Show "You might also like" section at bottom of blog posts
@@ -51,16 +51,16 @@ A categorized list of improvements for the entire application, from critical fix
 - [x] **Create skill level tooltips** - Show detailed explanation of what each star level means in skills cards
 - [x] **Add estimated completion time for projects** - Display timeline duration in human-readable format (e.g., "3 days")
 - [x] **Implement image lazy loading** - Add native `loading="lazy"` or Intersection Observer for all images
-- [ ] **Add print stylesheets** - Create print-specific CSS for blogs and project pages
+- [x] **Add print stylesheets** - Create print-specific CSS for blogs and project pages
 - [ ] **Create shareable skill cards** - Generate social media images when sharing specific skills
-- [ ] **Add project status badges** - Visual indicators for "complete", "in progress", "abandoned" projects
-- [ ] **Implement back-to-top button** - Show floating button after scrolling down on long pages
-- [ ] **Add section navigation** - Sticky sidebar showing current section on home page
-- [ ] **Create keyboard shortcuts** - Add hotkeys (e.g., `Ctrl+K` for search, `Esc` to close modals)
+- [x] **Add project status badges** - Visual indicators for "complete", "in progress", "abandoned" projects
+- [x] **Implement back-to-top button** - Show floating button after scrolling down on long pages
+- [x] **Add section navigation** - Sticky sidebar showing current section on home page
+- [x] **Create keyboard shortcuts** - Add hotkeys (e.g., `Ctrl+K` for search, `Esc` to close modals)
 - [x] **Add language switcher** - Complete the i18n implementation with a visible EN/FR toggle in header settings modal.
 - [ ] **Implement blog series grouping** - Group related tutorials (like HTML→CSS→JS) into learning paths
 - [x] **Add external link indicators** - Show icon for links that open in new tabs
-- [ ] **Create reading time calculator** - Dynamically calculate read time based on actual word count
+- [x] **Create reading time calculator** - Dynamically calculate read time based on actual word count
 - [x] **Add draft mode for blogs** - Support unpublished drafts that can be previewed but not shown publicly
 - [x] **Implement project screenshot carousel** - Auto-rotate through project gallery images
 - [ ] **Add filter persistence** - Remember user's blog/project filter choice in localStorage
@@ -70,14 +70,14 @@ A categorized list of improvements for the entire application, from critical fix
 
 ## 🟢 TIPS IDEAS (Polish & Nice-to-Have)
 
-- [ ] **Add easter eggs** - Hide fun interactive elements (Konami code, clickable heraldry, etc.)
-- [ ] **Implement seasonal themes** - Auto-switch themes for holidays (Halloween, Christmas, etc.)
+- [x] **Add easter eggs** - Hide fun interactive elements (Konami code, clickable heraldry, etc.)
+- [x] **Implement seasonal themes** - Auto-switch themes for holidays (Halloween, Christmas, etc.)
 - [ ] **Add particle effects** - Subtle magical particles in hero section using canvas or CSS
-- [ ] **Create sound effects toggle** - Optional ambient sounds (parchment rustle, quill writing) in settings
+- [x] **Create sound effects toggle** - Optional ambient sounds (parchment rustle, quill writing) in settings
 - [ ] **Add visitor counter** - Show "You are visitor #X" with medieval styling
 - [ ] **Implement achievement leaderboards** - Compare achievements with other visitors (if logged in)
-- [ ] **Add custom cursor** - Medieval-themed cursor (quill, sword tip) with option to disable
-- [ ] **Create loading animations** - Themed loaders (spinning crystal ball, writing quill, etc.)
+- [x] **Add custom cursor** - Medieval-themed cursor (quill, sword tip) with option to disable
+- [x] **Create loading animations** - Themed loaders (spinning crystal ball, writing quill, etc.)
 - [ ] **Add hover sound effects** - Subtle audio feedback on button hovers (optional)
 - [ ] **Implement drag-to-scroll** - Allow clicking and dragging to scroll on desktop
 - [x] **Add section transition animations** - Smooth fade/slide animations when scrolling between sections
@@ -87,12 +87,12 @@ A categorized list of improvements for the entire application, from critical fix
 - [x] **Add tooltip glossary** - Hover over technical terms to see definitions
 - [ ] **Create medieval font alternatives** - Offer additional period-appropriate fonts in settings
 - [ ] **Add hidden lore entries** - Unlockable story snippets as users explore the site
-- [ ] **Implement day/night cycle** - Auto-adjust theme based on user's local time
-- [ ] **Add custom scrollbars** - Styled scrollbars matching the medieval theme
+- [x] **Implement day/night cycle** - Auto-adjust theme based on user's local time
+- [x] **Add custom scrollbars** - Styled scrollbars matching the medieval theme
 - [ ] **Create "scroll to top" animation** - Smooth scroll with visual trail effect
 - [ ] **Add browser compatibility warnings** - Gracefully notify users of outdated browsers
 - [x] **Implement reduced motion support** - Respect `prefers-reduced-motion` setting
-- [ ] **Add QR code generator** - Generate QR codes for easy mobile sharing of blog posts
+- [x] **Add QR code generator** - Generate QR codes for easy mobile sharing of blog posts
 - [ ] **Create printable certificate** - Generate "I explored this portfolio" certificate
 - [ ] **Add random quote generator** - Display rotating tech/medieval quotes in footer
 - [ ] **Implement "bring your own theme"** - Allow users to customize color scheme
@@ -106,7 +106,7 @@ A categorized list of improvements for the entire application, from critical fix
 ## 📊 Performance Optimizations
 
 - [ ] **Implement image optimization** - Use WebP/AVIF formats and responsive images with `srcset`
-- [ ] **Add bundle size analysis** - Use `vite-bundle-visualizer` to identify large dependencies
+- [x] **Add bundle size analysis** - Use `vite-bundle-visualizer` to identify large dependencies
 - [x] **Lazy load heavy components** - Defer loading of ChatWindow, PdfViewer until needed
 - [ ] **Implement virtual scrolling** - For long lists (blogs, projects) with many items
 - [ ] **Add caching headers** - Configure proper cache-control for static assets
@@ -192,13 +192,19 @@ A categorized list of improvements for the entire application, from critical fix
 4. [x] Remove right-click disable (Replaced with custom medieval context menu)
 5. [x] Redesign Settings Page UI to premium dashboard layout
 6. [x] Fix typos ("Detailled desciprion", "unkonwn")
+7. [x] Expand i18n with Medieval English, Medieval French, and Arabic
+8. [x] Implement inline PDF viewer in modal
 
 ### Short Term (This Month)
 1. [x] Implement proper 404 page
-2. Add meta tags for SEO
+2. [x] Add meta tags for SEO
 3. [x] Fix image path inconsistencies
-4. Add keyboard navigation
-5. Implement dark mode system preference
+4. [x] Add keyboard navigation
+5. [x] Implement dark mode system preference
+6. [x] Refactor Skills section into reusable components
+  - **Universal Component Refactor**: Migrated `SkillCard`, `CrmefEducationSection`, and `CrmefSportsSection` to use the universal `DynamicCard` component. The `ProjectsSection` maintains its specialized high-fidelity card styling while sharing the status badge logic.
+7. [x] Make accessibility settings (font size, reduce motion) functional
+8. [x] Enhance custom context menu with submenus
 
 ### Medium Term (This Quarter)
 1. Create admin dashboard

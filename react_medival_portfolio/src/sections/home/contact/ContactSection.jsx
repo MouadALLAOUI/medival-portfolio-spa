@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { useSettings } from '../../../lib/useSettings';
 import { useAlerts } from '../../../lib/useAlerts';
+import { useAchievements } from '../../../lib/useAchievements';
 import styles from './ContactSection.module.scss';
 import CSection from '../../../templates/Section';
 
 const ContactSection = () => {
   const { t } = useSettings();
   const { showAlert } = useAlerts();
+  const { unlockAchievement } = useAchievements();
 
   // Load email dynamically from environment variables
   const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || 'moadallaoui1@gmail.com';
@@ -37,6 +39,8 @@ const ContactSection = () => {
       showAlert(t('HOME.CONTACT.errorMessageShort') || "Your message scroll is too short! Write at least 10 characters.", "warning", 3500);
       return;
     }
+
+    unlockAchievement('sent_contact');
   };
 
   return (

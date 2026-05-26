@@ -22,7 +22,7 @@ export const PRESETS = {
         baseClass: "learning-card",
         titleKey: "title",
         descKey: "desc",
-        isLink: true,
+        isLink: false,
         linkKey: "href"
     },
     HOBBIES: {

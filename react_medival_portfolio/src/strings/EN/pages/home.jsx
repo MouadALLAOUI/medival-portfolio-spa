@@ -1,23 +1,23 @@
 const HERO = {
     title: "Mouad the Coder",
-    subtitle: "Ask the Oracle anything about Mouad",
-    ariaLabel: "Open Oracle chat",
-    buttonText: "Ask the Oracle",
+    subtitle: "Ask the assistant anything about Mouad",
+    ariaLabel: "Open assistant chat",
+    buttonText: "Ask the Assistant",
 }
 
 const PRESENTATION = {
-    title: "The Wizard's Grimoire",
-    subtitle: "🛡️ The Knight Behind the Code",
+    title: "About Me",
+    subtitle: "💻 The Developer Behind the Projects",
     portraitAlt: "Portrait of Mouad",
-    greetings: "Greetings, fellow travelers of the digital realm! I am Mouad the Coder, a modern-day craftsman and conjurer of immersive digital experiences. My journey began in the ancient lands of HTML, where I first learned to structure the foundations of the web — a discipline I now wield with the precision of a master blacksmith.",
-    tiredless: "Through tireless study and quests across countless frameworks and languages, I have mastered many magical tools: the elegant spells of JavaScript, the powerful incantations of Python, and the flexible artistry of React. These are my sword and shield in battle against the dragons of complexity and inefficiency.",
-    sworn: "Like a knight sworn to protect the realm, I champion clean code, secure architecture, and user-friendly design. Whether working solo or with fellow warriors, my mission is to forge applications that blend ancient design wisdom with cutting-edge technology — digital creations that stand the test of time.",
-    ongoing: "When not crafting code, I delve into technological tomes, explore uncharted tools, or share knowledge with apprentice developers. My quest is ongoing — to solve real-world problems with creativity, precision, and technical excellence.",
+    greetings: "Hello and welcome! I’m Mouad the Coder, a developer passionate about building modern and immersive digital experiences. My journey started with HTML and web fundamentals, where I learned how to structure and create websites from the ground up.",
+    tiredless: "Through continuous learning and hands-on projects, I developed strong skills in JavaScript, Python, React, and many other technologies. These tools help me build efficient, scalable, and user-focused applications.",
+    sworn: "I focus on clean code, secure architecture, and intuitive user experiences. Whether working independently or as part of a team, my goal is to create reliable and impactful digital solutions that combine design, performance, and functionality.",
+    ongoing: "Outside of coding, I enjoy exploring new technologies, learning advanced concepts, and sharing knowledge with other developers. My goal is to keep improving and solving real-world problems through technology.",
 }
 
 const LANGUAGES = {
-    title: "Tongues of the Realm",
-    intro: "Languages I speak + proficiency:",
+    title: "Languages",
+    intro: "Languages I speak and my proficiency level:",
     arabic: "Arabic",
     french: "French",
     english: "English",
@@ -26,117 +26,117 @@ const LANGUAGES = {
 }
 
 const SKILLS = {
-    title: "Arcane Codex of Skills",
-    intro: "Through years of arcane study and mystical practice, I have mastered these powerful arts:",
-    introNote: "click card below for more details",
+    title: "Skills & Technologies",
+    intro: "Over the years, I have developed experience in several technical areas and technologies:",
+    introNote: "click a card below for more details",
     general: "General",
     specialized: "Specialized",
     detailsTitle: "Detailed Description",
-    storyTitle: "Story Behind the Spell",
-    level: "Spell Level: {{level}} / 5",
+    storyTitle: "Background",
+    level: "Skill Level: {{level}} / 5",
     levelName: {
-        1: "Apprentice",
-        2: "Journeyman",
-        3: "Adept",
-        4: "Expert",
-        5: "Master",
+        1: "Beginner",
+        2: "Intermediate",
+        3: "Advanced",
+        4: "Professional",
+        5: "Expert",
     },
     levelDesc: {
-        1: "Novice — Foundational understanding and basic quest capabilities.",
-        2: "Initiate — Comfortable with routine tasks and minor spellcraft.",
-        3: "Adept — Capable of standard independent ventures and custom work.",
-        4: "Specialist — Deep understanding of advanced mechanics and architecture.",
-        5: "Archmage — Seamless command and architect of grand systems.",
+        1: "Basic understanding and beginner-level practical skills.",
+        2: "Comfortable with common tasks and workflows.",
+        3: "Able to work independently on real-world projects.",
+        4: "Strong understanding of advanced concepts and architecture.",
+        5: "Deep expertise with the ability to design and lead complex systems.",
     },
-    radarTitle: "📊 Arcane Capabilities Chart",
-    radarFooter: "Visual overview of all skills combined",
+    radarTitle: "📊 Skills Overview",
+    radarFooter: "Visual overview of combined skills",
     general_frontend: "Frontend",
     general_backend: "Backend",
-    general_ai: "AI Conjuring",
+    general_ai: "Artificial Intelligence",
     general_solving: "Problem Solving",
-    general_mobile: "Mobile Apps",
-    general_code: "Code Wards",
+    general_mobile: "Mobile Development",
+    general_code: "Code Security",
 }
 
 const PROJECTS = {
-    title: "Tech Quests",
-    subtitle: "Chronicles of digital blacksmithing and system quests.",
-    introNote: "click card below for more details",
-    viewQuest: "Embark on Quest",
-    technologies: "Runes Wielded",
-    role: "Position",
-    details: "Quest Log Details",
-    siteLink: "Visit Kingdom",
-    codeLink: "Examine Spellbook",
-    back: "Return to Quests",
-    intro: "Quest Overview",
-    features: "Enchanted Features",
-    gallery: "Visual Artifacts (Gallery)",
-    links: "Kingdom Connections (Links)",
-    unknown: "Unknown Epoch",
+    title: "Projects",
+    subtitle: "A collection of applications, systems, and technical work.",
+    introNote: "click a card below for more details",
+    viewQuest: "View Project",
+    technologies: "Technologies Used",
+    role: "Role",
+    details: "Project Details",
+    siteLink: "Visit Website",
+    codeLink: "View Source Code",
+    back: "Back to Projects",
+    intro: "Project Overview",
+    features: "Key Features",
+    gallery: "Gallery",
+    links: "Project Links",
+    unknown: "Unknown Date",
 }
 
 const ABOUT = {
-    title: "Coding Lore",
-    subtitle: "Chronicles of my journey across the developer kingdoms.",
-    readMore: "Expand Chronicles",
-    readLess: "Compress Chronicles",
-    philosophy: "I believe that code is a form of magic that transforms ideas into reality. Like the wizards of old who carefully crafted their spells, I approach each project with precision, creativity, and a commitment to excellence. My mission is to create digital experiences that feel intuitive and enchanting, solving real problems while delighting users with thoughtful interactions and beautiful design.",
+    title: "About",
+    subtitle: "My journey and experience as a developer.",
+    readMore: "Read More",
+    readLess: "Read Less",
+    philosophy: "I believe that technology is a powerful tool for turning ideas into reality. Every project is an opportunity to build something useful, improve user experience, and solve real problems through clean and efficient development.",
     timelines: {
         1: {
-            title: "The Apprentice Years",
-            desc: "Began my journey learning the ancient scripts of HTML and CSS under the tutelage of online sages.",
-            detailledDesc: "In these early years, I delved into the mystical arts of web design, mastering the foundational spells of HTML and CSS. I crafted my first enchanted pages, learning to weave styles and structure into digital scrolls."
+            title: "Getting Started",
+            desc: "Started learning HTML and CSS while exploring web development fundamentals.",
+            detailledDesc: "During this stage, I focused on understanding how websites are structured and styled. I built my first pages and learned the basics of responsive design and frontend development."
         },
         2: {
-            title: "Year of the Debugger",
-            desc: "Mastered JavaScript incantations and vanquished countless bugs in the realm of frontend development.",
-            detailledDesc: "During this period, I honed my skills in JavaScript, learning to debug complex issues and optimize performance. I became adept at using developer tools to inspect and modify the DOM, making my web applications more dynamic and responsive."
+            title: "Frontend Development",
+            desc: "Improved my JavaScript skills and started building dynamic web applications.",
+            detailledDesc: "I learned how to create interactive interfaces, debug issues, and improve application performance using modern frontend development practices."
         },
         3: {
-            title: "Age of Encryption",
-            desc: "Forged secure communications with PGP spells and crafted impenetrable security wards.",
-            detailledDesc: "In this era, I focused on cybersecurity, learning to protect my digital creations from dark forces. I implemented encryption techniques and security best practices, ensuring that my applications were resilient against attacks."
+            title: "Cybersecurity & Systems",
+            desc: "Explored cybersecurity concepts and secure application development.",
+            detailledDesc: "I studied security practices, encryption basics, and methods for building more secure applications and systems."
         },
         4: {
-            title: "Era of AI Conjuration",
-            desc: "Summoned intelligent entities through machine learning rituals and neural network enchantments.",
-            detailledDesc: "I ventured into the realm of artificial intelligence, exploring machine learning algorithms and neural networks. I built models that could learn from data, making my applications smarter and more capable of understanding user behavior."
+            title: "Artificial Intelligence",
+            desc: "Started working with AI, machine learning, and intelligent systems.",
+            detailledDesc: "I explored AI technologies, machine learning models, and automation systems to create smarter and more adaptive applications."
         }
     }
 }
 
 const CONTACT = {
-    title: "Send a Raven",
-    desc: "Seek my counsel or propose an alliance through these mystical channels:",
-    nameLabel: "Your Noble Name",
-    namePlaceholder: "Enter your noble name",
-    emailLabel: "Pigeon Address",
-    emailPlaceholder: "What realm shall the raven call home? (your email)",
-    messageLabel: "Your Sealed Message",
-    messagePlaceholder: "Inscribe your message here...",
-    submit: "Seal & Send Raven",
-    connectionsTitle: "Guild Connections",
-    connectionsDesc: "Seek me in these digital realms where I share my arcane knowledge:",
-    deliveryTitle: "Raven Delivery",
-    deliveryDesc: "For urgent matters, dispatch a raven to:",
-    success: "Raven successfully dispatched! 🦅",
-    error: "Raven lost in transit, try again! 💀",
+    title: "Contact",
+    desc: "Feel free to reach out for collaboration, questions, or project opportunities:",
+    nameLabel: "Your Name",
+    namePlaceholder: "Enter your name",
+    emailLabel: "Email Address",
+    emailPlaceholder: "Enter your email address",
+    messageLabel: "Your Message",
+    messagePlaceholder: "Write your message here...",
+    submit: "Send Message",
+    connectionsTitle: "Social Links",
+    connectionsDesc: "You can also find me on these platforms:",
+    deliveryTitle: "Direct Contact",
+    deliveryDesc: "For important matters, contact me at:",
+    success: "Message sent successfully! ✅",
+    error: "Failed to send the message. Please try again. ❌",
 }
 
 const LEARNING = {
-    title: "Learning Grimoire",
-    intro: "Learning materials I've crafted (PDFs, slides, and study scrolls):",
+    title: "Learning Resources",
+    intro: "Study materials and educational resources I've created (PDFs, slides, and notes):",
 }
 
 const HOBBIES = {
-    title: "Beyond the Code",
-    desc: "What I do beyond programming—habits that sharpen the mind and keep the wizard grounded.",
+    title: "Beyond Programming",
+    desc: "Activities and interests outside programming that help me stay creative and focused.",
 }
 
 const DESIGN = {
-    title: "The Design Forge",
-    desc: "Figma and Canva artifacts—UI drafts, prototypes, and visual scrolls forged for real quests.",
+    title: "Design Work",
+    desc: "Figma and Canva projects including UI designs, prototypes, and visual concepts.",
 }
 
 const HOME = {

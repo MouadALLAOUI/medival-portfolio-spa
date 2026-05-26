@@ -1,7 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ArrowBigDown, Menu, X } from "lucide-react";
 import { useSettings } from '../lib/useSettings';
+import { useAchievements } from '../lib/useAchievements';
 import styles from './Headers.module.scss';
 
 // --- Helper for Medieval Naming ---
@@ -112,7 +113,9 @@ const MobileMenu = ({ items, isActive, closeMenu, styles, t }) => (
 
 const HeaderComponent = () => {
 	const location = useLocation();
+	const navigate = useNavigate();
 	const { openSettings, t } = useSettings();
+	const { unlockedCount, totalCount } = useAchievements();
 	const [openMenu, setOpenMenu] = useState(null);
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false);
@@ -313,6 +316,20 @@ const HeaderComponent = () => {
 			</div>
 
 			<div className={styles['nav-actions']}>
+				<button
+					className={styles['achievementsBtn']}
+					onClick={() => navigate('/achievements')}
+					type="button"
+					aria-label={t('achievements.navLabel') || 'Achievements'}
+					title={t('achievements.navLabel') || 'Achievements'}
+				>
+					🏆
+					{unlockedCount !== undefined && totalCount !== undefined && (
+						<span className={styles['achievementsBadge']}>
+							{unlockedCount}/{totalCount}
+						</span>
+					)}
+				</button>
 				<button
 					className={styles['nav-gear-btn']}
 					type="button"
