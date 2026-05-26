@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from "react-router-dom";
 import ThemeProvider from './lib/contexts/ThemeProvider';
 import { PdfSettingsProvider } from './lib/contexts/PdfSettingsContext';
-import AppSettingsProvider from './lib/contexts/AppSettingsContext';
 import './styles/index.scss'
 import App from './App'
 
@@ -14,12 +13,19 @@ root.render(
 	<StrictMode>
 		<ThemeProvider>
 			<PdfSettingsProvider>
-				<AppSettingsProvider>
-					<BrowserRouter>
-						<App />
-					</BrowserRouter>
-				</AppSettingsProvider>
+				<BrowserRouter>
+					<App />
+				</BrowserRouter>
 			</PdfSettingsProvider>
 		</ThemeProvider>
 	</StrictMode>,
 )
+
+// Register Service Worker for PWA
+if ('serviceWorker' in navigator) {
+	window.addEventListener('load', () => {
+		navigator.serviceWorker.register('/sw.js').catch((err) => {
+			console.log('Service Worker registration failed: ', err);
+		});
+	});
+}

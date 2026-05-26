@@ -1,10 +1,22 @@
+import { useState } from "react";
 import CSection from "../../../templates/Section";
 import profileImg from "../../../media/mouad-pic.png";
 import { useSettings } from "../../../lib/useSettings";
+import { useAlerts } from "../../../lib/useAlerts";
 import styles from "./presentation.module.scss";
 
 const PresentationSection = () => {
     const { t } = useSettings();
+    const { showAlert } = useAlerts();
+    const [clickCount, setClickCount] = useState(0);
+
+    const handlePortraitClick = () => {
+        setClickCount(prev => prev + 1);
+        if (clickCount + 1 === 5) {
+            showAlert(t('COMMON.alerts.secretPortraitUnlocked') || '🧙‍♂️ You have discovered the hidden portrait of the Grand Archmage!', 'royal', 5000);
+            setClickCount(0);
+        }
+    };
 
     const greetingsText = t('HOME.PRESENTATION.greetings');
     const initialLetter = greetingsText.charAt(0);
@@ -13,7 +25,7 @@ const PresentationSection = () => {
     return (
         <CSection id="presentation" title={t('HOME.PRESENTATION.title')} classname="presentation-section">
             <div className={styles['presentation-container']}>
-                <div className={styles['portrait-frame']}>
+                <div className={styles['portrait-frame']} onClick={handlePortraitClick} style={{ cursor: 'pointer' }}>
                     <img
                         src={profileImg}
                         alt={t('HOME.PRESENTATION.portraitAlt')}

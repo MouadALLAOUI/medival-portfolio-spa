@@ -5,6 +5,23 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Mouad the Coder | Medieval Portfolio</title>
+		<meta name="theme-color" content="#d4af37" />
+		<link rel="manifest" href="/manifest.json" />
+		<link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png" />
+		<script>
+			// Browser compatibility check
+			(function() {
+				var isOld = false;
+				try {
+					eval('var x = 1; let y = 2; const z = 3; async function a() {}');
+				} catch (e) {
+					isOld = true;
+				}
+				if (isOld || !window.fetch || !window.Promise || !window.localStorage) {
+					alert("⚔️ Hark! Thy browser is of an ancient era and may not support the magic of this grimoire. Please update thy vessel for the best experience.");
+				}
+			})();
+		</script>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link

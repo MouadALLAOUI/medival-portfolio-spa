@@ -1,0 +1,122 @@
+@use '../../styles/variables' as *;
+@use '../../styles/animations' as *;
+@use '../../styles/mixins' as *;
+
+// Stack of notifications — bottom left
+.notifStack {
+  position: fixed;
+  bottom: 5rem;
+  left: 1.5rem;
+  z-index: 99998;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.75rem;
+  pointer-events: none;
+  max-width: 340px;
+
+  @include mobile {
+    left: 1rem;
+    right: 1rem;
+    max-width: 100%;
+    bottom: 5rem;
+  }
+}
+
+.notif {
+  pointer-events: all;
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.875rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--rarity-color, var(--border));
+  border-left: 4px solid var(--rarity-color, var(--accent));
+  border-radius: var(--radius);
+  box-shadow:
+    0 4px 20px rgba(0,0,0,0.2),
+    0 0 20px var(--rarity-glow, transparent);
+  cursor: pointer;
+  animation: achievement-slide-in 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+
+  :global([data-theme="medieval"]) & {
+    background: #3a2921; // dark brown medieval fallback
+    border-color: var(--rarity-color);
+  }
+}
+
+.notifIcon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 8px var(--rarity-glow, transparent));
+}
+
+.notifContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.notifHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.notifBadge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--rarity-color);
+  font-family: var(--font-primary);
+}
+
+.notifRarity {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-family: var(--font-primary);
+}
+
+.notifTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  margin-bottom: 0.15rem;
+
+  :global([data-theme="medieval"]) & {
+    color: #f5e6ca; // parchment white text
+  }
+}
+
+.notifDesc {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-family: var(--font-primary);
+  line-height: 1.4;
+
+  :global([data-theme="medieval"]) & {
+    color: #e8d5b0; // light parchment secondary text
+  }
+}
+
+.notifXp {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--rarity-color);
+  margin-top: 0.25rem;
+  font-family: var(--font-primary);
+}
+
+// Progress bar draining from right to left
+.notifProgress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--rarity-color);
+  animation: notif-drain 5000ms linear forwards;
+}

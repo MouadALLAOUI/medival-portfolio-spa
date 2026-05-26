@@ -9,36 +9,27 @@ export default function useContextMenu() {
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
   const [visible, setVisible] = useState(false);
+  const [targetElement, setTargetElement] = useState(null);
 
   const closeMenu = useCallback(() => {
     setVisible(false);
+    setTargetElement(null);
   }, []);
 
   const openMenu = useCallback((e) => {
     const target = e.target;
-    if (target instanceof HTMLElement) {
-      // Intelligently check if we right-clicked on an interactive element
-      if (
-        target.closest('[data-context-menu-ignore]') ||
-        target.closest('a') ||
-        target.closest('button') ||
-        target.closest('input') ||
-        target.closest('textarea') ||
-        target.closest('select') ||
-        target.closest('iframe') ||
-        target.closest('[role="button"]') ||
-        target.closest('.chat-window') || // chatbot container check
-        target.closest('[role="menu"]') // do not trigger context menu on custom menu itself
-      ) {
-        // Allow default browser context menu for these interactive components
-        return;
-      }
+
+    // Check if the target or any of its parents have data-allow-contextmenu
+    if (target instanceof HTMLElement && target.closest('[data-allow-contextmenu]')) {
+      return;
     }
 
+    // Default behavior for custom menu: prevent standard context menu
     e.preventDefault();
     setX(e.clientX);
     setY(e.clientY);
     setVisible(true);
+    setTargetElement(target);
   }, []);
 
   useEffect(() => {
@@ -48,5 +39,6 @@ export default function useContextMenu() {
     };
   }, [openMenu]);
 
-  return { x, y, visible, setVisible, closeMenu };
+  return { x, y, visible, setVisible, closeMenu, targetElement };
 }
+

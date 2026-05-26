@@ -48,6 +48,7 @@
 
     .card-icon {
         font-size: 1.875rem;
+
         @media (min-width: 768px) {
             font-size: 2.25rem;
         }
@@ -89,6 +90,81 @@
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
+    }
+
+    .status-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        z-index: 10;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+
+        &.complete {
+            background: linear-gradient(135deg, #2d5a27, #1e3c1a);
+            color: #e0f2f1;
+        }
+
+        &.in-progress {
+            background: linear-gradient(135deg, #8b6d1b, #6b5314);
+            color: #fff8e1;
+        }
+
+        &.abandoned {
+            background: linear-gradient(135deg, #7b1f1f, #541414);
+            color: #ffebee;
+        }
+    }
+}
+
+.variant-parchment {
+    background-color: var(--color-parchment-dark);
+    border-color: var(--color-gold);
+    color: var(--color-dark-brown);
+}
+
+.variant-dark {
+    background-color: var(--color-dark-brown);
+    border-color: var(--color-gold);
+    color: var(--color-parchment);
+
+    .card-title {
+        color: var(--color-gold-light);
+    }
+
+    .card-desc,
+    .card-meta {
+        color: var(--color-parchment);
+    }
+}
+
+.variant-golden {
+    background-color: var(--color-gold);
+    border-color: var(--color-parchment);
+    color: var(--color-dark-brown);
+
+    .card-title {
+        color: var(--color-dark-brown);
+    }
+}
+
+.hover-lift {
+    &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.2), var(--shadow-gold-glow);
+    }
+}
+
+.hover-glow {
+    &:hover {
+        box-shadow: 0 0 20px var(--color-gold-light);
+        border-color: var(--color-gold-light);
     }
 }
 
@@ -181,6 +257,16 @@
 
 .language-card {
     composes: skill-card;
+}
+
+.blog-card {
+    composes: skill-card;
+    padding: 0 !important;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
 }
 
 .proficiency {

@@ -1,28 +1,29 @@
 import { useTheme } from '../../../lib/contexts/ThemeProvider';
 import { usePdfSettings } from '../../../lib/contexts/PdfSettingsContext';
-import { useAppSettings } from '../../../lib/contexts/AppSettingsContext';
 import { useSettings } from '../../../lib/useSettings';
+import { MARKDOWN_THEMES } from '../../../lib/markdown/markdownThemes';
 import styles from './SettingControl.module.scss';
 
 // Maps contextKey → [currentValue, setter] from the correct context
 const useSettingValue = (contextKey) => {
   const theme = useTheme();
   const pdf = usePdfSettings() || {};
-  const app = useAppSettings() || {};
   const settings = useSettings();
 
   const map = {
-    theme:          [theme.theme,           theme.switchTheme],
-    pdfMode:        [pdf.pdfMode,           pdf.setPdfMode],
-    pdfReadingMode: [pdf.pdfReadingMode,    pdf.setPdfReadingMode],
-    language:       [settings.language,     settings.setLanguage],
-    markdownTheme:  [app.markdownTheme,     app.setMarkdownTheme],
-    reducedMotion:  [app.reducedMotion,     app.setReducedMotion],
-    fontSize:       [app.fontSize,          app.setFontSize],
+    theme: [theme.theme, theme.switchTheme],
+    pdfMode: [pdf.pdfMode, pdf.setPdfMode],
+    pdfReadingMode: [pdf.pdfReadingMode, pdf.setPdfReadingMode],
+    language: [settings.language, settings.setLanguage],
+    markdownTheme: [settings.markdownTheme, settings.setMarkdownTheme],
+    reducedMotion: [settings.reducedMotion, settings.setReducedMotion],
+    fontSize: [settings.fontSize, settings.setFontSize],
+    customCursor: [settings.customCursor, settings.setCustomCursor],
+    soundEnabled: [settings.soundEnabled, settings.setSoundEnabled],
     // add new settings here when adding to a context
   };
 
-  return map[contextKey] || [null, () => {}];
+  return map[contextKey] || [null, () => { }];
 };
 
 const SettingControl = ({ setting }) => {
@@ -31,6 +32,59 @@ const SettingControl = ({ setting }) => {
 
   const label = t(`COMMON.settings.keys.${setting.id}.label`) || setting.label;
   const description = t(`COMMON.settings.keys.${setting.id}.description`) || setting.description;
+
+  // ── Markdown Theme select ─────────────────────────────────────
+  if (setting.type === 'markdown-theme-select') {
+    const settings = useSettings();
+    return (
+      <div className={styles.control}>
+        <div className={styles.controlHeader}>
+          <span className={styles.controlLabel}>{label}</span>
+          <span className={styles.controlDesc}>{description}</span>
+        </div>
+        <div className={styles.mdThemeGrid}>
+          {Object.values(MARKDOWN_THEMES).map(theme => {
+            const isMedievalLang = settings.language && settings.language.startsWith('medieval');
+            const displayLabel = isMedievalLang 
+              ? (theme.labelMedieval || theme.label) 
+              : (t(`COMMON.settings.keys.markdownTheme.options.${theme.id}.label`) || theme.label);
+
+            return (
+              <button
+                key={theme.id}
+                className={`${styles.mdThemeCard} ${value === theme.id ? styles.active : ''}`}
+                onClick={() => setValue(theme.id)}
+                type="button"
+              >
+                {/* Mini preview swatch */}
+                <div
+                  className={styles.mdPreview}
+                  style={{
+                    background: theme.preview.bg || 'var(--bg-card)',
+                    color: theme.preview.text || 'var(--text-primary)',
+                  }}
+                >
+                  <span style={{ color: theme.preview.accent || 'var(--accent)', fontSize: '0.6rem', fontWeight: 700 }}>
+                    # Heading
+                  </span>
+                  <span style={{ fontSize: '0.55rem', opacity: 0.8, color: theme.preview.text || 'var(--text-secondary)' }}>
+                    Lorem ipsum dolor sit...
+                  </span>
+                  <span style={{ color: theme.preview.accent || 'var(--accent)', fontSize: '0.55rem' }}>
+                    [link](#) `code`
+                  </span>
+                </div>
+                <span className={styles.mdThemeIcon}>{theme.icon}</span>
+                <span className={styles.mdThemeLabel}>{displayLabel}</span>
+                <span className={styles.mdThemeDesc}>{theme.description}</span>
+                {value === theme.id && <span className={styles.check}>✓</span>}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
 
   // ── Theme select ─────────────────────────────────────────────
   if (setting.type === 'theme-select') {

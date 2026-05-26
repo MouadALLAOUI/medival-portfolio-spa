@@ -12,9 +12,10 @@ const LearningSection = () => {
   const { trackEvent } = useAchievements();
   const { t } = useSettings();
 
-  const handleCardClick = (item) => {
+  const handleCardClick = (item, e) => {
     if (item.href) {
-      openPdf(item.href);
+      if (e) e.preventDefault();
+      openPdf(item.href, item.title);
       trackEvent('mp:pdf-opened');
     }
   };
@@ -23,7 +24,12 @@ const LearningSection = () => {
     <CSection id="learning" title={t('HOME.LEARNING.title')} subtitle={t('HOME.LEARNING.intro')} classname="learning">
       <div className={styles['learning-grid']} id="learning-grid">
         {learning.map((item) => (
-          <DynamicCard key={item.id} item={item} config={PRESETS.LEARNING} onClick={() => handleCardClick(item)} />
+          <DynamicCard
+            key={item.id}
+            item={item}
+            config={PRESETS.LEARNING}
+            onClick={(item, e) => handleCardClick(item, e)}
+          />
         ))}
       </div>
     </CSection>

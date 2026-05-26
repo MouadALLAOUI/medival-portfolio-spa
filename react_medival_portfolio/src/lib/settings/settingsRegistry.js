@@ -1,3 +1,5 @@
+import { MARKDOWN_THEMES } from '../markdown/markdownThemes';
+
 /**
  * Settings Registry
  * 
@@ -23,14 +25,23 @@ export const SETTINGS_SECTIONS = [
       {
         id: 'markdownTheme',
         label: 'Markdown Style',
-        description: 'How blog post and markdown content is styled',
-        type: 'option-select',
+        description: 'How blog post and markdown content is styled — independent from app theme',
+        type: 'markdown-theme-select',  // new type — renders previews
         contextKey: 'markdownTheme',
-        options: [
-          { id: 'default', label: 'Default', icon: '📄', description: 'Matches the active visual theme' },
-          { id: 'github', label: 'GitHub', icon: '🐙', description: 'Clean GitHub-style markdown' },
-          { id: 'medieval', label: 'Medieval Scroll', icon: '📜', description: 'Ornate medieval styling' },
-        ],
+      },
+      {
+        id: 'customCursor',
+        label: 'Medieval Cursor',
+        description: 'Use a themed quill cursor in the medieval theme',
+        type: 'toggle',
+        contextKey: 'customCursor',
+      },
+      {
+        id: 'soundEnabled',
+        label: 'Arcane Sounds',
+        description: 'Enable subtle sound effects during interactions',
+        type: 'toggle',
+        contextKey: 'soundEnabled',
       },
     ],
   },
@@ -50,6 +61,8 @@ export const SETTINGS_SECTIONS = [
           { id: 'en', label: 'English', icon: '🇬🇧', description: '' },
           { id: 'fr', label: 'Français', icon: '🇫🇷', description: '' },
           { id: 'ar', label: 'العربية', icon: '🇲🇦', description: '' },
+          { id: 'medieval-en', label: 'Medieval English', icon: '📜', description: '' },
+          { id: 'medieval-fr', label: 'Français Médiéval', icon: '🏰', description: '' },
         ],
       },
     ],
@@ -112,6 +125,14 @@ export const SETTINGS_SECTIONS = [
           { id: 'medium', label: 'Medium', icon: 'A', description: '16px base (default)' },
           { id: 'large', label: 'Large', icon: 'A', description: '18px base' },
         ],
+      },
+      {
+        id: 'soundEnabled',
+        label: 'Sound Effects',
+        description: 'Enable audio feedback and sound effects',
+        type: 'toggle',
+        contextKey: 'soundEnabled',
+        defaultValue: false,
       },
     ],
   },

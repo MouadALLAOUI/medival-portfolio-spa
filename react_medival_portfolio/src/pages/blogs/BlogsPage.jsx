@@ -1,7 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
+import { Search } from 'lucide-react';
 import { blogs, blogTags } from '../../data/blogs.data';
 import { useAlerts } from '../../lib/useAlerts';
 import { useSettings } from '../../lib/useSettings';
+import { useAchievements } from '../../lib/useAchievements';
 import BlogCard from '../../components/BlogCard/BlogCard';
 import styles from './BlogsPage.module.scss';
 import { isFirstVisit } from '../../lib/utils/visitTracker';
@@ -11,8 +13,10 @@ const POSTS_PER_PAGE = 6;
 export default function BlogsPage() {
   const { showAlert } = useAlerts();
   const { t } = useSettings();
+  const { unlockAchievement } = useAchievements();
   const [currentPage, setCurrentPage] = useState(1);
   const [activeTag, setActiveTag] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
   const [showScroll, setShowScroll] = useState(true);
   const [bookmarks, setBookmarks] = useState(() => {
     try {
@@ -25,14 +29,15 @@ export default function BlogsPage() {
   const filterRef = useRef(null);
 
   useEffect(() => {
+    unlockAchievement('visited_blogs');
     if (!isFirstVisit('blogs')) return;
     showAlert(t('BLOGS.list.welcomeAlertConsolidated'), 'royal', 5000);
-  }, [showAlert, t]);
+  }, [showAlert, t, unlockAchievement]);
 
   // Reset page when filter changes
   useEffect(() => {
     setCurrentPage(1);
-  }, [activeTag, filterBookmarked]);
+  }, [activeTag, filterBookmarked, searchQuery]);
 
   // Handle scroll to hide scroll indicator
   useEffect(() => {
@@ -67,16 +72,26 @@ export default function BlogsPage() {
   };
 
   const isDev = import.meta.env.DEV;
-  const visibleBlogs = blogs.filter((b) => !b.isDraft || isDev);
-  const visibleTags = [...new Set(visibleBlogs.flatMap((b) => b.tags))];
+  
+  const filteredBlogs = useMemo(() => {
+    const visibleBlogs = blogs.filter((b) => !b.isDraft || isDev);
+    
+    return visibleBlogs.filter((blog) => {
+      const matchesSearch = blog.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                           blog.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                           blog.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+      
+      const matchesTag = activeTag ? blog.tags.includes(activeTag) : true;
+      const matchesBookmark = filterBookmarked ? bookmarks.includes(blog.slug) : true;
+      
+      return matchesSearch && matchesTag && matchesBookmark;
+    });
+  }, [searchQuery, activeTag, filterBookmarked, bookmarks, isDev]);
 
-  let filteredBlogs = activeTag
-    ? visibleBlogs.filter((b) => b.tags.includes(activeTag))
-    : visibleBlogs;
-
-  if (filterBookmarked) {
-    filteredBlogs = filteredBlogs.filter((b) => bookmarks.includes(b.slug));
-  }
+  const visibleTags = useMemo(() => {
+    const visibleBlogs = blogs.filter((b) => !b.isDraft || isDev);
+    return [...new Set(visibleBlogs.flatMap((b) => b.tags))];
+  }, [isDev]);
 
   const totalPages = Math.ceil(filteredBlogs.length / POSTS_PER_PAGE);
   const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
@@ -115,35 +130,48 @@ export default function BlogsPage() {
         </div>
       </div>
 
-      {/* ── Tag Filter Bar ── */}
-      <section ref={filterRef} className={styles['filterBar']}>
-        <button
-          className={`${styles['filterTag']} ${activeTag === null && !filterBookmarked ? styles['active'] : ''}`}
-          onClick={() => {
-            setActiveTag(null);
-            setFilterBookmarked(false);
-          }}
-        >
-          {t('BLOGS.list.filterAll')}
-        </button>
-        <button
-          className={`${styles['filterTag']} ${filterBookmarked ? styles['active'] : ''}`}
-          onClick={() => {
-            setFilterBookmarked(!filterBookmarked);
-            setActiveTag(null);
-          }}
-        >
-          📖 {t('BLOGS.list.savedScrolls')} ({bookmarks.length})
-        </button>
-        {visibleTags.map((tag) => (
+      {/* ── Search & Tag Filter Bar ── */}
+      <section ref={filterRef} className={styles['filterSection']}>
+        <div className={styles['searchBar']}>
+          <Search className={styles['searchIcon']} size={20} />
+          <input
+            type="text"
+            placeholder={t('BLOGS.list.searchPlaceholder') || "Search scrolls..."}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className={styles['searchInput']}
+          />
+        </div>
+        
+        <div className={styles['filterBar']}>
           <button
-            key={tag}
-            className={`${styles['filterTag']} ${activeTag === tag ? styles['active'] : ''}`}
-            onClick={() => handleTagClick(tag)}
+            className={`${styles['filterTag']} ${activeTag === null && !filterBookmarked ? styles['active'] : ''}`}
+            onClick={() => {
+              setActiveTag(null);
+              setFilterBookmarked(false);
+            }}
           >
-            {tag}
+            {t('BLOGS.list.filterAll')}
           </button>
-        ))}
+          <button
+            className={`${styles['filterTag']} ${filterBookmarked ? styles['active'] : ''}`}
+            onClick={() => {
+              setFilterBookmarked(!filterBookmarked);
+              setActiveTag(null);
+            }}
+          >
+            📖 {t('BLOGS.list.savedScrolls')} ({bookmarks.length})
+          </button>
+          {visibleTags.map((tag) => (
+            <button
+              key={tag}
+              className={`${styles['filterTag']} ${activeTag === tag ? styles['active'] : ''}`}
+              onClick={() => handleTagClick(tag)}
+            >
+              {tag}
+            </button>
+          ))}
+        </div>
       </section>
 
       {/* ── Blog Grid ── */}
