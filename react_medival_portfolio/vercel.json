@@ -1,0 +1,6 @@
+{
+  "_comment": "VERCEL: Use this file when deploying to Vercel. NETLIFY: Use public/_redirects and netlify.toml instead. APACHE: Use public/.htaccess instead. NGINX: Add try_files $uri $uri/ /index.html; to your server block.",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
