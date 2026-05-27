@@ -3,10 +3,6 @@ import react, { reactCompilerPreset } from '@vitejs/plugin-react';
 import babel from '@rolldown/plugin-babel';
 
 export default defineConfig({
-<<<<<<< Updated upstream
-  base: './',
-  plugins: [react(), babel({ presets: [reactCompilerPreset()] })],
-=======
   // Base path:
   // '/' for custom domain (mouadthecoder.com) or Netlify/Vercel subdomain
   // '/repo-name/' for GitHub Pages subdirectory deployment
@@ -49,8 +45,6 @@ export default defineConfig({
     // Warn when individual chunks exceed 500 KB
     chunkSizeWarningLimit: 500,
   },
-
->>>>>>> Stashed changes
   css: {
     preprocessorOptions: {
       scss: {},
