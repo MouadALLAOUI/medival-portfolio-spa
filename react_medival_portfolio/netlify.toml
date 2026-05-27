@@ -1,0 +1,17 @@
+# NETLIFY: netlify.toml is active alongside public/_redirects.
+# VERCEL: Use vercel.json instead.
+# APACHE: Use public/.htaccess instead.
+# NGINX: Add `try_files $uri $uri/ /index.html;` to your server block.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# SPA fallback (redundant with _redirects but good to have both)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
