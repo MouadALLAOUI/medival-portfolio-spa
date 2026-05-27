@@ -1,0 +1,6 @@
+# NETLIFY: This file is active. Keep public/_redirects for Netlify.
+# VERCEL: Use vercel.json instead.
+# APACHE: Use public/.htaccess instead.
+# NGINX: Add `try_files $uri $uri/ /index.html;` to your server block.
+
+/*    /index.html   200
