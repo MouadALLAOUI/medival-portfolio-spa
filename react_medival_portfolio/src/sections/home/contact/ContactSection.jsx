@@ -10,8 +10,8 @@ const ContactSection = () => {
   const { showAlert } = useAlerts();
   const { unlockAchievement } = useAchievements();
 
-  // Load email dynamically from environment variables
-  const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || 'moadallaoui1@gmail.com';
+  // Load email dynamically from environment variables (set VITE_CONTACT_EMAIL in Netlify dashboard)
+  const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || "";
 
   // Form states
   const [name, setName] = useState('');
