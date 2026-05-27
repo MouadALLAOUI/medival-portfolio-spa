@@ -9,11 +9,15 @@
 
 [build.environment]
   NODE_VERSION = "20"
+<<<<<<< HEAD
   # APP_ENV is a non-sensitive environment indicator ("local" / "prod"), not a credential.
   # Netlify's scanner matches its value against doc files — suppress the false positive.
   SECRETS_SCAN_OMIT_KEYS = "APP_ENV"
   # Also exclude documentation files that legitimately contain the word "local"
   SECRETS_SCAN_OMIT_PATHS = ".env.example,.gitignore,AUDIT.md,PROMPTS.md"
+=======
+  SECRETS_SCAN_OMIT_PATHS = ".env.example,.gitignore"
+>>>>>>> d40aad0d1ccc3477c3992e25f0d7f90fb4000d23
 
 # SPA fallback (redundant with _redirects but good to have both)
 [[redirects]]
