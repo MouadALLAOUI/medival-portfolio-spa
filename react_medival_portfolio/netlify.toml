@@ -10,6 +10,7 @@
 [build.environment]
   NODE_VERSION = "20"
   SECRETS_SCAN_OMIT_PATHS = ".env.example,.gitignore"
+  SECRETS_SCAN_OMIT_KEYS = "APP_ENV,VITE_CONTACT_EMAIL,API_KEY"
 # SPA fallback (redundant with _redirects but good to have both)
 [[redirects]]
   from = "/*"
