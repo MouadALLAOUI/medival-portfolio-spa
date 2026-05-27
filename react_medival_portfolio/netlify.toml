@@ -9,6 +9,7 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  SECRETS_SCAN_OMIT_PATHS = ".env.example,.gitignore"
 
 # SPA fallback (redundant with _redirects but good to have both)
 [[redirects]]
