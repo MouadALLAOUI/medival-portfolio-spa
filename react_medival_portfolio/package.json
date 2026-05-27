@@ -5,9 +5,14 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
+<<<<<<< Updated upstream
 		"build": "vite build",
+=======
+		"build": "node scripts/generate-rss.js && node scripts/generate-sitemap.js && node -e \"require('fs').copyFileSync('node_modules/pdfjs-dist/build/pdf.worker.min.mjs','public/pdf.worker.min.mjs')\" && vite build",
+>>>>>>> Stashed changes
 		"lint": "eslint .",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"predeploy": "npm run lint && npm run build"
 	},
 	"dependencies": {
 		"autoprefixer": "^10.4.27",
@@ -37,6 +42,8 @@
 		"eslint-plugin-react-refresh": "^0.5.2",
 		"globals": "^17.4.0",
 		"tailwindcss": "^4.2.2",
-		"vite": "^8.0.1"
+		"terser": "^5.48.0",
+		"vite": "^8.0.1",
+		"vite-plugin-static-copy": "^4.1.0"
 	}
 }

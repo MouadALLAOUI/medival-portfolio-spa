@@ -74,7 +74,7 @@
   :global([data-theme="medieval"]) & {
     background-color: rgba(255, 255, 255, 0.5);
     border: 8px solid transparent;
-    background-image: url('../../../../public/media/parchment.png');
+    background-image: url('/media/parchment.png');
     background-size: cover;
   }
 }

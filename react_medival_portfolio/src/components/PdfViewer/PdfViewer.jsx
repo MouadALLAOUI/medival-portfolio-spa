@@ -7,11 +7,10 @@ import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 import styles from './PdfViewer.module.scss';
 
-// Set up GlobalWorkerOptions
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.mjs',
-  import.meta.url,
-).toString();
+// Set up PDF.js worker using a static path.
+// The worker file is copied to dist/ root by viteStaticCopy in vite.config.js.
+// This is more reliable than new URL() which can break with certain bundler configs.
+pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 
 const PdfViewer = ({ file, label = 'Open Scroll', className }) => {
   const pdfCtx = usePdfSettings();

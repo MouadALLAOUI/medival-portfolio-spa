@@ -7,9 +7,17 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Build output — never commit these
 node_modules
 dist
 dist-ssr
+
+# Local env files — never commit real secrets
+.env
+.env.local
+.env.production
+.env.production.local
+.env.*.local
 *.local
 
 # Editor directories and files
@@ -22,5 +30,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-.env

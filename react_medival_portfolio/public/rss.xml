@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Mouad the Coder - Chamber of Chronicles</title>
+  <link>https://mouad-portfolio.netlify.app/blogs</link>
+  <description>Technical scrolls and medieval musings on web development and cybersecurity.</description>
+  <language>en-us</language>
+  <lastBuildDate>Wed, 27 May 2026 12:10:24 GMT</lastBuildDate>
+  <atom:link href="https://mouad-portfolio.netlify.app/rss.xml" rel="self" type="application/rss+xml" />
+  
+    <item>
+      <title><![CDATA[Your First Beginner Course to HTML]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/your-first-beginner-course-to-html</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/your-first-beginner-course-to-html</guid>
+      <pubDate>Wed, 13 Aug 2025 23:00:00 GMT</pubDate>
+      <description><![CDATA[Start from scratch and learn the foundation of web development with HTML.]]></description>
+      <category>HTML, Beginner, Web Development</category>
+    </item>
+    <item>
+      <title><![CDATA[How to Implement CSS Into Your HTML]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/how-to-implement-css-into-your-html</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/how-to-implement-css-into-your-html</guid>
+      <pubDate>Fri, 15 Aug 2025 23:00:00 GMT</pubDate>
+      <description><![CDATA[Learn how to style your static website using internal, external, and inline CSS.]]></description>
+      <category>CSS, Styling, Web Development</category>
+    </item>
+    <item>
+      <title><![CDATA[Add JavaScript to Your First Static Website]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/add-javascript-to-your-first-static-website</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/add-javascript-to-your-first-static-website</guid>
+      <pubDate>Sun, 17 Aug 2025 23:00:00 GMT</pubDate>
+      <description><![CDATA[Bring interactivity to life by adding scripts to your HTML page.]]></description>
+      <category>JavaScript, Frontend, Interactivity</category>
+    </item>
+    <item>
+      <title><![CDATA[Essential HTML Tags You Should Know]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/essential-html-tags-you-should-know</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/essential-html-tags-you-should-know</guid>
+      <pubDate>Tue, 19 Aug 2025 23:00:00 GMT</pubDate>
+      <description><![CDATA[A curated list of must-know HTML elements for every beginner developer.]]></description>
+      <category>HTML, Tips, Structure</category>
+    </item>
+    <item>
+      <title><![CDATA[Don't Underestimate CSS: Advanced Tricks You Need]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/dont-underestimate-css-advanced-tricks-you-need</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/dont-underestimate-css-advanced-tricks-you-need</guid>
+      <pubDate>Thu, 21 Aug 2025 23:00:00 GMT</pubDate>
+      <description><![CDATA[Level up your styling game with powerful CSS techniques like Flexbox, Grid, and custom properties.]]></description>
+      <category>CSS, Advanced, Layout</category>
+    </item>
+    <item>
+      <title><![CDATA[JavaScript DOM Manipulation for Beginners]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/javascript-dom-manipulation-for-beginners</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/javascript-dom-manipulation-for-beginners</guid>
+      <pubDate>Sat, 23 Aug 2025 23:00:00 GMT</pubDate>
+      <description><![CDATA[Learn how to change HTML content and styles dynamically using JavaScript.]]></description>
+      <category>JavaScript, DOM, Dynamic</category>
+    </item>
+    <item>
+      <title><![CDATA[Understanding Variables, Data Types & Operators in JS]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/understanding-variables-data-types-and-operators-in-js</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/understanding-variables-data-types-and-operators-in-js</guid>
+      <pubDate>Mon, 25 Aug 2025 23:00:00 GMT</pubDate>
+      <description><![CDATA[A deep dive into JavaScript fundamentals: variables, types, and operations.]]></description>
+      <category>JavaScript, Basics, Concepts</category>
+    </item>
+    <item>
+      <title><![CDATA[How to Debug JavaScript Like a Pro]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/how-to-debug-javascript-like-a-pro</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/how-to-debug-javascript-like-a-pro</guid>
+      <pubDate>Wed, 27 Aug 2025 23:00:00 GMT</pubDate>
+      <description><![CDATA[Master console.log, breakpoints, and browser dev tools to squash bugs fast.]]></description>
+      <category>JavaScript, Debugging, Tools</category>
+    </item>
+    <item>
+      <title><![CDATA[Intro to Responsive Web Design with Media Queries]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/intro-to-responsive-web-design-with-media-queries</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/intro-to-responsive-web-design-with-media-queries</guid>
+      <pubDate>Fri, 29 Aug 2025 23:00:00 GMT</pubDate>
+      <description><![CDATA[Make your websites mobile-friendly using CSS media queries and viewport settings.]]></description>
+      <category>CSS, Responsive, Mobile</category>
+    </item>
+    <item>
+      <title><![CDATA[From Zero to Deploy: Hosting Your First Website]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/from-zero-to-deploy-hosting-your-first-website</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/from-zero-to-deploy-hosting-your-first-website</guid>
+      <pubDate>Sun, 31 Aug 2025 23:00:00 GMT</pubDate>
+      <description><![CDATA[Learn how to publish your HTML/CSS/JS site online using free platforms like GitHub Pages and Netlify.]]></description>
+      <category>Deployment, Hosting, Beginner</category>
+    </item>
+</channel>
+</rss>
