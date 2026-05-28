@@ -4,19 +4,26 @@ import { useSettings } from '../../../lib/useSettings';
 import styles from './AboutSection.module.scss';
 import CSection from '../../../templates/Section';
 
+const INITIAL_VISIBLE = 4;
+
 const AboutSection = () => {
   const { t } = useSettings();
   const [expandedId, setExpandedId] = useState(null);
+  const [showAll, setShowAll] = useState(false);
 
   const toggleExpand = (id) => {
     setExpandedId((prev) => (prev === id ? null : id));
   };
 
+  const visibleItems = showAll
+    ? timelines
+    : timelines.slice(0, INITIAL_VISIBLE);
+
   return (
     <CSection id="about" title={t('HOME.ABOUT.title')} subtitle={t('HOME.ABOUT.subtitle')} classname="about">
       <div className={styles['timeline-wrapper']}>
         <div className={styles['timeline']}>
-          {timelines.map((item) => {
+          {visibleItems.map((item) => {
             const isExpanded = expandedId === item.id;
             const itemTitle = t(`HOME.ABOUT.timelines.${item.id}.title`) || item.title;
             const itemDesc = t(`HOME.ABOUT.timelines.${item.id}.desc`) || item.desc;
@@ -58,6 +65,21 @@ const AboutSection = () => {
             );
           })}
         </div>
+
+        {timelines.length > INITIAL_VISIBLE && (
+          <div className={styles.showMoreWrapper}>
+            <button
+              className={styles.showMoreBtn}
+              onClick={() => setShowAll(p => !p)}
+              type="button"
+            >
+              {showAll ? t('about.showLess') : t('about.showMore')}
+              <span className={styles.showMoreIcon}>
+                {showAll ? ' ↑' : ' ↓'}
+              </span>
+            </button>
+          </div>
+        )}
 
         <div className={styles['philosophy']}>
           <p>

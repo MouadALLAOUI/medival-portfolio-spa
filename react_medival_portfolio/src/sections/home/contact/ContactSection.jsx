@@ -2,8 +2,31 @@ import { useState } from 'react';
 import { useSettings } from '../../../lib/useSettings';
 import { useAlerts } from '../../../lib/useAlerts';
 import { useAchievements } from '../../../lib/useAchievements';
+import {
+  Github,
+  Linkedin,
+  Twitter,
+  Mail,
+  Globe,
+  Youtube,
+  Instagram,
+  Facebook,
+  ExternalLink,
+} from 'lucide-react';
 import styles from './ContactSection.module.scss';
 import CSection from '../../../templates/Section';
+
+const SOCIAL_ICON_MAP = {
+  github:    Github,
+  linkedin:  Linkedin,
+  twitter:   Twitter,
+  email:     Mail,
+  website:   Globe,
+  youtube:   Youtube,
+  instagram: Instagram,
+  facebook:  Facebook,
+  default:   ExternalLink,
+};
 
 const ContactSection = () => {
   const { t } = useSettings();
@@ -121,26 +144,26 @@ const ContactSection = () => {
           <p>{t('HOME.CONTACT.connectionsDesc')}</p>
 
           <div className={styles['social-links']}>
-            <a
-              href="https://github.com/MouadALLAOUI"
-              className={styles['social-link']}
-              title="GitHub"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Examine GitHub scrolls of Mouad"
-            >
-              ⌖
-            </a>
-            <a
-              href="https://www.linkedin.com/in/mouad-allaoui-975514223/"
-              className={styles['social-link']}
-              title="LinkedIn"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Seek counsel on LinkedIn"
-            >
-              🕴
-            </a>
+            {[
+              { type: 'github', url: 'https://github.com/MouadALLAOUI', label: 'GitHub' },
+              { type: 'linkedin', url: 'https://www.linkedin.com/in/mouad-allaoui-975514223/', label: 'LinkedIn' }
+            ].map(social => {
+              const Icon = SOCIAL_ICON_MAP[social.type] || SOCIAL_ICON_MAP.default;
+              return (
+                <a
+                  key={social.type}
+                  href={social.url}
+                  target={social.type === 'email' ? '_self' : '_blank'}
+                  rel="noopener noreferrer"
+                  className={styles['social-link']}
+                  aria-label={social.label}
+                  title={social.label}
+                >
+                  <Icon size={24} strokeWidth={1.5} />
+                  <span style={{ display: 'none' }}>{social.label}</span>
+                </a>
+              );
+            })}
           </div>
 
           <h3 style={{ marginTop: '30px' }}>{t('HOME.CONTACT.deliveryTitle')}</h3>

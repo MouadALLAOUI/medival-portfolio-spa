@@ -196,11 +196,41 @@ textarea {
   }
 }
 
-[data-reduced-motion="true"] * {
+[data-reduced-motion="true"] *,
+[data-animation-level="light"] * {
   animation-duration: 0.01ms !important;
   animation-iteration-count: 1 !important;
   transition-duration: 0.01ms !important;
 }
+
+[data-animation-level="normal"] * {
+  transition-duration: 150ms !important;
+}
+[data-animation-level="normal"] .crystal-glow,
+[data-animation-level="normal"] .pulsing,
+[data-animation-level="normal"] [class*="pulsing"],
+[data-animation-level="normal"] [class*="glow"],
+[data-animation-level="normal"] [class*="rotate"] {
+  animation-iteration-count: 2 !important;
+}
+
+[data-animation-level="ultra"] * {
+  transition-duration: 400ms !important;
+}
+
+:root[data-animation-level="light"] {
+  --transition: 0.01ms step-end !important;
+}
+:root[data-animation-level="normal"] {
+  --transition: 150ms ease !important;
+}
+:root[data-animation-level="heavy"] {
+  --transition: 200ms ease !important;
+}
+:root[data-animation-level="ultra"] {
+  --transition: 400ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
 
 
 /* 🖨️ Print Styles */

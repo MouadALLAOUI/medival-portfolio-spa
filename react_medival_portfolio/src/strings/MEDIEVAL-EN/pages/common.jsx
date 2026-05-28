@@ -59,7 +59,8 @@ const COMMON = {
                 options: {
                     light: { label: "Arcane Light", description: "Switch to Arcane Light theme" },
                     dark: { label: "Shadow Realm", description: "Switch to Shadow Realm theme" },
-                    medieval: { label: "Medieval Scroll", description: "Switch to Medieval Scroll theme" }
+                    medieval: { label: "Medieval Scroll", description: "Switch to Medieval Scroll theme" },
+                    github: { label: "GitHub Classic", description: "GitHub developer classic white-blue light mode style" }
                 }
             },
             markdownTheme: {
@@ -101,9 +102,15 @@ const COMMON = {
                     doublePage: { label: "Double Page", description: "Two pages side by side (desktop)" }
                 }
             },
-            reducedMotion: {
-                label: "Reduce Motion",
-                description: "Minimize animations across the portfolio"
+            animationLevel: {
+                label: "Optimisation / Animations",
+                description: "Calm the magical spirits (adjust animations)",
+                options: {
+                    light: { label: "Light Spell", description: "Minimum animations, best scrolling performance" },
+                    normal: { label: "Balanced Spell", description: "Steady transitions, normal magic flow" },
+                    heavy: { label: "Heavy Spell", description: "Full animations and magical particles" },
+                    ultra: { label: "Ultra Magic Spell", description: "Maximum smooth animation transitions" }
+                }
             },
             fontSize: {
                 label: "Scribe Font Size",

@@ -1,0 +1,323 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/animations' as *;
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px var(--section-padding-x) 40px;
+  width: 100%;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+
+  :global([data-theme="medieval"]) & {
+    font-family: var(--font-medieval);
+    color: var(--color-gold);
+  }
+}
+
+.subtitle {
+  font-family: var(--font-primary);
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  color: var(--text-secondary);
+  margin: 0;
+
+  :global([data-theme="medieval"]) & {
+    font-family: var(--font-cinzel);
+    color: #e8d5b0;
+  }
+}
+
+.searchWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.searchBox {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 1rem;
+  color: var(--text-muted);
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.75rem 2.5rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  transition: all var(--transition);
+
+  &:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-light);
+  }
+
+  :global([data-theme="medieval"]) & {
+    background: #f5e6ca;
+    border: 2px solid rgba(139, 69, 19, 0.4);
+    border-radius: 6px;
+    color: var(--dark-brown);
+
+    &:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 10px rgba(210, 180, 140, 0.5);
+    }
+  }
+}
+
+.clearSearch {
+  position: absolute;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.categoryFilter {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.categoryTab {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  &.categoryActive {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+
+  :global([data-theme="medieval"]) & {
+    font-family: var(--font-medieval);
+    background: #e8d5b0;
+    border-color: rgba(139, 69, 19, 0.3);
+    color: #8b4513;
+    border-radius: 4px;
+
+    &:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    &.categoryActive {
+      background: var(--gold);
+      color: var(--dark-brown);
+      border-color: var(--gold);
+    }
+  }
+}
+
+.tagFilter {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tagBtn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  &.tagActive {
+    background: var(--accent-light);
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  :global([data-theme="medieval"]) & {
+    font-family: var(--font-cinzel);
+    border-color: rgba(139, 69, 19, 0.2);
+    color: #8b4513;
+
+    &:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    &.tagActive {
+      background: rgba(201, 168, 76, 0.15);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+  }
+}
+
+.resultCount {
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 2rem;
+
+  :global([data-theme="medieval"]) & {
+    font-family: var(--font-medieval);
+    color: #e8d5b0;
+  }
+}
+
+.featuredSection {
+  margin-bottom: 3rem;
+  border-bottom: 1px dashed var(--border);
+  padding-bottom: 3rem;
+
+  :global([data-theme="medieval"]) & {
+    border-bottom-color: rgba(139, 69, 19, 0.2);
+  }
+}
+
+.sectionLabel {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+
+  :global([data-theme="medieval"]) & {
+    font-family: var(--font-medieval);
+    color: var(--gold);
+  }
+}
+
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+  }
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+
+  @include laptop-medium {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include tablet {
+    grid-template-columns: 1fr;
+  }
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  max-width: 600px;
+  margin: 0 auto;
+
+  p {
+    font-family: var(--font-primary);
+    color: var(--text-secondary);
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  :global([data-theme="medieval"]) & {
+    background: #f5e6ca;
+    border-color: rgba(139, 69, 19, 0.3);
+
+    p {
+      font-family: var(--font-body);
+      color: #3a2921;
+    }
+  }
+}
+
+.emptyIcon {
+  font-size: 3rem;
+}
+
+.clearAllBtn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+
+  &:hover {
+    background: var(--accent-hover);
+  }
+
+  :global([data-theme="medieval"]) & {
+    background: var(--gold);
+    color: var(--dark-brown);
+    font-family: var(--font-medieval);
+
+    &:hover {
+      background: #b45309;
+      color: #fff;
+    }
+  }
+}

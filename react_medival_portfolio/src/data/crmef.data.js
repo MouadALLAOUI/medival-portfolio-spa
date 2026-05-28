@@ -1,98 +1,196 @@
 export const crmefProfile = {
   name: 'Mouad Allaoui',
   avatar: '/media/mouad-pic.png',
-  bio: `
-  En tant que développeur passionné par l'art du code et l'informatique,
-  je suis constamment en quête de nouvelles connaissances.
-  J'aime concevoir des architectures robustes et des interfaces envoûtantes.
-  Je mets mes compétences à la disposition des projets les plus ambiants,
-  forgeant des solutions adaptées à chaque quête.
-  `,
+  bio: 'CRMEF_LANDING.crmefProfile.bio',
   isAvatarEmoji: false,
 };
 
 export const crmefEducation = [
   {
-    id: 'data-science',
-    institution: 'Cadi Ayyad University',
-    location: 'Faculté des Sciences Semlalia — Marrakech',
-    degree: 'Data Science',
-    title: 'Sorcellerie des Données',
-    type: 'Licence Fondamentale',
+    id: 'CRMEF',
+    period: 'CRMEF_LANDING.crmefEducation.CRMEF.period',
+    institution: 'CRMEF_LANDING.crmefEducation.CRMEF.institution',
+    location: 'CRMEF_LANDING.crmefEducation.CRMEF.location',
+    degree: 'CRMEF_LANDING.crmefEducation.CRMEF.degree',
+    title: 'CRMEF_LANDING.crmefEducation.CRMEF.title',
+    type: 'CRMEF_LANDING.crmefEducation.CRMEF.type',
   },
   {
-    id: 'fst',
-    institution: 'FST Marrakech',
-    location: 'Faculté des Sciences et Techniques',
-    degree: 'Génie Informatique',
-    title: 'Génie Informatique',
-    type: 'Sciences & Technologies',
+    id: 'SIR',
+    period: 'CRMEF_LANDING.crmefEducation.SIR.period',
+    institution: 'CRMEF_LANDING.crmefEducation.SIR.institution',
+    location: 'CRMEF_LANDING.crmefEducation.SIR.location',
+    degree: 'CRMEF_LANDING.crmefEducation.SIR.degree',
+    title: 'CRMEF_LANDING.crmefEducation.SIR.title',
+    type: 'CRMEF_LANDING.crmefEducation.SIR.type',
   },
   {
-    id: 'lycee-militaire',
-    institution: '1er Lycée Militaire Royal',
-    location: 'Kenitra',
-    degree: 'Discipline & Rigueur',
-    title: 'Discipline & Rigueur',
-    type: 'Enseignement Secondaire',
+    id: 'ISTA',
+    period: 'CRMEF_LANDING.crmefEducation.ISTA.period',
+    institution: 'CRMEF_LANDING.crmefEducation.ISTA.institution',
+    location: 'CRMEF_LANDING.crmefEducation.ISTA.location',
+    degree: 'CRMEF_LANDING.crmefEducation.ISTA.degree',
+    title: 'CRMEF_LANDING.crmefEducation.ISTA.title',
+    type: 'CRMEF_LANDING.crmefEducation.ISTA.type',
+  },
+  {
+    id: 'BAC',
+    period: 'CRMEF_LANDING.crmefEducation.BAC.period',
+    institution: 'CRMEF_LANDING.crmefEducation.BAC.institution',
+    location: 'CRMEF_LANDING.crmefEducation.BAC.location',
+    degree: 'CRMEF_LANDING.crmefEducation.BAC.degree',
+    title: 'CRMEF_LANDING.crmefEducation.BAC.title',
+    type: 'CRMEF_LANDING.crmefEducation.BAC.type',
   },
 ];
 
 export const crmefExperience = [
   {
-    id: 'pfe-master',
-    period: 'Période Récente',
-    title: 'PFE Master : Gestion de Données et Sécurité',
-    description: `Développement d'une plateforme sécurisée de bout en bout pour la hiérarchisation des données dans un grand réseau d'alchimistes (entreprise).`,
+    id: 'crmef_internship',
+    period: 'CRMEF_LANDING.crmefExperience.crmef_internship.period',
+    title: 'CRMEF_LANDING.crmefExperience.crmef_internship.title',
+    institution: 'CRMEF_LANDING.crmefExperience.crmef_internship.institution',
+    location: 'CRMEF_LANDING.crmefExperience.crmef_internship.location',
+    description: 'CRMEF_LANDING.crmefExperience.crmef_internship.description',
   },
   {
-    id: 'pfe-licence',
-    period: 'Années Précédentes',
-    title: 'PFE Licence : Faculté des Sciences Semlalia',
-    description: `Élaboration d'un système de suivi et de gestion de l'inventaire. Conception d'interfaces magiques pour les utilisateurs.`,
+    id: 'ennahda_english_cs_teacher',
+    period: 'CRMEF_LANDING.crmefExperience.ennahda_english_cs_teacher.period',
+    title: 'CRMEF_LANDING.crmefExperience.ennahda_english_cs_teacher.title',
+    institution: 'CRMEF_LANDING.crmefExperience.ennahda_english_cs_teacher.institution',
+    location: 'CRMEF_LANDING.crmefExperience.ennahda_english_cs_teacher.location',
+    description: 'CRMEF_LANDING.crmefExperience.ennahda_english_cs_teacher.description',
+  },
+  {
+    id: 'lp_pfe_nagios_core',
+    period: 'CRMEF_LANDING.crmefExperience.lp_pfe_nagios_core.period',
+    title: 'CRMEF_LANDING.crmefExperience.lp_pfe_nagios_core.title',
+    institution: 'CRMEF_LANDING.crmefExperience.lp_pfe_nagios_core.institution',
+    location: 'CRMEF_LANDING.crmefExperience.lp_pfe_nagios_core.location',
+    description: 'CRMEF_LANDING.crmefExperience.lp_pfe_nagios_core.description',
+  },
+  {
+    id: 'freelance_dev_internship',
+    period: 'CRMEF_LANDING.crmefExperience.freelance_dev_internship.period',
+    title: 'CRMEF_LANDING.crmefExperience.freelance_dev_internship.title',
+    institution: 'CRMEF_LANDING.crmefExperience.freelance_dev_internship.institution',
+    location: 'CRMEF_LANDING.crmefExperience.freelance_dev_internship.location',
+    description: 'CRMEF_LANDING.crmefExperience.freelance_dev_internship.description',
+  },
+  {
+    id: 'dts_pfe_pharma',
+    period: 'CRMEF_LANDING.crmefExperience.dts_pfe_pharma.period',
+    title: 'CRMEF_LANDING.crmefExperience.dts_pfe_pharma.title',
+    institution: 'CRMEF_LANDING.crmefExperience.dts_pfe_pharma.institution',
+    location: 'CRMEF_LANDING.crmefExperience.dts_pfe_pharma.location',
+    description: 'CRMEF_LANDING.crmefExperience.dts_pfe_pharma.description',
   },
 ];
 
 export const crmefSports = [
-  { id: 'arts-martiaux', label: 'Arts Martiaux', icon: '🥋' },
-  { id: 'athletisme', label: 'Athlétisme', icon: '🏃‍♂️' },
-  { id: 'gymnastique', label: 'Gymnastique', icon: '🤸‍♂️' },
-  { id: 'competitions', label: 'Compétitions', icon: '🏆' },
+  { id: 'dev_apps_games', label: 'CRMEF_LANDING.crmefSports.dev_apps_games.label', icon: '🚀' },
+  { id: 'running', label: 'CRMEF_LANDING.crmefSports.running.label', icon: '🏃‍♂️' },
+  { id: 'football', label: 'CRMEF_LANDING.crmefSports.football.label', icon: '⚽' },
+  { id: 'chess_boardgames', label: 'CRMEF_LANDING.crmefSports.chess_boardgames.label', icon: '♟️' },
+  { id: 'gaming', label: 'CRMEF_LANDING.crmefSports.gaming.label', icon: '🎮' },
 ];
+
+
+
 
 export const crmefSemesters = [
   {
-    id: 'semestre1',
-    title: 'Semestre 1',
+    id: 'semester-1',
+    title: 'CRMEF_SEMESTERS.semesters.semester-1.title',
     modules: [
       {
-        id: 'planification',
-        name: 'Module : Planification des apprentissages (Pr. Tanta)',
-        pdfFile: '/media/PDFs/lesson.pdf',
+        id: 'lesson-planning',
+        name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.lesson-planning.name',
+        professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.lesson-planning.professor',
+        files: {
+          solo: [
+            {
+              path: '/media/PDFs/lesson.pdf',
+              name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.lesson-planning.files.solo.lesson',
+              pages: 14,
+              date: '2026-01-15',
+            },
+            {
+              path: '/media/PDFs/informatique-college-1.pdf',
+              name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.lesson-planning.files.solo.college',
+              pages: 8,
+              date: '2026-02-10',
+            }
+          ],
+          group: [],
+          official: [],
+        },
       },
       {
-        id: 'inf1',
-        name: 'Module : INF1 (Pr. Daoudi) - Les Mémoires Des Ordinateurs',
-        pdfFile: '/media/Engineering_the_Learning_Mind.pdf',
+        id: 'learning-management',
+        name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.learning-management.name',
+        professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.lesson-planning.professor',
+        files: {
+          solo: [],
+          group: [],
+          official: [],
+        },
       },
       {
-        id: 'tice',
-        name: 'Module : TICE (Pr. Serrar) - Portail d\'intégration des TICE',
-        pdfFile: '/media/Engineering_the_Learning_Mind.pdf',
+        id: 'cs-reinforcement-1',
+        name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.cs-reinforcement-1.name',
+        professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.cs-reinforcement-1.professor',
+        files: {
+          solo: [],
+          group: [],
+          official: [],
+        },
       },
       {
-        id: 'didactique',
-        name: 'Module : Didactique (Pr. Daoudi) - La Pédagogie & didactique',
-        pdfFile: '/media/Engineering_the_Learning_Mind.pdf',
+        id: 'cs-reinforcement-2',
+        name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.cs-reinforcement-2.name',
+        professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.cs-reinforcement-2.professor',
+        files: {
+          solo: [],
+          group: [],
+          official: [],
+        },
       },
       {
-        id: 'methodologie',
-        name: 'Module : Méthodologie de recherche (Pr. Rjdou?)',
-        pdfFile: '/media/Engineering_the_Learning_Mind.pdf',
+        id: 'ict-education-didactics',
+        name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.ict-education-didactics.name',
+        professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.ict-education-didactics.professor',
+        files: {
+          solo: [],
+          group: [],
+          official: [],
+        },
+      },
+      {
+        id: 'education-sciences',
+        name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.education-sciences.name',
+        professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.education-sciences.professor',
+        files: {
+          solo: [],
+          group: [],
+          official: [],
+        },
+      },
+      {
+        id: 'research-methodology',
+        name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.research-methodology.name',
+        professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.research-methodology.professor',
+        files: {
+          solo: [],
+          group: [],
+          official: [],
+        },
       },
     ],
   },
 ];
+
+/// ---------------------------------------------
 
 export const crmefMspInfo = {
   lyceeName: 'Abou abbas sebti',

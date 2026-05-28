@@ -59,7 +59,8 @@ const COMMON = {
                 options: {
                     light: { label: "Lumière Arcanique", description: "Passer au thème Lumière Arcanique" },
                     dark: { label: "Royaume des Ombres", description: "Passer au thème Royaume des Ombres" },
-                    medieval: { label: "Parchemin Médiéval", description: "Passer au thème Parchemin Médiéval" }
+                    medieval: { label: "Parchemin Médiéval", description: "Passer au thème Parchemin Médiéval" },
+                    github: { label: "GitHub Classique", description: "Style développeur classique blanc et bleu" }
                 }
             },
             markdownTheme: {
@@ -101,9 +102,15 @@ const COMMON = {
                     doublePage: { label: "Double Page", description: "Deux pages côte à côte (bureau)" }
                 }
             },
-            reducedMotion: {
-                label: "Réduire les Mouvements",
-                description: "Minimiser les animations dans le portfolio"
+            animationLevel: {
+                label: "Optimisation / Animations",
+                description: "Calmer les esprits magiques (ajuster les animations)",
+                options: {
+                    light: { label: "Sort Léger", description: "Animations minimales, meilleure performance de défilement" },
+                    normal: { label: "Sort Équilibré", description: "Transitions régulières, flux magique normal" },
+                    heavy: { label: "Sort Puissant", description: "Animations complètes et particules magiques" },
+                    ultra: { label: "Sort de Haute Magie", description: "Transitions d'animations fluides maximales" }
+                }
             },
             fontSize: {
                 label: "Taille de Police du Scribe",
