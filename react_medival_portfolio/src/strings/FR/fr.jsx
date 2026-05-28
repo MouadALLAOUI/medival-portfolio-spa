@@ -1,3 +1,4 @@
+import { MEDIA } from "./data/media.data";
 import { HOME } from "./pages/home";
 import { CRMEF } from "./pages/crmef";
 import { BLOGS } from "./pages/blogs";
@@ -87,7 +88,8 @@ const FR = {
         print: 'Imprimer la Page',
         selectAll: 'Tout Sélectionner',
         saveAs: 'Enregistrer Sous',
-    }
+    },
+    MEDIA
 }
 
 export {

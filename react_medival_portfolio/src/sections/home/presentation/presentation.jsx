@@ -1,6 +1,7 @@
+import { getAssetById } from '../../../data/mediaManager';
 import { useState } from "react";
 import CSection from "../../../templates/Section";
-import profileImg from "../../../media/mouad-pic.png";
+const profileImg = getAssetById('mouad-pic-png').path;
 import { useSettings } from "../../../lib/useSettings";
 import { useAlerts } from "../../../lib/useAlerts";
 import styles from "./presentation.module.scss";

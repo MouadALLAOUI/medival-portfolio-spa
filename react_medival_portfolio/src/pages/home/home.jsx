@@ -54,7 +54,7 @@ export default function Home() {
         elementsToReveal.forEach((el) => observer.observe(el));
 
         return () => {
-            elementsToReveal.forEach((el) => observer.unobserve(el));
+            observer.disconnect();
         };
     }, []);
 

@@ -1,6 +1,7 @@
+import { getAssetById } from './mediaManager';
 export const crmefProfile = {
   name: 'Mouad Allaoui',
-  avatar: '/media/mouad-pic.png',
+  avatar: getAssetById('mouad-pic-png').path,
   bio: 'CRMEF_LANDING.crmefProfile.bio',
   isAvatarEmoji: false,
 };
@@ -96,8 +97,6 @@ export const crmefSports = [
 ];
 
 
-
-
 export const crmefSemesters = [
   {
     id: 'semester-1',
@@ -107,20 +106,26 @@ export const crmefSemesters = [
         id: 'lesson-planning',
         name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.lesson-planning.name',
         professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.lesson-planning.professor',
+        desc: 'CRMEF_SEMESTERS.semesters.semester-1.modules.lesson-planning.desc',
         files: {
           solo: [
             {
-              path: '/media/PDFs/lesson.pdf',
-              name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.lesson-planning.files.solo.lesson',
-              pages: 14,
+              path: getAssetById('crmef-informatique-college-1').path,
+              name: getAssetById('crmef-informatique-college-1').label,
+              pages: getAssetById('crmef-informatique-college-1').meta.pageCount,
               date: '2026-01-15',
             },
             {
-              path: '/media/PDFs/informatique-college-1.pdf',
-              name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.lesson-planning.files.solo.college',
-              pages: 8,
+              path: getAssetById('crmef-informatique-college').path,
+              name: getAssetById('crmef-informatique-college').label,
+              pages: getAssetById('crmef-informatique-college').meta.pageCount,
               date: '2026-02-10',
-            }
+            },
+            {
+              path: getAssetById('crmef-lesson').path,
+              name: getAssetById('crmef-lesson').label,
+              pages: getAssetById('crmef-lesson').meta.pageCount,
+            },
           ],
           group: [],
           official: [],
@@ -130,9 +135,16 @@ export const crmefSemesters = [
         id: 'learning-management',
         name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.learning-management.name',
         professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.lesson-planning.professor',
+        desc: 'CRMEF_SEMESTERS.semesters.semester-1.modules.learning-management.desc',
         files: {
           solo: [],
-          group: [],
+          group: [
+            {
+              path: getAssetById('crmef-la-gestion').path,
+              name: getAssetById('crmef-la-gestion').label,
+              pages: getAssetById('crmef-la-gestion').meta.pageCount,
+            },
+          ],
           official: [],
         },
       },
@@ -140,19 +152,78 @@ export const crmefSemesters = [
         id: 'cs-reinforcement-1',
         name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.cs-reinforcement-1.name',
         professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.cs-reinforcement-1.professor',
+        desc: 'CRMEF_SEMESTERS.semesters.semester-1.modules.cs-reinforcement-1.desc',
         files: {
           solo: [],
           group: [],
-          official: [],
+          official: [
+            {
+              path: getAssetById('crmef-td1').path,
+              name: getAssetById('crmef-td1').label,
+              pages: getAssetById('crmef-td1').meta.pageCount,
+            },
+            {
+              path: getAssetById('crmef-td2').path,
+              name: getAssetById('crmef-td2').label,
+              pages: getAssetById('crmef-td2').meta.pageCount,
+            },
+            {
+              path: getAssetById('crmef-tp1').path,
+              name: getAssetById('crmef-tp1').label,
+              pages: getAssetById('crmef-tp1').meta.pageCount,
+            },
+            {
+              path: getAssetById('crmef-tp2-fonctions').path,
+              name: getAssetById('crmef-tp2-fonctions').label,
+              pages: getAssetById('crmef-tp2-fonctions').meta.pageCount,
+            },
+            {
+              path: getAssetById('crmef-tp3-chaine').path,
+              name: getAssetById('crmef-tp3-chaine').label,
+              pages: getAssetById('crmef-tp3-chaine').meta.pageCount,
+            },
+            {
+              path: getAssetById('crmef-tp4-except').path,
+              name: getAssetById('crmef-tp4-except').label,
+              pages: getAssetById('crmef-tp4-except').meta.pageCount,
+            },
+            {
+              path: getAssetById('crmef-tp5-listes').path,
+              name: getAssetById('crmef-tp5-listes').label,
+              pages: getAssetById('crmef-tp5-listes').meta.pageCount,
+            },
+            {
+              path: getAssetById('crmef-tp6-tuples').path,
+              name: getAssetById('crmef-tp6-tuples').label,
+              pages: getAssetById('crmef-tp6-tuples').meta.pageCount,
+            },
+            {
+              path: getAssetById('crmef-tp7-dict').path,
+              name: getAssetById('crmef-tp7-dict').label,
+              pages: getAssetById('crmef-tp7-dict').meta.pageCount,
+            },
+            {
+              path: getAssetById('crmef-tp8-sets').path,
+              name: getAssetById('crmef-tp8-sets').label,
+              pages: getAssetById('crmef-tp8-sets').meta.pageCount,
+            },
+          ],
         },
       },
       {
         id: 'cs-reinforcement-2',
         name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.cs-reinforcement-2.name',
         professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.cs-reinforcement-2.professor',
+        desc: 'CRMEF_SEMESTERS.semesters.semester-1.modules.cs-reinforcement-2.desc',
         files: {
           solo: [],
-          group: [],
+          group: [
+            {
+              path: getAssetById('crmef-portes-logiques-applications-et-synthese').path,
+              name: getAssetById('crmef-portes-logiques-applications-et-synthese').label,
+              pages: getAssetById('crmef-portes-logiques-applications-et-synthese').meta.pageCount,
+            },
+          ],
           official: [],
         },
       },
@@ -160,9 +231,16 @@ export const crmefSemesters = [
         id: 'ict-education-didactics',
         name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.ict-education-didactics.name',
         professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.ict-education-didactics.professor',
+        desc: 'CRMEF_SEMESTERS.semesters.semester-1.modules.ict-education-didactics.desc',
         files: {
           solo: [],
-          group: [],
+          group: [
+            {
+              path: getAssetById('crmef-les-effets-didactiques').path,
+              name: getAssetById('crmef-les-effets-didactiques').label,
+              pages: getAssetById('crmef-les-effets-didactiques').meta.pageCount,
+            },
+          ],
           official: [],
         },
       },
@@ -170,9 +248,16 @@ export const crmefSemesters = [
         id: 'education-sciences',
         name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.education-sciences.name',
         professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.education-sciences.professor',
+        desc: 'CRMEF_SEMESTERS.semesters.semester-1.modules.education-sciences.desc',
         files: {
           solo: [],
-          group: [],
+          group: [
+            {
+              path: getAssetById('crmef-theories-de-apprentissage').path,
+              name: getAssetById('crmef-theories-de-apprentissage').label,
+              pages: getAssetById('crmef-theories-de-apprentissage').meta.pageCount,
+            },
+          ],
           official: [],
         },
       },
@@ -180,6 +265,96 @@ export const crmefSemesters = [
         id: 'research-methodology',
         name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.research-methodology.name',
         professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.research-methodology.professor',
+        desc: 'CRMEF_SEMESTERS.semesters.semester-1.modules.research-methodology.desc',
+        files: {
+          solo: [],
+          group: [],
+          official: [
+            {
+              path: getAssetById('crmef-methodologie-ra').path,
+              name: getAssetById('crmef-methodologie-ra').label,
+              pages: getAssetById('crmef-methodologie-ra').meta.pageCount,
+            },
+          ],
+        },
+      },
+    ],
+  },
+  {
+    id: 'semester-2',
+    title: 'CRMEF_SEMESTERS.semesters.semester-2.title',
+    modules: [
+      {
+        id: 's2-lesson-planning-advanced',
+        name: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-lesson-planning-advanced.name',
+        professor: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-lesson-planning-advanced.professor',
+        desc: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-lesson-planning-advanced.desc',
+        files: {
+          solo: [],
+          group: [],
+          official: [],
+        },
+      },
+      {
+        id: 's2-classroom-communication',
+        name: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-classroom-communication.name',
+        professor: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-classroom-communication.professor',
+        desc: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-classroom-communication.desc',
+        files: {
+          solo: [],
+          group: [],
+          official: [],
+        },
+      },
+      {
+        id: 's2-cs-reinforcement-3',
+        name: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-cs-reinforcement-3.name',
+        professor: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-cs-reinforcement-3.professor',
+        desc: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-cs-reinforcement-3.desc',
+        files: {
+          solo: [],
+          group: [],
+          official: [],
+        },
+      },
+      {
+        id: 's2-cs-reinforcement-4',
+        name: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-cs-reinforcement-4.name',
+        professor: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-cs-reinforcement-4.professor',
+        desc: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-cs-reinforcement-4.desc',
+        files: {
+          solo: [],
+          group: [],
+          official: [],
+        },
+      },
+      {
+        id: 's2-assessment-evaluation',
+        name: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-assessment-evaluation.name',
+        professor: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-assessment-evaluation.professor',
+        desc: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-assessment-evaluation.desc',
+        files: {
+          solo: [],
+          group: [],
+          official: [],
+        },
+      },
+      {
+        id: 's2-inclusive-education',
+        name: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-inclusive-education.name',
+        professor: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-inclusive-education.professor',
+        desc: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-inclusive-education.desc',
+        files: {
+          solo: [],
+          group: [],
+          official: [],
+        },
+      },
+      {
+        id: 's2-capstone-project',
+        name: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-capstone-project.name',
+        professor: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-capstone-project.professor',
+        desc: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-capstone-project.desc',
         files: {
           solo: [],
           group: [],
@@ -190,7 +365,7 @@ export const crmefSemesters = [
   },
 ];
 
-/// ---------------------------------------------
+// ---------------------------------------------
 
 export const crmefMspInfo = {
   lyceeName: 'Abou abbas sebti',
@@ -211,3 +386,51 @@ export const crmefMspInfo = {
     studentsCount: '3420',
   }
 };
+
+export const crmefVideos = [
+  {
+    id: 'intro-cs-school',
+    title: 'Introduction à l\'Informatique au Collège',
+    description: 'Une séance complète d\'introduction aux concepts fondamentaux de l\'informatique, de l\'architecture matérielle aux logiciels de base, adaptée aux élèves de collège.',
+    url: 'https://www.w3schools.com/html/mov_bbb.mp4',
+    duration: '10:15',
+    views: '1.2K',
+    date: '2026-04-12',
+    author: 'Mouad Allaoui',
+    category: 'Didactique',
+  },
+  {
+    id: 'lesson-planning-tips',
+    title: 'Didactique de l\'Informatique : Planification de Leçons',
+    description: 'Comment scénariser une leçon d\'informatique pas à pas. De l\'analyse des objectifs d\'apprentissage à l\'élaboration des fiches de cours.',
+    url: 'https://www.w3schools.com/html/movie.mp4',
+    duration: '12:40',
+    views: '980',
+    date: '2026-04-20',
+    author: 'Mouad Allaoui',
+    category: 'Pédagogie',
+  },
+  {
+    id: 'classroom-management-spell',
+    title: 'Gestion de Classe et Animation des Groupes',
+    description: 'Astuces concrètes de gestion de classe dans un laboratoire d\'informatique (salle Génie). Maintenir l\'attention et animer les ateliers collaboratifs.',
+    url: 'https://www.w3schools.com/html/mov_bbb.mp4',
+    duration: '8:55',
+    views: '850',
+    date: '2026-05-05',
+    author: 'Mouad Allaoui',
+    category: 'Pratique',
+  },
+  {
+    id: 'eval-assessment-methods',
+    title: 'Méthodes d\'Évaluation formative en Informatique',
+    description: 'Guide pratique sur l\'évaluation des compétences pratiques en programmation et bureautique, incluant les barèmes de notation et le feedback immédiat.',
+    url: 'https://www.w3schools.com/html/movie.mp4',
+    duration: '14:20',
+    views: '720',
+    date: '2026-05-18',
+    author: 'Mouad Allaoui',
+    category: 'Évaluation',
+  }
+];
+
