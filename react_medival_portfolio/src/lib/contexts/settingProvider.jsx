@@ -12,9 +12,14 @@ export default function SettingsProvider({ children }) {
     const [customCursor, setCustomCursor] = useState(() => localStorage.getItem("mp_custom_cursor") !== "false");
     const [soundEnabled, setSoundEnabled] = useState(() => localStorage.getItem("mp_sound_enabled") === "true");
 
-    // Accessibility settings
+    // Accessibility & Optimization settings
     const [fontSize, setFontSize] = useState(() => localStorage.getItem("mp_font_size") || "medium");
-    const [reducedMotion, setReducedMotion] = useState(() => localStorage.getItem("mp_reduced_motion") === "true");
+    const [animationLevel, setAnimationLevel] = useState(() => localStorage.getItem("mp_animation_level") || "normal");
+
+    const reducedMotion = animationLevel === 'light';
+    const setReducedMotion = useCallback((val) => {
+        setAnimationLevel(val ? 'light' : 'normal');
+    }, []);
 
     useEffect(() => {
         document.documentElement.dataset.theme = theme === "day" ? "day" : "night";
@@ -35,11 +40,13 @@ export default function SettingsProvider({ children }) {
         localStorage.setItem("mp_font_size", fontSize);
     }, [fontSize]);
 
-    // Apply reduced motion
+    // Apply animation level and reduced motion
     useEffect(() => {
+        document.documentElement.setAttribute('data-animation-level', animationLevel);
         document.documentElement.setAttribute('data-reduced-motion', reducedMotion ? 'true' : 'false');
+        localStorage.setItem("mp_animation_level", animationLevel);
         localStorage.setItem("mp_reduced_motion", String(reducedMotion));
-    }, [reducedMotion]);
+    }, [animationLevel, reducedMotion]);
 
     // Persist markdown theme
     useEffect(() => {
@@ -62,17 +69,32 @@ export default function SettingsProvider({ children }) {
             const dict = translations[language] || translations.en;
 
             const getNested = (obj, path) => {
-                return path.split('.').reduce((acc, part) => {
-                    return acc && acc[part] !== undefined ? acc[part] : undefined;
+                const parts = path.split('.');
+                return parts.reduce((acc, part) => {
+                    if (!acc) return undefined;
+                    if (acc[part] !== undefined) return acc[part];
+                    
+                    // Case fallbacks
+                    const upperPart = part.toUpperCase();
+                    if (acc[upperPart] !== undefined) return acc[upperPart];
+                    
+                    const lowerPart = part.toLowerCase();
+                    if (acc[lowerPart] !== undefined) return acc[lowerPart];
+                    
+                    return undefined;
                 }, obj);
             };
 
             let val = getNested(dict, key);
-            if (val === undefined) {
+            if (val === undefined && language !== 'en') {
                 val = getNested(translations.en, key);
             }
 
-            if (val === undefined) return key;
+            if (val === undefined) {
+                // Return last key segment readable (never the full dot-path)
+                const segments = key.split('.');
+                return segments[segments.length - 1];
+            }
 
             if (params && typeof params === 'object') {
                 let interpolated = String(val);
@@ -100,6 +122,8 @@ export default function SettingsProvider({ children }) {
             setFontSize,
             reducedMotion,
             setReducedMotion,
+            animationLevel,
+            setAnimationLevel,
             markdownTheme,
             setMarkdownTheme,
             customCursor,
@@ -111,7 +135,7 @@ export default function SettingsProvider({ children }) {
             closeSettings,
             t
         }),
-        [theme, language, fontSize, reducedMotion, markdownTheme, customCursor, soundEnabled, isSettingsOpen, openSettings, closeSettings, t]
+        [theme, language, fontSize, reducedMotion, animationLevel, markdownTheme, customCursor, soundEnabled, isSettingsOpen, openSettings, closeSettings, t]
     );
     return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>;
 }

@@ -58,7 +58,8 @@ const COMMON = {
                 options: {
                     light: { label: "Clair", description: "Passer au thème clair" },
                     dark: { label: "Sombre", description: "Passer au thème sombre" },
-                    medieval: { label: "Classique", description: "Passer au thème classique" }
+                    medieval: { label: "Classique", description: "Passer au thème classique" },
+                    github: { label: "GitHub Classique", description: "Style développeur bleu et blanc" }
                 }
             },
             markdownTheme: {
@@ -100,9 +101,15 @@ const COMMON = {
                     doublePage: { label: "Double page", description: "Deux pages côte à côte" }
                 }
             },
-            reducedMotion: {
-                label: "Réduction des animations",
-                description: "Réduire ou désactiver les animations"
+            animationLevel: {
+                label: "Optimisation / Animations",
+                description: "Ajuster les animations pour optimiser la performance",
+                options: {
+                    light: { label: "Léger", description: "Animations minimales, meilleure performance" },
+                    normal: { label: "Normal", description: "Transitions fluides, équilibré" },
+                    heavy: { label: "Lourd", description: "Animations et effets complets" },
+                    ultra: { label: "Ultra", description: "Animations fluides maximales" }
+                }
             },
             fontSize: {
                 label: "Taille de police",

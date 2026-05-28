@@ -7,18 +7,10 @@ const CrmefExperienceSection = () => {
   const { t } = useSettings();
 
   const getTranslatedExp = (exp) => {
-    const periodKey = `CRMEF.experience.items.${exp.id}.period`;
-    const titleKey = `CRMEF.experience.items.${exp.id}.title`;
-    const descKey = `CRMEF.experience.items.${exp.id}.description`;
-
-    const per = t(periodKey);
-    const tit = t(titleKey);
-    const des = t(descKey);
-
     return {
-      period: per !== periodKey ? per : exp.period,
-      title: tit !== titleKey ? tit : exp.title,
-      description: des !== descKey ? des : exp.description,
+      period: t(exp.period),
+      title: t(exp.title),
+      description: t(exp.description),
     };
   };
 
