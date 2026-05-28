@@ -4,7 +4,10 @@ const CRMEF = {
         title: "Portfolio CRMEF",
         accueil: "Château / Bio",
         semester1: "Parchemins du Semestre 1",
+        semester2: "Parchemins du Semestre 2",
+        semesters: "Parchemins de Semestres",
         msp: "Chroniques MSP",
+        videos: "Visions & Sortilèges",
     },
     profile: {
         bio: "En tant que développeur passionné par l'art du code et l'informatique, je suis constamment en quête de nouvelles connaissances. J'aime concevoir des architectures robustes et des interfaces enchantées. Je mets mes compétences à disposition des projets les plus ambitieux, forgeant des solutions sur mesure pour chaque quête.",

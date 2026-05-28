@@ -3,7 +3,10 @@ const CRMEF = {
         title: "CRMEF Portfolio",
         accueil: "Home / Profile",
         semester1: "Semester 1 Modules",
+        semester2: "Semester 2 Modules",
+        semesters: "Semesters",
         msp: "MSP Internship",
+        videos: "Learning Videos",
     },
     profile: {
         bio: "As a developer passionate about programming and computer science, I am constantly looking to improve my knowledge and skills. I enjoy building solid architectures and modern user interfaces. I aim to provide reliable and practical solutions for ambitious projects and real-world challenges.",

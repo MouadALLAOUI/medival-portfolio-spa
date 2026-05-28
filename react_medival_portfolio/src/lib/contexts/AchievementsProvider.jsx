@@ -8,6 +8,8 @@ import styles from './AchievementsProvider.module.scss';
 const STORAGE_KEY = 'portfolio_achievements';
 const COUNTERS_KEY = 'portfolio_achievement_counters';
 
+let appVisitTracked = false;
+
 const AchievementsProvider = ({ children }) => {
   // Load unlocked achievements from localStorage
   const [unlocked, setUnlocked] = useState(() => {
@@ -183,6 +185,9 @@ const AchievementsProvider = ({ children }) => {
 
   // ── Visit counter ─────────────────────────────────────────────
   useEffect(() => {
+    if (appVisitTracked) return;
+    appVisitTracked = true;
+
     unlockAchievement('first_visit');
     incrementCounter('visit_count');
     
@@ -196,7 +201,7 @@ const AchievementsProvider = ({ children }) => {
     } catch (e) {
       console.error(e);
     }
-  }, []); // only on mount
+  }, [unlockAchievement, incrementCounter]); // only on mount
 
   // ── Rapid clicker listener ────────────────────────────────────
   useEffect(() => {

@@ -4,7 +4,7 @@ import { translations } from "../../strings/translations";
 
 export default function SettingsProvider({ children }) {
     const [theme, setTheme] = useState(() => localStorage.getItem("mp_theme") || "night")
-    const [language, setLanguage] = useState(() => localStorage.getItem("mp_lang") || "en");
+    const [language, setLanguage] = useState(() => localStorage.getItem("mp_lang") || "fr");
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
     // Additional settings
@@ -73,14 +73,14 @@ export default function SettingsProvider({ children }) {
                 return parts.reduce((acc, part) => {
                     if (!acc) return undefined;
                     if (acc[part] !== undefined) return acc[part];
-                    
+
                     // Case fallbacks
                     const upperPart = part.toUpperCase();
                     if (acc[upperPart] !== undefined) return acc[upperPart];
-                    
+
                     const lowerPart = part.toLowerCase();
                     if (acc[lowerPart] !== undefined) return acc[lowerPart];
-                    
+
                     return undefined;
                 }, obj);
             };

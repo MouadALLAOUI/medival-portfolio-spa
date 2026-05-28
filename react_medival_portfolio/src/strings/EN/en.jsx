@@ -1,3 +1,4 @@
+import { MEDIA } from "./data/media.data";
 // PAGES
 import { HOME } from "./pages/home";
 import { CRMEF } from "./pages/crmef";
@@ -90,7 +91,8 @@ const EN = {
         print: 'Print Page',
         selectAll: 'Select All',
         saveAs: 'Save As',
-    }
+    },
+    MEDIA
 }
 
 export {
