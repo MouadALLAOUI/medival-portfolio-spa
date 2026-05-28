@@ -1,0 +1,9 @@
+# APACHE: Use this file when deploying to Apache-based hosting (e.g. cPanel, shared hosting).
+# NETLIFY: Use public/_redirects and netlify.toml instead.
+# VERCEL: Use vercel.json instead.
+# NGINX: Add `try_files $uri $uri/ /index.html;` to your server block.
+
+Options -MultiViews
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.html [QSA,L]

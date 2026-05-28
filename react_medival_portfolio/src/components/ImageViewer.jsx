@@ -5,20 +5,30 @@ import { createPortal } from 'react-dom';
 import styles from './ImageViewer.module.scss';
 
 export default function ImageViewer() {
-  const { isOpen, src, isMobile, closeImage } = useImageViewer();
+  const { isOpen, images, currentIndex, closeImage, goNext, goPrev } = useImageViewer();
   const { t } = useSettings();
 
   useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === 'Escape' && isOpen) {
+    if (!isOpen) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
         closeImage();
+      } else if (e.key === 'ArrowRight') {
+        goNext();
+      } else if (e.key === 'ArrowLeft') {
+        goPrev();
       }
     };
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
-  }, [isOpen, closeImage]);
 
-  if (!isOpen || !src) return null;
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, closeImage, goNext, goPrev]);
+
+  if (!isOpen || !images || images.length === 0) return null;
+
+  const current = images[currentIndex];
+  if (!current) return null;
 
   return createPortal(
     <div className={styles['image-viewer-overlay']} onClick={closeImage}>
@@ -29,14 +39,46 @@ export default function ImageViewer() {
       >
         ×
       </button>
+
+      {images.length > 1 && currentIndex > 0 && (
+        <button
+          className={`${styles['nav-btn']} ${styles['prev-btn']}`}
+          onClick={(e) => { e.stopPropagation(); goPrev(); }}
+          aria-label="Previous image"
+        >
+          ‹
+        </button>
+      )}
+
       <div className={styles['image-container']} onClick={(e) => e.stopPropagation()}>
         <img
-          src={src}
-          alt="Full size image"
-          className={`${styles['viewer-image']} ${isMobile ? styles['portrait'] : ''}`}
+          src={current.src}
+          alt={current.alt || "Full size image"}
+          className={`${styles['viewer-image']} ${current.isMobile ? styles['portrait'] : ''}`}
         />
+        {current.alt && (
+          <div className={styles['caption']}>
+            {current.alt}
+          </div>
+        )}
       </div>
+
+      {images.length > 1 && currentIndex < images.length - 1 && (
+        <button
+          className={`${styles['nav-btn']} ${styles['next-btn']}`}
+          onClick={(e) => { e.stopPropagation(); goNext(); }}
+          aria-label="Next image"
+        >
+          ›
+        </button>
+      )}
+
+      {images.length > 1 && (
+        <div className={styles['counter']}>
+          {currentIndex + 1} / {images.length}
+        </div>
+      )}
     </div>,
     document.body
   );
-}
+}

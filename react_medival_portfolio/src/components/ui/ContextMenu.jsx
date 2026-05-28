@@ -1,7 +1,7 @@
 import { createPortal } from 'react-dom';
 import { useRef, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Home, Copy, Check, Sun, Moon, Sparkles, Code, Trophy, ChevronRight, Languages, BookOpen, Briefcase, User, Info, Printer, ExternalLink, Scissors, Clipboard } from 'lucide-react';
+import { ChevronRight, Check } from 'lucide-react';
 import useContextMenu from '../../hooks/useContextMenu';
 import { useTheme } from '../../lib/contexts/ThemeProvider';
 import { useAchievements } from '../../lib/useAchievements';
@@ -271,21 +271,6 @@ export default function ContextMenu() {
     closeMenu();
   };
 
-  const handleCopyUrl = (e) => {
-    e.stopPropagation();
-    navigator.clipboard.writeText(window.location.href).then(() => {
-      setCopied(true);
-      showAlert(t('COMMON.alerts.copySuccess', { label: t('COMMON.contextMenu.urlLabel') }), 'success', 2000);
-      setTimeout(() => {
-        setCopied(false);
-        closeMenu();
-      }, 1200);
-    }).catch(() => {
-      showAlert(t('COMMON.alerts.copyFailed'), 'error', 2000);
-      closeMenu();
-    });
-  };
-
   const handleToggleTheme = () => {
     // Cycle themes: light -> dark -> medieval -> light
     const themeCycle = ['light', 'dark', 'medieval'];
@@ -309,11 +294,6 @@ export default function ContextMenu() {
     closeMenu();
   };
 
-  const handleViewSource = () => {
-    window.open('view-source:' + window.location.href, '_blank');
-    closeMenu();
-  };
-
   const handleUnlockAchievement = () => {
     const unlocked = isCompleted('easteregg');
     if (unlocked) {
@@ -324,7 +304,82 @@ export default function ContextMenu() {
     closeMenu();
   };
 
-  const isAtHome = location.pathname === '/' || location.pathname === '/home';
+  const selectedText = window.getSelection() ? window.getSelection().toString().trim() : '';
+
+  const getMenuItems = (target, selectedText) => {
+    const items = [];
+
+    // Always available
+    items.push(
+      { id: 'reload',  icon: '🔄', label: t('contextMenu.reload'), action: () => window.location.reload() },
+      { type: 'divider' }
+    );
+
+    // If on a text input/textarea
+    if (isInput) {
+      items.push(
+        { id: 'cut',   icon: '✂️', label: actionStrings.cut,   action: handleCutInput },
+        { id: 'copy',  icon: '📋', label: actionStrings.copy,  action: handleCopyInput },
+        { id: 'paste', icon: '📋', label: actionStrings.paste, action: handlePasteInput },
+        { type: 'divider' }
+      );
+    } else if (selectedText) {
+      // If text is selected
+      items.push(
+        { id: 'copy',   icon: '📋', label: t('contextMenu.copy'),   action: () => {
+            navigator.clipboard.writeText(selectedText);
+            showAlert(t('COMMON.alerts.copySuccess', { label: t('COMMON.contextMenu.textLabel') || 'text' }), 'success', 2000);
+          }
+        },
+        { id: 'search', icon: '🔍', label: t('contextMenu.search'), action: () => window.open(`https://google.com/search?q=${encodeURIComponent(selectedText)}`, '_blank') },
+        { type: 'divider' }
+      );
+    }
+
+    // If on a link
+    if (target?.closest('a')) {
+      const href = target.closest('a').href;
+      items.push(
+        { id: 'openLink',   icon: '🔗', label: t('contextMenu.openInNewTab'), action: () => window.open(href, '_blank') },
+        { id: 'copyLink',   icon: '📎', label: t('contextMenu.copyLink'),     action: () => {
+            navigator.clipboard.writeText(href);
+            showAlert(t('COMMON.alerts.copySuccess', { label: t('COMMON.contextMenu.urlLabel') || 'link' }), 'success', 2000);
+          }
+        },
+        { type: 'divider' }
+      );
+    }
+
+    // If on an image
+    if (target?.closest('img')) {
+      const src = target.closest('img').src;
+      items.push(
+        { id: 'viewImg',  icon: '🖼️', label: 'View Image',    action: () => window.open(src, '_blank') },
+        { id: 'copyImg',  icon: '📋', label: 'Copy Image URL', action: () => {
+            navigator.clipboard.writeText(src);
+            showAlert(t('COMMON.alerts.copySuccess', { label: 'image URL' }), 'success', 2000);
+          }
+        },
+        { type: 'divider' }
+      );
+    }
+
+    // Always available navigation & submenus
+    items.push(
+      { id: 'navigate', icon: '🧭', label: t('COMMON.contextMenu.navigateTitle') || 'Navigate', isSubmenu: true, submenu: 'navigate' },
+      { id: 'language', icon: '🗣️', label: t('COMMON.settings.keys.language.label') || 'Language', isSubmenu: true, submenu: 'language' },
+      { id: 'cycleTheme', icon: '🎨', label: t('COMMON.contextMenu.cycleTheme') || 'Cycle Theme', action: handleToggleTheme },
+      { type: 'divider' }
+    );
+
+    // Always at bottom
+    items.push(
+      { id: 'print',     icon: '🖨️', label: t('contextMenu.print'),    action: handlePrint },
+      { id: 'achievement', icon: '🏆', label: t('COMMON.contextMenu.unlockAchievement') || 'Unlock Secret', action: handleUnlockAchievement }
+    );
+
+    return items;
+  };
 
   const menuStyle = {
     top: `${coords.y}px`,
@@ -342,156 +397,53 @@ export default function ContextMenu() {
   return createPortal(
     <div
       ref={menuRef}
-      className={`${styles['context-menu-container']} ${isHiding ? styles.hiding : ''}`}
+      className={`${styles.contextMenu} ${isHiding ? styles.hiding : ''}`}
       style={menuStyle}
       role="menu"
       aria-label="Custom context menu"
     >
       <div className={styles['scrollable-menu-items']}>
-        {isInput && (
-          <>
+        {getMenuItems(targetElement, selectedText).map((item, idx) => {
+          if (item.type === 'divider') {
+            return <div key={`div-${idx}`} className={styles.menuDivider} />;
+          }
+
+          if (item.isSubmenu) {
+            return (
+              <div 
+                key={item.id}
+                className={styles.menuItem}
+                role="menuitem"
+                onMouseEnter={(e) => handleMouseEnterItem(item.submenu, e)}
+                onMouseLeave={handleMouseLeaveItem}
+              >
+                <span className={styles['item-left']}>
+                  <span className={styles.menuIcon}>{item.icon}</span>
+                  <span>{item.label}</span>
+                </span>
+                <ChevronRight size={14} />
+              </div>
+            );
+          }
+
+          return (
             <button
-              className={styles['menu-item']}
-              onClick={handleCutInput}
+              key={item.id}
+              className={styles.menuItem}
+              onClick={(e) => {
+                e.stopPropagation();
+                item.action(e);
+              }}
               role="menuitem"
+              type="button"
             >
               <span className={styles['item-left']}>
-                <Scissors size={15} />
-                <span>{actionStrings.cut}</span>
+                <span className={styles.menuIcon}>{item.icon}</span>
+                <span>{item.label}</span>
               </span>
-              <span className={styles['item-shortcut']}>Ctrl+X</span>
             </button>
-            
-            <button
-              className={styles['menu-item']}
-              onClick={handleCopyInput}
-              role="menuitem"
-            >
-              <span className={styles['item-left']}>
-                <Copy size={15} />
-                <span>{actionStrings.copy}</span>
-              </span>
-              <span className={styles['item-shortcut']}>Ctrl+C</span>
-            </button>
-            
-            <button
-              className={styles['menu-item']}
-              onClick={handlePasteInput}
-              role="menuitem"
-            >
-              <span className={styles['item-left']}>
-                <Clipboard size={15} />
-                <span>{actionStrings.paste}</span>
-              </span>
-              <span className={styles['item-shortcut']}>Ctrl+V</span>
-            </button>
-            
-            <div className={styles['menu-divider']} />
-          </>
-        )}
-
-        <div 
-          className={styles['menu-item']}
-          role="menuitem"
-          onMouseEnter={(e) => handleMouseEnterItem('navigate', e)}
-          onMouseLeave={handleMouseLeaveItem}
-        >
-          <span className={styles['item-left']}>
-            <Home size={15} />
-            <span>{t('COMMON.contextMenu.navigateTitle') || 'Navigate'}</span>
-          </span>
-          <ChevronRight size={14} />
-        </div>
-
-        <div className={styles['menu-divider']} />
-
-        <button
-          className={styles['menu-item']}
-          onClick={handleCopyUrl}
-          role="menuitem"
-          disabled={copied}
-        >
-          <span className={styles['item-left']}>
-            {copied ? (
-              <span className={styles['check-container']}>
-                <Check size={15} />
-              </span>
-            ) : (
-              <Copy size={15} />
-            )}
-            <span>{t('COMMON.contextMenu.copyUrl')}</span>
-          </span>
-          <span className={styles['item-shortcut']}>Ctrl+C</span>
-        </button>
-
-        <div 
-          className={styles['menu-item']}
-          role="menuitem"
-          onMouseEnter={(e) => handleMouseEnterItem('language', e)}
-          onMouseLeave={handleMouseLeaveItem}
-        >
-          <span className={styles['item-left']}>
-            <Languages size={15} />
-            <span>{t('COMMON.settings.keys.language.label')}</span>
-          </span>
-          <ChevronRight size={14} />
-        </div>
-
-        <button
-          className={styles['menu-item']}
-          onClick={handleToggleTheme}
-          role="menuitem"
-        >
-          <span className={styles['item-left']}>
-            {theme === 'medieval' ? (
-              <Sparkles size={15} />
-            ) : theme === 'dark' ? (
-              <Sun size={15} />
-            ) : (
-              <Moon size={15} />
-            )}
-            <span>{t('COMMON.contextMenu.cycleTheme')}</span>
-          </span>
-          <span className={styles['item-shortcut']}>Ctrl+T</span>
-        </button>
-
-        <button
-          className={styles['menu-item']}
-          onClick={handlePrint}
-          role="menuitem"
-        >
-          <span className={styles['item-left']}>
-            <Printer size={15} />
-            <span>{t('COMMON.contextMenu.printPage') || 'Print Scroll'}</span>
-          </span>
-          <span className={styles['item-shortcut']}>Ctrl+P</span>
-        </button>
-
-        <button
-          className={styles['menu-item']}
-          onClick={handleViewSource}
-          role="menuitem"
-        >
-          <span className={styles['item-left']}>
-            <Code size={15} />
-            <span>{t('COMMON.contextMenu.viewSource')}</span>
-          </span>
-          <span className={styles['item-shortcut']}>Ctrl+U</span>
-        </button>
-
-        <div className={styles['menu-divider']} />
-
-        <button
-          className={styles['menu-item']}
-          onClick={handleUnlockAchievement}
-          role="menuitem"
-        >
-          <span className={styles['item-left']}>
-            <Trophy size={15} />
-            <span>{t('COMMON.contextMenu.unlockAchievement')}</span>
-          </span>
-          <span className={styles['item-shortcut']}>🔮</span>
-        </button>
+          );
+        })}
       </div>
 
       {activeSubmenu === 'navigate' && (
@@ -501,23 +453,23 @@ export default function ContextMenu() {
           onMouseEnter={handleMouseEnterSubmenu}
           onMouseLeave={handleMouseLeaveSubmenu}
         >
-          <button className={styles['menu-item']} onClick={() => handleNavigate('/home')}>
-            <span className={styles['item-left']}><Home size={14} /> {t('COMMON.nav.home')}</span>
+          <button type="button" className={styles.menuItem} onClick={() => handleNavigate('/home')}>
+            <span className={styles['item-left']}>🧭 {t('COMMON.nav.home')}</span>
           </button>
-          <button className={styles['menu-item']} onClick={() => handleNavigate('/blogs')}>
-            <span className={styles['item-left']}><BookOpen size={14} /> {t('COMMON.nav.blogs')}</span>
+          <button type="button" className={styles.menuItem} onClick={() => handleNavigate('/blogs')}>
+            <span className={styles['item-left']}>📚 {t('COMMON.nav.blogs')}</span>
           </button>
-          <button className={styles['menu-item']} onClick={() => handleNavigate('/home#projects')}>
-            <span className={styles['item-left']}><Briefcase size={14} /> {t('COMMON.nav.projects')}</span>
+          <button type="button" className={styles.menuItem} onClick={() => handleNavigate('/home#projects')}>
+            <span className={styles['item-left']}>🛠️ {t('COMMON.nav.projects')}</span>
           </button>
-          <button className={styles['menu-item']} onClick={() => handleNavigate('/home#skills')}>
-            <span className={styles['item-left']}><Sparkles size={14} /> {t('COMMON.nav.medieval.skills')}</span>
+          <button type="button" className={styles.menuItem} onClick={() => handleNavigate('/home#skills')}>
+            <span className={styles['item-left']}>⚡ {t('COMMON.nav.medieval.skills')}</span>
           </button>
-          <button className={styles['menu-item']} onClick={() => handleNavigate('/home#about')}>
-            <span className={styles['item-left']}><User size={14} /> {t('COMMON.nav.medieval.about')}</span>
+          <button type="button" className={styles.menuItem} onClick={() => handleNavigate('/home#about')}>
+            <span className={styles['item-left']}>🛡️ {t('COMMON.nav.medieval.about')}</span>
           </button>
-          <button className={styles['menu-item']} onClick={() => handleNavigate('/crmef')}>
-            <span className={styles['item-left']}><Info size={14} /> {t('COMMON.nav.crmef')}</span>
+          <button type="button" className={styles.menuItem} onClick={() => handleNavigate('/crmef')}>
+            <span className={styles['item-left']}>🏰 {t('COMMON.nav.crmef')}</span>
           </button>
         </div>
       )}
@@ -532,8 +484,9 @@ export default function ContextMenu() {
           {languages.map(lang => (
             <button
               key={lang.id}
-              className={`${styles['menu-item']} ${language === lang.id ? styles.active : ''}`}
+              className={`${styles.menuItem} ${language === lang.id ? styles.active : ''}`}
               onClick={() => handleSetLanguage(lang.id)}
+              type="button"
             >
               <span className={styles['item-left']}>
                 <span>{lang.flag}</span>

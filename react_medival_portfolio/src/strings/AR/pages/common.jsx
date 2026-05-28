@@ -58,7 +58,8 @@ const COMMON = {
                 options: {
                     light: { label: "نور أركين", description: "التبديل إلى سمة نور أركين" },
                     dark: { label: "عالم الظلال", description: "التبديل إلى سمة عالم الظلال" },
-                    medieval: { label: "مخطوطة القرون الوسطى", description: "التبديل إلى سمة مخطوطة القرون الوسطى" }
+                    medieval: { label: "مخطوطة القرون الوسطى", description: "التبديل إلى سمة مخطوطة القرون الوسطى" },
+                    github: { label: "جيت هاب الكلاسيكي", description: "مظهر المطور الكلاسيكي باللونين الأبيض والأزرق" }
                 }
             },
             markdownTheme: {
@@ -100,9 +101,15 @@ const COMMON = {
                     doublePage: { label: "صفحة مزدوجة", description: "صفحتان جنباً إلى جنب (للمكتب)" }
                 }
             },
-            reducedMotion: {
-                label: "تقليل الحركة",
-                description: "تقليل الرسوم المتحركة عبر المحفظة"
+            animationLevel: {
+                label: "التحسين / الرسوم المتحركة",
+                description: "تهدئة الأرواح السحرية (تعديل الرسوم المتحركة)",
+                options: {
+                    light: { label: "تعويذة خفيفة", description: "الحد الأدنى من الرسوم المتحركة لأفضل أداء" },
+                    normal: { label: "تعويذة متوازنة", description: "انتقالات مستقرة، تدفق سحري معتدل" },
+                    heavy: { label: "تعويذة ثقيلة", description: "رسوم متحركة وجزيئات سحرية كاملة" },
+                    ultra: { label: "تعويذة سحر فائقة", description: "أقصى درجات الانتقالات السلسة والجميلة" }
+                }
             },
             fontSize: {
                 label: "حجم خط الكاتب",

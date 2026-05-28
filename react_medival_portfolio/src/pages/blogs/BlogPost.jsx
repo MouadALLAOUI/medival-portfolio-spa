@@ -15,7 +15,7 @@ import 'prismjs/components/prism-bash';
 
 import { blogs } from '../../data/blogs.data';
 import { markdownToHtml } from '../../lib/utils/markdownToHtml';
-import { useAppSettings } from '../../lib/contexts/AppSettingsContext';
+import { useTheme } from '../../lib/contexts/ThemeProvider';
 import { getMarkdownThemeClass } from '../../lib/markdown/markdownThemes';
 import { useAlerts } from '../../lib/useAlerts';
 import { useSettings } from '../../lib/useSettings';
@@ -101,13 +101,16 @@ const slugify = (text) => {
 export default function BlogPost() {
   const { slug } = useParams();
   const { showAlert } = useAlerts();
-  const { markdownTheme } = useAppSettings() || { markdownTheme: 'default' };
-  const mdThemeClass = getMarkdownThemeClass(markdownTheme);
+  const { theme } = useTheme();
+  const mdThemeClass = getMarkdownThemeClass(theme);
   const { t, language } = useSettings();
   const { openImage } = useImageViewer();
   const { unlockAchievement, incrementCounter } = useAchievements();
   const contentRef = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [readingProgress, setReadingProgress] = useState(0);
+  const [wordsRead, setWordsRead] = useState(0);
+  const [timeLeft, setTimeLeft] = useState(0);
   const [fontScale, setFontScale] = useState(1);
   const [headings, setHeadings] = useState([]);
   const [activeId, setActiveId] = useState('');
@@ -130,6 +133,9 @@ export default function BlogPost() {
   const nextPost = currentIndex < visibleBlogs.length - 1 ? visibleBlogs[currentIndex + 1] : visibleBlogs[0];
 
   const readTime = calculateReadingTime(post?.blogcontent?.content);
+  
+  // Calculate total words from markdown content
+  const totalWords = post?.blogcontent?.content?.split(/\s+/).filter(Boolean).length || 0;
 
   const [showQR, setShowQR] = useState(false);
 
@@ -253,18 +259,27 @@ export default function BlogPost() {
   // Scroll Progress handler
   useEffect(() => {
     const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-      if (totalScroll <= 0) {
-        setScrollProgress(0);
-        return;
-      }
-      const progress = (window.scrollY / totalScroll) * 100;
+      const content = contentRef.current;
+      if (!content) return;
+
+      const contentTop = content.getBoundingClientRect().top + window.scrollY;
+      const contentHeight = content.offsetHeight;
+      const scrolled = window.scrollY - contentTop;
+      const progress = Math.min(100, Math.max(0, (scrolled / contentHeight) * 100));
+
+      setReadingProgress(progress);
       setScrollProgress(progress);
+
+      const wordsReadSoFar = Math.floor((progress / 100) * totalWords);
+      setWordsRead(wordsReadSoFar);
+
+      const wordsRemaining = totalWords - wordsReadSoFar;
+      setTimeLeft(Math.ceil(wordsRemaining / 200));
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [totalWords]);
 
   // Wire images inside the rendered markdown to open in ImageViewer
   useEffect(() => {
@@ -297,9 +312,22 @@ export default function BlogPost() {
 
   return (
     <div className={styles['postPage']}>
-      {/* Scroll Progress Bar */}
-      <div className={styles.progressContainer}>
-        <div className={styles.progressBar} style={{ width: `${scrollProgress}%` }} />
+      {/* Fixed progress bar at top of viewport */}
+      <div className={styles.progressBarWrapper}>
+        <div
+          className={styles.progressBar}
+          style={{ width: `${readingProgress}%` }}
+        />
+      </div>
+
+      {/* Fixed reading stats bottom-right */}
+      <div className={styles.readingStats}>
+        <span className={styles.statItem}>
+          📖 {Math.round(readingProgress)}%
+        </span>
+        <span className={styles.statItem}>
+          ⏱️ {timeLeft} {t('blogs.post.timeLeft')}
+        </span>
       </div>
 
       {post ? (
@@ -615,6 +643,22 @@ export default function BlogPost() {
               </motion.div>
             )}
           </AnimatePresence>
+
+          {/* Fixed prev/next blog buttons */}
+          <div className={styles.fixedPostNav}>
+            {prevPost && (
+              <Link to={`/blogs/${prevPost.slug}`} className={styles.fixedPostNavBtn}>
+                ← {t('blogs.post.prevPost')}
+                <span className={styles.fixedNavPostTitle}>{prevPost.title}</span>
+              </Link>
+            )}
+            {nextPost && (
+              <Link to={`/blogs/${nextPost.slug}`} className={`${styles.fixedPostNavBtn} ${styles.fixedPostNavBtnNext}`}>
+                {t('blogs.post.nextPost')} →
+                <span className={styles.fixedNavPostTitle}>{nextPost.title}</span>
+              </Link>
+            )}
+          </div>
         </>
       ) : (
         <div style={{ textAlign: 'center', padding: '4rem 0' }}>

@@ -102,5 +102,7 @@ export const MARKDOWN_THEMES = {
 };
 
 export const getMarkdownThemeClass = (themeId) => {
-  return MARKDOWN_THEMES[themeId]?.cssClass || '';
+  if (themeId === 'medieval') return 'md-medieval';
+  if (themeId === 'github') return 'md-github';
+  return ''; // 'light' and 'dark' themes naturally inherit app variables
 };

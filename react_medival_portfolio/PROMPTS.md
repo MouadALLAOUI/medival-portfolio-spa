@@ -492,6 +492,26 @@ The theme system has been built to be highly extensible. To add a new theme:
 - **Roadmap Verification**: Confirmed that previously highlighted layout typos inside `skillsSection.jsx` and `ProjectsSection.jsx` are fully complete as they are already managed under correct key lookups (`HOME.SKILLS.detailsTitle`, `HOME.PROJECTS.unknown`) inside the i18n dictionaries, and checked off elements in `improvement.md`.
 - **Vite production compilation**: Flawless zero-error build verified successfully.
 
+---
+
+## ✅ COMPLETED — Master Portfolio Feature Upgrades
+
+> 🎯 Goal: Fix and add multiple features across the portfolio in one complete pass (markdown independence, translation fallbacks, blog tracker/nav, custom context menu actions, timeline sliced See More, filterable ProjectsPage, Lucide icons, gallery indicators).
+> 📁 Files affected: `_markdown-themes.scss`, `settingProvider.jsx`, local translation files (en, fr, medieval-en, medieval-fr, ar), `BlogPost.jsx`, `BlogPost.module.scss`, `ContextMenu.jsx`, `ContextMenu.module.scss`, `AboutSection.jsx`, `AboutSection.module.scss`, `projects.data.js`, `ProjectsPage.jsx`, `ProjectsPage.module.scss`, `ProjectCard.jsx`, `ProjectCard.module.scss`, `ContactSection.jsx`, `ImageViewerProvider.jsx`, `ImageViewer.jsx`, `ImageViewer.module.scss`, `DesignSection.jsx`, `routes.jsx`, `package.json`.
+> 🧬 DNA preserved: ✅
+
+### What was done:
+- **Independent Markdown Themes**: Configured hardcoded hex color codes in `_markdown-themes.scss` to prevent any app theme overrides.
+- **Bilingual & Traversal Engine Expansion**: Upgraded safe fallbacks to target English dictionaries and output single-segment segments in case of dot-path absence. Extended translation files in all 5 languages.
+- **BlogPost Progress & Bottom Overlays**: Implemented reading progress bar and float widgets, plus bottom viewport fixed post nav actions. Corrected conditional modal tag bracket typo.
+- **Custom Context Menu Portals**: Raised z-index to `999999` and integrated Print, Select All, Google Search Selection, copy/view URL and Image overlays, matching light/dark/medieval aesthetics.
+- **Timeline Slice & Toggle**: Default visibility slice set to 4 in AboutSection timeline with expandable "Show More" toggles.
+- **Projects SPA Route**: Created unified ProjectsPage dashboard and consolidated data sheet under route `/projects` with responsive filters, categories, and tags.
+- **Lucide Brand Grids**: Downgraded to stable `lucide-react@0.469.0` containing all brand icons (Github, Linkedin, Twitter, Facebook) and mapped social contact grids.
+- **Image Lightbox Gallery**: Enabled lists, starting indices, keyboard ArrowLeft/ArrowRight/Escape listeners, caption labels, and overlays inside ImageViewer.
+- **Zero-Error Build**: Production Vite compilation successfully compiled in 1m 6s!
+
+
 
 
 

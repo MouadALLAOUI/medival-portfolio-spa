@@ -6,8 +6,7 @@ import styles from './CrmefProfileSection.module.scss';
 const CrmefProfileSection = () => {
   const { t } = useSettings();
 
-  const bioText = t('CRMEF.profile.bio');
-  const resolvedBio = bioText !== 'CRMEF.profile.bio' ? bioText : crmefProfile.bio;
+  const resolvedBio = t(crmefProfile.bio);
 
   return (
     <CSection variant="crmef" id="profile" className={styles.section}>

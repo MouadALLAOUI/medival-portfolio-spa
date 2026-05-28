@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import projects from '../../../data/projects';
 import { markdownToHtml } from '../../../lib/utils/markdownToHtml';
-import { useAppSettings } from '../../../lib/contexts/AppSettingsContext';
+import { useTheme } from '../../../lib/contexts/ThemeProvider';
 import { getMarkdownThemeClass } from '../../../lib/markdown/markdownThemes';
 import getColorForTag from '../../../lib/getColorForTag';
 import { useImageViewer } from '../../../lib/useImageViewer';
@@ -46,8 +46,8 @@ const getProjectDuration = (startDateStr, endDateStr, lang) => {
 const ProjectsSection = () => {
   const { openImage } = useImageViewer();
   const { t, language } = useSettings();
-  const { markdownTheme } = useAppSettings() || { markdownTheme: 'default' };
-  const mdThemeClass = getMarkdownThemeClass(markdownTheme);
+  const { theme } = useTheme();
+  const mdThemeClass = getMarkdownThemeClass(theme);
   const [activeProjectId, setActiveProjectId] = useState(null);
   const [activeImgIndex, setActiveImgIndex] = useState(0);
   const [activeTag, setActiveTag] = useState('All');
