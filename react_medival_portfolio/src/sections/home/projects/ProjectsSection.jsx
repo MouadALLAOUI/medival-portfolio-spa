@@ -1,3 +1,4 @@
+import { getAssetById } from '../../../data/mediaManager';
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import projects from '../../../data/projects';
 import { markdownToHtml } from '../../../lib/utils/markdownToHtml';
@@ -105,7 +106,7 @@ const ProjectsSection = () => {
                   key={project.id}
                   className={`${styles['project-card']} ${activeProjectId === project.id ? styles['active-card'] : ''} ${project.isBlur ? styles['blured'] : ''}`}
                   onClick={() => toggleProject(project)}
-                  style={{ '--bg-img': `url(${project.overview.thumbnail || '/assets/download.png'})` }}
+                  style={{ '--bg-img': `url(${project.overview.thumbnail || getAssetById('download').path})` }}
                 >
                   <div className={styles['card-content']}>
                     <h3 className={styles['project-title']}>{project.title}</h3>
@@ -182,8 +183,8 @@ const ProjectsSection = () => {
                   <>
                     <h3>{t('HOME.PROJECTS.features')}</h3>
                     <ul>
-                      {activeProject.overview.features.map((feature, index) => (
-                        <li key={index}>{feature}</li>
+                      {activeProject.overview.features.map((feature) => (
+                        <li key={feature}>{feature}</li>
                       ))}
                     </ul>
                   </>
@@ -196,7 +197,7 @@ const ProjectsSection = () => {
                       <div className={styles['carousel-viewport']}>
                         {activeProject.overview.imgs.map((img, index) => (
                           <div
-                            key={`${img.src}-${index}`}
+                            key={img.src}
                             className={`${styles['carousel-slide']} ${index === activeImgIndex ? styles['active'] : ''} ${img.isBlur ? styles['blured'] : ''}`}
                             onClick={() => openImage(img.src, img.alt || activeProject.title)}
                           >
@@ -229,9 +230,9 @@ const ProjectsSection = () => {
 
                       {activeProject.overview.imgs.length > 1 && (
                         <div className={styles['carousel-dots']}>
-                          {activeProject.overview.imgs.map((_, index) => (
+                          {activeProject.overview.imgs.map((img, index) => (
                             <button
-                              key={index}
+                              key={`dot-${img.src}`}
                               type="button"
                               className={`${styles['carousel-dot']} ${index === activeImgIndex ? styles['active'] : ''}`}
                               onClick={(e) => { e.stopPropagation(); setActiveImgIndex(index); }}
@@ -248,19 +249,20 @@ const ProjectsSection = () => {
                   <>
                     <h3>{t('HOME.PROJECTS.links')}</h3>
                     <div className={styles['overview-links']}>
-                      {activeProject.overview.link.map((link, index) =>
-                        link.isDisabled ? (
-                          <span key={index} className={`${styles['overview-link']} ${styles['disabled']}`}>
+                      {activeProject.overview.link.map((link, index) => {
+                        const stableKey = link.label || link.href || index;
+                        return link.isDisabled ? (
+                          <span key={stableKey} className={`${styles['overview-link']} ${styles['disabled']}`}>
                             <span>{link.icon}</span>
                             {link.label}
                           </span>
                         ) : (
-                          <a key={index} href={link.href || '#'} target="_blank" rel="noopener noreferrer" className={styles['overview-link']}>
+                          <a key={stableKey} href={link.href || '#'} target="_blank" rel="noopener noreferrer" className={styles['overview-link']}>
                             <span>{link.icon}</span>
                             {link.label}
                           </a>
-                        ),
-                      )}
+                        );
+                      })}
                     </div>
                   </>
                 )}

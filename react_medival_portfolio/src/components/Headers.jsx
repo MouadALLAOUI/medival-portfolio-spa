@@ -1,3 +1,4 @@
+import { getAssetById } from '../data/mediaManager';
 import { useRef, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ArrowBigDown, Menu, X } from "lucide-react";
@@ -183,20 +184,27 @@ const HeaderComponent = () => {
 		const bodyContainer = document.getElementById('body-container');
 		if (!bodyContainer) return;
 
+		let ticking = false;
 		const onScroll = () => {
-			const currentScroll = bodyContainer.scrollTop;
+			if (!ticking) {
+				window.requestAnimationFrame(() => {
+					const currentScroll = bodyContainer.scrollTop;
 
-			setIsScrolled((currentlyScrolled) => {
-				// If not scrolled yet, it takes reaching 65px to trigger it
-				if (!currentlyScrolled && currentScroll >= 65) {
-					return true;
-				}
-				// Once scrolled, it takes dropping below 35px to remove it
-				if (currentlyScrolled && currentScroll < 35) {
-					return false;
-				}
-				return currentlyScrolled;
-			});
+					setIsScrolled((currentlyScrolled) => {
+						// If not scrolled yet, it takes reaching 65px to trigger it
+						if (!currentlyScrolled && currentScroll >= 65) {
+							return true;
+						}
+						// Once scrolled, it takes dropping below 35px to remove it
+						if (currentlyScrolled && currentScroll < 35) {
+							return false;
+						}
+						return currentlyScrolled;
+					});
+					ticking = false;
+				});
+				ticking = true;
+			}
 		};
 
 		bodyContainer.addEventListener('scroll', onScroll);
@@ -231,7 +239,7 @@ const HeaderComponent = () => {
 			id="nav-container"
 		>
 			<div className={styles['nav-title']}>
-				<img src="/assets/favicon.ico" alt="logo" />
+				<img src={getAssetById('favicon').path} alt="logo" />
 				<p>{t('COMMON.nav.logoText')}</p>
 			</div>
 

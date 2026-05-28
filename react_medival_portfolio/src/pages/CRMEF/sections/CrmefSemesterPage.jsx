@@ -1,217 +1,191 @@
 import { useState } from 'react';
-import {
-  FileText,
-  FileSpreadsheet,
-  Presentation,
-  FileImage,
-  FileVideo,
-  FileAudio,
-  FileArchive,
-  FileCode,
-  File,
-  Download,
-  ExternalLink,
-} from 'lucide-react';
 import CSection from '../../../templates/Section';
-import PdfViewer from '../../../components/PdfViewer/PdfViewer';
+import FileLink from '../../../components/FileLink/FileLink';
 import { crmefSemesters } from '../../../data/crmef.data';
 import { useSettings } from '../../../lib/useSettings';
 import styles from './CrmefSemesterPage.module.scss';
 
-// Determine the extension from a file path
-const getExt = (path) => {
-  const match = (path || '').match(/\.([a-zA-Z0-9]+)(?:\?|$)/);
-  return match ? match[1].toLowerCase() : '';
-};
-
-// Classify file type
-const classifyFile = (ext) => {
-  if (['pdf'].includes(ext)) return 'pdf';
-  if (['doc', 'docx', 'odt', 'rtf'].includes(ext)) return 'doc';
-  if (['xls', 'xlsx', 'ods', 'csv'].includes(ext)) return 'spreadsheet';
-  if (['ppt', 'pptx', 'odp'].includes(ext)) return 'presentation';
-  if (['png', 'jpg', 'jpeg', 'gif', 'svg', 'webp', 'avif'].includes(ext)) return 'image';
-  if (['mp4', 'webm', 'mov', 'avi'].includes(ext)) return 'video';
-  if (['mp3', 'wav', 'ogg', 'flac'].includes(ext)) return 'audio';
-  if (['zip', 'rar', '7z', 'tar', 'gz'].includes(ext)) return 'archive';
-  if (['js', 'ts', 'jsx', 'tsx', 'py', 'java', 'c', 'cpp', 'html', 'css', 'json'].includes(ext)) return 'code';
-  return 'generic';
-};
-
-// Map file type to lucide icon + color class
-const FILE_TYPE_META = {
-  pdf:          { Icon: FileText,         colorClass: 'fileIconPdf' },
-  doc:          { Icon: FileText,         colorClass: 'fileIconDoc' },
-  spreadsheet:  { Icon: FileSpreadsheet,  colorClass: 'fileIconSpreadsheet' },
-  presentation: { Icon: Presentation,     colorClass: 'fileIconPresentation' },
-  image:        { Icon: FileImage,        colorClass: 'fileIconImage' },
-  video:        { Icon: FileVideo,        colorClass: 'fileIconVideo' },
-  audio:        { Icon: FileAudio,        colorClass: 'fileIconAudio' },
-  archive:      { Icon: FileArchive,      colorClass: 'fileIconArchive' },
-  code:         { Icon: FileCode,         colorClass: 'fileIconCode' },
-  generic:      { Icon: File,             colorClass: 'fileIconGeneric' },
-};
-
-const CrmefSemesterPage = () => {
+const CrmefSemesterPage = ({ semesterId }) => {
   const { t } = useSettings();
-  const [collapsedModules, setCollapsedModules] = useState({});
 
-  const toggleCollapse = (moduleId) => {
-    setCollapsedModules(prev => ({
+  const semesters = semesterId
+    ? crmefSemesters.filter(s => s.id === semesterId)
+    : crmefSemesters;
+
+  // React state variable named activeModuleIds initialized to the ID of the first module of each semester
+  const [activeModuleIds, setActiveModuleIds] = useState(() =>
+    Object.fromEntries(
+      semesters.map(s => [s.id, s.modules[0]?.id || ''])
+    )
+  );
+
+  const handleFilterSelect = (semId, moduleId) => {
+    setActiveModuleIds(prev => ({
       ...prev,
-      [moduleId]: !prev[moduleId]
+      [semId]: moduleId
     }));
   };
 
   const renderFileCard = (fileItem, index, groupLabel) => {
     const isObject = typeof fileItem === 'object' && fileItem !== null;
     const filePath = isObject ? fileItem.path : fileItem;
-
     const localizedName = isObject && fileItem.name ? t(fileItem.name) : null;
     const fileLabel = localizedName || `${groupLabel} #${index + 1}`;
 
-    const ext = getExt(filePath);
-    const fileType = classifyFile(ext);
-    const { Icon, colorClass } = FILE_TYPE_META[fileType] || FILE_TYPE_META.generic;
-    const isPdf = fileType === 'pdf';
-
-    const hasMetadata = isObject && (fileItem.pages || fileItem.date);
+    const meta = {};
+    if (isObject && fileItem.pages) meta.pages = fileItem.pages;
+    if (isObject && fileItem.date) meta.date = fileItem.date;
+    if (isObject && fileItem.size) meta.size = fileItem.size;
+    if (isObject && fileItem.author) meta.author = fileItem.author;
 
     return (
-      <div key={index} className={styles.fileCardContainer}>
-        {isPdf ? (
-          <div className={styles.fileCard}>
-            <PdfViewer
-              file={filePath}
-              label={
-                <span className={styles.fileButtonInner}>
-                  <Icon size={16} className={`${styles.fileIcon} ${styles[colorClass]}`} />
-                  <span className={styles.fileButtonLabel}>{fileLabel}</span>
-                  <span className={`${styles.fileExtBadge} ${styles[colorClass]}`}>.{ext.toUpperCase()}</span>
-                </span>
-              }
-              className={styles.pdfViewerOverride}
-            />
-          </div>
-        ) : (
-          <div className={styles.fileCard}>
-            <a
-              href={filePath}
-              target="_blank"
-              rel="noopener noreferrer"
-              download={fileType === 'generic' || ['doc','docx','xls','xlsx','ppt','pptx','zip','rar'].includes(ext)}
-              className={styles.fileDownloadBtn}
-            >
-              <Icon size={16} className={`${styles.fileIcon} ${styles[colorClass]}`} />
-              <span className={styles.fileButtonLabel}>{fileLabel}</span>
-              <span className={`${styles.fileExtBadge} ${styles[colorClass]}`}>.{ext.toUpperCase()}</span>
-              {['doc','docx','xls','xlsx','ppt','pptx','odt','odp','ods','zip','rar'].includes(ext)
-                ? <Download size={13} className={styles.fileActionIcon} />
-                : <ExternalLink size={13} className={styles.fileActionIcon} />
-              }
-            </a>
-          </div>
-        )}
-
-        {hasMetadata && (
-          <div className={styles.tooltip}>
-            <div className={styles.tooltipHeader}>
-              <Icon size={13} className={`${styles.fileIcon} ${styles[colorClass]}`} />
-              {fileLabel}
-            </div>
-            <div className={styles.tooltipBody}>
-              {fileItem.pages && (
-                <div className={styles.tooltipRow}>
-                  <span>📄 {t('CRMEF_SEMESTERS.tooltip.pages')}:</span>
-                  <strong>{fileItem.pages}</strong>
-                </div>
-              )}
-              {fileItem.date && (
-                <div className={styles.tooltipRow}>
-                  <span>📅 {t('CRMEF_SEMESTERS.tooltip.date')}:</span>
-                  <strong>{fileItem.date}</strong>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
-      </div>
+      <FileLink
+        key={filePath}
+        filePath={filePath}
+        label={fileLabel}
+        meta={meta}
+        pdfClass={styles.pdfViewerOverride}
+        t={t}
+        tooltipKey="CRMEF_SEMESTERS.tooltip"
+      />
     );
   };
 
   return (
     <>
-      {crmefSemesters.map(semester => {
+      {semesters.map(semester => {
         const title = t(semester.title);
+        const activeModuleId = activeModuleIds[semester.id] || semester.modules[0]?.id || '';
+        const activeModule = semester.modules.find(m => m.id === activeModuleId);
+
         return (
           <CSection
             key={semester.id}
-            variant="crmef"
             id={semester.id}
+            variant="crmef"
             title={title}
             className={styles.section}
           >
-            <div className={styles.modulesList}>
-              {semester.modules.map(module => {
-                const name = t(module.name);
-                const professor = t(module.professor);
-                const isCollapsed = !!collapsedModules[module.id];
+            {/* Top Tab Navigation Row: horizontally scrolling spacing pills */}
+            <div className={styles.badgeTabWrapper}>
+              <div className={`${styles.badgeTabRow} flex space-x-2 overflow-x-auto no-scrollbar`}>
+                {semester.modules.map(m => {
+                  const isActive = activeModuleId === m.id;
+                  const moduleName = t(m.name);
+                  const shortName = moduleName.length > 28 ? moduleName.slice(0, 26) + '...' : moduleName;
 
-                return (
-                  <div
-                    key={module.id}
-                    className={`${styles.moduleItem} ${isCollapsed ? styles.moduleCollapsed : ''}`}
-                  >
-                    <div
-                      className={styles.moduleHeader}
-                      onClick={() => toggleCollapse(module.id)}
-                      role="button"
-                      tabIndex={0}
-                      aria-expanded={!isCollapsed}
-                      onKeyDown={e => e.key === 'Enter' && toggleCollapse(module.id)}
+                  return (
+                    <button
+                      key={m.id}
+                      type="button"
+                      onClick={() => handleFilterSelect(semester.id, m.id)}
+                      className={`${styles.badgeTabItem} ${isActive ? styles.badgeTabActive : ''}`}
+                      title={moduleName}
                     >
-                      <div className={styles.headerTitleArea}>
-                        <h3 className={styles.moduleName}>{name}</h3>
-                        {professor && professor !== 'Unknown' && professor !== 'Inconnu' && professor !== 'غير معروف' && (
-                          <p className={styles.moduleProfessor}>
-                            👨‍🏫 {professor}
-                          </p>
-                        )}
-                      </div>
-                      <span className={`${styles.collapseChevron} ${isCollapsed ? styles.chevronCollapsed : ''}`}>
-                        ▼
-                      </span>
-                    </div>
+                      {shortName}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
 
-                    {!isCollapsed && (
-                      <div className={styles.groupsGrid}>
-                        {['solo', 'group', 'official'].map(groupKey => {
-                          const filesArray = module.files[groupKey] || [];
-                          const groupLabel = t(`CRMEF_SEMESTERS.files.${groupKey}`);
+            {/* Gorgeous full-width workspace component */}
+            {activeModule && (() => {
+              const name = t(activeModule.name);
+              const professor = t(activeModule.professor);
 
-                          return (
-                            <div key={groupKey} className={styles.fileGroup}>
-                              <h4 className={styles.groupTitle}>{groupLabel}</h4>
-                              <div className={styles.groupFilesList}>
-                                {filesArray.length === 0 ? (
-                                  <p className={styles.noFiles}>
-                                    📭 {t('CRMEF_SEMESTERS.files.noFiles')}
-                                  </p>
-                                ) : (
-                                  filesArray.map((fileItem, index) =>
-                                    renderFileCard(fileItem, index, groupLabel)
-                                  )
-                                )}
-                              </div>
+              return (
+                <div className={`${styles.workspaceContainer} w-full bg-card`}>
+                  {/* Workspace Header */}
+                  <div className={styles.workspaceHeader}>
+                    <h3 className={styles.moduleName} title={name}>
+                      {name}
+                    </h3>
+
+                    {professor && professor !== 'Unknown' && professor !== 'Inconnu' && professor !== 'غير معروف' && (
+                      <p className={styles.moduleProfessor}>
+                        👨‍🏫 {professor}
+                      </p>
+                    )}
+
+                    {activeModule.desc && (() => {
+                      const descText = t(activeModule.desc);
+                      const learnedLabel = t('CRMEF_SEMESTERS.learned');
+                      return descText ? (
+                        <p className={styles.moduleDesc}>
+                          <span className={styles.moduleDescLabel}>
+                            💡 {learnedLabel}:
+                          </span>
+                          {descText}
+                        </p>
+                      ) : null;
+                    })()}
+                  </div>
+
+                  {/* Workspace Files: dynamic elastic column blocks */}
+                  <div className={styles.workspaceGroups}>
+                    {/* Solo Work Section */}
+                    {activeModule.files?.solo && activeModule.files.solo.length > 0 && (
+                      <div className={styles.fileGroupSection}>
+                        <h4 className={styles.fileGroupHeading}>
+                          <span className={styles.fileGroupIcon}>👤</span> {t('CRMEF_SEMESTERS.files.solo') || 'Solo Work'}
+                        </h4>
+                        <div className={styles.fileGroupList}>
+                          {activeModule.files.solo.map((fileItem, index) => (
+                            <div key={index} className="w-full max-w-full overflow-hidden truncate block">
+                              {renderFileCard(fileItem, index, t('CRMEF_SEMESTERS.files.solo') || 'Solo Work')}
                             </div>
-                          );
-                        })}
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Group Projects Section */}
+                    {activeModule.files?.group && activeModule.files.group.length > 0 && (
+                      <div className={styles.fileGroupSection}>
+                        <h4 className={styles.fileGroupHeading}>
+                          <span className={styles.fileGroupIcon}>👥</span> {t('CRMEF_SEMESTERS.files.group') || 'Group Projects'}
+                        </h4>
+                        <div className={styles.fileGroupList}>
+                          {activeModule.files.group.map((fileItem, index) => (
+                            <div key={index} className="w-full max-w-full overflow-hidden truncate block">
+                              {renderFileCard(fileItem, index, t('CRMEF_SEMESTERS.files.group') || 'Group Projects')}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Official Resources Section */}
+                    {activeModule.files?.official && activeModule.files.official.length > 0 && (
+                      <div className={styles.fileGroupSection}>
+                        <h4 className={styles.fileGroupHeading}>
+                          <span className={styles.fileGroupIcon}>📜</span> {t('CRMEF_SEMESTERS.files.official') || 'Official Resources'}
+                        </h4>
+                        <div className={styles.fileGroupList}>
+                          {activeModule.files.official.map((fileItem, index) => (
+                            <div key={index} className="w-full max-w-full overflow-hidden truncate block">
+                              {renderFileCard(fileItem, index, t('CRMEF_SEMESTERS.files.official') || 'Official Resources')}
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     )}
                   </div>
-                );
-              })}
-            </div>
+
+                  {/* Empty fallback if active module literally has no files in any category */}
+                  {(!activeModule.files?.solo?.length &&
+                    !activeModule.files?.group?.length &&
+                    !activeModule.files?.official?.length) && (
+                      <div className={styles.emptyCardFiles}>
+                        <p className={styles.noFiles}>
+                          📭 {t('CRMEF_SEMESTERS.files.noFiles')}
+                        </p>
+                      </div>
+                    )}
+                </div>
+              );
+            })()}
           </CSection>
         );
       })}

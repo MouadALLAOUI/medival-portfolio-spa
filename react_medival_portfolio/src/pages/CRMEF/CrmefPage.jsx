@@ -4,14 +4,9 @@ import CrmefLayout from '../../layouts/CrmefLayout';
 import CrmefAccueilPage from './sections/CrmefAccueilPage';
 import CrmefSemesterPage from './sections/CrmefSemesterPage';
 import CrmefMspPage from './sections/CrmefMspPage';
+import CrmefVideosPage from './sections/CrmefVideosPage';
 import { useAchievements } from '../../lib/useAchievements';
 import styles from './CrmefPage.module.scss';
-
-const PAGES = {
-  home: <CrmefAccueilPage />,
-  semester: <CrmefSemesterPage />,
-  msp: <CrmefMspPage />,
-};
 
 const CrmefPage = () => {
   const { hash } = useLocation();
@@ -21,15 +16,18 @@ const CrmefPage = () => {
     unlockAchievement('visited_crmef');
   }, [unlockAchievement]);
 
-  const activePage =
-    hash === '#semestre1' ? 'semester' :
-    hash === '#msp' ? 'msp' :
-    'home';
+  const renderPage = () => {
+    if (hash === '#semestre1') return <CrmefSemesterPage semesterId="semester-1" />;
+    if (hash === '#semestre2') return <CrmefSemesterPage semesterId="semester-2" />;
+    if (hash === '#msp')       return <CrmefMspPage />;
+    if (hash === '#videos')    return <CrmefVideosPage />;
+    return <CrmefAccueilPage />;
+  };
 
   return (
     <CrmefLayout>
       <div className={styles.pageContainer}>
-        {PAGES[activePage]}
+        {renderPage()}
       </div>
     </CrmefLayout>
   );

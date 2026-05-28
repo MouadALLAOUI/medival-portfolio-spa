@@ -4,7 +4,10 @@ const CRMEF = {
         title: "CRMEF Portfolio",
         accueil: "Castle / Bio",
         semester1: "Semester 1 Scrolls",
+        semester2: "Semester 2 Scrolls",
+        semesters: "Semester Scrolls",
         msp: "MSP Chronicles",
+        videos: "Spell & Scrying Videos",
     },
     profile: {
         bio: "As a developer passionate about the art of code and computer science, I am constantly in search of new knowledge. I love designing robust architectures and enchanting interfaces. I make my skills available for the most ambitious projects, forging custom solutions for every quest.",

@@ -68,9 +68,9 @@ export const PdfSettingsProvider = ({ children }) => {
 
   const [pdfReadingMode, setPdfReadingMode] = useState(() => {
     try {
-      return localStorage.getItem('crmef_pdf_reading_mode') || 'paginated';
+      return localStorage.getItem('crmef_pdf_reading_mode') || 'longStrip';
     } catch {
-      return 'paginated';
+      return 'longStrip';
     }
   });
 

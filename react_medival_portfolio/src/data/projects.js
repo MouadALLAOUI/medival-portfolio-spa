@@ -1,3 +1,4 @@
+import { getAssetById } from './mediaManager';
 const projects = [
   {
     id: 1,
@@ -9,12 +10,12 @@ const projects = [
       link: "https://github.com/MouadALLAOUI/Gantt-Graph-Process-Algorithm-App"
     },
     overview: {
-      thumbnail: "/media/projects/1/thumb.png",
+      thumbnail: getAssetById('projects-1-thumb').path,
       intro: "An arcane desktop tool for visualizing CPU scheduling algorithms with animated Gantt charts. Designed to teach and demonstrate process scheduling techniques like FIFO, RR, and SRTF through magical visualizations.",
       desc: "# 📜 The Gantt Grimoire — A MonoCore Tale\n\n*An arcane desktop tome for conjuring Gantt charts and mastering the art of process scheduling across cooperative and preemptive realms.*\n\n## 📖 Prologue \n\nIn the heart of the MonoCore Tower, a digital grimoire was forged — *The Gantt Grimoire*. Born from the ancient scrolls of CPU incantation, it visualizes the mystic flow of process scheduling using enchanted Gantt diagrams.\n\n> Crafted by the code sorcerer **Mouad**, this relic allows initiates and masters alike to witness the hidden dance of processes, time quanta, and context switches.\n\n## 🧱 Tome Structure\n\n ```bash\nProcessusGanttGraphs/\n    ├── __main__.py\n    ├── __init__.py\n    ├── *readme.md*\n    ├── classes/\n    │   ├── graph.py\n    │   ├── processus.py\n    │   ├── gui.py\n    │   └── __init__.py\n    ├── data/\n    │   │── set_data.py\n    │   │── get_data.py\n    │   │── testdata.py\n    │   └── __init__.py\n    ├── assets/\n    │   └── Figure_1.png\n    └── ordannacement/\n        ├── __init__.py\n        ├── cooperatif/\n        │   ├── __init__.py\n        │   ├── fifo.py\n        │   ├── srtf.py\n        │   └── round_robin.py\n        └──  premtif/\n            ├── __init__.py\n            ├── fifo.py\n            ├── srtf.py\n            └── round_robin.py \n\n```\n\n## 📘 Invocation Ritual \n\nTo unlock the tome’s powers, you must: \n\n### 📌 Requirements: \n\n- Python 3.x or later\n- The `matplotlib` incantation:\n```bash\npip install matplotlib\n``` \n\n### 🔮 To awaken the grimoire: \n\n```bash\npython __main__.py\n```\nOr simply:\n```bash\npython .\n``` \n\n## ✨ Arcane Powers \n\nHarness the magic of time manipulation: \n\n> 📜 ** Algorithmic Scrolls:** \n\n- 🔸 First In, First Out * (FIFO) *\n- 🔸 Round Robin * (RR) *\n- 🔸 Shortest Remaining Time First * (SRTF) *\n- 🔸 Cooperative Incantations\n- 🔸 Preemptive Interventions\n\n> 📦 ** Mystical Data Sources:** \n\n- 💬 Console spellcasting(manual entry) \n- 📂 CSV rune importing\n- 🧪 Random test data conjuration\n\n> 📊 ** Live Visualization Rituals:** \n\n- Gantt charts rendered in real time with `matplotlib`\n - Intuitive GUI portals for mage - level ease\n\n## 🕹️ How to Channel Its Magic \n\n1.Begin the spell: \n```bash\npython __main__.py\n```\n2.Choose your scrying method: \n - `console` — Speak the values aloud\n - `ready` — Read from a sacred CSV scroll\n - `test` — Allow the system to conjure ghost processes\n3.Speak your variables: \n - Arrival incantations\n - CPU burst lengths\n - Priority glyphs(if applicable) \n4.Select the scheduling incantation you wish to summon.\n5.Behold the visualization — a living diagram etched by time and computation.\n\n## 🧑‍🔧 Contributions From Fellow Mages \n\nTo leave your mark upon this tome: \n\n1.Fork the repository via the magic mirror(GitHub) \n2.Forge your branch: \n```bash\ngit checkout -b AmazingFeature\n```\n3.Etch your changes: \n```bash\ngit commit -m 'Add some AmazingFeature'\n```\n4.Send your spell upstream: \n```bash\ngit push origin AmazingFeature\n```\n5.Open a summoning gate(Pull Request) \n\n## 📜 Scroll of Binding \n\nLicensed under the MIT Enchantment.See[LICENSE](https://github.com/MouadALLAOUI/Gantt-Graph-Process-Algorithm-App/blob/master/LICENSE) for the unbreakable seal.\n\n## 📅 The Tome’s Evolution \n\nTrack the grimoire’s growth in the *** [CHANGELOG.md](https://github.com/MouadALLAOUI/Gantt-Graph-Process-Algorithm-App/blob/master/CHANGELOG.md) ***.\n\n## 🔮 Acknowledgments from the Arcane Circle \n\nThe creation of this magical artifact was guided by: \n - The eternal flames of [Python](https://www.python.org/)\n- The scrolls of [W3Schools](https://www.w3schools.com/python/)\n- The digital familiars:\n  - [OpenAI](https://openai.com)\n  - [Blackbox AI](https://www.blackbox.ai)\n  - [Anthropic Claude](https://www.anthropic.com)\n",
       imgs: [
-        { src: "/media/projects/1/gui.png", alt: "", isBlur: false },
-        { src: "/media/projects/1/Figure_1.png", alt: "", isBlur: false },
+        { src: getAssetById('projects-1-gui').path, alt: "", isBlur: false },
+        { src: getAssetById('projects-1-figure-1').path, alt: "", isBlur: false },
       ],
       features: [
         "First In, First Out (FIFO)",
@@ -46,13 +47,13 @@ const projects = [
       link: "https://github.com/MouadALLAOUI/bootdev_bookbot"
     },
     overview: {
-      thumbnail: "/media/projects/2/thumb.png",
+      thumbnail: getAssetById('projects-2-thumb').path,
       intro: "<strong>Book Bot</strong> - is a simple yet educational Python app that reads `.txt` books and generates a text-based report showing how many words and letters are used, along with how often each letter appears. <br />Originally inspired by lessons from <a href='https://www.boot.dev/'>Boot.dev</a>, it’s a foundational project that helped me practice file handling, loops, and sorting in Python.",
       desc: "## 📖 Introduction\n\n**Boot.dev BookBot** is a simple Python app that analyzes a `.txt` file — counting both the number of **words** and how many times each **letter** appears.\n\nIt’s a small but powerful project to practice Python fundamentals like:\n\n- File handling\n- Loops and conditionals\n- Dictionaries and lists\n- Sorting and reporting\n\n## ⚔️ Prologue\n\nWhen I started learning **Python**, I discovered an amazing platform called [**Boot.dev**](https://www.boot.dev/).\n\nThis app was one of my first learning projects from that course — so it holds a special place in my coding journey.\n\n## 🏗️ Project Structure\n\n```bash\nbootdev_bookbot/\n├── main.py\n├── README.md\n└── books/\n    └── frankenstein.txt\n```\n\n## ⚙️ Installation & Usage\n\n### 🧩 Requirements\n\n- Python (any recent version)\n\n### 💾 Installation\n\n  1. **Clone the repository**\n\n```bash\ngit clone https://github.com/MouadALLAOUI/bootdev_bookbot.git  \n\n```\n\n  2. **Open the directory**\n\n```bash\ncd bootdev_bookbot\n\n```\n\n### 🚀 Run the app\n\n```bash\npython main.py\n\n```\n\n## Change the Input File\n\nTo analyze a different file, open `main.py` and update **line 2** of the function:\n\n```python\ndef file_export():\n    with open('books/ frankenstein.txt') as f:\n```\n\nYou can replace `'books / frankenstein.txt'` with the path to your own text file.\n\n## ✨ Features\n\n- 📘 Count total words in a text file\n- 🔤 Count total letters used\n- 🧮 Count frequency of each individual letter\n\n## 🧭 Future Plans\n\n- [ ] Add a GUI interface\n- [ ] Support more file types (`.docx`, `.pdf`, `.md`, etc.)\n- [ ] Add import options (e.g., choose from more books)\n- [ ] Add export options (e.g., to `.csv` or `.json`)\n- [ ] Improve reporting visuals\n\n## 🤝 Contributing\n\nTo leave your mark upon this tome: \n\n1.Fork the repository via the magic mirror(GitHub) \n2.Forge your branch: \n```bash\ngit checkout -b AmazingFeature\n```\n3.Etch your changes: \n```bash\ngit commit -m 'Add some AmazingFeature'\n```\n4.Send your spell upstream: \n```bash\ngit push origin AmazingFeature\n```\n5.Open a summoning gate(Pull Request) \n\n## 💡 Acknowledgments\n\nSpecial thanks to:\n\n- [**Boot.dev**](https://www.boot.dev/) for the inspiration and learning materials.",
       imgs: [
-        { src: "/media/projects/2/img 1.png", alt: "Screenshot – Report Example", isBlur: false },
-        { src: "/media/projects/2/code.png", alt: "Screenshot – Code View", isBlur: false },
-        { src: "/media/projects/2/structure.png", alt: "Screenshot – Folder Structure", isBlur: false },
+        { src: getAssetById('projects-2-img-1').path, alt: "Screenshot – Report Example", isBlur: false },
+        { src: getAssetById('projects-2-code').path, alt: "Screenshot – Code View", isBlur: false },
+        { src: getAssetById('projects-2-structure').path, alt: "Screenshot – Folder Structure", isBlur: false },
       ],
       features: [
         "📘 Count total words in a text file",
@@ -77,37 +78,37 @@ const projects = [
       link: "https://github.com/MouadALLAOUI/Amz-automobile-front"
     },
     overview: {
-      thumbnail: "/media/projects/3/thumb.png",
+      thumbnail: getAssetById('projects-3-thumb').path,
       intro: "<strong>AMZ AUTOMOBILE</strong>  is a desktop web application built to help manage mechanical tasks efficiently. <br /> It allows users to track tasks such as <strong>oil changes</strong>, record <strong>who performed them</strong>, <strong>when</strong>, and for <strong>which vehicle (plate number)</strong>.<br /><blockquote>This system simplifies workshop management and ensures maintenance history is transparent and organized.</blockquote>",
       desc: "AMZ AUTOMOBILE Front is designed to simplify mechanical workshop management. It enables users to log, monitor, and visualize repair operations using a modern interface powered by React and Electron.\n\n## 📜 Prologue\n\nAfter my brother — who works as a mechanic — asked for a better way to organize his work,\n\nI started developing **AMZ AUTOMOBILE** to assist him and other mechanics in managing daily tasks more effectively.\n\n## 🏗️ Project Structure 🚗\n\n```bash\nAmz-automobile-front/\n├── public/\n│    ├── favicon.ico\n│    ├── index.html\n│    ├── manifest.json\n│    └── robots.txt\n├── src/\n│    ├── component/         # All reusable components\n│    ├── env/\n│    │    ├── strings/      # Multilingual support (FR/EN)\n│    │    ├── environnement.jsx\n│    │    └── routers.jsx\n│    ├── media/             # Images and icons\n│    ├── store/\n│    │    ├── store.js\n│    │    └── userSlice.js\n│    ├── styling/           # SCSS, fonts, and style assets\n│    ├── views/\n│    │    ├── content/      # Main client UI\n│    │    ├── Login/        # Login screen\n│    │    ├── notfound.jsx\n│    │    └── Templates.js\n│    └── index.js\n├── .editorconfig\n├── .eslintrc.json\n├── .gitbranch\n├── .gitignore\n├── main.js\n├── package-lock.json\n├── package.json\n├── preload.js\n├── README.md\n└── yarn.lock\n```\n\n## ⚙️ Installation & Usage 🚗\n\n### 📦 Requirements\n\n- `React` v18.3.1+\n- `Node.js`\n- `npm` (or `yarn`)\n\n### 🚀 Installation\n\n1. Clone the repository:\n\n```bash\ngit clone https://github.com/MouadALLAOUI/Amz-automobile-front\n\n```\n\n2. Navigate into the project directory:\n\n```bash\ncd Amz-automobile-front\n\n```\n\n3. Install dependencies:\n\n```bash\nnpm install\n\n```\n\n> ✅ Ensure there are no installation errors and that a `node_modules` folder is created in the root directory.\n\n### ▶️ Run the Application\n\nRun the following commands in **two separate terminals**:\n\n```bash\nnpm start\n\n```\n\n```bash\nnpm run electron\n\n```\n\nThis will start the React frontend and the Electron desktop shell.\n\n## 🧩 Future Plans\n\n- [ ] Fix bugs and optimize performance\n- [ ] Add user roles and permissions\n- [ ] Create admin dashboard\n- [ ] Deploy online\n- [ ] Enable offline functionality\n- [ ] Add more features based on client needs\n\n## 🤝 Contributing\n\nTo leave your mark upon this tome: \n\n1.Fork the repository via the magic mirror(GitHub) \n2.Forge your branch: \n\n```bash\ngit checkout -b AmazingFeature\n\n```\n\n3.Etch your changes: \n\n```bash\ngit commit -m 'Add some AmazingFeature'\n\n```\n\n4.Send your spell upstream: \n```bash\ngit push origin AmazingFeature\n```\n5.Open a summoning gate(Pull Request)\n\n## 💡 Acknowledgments 🚗\n\nSpecial thanks to:\n\n- [Stack Overflow](https://stackoverflow.com) — for debugging and problem-solving\n- [ChatGPT](https://chat.openai.com) — for guidance and development support",
       imgs: [
         {
-          src: "/media/projects/3/login.png",
+          src: getAssetById('projects-3-login').path,
           alt: "Screenshot – login",
           isBlur: false
         },
         {
-          src: "/media/projects/3/addTask.png",
+          src: getAssetById('projects-3-addtask').path,
           alt: "Screenshot – Add Task",
           isBlur: false
         },
         {
-          src: "/media/projects/3/editTask.png",
+          src: getAssetById('projects-3-edittask').path,
           alt: "Screenshot – Edit Task",
           isBlur: false
         },
         {
-          src: "/media/projects/3/pdfGeneration.png",
+          src: getAssetById('projects-3-pdfgeneration').path,
           alt: "Screenshot – PDF Generation",
           isBlur: false
         },
         {
-          src: "/media/projects/3/setting.png",
+          src: getAssetById('projects-3-setting').path,
           alt: "Screenshot – Settings",
           isBlur: false
         },
         {
-          src: "/media/projects/3/about.png",
+          src: getAssetById('projects-3-about').path,
           alt: "Screenshot – About",
           isBlur: false
         },
@@ -148,16 +149,16 @@ const projects = [
       link: "https://github.com/MouadALLAOUI/LaraCRUD"
     },
     overview: {
-      thumbnail: "/media/projects/9/thumb.png",
+      thumbnail: getAssetById('projects-9-thumb').path,
       intro: "Laravel CRUD Project for very beginners that starting to learn laravel and want to make a simple CRUD application.",
       desc: "# LaraCRUD\n\nA very beginner-friendly Laravel CRUD project that using controller, model, and view to create a simple CRUD application. It is designed for beginners who want to learn Laravel and make a simple CRUD application.\n\n## Features\n- Simple, fast routing engine.\n- Powerful dependency injection container.\n- Multiple back-ends for session and cache storage.\n- Expressive, intuitive database ORM.\n- Database agnostic schema migrations.\n- Robust background job processing.\n- Real-time event broadcasting.",
       imgs: [
-        { src: "/media/projects/9/1.png", alt: "", isBlur: false },
-        { src: "/media/projects/9/2.png", alt: "", isBlur: false },
-        { src: "/media/projects/9/3.png", alt: "", isBlur: false },
-        { src: "/media/projects/9/4.png", alt: "", isBlur: false },
-        { src: "/media/projects/9/5.png", alt: "", isBlur: false },
-        { src: "/media/projects/9/6.png", alt: "", isBlur: false },
+        { src: getAssetById('projects-9-1').path, alt: "", isBlur: false },
+        { src: getAssetById('projects-9-2').path, alt: "", isBlur: false },
+        { src: getAssetById('projects-9-3').path, alt: "", isBlur: false },
+        { src: getAssetById('projects-9-4').path, alt: "", isBlur: false },
+        { src: getAssetById('projects-9-5').path, alt: "", isBlur: false },
+        { src: getAssetById('projects-9-6').path, alt: "", isBlur: false },
       ],
       features: [
         "CRUD operations",
@@ -185,7 +186,7 @@ const projects = [
       link: "https://github.com/MouadALLAOUI/ecommerce"
     },
     overview: {
-      thumbnail: "/media/main_menu.png",
+      thumbnail: getAssetById('main-menu').path,
       intro: "a learning project about an e-shop website using react js to simulate an e-commerce platform. It is a basic project that includes product listing, cart management, and checkout functionalities.",
       desc: "# ecommerce\n\na simple project about an e-shop website using react js to simulate an e-commerce platform. It is a basic project that includes product listing, cart management, and checkout functionalities.\n\n## Features\n- Product listing and details\n- Cart management\n- Checkout process\n- Responsive design\n- User-friendly interface",
       imgs: [],

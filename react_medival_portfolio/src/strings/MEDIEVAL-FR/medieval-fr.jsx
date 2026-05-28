@@ -1,3 +1,4 @@
+import { MEDIA } from "./data/media.data";
 import { HOME } from "./pages/home";
 import { CRMEF } from "./pages/crmef";
 import { BLOGS } from "./pages/blogs";
@@ -87,7 +88,8 @@ const MEDIEVAL_FR = {
         print: 'Graver sur Vélin',
         selectAll: 'Saisir toutes les Runes',
         saveAs: 'Conserver dans la Crypte',
-    }
+    },
+    MEDIA
 }
 
 export {
