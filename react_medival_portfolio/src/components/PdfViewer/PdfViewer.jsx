@@ -98,25 +98,6 @@ const PdfViewer = ({ file, label = 'Open Scroll', className }) => {
               renderAnnotationLayer={true}
               className={styles.pdfPage}
             />
-            <div className={styles.controls}>
-              <button
-                type="button"
-                className={styles.controlBtn}
-                onClick={() => setPageNumber(p => Math.max(1, p - 1))}
-                disabled={pageNumber <= 1}
-              >
-                {t('COMMON.pdfViewer.previous')}
-              </button>
-              <span className={styles.pageInfo}>{pageNumber} / {numPages}</span>
-              <button
-                type="button"
-                className={styles.controlBtn}
-                onClick={() => setPageNumber(p => Math.min(numPages, p + 1))}
-                disabled={pageNumber >= numPages}
-              >
-                {t('COMMON.pdfViewer.next')}
-              </button>
-            </div>
           </div>
         );
 
@@ -195,10 +176,48 @@ const PdfViewer = ({ file, label = 'Open Scroll', className }) => {
     }
   };
 
+  // Pinned Footer at the bottom of the PDF Viewer container
+  const renderFixedFooter = () => {
+    if (!numPages) return null;
+
+    return (
+      <div className={styles.fixedFooter}>
+        {pdfReadingMode === 'paginated' && (
+          <button
+            type="button"
+            className={styles.footerBtn}
+            onClick={() => setPageNumber(p => Math.max(1, p - 1))}
+            disabled={pageNumber <= 1}
+          >
+            {t('COMMON.pdfViewer.previous') || '◀ Précédent'}
+          </button>
+        )}
+        
+        <span className={styles.footerPageInfo}>
+          {pdfReadingMode === 'paginated' 
+            ? `${pageNumber} / ${numPages}` 
+            : `${numPages} ${t('CRMEF_SEMESTERS.tooltip.pages')?.toLowerCase() || 'pages'}`
+          }
+        </span>
+
+        {pdfReadingMode === 'paginated' && (
+          <button
+            type="button"
+            className={styles.footerBtn}
+            onClick={() => setPageNumber(p => Math.min(numPages, p + 1))}
+            disabled={pageNumber >= numPages}
+          >
+            {t('COMMON.pdfViewer.next') || 'Suivant ▶'}
+          </button>
+        )}
+      </div>
+    );
+  };
+
   // Shared PDF document content
   const PdfContent = (
     <div className={styles.pdfContent} key={`${file}-${pdfReadingMode}`}>
-      {loading && <div className={styles.loader}>{t('COMMON.pdfViewer.loading')}</div>}
+      {checkingFile && <div className={styles.loader}>{t('COMMON.pdfViewer.loading')}</div>}
       <div className={styles.pdfFrame}>
         {!checkingFile && !fileExists ? (
           <div className={styles.pdfErrorMsg}>
@@ -216,7 +235,7 @@ const PdfViewer = ({ file, label = 'Open Scroll', className }) => {
                 setFileExists(false);
                 setLoading(false);
               }}
-              loading=""
+              loading={<div className={styles.loader}>{t('COMMON.pdfViewer.loading')}</div>}
               externalLinkTarget="_self"
               error={
                 <div className={styles.pdfErrorMsg}>
@@ -240,8 +259,14 @@ const PdfViewer = ({ file, label = 'Open Scroll', className }) => {
     <div className={`${styles.pdfWrapper} ${className || ''}`}>
       {/* Trigger — always visible */}
       <button className={styles.trigger} onClick={handleTrigger} type="button">
-        <span className={styles.triggerIcon}>📜</span>
-        <span className={styles.triggerLabel}>{label}</span>
+        {typeof label === 'string' ? (
+          <>
+            <span className={styles.triggerIcon}>📜</span>
+            <span className={styles.triggerLabel}>{label}</span>
+          </>
+        ) : (
+          label
+        )}
         {pdfMode === 'newWindow' && (
           <span className={styles.triggerHint}>↗️</span>
         )}
@@ -251,10 +276,11 @@ const PdfViewer = ({ file, label = 'Open Scroll', className }) => {
       {pdfMode === 'inline' && isOpen && (
         <div className={styles.inlineContainer}>
           <div className={styles.inlineHeader}>
-            <span>{label}</span>
+            {typeof label === 'string' ? <span>{label}</span> : label}
             <button className={styles.closeInline} onClick={close} type="button">×</button>
           </div>
           {PdfContent}
+          {renderFixedFooter()}
         </div>
       )}
 
@@ -263,10 +289,11 @@ const PdfViewer = ({ file, label = 'Open Scroll', className }) => {
         <div className={styles.modalOverlay} onClick={close}>
           <div className={styles.modal} onClick={e => e.stopPropagation()}>
             <div className={styles.modalHeader}>
-              <span className={styles.modalTitle}>📜 {label}</span>
+              <span className={styles.modalTitle}>📜 {typeof label === 'string' ? label : t('CRMEF_SEMESTERS.tooltip.pages') || 'Scroll'}</span>
               <button className={styles.closeModal} onClick={close} type="button">×</button>
             </div>
             {PdfContent}
+            {renderFixedFooter()}
           </div>
         </div>,
         document.body

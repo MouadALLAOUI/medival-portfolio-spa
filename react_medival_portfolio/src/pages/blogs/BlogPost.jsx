@@ -1,3 +1,4 @@
+import { getAssetById } from '../../data/mediaManager';
 import { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Share2, QrCode, Clock, Calendar, Bookmark, BookmarkCheck, ArrowLeft, ArrowRight, User, BookOpen, FileText } from 'lucide-react';
@@ -98,6 +99,8 @@ const slugify = (text) => {
     .replace(/\s+/g, '-');
 };
 
+const sessionTrackedBlogs = new Set();
+
 export default function BlogPost() {
   const { slug } = useParams();
   const { showAlert } = useAlerts();
@@ -191,8 +194,13 @@ export default function BlogPost() {
 
   useEffect(() => {
     if (!post) return;
-    unlockAchievement('read_blog_post');
-    incrementCounter('blogs_read');
+    
+    if (!sessionTrackedBlogs.has(slug)) {
+      sessionTrackedBlogs.add(slug);
+      unlockAchievement('read_blog_post');
+      incrementCounter('blogs_read');
+    }
+
     if (!isFirstVisit(`blog_${slug}`)) return;
     showAlert(t('BLOGS.post.enteringAlert'), 'greeting', 2000);
   }, [slug, showAlert, t, post, unlockAchievement, incrementCounter]);
@@ -226,60 +234,64 @@ export default function BlogPost() {
     return () => clearTimeout(timer);
   }, [post, slug]);
 
-  // Table of Contents Scroll-Spy Event Listener
+  // Combined and RequestAnimationFrame (RAF) Throttled Scroll Listener
   useEffect(() => {
-    if (headings.length === 0) return;
+    if (!post) return;
 
-    const handleScrollSpy = () => {
-      const scrollPosition = window.scrollY + 120; // 120px offset for top headers and spacing
-      let currentActive = headings[0]?.id || '';
+    let ticking = false;
 
-      for (let i = 0; i < headings.length; i++) {
-        const el = document.getElementById(headings[i].id);
-        if (el) {
-          const top = el.getBoundingClientRect().top + window.scrollY;
-          if (scrollPosition >= top) {
-            currentActive = headings[i].id;
-          } else {
-            break;
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          // 1. Calculate reading progress & word metrics
+          const content = contentRef.current;
+          let progress = 0;
+          if (content) {
+            const contentTop = content.getBoundingClientRect().top + window.scrollY;
+            const contentHeight = content.offsetHeight;
+            const scrolled = window.scrollY - contentTop;
+            progress = Math.min(100, Math.max(0, (scrolled / contentHeight) * 100));
+
+            setReadingProgress(progress);
+            setScrollProgress(progress);
+
+            const wordsReadSoFar = Math.floor((progress / 100) * totalWords);
+            setWordsRead(wordsReadSoFar);
+
+            const wordsRemaining = totalWords - wordsReadSoFar;
+            setTimeLeft(Math.ceil(wordsRemaining / 200));
           }
-        }
+
+          // 2. Calculate Table of Contents Active Heading (Scroll-Spy)
+          if (headings.length > 0) {
+            const scrollPosition = window.scrollY + 120;
+            let currentActive = headings[0]?.id || '';
+
+            for (let i = 0; i < headings.length; i++) {
+              const el = document.getElementById(headings[i].id);
+              if (el) {
+                const top = el.getBoundingClientRect().top + window.scrollY;
+                if (scrollPosition >= top) {
+                  currentActive = headings[i].id;
+                } else {
+                  break;
+                }
+              }
+            }
+            setActiveId(currentActive);
+          }
+
+          ticking = false;
+        });
+        ticking = true;
       }
-      setActiveId(currentActive);
     };
 
-    window.addEventListener('scroll', handleScrollSpy, { passive: true });
-    handleScrollSpy(); // Call immediately on load/change
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); // Fire once initially
 
-    return () => window.removeEventListener('scroll', handleScrollSpy);
-  }, [headings]);
-
-
-
-  // Scroll Progress handler
-  useEffect(() => {
-    const handleScroll = () => {
-      const content = contentRef.current;
-      if (!content) return;
-
-      const contentTop = content.getBoundingClientRect().top + window.scrollY;
-      const contentHeight = content.offsetHeight;
-      const scrolled = window.scrollY - contentTop;
-      const progress = Math.min(100, Math.max(0, (scrolled / contentHeight) * 100));
-
-      setReadingProgress(progress);
-      setScrollProgress(progress);
-
-      const wordsReadSoFar = Math.floor((progress / 100) * totalWords);
-      setWordsRead(wordsReadSoFar);
-
-      const wordsRemaining = totalWords - wordsReadSoFar;
-      setTimeLeft(Math.ceil(wordsRemaining / 200));
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [totalWords]);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [post, headings, totalWords]);
 
   // Wire images inside the rendered markdown to open in ImageViewer
   useEffect(() => {
@@ -499,7 +511,7 @@ export default function BlogPost() {
                 <div className={styles['scribeInfo']}>
                   <div className={styles['scribeAvatarFrame']}>
                     <img 
-                      src="/assets/mouad-pic-CgPENtaP.png" 
+                      src={getAssetById('mouad-pic-png').path} 
                       alt="Mouad the Coder" 
                       className={styles['scribeAvatar']}
                       onError={(e) => { e.target.src = 'https://api.dicebear.com/7.x/bottts/svg?seed=Mouad'; }}

@@ -17,7 +17,12 @@
   font-family: var(--font-body);
 
   // Headings
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-medieval);
     color: var(--md-heading);
     margin-top: var(--spacing-lg);
@@ -37,10 +42,21 @@
     padding-bottom: var(--spacing-sm);
   }
 
-  h3 { font-size: 1.75rem; }
-  h4 { font-size: 1.5rem; }
-  h5 { font-size: 1.25rem; }
-  h6 { font-size: 1rem; }
+  h3 {
+    font-size: 1.75rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  h5 {
+    font-size: 1.25rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+  }
 
   // Paragraphs
   p {
@@ -160,7 +176,8 @@
     transition: opacity 0.2s, background 0.2s;
     z-index: 1;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background: var(--md-btn-hover);
       opacity: 1 !important;
     }
@@ -213,7 +230,8 @@
   }
 
   // Lists
-  ul, ol {
+  ul,
+  ol {
     margin-bottom: var(--spacing-md);
     padding-left: var(--spacing-lg);
     color: var(--md-text);
@@ -241,7 +259,8 @@
     border-radius: var(--border-rad-sm);
     overflow: hidden;
 
-    th, td {
+    th,
+    td {
       border: 1px solid var(--md-border);
       padding: var(--spacing-sm) var(--spacing-md);
       text-align: left;
@@ -299,7 +318,12 @@
     padding: var(--spacing-lg);
     line-height: 1.2;
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       margin-top: var(--spacing-lg);
       margin-bottom: var(--spacing-lg);
     }
@@ -314,10 +338,21 @@
       padding-bottom: var(--spacing-sm);
     }
 
-    h3 { font-size: 1.5rem; }
-    h4 { font-size: 1.2rem; }
-    h5 { font-size: 1.1rem; }
-    h6 { font-size: 1rem; }
+    h3 {
+      font-size: 1.5rem;
+    }
+
+    h4 {
+      font-size: 1.2rem;
+    }
+
+    h5 {
+      font-size: 1.1rem;
+    }
+
+    h6 {
+      font-size: 1rem;
+    }
 
     p {
       margin-bottom: var(--spacing-md);
@@ -333,15 +368,50 @@
   }
 
   @media (max-width: 900px) {
-    h1 { font-size: 1.5rem; }
-    h2 { font-size: 1.3rem; }
-    h3 { font-size: 1.1rem; }
-    h4 { font-size: 1rem; }
-    h5 { font-size: 0.85rem; }
-    h6 { font-size: 0.7rem; }
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+    }
+
+    h4 {
+      font-size: 1rem;
+    }
+
+    h5 {
+      font-size: 0.85rem;
+    }
+
+    h6 {
+      font-size: 0.7rem;
+    }
 
     br {
       line-height: 1;
     }
+  }
+}
+
+/* ===== ACCESSIBILITY & CONTRAST GUARANTEES FOR CODE BLOCKS ===== */
+.markdown-content,
+.projects-overview,
+.blog-post-page {
+
+  pre.code-block-container,
+  .code-block-container code {
+    background-color: var(--md-code-bg, var(--bg-tertiary)) !important;
+    color: var(--md-code-text, var(--text-primary)) !important;
+  }
+
+  code:not(pre code) {
+    background-color: var(--md-inline-bg, var(--bg-tertiary)) !important;
+    color: var(--md-inline-text, var(--accent)) !important;
+    border: 1px solid var(--md-inline-border, var(--border)) !important;
   }
 }

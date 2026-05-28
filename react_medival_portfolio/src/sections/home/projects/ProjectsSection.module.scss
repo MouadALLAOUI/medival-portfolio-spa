@@ -108,7 +108,8 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background: var(--card-bg);
+  // background: var(--card-bg);
+  background: #909090;
   border: 1px solid var(--border);
   border-radius: var(--card-radius, 14px);
   padding: 10px;
@@ -129,7 +130,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background-image: var(--bg-img, url('/assets/download.png'));
+    background-image: var(--bg-img, url('/media/download.png'));
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -139,7 +140,7 @@
   }
 
   &:hover::before {
-    opacity: 0.35;
+    opacity: 0.75;
   }
 
   &:hover {
@@ -210,7 +211,9 @@
   white-space: nowrap;
   font-size: 14px;
   font-style: italic;
-  color: hsla(48, 97%, 77%, 0.8);
+  // color: hsla(48, 97%, 77%, 0.8);
+  color: white;
+  background: #000;
   line-height: 21px;
   margin-bottom: 12px;
 }
@@ -294,16 +297,23 @@
   max-height: 80vh;
   height: 0;
   width: 0;
-  background-image: linear-gradient(to bottom, #1c1917, #292524);
+  background: var(--card-bg);
   padding: 0;
-  border: 0.2px solid rgba(180, 83, 9, 0.3);
+  border: 1px solid var(--border);
   overflow: hidden auto;
   transform: scaleX(0) scaleY(0);
   transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
   opacity: 0;
   visibility: hidden;
   border-radius: 24px;
+  color: var(--text-primary);
+
+  :global([data-theme="medieval"]) & {
+    background-image: linear-gradient(to bottom, #1c1917, #292524);
+    border: 2px solid rgba(180, 83, 9, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
 
   &.active {
     transform: scale(1);
@@ -324,11 +334,16 @@
   .title {
     font-size: 36px;
     line-height: 41.4px;
-    color: rgb(253 230 138 / 1);
+    color: var(--text-primary);
     margin-bottom: 16px;
     letter-spacing: 0.05em;
-    border-bottom: 2px solid rgba(217, 119, 6, 0.3);
+    border-bottom: 2px solid var(--border);
     padding-bottom: 12px;
+
+    :global([data-theme="medieval"]) & {
+      color: rgb(253 230 138 / 1);
+      border-bottom-color: rgba(217, 119, 6, 0.3);
+    }
 
     &:hover {
       border-color: rgb(245 158 11 / 1);
@@ -376,15 +391,23 @@
   h3 {
     font-size: 20px;
     line-height: 28px;
-    color: rgb(252 211 77 / 1);
+    color: var(--accent);
     margin-bottom: 12px;
     letter-spacing: 0.025em;
+
+    :global([data-theme="medieval"]) & {
+      color: rgb(252 211 77 / 1);
+    }
   }
 
   p {
-    color: rgba(254, 243, 199, 0.9);
+    color: var(--text-secondary);
     margin-bottom: 24px;
     font-family: sans-serif;
+
+    :global([data-theme="medieval"]) & {
+      color: rgba(254, 243, 199, 0.9);
+    }
   }
 
   ul,
@@ -392,7 +415,11 @@
     position: relative;
     margin-bottom: 24px;
     padding-left: 32px;
-    color: rgba(254, 243, 199, 0.9);
+    color: var(--text-secondary);
+
+    :global([data-theme="medieval"]) & {
+      color: rgba(254, 243, 199, 0.9);
+    }
 
     li {
       display: flex;

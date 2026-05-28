@@ -42,10 +42,19 @@ export default function BlogsPage() {
   // Handle scroll to hide scroll indicator
   useEffect(() => {
     const bodyContainer = document.getElementById('body-container') || window;
+    let ticking = false;
+
     const handleScroll = () => {
-      const scrollTop = bodyContainer.scrollTop !== undefined ? bodyContainer.scrollTop : window.scrollY;
-      setShowScroll(scrollTop < 100);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollTop = bodyContainer.scrollTop !== undefined ? bodyContainer.scrollTop : window.scrollY;
+          setShowScroll(scrollTop < 100);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
+
     bodyContainer.addEventListener('scroll', handleScroll);
     handleScroll();
     return () => bodyContainer.removeEventListener('scroll', handleScroll);

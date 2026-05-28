@@ -91,13 +91,13 @@ body::before {
 }
 
 [data-theme="medieval"][data-custom-cursor="true"] body {
-  cursor: url('/assets/cursor/WenrexaAssetsMagicCursorsPack/36x36px/Cursor Default.png'), auto;
+  cursor: url('/media/cursor/WenrexaAssetsMagicCursorsPack/36x36px/Cursor Default.png'), auto;
 
   a,
   button,
   [role="button"],
   .clickable {
-    cursor: url('/assets/cursor/WenrexaAssetsMagicCursorsPack/36x36px/Cursor Magic Use Blue.png'), pointer;
+    cursor: url('/media/cursor/WenrexaAssetsMagicCursorsPack/36x36px/Cursor Magic Use Blue.png'), pointer;
   }
 }
 

@@ -11,15 +11,16 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
-  background: rgba(18, 11, 8, 0.95);
-  backdrop-filter: blur(8px);
-  border-bottom: 2px solid var(--border-strong, var(--parchment-border));
+  background: var(--bg-primary);
+  border-bottom: 2px solid var(--border);
   z-index: 1000;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--card-shadow);
+  transition: background var(--transition), border-color var(--transition);
 
-  :global([data-theme="day"]) & {
-    background: rgba(245, 230, 202, 0.95);
-    border-bottom-color: var(--gold);
+  :global([data-theme="medieval"]) & {
+    background: var(--parchment-dark);
+    border-bottom-color: var(--parchment-border);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   }
 }
 
@@ -46,10 +47,12 @@
   }
 }
 
+/* ── Navbar layouts ── */
 .nav {
   display: flex;
   gap: 2rem;
   align-items: center;
+  transition: background var(--transition), border-color var(--transition);
 
   @include tablet {
     display: none;
@@ -58,22 +61,143 @@
     left: 0;
     width: 100%;
     flex-direction: column;
-    background: rgba(18, 11, 8, 0.98);
-    padding: 2rem;
+    background: var(--bg-secondary);
+    padding: 1.5rem;
     border-bottom: 2px solid var(--border-strong);
-    gap: 1.5rem;
-    box-shadow: var(--card-shadow);
+    gap: 0.75rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
 
     &.open {
       display: flex;
     }
 
-    :global([data-theme="day"]) & {
-      background: rgba(245, 230, 202, 0.98);
+    :global([data-theme="medieval"]) & {
+      background: linear-gradient(to bottom, var(--parchment-dark), rgba(232, 213, 176, 0.98));
+      border-bottom: 3px solid var(--color-gold, var(--parchment-border));
+      box-shadow: 0 8px 24px rgba(44, 24, 16, 0.3);
     }
   }
 }
 
+.desktopMenu {
+  display: flex;
+
+  @include tablet {
+    display: none !important;
+  }
+}
+
+.mobileMenu {
+  display: none;
+
+  @include tablet {
+    display: none;
+
+    &.open {
+      display: flex;
+    }
+  }
+
+  .navLink {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm, 6px);
+    border-bottom: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover,
+    &.active {
+      background: var(--accent-light, rgba(37, 99, 235, 0.1));
+      color: var(--accent);
+      border-bottom: none;
+    }
+
+    :global([data-theme="medieval"]) & {
+      color: var(--color-brown);
+      border-bottom: none;
+
+      &:hover,
+      &.active {
+        background: rgba(139, 69, 19, 0.1);
+        color: var(--color-dark-brown, var(--dark-brown-val));
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+/* ── Custom hover Dropdowns ── */
+.dropdownWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.navLinkTrigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chevronIcon {
+  transition: transform var(--transition);
+}
+
+.dropdownWrapper:hover .chevronIcon {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 200px;
+  z-index: 1050;
+  box-shadow: var(--card-shadow);
+
+  :global([data-theme="medieval"]) & {
+    background: var(--parchment-dark);
+    border: 2px solid var(--parchment-border);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(44, 24, 16, 0.4);
+  }
+
+  .navLink {
+    width: 100%;
+    text-align: center;
+    border-bottom: none;
+
+    &:hover,
+    &.active {
+      border-bottom: none;
+      color: var(--accent, var(--gold));
+    }
+
+    :global([data-theme="medieval"]) & {
+      color: var(--color-brown);
+
+      &:hover,
+      &.active {
+        color: var(--gold-val);
+      }
+    }
+  }
+}
+
+/* ── Nav links and buttons ── */
 .navLink {
   font-family: var(--font-heading);
   font-size: 0.9rem;
@@ -84,6 +208,7 @@
   cursor: pointer;
   border-bottom: 1px solid transparent;
   padding-bottom: 2px;
+  text-decoration: none;
 
   &:hover {
     color: var(--accent, var(--gold));
@@ -92,12 +217,11 @@
   &.active {
     color: var(--accent, var(--gold));
     border-bottom-color: var(--accent, var(--gold));
-    text-shadow: 0 0 8px rgba(198, 160, 82, 0.6);
   }
 
   :global([data-theme="medieval"]) & {
     font-family: var(--font-cinzel);
-    color: var(--parchment-val);
+    color: var(--color-brown);
 
     &:hover,
     &.active {
@@ -109,19 +233,39 @@
 
 .menuBtn {
   display: none;
-  background: transparent;
-  border: none;
-  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
   color: var(--text-primary);
   cursor: pointer;
-  transition: color var(--transition);
+  transition: all var(--transition);
+  align-items: center;
+  justify-content: center;
+  padding: 0;
 
   &:hover {
+    border-color: var(--accent);
+    background: var(--accent-light, var(--bg-tertiary));
     color: var(--accent);
   }
 
   @include tablet {
-    display: block;
+    display: flex;
+  }
+
+  :global([data-theme="medieval"]) & {
+    border-radius: 14px;
+    border: 2px solid var(--color-gold);
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--color-parchment);
+
+    &:hover {
+      background: var(--color-gold);
+      color: #000;
+      box-shadow: 0 0 10px var(--color-gold-light);
+    }
   }
 }
 
@@ -132,23 +276,37 @@
 }
 
 .settingsBtn {
-  background: transparent;
-  border: none;
-  font-size: 1.25rem;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
   color: var(--text-primary);
   cursor: pointer;
-  transition: transform var(--transition, 200ms ease), color var(--transition, 200ms ease);
+  transition: all var(--transition);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.25rem;
+  padding: 0;
 
   &:hover {
-    color: var(--accent, var(--gold));
+    border-color: var(--accent);
+    background: var(--accent-light, var(--bg-tertiary));
+    color: var(--accent);
     transform: rotate(30deg);
   }
 
   :global([data-theme="medieval"]) & {
-    color: var(--gold-val, var(--gold));
+    border-radius: 14px;
+    border: 2px solid var(--color-gold);
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--color-parchment);
+
+    &:hover {
+      background: var(--color-gold);
+      color: #000;
+      box-shadow: 0 0 10px var(--color-gold-light);
+      transform: rotate(30deg);
+    }
   }
 }

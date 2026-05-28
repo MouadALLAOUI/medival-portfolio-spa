@@ -54,9 +54,13 @@ const ChatWindow = () => {
 
   // Focus input when window opens
   useEffect(() => {
+    let timer;
     if (isOpen && !isMinimized && inputRef.current) {
-      setTimeout(() => inputRef.current?.focus(), 100);
+      timer = setTimeout(() => inputRef.current?.focus(), 100);
     }
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
   }, [isOpen, isMinimized]);
 
   const appendUserMessage = (text) => {

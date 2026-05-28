@@ -1,3 +1,4 @@
+import { getAssetById } from './mediaManager';
 const skills = [
   {
     id: 1,
@@ -7,7 +8,7 @@ const skills = [
     level: 5, // 1 to 5 scale
     group: "general",
     overview: {
-      thumbnail: "/media/Skills/1/thumb.png",
+      thumbnail: getAssetById('skills-1-thumb').path,
       intro: "<strong>Frontend Sorcery</strong> is the noble art of turning raw elements—<code>HTML</code>, <code>CSS</code>, and <code>JavaScript</code>—into living, breathing pages. With this magic, I forge <code>responsive designs</code>, <code>interactive runes</code>, and smooth pathways for every traveler who visits.",
       desc: "Frontend is the power to shape designs into real, working code—like turning scrolls into living portals. I use different languages and sometimes ancient frameworks to summon full user experiences.\nAs this magic is rooted in webcraft, mastering the scrolls of `HTML` and `CSS` and knowing the basics of `JavaScript` is essential. From these, other tools arise—like the mighty `React` (both for web `JS` and mobile `Native`), and spells such as `Vue`, `Next`, and `Electron`.\nThis path focuses on the **`User Experience (UX)`**. A skilled frontend mage must know how to build responsive layouts and summon charming `User Interfaces (UI)` that work well across any device or kingdom.\n\n#### 🧰 Tools of the Trade\n\n- VS Code (`my spellbook`)\n- Browsers: Chrome, Firefox, Edge (`testing portals`)\n- Figma (`design forge`)\n- Canva (`visual scroll maker`)\n\n#### 📚 Languages & Frameworks\n\n> ✦ Core Runes \n\n- HTML\n- CSS\n- JavaScript\n\n> ✦ Arcane Support \n\n- React js\n- React native\n- Vue js\n- Laravel `.blade.php`\n- Next js\n- Electron\n- Scss\n- Bootstrap\n- Tailwind CSS",
       features: [
@@ -19,31 +20,31 @@ const skills = [
       ],
       imgs: [
         {
-          src: "/media/Skills/1/figma-arkani.png",
+          src: getAssetById('skills-1-figma-arkani').path,
           alt: "figma arkani app",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/1/figma-stockmanagement.png",
+          src: getAssetById('skills-1-figma-stockmanagement').path,
           alt: "figma gestion de stock",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/1/figma pharma.png",
+          src: getAssetById('skills-1-figma-pharma').path,
           alt: "figma pharma",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/1/canva GDD.png",
+          src: getAssetById('skills-1-canva-gdd').path,
           alt: "canva GDD",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/1/vs style.png",
+          src: getAssetById('skills-1-vs-style').path,
           alt: "vs style",
           isBlured: false,
           isMobile: false,
@@ -61,7 +62,7 @@ const skills = [
     level: 4, // 1 to 5 scale
     group: "general",
     overview: {
-      thumbnail: "/media/skills/2/thumb.png",
+      thumbnail: getAssetById('skills-2-thumb').path,
       intro: "<strong>Backend alchemy</strong> is the sacred art of turning logic and data into real-world applications. Using tools like Node.js, Python, and SQL, backend alchemists build server-side magic, manage spellbooks (databases), and keep the realm running smoothly.",
       desc: "Backend is the power to craft logic, store information, and shape how data flows through an application. It lets you build functions and APIs that store, update, or fetch data from enchanted vaults—known as databases.\nThese vaults can be **relational** (like `SQL`, `Oracle`, `SQLite`) or **non-relational** (like `MongoDB`, `Firebase`, or `PostgreSQL`).\nBackend mages often carry tools like `XAMPP` or `WAMP` to summon local servers, `Postman` to test API scrolls, and `Atlas` to gaze into the MongoDB cloud.\nThe common tongues of backend magic include `PHP`, `JavaScript`, and `Python`. Each has its own schools—`Laravel`, `CodeIgniter`, and `Django`—while `Express.js` and `Next.js` serve both backend and frontend domains.\n\n#### 🧰 Backend Tools of the Trade \n- Postman (for scroll testing)\n- WAMP / XAMPP (local server summoning)\n- MongoDB Atlas (cloud vault access)\n- PHPMyAdmin\n- MySQL Workbench — GUI for managing MySQL databases.\n- MongoDB Compass — GUI for working with MongoDB (NoSQL).\n\n#### 📚 Backend Languages & Frameworks\n\n> ✦ Backend Core Runes\n\n- PHP\n- JavaScript\n- SQL\n- Python\n- 🧰 CLI TOOLS\n  - npm\n  - composer\n\n> ✦ Backend Arcane Support\n\n- Laravel\n- CodeIgniter\n- Express.js\n- Next.js\n- Django\n- MySQL\n- SQLite\n- MongoDB\n- Firebase\n- Axios",
       features: [
@@ -73,37 +74,37 @@ const skills = [
       ],
       imgs: [
         {
-          src: "/media/Skills/2/postman.png",
+          src: getAssetById('skills-2-postman').path,
           alt: "postman",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/2/postman methode.png",
+          src: getAssetById('skills-2-postman-methode').path,
           alt: "postman methode",
           isBlured: false,
           isMobile: true,
         },
         {
-          src: "/media/Skills/2/wamp launch.png",
+          src: getAssetById('skills-2-wamp-launch').path,
           alt: "wamp launch",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/2/wamp menu.png",
+          src: getAssetById('skills-2-wamp-menu').path,
           alt: "wamp menu",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/2/phpmyadmin shema.png",
+          src: getAssetById('skills-2-phpmyadmin-shema').path,
           alt: "phpmyadmin shema",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/2/phpmyadmin structure.png",
+          src: getAssetById('skills-2-phpmyadmin-structure').path,
           alt: "phpmyadmin structure",
           isBlured: false,
           isMobile: false,
@@ -121,7 +122,7 @@ const skills = [
     level: 1,
     group: "general",
     overview: {
-      thumbnail: "/media/Skills/3/thumb.jpg",
+      thumbnail: getAssetById('skills-3-thumb').path,
       intro: "<strong>Security</strong> is the art of shielding systems from the dark forces of cyberspace. With this skill, I deploy firewalls, encryption, and secure protocols to protect users, data, and digital strongholds.<br /><br /> <strong>Security Wards</strong> focuses on forging and maintaining defenses against both common and advanced threats. From encryption and firewalls to OWASP defenses and secure authentication, these techniques help keep the realm safe from intruders.",
       desc: "Security is about crafting strong barriers—both visible and hidden—against digital attacks. It involves defending systems with tools like firewalls, encrypted tunnels (SSL/TLS, PGP), and access control spells.\n\nIn my journey, I’ve trained with different tools. Some help me test my own defenses through controlled attacks (`Burp Suite`, `Nmap`, `Wireshark`, `Zenmap`). Others guide me through challenges and learning quests—like `TryHackMe` and `PortSwigger`.\n\nWhile these arts can be practiced on any platform, I find their magic shines brightest on Linux systems—at least for me.\n\n\n#### 🧰 Security Tools of the Trade\n\n- burp Suite\n- Nmap / Zenmap\n- kleopatra (certificat encrypt)\n- Wireshark\n- [cryptool](https://www.cryptool.org/)\n- TryHackMe / PortSwigger (training camps)\n\n\n#### 📚 Security Languages & Frameworks\n\n> **✦ Security Core Runes**\n\n- Python\n- RSA\n- Shell Scripting\n\n\n> **✦ Security Arcane Support**\n\n- Python\n- bash scripting\n- Linux Networking Commands (`iptables`, `netstat`,\n`tcpdump`)",
       features: [
@@ -132,31 +133,31 @@ const skills = [
       ],
       imgs: [
         {
-          src: "/media/Skills/3/burp.png",
+          src: getAssetById('skills-3-burp').path,
           alt: "burp",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/3/burp2.png",
+          src: getAssetById('skills-3-burp2').path,
           alt: "burp2",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/3/kleopatra.png",
+          src: getAssetById('skills-3-kleopatra').path,
           alt: "kleopatra",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/3/wireshark.png",
+          src: getAssetById('skills-3-wireshark').path,
           alt: "wireshark",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/3/zenmap.png",
+          src: getAssetById('skills-3-zenmap').path,
           alt: "zenmap",
           isBlured: false,
           isMobile: false,
@@ -174,7 +175,7 @@ const skills = [
     level: 4,
     group: "general",
     overview: {
-      thumbnail: "/media/Skills/4/thumb.jpg",
+      thumbnail: getAssetById('skills-4-thumb').path,
       intro: "<strong>AI Conjuring</strong>is the craft of communicating with intelligent entities through carefully forged prompts and guided interaction.<br />With words as my spells, I awaken machines to assist, advise, and create.",
       desc: "I used my knowledge of artificial intelligence to **build the chatbot featured at the top of my portfolio**, blending both technical understanding and prompt mastery.\n\nThis skill focuses on **interacting with AI-powered entities**, crafting prompts, and guiding intelligent systems to respond with clarity and purpose. But it doesn’t stop there—my background also includes **hands-on experience with machine learning**, data processing, anomaly detection, and building custom models using tools like Scikit-learn and TensorFlow.\n\nIn a world where AI is expanding its domain, **AI Conjuring** allows me to both **command existing intelligence through precise interaction**, and **forge new capabilities through code and data**.\n\nWith this dual ability, I can adapt to any challenge—either by summoning insight through prompts or crafting solutions with algorithms.\n\n### ✨ AI Known Spells\n\n- Prompt Engineering\n- Refining AI Outputs\n- Context Management\n- Instruction-based Prompting\n- Creative Prompt Design\n- Prompt Chaining & Iteration\n\n### 🧰 Ai Tools\n\n- Open ai : ChatGPT\n- Google : Gemini\n- Microsoft : Copilot\n- DeepSeek\n- AliBaba : Qwen\n- Claude\n\n> These are the familiars I call upon for different tasks.\n\n### 📚 AI Languages & Frameworks\n\n> **✦ AI Core Runes**\n\n- English (Clear, Structured Prompts)\n- Markdown (For Presentation & Clarity)\n\n> **✦ AI Arcane Support**\n\n- Web Browsers\n- Prompt Templates\n- Notebook Environments",
       features: [
@@ -187,31 +188,31 @@ const skills = [
       ],
       imgs: [
         {
-          src: "/media/Skills/4/chatgpt.png",
+          src: getAssetById('skills-4-chatgpt').path,
           alt: "chatgpt",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/4/deepseek.png",
+          src: getAssetById('skills-4-deepseek').path,
           alt: "deepseek",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/4/manus.png",
+          src: getAssetById('skills-4-manus').path,
           alt: "manus",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/4/qwen.png",
+          src: getAssetById('skills-4-qwen').path,
           alt: "qwen",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/4/venice ai.png",
+          src: getAssetById('skills-4-venice-ai').path,
           alt: "venice",
           isBlured: false,
           isMobile: false,
@@ -229,7 +230,7 @@ const skills = [
     level: 3,
     group: "general",
     overview: {
-      thumbnail: "/media/Skills/5/thumb.jpg",
+      thumbnail: getAssetById('skills-5-thumb').path,
       intro: "<strong>Mobile Enchantments</strong> involve casting cross-platform spells to build interactive mobile apps.<br />Creating responsive and engaging mobile applications with React Native and Flutter.",
       desc: "**Mobile Enchantments** is the art of shaping spells that fit the magical tomes carried by every traveler and noble in the realm. With the right incantations, I turn ideas into touchable enchantments—apps that respond to every scroll, tap, and whisper.\n\nTo forge these mobile spells, I use a mix of old and new magic. Sometimes I draw upon general-purpose spells from the frontlines like `HTML`, `CSS`, and `JavaScript`, combined with the sacred teachings of `Responsive Design`. Other times, I wield more focused tools of the trade—like the hybrid scrolls of `React Native` and `Expo`.\n\nThough I’ve also touched the deeper magics of `Swift`,  `Kotlin` and `Flutter`, those paths still demand patience and practice. Yet with each trial, my spellbook grows stronger.\n\n### 🧰 Mobile Tools\n\n- Android Studio\n- Expo\n- ADB (Android Debug Bridge)\n- BlueStacks\n- VS Code\n- Physical Devices (for real-world testing)\n\n### 📚 Mobile Languages & Frameworks\n\n> **✦ Mobile Core Runes**\n\n- React Native\n- Kotlin\n- JavaScript\n\n> **✦ Mobile Arcane Support**\n\n- HTML & CSS (for hybrid layouts)\n- Virtual Devices (emulators)\n- Figma (UI/UX crafting)\n- Firebase (backend spells)\n- REST APIs (communication magic)",
       features: [
@@ -241,37 +242,37 @@ const skills = [
       ],
       imgs: [
         {
-          src: "/media/Skills/5/Dssissa.png",
+          src: getAssetById('skills-5-dssissa').path,
           alt: "dssissa",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/5/Dssissa1.png",
+          src: getAssetById('skills-5-dssissa1').path,
           alt: "dssissa1",
           isBlured: false,
           isMobile: true,
         },
         {
-          src: "/media/Skills/5/Dssissa2.png",
+          src: getAssetById('skills-5-dssissa2').path,
           alt: "dssissa2",
           isBlured: false,
           isMobile: true,
         },
         {
-          src: "/media/Skills/5/Arkani.png",
+          src: getAssetById('skills-5-arkani').path,
           alt: "Arkani",
           isBlured: false,
           isMobile: true,
         },
         {
-          src: "/media/Skills/5/Arkani1.png",
+          src: getAssetById('skills-5-arkani1').path,
           alt: "Arkani1",
           isBlured: false,
           isMobile: true,
         },
         {
-          src: "/media/Skills/5/Arkani3.png",
+          src: getAssetById('skills-5-arkani3').path,
           alt: "Arkani2",
           isBlured: false,
           isMobile: true,
@@ -289,7 +290,7 @@ const skills = [
     level: 4,
     group: "general",
     overview: {
-      thumbnail: "/media/skills/6/thumb.jpg",
+      thumbnail: getAssetById('skills-6-thumb').path,
       intro: "<strong>Web Explorer</strong> — Navigating the enchanted realms of the Internet.<br/>Web Explorer is the art of understanding how the web truly works — from HTTP incantations to domain name rituals, browser behavior, and the hidden currents of online realms.",
       desc: "To become a true Web Explorer is to learn how the invisible threads of the Internet are woven. This skill grants me the ability to read browser scrolls, trace mysterious links, and understand the behavior of modern web portals. I study the sacred protocols — `HTTP` and `HTTPS` — and the gatekeepers of the web, such as `DNS` and domain lords.\n\nFrom wielding inspection tools like `DevTools` to analyzing the flow of requests and responses, I can uncover how a page breathes, how resources are summoned, and where latency hides in the shadows. I navigate APIs like ancient maps, fetch data from distant servers, and learn how different clients and spells interact.\n\nWith this knowledge, I can optimize performance, reduce loading rituals, and better understand how a single click leads to an entire world of magic behind the screen.\n\n### 🧰 Web Explorer Tools\n\n- Search Engines (Google, DuckDuckGo...)\n- Web Browsers (Chrome, Firefox, Brave...)\n- DevTools\n- Inspect Element\n- Online API tools (Postman, ReqBin)\n\n### 📚 Web Explorer Languages & Frameworks\n\n> **✦ Web Explorer Core Runes**\n\n- English\n- French\n- Arabic\n\n> **✦ Web Explorer Arcane Support**\n\n- HTML & CSS & JavaScript\n- Browser DevTools\n- API Interfaces",
       features: [
@@ -302,13 +303,13 @@ const skills = [
       ],
       imgs: [
         {
-          src: "/media/Skills/6/searchEngine.png",
+          src: getAssetById('skills-6-searchengine').path,
           alt: "search Engine",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/6/Browsers.png",
+          src: getAssetById('skills-6-browsers').path,
           alt: "web Browsers",
           isBlured: false,
           isMobile: false,
@@ -326,7 +327,7 @@ const skills = [
     level: 2,
     group: "general",
     overview: {
-      thumbnail: "/media/skills/7/thumb.jpg",
+      thumbnail: getAssetById('skills-7-thumb').path,
       intro: "Data Divination is the art of gathering raw numbers, cleansing them of noise, and shaping them into charts and symbols that reveal truths unseen by the naked eye.",
       desc: "Much like a seer reading runes by the fire, I study datasets to discover the patterns, trends, and whispers they carry. Using the enchanted tools of this age — from the `Python` language to the mystical scrolls of `Excel` — I turn piles of raw numbers into clear stories.\n\nWith the right incantations, I clean and prepare messy data, forge visualizations in the form of charts and graphs, and uncover hidden links between values. Whether it's a simple comparison or the early signs of a coming trend, my goal is to bring clarity to the fog of uncertainty.\n\nThrough `Matplotlib`, `Pandas`, and other analytical runes, I turn silent data into actionable insight — guiding decisions like a trusted oracle.\n\n### 🧰 Data Divination Tools\n\n- Excel\n- Python\n- Jupyter Notebook\n- Matplotlib\n- Pandas\n\n\n### 📚 Data Divination Languages & Frameworks\n\n> **✦ Data Divination Core Runes**\n\n- python\n\n> **✦ Data Divination Arcane Support**\n\n- Matplotlib\n- Pandas\n- Charts\n- Graphs",
       features: [
@@ -339,13 +340,13 @@ const skills = [
       ],
       imgs: [
         {
-          src: "/media/Skills/7/Dashboard.png",
+          src: getAssetById('skills-7-dashboard').path,
           alt: "Dashboard",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/7/Rapport.png",
+          src: getAssetById('skills-7-rapport').path,
           alt: "Rapport",
           isBlured: false,
           isMobile: false,
@@ -363,7 +364,7 @@ const skills = [
     level: 3,
     group: "general",
     overview: {
-      thumbnail: "/media/skills/8/thumb.jpg",
+      thumbnail: getAssetById('skills-8-thumb').path,
       intro: "<strong>Code Enchantments</strong> — Crafting elegant and efficient code-spells o banish chaos and summon clarity.<br /><strong>Code Enchantments</strong> is the art of writing clean, maintainable, and reusable code through sacred practices and timeless patterns.",
       desc: "Code Enchantments are the sacred practices and methods that ensure a codebase remains clean, understandable, and reliable across time. They are not always visible on the surface—your app may function the same whether or not these practices are used—but their influence lies deeper, shaping how easily the code can be read, maintained, and expanded without introducing new bugs.\n\nMessy code, though functional, is like a crumbling foundation: it slows down development, makes debugging a nightmare, and turns collaboration into a burden. Over time, every developer realizes that disorder in the code eventually spreads into the workflow itself—reducing productivity, creating hidden risks, and making even simple tasks frustrating. Clean, enchanted code, on the other hand, improves comfort during development, speeds up problem-solving, and ensures future stability.\n\nThe role of Code Enchantments grows stronger in collaborative environments. When working on larger projects with multiple developers, the difference between structured, consistent code and chaotic fragments is enormous. Code that is difficult to read or inconsistent in its structure becomes a barrier for teammates, while code shaped by enchantments is a shared language that everyone can understand, modify, and extend without fear.\n\nPracticing Code Enchantments means embracing best practices that give your work a long lifespan. It means writing code that is reusable across different projects, adaptable to new requirements, and flexible enough to endure the inevitable evolution of technology. It also means developing habits that make clean code your default state of work, not just an afterthought.\n\nThe arsenal of enchantments includes powerful tools such as `TypeScript` for type safety, `regular expressions (regex)` for precise text manipulation, `SASS` and other CSS libraries for structured styling, and the disciplined use of `comments` and `documentation` to record the logic behind your spells. Tools like `eslint`, `prettier`, and `editorconfig` stand as guardians of consistency, ensuring that formatting and structure are never neglected.\n\nBut the realm of Code Enchantments is vast—beyond these examples lies a treasure of patterns, guidelines, and utilities crafted by generations of developers. Design patterns, clean architecture principles, unit testing frameworks, and dependency managers are all part of the enchanted library that a wise developer draws upon. Over time, these practices become second nature, flowing through your work as naturally as writing the code itself.\n\nIn the end, Code Enchantments are not just about discipline—they are about legacy. A well-enchanted codebase becomes timeless: a living grimoire that others can read, learn from, and build upon, ensuring that your work continues to thrive long after the initial spell has been cast.\n\n### 🧰 Code Enchantments Tools\n\n- eslint – the guardian against unclean code\n- prettier – the formatter’s wand\n- editorconfig / indentation – the keepers of consistency\n- markdown – scrolls of documentation\n\n### 📚 Code Enchantments Languages & Frameworks\n\n> **✦ Code Enchantments Core Runes**\n\n- eslint\n- typescript\n- sass\n- best practice methode\n\n> **✦ Code Enchantments Arcane Support**\n\n- prettier extention\n- Color palettes & style guides",
       features: [
@@ -375,25 +376,25 @@ const skills = [
       ],
       imgs: [
         {
-          src: "/media/Skills/8/eslint.png",
+          src: getAssetById('skills-8-eslint').path,
           alt: "eslint",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/8/editorconfig.png",
+          src: getAssetById('skills-8-editorconfig').path,
           alt: "editorconfig",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/8/markdown.png",
+          src: getAssetById('skills-8-markdown').path,
           alt: "markdown",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/8/documentation.png",
+          src: getAssetById('skills-8-documentation').path,
           alt: "documentation",
           isBlured: false,
           isMobile: false,
@@ -411,7 +412,7 @@ const skills = [
     level: 4,
     group: "general",
     overview: {
-      thumbnail: "/media/Skills/9/thumb.png",
+      thumbnail: getAssetById('skills-9-thumb').path,
       intro: "<strong>Mentorship</strong> is the magical act of teaching and empowering others to grow with confidence—unlocking their true potential through patience, empathy, and guidance.</br><strong>Mentorship</strong> It is the art of sharing knowledge, providing feedback, and nurturing growth in others while continuing to learn yourself.",
       desc: "Mentorship is the art of guiding others toward mastery—helping them find clarity, purpose, and balance on their learning path. It is not about showing off what you know, but about **passing on what experience has taught you** and helping others avoid the pitfalls you once faced.\n\nThis craft extends far beyond technical skill. It demands empathy, communication, and patience. It’s about **listening more than speaking**, allowing others to make mistakes safely, and gently steering them toward better solutions—without breaking their confidence or spirit.\n\nThrough mentoring, I’ve learned to adapt to **different personalities, ages, genders, and cultures**. Every person learns differently, and it’s my role to understand that rhythm—sometimes by guiding softly, sometimes by pushing a little harder, but always with kindness and respect.\n\nMentorship also taught me humility. To mentor others, I must remain a **lifelong learner**—curious, open-minded, and unafraid to admit mistakes. The moment you believe you know everything, you stop growing. But when you embrace the mindset of a learner, every conversation becomes a new opportunity for discovery.\n\nMy mentorship journey reaches beyond coding. In the gaming realm, I once took over leadership of a guild and mentored many players—helping them refine their strategies, work as a team, and ultimately reach the top ranks together. That experience taught me how leadership and mentorship intertwine: both require trust, consistency, and a deep belief in others’ potential.\n\nAnd in the real world, I now serve as a **teacher in a private school**, guiding students on their own paths of learning and creativity. Whether it’s through teaching, coding, or gaming, I find meaning in helping others evolve—not just in skill, but in mindset and self-belief.\n\nMentorship, to me, is not a role—it’s a calling. It is the quiet joy of seeing someone you’ve guided take flight on their own.\n\n### ✨ Mentorship Known Spells\n\n- Pair Programming & Collaboration\n- Knowledge Sharing & Debugging Guidance\n- Learning Path Design\n- Code Reviews & Constructive Feedback\n- Communication & Soft Skill Development\n- Adaptable Teaching & Leadership Styles\n\n### 🧰 Mentorship Tools\n\n- **AnyDesk / TeamViewer** — Remote live assistance\n- **Zoom / Google Meet** — Virtual mentorship sessions\n- **Slack / Discord** — Communication & ongoing community support\n- **GitHub** — Sharing, reviewing, and collaborating on code\n- **Face-to-Face Mentoring** — Personal interaction and hands-on teaching\n\n### 📚 Mentorship\n\n> **✦ Mentorship Core Runes**\n\n- Fundamentals of Programming\n- Clear Documentation & Constructive Feedback\n- Communication, Empathy, and Leadership",
       features: [
@@ -424,19 +425,19 @@ const skills = [
       ],
       imgs: [
         {
-          src: "/media/Skills/9/anydesk.png",
+          src: getAssetById('skills-9-anydesk').path,
           alt: "anydesk",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/9/cs teacher.png",
+          src: getAssetById('skills-9-cs-teacher').path,
           alt: "cs teacher",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/9/teacher.png",
+          src: getAssetById('skills-9-teacher').path,
           alt: "teacher",
           isBlured: false,
           isMobile: false,
@@ -454,7 +455,7 @@ const skills = [
     level: 4,
     group: "general",
     overview: {
-      thumbnail: "/media/Skills/10/thumb.png",
+      thumbnail: getAssetById('skills-10-thumb').path,
       intro: "<strong>Problem Solving</strong> — The noble art of unraveling complexity through wisdom, logic, and enchanted creativity.<br /> Problem Solving is the wizard’s craft — transforming chaos into harmony through the alchemy of thought and design.",
       desc: "In the grand realm of creation, **Problem Solving** stands as one of the most sacred arts.\n\nIt is the act of dissecting chaos into order — of conjuring elegant solutions from the tangled threads of complexity.\n\nTo master this discipline, one must wield both intellect and imagination.\n\nA true coding sorcerer knows that every challenge hides a secret rune waiting to be deciphered — every bug a mischievous imp begging to be tamed.\n\nWhether deciphering a stubborn error, optimizing a lagging spell of code, or architecting a grand new system, Problem Solving is about delving deep into the mysteries of logic and emerging with clarity and power.\n\nIt is more than a skill — it is a philosophy, a way of thinking.\n\nTo think like a developer is to foresee storms before they strike, to trace the roots of mischief in the system, and to craft structures that stand firm through time and change.\n\nProblem Solving is the alchemy of the mind —\n\nturning a *bug into a feature*, a *challenge into an opportunity*, and *confusion into clarity*.\n\n\n### 🧰 Enchanted Tools & Relics\n\n- **Browser DevTools** — The crystal lens of insight, revealing hidden flaws within the digital realm\n- **Postman** — The courier of spells, testing magical requests across realms of APIs\n- **Figma / Sketch** — The illusionist’s parchment for crafting visual enchantments\n- **Git** — The sacred tome of version control, preserving every incantation of change\n- **JIRA / Trello** — The scrolls of organization, where quests and challenges are chronicled\n\n\n### 📚 Core Runes of Mastery\n\n- Critical Thinking Glyphs\n- Logical Reasoning Sigils\n- Debugging Incantations\n- Algorithmic Wisdom\n- System Design Principles",
       features: [
@@ -466,19 +467,19 @@ const skills = [
       ],
       imgs: [
         {
-          src: "/media/Skills/10/devConsole.png",
+          src: getAssetById('skills-10-devconsole').path,
           alt: "browser dev tools",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/10/postman.png",
+          src: getAssetById('skills-10-postman').path,
           alt: "postman",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/10/debuggingTools.png",
+          src: getAssetById('skills-10-debuggingtools').path,
           alt: "debugging Tools",
           isBlured: false,
           isMobile: false,
@@ -496,7 +497,7 @@ const skills = [
     level: 5,
     group: "specialized",
     overview: {
-      thumbnail: "/media/Skills/11/thumb.png",
+      thumbnail: getAssetById('skills-11-thumb').path,
       intro: "<strong>Windows Dungeon</strong> — Exploring and mastering the mystical realms of the Windows operating system. <code>PowerShell</code> and <code>CMD</code> incantations are my tools of choice.<br /><strong>Windows Dungeon</strong> is my deep dive into system configuration, scripting, and automation within the cryptic corridors of the Windows OS.",
       desc: "**Windows Dungeon** is the sacred art of navigating and mastering the intricate labyrinth of the Windows operating system. It demands an understanding of the core mechanisms, secret chambers, and hidden levers that make Windows come alive. From the spellbinding command-line incantations of `PowerShell` and `CMD` to the enchanted chambers of Control Panel and Settings, this craft allows me to wield the full might of the Windows realm.\n\nThis discipline spans system administration, troubleshooting, and automation. It requires not only technical prowess but also patience, precision, and a keen eye for how Windows orchestrates its symphony of processes, resources, and defenses.\n\nI commune daily with the spirits of the system—taming services, managing user realms, and configuring the sacred network pathways. Through scripting, I automate repetitive rituals, enhance productivity, and bring order to digital chaos.\n\nTransforming or restoring operating systems—**from ancient XP ruins to the modern towers of Windows 11**—is a power I’ve long mastered. No matter the version, I’ve explored them all and faced every peril they offer.\n\nFrom the dreaded *Blue Screen of Death* to driver duels, I’ve forged the tools and wisdom to restore balance to any corrupted system.\n\n### 🧰 Windows Dungeon Tools\n\n- Windows PowerShell\n- Command Prompt (CMD)\n- Event Viewer\n- Performance Monitor\n- Task Scheduler\n- Recovery Environment\n- Windows Deployment Services\n- System Reset & Format (via USB or ISO)\n\n### 📚 Windows Dungeon Core Runes\n\n> ✦ Command Prompt (CMD)\n> ✦ PowerShell\n> ✦ Task Scheduler\n> ✦ Safe Mode\n> ✦ Recovery Environment",
       features: [
@@ -511,31 +512,31 @@ const skills = [
       ],
       imgs: [
         {
-          src: "/media/Skills/11/blue screen.png",
+          src: getAssetById('skills-11-blue-screen').path,
           alt: "blue screen",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/11/win7setup.jpg",
+          src: getAssetById('skills-11-win7setup').path,
           alt: "Windows 7 Setup",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/11/winXpHome.jpg",
+          src: getAssetById('skills-11-winxphome').path,
           alt: "Windows XP Home",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/11/win10setting.png",
+          src: getAssetById('skills-11-win10setting').path,
           alt: "Windows 10 Settings",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/11/win10controlPanel.png",
+          src: getAssetById('skills-11-win10controlpanel').path,
           alt: "Windows 10 Control Panel",
           isBlured: false,
           isMobile: false,
@@ -553,7 +554,7 @@ const skills = [
     level: 3,
     group: "specialized",
     overview: {
-      thumbnail: "/media/Skills/12/thumb.png",
+      thumbnail: getAssetById('skills-12-thumb').path,
       intro: "<strong>Linux Slayer</strong>best open-source OS for developers and hackers. mastering its command line is essential.<br /><strong>Linux Slayer</strong> is my journey into the powerful world of Linux—navigating its command line, mastering its services, and harnessing its open-source magic.",
       desc: "**Linux Slayer** is the art of mastering Linux, the ultimate open-source operating system, through its powerful command-line interface. It is the discipline of navigating the system’s inner workings, understanding its architecture, and wielding tools that allow precise control over every aspect of the OS.\n\nThis skill covers a wide range of abilities:\n\n\n- **System Administration:** Managing users, groups, permissions, services, and processes efficiently.\n- **Shell Scripting:** Automating tasks, orchestrating workflows, and writing custom tools in Bash or other shells.\n- **Package Management:** Installing, updating, and maintaining software across different distributions using tools like `apt`, `yum`, and `dnf`.\n- **Networking & Security:** Configuring networks, managing firewalls, analyzing traffic, and securing systems against intrusions.\n- **Monitoring & Troubleshooting:** Reading logs, monitoring performance, debugging errors, and recovering from system failures.\n\nLinux Slayer is more than just knowledge of commands—it’s the ability to think like the system itself, anticipate its behavior, and manipulate it to achieve goals efficiently. It requires curiosity, patience, and a hands-on approach: you truly cannot claim mastery without exploring, experimenting, and solving real-world problems on Linux.\n\nThis skill is essential for anyone serious about cybersecurity, programming, systems management, or advanced computing. The terminal becomes a sword, and the filesystem a realm to be mastered, where every command is a spell and every script a powerful incantation.\n\n> *Remember: true mastery comes from experience. No one can call themselves a developer, sysadmin, or hacker without first walking the Linux path.*\n\n### 🐧 Linux Types\n\nLinux distributions can be broadly categorized into **Debian-based** and **Non-Debian-based** systems, each with its own philosophy, tools, and package management.\n\n**1. Debian-Based Distributions**\n\nThese distros share a common foundation from **Debian** and usually use `apt` or `dpkg` for package management. They are known for stability, large repositories, and community support. Examples include:\n\n- **Ubuntu** – beginner-friendly, widely used for development and servers.\n- **Kali Linux** – security-focused, preloaded with penetration testing tools.\n- **Linux Mint** – user-friendly, with a polished desktop experience.\n- **Elementary OS** – elegant design, lightweight and intuitive interface.\n\n**2. Non-Debian-Based Distributions**\n\nThese distributions are not based on Debian and often use other package managers like `yum`, `dnf`, or `pacman`. They offer flexibility and unique philosophies for users seeking alternatives. Examples include:\n\n- **Fedora** – cutting-edge, with the latest software and technologies.\n- **Arch Linux** – minimal, highly customizable, for advanced users.\n- **openSUSE** – enterprise-grade options, with a focus on stability and tools.\n- **CentOS / Rocky Linux / AlmaLinux** – server-oriented, reliable and robust.\n\n> Understanding the type of Linux you’re using is crucial for package management, system administration, and compatibility with tools. Mastering both Debian and non-Debian systems allows a Linux Slayer to rule all realms of open-source.\n\n### 🧰 Linux Slayer Tools\n\n- Bash, SSH\n- Package Managers (apt, yum)\n- Text Editors (vim, nano)\n- Network Tools (ping, netstat)\n- File Management (ls, cp, mv, rm)\n- Version Control (git)\n- Virtualization (VirtualBox, Docker)\n\n### 📚 Linux Slayer Core Runes\n\n> ✦ Terminal (Bash)\n> ✦ SSH (Secure Shell)\n> ✦ Package Managers (apt, yum)\n> ✦ Text Editors (vim, nano)\n> ✦ File Management (ls, cp, mv, rm)",
       features: [
@@ -565,37 +566,37 @@ const skills = [
       ],
       imgs: [
         {
-          src: "/media/Skills/12/kalilinux.jpg",
+          src: getAssetById('skills-12-kalilinux').path,
           alt: "kali linux",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/12/filesystemstructure.png",
+          src: getAssetById('skills-12-filesystemstructure').path,
           alt: "file system structure",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/12/linuxCommand.png",
+          src: getAssetById('skills-12-linuxcommand').path,
           alt: "linux command",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/12/linuxDistr.jpg",
+          src: getAssetById('skills-12-linuxdistr').path,
           alt: "linux distribution",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/12/mint.jpg",
+          src: getAssetById('skills-12-mint').path,
           alt: "kali linux",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/12/ubuntu.jpg",
+          src: getAssetById('skills-12-ubuntu').path,
           alt: "kali linux",
           isBlured: false,
           isMobile: false,
@@ -613,7 +614,7 @@ const skills = [
     level: 2,
     group: "specialized",
     overview: {
-      thumbnail: "/media/Skills/13/thumb.png",
+      thumbnail: getAssetById('skills-13-thumb').path,
       intro: "<strong>Docker</strong>Containerizing applications and orchestrating microservices across realms of code and cloud.<br/>Docker is about crafting lightweight, portable containers that bring consistency, speed, and isolation to modern development workflows.",
       desc: "**Docker** is the art of *containerization* — packaging applications and their dependencies into self-contained, lightweight units called **containers**. These containers ensure that software runs consistently across any environment — from a developer’s local machine to production servers or cloud platforms.\n\nWith Docker, I can define an application’s entire environment through **Dockerfiles** and **docker-compose** configurations — including the base operating system, required libraries, and dependencies. Each container runs in isolation, ensuring clean, predictable behavior regardless of the underlying system.\n\nDocker plays a vital role in **modern DevOps** and **microservices architectures**, enabling developers to:\n\n- Build and deploy faster,\n- Scale efficiently, and\n- Ensure consistent performance across platforms.\n\nIt bridges the gap between development and production, eliminating the notorious “it works on my machine” problem. Whether I’m deploying a single app or orchestrating multiple services, Docker ensures reliability, portability, and simplicity.\n\n> In essence, Docker empowers developers to **build once and run anywhere** — a true evolution in software deployment.\n\n### 🧰 Docker Tools\n\n- Docker Desktop\n- Docker CLI\n- Docker Compose\n- Docker Hub\n- Container Orchestration (Kubernetes Basics)\n\n### 📚 Docker Core Runes\n\n> ✦ Docker CLI Commands\n> ✦ Dockerfile\n> ✦ Docker Compose\n> ✦ Docker Hub",
       features: [
@@ -625,19 +626,19 @@ const skills = [
       ],
       imgs: [
         {
-          src: "/media/Skills/13/cheatsheet.png",
+          src: getAssetById('skills-13-cheatsheet').path,
           alt: "docker cheatsheet",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/13/dockerarchitechur.jpg",
+          src: getAssetById('skills-13-dockerarchitechur').path,
           alt: "docker architecture",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/13/dockerworkflow.png",
+          src: getAssetById('skills-13-dockerworkflow').path,
           alt: "docker workflow",
           isBlured: false,
           isMobile: false,
@@ -655,7 +656,7 @@ const skills = [
     level: 2,
     group: "specialized",
     overview: {
-      thumbnail: "/media/Skills/14/thumb.png",
+      thumbnail: getAssetById('skills-14-thumb').path,
       intro: "<strong>Virtualization</strong>— Creating and managing virtual environments for development and testing.<br /> Virtualization is the arcane craft of forging digital realms within realms—safe, isolated worlds for testing, deployment, and exploration.",
       desc: "**Virtualization** is the art of creating virtual versions of computing resources—such as servers, operating systems, storage devices, and networks—allowing multiple isolated environments to run on a single physical machine.\n\nIt’s like constructing a hidden chamber within your own workspace—a space where experiments can unfold freely, without affecting the world outside.\n\nThrough virtualization, I can install and run different operating systems, simulate various devices, and test complex configurations—all within a controlled and reversible environment.\n\nIt’s an essential discipline for developers, system administrators, and cybersecurity practitioners, offering flexibility, safety, and efficiency in every experiment.\n\n### 🧰 Virtualization Tools\n\n- VMware\n- VirtualBox\n- Bluestacks\n- Android Studio Emulator\n- WSL (Windows Subsystem for Linux)",
       features: [
@@ -667,19 +668,19 @@ const skills = [
       ],
       imgs: [
         {
-          src: "/media/Skills/14/kaliimage.png",
+          src: getAssetById('skills-14-kaliimage').path,
           alt: "kali image",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/14/VBoracle.png",
+          src: getAssetById('skills-14-vboracle').path,
           alt: "virtualBox",
           isBlured: false,
           isMobile: false,
         },
         {
-          src: "/media/Skills/14/VBoracle setting.png",
+          src: getAssetById('skills-14-vboracle-setting').path,
           alt: "virtualBox settings",
           isBlured: false,
           isMobile: false,
