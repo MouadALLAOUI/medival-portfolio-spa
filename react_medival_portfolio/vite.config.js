@@ -3,10 +3,23 @@ import react, { reactCompilerPreset } from '@vitejs/plugin-react';
 import babel from '@rolldown/plugin-babel';
 import { visualizer } from 'rollup-plugin-visualizer';
 
+/** @type {import('vite').Plugin} */
+const prismLanguagePlugin = {
+  name: 'inject-prism-import',
+  enforce: 'pre',
+  transform(code, id) {
+    if (id.includes('/prismjs/components/prism-') && !id.includes('prism-core')) {
+      return { code: `import Prism from 'prismjs';\n${code}`, map: null };
+    }
+    return null;
+  },
+};
+
 export default defineConfig({
   base: './',
   plugins: [
-    react(), 
+    prismLanguagePlugin,
+    react(),
     babel({ presets: [reactCompilerPreset()] }),
     visualizer({
       open: false,
@@ -15,6 +28,17 @@ export default defineConfig({
       brotliSize: true,
     })
   ],
+  optimizeDeps: {
+    include: [
+      'prismjs',
+      'prismjs/components/prism-javascript',
+      'prismjs/components/prism-css',
+      'prismjs/components/prism-python',
+      'prismjs/components/prism-markdown',
+      'prismjs/components/prism-json',
+      'prismjs/components/prism-bash',
+    ],
+  },
   build: {
     sourcemap: false,
     chunkSizeWarningLimit: 1000,
