@@ -23,13 +23,6 @@ export const SETTINGS_SECTIONS = [
         contextKey: 'theme',   // matches ThemeProvider value key
       },
       {
-        id: 'markdownTheme',
-        label: 'Markdown Style',
-        description: 'How blog post and markdown content is styled — independent from app theme',
-        type: 'markdown-theme-select',  // new type — renders previews
-        contextKey: 'markdownTheme',
-      },
-      {
         id: 'customCursor',
         label: 'Medieval Cursor',
         description: 'Use a themed quill cursor in the medieval theme',
@@ -107,12 +100,17 @@ export const SETTINGS_SECTIONS = [
     description: 'Comfort and accessibility preferences',
     settings: [
       {
-        id: 'reducedMotion',
-        label: 'Reduce Motion',
-        description: 'Minimize animations across the portfolio',
-        type: 'toggle',
-        contextKey: 'reducedMotion',
-        defaultValue: false,
+        id: 'animationLevel',
+        label: 'Optimisation / Animations',
+        description: 'Adjust animations to optimize website performance',
+        type: 'option-select',
+        contextKey: 'animationLevel',
+        options: [
+          { id: 'light', label: 'Light', icon: '⚡', description: 'Minimum animations, best performance' },
+          { id: 'normal', label: 'Normal', icon: '⚖️', description: 'Smooth transitions, balanced' },
+          { id: 'heavy', label: 'Heavy', icon: '🎨', description: 'Full animations and effects' },
+          { id: 'ultra', label: 'Ultra', icon: '🚀', description: 'Maximum smooth animations' },
+        ],
       },
       {
         id: 'fontSize',

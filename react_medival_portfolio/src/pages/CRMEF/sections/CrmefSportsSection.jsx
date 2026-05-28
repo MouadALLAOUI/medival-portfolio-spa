@@ -8,11 +8,9 @@ const CrmefSportsSection = () => {
   const { t } = useSettings();
 
   const getTranslatedSport = (sport) => {
-    const labelKey = `CRMEF.sports.items.${sport.id}`;
-    const lbl = t(labelKey);
     return {
       ...sport,
-      label: lbl !== labelKey ? lbl : sport.label,
+      label: t(sport.label),
     };
   };
 

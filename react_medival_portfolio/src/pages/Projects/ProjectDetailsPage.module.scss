@@ -1,0 +1,683 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.pageContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 8rem 1.5rem; // generous bottom padding for the fixed footer
+  min-height: 100vh;
+  position: relative;
+  font-family: var(--font-primary);
+  color: var(--text-primary);
+}
+
+.topNav {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color var(--transition);
+
+  &:hover {
+    color: var(--accent);
+  }
+
+  :global([data-theme="medieval"]) & {
+    font-family: var(--font-medieval);
+    color: #8b4513;
+
+    &:hover {
+      color: var(--gold);
+    }
+  }
+}
+
+.layoutGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 2.5rem;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Left Column Styling */
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.imageCard {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  transition: transform var(--transition), box-shadow var(--transition);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow-hover);
+  }
+
+  :global([data-theme="medieval"]) & {
+    background: #f5e6ca;
+    border: 3px double rgba(139, 69, 19, 0.4);
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(58, 41, 33, 0.15);
+
+    &:hover {
+      border-color: var(--gold);
+    }
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 60%; // 16:9 approx
+  overflow: hidden;
+  cursor: pointer;
+
+  .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover .image {
+    transform: scale(1.04);
+  }
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: opacity var(--transition);
+  pointer-events: none;
+
+  .imageWrapper:hover & {
+    opacity: 1;
+  }
+
+  :global([data-theme="medieval"]) & {
+    font-family: var(--font-medieval);
+    background: rgba(58, 41, 33, 0.5);
+  }
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  background: var(--bg-tertiary);
+}
+
+.featuredBadge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 5;
+
+  :global([data-theme="medieval"]) & {
+    background: var(--gold);
+    color: var(--dark-brown);
+    font-family: var(--font-cinzel);
+    border: 1px solid var(--dark-brown);
+  }
+}
+
+.headerBlock {
+  padding: 0.5rem 0;
+
+  .categoryBadge {
+    display: inline-block;
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    :global([data-theme="medieval"]) & {
+      background: #e8d5b0;
+      color: #8b4513;
+      font-family: var(--font-medieval);
+      border: 1px solid rgba(139, 69, 19, 0.2);
+    }
+  }
+
+  .title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin: 0 0 0.75rem 0;
+    font-weight: 800;
+
+    :global([data-theme="medieval"]) & {
+      font-family: var(--font-medieval);
+      color: #3a2921;
+    }
+  }
+
+  .yearRow {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 500;
+
+    :global([data-theme="medieval"]) & {
+      font-family: var(--font-medieval);
+      color: var(--color-rust);
+    }
+  }
+}
+
+/* Right Column Cards styling */
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.specCard, .overviewCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--card-shadow);
+
+  .cardTitle {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.75rem;
+
+    :global([data-theme="medieval"]) & {
+      font-family: var(--font-medieval);
+      color: #3a2921;
+      border-bottom-color: rgba(139, 69, 19, 0.2);
+    }
+  }
+
+  :global([data-theme="medieval"]) & {
+    background: #f5e6ca;
+    border: 3px double rgba(139, 69, 19, 0.4);
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(58, 41, 33, 0.15);
+  }
+}
+
+.specRows {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px dashed var(--border);
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .specLabel {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+
+    :global([data-theme="medieval"]) & {
+      font-family: var(--font-medieval);
+      color: #8b4513;
+    }
+  }
+
+  .specValue {
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+
+    &.completed {
+      color: #10b981;
+    }
+    &.in-progress {
+      color: #f59e0b;
+    }
+    &.archived {
+      color: #64748b;
+    }
+
+    :global([data-theme="medieval"]) & {
+      font-family: var(--font-medieval);
+      
+      &.completed {
+        color: #2c5e1a;
+      }
+      &.in-progress {
+        color: #8c3a2b;
+      }
+      &.archived {
+        color: #71797e;
+      }
+    }
+  }
+
+  :global([data-theme="medieval"]) & {
+    border-bottom-color: rgba(139, 69, 19, 0.15);
+  }
+}
+
+.tagsPanel {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+
+  .panelTitle {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    :global([data-theme="medieval"]) & {
+      font-family: var(--font-medieval);
+      color: #8b4513;
+    }
+  }
+
+  :global([data-theme="medieval"]) & {
+    border-top-color: rgba(139, 69, 19, 0.15);
+  }
+}
+
+.tagsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tagBadge {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 0.25rem 0.625rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  :global([data-theme="medieval"]) & {
+    background: #e8d5b0;
+    border-color: rgba(139, 69, 19, 0.2);
+    color: #8b4513;
+    font-family: var(--font-medieval);
+  }
+}
+
+.actionRow {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+
+  @include mobile {
+    flex-direction: column;
+  }
+}
+
+.actionBtn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all var(--transition);
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-light);
+  }
+
+  &.liveBtn {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+
+    &:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+    }
+  }
+
+  :global([data-theme="medieval"]) & {
+    background: #e8d5b0;
+    border-color: rgba(139, 69, 19, 0.3);
+    color: #8b4513;
+    font-family: var(--font-medieval);
+
+    &:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(201, 168, 76, 0.1);
+    }
+
+    &.liveBtn {
+      background: var(--gold);
+      color: var(--dark-brown);
+      border-color: var(--gold);
+
+      &:hover {
+        background: var(--gold-light);
+        border-color: var(--gold-light);
+      }
+    }
+  }
+}
+
+/* Quest Description Scroll Panel styling */
+.descriptionText {
+  line-height: 1.7;
+  font-size: 1rem;
+  color: var(--text-secondary);
+
+  p {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .intro {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 2rem 0;
+
+    :global([data-theme="medieval"]) & {
+      background: rgba(139, 69, 19, 0.2);
+    }
+  }
+
+  .subTitle {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    margin: 0 0 1rem 0;
+    font-weight: 700;
+
+    :global([data-theme="medieval"]) & {
+      font-family: var(--font-medieval);
+      color: #3a2921;
+    }
+  }
+
+  :global([data-theme="medieval"]) & {
+    color: #3a2921;
+    font-family: var(--font-body);
+    text-align: justify;
+
+    .intro {
+      color: #3a2921;
+    }
+  }
+}
+
+/* Bottom navigational grimoire panel */
+.bottomNav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+  z-index: 100;
+  padding: 0.75rem 0;
+  backdrop-filter: blur(8px);
+
+  :global([data-theme="medieval"]) & {
+    background: #f5e6ca;
+    border-top: 3px double rgba(139, 69, 19, 0.3);
+    box-shadow: 0 -4px 15px rgba(58, 41, 33, 0.1);
+  }
+}
+
+.bottomNavContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.navBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: transform var(--transition), color var(--transition);
+  max-width: 35%;
+
+  &:hover {
+    color: var(--accent);
+    transform: translateX(-3px);
+  }
+
+  &Right:hover {
+    transform: translateX(3px);
+  }
+
+  .navBtnText {
+    display: flex;
+    flex-direction: column;
+
+    .navLabel {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .navTitle {
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 180px;
+
+      @include mobile {
+        display: none;
+      }
+    }
+  }
+
+  :global([data-theme="medieval"]) & {
+    color: #8b4513;
+    font-family: var(--font-medieval);
+
+    &:hover {
+      color: var(--gold);
+    }
+
+    .navBtnText .navLabel {
+      color: var(--color-rust);
+    }
+  }
+}
+
+.centerLink {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: color var(--transition);
+
+  &:hover {
+    color: var(--accent);
+  }
+
+  :global([data-theme="medieval"]) & {
+    font-family: var(--font-cinzel);
+    color: #3a2921;
+
+    &:hover {
+      color: var(--gold);
+    }
+  }
+}
+
+/* Not Found State */
+.notFoundContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 2rem;
+}
+
+.notFoundCard {
+  text-align: center;
+  max-width: 500px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 3rem 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+
+  h2 {
+    font-family: var(--font-heading);
+    margin-top: 0;
+    font-size: 1.75rem;
+
+    :global([data-theme="medieval"]) & {
+      font-family: var(--font-medieval);
+      color: #3a2921;
+    }
+  }
+
+  p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+
+    :global([data-theme="medieval"]) & {
+      font-family: var(--font-body);
+      color: #3a2921;
+    }
+  }
+
+  .backBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    transition: background var(--transition);
+
+    &:hover {
+      background: var(--accent-hover);
+    }
+
+    :global([data-theme="medieval"]) & {
+      background: var(--gold);
+      color: var(--dark-brown);
+      font-family: var(--font-medieval);
+      border: 1px solid var(--dark-brown);
+
+      &:hover {
+        background: var(--gold-light);
+      }
+    }
+  }
+
+  :global([data-theme="medieval"]) & {
+    background: #f5e6ca;
+    border: 3px double rgba(139, 69, 19, 0.4);
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(58, 41, 33, 0.15);
+  }
+}

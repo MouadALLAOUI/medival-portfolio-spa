@@ -58,7 +58,8 @@ const COMMON = {
                 options: {
                     light: { label: "Light", description: "Switch to light theme" },
                     dark: { label: "Dark", description: "Switch to dark theme" },
-                    medieval: { label: "Classic", description: "Switch to classic theme" }
+                    medieval: { label: "Classic", description: "Switch to classic theme" },
+                    github: { label: "GitHub Classic", description: "Crisp developer light-blue style" }
                 }
             },
             markdownTheme: {
@@ -114,9 +115,15 @@ const COMMON = {
                     doublePage: { label: "Double Page", description: "Two pages side by side (desktop)" }
                 }
             },
-            reducedMotion: {
-                label: "Reduce Motion",
-                description: "Minimize animations across the portfolio"
+            animationLevel: {
+                label: "Optimisation / Animations",
+                description: "Adjust animations to optimize website performance",
+                options: {
+                    light: { label: "Light", description: "Minimum animations, best performance" },
+                    normal: { label: "Normal", description: "Smooth transitions, balanced" },
+                    heavy: { label: "Heavy", description: "Full animations and effects" },
+                    ultra: { label: "Ultra", description: "Maximum smooth animations" }
+                }
             },
             fontSize: {
                 label: "Font Size",

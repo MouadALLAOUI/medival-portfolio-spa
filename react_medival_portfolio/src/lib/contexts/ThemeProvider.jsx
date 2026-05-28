@@ -19,6 +19,12 @@ const THEMES = {
     icon: '⚔️',
     attribute: 'medieval',
   },
+  github: {
+    id: 'github',
+    label: 'GitHub Classic',
+    icon: '🐙',
+    attribute: 'github',
+  },
 };
 
 const ThemeContext = createContext(null);
