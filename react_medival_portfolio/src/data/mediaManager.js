@@ -194,7 +194,91 @@ export const mediaRegistry = {
           pageCount: 12,
           slideCount: null
         }
-      }
+      },
+      {
+        id: "crmef-fiche-resolution-structure-final",
+        path: "/media/CRMEF/Fiche technique resolution probleme structure final.pdf",
+        label: "Fiche technique - Structure finale",
+        description: "Modèle de fiche technique structuré pour la préparation de séances pédagogiques. Inclut les compétences, objectifs, prérequis, déroulement (phases: mise en situation, analyse, synthèse), scénario pédagogique et supports visuels (figures).",
+        meta: { pageCount: 5 }
+      },
+      {
+        id: "crmef-gestion-2",
+        path: "/media/CRMEF/gestion (2).pdf",
+        label: "Gestion pédagogique (synthèse)",
+        description: "Synthèse des concepts de gestion en éducation : définitions, fonctions didactique et pédagogique, types de gestion (matière, classe, espace, temps, supports). Gestion des situations d'apprentissage (exploration, didactique, évaluation, TP, complexes, TIC). Styles d'enseignement et d'apprentissage, méthodes pédagogiques.",
+        meta: { pageCount: 4 }
+      },
+      {
+        id: "crmef-gestion-situation-didactique",
+        path: "/media/CRMEF/Gestion d'une situation didactique.PDF",
+        label: "Gestion d'une situation didactique - Étude de cas",
+        description: "Exercice pratique : proposer une situation didactique pour apprendre à calculer la moyenne d'une série de notes avec un tableur. Questions sur les étapes, le rôle de l'enseignant, les actions des apprenants, l'utilisation des ordinateurs et la vérification de la compréhension.",
+        meta: { pageCount: 1 }
+      },
+      {
+        id: "crmef-recherche-action-ia-esprit-critique",
+        path: "/media/CRMEF/ilovepdf_merged.pdf",
+        label: "Recherche-action : Impact de l'IA sur l'esprit critique des élèves du collège",
+        description: "Projet de recherche-action quantitative mesurant l'effet des outils d'IA générative (ChatGPT, Copilot, Gemini) sur les compétences de raisonnement critique (raisonnement logique, vérification des sources, résolution de problèmes, créativité) chez les élèves de 12-16 ans en cours d'informatique. Méthodologie, hypothèses, instruments de collecte, plan d'action pédagogique (5 interventions).",
+        meta: { pageCount: 22 }
+      },
+      {
+        id: "crmef-autorite-visuelle-20min",
+        path: "/media/CRMEF/l’Autorité Visuelle 20min.pdf",
+        label: "L'Autorité Visuelle - 20 minutes",
+        description: "Présentation condensée sur l'autorité visuelle : pourquoi les élèves décrochent, racines historiques (Platon, Gutenberg, Miller, Paivio), les 4 piliers (Clarté, Hiérarchie, Simplicité, Cohérence), et un exemple de QCM.",
+        meta: { pageCount: 9 }
+      },
+      {
+        id: "crmef-seance-1-phase-visuel",
+        path: "/media/CRMEF/Seance 1 phase visuel fiche pedagogique.pdf",
+        label: "Fiche pédagogique - Séance 1 : Phase visuelle",
+        description: "Fiche pédagogique pour une séance de 20 minutes sur l'autorité visuelle destinée aux enseignants stagiaires. Compétence: maîtriser la création de supports visuels captivants. Objectifs: optimiser l'impact d'un support, analyser les intrus visuels, produire une diapositive selon les 4 piliers, expérimenter l'envoi de messages secrets par ancrage visuel. Déroulement détaillé et figures.",
+        meta: { pageCount: 5 }
+      },
+      {
+        id: "crmef-communication-pedagogique",
+        path: "/media/CRMEF/La communication pédagogique.PDF",
+        label: "La communication pédagogique",
+        description: "Définition et éléments de la communication pédagogique (émetteur, récepteur, message, canal, feedback). Formes de communication (verbale, non verbale, paraverbale). Acteurs (enseignant, apprenant, groupe classe). Obstacles et conditions d'efficacité.",
+        meta: { pageCount: 3 }
+      },
+      {
+        id: "crmef-motivation-pedagogique",
+        path: "/media/CRMEF/La motivation Pédagogique.pdf",
+        label: "La motivation pédagogique",
+        description: "Définition de la motivation pédagogique, types (intrinsèque vs extrinsèque), importance dans l'apprentissage, rôle de l'enseignant, stratégies pour motiver les apprenants (varier les méthodes, situations significatives, feedback positif), facteurs influençant la motivation.",
+        meta: { pageCount: 3 }
+      },
+      {
+        id: "crmef-polycope-didactique",
+        path: "/media/CRMEF/polycope-didactique.pdf",
+        label: "Polycopié de didactique de l'informatique",
+        description: "Cours complet sur la didactique de l'informatique : histoire et épistémologie, filiations conceptuelles, dimensions de l'informatique, concepts fondamentaux (machine, algorithme, langage, information), dualité objet/outil, modes de pensée (logique, algorithmique, computationnelle), théories d'apprentissage (behaviorisme, cognitivisme, constructivisme, connectivisme), théorie de la charge cognitive, triangle didactique, transposition didactique, trame conceptuelle, niveaux de formulation, erreurs, représentations, obstacles, objectif-obstacle, conflit sociocognitif, modèles didactiques, théorie de la situation didactique.",
+        meta: { pageCount: 42 }
+      },
+      {
+        id: "crmef-summary-tice",
+        path: "/media/CRMEF/Summary_TICE_.pdf",
+        label: "Guide TICE et Prompt Engineering - Summary",
+        description: "Guide visuel résumant les principaux modèles TICE : TPACK (équilibre des connaissances), SAMR (niveaux de transformation), RUBY (checklist de réflexion), modalités d'enseignement (présentiel, distance, hybride, comodal), LMS vs CMS, MOOC, compétences clés de l'enseignant, identité numérique, prompt engineering (structure CRFC).",
+        meta: { pageCount: 11 }
+      },
+      {
+        id: "crmef-ticee",
+        path: "/media/CRMEF/TICEE.pdf",
+        label: "Les TICE - Concepts et stratégies",
+        description: "Document complet sur les TICE (Technologies de l'Information et de la Communication pour l'Enseignement). Définitions, retombées pour l'élève et l'enseignant, stratégie nationale (Charte 1999, programme GENIE, Vision 2015-2030), programmes NAFIDA, INJAZ, E-SUP, modèles SAMR et RABY, modalités d'enseignement, LMS/LCMS, Moodle, identité numérique, netiquette, licences Creative Commons, sobriété numérique.",
+        meta: { pageCount: 9 }
+      },
+      {
+        id: "crmef-guide-pedagogique-arabe",
+        path: "/media/CRMEF/الدليل المختصر في علوم التربية النسخة الجديدة (1)_260119_132523.pdf",
+        label: "الدليل المختصر في علوم التربية والبيداغوجيا (Guide abrégé des sciences de l'éducation et de la pédagogie)",
+        description: "Guide en arabe couvrant les principaux concepts des sciences de l'éducation : psychologie et théories d'apprentissage (behaviorisme, gestalt, constructivisme, socioconstructivisme, cognitivisme), approches pédagogiques (par objectifs, par compétences, pédagogie de l'intégration, pédagogie de projet, pédagogie du contrat, pédagogie de l'erreur, pédagogie du jeu), méthodologie de l'enseignement, évaluation, soutien pédagogique, vie scolaire, communication pédagogique, animation, moyens didactiques, orientation scolaire.",
+        meta: { pageCount: 112 }
+      },
     ],
     docx: [
       {
@@ -216,6 +300,48 @@ export const mediaRegistry = {
           pageCount: 8,
           slideCount: null
         }
+      },
+      {
+        id: "crmef-fiche-resolution-phase-visuel",
+        path: "/media/CRMEF/Fiche technique resolution probleme phase visuel.docx",
+        label: "Fiche technique - Résolution de problème (Phase visuelle)",
+        description: "Fiche pédagogique sur l'autorité visuelle : problème des diapositives surchargées, solution avec les 4 piliers (Clarté, Hiérarchie, Simplicité, Cohérence), et technique du 'message secret' par conditionnement visuel. Public: enseignants stagiaires. Durée: 20 minutes.",
+        meta: { pageCount: 5 }
+      },
+      {
+        id: "crmef-fiche-resolution-scratch",
+        path: "/media/CRMEF/Fiche technique resolution probleme scratch.docx",
+        label: "Fiche technique - Résolution de problème (Scratch)",
+        description: "Découverte de la programmation par blocs avec Scratch. Situation-problème : personnage ne bouge pas. Concepts : événement, instruction, séquence. Exercice pratique pour faire avancer le lutin. Niveau: 2ème année collège.",
+        meta: { pageCount: 5 }
+      },
+      {
+        id: "crmef-fiche-resolution-generique",
+        path: "/media/CRMEF/Fiche technique resolution probleme.docx",
+        label: "Fiche technique - Gabarit générique",
+        description: "Gabarit de fiche technique pour la méthodologie de résolution de problème. Structure avec compétences visées, objectif spécifique, prérequis, savoir-être, savoir-faire, déroulement de séance, scénario pédagogique. À compléter selon le contexte.",
+        meta: { pageCount: 5 }
+      },
+      {
+        id: "crmef-methode-decouverte",
+        path: "/media/CRMEF/Fiche technique Méthode de Découverte.docx",
+        label: "Fiche technique - Méthode de découverte",
+        description: "Fiche pédagogique illustrant la méthode de découverte (tâtonnement, essais-erreurs) pour enseigner la recherche de fichiers sur un support de stockage (compétence C21). Séance de 1 heure avec phases: mise en situation (scénario), analyse (faire faire, faire dire), synthèse (reformulation, validation, trace écrite).",
+        meta: { pageCount: 5 }
+      },
+      {
+        id: "crmef-methode-demonstrative",
+        path: "/media/CRMEF/Fiche technique Méthode démonstrative.docx",
+        label: "Fiche technique - Méthode démonstrative",
+        description: "Fiche pédagogique utilisant la méthode démonstrative (Montrer - Faire faire - Faire dire) pour enseigner la recherche de fichiers. Objectif : localiser un fichier via l'outil de recherche du système. Déroulement: rappel, problème, démonstration par l'enseignant, expérimentation par les élèves, formulation, évaluation, trace écrite.",
+        meta: { pageCount: 5 }
+      },
+      {
+        id: "crmef-methode-interrogative",
+        path: "/media/CRMEF/Fiche technique Méthode interrogative.docx",
+        label: "Fiche technique - Méthode interrogative",
+        description: "Fiche pédagogique basée sur la méthode interrogative (questionnement guidé et maïeutique) pour enseigner la recherche de fichiers. L'enseignant interroge les élèves pour les amener à découvrir par eux-mêmes l'outil de recherche de l'explorateur. Phases: diagnostic des représentations, questionnement guidé, validation par l'expérimentation, trace écrite.",
+        meta: { pageCount: 5 }
       }
     ],
     pptx: [
@@ -278,7 +404,35 @@ export const mediaRegistry = {
           pageCount: 40,
           slideCount: 40
         }
-      }
+      },
+      {
+        id: "crmef-autorite-visuelle-presentation",
+        path: "/media/CRMEF/a151e964-fb36-4775-8bfe-173873dbb5f9.pptx",
+        label: "L'autorité visuelle - Présentation",
+        description: "Présentation PowerPoint sur l'autorité visuelle : pourquoi les élèves décrochent, historique (Platon, Gutenberg, Miller, Paivio), les 4 piliers (Clarté, Hiérarchie, Simplicité, Cohérence), évolution du regard et quiz. Destinée aux enseignants pour concevoir des supports captivants.",
+        meta: { slideCount: 12 }
+      },
+      {
+        id: "crmef-scratch-2ac-presentation",
+        path: "/media/CRMEF/Scratch_2AC_Presentation.pptx",
+        label: "Algorithmique et Programmation - Scratch (2AC)",
+        description: "Présentation pour cours de programmation avec Scratch en 2ème année collège. Situation-problème (le personnage de Mouad ne bouge pas), découverte de l'interface, concepts d'événement, instruction, séquence, exercice pratique pour faire avancer le lutin, quiz et trace écrite.",
+        meta: { slideCount: 14 }
+      },
+      {
+        id: "crmef-theories-apprentissage-arabe",
+        path: "/media/CRMEF/نظريات التعلم .pptx",
+        label: "نظريات التعلم (Théories de l'apprentissage)",
+        description: "Présentation en arabe couvrant les principales théories d'apprentissage : école behavioriste (Pavlov, Thorndike, Skinner, Watson), école gestaltiste (Wertheimer, Köhler, Koffka, insight), théorie constructiviste (Piaget : stades, assimilation, accommodation, équilibration), théorie socioconstructiviste (Vygotsky : ZPD, médiation, langage), neurosciences cognitives (plasticité cérébrale, myélinisation, élagage synaptique, quatre piliers de l'apprentissage, neuromythes).",
+        meta: { slideCount: 60 }
+      },
+      {
+        id: "crmef-theorie-cognitive-arabe",
+        path: "/media/CRMEF/النظرية المعرفية.pptx",
+        label: "النظرية المعرفية (La théorie cognitive)",
+        description: "Présentation en arabe sur la théorie cognitive de l'apprentissage. Sujets : passage du behaviorisme au cognitivisme, modèle de traitement de l'information (mémoire sensorielle, de travail, à long terme), théorie de la gestalt (insight), théories de Tolman (cartes cognitives), Piaget (stades de développement), Ausubel (apprentissage significatif), Bruner (apprentissage par découverte), métacognition, charge cognitive, applications pédagogiques.",
+        meta: { slideCount: 25 }
+      },
     ]
   },
   media: {
@@ -949,7 +1103,7 @@ export const mediaRegistry = {
         meta: {}
       },
       {
-        id: "mouad-pic",
+        id: "mouad-pic-png",
         path: "/media/mouad-pic.png",
         label: "MEDIA.mouad-pic.label",
         description: "MEDIA.mouad-pic.description",
@@ -1646,12 +1800,19 @@ export const mediaRegistry = {
     ],
     jpeg: [
       {
-        id: "mouad-pic",
+        id: "mouad-pic-jpeg",
         path: "/media/mouad-pic.JPEG",
         label: "MEDIA.mouad-pic.label",
         description: "MEDIA.mouad-pic.description",
         meta: {}
-      }
+      },
+      {
+        id: "crmef-whatsapp-image-architecture",
+        path: "/media/CRMEF/WhatsApp Image 2026-04-17 at 14.45.25.jpeg",
+        label: "Architecture Client/Serveur Web - Infographie",
+        description: "Schéma illustrant l'architecture client/serveur du Web. Montre le client (navigateur), Internet, le serveur web (Apache/Nginx), le serveur d'application (Node.js, Python, PHP, Java) et la base de données (MySQL, PostgreSQL, MongoDB). Détaille le cycle requête/réponse HTTP avec les en-têtes.",
+        meta: {}
+      },
     ],
     ico: [
       {
