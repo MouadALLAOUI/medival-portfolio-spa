@@ -37,21 +37,23 @@
 
 .badgeTabRow {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 0.5rem;
   overflow-x: auto;
   padding-bottom: 0.5rem;
   width: 100%;
   -webkit-overflow-scrolling: touch;
+  flex-wrap: wrap;
 
-  // Hide standard scrollbars entirely
-  // &::-webkit-scrollbar {
-  //   display: none !important;
-  // }
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
 
-  // scrollbar-width: none;
-  // /* Firefox */
-  // -ms-overflow-style: none;
-  // /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
 
   // Premium fading mask gradients on the far left and right edges
   mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);

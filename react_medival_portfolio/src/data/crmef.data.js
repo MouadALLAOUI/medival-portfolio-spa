@@ -207,6 +207,48 @@ export const crmefSemesters = [
               name: getAssetById('crmef-tp8-sets').label,
               pages: getAssetById('crmef-tp8-sets').meta.pageCount,
             },
+            // docx
+            {
+              path: getAssetById('crmef-exercicres-1-algo').path,
+              name: getAssetById('crmef-exercicres-1-algo').label,
+              pages: getAssetById('crmef-exercicres-1-algo').meta.pageCount,
+            },
+            {
+              path: getAssetById('crmef-s2-info-rbf2-24').path,
+              name: getAssetById('crmef-s2-info-rbf2-24').label,
+              pages: getAssetById('crmef-s2-info-rbf2-24').meta.pageCount,
+            },
+            // pptx
+            {
+              path: getAssetById('crmef-coursalgo').path,
+              name: getAssetById('crmef-coursalgo').label,
+              pages: getAssetById('crmef-coursalgo').meta.slideCount,
+            },
+            {
+              path: getAssetById('crmef-cours-algorithme-snineh').path,
+              name: getAssetById('crmef-cours-algorithme-snineh').label,
+              pages: getAssetById('crmef-cours-algorithme-snineh').meta.slideCount,
+            },
+            {
+              path: getAssetById('crmef-cours-python-1').path,
+              name: getAssetById('crmef-cours-python-1').label,
+              pages: getAssetById('crmef-cours-python-1').meta.slideCount,
+            },
+            {
+              path: getAssetById('crmef-cours-python-2').path,
+              name: getAssetById('crmef-cours-python-2').label,
+              pages: getAssetById('crmef-cours-python-2').meta.slideCount,
+            },
+            {
+              path: getAssetById('crmef-cours-python-3').path,
+              name: getAssetById('crmef-cours-python-3').label,
+              pages: getAssetById('crmef-cours-python-3').meta.slideCount,
+            },
+            {
+              path: getAssetById('crmef-cours-python-4').path,
+              name: getAssetById('crmef-cours-python-4').label,
+              pages: getAssetById('crmef-cours-python-4').meta.slideCount,
+            },
           ],
         },
       },

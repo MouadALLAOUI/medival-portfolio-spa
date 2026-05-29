@@ -20,6 +20,7 @@ const CrmefSemesterPage = ({ semesterId }) => {
   );
 
   const handleFilterSelect = (semId, moduleId) => {
+    window.dispatchEvent(new CustomEvent('close-all-pdfs'));
     setActiveModuleIds(prev => ({
       ...prev,
       [semId]: moduleId
