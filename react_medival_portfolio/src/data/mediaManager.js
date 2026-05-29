@@ -225,8 +225,8 @@ export const mediaRegistry = {
         label: "MEDIA.crmef-coursalgo.label",
         description: "MEDIA.crmef-coursalgo.description",
         meta: {
-          pageCount: 20,
-          slideCount: null
+          // pageCount: 20,
+          slideCount: 22
         }
       },
       {
@@ -235,8 +235,8 @@ export const mediaRegistry = {
         label: "MEDIA.crmef-cours-algorithme-snineh.label",
         description: "MEDIA.crmef-cours-algorithme-snineh.description",
         meta: {
-          pageCount: 50,
-          slideCount: null
+          // pageCount: 50,
+          slideCount: 50
         }
       },
       {
@@ -246,7 +246,7 @@ export const mediaRegistry = {
         description: "MEDIA.crmef-cours-python-1.description",
         meta: {
           pageCount: 15,
-          slideCount: null
+          slideCount: 26
         }
       },
       {
@@ -256,7 +256,7 @@ export const mediaRegistry = {
         description: "MEDIA.crmef-cours-python-2.description",
         meta: {
           pageCount: 18,
-          slideCount: null
+          slideCount: 13
         }
       },
       {
@@ -265,8 +265,8 @@ export const mediaRegistry = {
         label: "MEDIA.crmef-cours-python-3.label",
         description: "MEDIA.crmef-cours-python-3.description",
         meta: {
-          pageCount: 25,
-          slideCount: null
+          pageCount: 30,
+          slideCount: 30
         }
       },
       {
@@ -275,8 +275,8 @@ export const mediaRegistry = {
         label: "MEDIA.crmef-cours-python-4.label",
         description: "MEDIA.crmef-cours-python-4.description",
         meta: {
-          pageCount: 30,
-          slideCount: null
+          pageCount: 40,
+          slideCount: 40
         }
       }
     ]
@@ -1810,14 +1810,14 @@ export function getAssetById(id) {
   if (!id) {
     return { id: 'fallback', path: '', label: '', description: '', meta: {} };
   }
-  
+
   for (const category in mediaRegistry) {
     for (const ext in mediaRegistry[category]) {
       const asset = mediaRegistry[category][ext].find(a => a.id === id);
       if (asset) return asset;
     }
   }
-  
+
   // Graceful fallback for missing assets
   return {
     id: id,
@@ -1836,7 +1836,7 @@ export function getAssetsByExtension(ext) {
   if (!ext) return [];
   const targetExt = ext.toLowerCase();
   const results = [];
-  
+
   for (const category in mediaRegistry) {
     if (mediaRegistry[category][targetExt]) {
       results.push(...mediaRegistry[category][targetExt]);
@@ -1850,7 +1850,7 @@ export function getAssetsByExtension(ext) {
  */
 export function getAllAssetsFlat() {
   const results = [];
-  
+
   for (const category in mediaRegistry) {
     for (const ext in mediaRegistry[category]) {
       results.push(...mediaRegistry[category][ext]);
