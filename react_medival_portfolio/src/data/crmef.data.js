@@ -126,9 +126,35 @@ export const crmefSemesters = [
               name: getAssetById('crmef-lesson').label,
               pages: getAssetById('crmef-lesson').meta.pageCount,
             },
+            {
+              path: getAssetById('crmef-fiche-resolution-generique').path,
+              name: getAssetById('crmef-fiche-resolution-generique').label,
+              pages: getAssetById('crmef-fiche-resolution-generique').meta.pageCount,
+            },
+            {
+              path: getAssetById('crmef-methode-decouverte').path,
+              name: getAssetById('crmef-methode-decouverte').label,
+              pages: getAssetById('crmef-methode-decouverte').meta.pageCount,
+            },
+            {
+              path: getAssetById('crmef-methode-demonstrative').path,
+              name: getAssetById('crmef-methode-demonstrative').label,
+              pages: getAssetById('crmef-methode-demonstrative').meta.pageCount,
+            },
+            {
+              path: getAssetById('crmef-methode-interrogative').path,
+              name: getAssetById('crmef-methode-interrogative').label,
+              pages: getAssetById('crmef-methode-interrogative').meta.pageCount,
+            },
           ],
           group: [],
-          official: [],
+          official: [
+            {
+              path: getAssetById('crmef-fiche-resolution-structure-final').path,
+              name: getAssetById('crmef-fiche-resolution-structure-final').label,
+              pages: getAssetById('crmef-fiche-resolution-structure-final').meta.pageCount,
+            },
+          ],
         },
       },
       {
@@ -137,15 +163,62 @@ export const crmefSemesters = [
         professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.lesson-planning.professor',
         desc: 'CRMEF_SEMESTERS.semesters.semester-1.modules.learning-management.desc',
         files: {
-          solo: [],
+          solo: [
+            {
+              path: getAssetById('crmef-autorite-visuelle-20min').path,
+              name: getAssetById('crmef-autorite-visuelle-20min').label,
+              pages: getAssetById('crmef-autorite-visuelle-20min').meta.pageCount,
+            },
+            {
+              path: getAssetById('crmef-seance-1-phase-visuel').path,
+              name: getAssetById('crmef-seance-1-phase-visuel').label,
+              pages: getAssetById('crmef-seance-1-phase-visuel').meta.pageCount,
+            },
+            {
+              path: getAssetById('crmef-fiche-resolution-phase-visuel').path,
+              name: getAssetById('crmef-fiche-resolution-phase-visuel').label,
+              pages: getAssetById('crmef-fiche-resolution-phase-visuel').meta.pageCount,
+            },
+            {
+              path: getAssetById('crmef-autorite-visuelle-presentation').path,
+              name: getAssetById('crmef-autorite-visuelle-presentation').label,
+              pages: getAssetById('crmef-autorite-visuelle-presentation').meta.pageCount,
+            },
+            {
+              path: getAssetById('crmef-fiche-resolution-scratch').path,
+              name: getAssetById('crmef-fiche-resolution-scratch').label,
+              pages: getAssetById('crmef-fiche-resolution-scratch').meta.pageCount,
+            },
+            {
+              path: getAssetById('crmef-scratch-2ac-presentation').path,
+              name: getAssetById('crmef-scratch-2ac-presentation').label,
+              pages: getAssetById('crmef-scratch-2ac-presentation').meta.pageCount,
+            },
+            {
+              path: getAssetById('crmef-gemini-generated-image-pkz39rpkz39rpkz3').path,
+              name: getAssetById('crmef-gemini-generated-image-pkz39rpkz39rpkz3').label,
+              pages: getAssetById('crmef-gemini-generated-image-pkz39rpkz39rpkz3').meta.pageCount,
+            },
+          ],
           group: [
             {
               path: getAssetById('crmef-la-gestion').path,
               name: getAssetById('crmef-la-gestion').label,
               pages: getAssetById('crmef-la-gestion').meta.pageCount,
             },
+            {
+              path: getAssetById('crmef-gestion-2').path,
+              name: getAssetById('crmef-gestion-2').label,
+              pages: getAssetById('crmef-gestion-2').meta.pageCount,
+            },
           ],
-          official: [],
+          official: [
+            {
+              path: getAssetById('crmef-gestion-situation-didactique').path,
+              name: getAssetById('crmef-gestion-situation-didactique').label,
+              pages: getAssetById('crmef-gestion-situation-didactique').meta.pageCount,
+            },
+          ],
         },
       },
       {
@@ -282,8 +355,34 @@ export const crmefSemesters = [
               name: getAssetById('crmef-les-effets-didactiques').label,
               pages: getAssetById('crmef-les-effets-didactiques').meta.pageCount,
             },
+            {
+              path: getAssetById('crmef-summary-tice').path,
+              name: getAssetById('crmef-summary-tice').label,
+              pages: getAssetById('crmef-summary-tice').meta.pageCount,
+            },
+            {
+              path: getAssetById('crmef-ticee').path,
+              name: getAssetById('crmef-ticee').label,
+              pages: getAssetById('crmef-ticee').meta.pageCount,
+            },
           ],
-          official: [],
+          official: [
+            {
+              path: getAssetById('crmef-communication-pedagogique').path,
+              name: getAssetById('crmef-communication-pedagogique').label,
+              pages: getAssetById('crmef-communication-pedagogique').meta.pageCount,
+            },
+            {
+              path: getAssetById('crmef-motivation-pedagogique').path,
+              name: getAssetById('crmef-motivation-pedagogique').label,
+              pages: getAssetById('crmef-motivation-pedagogique').meta.pageCount,
+            },
+            {
+              path: getAssetById('crmef-polycope-didactique').path,
+              name: getAssetById('crmef-polycope-didactique').label,
+              pages: getAssetById('crmef-polycope-didactique').meta.pageCount,
+            },
+          ],
         },
       },
       {
@@ -292,15 +391,32 @@ export const crmefSemesters = [
         professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.education-sciences.professor',
         desc: 'CRMEF_SEMESTERS.semesters.semester-1.modules.education-sciences.desc',
         files: {
-          solo: [],
+          solo: [
+            {
+              path: getAssetById('crmef-theorie-cognitive-arabe').path,
+              name: getAssetById('crmef-theorie-cognitive-arabe').label,
+              pages: getAssetById('crmef-theorie-cognitive-arabe').meta.pageCount,
+            },
+          ],
           group: [
             {
               path: getAssetById('crmef-theories-de-apprentissage').path,
               name: getAssetById('crmef-theories-de-apprentissage').label,
               pages: getAssetById('crmef-theories-de-apprentissage').meta.pageCount,
             },
+            {
+              path: getAssetById('crmef-theories-apprentissage-arabe').path,
+              name: getAssetById('crmef-theories-apprentissage-arabe').label,
+              pages: getAssetById('crmef-theories-apprentissage-arabe').meta.pageCount,
+            },
           ],
-          official: [],
+          official: [
+            {
+              path: getAssetById('crmef-guide-pedagogique-arabe').path,
+              name: getAssetById('crmef-guide-pedagogique-arabe').label,
+              pages: getAssetById('crmef-guide-pedagogique-arabe').meta.pageCount,
+            },
+          ],
         },
       },
       {
@@ -310,7 +426,13 @@ export const crmefSemesters = [
         desc: 'CRMEF_SEMESTERS.semesters.semester-1.modules.research-methodology.desc',
         files: {
           solo: [],
-          group: [],
+          group: [
+            {
+              path: getAssetById('crmef-recherche-action-ia-esprit-critique').path,
+              name: getAssetById('crmef-recherche-action-ia-esprit-critique').label,
+              pages: getAssetById('crmef-recherche-action-ia-esprit-critique').meta.pageCount,
+            },
+          ],
           official: [
             {
               path: getAssetById('crmef-methodologie-ra').path,
