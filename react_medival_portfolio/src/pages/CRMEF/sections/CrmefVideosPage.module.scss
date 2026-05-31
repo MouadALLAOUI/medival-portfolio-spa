@@ -314,11 +314,11 @@
   overflow-x: auto;
   padding-bottom: 0.25rem;
   width: 100%;
-  scrollbar-width: none; // hide scrollbar for Firefox
+  // scrollbar-width: none; // hide scrollbar for Firefox
 
-  &::-webkit-scrollbar {
-    display: none; // hide scrollbar for Chrome/Safari
-  }
+  // &::-webkit-scrollbar {
+  //   display: none; // hide scrollbar for Chrome/Safari
+  // }
 }
 
 .pill {
@@ -413,9 +413,11 @@
   &::-webkit-scrollbar {
     width: 4px;
   }
+
   &::-webkit-scrollbar-track {
     background: transparent;
   }
+
   &::-webkit-scrollbar-thumb {
     background: var(--border);
     border-radius: 2px;
@@ -512,6 +514,97 @@
   justify-content: center;
 }
 
+.thumbnailProgress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.thumbnailProgressFill {
+  width: 0%;
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.25s ease;
+}
+
+.statusBadges {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  justify-content: flex-end;
+}
+
+.statusBadge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.18rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+}
+
+.videoError {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: 1rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  border-radius: var(--radius-md, 12px);
+}
+
+.videoErrorActions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.videoErrorActions button,
+.videoErrorActions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.85rem;
+  border-radius: 999px;
+  border: none;
+  color: #fff;
+  text-decoration: none;
+  background: var(--accent);
+  cursor: pointer;
+}
+
+.watchLaterList {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.watchLaterCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-align: left;
+}
+
+.watchLaterCard small {
+  color: var(--text-secondary);
+}
+
 .playlistInfo {
   display: flex;
   flex-direction: column;
@@ -530,6 +623,7 @@
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
 
   :global([data-theme="medieval"]) & {
@@ -547,6 +641,277 @@
     color: var(--color-brown);
     opacity: 0.8;
   }
+}
+
+.videoActions {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.favoriteButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.favoriteButton:hover {
+  background: rgba(var(--accent-rgb, 99, 102, 241), 0.1);
+  border-color: var(--accent);
+}
+
+.filterBar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 12px);
+  padding: 1rem;
+}
+
+.filterRow {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filterSelect {
+  min-width: 100px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.45rem 0.6rem;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.controlRow {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.favoriteFilterBtn {
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.favoriteFilterBtn:hover,
+.activeFilterBtn {
+  background: rgba(var(--accent-rgb, 99, 102, 241), 0.1);
+  border-color: var(--accent);
+}
+
+.featuredSection,
+.recentSection {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 12px);
+  padding: 1rem;
+}
+
+.featuredTitle,
+.recentTitle {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+.featuredList,
+.recentList {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.featuredCard,
+.recentCard {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: left;
+  padding: 0.65rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.featuredCard:hover,
+.recentCard:hover {
+  transform: translateX(2px);
+  border-color: var(--accent);
+}
+
+.featuredThumb {
+  width: 64px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.recentCard {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.recentCard small {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.thumbnailFavoriteBtn {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  cursor: pointer;
+}
+
+.bookmarkedThumb {
+  background: #f9c13f;
+  color: #2c1a03;
+  border-color: #f9c13f;
+}
+
+.completedBadge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: rgba(50, 205, 50, 0.95);
+  color: #fff;
+}
+
+.filterBar label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Difficulty badge styles */
+.difficultyBadge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-left: 0.5rem;
+  color: #fff;
+}
+
+.level-beginner {
+  background: #2e9f6e;
+}
+
+.level-intermediate {
+  background: #f29e1c;
+}
+
+.level-advanced {
+  background: #d64550;
+}
+
+.level-formateur {
+  background: #6b5bd6;
+}
+
+/* Academy homepage */
+.academyHome {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.homeIntro {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.homeActions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.primaryBtn {
+  background: var(--accent);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.secondaryBtn {
+  background: transparent;
+  color: var(--text-primary);
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.homeFeatured {
+  margin-top: 0.5rem;
+}
+
+.featuredListSmall {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+}
+
+.featuredCardSmall {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+}
+
+.featuredCardSmall img {
+  width: 64px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.smallMeta {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
 }
 
 .playlistItemStats {
@@ -570,5 +935,634 @@
   :global([data-theme="medieval"]) & {
     color: var(--color-brown);
     opacity: 0.85;
+  }
+}
+
+/* Player controls */
+.playerControls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+  pointer-events: none;
+}
+
+.playerControls>* {
+  pointer-events: auto;
+}
+
+.controlLeft,
+.controlRight {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.iconBtn {
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.speedSelect {
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  border: none;
+  padding: 0.3rem 0.5rem;
+  border-radius: 6px;
+}
+
+/* Learning metadata */
+.learningMeta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.metaSection {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  padding: 0.75rem;
+  border-radius: 8px;
+  flex: 1 1 200px;
+}
+
+.metaSection h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.metaSection ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.playerColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sidebarColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sidebarCard {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.sidebarSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sidebarFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.quickStats {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--text-secondary);
+}
+
+.filterHelpers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.filterButton {
+  padding: 0.65rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.filterButton:hover {
+  border-color: var(--accent);
+}
+
+.searchPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.searchInputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.searchHint {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.filterGroup {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.filterBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.filterLabel {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.filterOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.filterButton,
+.filterButtonActive {
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.filterButtonActive {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.videoMetadataCard {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.metadataHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.badgeRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.languageBadge {
+  font-size: 0.72rem;
+  background: rgba(84, 105, 141, 0.1);
+  color: var(--text-primary);
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+}
+
+.technicalInfo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg-secondary);
+}
+
+.techRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.topicSection {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.topicChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.topicChip,
+.tagChip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 0.82rem;
+}
+
+.tagChip {
+  background: rgba(var(--accent-rgb, 99, 102, 241), 0.08);
+  border-color: rgba(var(--accent-rgb, 99, 102, 241), 0.2);
+}
+
+.videoSubtitle {
+  margin: 0.4rem 0 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.videoDescription {
+  margin: 1rem 0;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.learningGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.completeButton {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.playerCard {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.videoFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+}
+
+.nativeVideo,
+.youtubeContainer {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.controlRow,
+.settingsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1rem;
+  align-items: center;
+}
+
+.controlButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.9rem;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.2s ease;
+}
+
+.controlButton:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+}
+
+.progressSlider,
+.selectControl,
+.volumeSlider {
+  width: 100%;
+}
+
+.rangeRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+  padding: 0 1rem 1rem;
+}
+
+.timecode {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  min-width: 90px;
+}
+
+.speedControl,
+.volumeControl {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+}
+
+.speedControl label,
+.volumeControl label {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.progressBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: rgba(var(--accent-rgb, 99, 102, 241), 0.08);
+  color: var(--text-primary);
+}
+
+.badgeLabel {
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+.playlistScroller {
+  height: 420px;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+.playlistGrid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.playlistItem,
+.playlistItemActive {
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0.85rem;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  position: relative;
+}
+
+.playlistItem:hover {
+  border-color: var(--accent);
+}
+
+.playlistItemActive {
+  border-color: var(--accent);
+  background: rgba(var(--accent-rgb, 99, 102, 241), 0.08);
+}
+
+.previewCard {
+  position: absolute;
+  top: 0.75rem;
+  right: -260px;
+  width: 240px;
+  padding: 0.85rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  box-shadow: var(--shadow-lg);
+  color: var(--text-primary);
+  opacity: 0;
+  transform: translateX(8px);
+  transition: opacity 180ms ease, transform 180ms ease;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.playlistItem:hover .previewCard {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.previewTitle {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-size: 0.9rem;
+}
+
+.previewText {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.previewMeta {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.previewTags {
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 960px) {
+  .previewCard {
+    display: none;
+  }
+}
+
+.playlistMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.playlistTitle {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.playlistSub {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+}
+
+.sectionCard {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.sectionHeading {
+  margin-bottom: 1rem;
+}
+
+.sectionHeading h3 {
+  margin: 0;
+}
+
+.seriesList,
+.relatedGrid,
+.featuredGrid,
+.recentGrid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.seriesItem,
+.relatedCard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.85rem;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+}
+
+.seriesItemActive {
+  border-color: var(--accent);
+  background: rgba(var(--accent-rgb, 99, 102, 241), 0.08);
+}
+
+.relatedCard {
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.relatedCard:hover,
+.seriesItem:hover {
+  transform: translateX(2px);
+}
+
+.relatedCard small,
+.seriesItem small,
+.featuredCard small {
+  color: var(--text-secondary);
+}
+
+.featuredCard {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0.85rem;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  text-align: left;
+}
+
+.featuredThumb {
+  width: 64px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.skeleton {
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1rem;
+}
+
+@media (max-width: 1100px) {
+
+  .playerColumn,
+  .sidebarColumn {
+    width: 100%;
+  }
+
+  .sidebarCard {
+    padding: 0.85rem;
+  }
+
+  .layout {
+    gap: 1.5rem;
   }
 }
