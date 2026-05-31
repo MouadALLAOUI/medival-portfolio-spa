@@ -127,6 +127,94 @@ const MEDIA = {
         "label": "Video – The Mentor's Blueprint: Mastering the Modern Classroom",
         "description": "Video lecture covering classroom management strategies, professional posture, active listening, and differentiated teaching."
     },
+    "crmef-fiche-resolution-structure-final": {
+        "label": "Technical Sheet – Final Lesson Structure",
+        "description": "Structured planning template for teaching sessions, including competencies, objectives, prerequisites, lesson flow, educational scenario, and visual support notes."
+    },
+    "crmef-gestion-2": {
+        "label": "Pedagogical Management – Summary",
+        "description": "Synthesis of educational management concepts: material management, classroom organization, time allocation, space planning, support resources, and learning situation governance."
+    },
+    "crmef-gestion-situation-didactique": {
+        "label": "Didactic Situation Case Study",
+        "description": "Practical case study for designing a didactic learning situation that teaches average calculation using a spreadsheet, including roles, steps, and comprehension checks."
+    },
+    "crmef-recherche-action-ia-esprit-critique": {
+        "label": "Action Research – AI and Critical Thinking",
+        "description": "Research-action project exploring the impact of generative AI tools on critical thinking skills in middle school students, with methodology, hypotheses, data collection, and pedagogical interventions."
+    },
+    "crmef-autorite-visuelle-20min": {
+        "label": "Visual Authority – 20-Minute Summary",
+        "description": "Condensed presentation on visual authority: why learners disengage, historical roots, and the four pillars of clarity, hierarchy, simplicity, and coherence."
+    },
+    "crmef-seance-1-phase-visuel": {
+        "label": "Teaching Sheet – Session 1: Visual Phase",
+        "description": "20-minute teaching sheet for trainee teachers on designing effective visual supports, including session goals, evaluation criteria, and a visual message exercise."
+    },
+    "crmef-communication-pedagogique": {
+        "label": "Pedagogical Communication Guide",
+        "description": "Overview of pedagogical communication elements: sender, receiver, message, channel, feedback, verbal and nonverbal signals, and classroom communication barriers."
+    },
+    "crmef-motivation-pedagogique": {
+        "label": "Pedagogical Motivation Guide",
+        "description": "Definitions and strategies for learner motivation, including intrinsic vs extrinsic motivation, teacher role, and methods to sustain engagement."
+    },
+    "crmef-polycope-didactique": {
+        "label": "Computer Science Didactics Compendium",
+        "description": "Comprehensive didactics resource covering epistemology, computer science concepts, teaching methods, learning theories, cognitive load, didactic triangle, and obstacles to student understanding."
+    },
+    "crmef-summary-tice": {
+        "label": "TICE & Prompt Engineering Summary",
+        "description": "Visual summary of TICE models such as TPACK, SAMR, RUBY, teaching modalities, LMS/CMS platforms, MOOC types, key teacher competencies, and digital identity."
+    },
+    "crmef-ticee": {
+        "label": "TICE Concepts & Strategies",
+        "description": "Comprehensive document on Information and Communication Technologies for Education, including national strategy, learning models, digital platforms, and pedagogical applications."
+    },
+    "crmef-guide-pedagogique-arabe": {
+        "label": "Brief Educational Sciences Guide (Arabic)",
+        "description": "Arabic guide covering educational psychology, learning theories, pedagogical methods, assessment, school life, communication, and classroom animation."
+    },
+    "crmef-fiche-resolution-phase-visuel": {
+        "label": "Problem-Solving Sheet – Visual Phase",
+        "description": "Pedagogical worksheet for resolving overloaded slide design using visual authority principles and selecting a single message per visual."
+    },
+    "crmef-fiche-resolution-scratch": {
+        "label": "Problem-Solving Sheet – Scratch",
+        "description": "Teaching worksheet for Scratch programming problem-solving: events, instructions, sequences, and making a character move."
+    },
+    "crmef-fiche-resolution-generique": {
+        "label": "Problem-Solving Sheet – Generic Template",
+        "description": "Reusable problem-solving template for lesson planning, with competencies, objectives, prerequisites, session steps, and evaluation."
+    },
+    "crmef-methode-decouverte": {
+        "label": "Discovery Method Teaching Sheet",
+        "description": "Worksheet describing the discovery method through guided experimentation and inquiry for teaching file-search skills."
+    },
+    "crmef-methode-demonstrative": {
+        "label": "Demonstrative Method Teaching Sheet",
+        "description": "Teaching sheet for the demonstrative method: show, have students do, have students explain, applied to file search."
+    },
+    "crmef-methode-interrogative": {
+        "label": "Interrogative Method Teaching Sheet",
+        "description": "Pedagogical worksheet for the interrogative method, using guided questioning to help learners discover file-search concepts independently."
+    },
+    "crmef-autorite-visuelle-presentation": {
+        "label": "Visual Authority Presentation",
+        "description": "Slide deck on visual authority, its origins, core principles, and how to design slides that guide learner attention effectively."
+    },
+    "crmef-scratch-2ac-presentation": {
+        "label": "Scratch Programming Presentation – 2nd Year College",
+        "description": "Presentation for a Scratch programming lesson with a character movement problem, events, sequences, and hands-on practice."
+    },
+    "crmef-theories-apprentissage-arabe": {
+        "label": "Learning Theories Presentation (Arabic)",
+        "description": "Arabic slide presentation covering behaviorism, gestalt theory, constructivism, socio-constructivism, and cognitive learning models."
+    },
+    "crmef-theorie-cognitive-arabe": {
+        "label": "Cognitive Theory Presentation (Arabic)",
+        "description": "Arabic slide deck on cognitive learning theory, information-processing models, Piaget, Ausubel, Bruner, metacognition, and pedagogical applications."
+    },
     "blogs-html-css-cover": {
         "label": "",
         "description": ""
@@ -156,314 +244,6 @@ const MEDIA = {
         "description": ""
     },
     "city-medieval-night": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-add": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-attack-enemy": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-attack-friends": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-attack-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-attack-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-attack-yellow": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-build-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-build-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-cannot-target": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-cannot-use": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-chop-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-chop-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-default-enemy": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-default-friends": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-default": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-impossible": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-magic-use-blue": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-magic-use-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-magic-use-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-magic-use-violet": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-attack-green-1": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-attack-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-attack-red-1": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-attack-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-attack-yellow": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-build-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-build-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-cannot": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-chop-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-chop-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-default-add": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-default-substract": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-eat-food": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-impossible": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-move-down": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-move-left": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-move-right": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-move-up": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-pickaxe-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-pickaxe-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-possible": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-potion-blue": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-potion-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-potion-purple": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-potion-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-question-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-question-yellow": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-scythe-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-scythe-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-settings-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-settings-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-settings-yellow": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-shield-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-shield-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-move-down": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-move-left": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-move-right": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-move-up": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-pickaxe-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-pickaxe-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-possible": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-potion-blue": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-potion-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-potion-purple": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-potion-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-question-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-question-yellow": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-scythe-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-scythe-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-settings-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-settings-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-settings-yellow": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-shield-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-shield-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-substract": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-target-move-a": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-target-move-b": {
         "label": "",
         "description": ""
     },

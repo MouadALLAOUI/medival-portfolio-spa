@@ -1,7 +1,8 @@
-import { getAssetById } from './mediaManager';
+import { loadSingleAsset, loadMultipleAssets } from "../lib/utils/assetUtils";
+
 export const crmefProfile = {
   name: 'Mouad Allaoui',
-  avatar: getAssetById('mouad-pic-png').path,
+  avatar: loadSingleAsset('mouad-pic-png', 'image').path,
   bio: 'CRMEF_LANDING.crmefProfile.bio',
   isAvatarEmoji: false,
 };
@@ -108,27 +109,19 @@ export const crmefSemesters = [
         professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.lesson-planning.professor',
         desc: 'CRMEF_SEMESTERS.semesters.semester-1.modules.lesson-planning.desc',
         files: {
-          solo: [
-            {
-              path: getAssetById('crmef-informatique-college-1').path,
-              name: getAssetById('crmef-informatique-college-1').label,
-              pages: getAssetById('crmef-informatique-college-1').meta.pageCount,
-              date: '2026-01-15',
-            },
-            {
-              path: getAssetById('crmef-informatique-college').path,
-              name: getAssetById('crmef-informatique-college').label,
-              pages: getAssetById('crmef-informatique-college').meta.pageCount,
-              date: '2026-02-10',
-            },
-            {
-              path: getAssetById('crmef-lesson').path,
-              name: getAssetById('crmef-lesson').label,
-              pages: getAssetById('crmef-lesson').meta.pageCount,
-            },
-          ],
+          solo: loadMultipleAssets([
+            'crmef-informatique-college-1',
+            'crmef-informatique-college',
+            'crmef-lesson',
+            'crmef-fiche-resolution-generique',
+            'crmef-methode-decouverte',
+            'crmef-methode-demonstrative',
+            'crmef-methode-interrogative',
+          ], 'document'),
           group: [],
-          official: [],
+          official: loadMultipleAssets([
+            'crmef-fiche-resolution-structure-final',
+          ], 'document'),
         },
       },
       {
@@ -137,15 +130,22 @@ export const crmefSemesters = [
         professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.lesson-planning.professor',
         desc: 'CRMEF_SEMESTERS.semesters.semester-1.modules.learning-management.desc',
         files: {
-          solo: [],
-          group: [
-            {
-              path: getAssetById('crmef-la-gestion').path,
-              name: getAssetById('crmef-la-gestion').label,
-              pages: getAssetById('crmef-la-gestion').meta.pageCount,
-            },
-          ],
-          official: [],
+          solo: loadMultipleAssets([
+            'crmef-autorite-visuelle-20min',
+            'crmef-seance-1-phase-visuel',
+            'crmef-fiche-resolution-phase-visuel',
+            'crmef-autorite-visuelle-presentation',
+            'crmef-fiche-resolution-scratch',
+            'crmef-scratch-2ac-presentation',
+            'crmef-gemini-generated-image-pkz39rpkz39rpkz3',
+          ], 'document'),
+          group: loadMultipleAssets([
+            'crmef-la-gestion',
+            'crmef-gestion-2',
+          ], 'document'),
+          official: loadMultipleAssets([
+            'crmef-gestion-situation-didactique',
+          ], 'document'),
         },
       },
       {
@@ -156,100 +156,26 @@ export const crmefSemesters = [
         files: {
           solo: [],
           group: [],
-          official: [
-            {
-              path: getAssetById('crmef-td1').path,
-              name: getAssetById('crmef-td1').label,
-              pages: getAssetById('crmef-td1').meta.pageCount,
-            },
-            {
-              path: getAssetById('crmef-td2').path,
-              name: getAssetById('crmef-td2').label,
-              pages: getAssetById('crmef-td2').meta.pageCount,
-            },
-            {
-              path: getAssetById('crmef-tp1').path,
-              name: getAssetById('crmef-tp1').label,
-              pages: getAssetById('crmef-tp1').meta.pageCount,
-            },
-            {
-              path: getAssetById('crmef-tp2-fonctions').path,
-              name: getAssetById('crmef-tp2-fonctions').label,
-              pages: getAssetById('crmef-tp2-fonctions').meta.pageCount,
-            },
-            {
-              path: getAssetById('crmef-tp3-chaine').path,
-              name: getAssetById('crmef-tp3-chaine').label,
-              pages: getAssetById('crmef-tp3-chaine').meta.pageCount,
-            },
-            {
-              path: getAssetById('crmef-tp4-except').path,
-              name: getAssetById('crmef-tp4-except').label,
-              pages: getAssetById('crmef-tp4-except').meta.pageCount,
-            },
-            {
-              path: getAssetById('crmef-tp5-listes').path,
-              name: getAssetById('crmef-tp5-listes').label,
-              pages: getAssetById('crmef-tp5-listes').meta.pageCount,
-            },
-            {
-              path: getAssetById('crmef-tp6-tuples').path,
-              name: getAssetById('crmef-tp6-tuples').label,
-              pages: getAssetById('crmef-tp6-tuples').meta.pageCount,
-            },
-            {
-              path: getAssetById('crmef-tp7-dict').path,
-              name: getAssetById('crmef-tp7-dict').label,
-              pages: getAssetById('crmef-tp7-dict').meta.pageCount,
-            },
-            {
-              path: getAssetById('crmef-tp8-sets').path,
-              name: getAssetById('crmef-tp8-sets').label,
-              pages: getAssetById('crmef-tp8-sets').meta.pageCount,
-            },
-            // docx
-            {
-              path: getAssetById('crmef-exercicres-1-algo').path,
-              name: getAssetById('crmef-exercicres-1-algo').label,
-              pages: getAssetById('crmef-exercicres-1-algo').meta.pageCount,
-            },
-            {
-              path: getAssetById('crmef-s2-info-rbf2-24').path,
-              name: getAssetById('crmef-s2-info-rbf2-24').label,
-              pages: getAssetById('crmef-s2-info-rbf2-24').meta.pageCount,
-            },
-            // pptx
-            {
-              path: getAssetById('crmef-coursalgo').path,
-              name: getAssetById('crmef-coursalgo').label,
-              pages: getAssetById('crmef-coursalgo').meta.slideCount,
-            },
-            {
-              path: getAssetById('crmef-cours-algorithme-snineh').path,
-              name: getAssetById('crmef-cours-algorithme-snineh').label,
-              pages: getAssetById('crmef-cours-algorithme-snineh').meta.slideCount,
-            },
-            {
-              path: getAssetById('crmef-cours-python-1').path,
-              name: getAssetById('crmef-cours-python-1').label,
-              pages: getAssetById('crmef-cours-python-1').meta.slideCount,
-            },
-            {
-              path: getAssetById('crmef-cours-python-2').path,
-              name: getAssetById('crmef-cours-python-2').label,
-              pages: getAssetById('crmef-cours-python-2').meta.slideCount,
-            },
-            {
-              path: getAssetById('crmef-cours-python-3').path,
-              name: getAssetById('crmef-cours-python-3').label,
-              pages: getAssetById('crmef-cours-python-3').meta.slideCount,
-            },
-            {
-              path: getAssetById('crmef-cours-python-4').path,
-              name: getAssetById('crmef-cours-python-4').label,
-              pages: getAssetById('crmef-cours-python-4').meta.slideCount,
-            },
-          ],
+          official: loadMultipleAssets([
+            'crmef-td1',
+            'crmef-td2',
+            'crmef-tp1',
+            'crmef-tp2-fonctions',
+            'crmef-tp3-chaine',
+            'crmef-tp4-except',
+            'crmef-tp5-listes',
+            'crmef-tp6-tuples',
+            'crmef-tp7-dict',
+            'crmef-tp8-sets',
+            'crmef-exercicres-1-algo',
+            'crmef-s2-info-rbf2-24',
+            'crmef-coursalgo',
+            'crmef-cours-algorithme-snineh',
+            'crmef-cours-python-1',
+            'crmef-cours-python-2',
+            'crmef-cours-python-3',
+            'crmef-cours-python-4',
+          ], 'document'),
         },
       },
       {
@@ -259,13 +185,9 @@ export const crmefSemesters = [
         desc: 'CRMEF_SEMESTERS.semesters.semester-1.modules.cs-reinforcement-2.desc',
         files: {
           solo: [],
-          group: [
-            {
-              path: getAssetById('crmef-portes-logiques-applications-et-synthese').path,
-              name: getAssetById('crmef-portes-logiques-applications-et-synthese').label,
-              pages: getAssetById('crmef-portes-logiques-applications-et-synthese').meta.pageCount,
-            },
-          ],
+          group: loadMultipleAssets([
+            'crmef-portes-logiques-applications-et-synthese',
+          ], 'document'),
           official: [],
         },
       },
@@ -276,14 +198,16 @@ export const crmefSemesters = [
         desc: 'CRMEF_SEMESTERS.semesters.semester-1.modules.ict-education-didactics.desc',
         files: {
           solo: [],
-          group: [
-            {
-              path: getAssetById('crmef-les-effets-didactiques').path,
-              name: getAssetById('crmef-les-effets-didactiques').label,
-              pages: getAssetById('crmef-les-effets-didactiques').meta.pageCount,
-            },
-          ],
-          official: [],
+          group: loadMultipleAssets([
+            'crmef-les-effets-didactiques',
+            'crmef-summary-tice',
+            'crmef-ticee',
+          ], 'document'),
+          official: loadMultipleAssets([
+            'crmef-communication-pedagogique',
+            'crmef-motivation-pedagogique',
+            'crmef-polycope-didactique',
+          ], 'document'),
         },
       },
       {
@@ -292,15 +216,16 @@ export const crmefSemesters = [
         professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.education-sciences.professor',
         desc: 'CRMEF_SEMESTERS.semesters.semester-1.modules.education-sciences.desc',
         files: {
-          solo: [],
-          group: [
-            {
-              path: getAssetById('crmef-theories-de-apprentissage').path,
-              name: getAssetById('crmef-theories-de-apprentissage').label,
-              pages: getAssetById('crmef-theories-de-apprentissage').meta.pageCount,
-            },
-          ],
-          official: [],
+          solo: loadMultipleAssets([
+            'crmef-theorie-cognitive-arabe',
+          ], 'document'),
+          group: loadMultipleAssets([
+            'crmef-theories-de-apprentissage',
+            'crmef-theories-apprentissage-arabe',
+          ], 'document'),
+          official: loadMultipleAssets([
+            'crmef-guide-pedagogique-arabe',
+          ], 'document'),
         },
       },
       {
@@ -310,14 +235,12 @@ export const crmefSemesters = [
         desc: 'CRMEF_SEMESTERS.semesters.semester-1.modules.research-methodology.desc',
         files: {
           solo: [],
-          group: [],
-          official: [
-            {
-              path: getAssetById('crmef-methodologie-ra').path,
-              name: getAssetById('crmef-methodologie-ra').label,
-              pages: getAssetById('crmef-methodologie-ra').meta.pageCount,
-            },
-          ],
+          group: loadMultipleAssets([
+            'crmef-recherche-action-ia-esprit-critique',
+          ], 'document'),
+          official: loadMultipleAssets([
+            'crmef-methodologie-ra',
+          ], 'document'),
         },
       },
     ],
@@ -410,36 +333,67 @@ export const crmefSemesters = [
 // ---------------------------------------------
 
 export const crmefMspInfo = {
-  lyceeName: 'Abou abbas sebti',
-  profName: 'MOUBARRAA SANAA',
-  fbLink: 'https://www.facebook.com/officiel.sebti/',
-  fbLabel: 'https://www.facebook.com/officiel.sebti/',
-  imageLabel: '📸 Lycée Abou Al Abass Essabti',
-  remerciement: `Je tiens d'abord à remercier vivement notre encadrante Mme. MOUBARRAA SANAA, qui a bien voulu nous encadrer et qui n'a pas hésité de nous accorder ses aides et ses conseils. Mes remerciements sont également exprimés à tous les formateurs du centre CRMEF pour leurs efforts et leurs conseils.`,
-  introduction: `Le stage d'enseignement constitue une étape importante du cursus universitaire. C'est pour nous, stagiaire, l'occasion de tester nos capacités à intégrer une équipe, à prendre des initiatives et à assumer sa propre autonomie au-delà d'une simple description des tâches effectuées. Il revient de rencontrer des différentes réalités au sein de l'école d'accueil et en tant que stagiaire, on est censé de s'y habituer car cela fait preuve du séjour passé au sein de l'école d'accueil. Sur ce au départ il y a complexité des notions à enseigner et l'adaptation des salles de classe ainsi que la non maitrise des élèves et parfois il y a une maitrise souple des tous ces points précités dans certaines classes. Les points précités feront objets de constats au courant de ce rapport.
-  
-  Le principal objectif de notre stage d'enseignement est de nous amener à bien comprendre la reality de la vie professionnelle en prestant en tant que professeur des cours et surtout enseigner convenablement les cours d'informatique aux élèves de l'école secondaire.`,
+  lyceeName: 'Collège Annahda',
+  profName: 'Lhossain Ait Taleb',
+  fbLink: 'https://www.facebook.com/college.annahda.mhamid/',
+  fbLabel: 'https://www.facebook.com/college.annahda.mhamid/',
+  imageLabel: '📸 Collège Annahda',
+  remerciement: `First and foremost, we would like to express our deep gratitude to our supervisor, Mr. Lhossain Ait Taleb, who kindly agreed to guide us and never hesitated to provide us with his invaluable support and advice. Our thanks also extend to all the trainers at the CRMEF center for their continuous efforts and guidance throughout our training.`,
+  introduction: `The teaching internship constitutes a major step in the academic curriculum. For us, as trainees, it is an ideal opportunity to test our abilities to integrate into a team, take initiatives, and assume our own autonomy far beyond a simple description of the tasks performed. It involves facing different realities within the host school, and as trainee teachers, we are expected to adapt to them as a natural part of our time spent there. At the beginning, challenges naturally arise regarding the complexity of the concepts to be taught, adapting to the classroom environments, and managing student discipline, though some classes offer a much smoother experience. These observations will form the core focus of this report. The primary objective of our teaching internship is to guide us toward a thorough understanding of professional life by performing as active classroom teachers, and specifically to effectively teach computer science courses to secondary school students.`,
   tableData: {
-    establishment: 'Abou El Abbas Sebti',
-    creationYear: '1984',
-    roomsCount: '43 normales et une salle génie',
-    directorName: 'Mr. ELKHALOUFIE Mustapha',
-    mentorName: 'Pr MOUBARRAA SANAA',
-    studentsCount: '3420',
+    establishment: 'Annahda Middle School (ثانوية النهضة الاعدادية)',
+    creationYear: '2003',
+    roomsCount: '23 regular rooms, 1 computer science room',
+    directorName: 'Mr. Abderrahim Massiri',
+    mentorName: 'Pr. Lhossain Ait Taleb',
+    studentsCount: '1349 (718 Male / 631 Female)',
   }
 };
 
 export const crmefVideos = [
   {
+    // --- Existing attributes ---
     id: 'intro-cs-school',
-    title: 'Introduction à l\'Informatique au Collège',
-    description: 'Une séance complète d\'introduction aux concepts fondamentaux de l\'informatique, de l\'architecture matérielle aux logiciels de base, adaptée aux élèves de collège.',
-    url: 'https://www.w3schools.com/html/mov_bbb.mp4',
-    duration: '10:15',
-    views: '1.2K',
+    title: "Le Blueprint du Mentor : Maîtriser la Classe Moderne",
+    description: "Une formation destinée aux enseignants et formateurs sur l'intégration pédagogique du numérique dans la classe moderne...",
+    // url: 'public/media/CRMEF/LM/The_Mentor\'s_Blueprint__Mastering_the_Modern_Classroom.mp4',
+    url: loadSingleAsset('crmef-lm-the-mentor-s-blueprint-mastering-the-modern-classroom', 'video').path,
+    duration: '5:13',
+    views: '1',
     date: '2026-04-12',
     author: 'Mouad Allaoui',
     category: 'Didactique',
+
+    // --- Media & Technical ---
+    thumbnail: undefined,                 // no custom thumbnail provided
+    resolution: '1280x720',         // extracted from ffprobe
+    format: 'mp4',
+    codec: 'H.264',
+    fileSize: '42MB',
+    language: 'fr',
+    subtitles: [],                  // none detected
+
+    // --- Content & Classification ---
+    level: 'Formateur',             // target audience (CRMEF trainers/teachers)
+    tags: ['SAMR', 'LMS', 'CMS', 'intégration numérique', 'pédagogie', 'didactique', 'technologie éducative'],
+    topics: [
+      'Modèle SAMR',
+      'LMS vs CMS',
+      'Piliers Technologique, Pédagogique et Comportemental',
+    ],
+    tool: 'NotebookLM',             // production tool visible in watermark
+
+    // --- Engagement & Status ---
+    likes: 0,
+    rating: null,
+    status: 'published',
+    featured: false,
+
+    // --- Organizational ---
+    institution: 'CRMEF',
+    series: 'Le Blueprint du Mentor',
+    episode: 1,
+    relatedVideos: [],
   },
   {
     id: 'lesson-planning-tips',

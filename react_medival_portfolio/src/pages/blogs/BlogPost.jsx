@@ -1,9 +1,13 @@
+/* eslint-disable no-unused-vars */
 import { getAssetById } from '../../data/mediaManager';
 import { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Share2, QrCode, Clock, Calendar, Bookmark, BookmarkCheck, ArrowLeft, ArrowRight, User, BookOpen, FileText } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
-import { motion, AnimatePresence } from 'framer-motion';
+import {
+  motion,
+  AnimatePresence
+} from 'framer-motion';
 import Prism from 'prismjs';
 import 'prismjs/themes/prism-tomorrow.css'; // Or any other theme
 // Import common languages
@@ -112,7 +116,7 @@ export default function BlogPost() {
   const contentRef = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [readingProgress, setReadingProgress] = useState(0);
-  const [wordsRead, setWordsRead] = useState(0);
+  const [_wordsRead, setWordsRead] = useState(0);
   const [timeLeft, setTimeLeft] = useState(0);
   const [fontScale, setFontScale] = useState(1);
   const [headings, setHeadings] = useState([]);
@@ -136,7 +140,7 @@ export default function BlogPost() {
   const nextPost = currentIndex < visibleBlogs.length - 1 ? visibleBlogs[currentIndex + 1] : visibleBlogs[0];
 
   const readTime = calculateReadingTime(post?.blogcontent?.content);
-  
+
   // Calculate total words from markdown content
   const totalWords = post?.blogcontent?.content?.split(/\s+/).filter(Boolean).length || 0;
 
@@ -194,7 +198,7 @@ export default function BlogPost() {
 
   useEffect(() => {
     if (!post) return;
-    
+
     if (!sessionTrackedBlogs.has(slug)) {
       sessionTrackedBlogs.add(slug);
       unlockAchievement('read_blog_post');
@@ -343,7 +347,7 @@ export default function BlogPost() {
       </div>
 
       {post ? (
-        <>
+        <div>
           {/* Back Nav Links & Bookmark Button */}
           <div className={styles['topActions']}>
             <div className={styles['navLinks']}>
@@ -366,9 +370,9 @@ export default function BlogPost() {
           </div>
 
           {/* ── Visual Cover Banner ── */}
-          <div 
-            className={styles['postCoverBanner']} 
-            style={{ 
+          <div
+            className={styles['postCoverBanner']}
+            style={{
               '--cover-gradient': getCoverGradient(post.id),
               backgroundImage: post.thumbnail ? `url(${post.thumbnail})` : undefined
             }}
@@ -399,10 +403,10 @@ export default function BlogPost() {
 
           {/* ── Two Column Layout ── */}
           <div className={styles['postLayout']}>
-            
+
             {/* ── Left Column: Article Content ── */}
             <main className={styles['mainContent']}>
-              
+
               {/* ── Reading Accessibility Toolbar ── */}
               <div className={styles['readingToolbar']}>
                 <div className={styles['toolbarLeft']}>
@@ -442,8 +446,8 @@ export default function BlogPost() {
               </div>
 
               {/* ── Article Text Content ── */}
-              <article 
-                className={`markdown-content ${mdThemeClass}`} 
+              <article
+                className={`markdown-content ${mdThemeClass}`}
                 ref={contentRef}
                 style={{ fontSize: `${fontScale}rem` }}
               >
@@ -501,7 +505,7 @@ export default function BlogPost() {
 
             {/* ── Right Column: Sidebar ── */}
             <aside className={styles['sidebar']}>
-              
+
               {/* Scribe (Author) Widget */}
               <div className={styles['widget']}>
                 <h4 className={styles['widgetTitle']}>
@@ -510,9 +514,9 @@ export default function BlogPost() {
                 </h4>
                 <div className={styles['scribeInfo']}>
                   <div className={styles['scribeAvatarFrame']}>
-                    <img 
-                      src={getAssetById('mouad-pic-png').path} 
-                      alt="Mouad the Coder" 
+                    <img
+                      src={getAssetById('mouad-pic-png').path}
+                      alt="Mouad the Coder"
                       className={styles['scribeAvatar']}
                       onError={(e) => { e.target.src = 'https://api.dicebear.com/7.x/bottts/svg?seed=Mouad'; }}
                     />
@@ -544,9 +548,8 @@ export default function BlogPost() {
                             window.scrollTo({ top: y, behavior: 'smooth' });
                           }
                         }}
-                        className={`${styles['tocLink']} ${styles[heading.level]} ${
-                          activeId === heading.id ? styles['active'] : ''
-                        }`}
+                        className={`${styles['tocLink']} ${styles[heading.level]} ${activeId === heading.id ? styles['active'] : ''
+                          }`}
                         type="button"
                       >
                         {heading.text}
@@ -653,31 +656,33 @@ export default function BlogPost() {
                   <button onClick={() => setShowQR(false)}>{t('COMMON.settings.closeBtn')}</button>
                 </div>
               </motion.div>
+              // </motion.div>
             )}
           </AnimatePresence>
 
-          {/* Fixed prev/next blog buttons */}
-          <div className={styles.fixedPostNav}>
-            {prevPost && (
-              <Link to={`/blogs/${prevPost.slug}`} className={styles.fixedPostNavBtn}>
-                ← {t('blogs.post.prevPost')}
-                <span className={styles.fixedNavPostTitle}>{prevPost.title}</span>
-              </Link>
-            )}
-            {nextPost && (
-              <Link to={`/blogs/${nextPost.slug}`} className={`${styles.fixedPostNavBtn} ${styles.fixedPostNavBtnNext}`}>
-                {t('blogs.post.nextPost')} →
-                <span className={styles.fixedNavPostTitle}>{nextPost.title}</span>
-              </Link>
-            )}
-          </div>
-        </>
+
+        </div>
       ) : (
         <div style={{ textAlign: 'center', padding: '4rem 0' }}>
           <p style={{ fontSize: '1.2rem', marginBottom: '1rem', color: 'var(--text-secondary)' }}>{t('BLOGS.post.notFound')}</p>
           <Link to="/blogs" style={{ fontFamily: 'var(--font-cinzel)', color: 'var(--accent)', fontWeight: 'bold' }}>{t('BLOGS.post.backToAllScrolls')}</Link>
         </div>
       )}
+      {/* Fixed prev/next blog buttons */}
+      <div className={styles.fixedPostNav}>
+        {prevPost && (
+          <Link to={`/blogs/${prevPost.slug}`} className={styles.fixedPostNavBtn}>
+            ← {t('blogs.post.prevPost')}
+            <span className={styles.fixedNavPostTitle}>{prevPost.title}</span>
+          </Link>
+        )}
+        {nextPost && (
+          <Link to={`/blogs/${nextPost.slug}`} className={`${styles.fixedPostNavBtn} ${styles.fixedPostNavBtnNext}`}>
+            {t('blogs.post.nextPost')} →
+            <span className={styles.fixedNavPostTitle}>{nextPost.title}</span>
+          </Link>
+        )}
+      </div>
     </div>
   );
 }

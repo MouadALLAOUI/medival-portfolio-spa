@@ -33,8 +33,8 @@ const SettingsModal = ({
     language, setLanguage,
     fontSize, setFontSize,
     reducedMotion, setReducedMotion,
-    // customCursor, setCustomCursor,
-    // soundEnabled, setSoundEnabled,
+    customCursor, setCustomCursor,
+    soundEnabled, setSoundEnabled,
     t
   } = useSettings();
   const pdfCtx = usePdfSettings(); // may be null if PdfSettingsProvider not in tree
@@ -173,7 +173,7 @@ const SettingsModal = ({
           </div>
 
           {/* Delight & Polish */}
-          {/* <div className={styles.section || styles['setting-group']}>
+          <div className={styles.section || styles['setting-group']}>
             <h4 className={styles.sectionTitle || styles['group-label']}>{t('COMMON.settings.sections.appearance.title')}</h4>
             <div className={styles['a11y-controls']}>
               <div className={styles['a11y-item']}>
@@ -198,7 +198,7 @@ const SettingsModal = ({
                 </button>
               </div>
             </div>
-          </div> */}
+          </div>
 
           {/* PDF mode section — shown when showPdfMode={true} AND context exists */}
           {showPdfMode && pdfCtx && (

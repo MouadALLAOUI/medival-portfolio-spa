@@ -96,6 +96,22 @@ const MobileMenu = ({ items, isActive, closeMenu, styles, t }) => (
 				);
 			}
 
+			// Game page — standalone route, open in new tab
+			if (item.href === '/fallingletters') {
+				return (
+					<a
+						key={item.href}
+						href={item.href}
+						target="_blank"
+						rel="noopener noreferrer"
+						className={`${styles['nav-link']} ${styles['nav-link-special']} ${isActive(item.href) ? styles.active : ''}`}
+						onClick={closeMenu}
+					>
+						{item.label}
+					</a>
+				);
+			}
+
 			return (
 				<Link
 					key={item.href}
@@ -290,6 +306,22 @@ const HeaderComponent = () => {
 									target="_blank"
 									rel="noopener noreferrer"
 									className={`${styles['nav-link']} ${item.href === '/fallingletters' ? styles['nav-link-special'] : ''} ${isActive(item.href) ? styles.active : ''}`}
+									onClick={closeMobileMenu}
+								>
+									{item.label}
+								</a>
+							);
+						}
+
+						// Game page — standalone route, open in new tab
+						if (item.href === '/fallingletters') {
+							return (
+								<a
+									key={item.href}
+									href={item.href}
+									target="_blank"
+									rel="noopener noreferrer"
+									className={`${styles['nav-link']} ${styles['nav-link-special']} ${isActive(item.href) ? styles.active : ''}`}
 									onClick={closeMobileMenu}
 								>
 									{item.label}

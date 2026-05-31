@@ -37,27 +37,37 @@
 
 .badgeTabRow {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  // justify-content: center;
+  // align-items: center;
   gap: 0.5rem;
   overflow-x: auto;
   padding-bottom: 0.5rem;
   width: 100%;
-  -webkit-overflow-scrolling: touch;
-  flex-wrap: wrap;
+  overflow-x: auto;
 
-  &::-webkit-scrollbar {
-    display: none !important;
+  // @media screen {}
+
+  @include tablet {
+    flex-direction: column;
+    gap: 1.5rem;
+
+    // flex-wrap: wrap;
+
+    &::-webkit-scrollbar {
+      display: none !important;
+      height: 5px;
+    }
+
+    scrollbar-width: none;
   }
 
-  scrollbar-width: none;
   /* Firefox */
   -ms-overflow-style: none;
   /* IE and Edge */
 
   // Premium fading mask gradients on the far left and right edges
-  mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
 }
 
 .badgeTabItem {

@@ -14,14 +14,17 @@ const CrmefMspPage = () => {
     { id: 'documents', label: t('CRMEF.msp.tabs.documents') },
   ];
 
-  const remerciementText = t('CRMEF.msp.presentation.remerciementText');
-  const resolvedRemerciement = remerciementText !== 'CRMEF.msp.presentation.remerciementText' ? remerciementText : crmefMspInfo.remerciement;
+  // const remerciementText = t('CRMEF.msp.presentation.remerciementText');
+  // const resolvedRemerciement = remerciementText !== 'CRMEF.msp.presentation.remerciementText' ? remerciementText : crmefMspInfo.remerciement;
+  const resolvedRemerciement = crmefMspInfo.remerciement;
 
-  const introductionText = t('CRMEF.msp.presentation.introductionText');
-  const resolvedIntroduction = introductionText !== 'CRMEF.msp.presentation.introductionText' ? introductionText : crmefMspInfo.introduction;
+  // const introductionText = t('CRMEF.msp.presentation.introductionText');
+  // const resolvedIntroduction = introductionText !== 'CRMEF.msp.presentation.introductionText' ? introductionText : crmefMspInfo.introduction;
+  const resolvedIntroduction = crmefMspInfo.introduction;
 
-  const roomsCountVal = t('CRMEF.msp.table.roomsCountValue');
-  const resolvedRoomsCount = roomsCountVal !== 'CRMEF.msp.table.roomsCountValue' ? roomsCountVal : crmefMspInfo.tableData.roomsCount;
+  // const roomsCountVal = t('CRMEF.msp.table.roomsCountValue');
+  // const resolvedRoomsCount = roomsCountVal !== 'CRMEF.msp.table.roomsCountValue' ? roomsCountVal : crmefMspInfo.tableData.roomsCount;
+  const resolvedRoomsCount = crmefMspInfo.tableData.roomsCount;
 
   return (
     <CSection

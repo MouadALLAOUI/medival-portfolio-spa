@@ -34,10 +34,11 @@ const CrmefSemesterPage = ({ semesterId }) => {
     const fileLabel = localizedName || `${groupLabel} #${index + 1}`;
 
     const meta = {};
-    if (isObject && fileItem.pages) meta.pages = fileItem.pages;
-    if (isObject && fileItem.date) meta.date = fileItem.date;
-    if (isObject && fileItem.size) meta.size = fileItem.size;
-    if (isObject && fileItem.author) meta.author = fileItem.author;
+    if (isObject && fileItem.metric) meta.pages = fileItem.metric;
+    if (isObject && fileItem.meta.date) meta.date = fileItem.meta.date;
+    if (isObject && fileItem.meta.size) meta.size = fileItem.meta.size;
+    if (isObject && fileItem.meta.author) meta.author = fileItem.meta.author;
+    // if (isObject && fileItem.meta.wordCount) meta.wordCount = fileItem.meta.wordCount;
 
     return (
       <FileLink

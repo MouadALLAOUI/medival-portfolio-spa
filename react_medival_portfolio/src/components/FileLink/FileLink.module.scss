@@ -245,11 +245,17 @@
 }
 
 // ── Hover tooltip ─────────────────────────────────────────────────────────────
-.tooltip {
+.tooltipPortal {
   position: absolute;
-  bottom: 115%;
+  top: 0;
   left: 50%;
-  transform: translateX(-50%) translateY(6px);
+  transform: translateX(-50%) translateY(-100%);
+  /* Adjusted to sit cleanly right above */
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.tooltip {
   background: var(--bg-card);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-md);
@@ -257,16 +263,7 @@
   padding: 0.85rem 1rem;
   width: max-content;
   max-width: 280px;
-  z-index: 200;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--transition, 220ms ease), transform var(--transition, 220ms ease);
-
-  .fileCardContainer:hover & {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateX(-50%) translateY(0);
-  }
+  pointer-events: auto;
 
   &::after {
     content: '';
