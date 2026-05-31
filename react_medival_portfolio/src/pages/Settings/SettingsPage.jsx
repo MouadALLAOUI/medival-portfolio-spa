@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useSettings } from '../../lib/useSettings';
 import { useAchievements } from '../../lib/useAchievements';
 import { SETTINGS_SECTIONS } from '../../lib/settings/settingsRegistry';
@@ -7,7 +7,7 @@ import SettingSection from './components/SettingSection';
 import styles from './SettingsPage.module.scss';
 
 const SettingsPage = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { t } = useSettings();
   const { unlockAchievement } = useAchievements();
   const [activeSection, setActiveSection] = useState(SETTINGS_SECTIONS[0].id);
@@ -21,15 +21,15 @@ const SettingsPage = () => {
   return (
     <div className={styles.page}>
       {/* Top header bar */}
-      <div className={styles.topBar}>
+      {/* <div className={styles.topBar}>
         <button className={styles.backBtn} onClick={() => navigate(-1)} type="button">
-          ← {t('COMMON.settings.backBtn')}
+          {t('COMMON.settings.backBtn')}
         </button>
         <div className={styles.titleBlock}>
           <h1 className={styles.title}>⚙️ {t('COMMON.settings.title')}</h1>
           <p className={styles.subtitle}>{t('COMMON.settings.subtitle')}</p>
         </div>
-      </div>
+      </div> */}
 
       {/* Dashboard layout */}
       <div className={styles.dashboard}>
@@ -39,7 +39,7 @@ const SettingsPage = () => {
             {SETTINGS_SECTIONS.map(section => {
               const translatedTitle = t(`COMMON.settings.sections.${section.id}.title`) || section.title;
               const translatedDesc = t(`COMMON.settings.sections.${section.id}.description`) || section.description;
-              
+
               // Split off the first emoji symbol
               const titleWords = translatedTitle.split(' ');
               const emoji = titleWords[0];

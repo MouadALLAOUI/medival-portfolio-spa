@@ -31,7 +31,7 @@ const AchievementsPage = () => {
       {/* Header */}
       <div className={styles.topBar}>
         <button className={styles.backBtn} onClick={() => navigate(-1)} type="button">
-          ← {t('COMMON.settings.backBtn') || 'Back'}
+          {t('COMMON.settings.backBtn') || 'Back'}
         </button>
         <div className={styles.titleBlock}>
           <h1 className={styles.title}>🏆 {t('achievements.title') || 'Achievement Vault'}</h1>

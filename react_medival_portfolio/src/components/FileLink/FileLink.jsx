@@ -1,4 +1,5 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { Download, ExternalLink, Loader } from 'lucide-react';
 import { getExt, classifyFile, FILE_TYPE_META, isDownloadExt } from '../../lib/fileType';
 import { useAlerts } from '../../lib/useAlerts';
@@ -29,6 +30,9 @@ export default function FileLink({
 }) {
   const { showAlert } = useAlerts();
   const [isChecking, setIsChecking] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
+  const [tooltipPos, setTooltipPos] = useState({ top: 0, left: 0 });
+  const cardRef = useRef(null);
 
   const ext = getExt(filePath);
   const fileType = classifyFile(ext);
@@ -39,6 +43,22 @@ export default function FileLink({
   const displayLabel = label || `.${ext.toUpperCase()}`;
 
   const resolveLabel = (key) => (t ? t(key) : key);
+
+  // ── Tooltip positioning ───────────────────────────────────────────────────
+  const handleMouseEnter = () => {
+    if (cardRef.current) {
+      const rect = cardRef.current.getBoundingClientRect();
+      setTooltipPos({
+        top: rect.top + window.scrollY - 10,
+        left: rect.left + window.scrollX + rect.width / 2,
+      });
+      setShowTooltip(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setShowTooltip(false);
+  };
 
   // ── File-existence guard ──────────────────────────────────────────────────
   const handleClick = useCallback(async (e) => {
@@ -135,6 +155,12 @@ export default function FileLink({
                 <strong>{meta.author}</strong>
               </div>
             )}
+            {meta.wordCount && (
+              <div className={styles.tooltipRow}>
+                <span>📝 {resolveLabel(`${tooltipKey}.wordCount`)}:</span>
+                <strong>{meta.wordCount}</strong>
+              </div>
+            )}
           </div>
         </>
       )}
@@ -156,7 +182,7 @@ export default function FileLink({
   );
 
   return (
-    <div className={`${styles.fileCardContainer} ${className}`}>
+    <div className={`${styles.fileCardContainer} ${className}`} ref={cardRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className={styles.fileCard}>
         {isPdf ? (
           /* PDFs: PdfViewer has its own existence handling */
@@ -195,7 +221,12 @@ export default function FileLink({
         )}
       </div>
 
-      {renderTooltip()}
+      {showTooltip && createPortal(
+        <div className={styles.tooltipPortal} style={{ top: `${tooltipPos.top}px`, left: `${tooltipPos.left}px` }}>
+          {renderTooltip()}
+        </div>,
+        document.body
+      )}
     </div>
   );
 }

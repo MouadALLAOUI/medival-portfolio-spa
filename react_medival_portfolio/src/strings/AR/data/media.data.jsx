@@ -127,6 +127,94 @@ const MEDIA = {
         "label": "فيديو – مخطط الموجه: احتراف تدبير الصف المدرسي الحديث",
         "description": "محاضرة مرئية تغطي استراتيجيات إدارة الفصل، التواصل الفعال، التمايز البيداغوجي، والوقوف الاحترافي."
     },
+    "crmef-fiche-resolution-structure-final": {
+        "label": "ورقة تقنية – الهيكل النهائي",
+        "description": "نموذج لتخطيط الجلسات التعليمية: الكفاءات، الأهداف، المتطلبات السابقة، تسلسل الجلسة، السيناريو، والدعامات البصرية."
+    },
+    "crmef-gestion-2": {
+        "label": "إدارة تربوية – ملخص",
+        "description": "ملخص لمفاهيم الإدارة التربوية: إدارة المادة، الفصل، الوقت، الفراغ، الموارد، وحوكمة أوضاع التعلم."
+    },
+    "crmef-gestion-situation-didactique": {
+        "label": "دراسة حالة – وضعية ديداكتيكية",
+        "description": "دراسة حالة لتصميم وضعية تعلم ديداكتيكية لتدريس حساب المتوسط باستخدام جدول بيانات، مع الأدوار والخطوات وأسئلة الفهم."
+    },
+    "crmef-recherche-action-ia-esprit-critique": {
+        "label": "بحث-عمل – الذكاء الاصطناعي والتفكير النقدي",
+        "description": "مشروع بحثي يدرس تأثير أدوات الذكاء الاصطناعي على مهارات التفكير النقدي لدى تلاميذ المرحلة الإعدادية، مع المنهجية والافتراضات وجمع البيانات."
+    },
+    "crmef-autorite-visuelle-20min": {
+        "label": "السلطة البصرية – ملخص 20 دقيقة",
+        "description": "عرض مختصر عن السلطة البصرية: أسباب تشتت المتعلمين، الجذور التاريخية، وأركان الوضوح والتسلسل والبساطة والتماسك."
+    },
+    "crmef-seance-1-phase-visuel": {
+        "label": "ورقة تربوية – الجلسة 1: المرحلة البصرية",
+        "description": "ورقة جلسة مدتها 20 دقيقة لتدريب الأساتذة على تصميم وسائط بصرية فعالة وممارسة الرسالة البصرية الواحدة."
+    },
+    "crmef-communication-pedagogique": {
+        "label": "التواصل البيداغوجي",
+        "description": "ملخص لعناصر الاتصال في السياق التعليمي: المرسل، المستقبل، الرسالة، القناة، التغذية الراجعة، والمعوقات."
+    },
+    "crmef-motivation-pedagogique": {
+        "label": "التحفيز البيداغوجي",
+        "description": "شرح للحوافز الداخلية والخارجية ودور الأستاذ في بناء دافعية المتعلمين."
+    },
+    "crmef-polycope-didactique": {
+        "label": "مذكرة في ديدكتيك الإعلاميات",
+        "description": "مذكرة شاملة تتناول الديداكتيك، نظريات التعلم، عبء المعرفة، المثلث الديداكتيكي، والعقبات التعليمية."
+    },
+    "crmef-summary-tice": {
+        "label": "ملخص TICE وهندسة الاستعلامات",
+        "description": "ملخص بصري لنماذج TICE مثل TPACK وSAMR وRUBY، ومنصات التعليم الإلكترونية، والهوية الرقمية."
+    },
+    "crmef-ticee": {
+        "label": "TICE – المفاهيم والاستراتيجيات",
+        "description": "وثيقة شاملة عن تكنولوجيا المعلومات والاتصالات للتعليم، من الاستراتجيات الوطنية إلى التطبيقات البيداغوجية."
+    },
+    "crmef-guide-pedagogique-arabe": {
+        "label": "الدليل المختصر في علوم التربية",
+        "description": "دليل باللغة العربية يغطي نظريات التعلم، الأساليب البيداغوجية، التقييم، والتواصل التربوي."
+    },
+    "crmef-fiche-resolution-phase-visuel": {
+        "label": "ورقة حل مشكلة – المرحلة البصرية",
+        "description": "ورقة تقنية لحل تصميم الشرائح المزدحمة باستخدام مبادئ السلطة البصرية ورسالة واحدة واضحة."
+    },
+    "crmef-fiche-resolution-scratch": {
+        "label": "ورقة حل مشكلة – Scratch",
+        "description": "ورقة تعليمية لمشكلة برمجة Scratch: الأحداث، التعليمات، التسلسل، وتحريك الشخصية."
+    },
+    "crmef-fiche-resolution-generique": {
+        "label": "ورقة حل مشكلة – قالب عام",
+        "description": "قالب قابل لإعادة الاستخدام لتخطيط حل مشاكل الدرس مع الأهداف والكفاءات وسير الجلسة."
+    },
+    "crmef-methode-decouverte": {
+        "label": "الطريقة الاستكشافية",
+        "description": "ورقة تقنية تشرح الطريقة الاستكشافية لتعليم البحث عن الملفات عبر التجربة الموجهة."
+    },
+    "crmef-methode-demonstrative": {
+        "label": "الطريقة الإيضاحية",
+        "description": "ورقة تقنية توضح كيفية استخدام العرض العملي قبل التطبيق الذاتي في درس البحث عن الملفات."
+    },
+    "crmef-methode-interrogative": {
+        "label": "الطريقة الاستفهامية",
+        "description": "ورقة تقنية تعتمد على الأسئلة الموجهة لمساعدة المتعلمين على اكتشاف بحث الملفات بأنفسهم."
+    },
+    "crmef-autorite-visuelle-presentation": {
+        "label": "عرض السلطة البصرية",
+        "description": "عرض تقديمي يشرح السلطة البصرية، أصولها، مبادئها، وكيفية تصميم شرائح واضحة."
+    },
+    "crmef-scratch-2ac-presentation": {
+        "label": "عرض Scratch – السنة الثانية إعدادي",
+        "description": "عرض لتدريس برمجة Scratch مع مشكلة شخصية لا تتحرك، والأحداث والتعليمات التطبيقية."
+    },
+    "crmef-theories-apprentissage-arabe": {
+        "label": "عرض نظريات التعلم (بالعربية)",
+        "description": "عرض باللغة العربية يغطي النظريات السلوكية، الجشطلت، البنائية، والبنائية الاجتماعية في التعلم."
+    },
+    "crmef-theorie-cognitive-arabe": {
+        "label": "عرض النظرية المعرفية (بالعربية)",
+        "description": "عرض بالعربية حول نظرية المعالجة المعرفية، مراحل الذاكرة، بياجيه، أوزوبيل، برونر، والانعكالية التعليمية."
+    },
     "blogs-html-css-cover": {
         "label": "",
         "description": ""
@@ -156,314 +244,6 @@ const MEDIA = {
         "description": ""
     },
     "city-medieval-night": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-add": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-attack-enemy": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-attack-friends": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-attack-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-attack-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-attack-yellow": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-build-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-build-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-cannot-target": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-cannot-use": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-chop-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-chop-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-default-enemy": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-default-friends": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-default": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-impossible": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-magic-use-blue": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-magic-use-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-magic-use-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-magic-use-violet": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-attack-green-1": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-attack-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-attack-red-1": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-attack-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-attack-yellow": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-build-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-build-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-cannot": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-chop-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-chop-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-default-add": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-default-substract": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-eat-food": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-impossible": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-move-down": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-move-left": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-move-right": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-move-up": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-pickaxe-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-pickaxe-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-possible": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-potion-blue": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-potion-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-potion-purple": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-potion-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-question-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-question-yellow": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-scythe-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-scythe-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-settings-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-settings-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-settings-yellow": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-shield-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-mini-shield-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-move-down": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-move-left": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-move-right": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-move-up": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-pickaxe-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-pickaxe-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-possible": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-potion-blue": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-potion-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-potion-purple": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-potion-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-question-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-question-yellow": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-scythe-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-scythe-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-settings-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-settings-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-settings-yellow": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-shield-green": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-shield-red": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-substract": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-target-move-a": {
-        "label": "",
-        "description": ""
-    },
-    "cursor-wenrexaassetsmagiccursorspack-36x36px-cursor-target-move-b": {
         "label": "",
         "description": ""
     },
