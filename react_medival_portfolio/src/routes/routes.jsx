@@ -34,7 +34,6 @@ export default function AppRoutes() {
           <Route path="thankyou" element={<ThankYou />} />
           <Route path="blogs" element={<BlogsPage />} />
           <Route path="blogs/:slug" element={<BlogPost />} />
-          <Route path="fallingletters" element={<FallingLetters />} />
           <Route path="privacy" element={<PrivacyPage />} />
           <Route path="settings" element={<SettingsPage />} />
           <Route path="achievements" element={<AchievementsPage />} />
@@ -42,6 +41,8 @@ export default function AppRoutes() {
           <Route path="projects/:id" element={<ProjectDetailsPage />} />
           <Route path="*" element={<NotFound />} />
         </Route>
+        {/* Standalone pages — no header / footer */}
+        <Route path="fallingletters" element={<FallingLetters />} />
         <Route path="CRMEF" element={<CRMEF />} />
         <Route path="crmef" element={<CRMEF />} />
       </Routes>

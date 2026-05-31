@@ -90,15 +90,22 @@ body::before {
   background: var(--body-bg-before);
 }
 
-[data-theme="medieval"][data-custom-cursor="true"] body {
-  cursor: url('/media/cursor/WenrexaAssetsMagicCursorsPack/36x36px/Cursor Default.png'), auto;
+html[data-custom-cursor="true"],
+body[data-custom-cursor="true"],
+html[data-custom-cursor="true"] body,
+body[data-custom-cursor="true"] {
+  cursor: url('/media/cursor/WenrexaAssetsMagicCursorsPack/36x36px/Cursor Default.png') 18 18, auto;
+}
 
-  a,
-  button,
-  [role="button"],
-  .clickable {
-    cursor: url('/media/cursor/WenrexaAssetsMagicCursorsPack/36x36px/Cursor Magic Use Blue.png'), pointer;
-  }
+html[data-custom-cursor="true"] a,
+html[data-custom-cursor="true"] button,
+html[data-custom-cursor="true"] [role="button"],
+html[data-custom-cursor="true"] .clickable,
+body[data-custom-cursor="true"] a,
+body[data-custom-cursor="true"] button,
+body[data-custom-cursor="true"] [role="button"],
+body[data-custom-cursor="true"] .clickable {
+  cursor: url('/media/cursor/WenrexaAssetsMagicCursorsPack/36x36px/Cursor Magic Use Blue.png') 18 18, pointer;
 }
 
 h1,
@@ -206,6 +213,7 @@ textarea {
 [data-animation-level="normal"] * {
   transition-duration: 150ms !important;
 }
+
 [data-animation-level="normal"] .crystal-glow,
 [data-animation-level="normal"] .pulsing,
 [data-animation-level="normal"] [class*="pulsing"],
@@ -221,12 +229,15 @@ textarea {
 :root[data-animation-level="light"] {
   --transition: 0.01ms step-end !important;
 }
+
 :root[data-animation-level="normal"] {
   --transition: 150ms ease !important;
 }
+
 :root[data-animation-level="heavy"] {
   --transition: 200ms ease !important;
 }
+
 :root[data-animation-level="ultra"] {
   --transition: 400ms cubic-bezier(0.4, 0, 0.2, 1) !important;
 }

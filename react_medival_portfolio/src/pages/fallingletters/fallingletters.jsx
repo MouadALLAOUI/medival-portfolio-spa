@@ -1,34 +1,79 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import MenuScreen from "./MenuScreen";
+import SettingsScreen from "./SettingsScreen";
+import GameScreen from "./GameScreen";
+import GameOverScreen from "./GameOverScreen";
+import styles from "./fallingletters.module.scss";
+import { getStrings } from "./gameStrings";
+import { LAYOUT_MAP, LAYOUT_QWERTY, resolveKey } from "./keyboardLayouts";
+
+// ─── Constants ───────────────────────────────────────────────────────────────
+const LEVELS_CONFIG = {
+  easy:   { speed: 2,   spawnRate: 2500 },
+  medium: { speed: 5,   spawnRate: 2000 },
+  hard:   { speed: 7,   spawnRate: 1500 },
+};
 
 export default function FallingLetters() {
-  // Screens state: 'menu' | 'settings' | 'game' | 'gameover'
-  const [screen, setScreen] = useState("menu");
-  const [level, setLevel] = useState("easy");
+  // ─── Language / keyboard layout ────────────────────────────────────────────
+  const [gameLang, setGameLang] = useState(
+    () => localStorage.getItem("fl_lang") || "en"
+  );
+  const [layoutId, setLayoutId] = useState(
+    () => localStorage.getItem("fl_layout") || "qwerty"
+  );
 
-  // Game stats
+  // Derived: current strings + layout objects
+  const t = getStrings(gameLang);
+  const layout = LAYOUT_MAP[layoutId] || LAYOUT_QWERTY;
+  const isArabic = layout.lang === "arabic";
+
+  // Persist preferences
+  useEffect(() => {
+    localStorage.setItem("fl_lang", gameLang);
+  }, [gameLang]);
+
+  useEffect(() => {
+    localStorage.setItem("fl_layout", layoutId);
+  }, [layoutId]);
+
+  // ─── Screen routing ────────────────────────────────────────────────────────
+  const [screen, setScreen] = useState("menu");
+
+  // ─── Settings state ────────────────────────────────────────────────────────
+  const [level, setLevel] = useState("easy");
+  const [gameTimer, setGameTimer] = useState(60);
+  const [selectedLetters, setSelectedLetters] = useState(layout.alphabet);
+  const [customLettersInput, setCustomLettersInput] = useState("");
+  const [reducePointsOnMiss, setReducePointsOnMiss] = useState(true);
+
+  // When layout changes, reset selectedLetters to full alphabet of the new layout
+  const prevLayoutId = useRef(layoutId);
+  useEffect(() => {
+    if (layoutId !== prevLayoutId.current) {
+      prevLayoutId.current = layoutId;
+      setSelectedLetters(layout.alphabet);
+      setCustomLettersInput("");
+    }
+  }, [layoutId, layout.alphabet]);
+
+  // ─── Reactive HUD state ────────────────────────────────────────────────────
   const [score, setScore] = useState(0);
   const [hearts, setHearts] = useState(5);
   const [timeLeft, setTimeLeft] = useState(60);
-  const [gameTimer, setGameTimer] = useState(60);
-  const [reducePointsOnMiss, setReducePointsOnMiss] = useState(true);
 
-  // Settings Letter Checkbox State
-  const allAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-  const [selectedLetters, setSelectedLetters] = useState(allAlphabet);
-  const [customLettersInput, setCustomLettersInput] = useState("");
-
-  // Game Statistics
+  // ─── End-of-game statistics ────────────────────────────────────────────────
   const [correctCount, setCorrectCount] = useState(0);
   const [missedCount, setMissedCount] = useState(0);
   const [accuracy, setAccuracy] = useState(0);
   const [lettersPerMin, setLettersPerMin] = useState(0);
 
-  // Refs for tracking animation loops and interval timers
+  // ─── Refs ──────────────────────────────────────────────────────────────────
+  const gameAreaRef = useRef(null);
   const gameRunningRef = useRef(false);
-  const fallingLettersRef = useRef([]); // array of { id, letter, column, y, refNode, handled }
-  const nextLetterId = useRef(0);
-  
+  const fallingLettersRef = useRef([]);
+  const nextLetterIdRef = useRef(0);
+  const currentSpeedRef = useRef(2);
   const scoreRef = useRef(0);
   const heartsRef = useRef(5);
   const correctCountRef = useRef(0);
@@ -37,171 +82,169 @@ export default function FallingLetters() {
   const timeLeftRef = useRef(60);
   const startTimeRef = useRef(0);
 
-  const spawnIntervalId = useRef(null);
-  const speedIncreaseIntervalId = useRef(null);
-  const timerIntervalId = useRef(null);
-  const animationFrameId = useRef(null);
-  const gameAreaRef = useRef(null);
+  // Stable refs for current settings (no stale closure issues in key handler)
+  const selectedLettersRef = useRef(selectedLetters);
+  const layoutRef = useRef(layout);
+  const reducePointsRef = useRef(reducePointsOnMiss);
+  const tRef = useRef(t);
 
-  // Constants
-  const levelsConfig = {
-    easy: { speed: 2, spawnRate: 2500 },
-    medium: { speed: 5, spawnRate: 2000 },
-    hard: { speed: 7, spawnRate: 1500 }
-  };
-  const currentSpeed = useRef(2);
+  useEffect(() => { selectedLettersRef.current = selectedLetters; }, [selectedLetters]);
+  useEffect(() => { layoutRef.current = layout; }, [layout]);
+  useEffect(() => { reducePointsRef.current = reducePointsOnMiss; }, [reducePointsOnMiss]);
+  useEffect(() => { tRef.current = t; }, [t]);
 
-  // Clean intervals when component unmounts
+  const spawnIntervalRef = useRef(null);
+  const speedIntervalRef = useRef(null);
+  const timerIntervalRef = useRef(null);
+  const rafIdRef = useRef(null);
+  const wrapperRef = useRef(null);
+  const keyHandlerRef = useRef(null);
+
+  // ─── Cleanup on unmount ────────────────────────────────────────────────────
   useEffect(() => {
-    return () => {
-      stopGameLoops();
-    };
+    return () => stopGameLoops();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // ─── Settings helpers ──────────────────────────────────────────────────────
   const selectLettersPreset = (type) => {
-    const vowels = ["A", "E", "I", "O", "U"];
+    const vowels = layout.vowels;
+    const alpha = layout.alphabet;
     if (type === "all") {
-      setSelectedLetters(allAlphabet);
+      setSelectedLetters(alpha);
       setCustomLettersInput("");
     } else if (type === "none") {
       setSelectedLetters([]);
       setCustomLettersInput("");
     } else if (type === "vowels") {
       setSelectedLetters(vowels);
-      setCustomLettersInput(vowels.join(""));
+      setCustomLettersInput(isArabic ? vowels.join(" ") : vowels.join(""));
     } else if (type === "consonants") {
-      const consonants = allAlphabet.filter((l) => !vowels.includes(l));
+      const consonants = alpha.filter((l) => !vowels.includes(l));
       setSelectedLetters(consonants);
-      setCustomLettersInput(consonants.join(""));
+      setCustomLettersInput(isArabic ? consonants.join(" ") : consonants.join(""));
     }
   };
 
   const handleCustomLettersChange = (e) => {
-    const customText = e.target.value.toUpperCase().replace(/[^A-Z]/g, "");
-    setCustomLettersInput(customText);
-    const lettersArr = customText.split("");
-    setSelectedLetters(allAlphabet.filter((l) => lettersArr.includes(l)));
-  };
-
-  const handleLetterCheckboxToggle = (letter) => {
-    if (selectedLetters.includes(letter)) {
-      setSelectedLetters(selectedLetters.filter((l) => l !== letter));
+    const raw = e.target.value;
+    if (isArabic) {
+      // For Arabic, split by space or individual chars
+      const chars = raw.split(/\s+/).filter((c) => c.length > 0);
+      setCustomLettersInput(raw);
+      setSelectedLetters(layout.alphabet.filter((l) => chars.includes(l)));
     } else {
-      setSelectedLetters([...selectedLetters, letter]);
+      const clean = raw.toUpperCase().replace(/[^A-Z]/g, "");
+      setCustomLettersInput(clean);
+      setSelectedLetters(layout.alphabet.filter((l) => clean.includes(l)));
     }
   };
+
+  const handleLetterToggle = (letter) => {
+    setSelectedLetters((prev) =>
+      prev.includes(letter) ? prev.filter((l) => l !== letter) : [...prev, letter]
+    );
+  };
+
+  // ─── Game lifecycle ────────────────────────────────────────────────────────
+  function stopGameLoops() {
+    gameRunningRef.current = false;
+    if (keyHandlerRef.current) {
+      document.removeEventListener("keydown", keyHandlerRef.current);
+    }
+    if (spawnIntervalRef.current)  clearInterval(spawnIntervalRef.current);
+    if (speedIntervalRef.current)  clearInterval(speedIntervalRef.current);
+    if (timerIntervalRef.current)  clearInterval(timerIntervalRef.current);
+    if (rafIdRef.current)          cancelAnimationFrame(rafIdRef.current);
+    fallingLettersRef.current.forEach(({ refNode }) => refNode?.remove());
+    fallingLettersRef.current = [];
+  }
 
   const startGame = () => {
     if (selectedLetters.length === 0) {
-      alert("Please select at least one letter to practice!");
+      alert(tRef.current.selectLetterAlert);
       return;
     }
 
-    // Reset game state and refs
     scoreRef.current = 0;
     heartsRef.current = 5;
     correctCountRef.current = 0;
     missedCountRef.current = 0;
     totalLettersRef.current = 0;
     timeLeftRef.current = gameTimer;
-    currentSpeed.current = levelsConfig[level].speed;
+    currentSpeedRef.current = LEVELS_CONFIG[level].speed;
     startTimeRef.current = Date.now();
     fallingLettersRef.current = [];
-    nextLetterId.current = 0;
-    gameRunningRef.current = true;
+    nextLetterIdRef.current = 0;
 
     setScore(0);
     setHearts(5);
     setTimeLeft(gameTimer);
     setScreen("game");
 
-    // Boot keyboard press listener
-    document.addEventListener("keydown", handleKeyPress);
-
-    // Boot game loops
+    // Cleanup any old loops first, then arm new ones
     stopGameLoops();
+    gameRunningRef.current = true;
+
+    keyHandlerRef.current = handleKeyPress;
+    document.addEventListener("keydown", keyHandlerRef.current);
     startGameLoops();
   };
 
-  function stopGameLoops() {
-    gameRunningRef.current = false;
-    document.removeEventListener("keydown", handleKeyPress);
-
-    if (spawnIntervalId.current) clearInterval(spawnIntervalId.current);
-    if (speedIncreaseIntervalId.current) clearInterval(speedIncreaseIntervalId.current);
-    if (timerIntervalId.current) clearInterval(timerIntervalId.current);
-    if (animationFrameId.current) cancelAnimationFrame(animationFrameId.current);
-
-    // Clear DOM nodes
-    fallingLettersRef.current.forEach((item) => {
-      if (item.refNode) item.refNode.remove();
-    });
-    fallingLettersRef.current = [];
-  }
-
   const startGameLoops = () => {
-    // Spawn letters loop
-    spawnIntervalId.current = setInterval(() => {
+    spawnIntervalRef.current = setInterval(() => {
       if (!gameRunningRef.current) return;
       spawnLetter();
-    }, levelsConfig[level].spawnRate);
+    }, LEVELS_CONFIG[level].spawnRate);
 
-    // Speed increase loop (every 30s)
-    speedIncreaseIntervalId.current = setInterval(() => {
+    speedIntervalRef.current = setInterval(() => {
       if (!gameRunningRef.current) return;
-      currentSpeed.current += 0.3;
+      currentSpeedRef.current += 0.3;
       showSpeedUpNotification();
     }, 30000);
 
-    // Timer countdown
-    timerIntervalId.current = setInterval(() => {
+    timerIntervalRef.current = setInterval(() => {
       if (!gameRunningRef.current) return;
       timeLeftRef.current -= 1;
       setTimeLeft(timeLeftRef.current);
-      if (timeLeftRef.current <= 0) {
-        endGame();
-      }
+      if (timeLeftRef.current <= 0) endGame();
     }, 1000);
 
-    // Physics Animation loop
     const animate = () => {
       if (!gameRunningRef.current) return;
       updateFallingLetters();
-      animationFrameId.current = requestAnimationFrame(animate);
+      rafIdRef.current = requestAnimationFrame(animate);
     };
-    animationFrameId.current = requestAnimationFrame(animate);
+    rafIdRef.current = requestAnimationFrame(animate);
   };
 
+  // ─── Letter spawning ───────────────────────────────────────────────────────
   const spawnLetter = () => {
     if (!gameAreaRef.current) return;
-    const letter = selectedLetters[Math.floor(Math.random() * selectedLetters.length)];
+    const letters = selectedLettersRef.current;
+    if (letters.length === 0) return;
+
+    const letter = letters[Math.floor(Math.random() * letters.length)];
     const columnIndex = Math.floor(Math.random() * 4);
-    const id = nextLetterId.current++;
+    const id = nextLetterIdRef.current++;
 
-    const letterNode = document.createElement("div");
-    letterNode.className = "falling-letter";
-    letterNode.textContent = letter;
-    letterNode.style.top = "0px";
+    const node = document.createElement("div");
+    node.className = "falling-letter";
+    // For Arabic multi-char ligatures (لا), use data attribute
+    node.textContent = letter;
+    node.dataset.letter = letter;
+    node.style.top = "0px";
+    // Shrink font for Arabic to fit ligatures
+    if (letter.length > 1) node.style.fontSize = "clamp(1.2rem, 2.5vw, 2rem)";
 
-    // Append node directly inside target column
     const columns = gameAreaRef.current.querySelectorAll(".column");
-    if (columns[columnIndex]) {
-      columns[columnIndex].appendChild(letterNode);
-    }
+    if (columns[columnIndex]) columns[columnIndex].appendChild(node);
 
-    fallingLettersRef.current.push({
-      id,
-      letter,
-      column: columnIndex,
-      y: 0,
-      refNode: letterNode,
-      handled: false
-    });
-
+    fallingLettersRef.current.push({ id, letter, column: columnIndex, y: 0, refNode: node, handled: false });
     totalLettersRef.current++;
   };
 
+  // ─── Physics update ────────────────────────────────────────────────────────
   const updateFallingLetters = () => {
     if (!gameAreaRef.current) return;
     const limit = gameAreaRef.current.clientHeight - 80;
@@ -210,18 +253,17 @@ export default function FallingLetters() {
       const item = fallingLettersRef.current[i];
       if (item.handled) continue;
 
-      item.y += currentSpeed.current;
+      item.y += currentSpeedRef.current;
       item.refNode.style.top = item.y + "px";
 
       if (item.y > limit) {
         item.handled = true;
-
-        // Visual missed feedback
-        item.refNode.style.background = "#f44336";
+        item.refNode.style.background = "#ef4444";
+        item.refNode.style.color = "#fff";
         item.refNode.style.animation = "missedShake 0.5s ease";
 
         setTimeout(() => {
-          if (reducePointsOnMiss) {
+          if (reducePointsRef.current) {
             scoreRef.current = Math.max(0, scoreRef.current - 5);
             setScore(scoreRef.current);
           }
@@ -234,40 +276,37 @@ export default function FallingLetters() {
   };
 
   const removeLetterNode = (id) => {
-    const idx = fallingLettersRef.current.findIndex((item) => item.id === id);
+    const idx = fallingLettersRef.current.findIndex((x) => x.id === id);
     if (idx !== -1) {
-      const item = fallingLettersRef.current[idx];
-      if (item.refNode) item.refNode.remove();
+      fallingLettersRef.current[idx].refNode?.remove();
       fallingLettersRef.current.splice(idx, 1);
     }
   };
 
+  // ─── Key handler (stable — refs only, no stale closures) ──────────────────
   function handleKeyPress(e) {
     if (!gameRunningRef.current) return;
-    const pressedKey = e.key.toUpperCase();
 
-    // Check alphabetic characters only
-    if (!/^[A-Z]$/.test(pressedKey)) return;
+    // Resolve which character was typed based on active layout
+    const typed = resolveKey(e, layoutRef.current);
+    if (!typed) return;
 
-    // Search closest matches closer to the bottom (highest Y)
+    // Find best match (closest to bottom)
     let bestMatch = null;
-    let maxDistance = -1;
-
+    let maxY = -1;
     fallingLettersRef.current.forEach((item) => {
-      if (item.handled) return;
-      if (item.letter === pressedKey) {
-        if (item.y > maxDistance) {
-          bestMatch = item;
-          maxDistance = item.y;
-        }
+      if (!item.handled && item.letter === typed && item.y > maxY) {
+        bestMatch = item;
+        maxY = item.y;
       }
     });
 
     if (bestMatch) {
       bestMatch.handled = true;
-      bestMatch.refNode.style.background = "#4CAF50";
-      bestMatch.refNode.style.color = "white";
+      bestMatch.refNode.style.background = "#4ade80";
+      bestMatch.refNode.style.color = "#1a1a2e";
       bestMatch.refNode.style.transform = "translateX(-50%) scale(1.2)";
+      bestMatch.refNode.style.animation = "correctPulse 0.3s ease forwards";
 
       scoreRef.current += 10;
       correctCountRef.current++;
@@ -276,300 +315,133 @@ export default function FallingLetters() {
       setTimeout(() => {
         showFeedback("correct", bestMatch.column);
         removeLetterNode(bestMatch.id);
-      }, 300);
+      }, 280);
     } else {
-      // Wrong key press, screenshake page & lose a heart
+      // Wrong key → lose a heart + shake
       heartsRef.current = Math.max(0, heartsRef.current - 1);
       setHearts(heartsRef.current);
 
-      const gameScreenNode = document.getElementById("gameScreen");
-      if (gameScreenNode) {
-        gameScreenNode.classList.add("shake");
-        setTimeout(() => gameScreenNode.classList.remove("shake"), 400);
+      if (wrapperRef.current) {
+        wrapperRef.current.classList.add(styles.shake);
+        setTimeout(() => wrapperRef.current?.classList.remove(styles.shake), 450);
       }
       showFeedback("wrong", -1);
-
-      if (heartsRef.current <= 0) {
-        endGame();
-      }
+      if (heartsRef.current <= 0) endGame();
     }
   }
 
+  // ─── DOM-injected feedback / notifications ─────────────────────────────────
   const showFeedback = (type, columnIndex) => {
     if (!gameAreaRef.current) return;
-    const feedback = document.createElement("div");
-    feedback.className = `feedback ${type}`;
-    feedback.textContent = type === "correct" ? "+10" : type === "missed" ? "-5" : "❌";
+    const strings = tRef.current;
+    const el = document.createElement("div");
+    el.className = `feedback ${type}`;
+    el.textContent =
+      type === "correct" ? strings.feedbackCorrect :
+      type === "missed"  ? strings.feedbackMissed  :
+                           strings.feedbackWrong;
 
     if (columnIndex >= 0) {
-      feedback.style.left = "50%";
-      feedback.style.top = "50%";
-      feedback.style.transform = "translateX(-50%)";
+      el.style.left = "50%";
+      el.style.top = "40%";
+      el.style.transform = "translateX(-50%)";
       const columns = gameAreaRef.current.querySelectorAll(".column");
-      if (columns[columnIndex]) {
-        columns[columnIndex].appendChild(feedback);
-      }
+      columns[columnIndex]?.appendChild(el);
     } else {
-      feedback.style.left = "50%";
-      feedback.style.top = "50%";
-      feedback.style.transform = "translate(-50%, -50%)";
-      gameAreaRef.current.appendChild(feedback);
+      el.style.left = "50%";
+      el.style.top = "50%";
+      el.style.transform = "translate(-50%, -50%)";
+      gameAreaRef.current.appendChild(el);
     }
-
-    setTimeout(() => {
-      feedback.remove();
-    }, 1000);
+    setTimeout(() => el.remove(), 1000);
   };
 
   const showSpeedUpNotification = () => {
     if (!gameAreaRef.current) return;
-    const indicator = document.createElement("div");
-    indicator.className = "speed-indicator";
-    indicator.textContent = "⚡ Speed Up! ⚡";
-    gameAreaRef.current.appendChild(indicator);
-    setTimeout(() => indicator.remove(), 2000);
+    const el = document.createElement("div");
+    el.className = "speed-indicator";
+    el.textContent = tRef.current.speedUp;
+    gameAreaRef.current.appendChild(el);
+    setTimeout(() => el.remove(), 2000);
   };
 
+  // ─── End game ──────────────────────────────────────────────────────────────
   const endGame = () => {
     stopGameLoops();
-
-    // Calculate final metrics
     const durationMins = (Date.now() - startTimeRef.current) / 60000;
-    const calculatedAccuracy = totalLettersRef.current > 0
+    const calcAccuracy = totalLettersRef.current > 0
       ? Math.round((correctCountRef.current / totalLettersRef.current) * 100)
       : 0;
-    const calculatedCpm = durationMins > 0
+    const calcCpm = durationMins > 0
       ? Math.round(correctCountRef.current / durationMins)
       : 0;
 
     setCorrectCount(correctCountRef.current);
     setMissedCount(missedCountRef.current);
-    setAccuracy(calculatedAccuracy);
-    setLettersPerMin(calculatedCpm);
+    setAccuracy(calcAccuracy);
+    setLettersPerMin(calcCpm);
     setScreen("gameover");
   };
 
-  const formatTimerDisplay = (seconds) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, "0")}`;
-  };
-
+  // ─── Render ────────────────────────────────────────────────────────────────
   return (
-    <div className="game-wrapper min-h-screen text-white overflow-hidden relative font-sans select-none">
-      {/* 🎮 Start Screen 🎮 */}
+    <div
+      className={styles.wrapper}
+      ref={wrapperRef}
+      dir={isArabic ? "rtl" : "ltr"}
+    >
       {screen === "menu" && (
-        <div className="start-screen min-h-screen flex flex-col justify-center items-center p-6 bg-gradient-to-br from-indigo-700 via-purple-700 to-indigo-900" id="startScreen">
-          <h1 className="text-4xl md:text-5xl font-cinzel font-bold text-center mb-8 drop-shadow-lg animate-bounce">
-            🎮 Kids Typing Game 🎮
-          </h1>
-
-          <div className="instructions max-w-lg w-full text-center bg-white bg-opacity-10 backdrop-blur-md p-6 rounded-2xl mb-8 border border-white border-opacity-20 shadow-heavy font-body">
-            <p className="text-lg mb-3">🎯 Type the falling letters before they reach the bottom!</p>
-            <p className="text-lg mb-3">⌨️ Use your keyboard to match the letters</p>
-            <p className="text-lg">🏆 Get +10 points for correct letters, -5 for missed ones</p>
-          </div>
-
-          <div className="level-selection flex flex-col items-center mb-8">
-            <h3 className="font-cinzel text-lg mb-4">Choose Your Level:</h3>
-            <div className="level-buttons flex gap-4">
-              {["easy", "medium", "hard"].map((l) => (
-                <button
-                  key={l}
-                  onClick={() => setLevel(l)}
-                  className={`level-btn px-6 py-4 flex flex-col items-center min-w-32 rounded-xl transition-all duration-300 font-bold border border-white border-opacity-10 hover:bg-white hover:bg-opacity-20 hover:-translate-y-1 hover:shadow-heavy ${
-                    level === l ? "bg-white bg-opacity-35 shadow-gold-glow scale-105" : "bg-white bg-opacity-10"
-                  }`}
-                >
-                  <span className="text-lg capitalize">{l}</span>
-                  <span className="text-xs opacity-75 font-normal">
-                    {l === "easy" ? "Slow & Steady" : l === "medium" ? "Getting Faster" : "Lightning Speed"}
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="action-buttons flex gap-4">
-            <button
-              onClick={startGame}
-              className="start-btn bg-white hover:bg-opacity-95 text-indigo-700 font-extrabold px-8 py-4 rounded-full text-xl shadow-heavy hover:-translate-y-1 transition-all"
-            >
-              🚀 Start Game
-            </button>
-            <button
-              onClick={() => setScreen("settings")}
-              className="settings-btn bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-extrabold px-8 py-4 rounded-full text-xl shadow-heavy hover:-translate-y-1 transition-all border border-white border-opacity-20"
-            >
-              ⚙️ Settings
-            </button>
-          </div>
-        </div>
+        <MenuScreen
+          t={t}
+          level={level}
+          onSetLevel={setLevel}
+          onStart={startGame}
+          onSettings={() => setScreen("settings")}
+        />
       )}
 
-      {/* ⚙️ Settings Screen ⚙️ */}
       {screen === "settings" && (
-        <div className="settings-screen min-h-screen flex flex-col justify-center items-center p-6 bg-gradient-to-br from-indigo-700 via-purple-700 to-indigo-900" id="settingsScreen">
-          <div className="settings-container max-w-2xl w-full bg-white bg-opacity-10 backdrop-blur-md p-8 rounded-2xl border border-white border-opacity-20 shadow-heavy overflow-y-auto max-h-[85vh]">
-            <h2 className="font-cinzel text-3xl font-bold text-center mb-6">⚙️ Game Settings</h2>
-
-            <div className="setting-group mb-6">
-              <label htmlFor="gameTimer" className="block text-sm font-semibold mb-2">⏱️ Game Timer (seconds):</label>
-              <input
-                type="number"
-                id="gameTimer"
-                name="gameTimer"
-                min="30"
-                max="3600"
-                value={gameTimer}
-                onChange={(e) => {
-                  const val = parseInt(e.target.value) || 60;
-                  setGameTimer(val);
-                  setTimeLeft(val);
-                }}
-                className="w-full p-3 rounded-lg text-stone-800 bg-white shadow"
-              />
-              <small className="block text-xs opacity-75 mt-1 italic">Set how long you want to play</small>
-            </div>
-
-            <div className="setting-group mb-6">
-              <label className="block text-sm font-semibold mb-2">🔤 Select Letters to Practice:</label>
-              <div className="letter-controls flex flex-wrap gap-2 mb-4">
-                <button onClick={() => selectLettersPreset("all")} className="control-btn px-4 py-2 bg-white bg-opacity-20 hover:bg-opacity-35 rounded-full text-xs font-bold transition-all">Select All</button>
-                <button onClick={() => selectLettersPreset("none")} className="control-btn px-4 py-2 bg-white bg-opacity-20 hover:bg-opacity-35 rounded-full text-xs font-bold transition-all">Clear All</button>
-                <button onClick={() => selectLettersPreset("vowels")} className="control-btn px-4 py-2 bg-white bg-opacity-20 hover:bg-opacity-35 rounded-full text-xs font-bold transition-all">Vowels Only</button>
-                <button onClick={() => selectLettersPreset("consonants")} className="control-btn px-4 py-2 bg-white bg-opacity-20 hover:bg-opacity-35 rounded-full text-xs font-bold transition-all">Consonants Only</button>
-              </div>
-              
-              <div className="letter-checkboxes grid grid-cols-6 sm:grid-cols-8 gap-2 bg-black bg-opacity-20 p-4 rounded-xl max-h-40 overflow-y-auto">
-                {allAlphabet.map((letter) => (
-                  <div key={letter} className="letter-checkbox flex items-center justify-center gap-1 bg-white bg-opacity-10 p-2 rounded-lg">
-                    <input
-                      type="checkbox"
-                      id={`letter-${letter}`}
-                      name="practiceLetters"
-                      checked={selectedLetters.includes(letter)}
-                      onChange={() => handleLetterCheckboxToggle(letter)}
-                      className="cursor-pointer scale-110"
-                    />
-                    <label htmlFor={`letter-${letter}`} className="text-sm font-bold cursor-pointer">{letter}</label>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="setting-group mb-6">
-              <label htmlFor="customLetters" className="block text-sm font-semibold mb-2">✏️ Or Type Custom Letters:</label>
-              <input
-                type="text"
-                id="customLetters"
-                name="customLetters"
-                placeholder="e.g., ABCDEF"
-                maxLength="26"
-                value={customLettersInput}
-                onChange={handleCustomLettersChange}
-                className="w-full p-3 rounded-lg text-stone-800 bg-white shadow uppercase"
-              />
-              <small className="block text-xs opacity-75 mt-1 italic">Type specific letters you want to practice</small>
-            </div>
-
-            <div className="setting-group mb-6 flex items-center gap-3">
-              <input
-                type="checkbox"
-                id="reducePointsOnMiss"
-                name="reducePointsOnMiss"
-                checked={reducePointsOnMiss}
-                onChange={(e) => setReducePointsOnMiss(e.target.checked)}
-                className="cursor-pointer scale-125"
-              />
-              <label htmlFor="reducePointsOnMiss" className="text-sm font-semibold cursor-pointer">📉 Reduce points for missed letters</label>
-            </div>
-
-            <div className="settings-actions flex gap-4 justify-center mt-8">
-              <button
-                onClick={() => setScreen("menu")}
-                className="back-btn px-6 py-3 bg-white bg-opacity-20 text-white font-bold rounded-xl shadow transition-all hover:bg-opacity-30 border border-white border-opacity-10"
-              >
-                ← Back to Menu
-              </button>
-              <button
-                onClick={() => setScreen("menu")}
-                className="apply-btn px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl shadow transition-all"
-              >
-                ✓ Apply Settings
-              </button>
-            </div>
-          </div>
-        </div>
+        <SettingsScreen
+          t={t}
+          gameLang={gameLang}
+          onSetGameLang={setGameLang}
+          layoutId={layoutId}
+          onSetLayoutId={setLayoutId}
+          layout={layout}
+          gameTimer={gameTimer}
+          onTimerChange={(val) => { setGameTimer(val); setTimeLeft(val); }}
+          selectedLetters={selectedLetters}
+          onLetterToggle={handleLetterToggle}
+          onSelectPreset={selectLettersPreset}
+          customLettersInput={customLettersInput}
+          onCustomLettersChange={handleCustomLettersChange}
+          reducePointsOnMiss={reducePointsOnMiss}
+          onReducePointsChange={setReducePointsOnMiss}
+          onBack={() => setScreen("menu")}
+          onApply={() => setScreen("menu")}
+        />
       )}
 
-      {/* 🎮 Game Screen 🎮 */}
       {screen === "game" && (
-        <div className="game-screen min-h-screen bg-gradient-to-br from-indigo-700 via-purple-700 to-indigo-900 flex flex-col relative" id="gameScreen">
-          <div className="game-header flex justify-between items-center px-6 py-4 bg-black bg-opacity-30 backdrop-blur-md border-b border-white border-opacity-10 z-10">
-            <div className="score text-xl font-cinzel font-bold text-emerald-400">Score: <span id="scoreValue">{score}</span></div>
-            <div className="hearts flex items-center gap-1 text-xl font-cinzel font-bold">
-              <span>LIFE:</span>
-              <span id="heartsValue" className="flex gap-1 ml-2">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <span
-                    key={i}
-                    className={`text-xl transition-all duration-500 ${
-                      i < hearts ? "opacity-100 scale-100" : "opacity-0 scale-0 w-0"
-                    }`}
-                  >
-                    ❤️
-                  </span>
-                ))}
-              </span>
-            </div>
-            <div className="timer text-xl font-cinzel font-bold text-yellow-400">Time: <span id="timerValue">{formatTimerDisplay(timeLeft)}</span></div>
-          </div>
-
-          <div className="game-area flex-grow flex" id="gameArea" ref={gameAreaRef}>
-            <div className="column flex-1 border-r border-white border-opacity-10 bg-white bg-opacity-5 relative"></div>
-            <div className="column flex-1 border-r border-white border-opacity-10 bg-white bg-opacity-5 relative"></div>
-            <div className="column flex-1 border-r border-white border-opacity-10 bg-white bg-opacity-5 relative"></div>
-            <div className="column flex-1 bg-white bg-opacity-5 relative"></div>
-          </div>
-        </div>
+        <GameScreen
+          t={t}
+          score={score}
+          hearts={hearts}
+          timeLeft={timeLeft}
+          gameAreaRef={gameAreaRef}
+        />
       )}
 
-      {/* 🎉 Game Over Screen 🎉 */}
       {screen === "gameover" && (
-        <div className="game-over-screen min-h-screen flex justify-center items-center p-6 bg-black bg-opacity-80 fixed inset-0 z-50 animate-fadeIn" id="gameOverScreen">
-          <div className="game-over-content max-w-lg w-full bg-white text-stone-800 p-8 rounded-2xl shadow-heavy text-center border-4 border-indigo-500">
-            <h2 className="text-4xl font-cinzel font-bold text-indigo-600 mb-4">🎉 Game Over! 🎉</h2>
-            <div className="final-score text-3xl font-cinzel font-bold text-emerald-600 mb-6">Final Score: <span id="finalScore">{score}</span></div>
-
-            <div className="game-stats grid grid-cols-2 gap-4 bg-stone-100 p-4 rounded-xl mb-8 text-stone-800">
-              <div className="stat-item flex flex-col p-2 bg-white rounded-lg shadow-sm border border-stone-200">
-                <span className="stat-value text-2xl font-extrabold text-indigo-600" id="correctLetters">{correctCount}</span>
-                <span className="stat-label text-xs font-semibold text-stone-500">Correct Letters</span>
-              </div>
-              <div className="stat-item flex flex-col p-2 bg-white rounded-lg shadow-sm border border-stone-200">
-                <span className="stat-value text-2xl font-extrabold text-red-500" id="missedLetters">{missedCount}</span>
-                <span className="stat-label text-xs font-semibold text-stone-500">Missed Letters</span>
-              </div>
-              <div className="stat-item flex flex-col p-2 bg-white rounded-lg shadow-sm border border-stone-200">
-                <span className="stat-value text-2xl font-extrabold text-yellow-500" id="accuracy">{accuracy}%</span>
-                <span className="stat-label text-xs font-semibold text-stone-500">Accuracy</span>
-              </div>
-              <div className="stat-item flex flex-col p-2 bg-white rounded-lg shadow-sm border border-stone-200">
-                <span className="stat-value text-2xl font-extrabold text-teal-500" id="lettersPerMinute">{lettersPerMin}</span>
-                <span className="stat-label text-xs font-semibold text-stone-500">Letters/Min</span>
-              </div>
-            </div>
-            
-            <button
-              onClick={() => setScreen("menu")}
-              className="restart-btn bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold px-8 py-3 rounded-full text-xl shadow-heavy hover:-translate-y-1 transition-all"
-              id="restartBtn"
-            >
-              🔄 Play Again
-            </button>
-          </div>
-        </div>
+        <GameOverScreen
+          t={t}
+          score={score}
+          correctCount={correctCount}
+          missedCount={missedCount}
+          accuracy={accuracy}
+          lettersPerMin={lettersPerMin}
+          onPlayAgain={() => setScreen("menu")}
+        />
       )}
     </div>
   );
