@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { getAssetById } from '../../data/mediaManager';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Share2, QrCode, Clock, Calendar, Bookmark, BookmarkCheck, ArrowLeft, ArrowRight, User, BookOpen, FileText } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
@@ -18,7 +18,22 @@ import 'prismjs/components/prism-markdown';
 import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-bash';
 
-import { blogs } from '../../data/blogs.data';
+import blogsMetadata from '../../data/blogs';
+import { blogs as blogsData } from '../../data/blogs.data';
+
+// Merge metadata with content data
+const blogs = blogsMetadata.map(meta => {
+  const data = blogsData.find(d => d.id === meta.id);
+  // console.log({ data });
+  return {
+    ...meta,
+    slug: meta.id,
+    blogcontent: {
+      title: meta.title,
+      content: data?.content || ''
+    }
+  };
+});
 import { markdownToHtml } from '../../lib/utils/markdownToHtml';
 import { useTheme } from '../../lib/contexts/ThemeProvider';
 import { getMarkdownThemeClass } from '../../lib/markdown/markdownThemes';
@@ -105,6 +120,29 @@ const slugify = (text) => {
 
 const sessionTrackedBlogs = new Set();
 
+// ── localStorage helpers for per-blog reading progress ──────────────────────
+const BLOG_PROGRESS_KEY = 'mp_blog_progress';
+
+const getBlogProgress = (slug) => {
+  try {
+    const map = JSON.parse(localStorage.getItem(BLOG_PROGRESS_KEY) || '{}');
+    return typeof map[slug] === 'number' ? map[slug] : 0;
+  } catch {
+    return 0;
+  }
+};
+
+const saveBlogProgress = (slug, progress) => {
+  try {
+    const map = JSON.parse(localStorage.getItem(BLOG_PROGRESS_KEY) || '{}');
+    map[slug] = Math.round(progress);
+    localStorage.setItem(BLOG_PROGRESS_KEY, JSON.stringify(map));
+  } catch {
+    // ignore write errors (private browsing, storage full, etc.)
+  }
+};
+// ────────────────────────────────────────────────────────────────────────────
+
 export default function BlogPost() {
   const { slug } = useParams();
   const { showAlert } = useAlerts();
@@ -114,6 +152,8 @@ export default function BlogPost() {
   const { openImage } = useImageViewer();
   const { unlockAchievement, incrementCounter } = useAchievements();
   const contentRef = useRef(null);
+  const maxReadingProgressRef = useRef(0);
+  const isTransitioningRef = useRef(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [readingProgress, setReadingProgress] = useState(0);
   const [_wordsRead, setWordsRead] = useState(0);
@@ -145,6 +185,60 @@ export default function BlogPost() {
   const totalWords = post?.blogcontent?.content?.split(/\s+/).filter(Boolean).length || 0;
 
   const [showQR, setShowQR] = useState(false);
+
+  // Reset all reading/scroll progress states when the blog post changes.
+  // Keeps isTransitioningRef=true until the smooth scroll actually reaches the top,
+  // preventing scroll events mid-animation from inflating the progress bar.
+  useLayoutEffect(() => {
+    isTransitioningRef.current = true;
+    const scrollContainer = document.getElementById('body-container');
+
+    const doReset = () => {
+      // Restore the highest progress this user has ever reached for this slug
+      const saved = getBlogProgress(slug);
+      maxReadingProgressRef.current = saved;
+      window.setTimeout(() => {
+        setScrollProgress(saved);
+        setReadingProgress(saved);
+        const wordsReadSoFar = Math.floor((saved / 100) * totalWords);
+        setWordsRead(wordsReadSoFar);
+        setTimeLeft(calculateReadingTime(post?.blogcontent?.content) || 0);
+        setActiveId('');
+        setShowQR(false);
+        isTransitioningRef.current = false;
+      }, 0);
+    };
+
+    if (!scrollContainer || scrollContainer.scrollTop === 0) {
+      // Already at top — nothing to animate, reset immediately
+      doReset();
+      return;
+    }
+
+    // Smooth scroll to top (preserves the animation the user sees)
+    scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Release lock once scrollTop actually reaches 0
+    const onScrollStep = () => {
+      if (scrollContainer.scrollTop <= 2) {
+        scrollContainer.removeEventListener('scroll', onScrollStep);
+        window.clearTimeout(fallbackId);
+        doReset();
+      }
+    };
+    scrollContainer.addEventListener('scroll', onScrollStep, { passive: true });
+
+    // Safety fallback: release after 1.5s if scroll events stop before reaching 0
+    let fallbackId = window.setTimeout(() => {
+      scrollContainer.removeEventListener('scroll', onScrollStep);
+      doReset();
+    }, 1500);
+
+    return () => {
+      scrollContainer.removeEventListener('scroll', onScrollStep);
+      window.clearTimeout(fallbackId);
+    };
+  }, [slug, post, totalWords]);
 
   const shareUrl = window.location.href;
   const shareTitle = post?.title || 'Check out this scroll!';
@@ -242,24 +336,43 @@ export default function BlogPost() {
   useEffect(() => {
     if (!post) return;
 
+    const scrollContainer = document.getElementById('body-container') || window;
     let ticking = false;
 
     const onScroll = () => {
+      if (isTransitioningRef.current) return;
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          // 1. Calculate reading progress & word metrics
           const content = contentRef.current;
+          const scrollTop = scrollContainer === window ? window.scrollY : scrollContainer.scrollTop;
+
+          // 1. Calculate reading progress & word metrics
           let progress = 0;
           if (content) {
-            const contentTop = content.getBoundingClientRect().top + window.scrollY;
+            const contentTop = content.getBoundingClientRect().top + scrollTop;
             const contentHeight = content.offsetHeight;
-            const scrolled = window.scrollY - contentTop;
-            progress = Math.min(100, Math.max(0, (scrolled / contentHeight) * 100));
+            const scrolled = scrollTop - contentTop;
 
-            setReadingProgress(progress);
-            setScrollProgress(progress);
+            const viewportHeight = scrollContainer === window ? window.innerHeight : scrollContainer.clientHeight;
+            const maxScrollable = contentHeight - viewportHeight;
 
-            const wordsReadSoFar = Math.floor((progress / 100) * totalWords);
+            if (maxScrollable > 0) {
+              progress = Math.min(100, Math.max(0, (scrolled / maxScrollable) * 100));
+            } else {
+              progress = scrolled > 0 ? 100 : 0;
+            }
+
+            // Calculate high-water mark progress using Ref to prevent state updates during render
+            const nextProgress = Math.max(maxReadingProgressRef.current, progress);
+            if (nextProgress > maxReadingProgressRef.current) {
+              maxReadingProgressRef.current = nextProgress;
+              saveBlogProgress(slug, nextProgress);
+            }
+
+            setReadingProgress(nextProgress);
+            setScrollProgress(nextProgress);
+
+            const wordsReadSoFar = Math.floor((nextProgress / 100) * totalWords);
             setWordsRead(wordsReadSoFar);
 
             const wordsRemaining = totalWords - wordsReadSoFar;
@@ -268,13 +381,13 @@ export default function BlogPost() {
 
           // 2. Calculate Table of Contents Active Heading (Scroll-Spy)
           if (headings.length > 0) {
-            const scrollPosition = window.scrollY + 120;
+            const scrollPosition = scrollTop + 120;
             let currentActive = headings[0]?.id || '';
 
             for (let i = 0; i < headings.length; i++) {
               const el = document.getElementById(headings[i].id);
               if (el) {
-                const top = el.getBoundingClientRect().top + window.scrollY;
+                const top = el.getBoundingClientRect().top + scrollTop;
                 if (scrollPosition >= top) {
                   currentActive = headings[i].id;
                 } else {
@@ -291,11 +404,11 @@ export default function BlogPost() {
       }
     };
 
-    window.addEventListener('scroll', onScroll, { passive: true });
+    scrollContainer.addEventListener('scroll', onScroll, { passive: true });
     onScroll(); // Fire once initially
 
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [post, headings, totalWords]);
+    return () => scrollContainer.removeEventListener('scroll', onScroll);
+  }, [post, headings, totalWords, slug]);
 
   // Wire images inside the rendered markdown to open in ImageViewer
   useEffect(() => {
@@ -544,8 +657,10 @@ export default function BlogPost() {
                           const el = document.getElementById(heading.id);
                           if (el) {
                             const yOffset = -90; // spacing for sticky header bar
-                            const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                            window.scrollTo({ top: y, behavior: 'smooth' });
+                            const scrollContainer = document.getElementById('body-container') || window;
+                            const scrollTop = scrollContainer === window ? window.scrollY : scrollContainer.scrollTop;
+                            const y = el.getBoundingClientRect().top + scrollTop + yOffset;
+                            scrollContainer.scrollTo({ top: y, behavior: 'smooth' });
                           }
                         }}
                         className={`${styles['tocLink']} ${styles[heading.level]} ${activeId === heading.id ? styles['active'] : ''

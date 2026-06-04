@@ -1,12 +1,26 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { Search } from 'lucide-react';
-import { blogs, blogTags } from '../../data/blogs.data';
+import blogsMetadata from '../../data/blogs';
+import { blogs as blogsData, blogTags } from '../../data/blogs.data';
 import { useAlerts } from '../../lib/useAlerts';
 import { useSettings } from '../../lib/useSettings';
 import { useAchievements } from '../../lib/useAchievements';
 import BlogCard from '../../components/BlogCard/BlogCard';
 import styles from './BlogsPage.module.scss';
 import { isFirstVisit } from '../../lib/utils/visitTracker';
+
+// Merge metadata with content data
+const blogs = blogsMetadata.map(meta => {
+  const data = blogsData.find(d => d.id === meta.id);
+  return {
+    ...meta,
+    slug: meta.id,
+    blogcontent: {
+      title: meta.title,
+      content: data?.content || ''
+    }
+  };
+});
 
 const POSTS_PER_PAGE = 6;
 

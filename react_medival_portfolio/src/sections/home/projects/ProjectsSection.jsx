@@ -1,6 +1,7 @@
 import { getAssetById } from '../../../data/mediaManager';
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import projects from '../../../data/projects';
+import projectsMetadata from '../../../data/projects';
+import { projects as projectsData } from '../../../data/projects.data';
 import { markdownToHtml } from '../../../lib/utils/markdownToHtml';
 import { useTheme } from '../../../lib/contexts/ThemeProvider';
 import { getMarkdownThemeClass } from '../../../lib/markdown/markdownThemes';
@@ -11,6 +12,15 @@ import styles from './ProjectsSection.module.scss';
 import CSection from '../../../templates/Section';
 import DynamicCard from '../../../components/card';
 import FilterBar from '../../../components/sections/skills/FilterBar';
+
+// Merge metadata with overview data
+const projects = projectsMetadata.map(meta => {
+  const data = projectsData.find(d => d.id === meta.id);
+  return {
+    ...meta,
+    overview: data?.overview || {}
+  };
+});
 
 const getProjectDuration = (startDateStr, endDateStr, lang) => {
   if (!startDateStr) return '';

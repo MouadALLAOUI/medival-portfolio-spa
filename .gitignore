@@ -25,5 +25,8 @@ dist-ssr
 
 .env
 .py
+
+# Generated files
 .agents/
 AGENTS.md
+PROMPTS.md

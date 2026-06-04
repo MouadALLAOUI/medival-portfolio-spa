@@ -20,6 +20,31 @@ const COMMON = {
             languages: "Languages",
         }
     },
+    visitor: {
+        welcomeBack: "Welcome back, traveler! You last visited this realm on {{date}}.",
+    },
+    privacy: {
+        title: "Privacy Scroll",
+        subtitle: "How we handle thy data",
+        sections: {
+            collection: {
+                title: "I. Data Collection",
+                desc: "We do not collect any personal data unless thou voluntarily provideth it through the contact form."
+            },
+            cookies: {
+                title: "II. Cookies & Local Storage",
+                desc: "We use local storage and cookies only to remember thy preferences (theme, language, achievements)."
+            },
+            thirdParties: {
+                title: "III. Third Parties",
+                desc: "We do not share thy data with any third parties, forsooth!"
+            },
+            rights: {
+                title: "IV. Thy Rights",
+                desc: "Thou hast the right to clear thy local storage at any time to remove thy saved data."
+            }
+        }
+    },
     settings: {
         title: "Settings",
         subtitle: "Customize your portfolio experience",
@@ -105,6 +130,16 @@ const COMMON = {
                 options: {
                     enabled: { label: "On" },
                     disabled: { label: "Muted" }
+                }
+            },
+            medievalFont: {
+                label: "Medieval Font",
+                description: "Select the historical typeface for titles and menus",
+                options: {
+                    MedievalSharp: { label: "MedievalSharp", description: "Sharp fantasy lettering" },
+                    Fell: { label: "IM Fell English", description: "Classic historical SC style" },
+                    Almendra: { label: "Almendra", description: "Elegant blackletter calligraphy" },
+                    Uncial: { label: "Uncial Antiqua", description: "Ancient Celtic lettering" }
                 }
             },
             pdfMode: {
@@ -213,6 +248,7 @@ const COMMON = {
     footer: {
         copyright: "© {{year}} Mouad the Coder | Built with code and creativity",
         disclaimer: "This portfolio may not be copied without permission",
+        privacy: "Privacy Policy",
     },
     thankyou: {
         title: "📨 Your Message Has Been Sent!",

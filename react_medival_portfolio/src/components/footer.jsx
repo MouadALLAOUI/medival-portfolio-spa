@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSettings } from '../lib/useSettings';
+import { Link } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './footer.module.scss';
@@ -47,7 +48,12 @@ const Footer = () => {
         </AnimatePresence>
       </div>
       <p>{t('COMMON.footer.copyright', { year: currentYear })}</p>
-      <p>{t('COMMON.footer.disclaimer')}</p>
+      <p>
+        {t('COMMON.footer.disclaimer')} |{' '}
+        <Link to="/privacy" className={styles['privacy-link']}>
+          {t('COMMON.footer.privacy') || 'Privacy Policy'}
+        </Link>
+      </p>
     </footer>
   );
 };

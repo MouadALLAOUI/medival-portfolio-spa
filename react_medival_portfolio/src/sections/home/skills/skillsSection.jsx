@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
-import skills from '../../../data/skills';
+import skillsMetadata from '../../../data/skills';
+import { skills as skillsData } from '../../../data/skills.data';
 import { markdownToHtml } from '../../../lib/utils/markdownToHtml';
 import { useTheme } from '../../../lib/contexts/ThemeProvider';
 import { getMarkdownThemeClass } from '../../../lib/markdown/markdownThemes';
@@ -10,6 +11,15 @@ import FilterBar from '../../../components/sections/skills/FilterBar';
 import SkillCard from '../../../components/sections/skills/SkillCard';
 import styles from './skillsSection.module.scss';
 import CSection from '../../../templates/Section';
+
+// Merge metadata with overview data
+const skills = skillsMetadata.map(meta => {
+  const data = skillsData.find(d => d.id === meta.id);
+  return {
+    ...meta,
+    overview: data?.overview || {}
+  };
+});
 
 const SKILLS_PER_PAGE = 8;
 
@@ -173,6 +183,47 @@ const SkillsSection = () => {
                   <div className={styles['modal-details']}>
                     <h3>{t('HOME.SKILLS.detailsTitle')}</h3>
                     <div className={`markdown-content ${mdThemeClass}`} dangerouslySetInnerHTML={{ __html: markdownToHtml(selectedSkill.overview.desc) }} />
+                  </div>
+                )}
+
+                {selectedSkill.overview?.features?.length > 0 && (
+                  <div className={styles['modal-features']}>
+                    <h3>{t('HOME.SKILLS.features') || 'Features'}</h3>
+                    <ul>
+                      {selectedSkill.overview.features.map((feature, idx) => (
+                        <li key={idx} data-key={idx}>{feature}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {selectedSkill.overview?.imgs?.length > 0 && (
+                  <div className={styles['modal-gallery']}>
+                    <h3>{t('HOME.SKILLS.gallery') || 'Gallery'}</h3>
+                    <div className={styles['imgs-gal']}>
+                      {selectedSkill.overview.imgs.map((img, idx) => (
+                        <div
+                          key={idx}
+                          className={`${styles['gal-item']} ${img.isBlured ? styles['blured'] : ''}`}
+                          data-key={`item-${idx}`}
+                          onClick={() => openImage(img.src, img.alt || selectedSkill.name)}
+                        >
+                          <img
+                            src={img.src}
+                            alt={img.alt || selectedSkill.name}
+                            loading="lazy"
+                            className={img.isMobile ? styles['mobile-img'] : ''}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {selectedSkill.overview?.storyBehindIt && (
+                  <div className={styles['modal-story']}>
+                    <h3>{t('HOME.SKILLS.storyBehindIt') || 'Track Story Behind It'}</h3>
+                    <div className={`markdown-content ${mdThemeClass}`} dangerouslySetInnerHTML={{ __html: markdownToHtml(selectedSkill.overview.storyBehindIt) }} />
                   </div>
                 )}
               </div>

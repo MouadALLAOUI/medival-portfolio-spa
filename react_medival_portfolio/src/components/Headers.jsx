@@ -169,32 +169,32 @@ const HeaderComponent = () => {
 
 
 
-	// useEffect(() => {
-	// 	const bodyContainer = document.getElementById('body-container');
-	// 	if (!bodyContainer) return;
+	useEffect(() => {
+		const bodyContainer = document.getElementById('body-container');
+		if (!bodyContainer) return;
 
-	// 	const handleScroll = () => {
-	// 		const sectionIds = ['hero', 'presentation', 'languages', 'skills', 'projects', 'learning', 'hobbies', 'design', 'about', 'contact'];
-	// 		let current = '';
+		const handleScroll = () => {
+			const sectionIds = ['hero', 'presentation', 'languages', 'skills', 'projects', 'learning', 'hobbies', 'design', 'about', 'contact'];
+			let current = '';
 
-	// 		for (const sectionId of sectionIds) {
-	// 			const el = document.getElementById(sectionId);
-	// 			if (el) {
-	// 				// getBoundingClientRect() still works because it measures relative to the viewport
-	// 				const rect = el.getBoundingClientRect();
-	// 				if (rect.top < window.innerHeight * 0.4) {
-	// 					current = sectionId;
-	// 				}
-	// 			}
-	// 		}
-	// 		setActiveSection(current);
-	// 	};
+			for (const sectionId of sectionIds) {
+				const el = document.getElementById(sectionId);
+				if (el) {
+					// getBoundingClientRect() still works because it measures relative to the viewport
+					const rect = el.getBoundingClientRect();
+					if (rect.top < window.innerHeight * 0.4) {
+						current = sectionId;
+					}
+				}
+			}
+			setActiveSection(current);
+		};
 
-	// 	bodyContainer.addEventListener('scroll', handleScroll);
-	// 	handleScroll(); // Fire once on mount
+		bodyContainer.addEventListener('scroll', handleScroll);
+		handleScroll(); // Fire once on mount
 
-	// 	return () => bodyContainer.removeEventListener('scroll', handleScroll);
-	// }, []);
+		return () => bodyContainer.removeEventListener('scroll', handleScroll);
+	}, []);
 
 	useEffect(() => {
 		const bodyContainer = document.getElementById('body-container');

@@ -21,6 +21,31 @@ const COMMON = {
             languages: "Langues du Royaume",
         }
     },
+    visitor: {
+        welcomeBack: "Bon retour, noble voyageur ! Ta dernière présence dans ce royaume fut enregistrée le {{date}}.",
+    },
+    privacy: {
+        title: "Parchemin de Confidentialité",
+        subtitle: "Comment nous traitons tes données",
+        sections: {
+            collection: {
+                title: "I. Collecte de Données",
+                desc: "Nous ne collectons aucune donnée personnelle à moins que tu ne la fournisses volontairement via le formulaire de contact."
+            },
+            cookies: {
+                title: "II. Cookies et Stockage Local",
+                desc: "Nous utilisons le stockage local et les cookies uniquement pour mémoriser tes préférences (thème, langue, exploits)."
+            },
+            thirdParties: {
+                title: "III. Tiers",
+                desc: "Nous ne partageons tes données avec aucun tiers, en vérité !"
+            },
+            rights: {
+                title: "IV. Tes Droits",
+                desc: "Tu as le droit de vider ton stockage local à tout moment pour supprimer tes données enregistrées."
+            }
+        }
+    },
     settings: {
         title: "Grimoire des Paramètres Arcaniques",
         subtitle: "Personnalise ton expérience du portfolio",
@@ -91,6 +116,16 @@ const COMMON = {
                     ar: { label: "العربية", description: "" },
                     'medieval-en': { label: "Medieval English", description: "" },
                     'medieval-fr': { label: "Français Médiéval", description: "" }
+                }
+            },
+            medievalFont: {
+                label: "Police médiévale",
+                description: "Sélectionne la police historique pour les titres",
+                options: {
+                    MedievalSharp: { label: "MedievalSharp", description: "Lettres fantastiques pointues" },
+                    Fell: { label: "IM Fell English", description: "Style classique historique" },
+                    Almendra: { label: "Almendra", description: "Calligraphie gothique élégante" },
+                    Uncial: { label: "Uncial Antiqua", description: "Lettres celtiques anciennes" }
                 }
             },
             pdfMode: {
@@ -194,6 +229,7 @@ const COMMON = {
     footer: {
         copyright: "© {{year}} Mouad le Codeur | Créé avec du code magique et des pixels enchantés",
         disclaimer: "Ce grimoire ne peut être copié sans la permission expresse du sorcier",
+        privacy: "Charte de Confidentialité",
     },
     thankyou: {
         title: "📜 Ton Message a été Envoyé !",
