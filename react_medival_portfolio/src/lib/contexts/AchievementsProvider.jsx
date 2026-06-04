@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { ACHIEVEMENTS, RARITY_CONFIG } from '../achievements/achievementsRegistry';
 import { AchievementsContext } from './achievements.context';
@@ -150,7 +150,7 @@ const AchievementsProvider = ({ children }) => {
 
   // ── Konami code listener ──────────────────────────────────────
   useEffect(() => {
-    const sequence = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    const sequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
     let index = 0;
     const handler = (e) => {
       if (e.key === sequence[index]) {
@@ -190,7 +190,7 @@ const AchievementsProvider = ({ children }) => {
 
     unlockAchievement('first_visit');
     incrementCounter('visit_count');
-    
+
     // Check local storage counters on mount directly to unlock returning visitor instantly if applicable
     try {
       const prevCounters = JSON.parse(localStorage.getItem(COUNTERS_KEY)) || {};
@@ -235,7 +235,7 @@ const AchievementsProvider = ({ children }) => {
 
   useEffect(() => {
     if (!theme) return;
-    
+
     // Track every theme tried
     incrementCounter(`theme_tried_${theme}`);
 
