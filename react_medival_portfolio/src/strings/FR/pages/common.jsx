@@ -33,6 +33,15 @@ const COMMON = {
         advancedBtn: "⚙️ Paramètres avancés",
         applyBtn: "Enregistrer",
         closeBtn: "Fermer les paramètres",
+        customTheme: {
+            title: "🎨 Configure ton Grimoire",
+            subtitle: "Choisis des couleurs personnalisées pour forger ton propre thème.",
+            bg: "Couleur de fond",
+            cardBg: "Cartes & Panneaux",
+            text: "Couleur du texte",
+            accent: "Couleur d'accent",
+            border: "Couleur des bordures",
+        },
         sections: {
             appearance: {
                 title: "🎨 Apparence",
@@ -59,7 +68,8 @@ const COMMON = {
                     light: { label: "Clair", description: "Passer au thème clair" },
                     dark: { label: "Sombre", description: "Passer au thème sombre" },
                     medieval: { label: "Classique", description: "Passer au thème classique" },
-                    github: { label: "GitHub Classique", description: "Style développeur bleu et blanc" }
+                    github: { label: "GitHub Classique", description: "Style développeur bleu et blanc" },
+                    custom: { label: "Grimoire Personnalisé", description: "Forge ton propre thème couleur" }
                 }
             },
             markdownTheme: {

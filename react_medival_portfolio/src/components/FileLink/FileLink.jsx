@@ -61,8 +61,9 @@ export default function FileLink({
   };
 
   // ── File-existence guard ──────────────────────────────────────────────────
-  const handleClick = useCallback(async (e) => {
-    e.preventDefault();
+  const handleClick = useCallback(async (e, forceDownload = false) => {
+    if (e && e.preventDefault) e.preventDefault();
+    if (e && e.stopPropagation) e.stopPropagation();
     if (isChecking) return;
 
     setIsChecking(true);
@@ -95,8 +96,11 @@ export default function FileLink({
       return;
     }
 
+    // Hide tooltip on action
+    setShowTooltip(false);
+
     // File exists — open or download
-    if (doDownload) {
+    if (doDownload || forceDownload) {
       const a = document.createElement('a');
       a.href = filePath;
       a.download = '';
@@ -185,12 +189,28 @@ export default function FileLink({
     <div className={`${styles.fileCardContainer} ${className}`} ref={cardRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className={styles.fileCard}>
         {isPdf ? (
-          /* PDFs: PdfViewer has its own existence handling */
-          <PdfViewer
-            file={filePath}
-            label={buttonInner}
-            className={`${styles.pdfViewerOverride} ${pdfClass}`}
-          />
+          /* PDFs: PdfViewer has its own existence handling + Download Button */
+          <div className={styles.pdfCardActions}>
+            <PdfViewer
+              file={filePath}
+              label={buttonInner}
+              className={`${styles.pdfViewerOverride} ${pdfClass}`}
+              onOpen={() => setShowTooltip(false)}
+            />
+            <button
+              type="button"
+              onClick={(e) => handleClick(e, true)}
+              disabled={isChecking}
+              className={`${styles.pdfDownloadBtn} ${isChecking ? styles.disabled : ''}`}
+              title={t ? t('COMMON.pdfViewer.download') || 'Download PDF' : 'Download PDF'}
+            >
+              {isChecking ? (
+                <Loader size={16} className={`${styles.fileActionIcon} ${styles.spin}`} />
+              ) : (
+                <Download size={16} className={styles.fileActionIcon} />
+              )}
+            </button>
+          </div>
         ) : (
           /* All other types: checked button */
           <button

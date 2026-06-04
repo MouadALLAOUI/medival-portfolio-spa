@@ -29,13 +29,14 @@ const useSettingValue = (contextKey) => {
 const SettingControl = ({ setting }) => {
   const [value, setValue] = useSettingValue(setting.contextKey);
   const { t } = useSettings();
+  const settings = useSettings();
+  const { themes, customColors, updateCustomColor } = useTheme();
 
   const label = t(`COMMON.settings.keys.${setting.id}.label`) || setting.label;
   const description = t(`COMMON.settings.keys.${setting.id}.description`) || setting.description;
 
   // ── Markdown Theme select ─────────────────────────────────────
   if (setting.type === 'markdown-theme-select') {
-    const settings = useSettings();
     return (
       <div className={styles.control}>
         <div className={styles.controlHeader}>
@@ -88,7 +89,6 @@ const SettingControl = ({ setting }) => {
 
   // ── Theme select ─────────────────────────────────────────────
   if (setting.type === 'theme-select') {
-    const { themes } = useTheme();
     return (
       <div className={styles.control}>
         <div className={styles.controlHeader}>
@@ -111,6 +111,89 @@ const SettingControl = ({ setting }) => {
             </button>
           ))}
         </div>
+
+        {value === 'custom' && customColors && (
+          <div className={styles.customColorPickerContainer}>
+            <h4 className={styles.customColorTitle}>
+              {t('COMMON.settings.customTheme.title') || '🎨 Configure Your Grimoire'}
+            </h4>
+            <p className={styles.customColorSubtitle}>
+              {t('COMMON.settings.customTheme.subtitle') || 'Select custom colors to forge your own unique theme.'}
+            </p>
+            <div className={styles.customColorGrid}>
+              <div className={styles.colorInputGroup}>
+                <label className={styles.colorLabel}>
+                  {t('COMMON.settings.customTheme.bg') || 'Background'}
+                </label>
+                <div className={styles.colorInputWrapper}>
+                  <input
+                    type="color"
+                    className={styles.colorInput}
+                    value={customColors.bg}
+                    onChange={(e) => updateCustomColor('bg', e.target.value)}
+                  />
+                  <span className={styles.colorText}>{customColors.bg}</span>
+                </div>
+              </div>
+              <div className={styles.colorInputGroup}>
+                <label className={styles.colorLabel}>
+                  {t('COMMON.settings.customTheme.cardBg') || 'Cards & Panels'}
+                </label>
+                <div className={styles.colorInputWrapper}>
+                  <input
+                    type="color"
+                    className={styles.colorInput}
+                    value={customColors.cardBg}
+                    onChange={(e) => updateCustomColor('cardBg', e.target.value)}
+                  />
+                  <span className={styles.colorText}>{customColors.cardBg}</span>
+                </div>
+              </div>
+              <div className={styles.colorInputGroup}>
+                <label className={styles.colorLabel}>
+                  {t('COMMON.settings.customTheme.text') || 'Text Color'}
+                </label>
+                <div className={styles.colorInputWrapper}>
+                  <input
+                    type="color"
+                    className={styles.colorInput}
+                    value={customColors.text}
+                    onChange={(e) => updateCustomColor('text', e.target.value)}
+                  />
+                  <span className={styles.colorText}>{customColors.text}</span>
+                </div>
+              </div>
+              <div className={styles.colorInputGroup}>
+                <label className={styles.colorLabel}>
+                  {t('COMMON.settings.customTheme.accent') || 'Accent Color'}
+                </label>
+                <div className={styles.colorInputWrapper}>
+                  <input
+                    type="color"
+                    className={styles.colorInput}
+                    value={customColors.accent}
+                    onChange={(e) => updateCustomColor('accent', e.target.value)}
+                  />
+                  <span className={styles.colorText}>{customColors.accent}</span>
+                </div>
+              </div>
+              <div className={styles.colorInputGroup}>
+                <label className={styles.colorLabel}>
+                  {t('COMMON.settings.customTheme.border') || 'Borders'}
+                </label>
+                <div className={styles.colorInputWrapper}>
+                  <input
+                    type="color"
+                    className={styles.colorInput}
+                    value={customColors.border}
+                    onChange={(e) => updateCustomColor('border', e.target.value)}
+                  />
+                  <span className={styles.colorText}>{customColors.border}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }

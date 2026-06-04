@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ChevronDown, Menu, X, Settings } from 'lucide-react';
 import SettingsModal from '../SettingsModal';
@@ -12,7 +12,7 @@ const CrmefHeader = () => {
   const [openMenu, setOpenMenu] = useState(null);
   const timeoutRef = useRef(null);
   const location = useLocation();
-  const [activeHash, setActiveHash] = useState('#accueil');
+  const activeHash = location.hash || '#accueil';
 
   const CRMEF_NAV = [
     { label: t('CRMEF.header.accueil'), href: '#accueil' },
@@ -27,6 +27,7 @@ const CrmefHeader = () => {
     },
     { label: t('CRMEF.header.msp'), href: '#msp' },
     { label: t('CRMEF.header.videos') || 'Vidéos', href: '#videos' },
+    { label: t('CRMEF.header.gallery') || 'Galerie', href: '#gallery' },
   ];
 
   const handleMouseEnter = (label) => {
@@ -37,11 +38,6 @@ const CrmefHeader = () => {
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => setOpenMenu(null), 150);
   };
-
-  useEffect(() => {
-    const hash = location.hash || '#accueil';
-    setActiveHash(hash);
-  }, [location]);
 
   return (
     <header className={styles.header}>

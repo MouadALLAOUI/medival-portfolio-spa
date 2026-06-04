@@ -8,6 +8,32 @@ const CRMEF = {
         semesters: "Parchemins de Semestres",
         msp: "Chroniques MSP",
         videos: "Visions & Sortilèges",
+        gallery: "Tapisserie de Formation",
+    },
+    gallery: {
+        title: "Tapisserie de Formation",
+        subtitle: "Une exposition visuelle de moments, manuscrits et cartes alchimiques retraçant mon parcours d'enseignement au centre CRMEF et au collège Annahda.",
+        viewImage: "Examiner la Tapisserie 🔍",
+        teachingSession: {
+            title: "Enseignement au collège Annahda",
+            desc: "Transmission de sortilèges informatiques aux jeunes disciples de la classe.",
+        },
+        groupWork: {
+            title: "Grand Conseil & Travaux Dirigés",
+            desc: "Collaboration avec d'autres scribes stagiaires du Centre Régional (CRMEF) sur les parchemins pédagogiques.",
+        },
+        mindMap1: {
+            title: "Carte mentale pédagogique NotebookLM",
+            desc: "Un manuscrit généré pour structurer la gestion de classe et les scénarios de leçons.",
+        },
+        mindMap2: {
+            title: "Parchemin de Conception d'Instruction",
+            desc: "Un parchemin décrivant le cycle des évaluations des disciples et les domaines d'apprentissage.",
+        },
+        classroomVisual: {
+            title: "Vision de l'Atelier de l'Alchimiste",
+            desc: "Un modèle de l'agencement du laboratoire d'informatique moderne entre les murs de l'école.",
+        }
     },
     profile: {
         bio: "En tant que développeur passionné par l'art du code et l'informatique, je suis constamment en quête de nouvelles connaissances. J'aime concevoir des architectures robustes et des interfaces enchantées. Je mets mes compétences à disposition des projets les plus ambitieux, forgeant des solutions sur mesure pour chaque quête.",

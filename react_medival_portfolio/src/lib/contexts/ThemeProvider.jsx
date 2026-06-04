@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, useEffect } from 'react';
 
 const THEMES = {
@@ -25,6 +26,12 @@ const THEMES = {
     icon: '🐙',
     attribute: 'github',
   },
+  custom: {
+    id: 'custom',
+    label: 'Custom Grimoire',
+    icon: '🎨',
+    attribute: 'custom',
+  },
 };
 
 const ThemeContext = createContext(null);
@@ -45,6 +52,24 @@ const ThemeProvider = ({ children }) => {
     return 'light';
   });
 
+  const [customColors, setCustomColors] = useState(() => {
+    return {
+      bg: localStorage.getItem('custom-theme-bg') || '#0f172a',
+      cardBg: localStorage.getItem('custom-theme-cardBg') || '#1e293b',
+      text: localStorage.getItem('custom-theme-text') || '#f8fafc',
+      accent: localStorage.getItem('custom-theme-accent') || '#3b82f6',
+      border: localStorage.getItem('custom-theme-border') || '#334155',
+    };
+  });
+
+  const updateCustomColor = (key, value) => {
+    setCustomColors((prev) => {
+      const updated = { ...prev, [key]: value };
+      localStorage.setItem(`custom-theme-${key}`, value);
+      return updated;
+    });
+  };
+
   useEffect(() => {
     const root = document.documentElement;
     const attribute = THEMES[theme]?.attribute;
@@ -56,12 +81,45 @@ const ThemeProvider = ({ children }) => {
       }
     });
 
-    if (attribute) {
-      root.setAttribute('data-theme', attribute);
+    if (theme === 'custom') {
+      root.setAttribute('data-theme', 'custom');
+      root.style.setProperty('--bg-primary', customColors.bg);
+      root.style.setProperty('--body-bg', customColors.bg);
+      root.style.setProperty('--bg-tertiary', customColors.bg);
+      root.style.setProperty('--bg-card', customColors.cardBg);
+      root.style.setProperty('--card-bg', customColors.cardBg);
+      root.style.setProperty('--bg-secondary', customColors.cardBg);
+      root.style.setProperty('--text-primary', customColors.text);
+      const textHex = customColors.text.startsWith('#') ? customColors.text : '#ffffff';
+      root.style.setProperty('--text-secondary', textHex + 'cc');
+      root.style.setProperty('--text-muted', textHex + '99');
+      root.style.setProperty('--accent', customColors.accent);
+      root.style.setProperty('--accent-hover', customColors.accent);
+      root.style.setProperty('--border', customColors.border);
+      root.style.setProperty('--border-strong', customColors.border);
+    } else {
+      // Clear custom styles
+      root.style.removeProperty('--bg-primary');
+      root.style.removeProperty('--body-bg');
+      root.style.removeProperty('--bg-tertiary');
+      root.style.removeProperty('--bg-card');
+      root.style.removeProperty('--card-bg');
+      root.style.removeProperty('--bg-secondary');
+      root.style.removeProperty('--text-primary');
+      root.style.removeProperty('--text-secondary');
+      root.style.removeProperty('--text-muted');
+      root.style.removeProperty('--accent');
+      root.style.removeProperty('--accent-hover');
+      root.style.removeProperty('--border');
+      root.style.removeProperty('--border-strong');
+      
+      if (attribute) {
+        root.setAttribute('data-theme', attribute);
+      }
     }
 
     localStorage.setItem('portfolio-theme', theme);
-  }, [theme]);
+  }, [theme, customColors]);
 
   // Day/Night Cycle auto-switch
   useEffect(() => {
@@ -95,6 +153,8 @@ const ThemeProvider = ({ children }) => {
         isMedieval: theme === 'medieval',
         isDark: theme === 'dark',
         isLight: theme === 'light',
+        customColors,
+        updateCustomColor,
       }}
     >
       {children}

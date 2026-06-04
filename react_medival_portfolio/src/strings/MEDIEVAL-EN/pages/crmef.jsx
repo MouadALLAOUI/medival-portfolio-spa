@@ -8,6 +8,32 @@ const CRMEF = {
         semesters: "Semester Scrolls",
         msp: "MSP Chronicles",
         videos: "Spell & Scrying Videos",
+        gallery: "Tapestry of Formation",
+    },
+    gallery: {
+        title: "Tapestry of Formation",
+        subtitle: "A grand display of visual moments, scrolls, and alchemical layouts from my teacher training journey at the Regional Center (CRMEF) and Middle School Annahda.",
+        viewImage: "Examine Tapestry 🔍",
+        teachingSession: {
+            title: "Discipleship at Annahda Middle School",
+            desc: "Imparting visual spells of informatics upon the young disciples in the classroom.",
+        },
+        groupWork: {
+            title: "Council & Collective Scribe-Work",
+            desc: "Collaborating with fellow trainees at the Grand Center (CRMEF) on pedagogical materials.",
+        },
+        mindMap1: {
+            title: "NotebookLM Pedagogical Map of Spells",
+            desc: "A scroll generated to map out class management frameworks and lesson scripts.",
+        },
+        mindMap2: {
+            title: "Instructional Blueprint Scroll",
+            desc: "A scroll detailing the cycle of disciple assessments and teaching domains.",
+        },
+        classroomVisual: {
+            title: "Vision of the Alchemist Lab",
+            desc: "A modeled layout of the modern computer science lab within the school walls.",
+        }
     },
     profile: {
         bio: "As a developer passionate about the art of code and computer science, I am constantly in search of new knowledge. I love designing robust architectures and enchanting interfaces. I make my skills available for the most ambitious projects, forging custom solutions for every quest.",

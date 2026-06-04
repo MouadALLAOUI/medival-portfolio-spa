@@ -34,6 +34,15 @@ const COMMON = {
         advancedBtn: "⚙️ Paramètres Avancés",
         applyBtn: "Enregistrer les Incantations",
         closeBtn: "Fermer les paramètres",
+        customTheme: {
+            title: "🎨 Configure ton Grimoire",
+            subtitle: "Choisis des couleurs personnalisées pour forger ton propre thème.",
+            bg: "Couleur de fond",
+            cardBg: "Cartes & Panneaux",
+            text: "Couleur du texte",
+            accent: "Couleur d'accent",
+            border: "Couleur des bordures",
+        },
         sections: {
             appearance: {
                 title: "🎨 Apparence",
@@ -60,7 +69,8 @@ const COMMON = {
                     light: { label: "Lumière Arcanique", description: "Passer au thème Lumière Arcanique" },
                     dark: { label: "Royaume des Ombres", description: "Passer au thème Royaume des Ombres" },
                     medieval: { label: "Parchemin Médiéval", description: "Passer au thème Parchemin Médiéval" },
-                    github: { label: "GitHub Classique", description: "Style développeur classique blanc et bleu" }
+                    github: { label: "GitHub Classique", description: "Style développeur classique blanc et bleu" },
+                    custom: { label: "Grimoire Personnalisé", description: "Forge ton propre thème de couleurs" }
                 }
             },
             markdownTheme: {
