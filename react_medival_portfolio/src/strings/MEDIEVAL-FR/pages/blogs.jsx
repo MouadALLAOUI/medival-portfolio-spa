@@ -3,6 +3,7 @@ const BLOGS = {
     list: {
         title: "📜 Les Chroniques du Scribe",
         welcomeTitle: "Bienvenue, Voyageur !",
+        searchPlaceholder: "Rechercher de vieux parchemins...",
         welcomeDesc: "Voici ma collection de savoirs arcaniques, d'aventures de code et de grimoires techniques. Ces parchemins contiennent la sagesse que j'ai rassemblée au cours de mon périple dans les royaumes mystiques de la programmation. Puissent-ils te guider dans ta propre quête de connaissance.",
         filterAll: "Tous les Parchemins",
         noResults: "Aucun parchemin trouvé pour cette étiquette.",

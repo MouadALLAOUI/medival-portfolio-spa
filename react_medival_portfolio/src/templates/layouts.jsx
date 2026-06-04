@@ -1,5 +1,5 @@
-import { lazy, Suspense, useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+import { lazy, Suspense, useEffect, useLayoutEffect } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 import HeaderComponent from '../components/Headers';
 import Footer from '../components/footer';
 import SettingsModal from '../components/SettingsModal';
@@ -23,6 +23,16 @@ const LayoutsContent = () => {
   const { isOpen: isChatOpen } = useChat();
   const { copyCode } = useCodeCopy();
   const { unlockAchievement } = useAchievements();
+  const location = useLocation();
+
+  useLayoutEffect(() => {
+    // Blog posts manage their own scroll reset with a smooth animation — skip here
+    if (location.pathname.startsWith('/blogs/')) return;
+    const bodyContainer = document.getElementById('body-container');
+    if (bodyContainer) {
+      bodyContainer.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }, [location.pathname]);
 
   // Centralized Global Code Copy Click Delegation (covers all sub-views, markdown, and pages)
   useEffect(() => {
@@ -44,8 +54,8 @@ const LayoutsContent = () => {
       }
 
       // 2. Inline code block text click copy (any <code> tag that is not within a <pre> block)
-      const isInlineCode = target.classList.contains("inline-code") || 
-                           (target.tagName === "CODE" && !target.closest("pre"));
+      const isInlineCode = target.classList.contains("inline-code") ||
+        (target.tagName === "CODE" && !target.closest("pre"));
       if (isInlineCode) {
         const text = target.textContent || "";
         target.classList.add("copied");

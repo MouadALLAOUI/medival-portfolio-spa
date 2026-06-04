@@ -36,6 +36,19 @@ export const SETTINGS_SECTIONS = [
         type: 'toggle',
         contextKey: 'soundEnabled',
       },
+      {
+        id: 'medievalFont',
+        label: 'Medieval Font',
+        description: 'Select the historical typeface for titles and menus',
+        type: 'option-select',
+        contextKey: 'medievalFont',
+        options: [
+          { id: 'MedievalSharp', label: 'MedievalSharp', icon: '⚔️', description: 'Sharp fantasy lettering' },
+          { id: 'Fell', label: 'IM Fell English', icon: '📜', description: 'Classic historical SC style' },
+          { id: 'Almendra', label: 'Almendra', icon: '🏰', description: 'Elegant blackletter calligraphy' },
+          { id: 'Uncial', label: 'Uncial Antiqua', icon: '🍀', description: 'Ancient Celtic lettering' },
+        ],
+      },
     ],
   },
 

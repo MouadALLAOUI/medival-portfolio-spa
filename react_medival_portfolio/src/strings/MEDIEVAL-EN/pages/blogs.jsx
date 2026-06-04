@@ -3,6 +3,7 @@ const BLOGS = {
     list: {
         title: "📜 The Scribe's Chronicles",
         welcomeTitle: "Welcome, Traveler!",
+        searchPlaceholder: "Search scrolls...",
         welcomeDesc: "Here lies my collection of arcane knowledge, coding adventures, and technical grimoires. These scrolls contain the wisdom I've gathered through my journey in the mystical realms of programming. May they guide you on your own quest for knowledge.",
         filterAll: "All Scrolls",
         noResults: "No scrolls found for this tag.",

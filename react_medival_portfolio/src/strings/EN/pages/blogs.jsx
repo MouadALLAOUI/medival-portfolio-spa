@@ -2,6 +2,7 @@ const BLOGS = {
     list: {
         title: "📝 Blog Articles",
         welcomeTitle: "Welcome!",
+        searchPlaceholder: "Search scrolls...",
         welcomeDesc: "Here you’ll find my collection of technical articles, coding experiences, and development insights. These posts cover different topics I’ve explored throughout my journey in programming and technology. I hope you find something useful and interesting.",
         filterAll: "All Articles",
         noResults: "No articles found for this tag.",

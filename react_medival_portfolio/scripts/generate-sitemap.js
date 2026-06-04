@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { blogs } from '../src/data/blogs.data.js';
+import blogs from '../src/data/blogs.js';
 
 const DOMAIN = 'https://mouad-portfolio.netlify.app'; // Update with actual domain
 const SITEMAP_PATH = path.join(process.cwd(), 'public', 'sitemap.xml');

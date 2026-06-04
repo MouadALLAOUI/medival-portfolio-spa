@@ -3021,6 +3021,37 @@ export const mediaRegistry = {
         }
       }
     ]
+  },
+  markdown: {
+    "project-gantt-graph-process": "/content/projects/project-gantt-graph-process.md",
+    "project-book-bot": "/content/projects/project-book-bot.md",
+    "project-amz-automobile-front": "/content/projects/project-amz-automobile-front.md",
+    "project-lara-crud-vite": "/content/projects/project-lara-crud-vite.md",
+    "project-ecommerce-shop-react": "/content/projects/project-ecommerce-shop-react.md",
+    "blog-your-first-beginner-course-to-html": "/content/blogs/blog-your-first-beginner-course-to-html.md",
+    "blog-how-to-implement-css-into-your-html": "/content/blogs/blog-how-to-implement-css-into-your-html.md",
+    "blog-add-javascript-to-your-first-static-website": "/content/blogs/blog-add-javascript-to-your-first-static-website.md",
+    "blog-essential-html-tags-you-should-know": "/content/blogs/blog-essential-html-tags-you-should-know.md",
+    "blog-dont-underestimate-css-advanced-tricks-you-need": "/content/blogs/blog-dont-underestimate-css-advanced-tricks-you-need.md",
+    "blog-javascript-dom-manipulation-for-beginners": "/content/blogs/blog-javascript-dom-manipulation-for-beginners.md",
+    "blog-understanding-variables-data-types-and-operators-in-js": "/content/blogs/blog-understanding-variables-data-types-and-operators-in-js.md",
+    "blog-how-to-debug-javascript-like-a-pro": "/content/blogs/blog-how-to-debug-javascript-like-a-pro.md",
+    "blog-intro-to-responsive-web-design-with-media-queries": "/content/blogs/blog-intro-to-responsive-web-design-with-media-queries.md",
+    "blog-from-zero-to-deploy-hosting-your-first-website": "/content/blogs/blog-from-zero-to-deploy-hosting-your-first-website.md",
+    "skill-frontend-sorcery": "/content/skills/skill-frontend-sorcery.md",
+    "skill-backend-alchemy": "/content/skills/skill-backend-alchemy.md",
+    "skill-security-wards": "/content/skills/skill-security-wards.md",
+    "skill-ai-conjuring": "/content/skills/skill-ai-conjuring.md",
+    "skill-mobile-enchantments": "/content/skills/skill-mobile-enchantments.md",
+    "skill-web-explorer": "/content/skills/skill-web-explorer.md",
+    "skill-data-divination": "/content/skills/skill-data-divination.md",
+    "skill-code-enchantments": "/content/skills/skill-code-enchantments.md",
+    "skill-mentorship": "/content/skills/skill-mentorship.md",
+    "skill-problem-solving": "/content/skills/skill-problem-solving.md",
+    "skill-windows-dungeon": "/content/skills/skill-windows-dungeon.md",
+    "skill-linux-slayer": "/content/skills/skill-linux-slayer.md",
+    "skill-docker": "/content/skills/skill-docker.md",
+    "skill-virtualization": "/content/skills/skill-virtualization.md"
   }
 };
 

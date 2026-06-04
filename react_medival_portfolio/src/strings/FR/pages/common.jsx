@@ -20,6 +20,31 @@ const COMMON = {
             languages: "Langues",
         }
     },
+    visitor: {
+        welcomeBack: "Bon retour, voyageur ! Ta dernière visite dans ce royaume remonte au {{date}}.",
+    },
+    privacy: {
+        title: "Parchemin de Confidentialité",
+        subtitle: "Comment nous traitons tes données",
+        sections: {
+            collection: {
+                title: "I. Collecte de Données",
+                desc: "Nous ne collectons aucune donnée personnelle à moins que tu ne la fournisses volontairement via le formulaire de contact."
+            },
+            cookies: {
+                title: "II. Cookies et Stockage Local",
+                desc: "Nous utilisons le stockage local et les cookies uniquement pour mémoriser tes préférences (thème, langue, exploits)."
+            },
+            thirdParties: {
+                title: "III. Tiers",
+                desc: "Nous ne partageons tes données avec aucun tiers, en vérité !"
+            },
+            rights: {
+                title: "IV. Tes Droits",
+                desc: "Tu as le droit de vider ton stockage local à tout moment pour supprimer tes données enregistrées."
+            }
+        }
+    },
     settings: {
         title: "Paramètres",
         subtitle: "Personnalisez votre expérience du portfolio",
@@ -90,6 +115,16 @@ const COMMON = {
                     ar: { label: "العربية", description: "" },
                     'medieval-en': { label: "Anglais médiéval", description: "" },
                     'medieval-fr': { label: "Français médiéval", description: "" }
+                }
+            },
+            medievalFont: {
+                label: "Police médiévale",
+                description: "Sélectionne la police historique pour les titres",
+                options: {
+                    MedievalSharp: { label: "MedievalSharp", description: "Lettres fantastiques pointues" },
+                    Fell: { label: "IM Fell English", description: "Style classique historique" },
+                    Almendra: { label: "Almendra", description: "Calligraphie gothique élégante" },
+                    Uncial: { label: "Uncial Antiqua", description: "Lettres celtiques anciennes" }
                 }
             },
             pdfMode: {
@@ -197,6 +232,7 @@ const COMMON = {
     footer: {
         copyright: "© {{year}} Mouad le Codeur | Créé avec du code et de la créativité",
         disclaimer: "Ce portfolio ne peut pas être copié sans autorisation",
+        privacy: "Charte de Confidentialité",
     },
     thankyou: {
         title: "📜 Message envoyé !",

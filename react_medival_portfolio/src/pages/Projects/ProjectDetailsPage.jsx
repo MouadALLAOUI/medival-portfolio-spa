@@ -2,10 +2,29 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Github, ExternalLink, Trophy, Calendar, Sparkles, Code, Layout, ShieldCheck, Box, Hourglass } from 'lucide-react';
 import { useSettings } from '../../lib/useSettings';
 import { useTheme } from '../../lib/contexts/ThemeProvider';
-import { projects } from '../../data/projects.data';
+import projectsMetadata from '../../data/projects';
+import { projects as projectsData } from '../../data/projects.data';
 import { useAlerts } from '../../lib/useAlerts';
 import { useImageViewer } from '../../lib/useImageViewer';
 import styles from './ProjectDetailsPage.module.scss';
+
+// Merge metadata with overview data
+const projects = projectsMetadata.map(meta => {
+  const data = projectsData.find(d => d.id === meta.id);
+  return {
+    ...meta,
+    description: meta.desc,
+    overview: data?.overview || {},
+    image: data?.overview?.thumbnail || '',
+    status: data?.overview?.status || 'unknown',
+    category: meta.tags?.[0]?.toLowerCase() || 'web',
+    featured: false,
+    year: new Date().getFullYear(),
+    codeUrl: meta.link?.link || '',
+    liveUrl: '',
+    longDescription: data?.overview?.intro || meta.desc
+  };
+});
 
 export default function ProjectDetailsPage() {
   const { id } = useParams();

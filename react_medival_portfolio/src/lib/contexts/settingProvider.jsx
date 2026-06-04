@@ -11,6 +11,7 @@ export default function SettingsProvider({ children }) {
     const [markdownTheme, setMarkdownTheme] = useState(() => localStorage.getItem("mp_markdown_theme") || "default");
     const [customCursor, setCustomCursor] = useState(() => localStorage.getItem("mp_custom_cursor") !== "false");
     const [soundEnabled, setSoundEnabled] = useState(() => localStorage.getItem("mp_sound_enabled") === "true");
+    const [medievalFont, setMedievalFont] = useState(() => localStorage.getItem("mp_medieval_font") || "MedievalSharp");
 
     // Accessibility & Optimization settings
     const [fontSize, setFontSize] = useState(() => localStorage.getItem("mp_font_size") || "medium");
@@ -63,6 +64,19 @@ export default function SettingsProvider({ children }) {
     useEffect(() => {
         localStorage.setItem("mp_sound_enabled", String(soundEnabled));
     }, [soundEnabled]);
+
+    // Apply and persist medieval font
+    useEffect(() => {
+        const fontsMap = {
+            MedievalSharp: "'MedievalSharp', cursive",
+            Fell: "'IM Fell English SC', serif",
+            Almendra: "'Almendra', serif",
+            Uncial: "'Uncial Antiqua', cursive",
+        };
+        const fontVal = fontsMap[medievalFont] || fontsMap.MedievalSharp;
+        document.documentElement.style.setProperty('--font-medieval', fontVal);
+        localStorage.setItem("mp_medieval_font", medievalFont);
+    }, [medievalFont]);
 
     const t = useCallback(
         (key, params = null) => {
@@ -130,12 +144,14 @@ export default function SettingsProvider({ children }) {
             setCustomCursor,
             soundEnabled,
             setSoundEnabled,
+            medievalFont,
+            setMedievalFont,
             isSettingsOpen,
             openSettings,
             closeSettings,
             t
         }),
-        [theme, language, fontSize, reducedMotion, animationLevel, markdownTheme, customCursor, soundEnabled, isSettingsOpen, openSettings, closeSettings, t]
+        [theme, language, fontSize, reducedMotion, setReducedMotion, animationLevel, markdownTheme, customCursor, soundEnabled, medievalFont, isSettingsOpen, openSettings, closeSettings, t]
     );
     return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>;
 }
