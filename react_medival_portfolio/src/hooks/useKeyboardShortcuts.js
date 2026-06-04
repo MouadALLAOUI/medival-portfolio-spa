@@ -1,10 +1,8 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSettings } from '../lib/useSettings';
 
 export const useKeyboardShortcuts = () => {
   const navigate = useNavigate();
-  const { setLanguage } = useSettings();
 
   useEffect(() => {
     const handleKeyDown = (e) => {

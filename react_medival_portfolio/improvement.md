@@ -16,6 +16,7 @@ A categorized list of improvements for the entire application, from critical fix
 ## 🔴 NECESSARY (Critical Fixes & Foundation)
 
 ### 🎨 Frontend
+
 - [x] **Fix hardcoded environment configuration** - Move `APP_ENV = "DEV"` in `env.js` to use actual environment variables (`import.meta.env`) for production deployments
 - [x] **Add error boundaries** - Implement React Error Boundaries in `App.jsx` to catch and gracefully handle component crashes
 - [x] **Implement proper 404 page** - Replace redirect to home with a custom 404 page that matches the medieval theme
@@ -26,6 +27,7 @@ A categorized list of improvements for the entire application, from critical fix
 - [x] **Fix chatbot conversation history** - The comment mentions "remembers last 3 interactions (under construction)" - actually implement conversation context in `ChatWindow.jsx`
 
 ### ⚙️ Backend & Infrastructure
+
 - [x] **Fix contact form security** - Remove hardcoded email from `ContactSection.jsx` and use environment variables; add CSRF protection and spam prevention (honeypot/reCAPTCHA)
 - [ ] **Add HTTPS enforcement** - Ensure production deployment forces HTTPS connections
 
@@ -34,6 +36,7 @@ A categorized list of improvements for the entire application, from critical fix
 ## 🟠 GREAT IDEAS (High-Value Enhancements)
 
 ### 🎨 Frontend
+
 - [x] **Redesign Settings Page** - Refactored the flat settings UI into a professional two-panel dashboard grimoire layout with localized sidebar nav, smooth animations, and optimized mobile scrolling tab strips.
 - [x] **Implement dark mode system preference detection** - Auto-detect `prefers-color-scheme` in `ThemeProvider.jsx` on first load
 - [x] **Add blog search functionality** - Implement full-text search across blog posts in `BlogsPage.jsx`
@@ -45,6 +48,7 @@ A categorized list of improvements for the entire application, from critical fix
 - [x] **Implement achievement notifications** - Expand `AchievementsProvider` to show toast notifications when achievements are unlocked
 
 ### ⚙️ Backend, Tooling & Third-Party APIs
+
 - [ ] **Create admin dashboard** - Build a protected admin area to manage blogs, projects, and skills without code changes *(Requires database, auth, and CRUD API)*
 - [x] **Add RSS feed for blogs** - Generate `/rss.xml` automatically from `blogs.data.js` for blog subscribers *(Build-time generator)*
 - [ ] **Implement blog comments system** - Add comment functionality using Supabase, Disqus, or a custom solution *(Requires backend database/service)*
@@ -58,6 +62,7 @@ A categorized list of improvements for the entire application, from critical fix
 ## 🟡 MEDIUM IDEAS (Useful UX Improvements)
 
 ### 🎨 Frontend
+
 - [x] **Add table of contents for long blogs** - Auto-generate TOC from markdown headings in `BlogPost.jsx`
 - [x] **Add copy feedback animation** - Show visual confirmation when code is copied in `useCodeCopy.js`
 - [x] **Create skill level tooltips** - Show detailed explanation of what each star level means in skills cards
@@ -75,6 +80,7 @@ A categorized list of improvements for the entire application, from critical fix
 - [ ] **Add filter persistence** - Remember user's blog/project filter choice in localStorage
 
 ### ⚙️ Backend, Tooling & Logging
+
 - [ ] **Create shareable skill cards** - Generate social media images when sharing specific skills *(Requires dynamic image generation engine)*
 - [ ] **Implement blog series grouping** - Group related tutorials (like HTML→CSS→JS) into learning paths *(Data structure & routing)*
 - [x] **Add draft mode for blogs** - Support unpublished drafts that can be previewed but not shown publicly *(Build-time routing & schema)*
@@ -85,6 +91,7 @@ A categorized list of improvements for the entire application, from critical fix
 ## 🟢 TIPS IDEAS (Polish & Nice-to-Have)
 
 ### 🎨 Frontend
+
 - [x] **Add easter eggs** - Hide fun interactive elements (Konami code, clickable heraldry, etc.)
 - [x] **Implement seasonal themes** - Auto-switch themes for holidays (Halloween, Christmas, etc.)
 - [x] **Add particle effects** - Subtle magical particles in hero section using canvas or CSS
@@ -110,9 +117,10 @@ A categorized list of improvements for the entire application, from critical fix
 - [x] **Create interactive timeline** - Make the About section timeline clickable with more details
 - [x] **Add skill proficiency radar chart** - Visual representation of skill levels
 - [x] **Implement blog bookmarking** - Let users save posts to read later (localStorage or account)
-- [ ] **Add thumbnail images for blog cards** - add image to blog card in blogs page 
+- [x] **Add thumbnail images for blog cards and post** add image to blog card in blogs page
 
 ### ⚙️ Backend, Tooling & External APIs
+
 - [ ] **Add visitor counter** - Show "You are visitor #X" with medieval styling *(Requires database and backend logic)*
 - [ ] **Implement achievement leaderboards** - Compare achievements with other visitors (if logged in) *(Requires auth, backend APIs, DB)*
 - [ ] **Create shareable quote cards** - Generate images from notable quotes in blogs *(Requires canvas generation engine)*
@@ -124,6 +132,7 @@ A categorized list of improvements for the entire application, from critical fix
 ## 📊 Performance Optimizations
 
 ### 🎨 Frontend Performance
+
 - [x] **Lazy load heavy components** - Defer loading of ChatWindow, PdfViewer until needed
 - [ ] **Implement virtual scrolling** - For long lists (blogs, projects) with many items
 - [x] **Minimize re-renders** - Use `React.memo`, `useMemo`, `useCallback` strategically
@@ -132,6 +141,7 @@ A categorized list of improvements for the entire application, from critical fix
 - [ ] **Add prefetching** - Prefetch likely next pages (next blog post, linked projects)
 
 ### ⚙️ Tooling & Infrastructure Performance
+
 - [ ] **Implement image optimization** - Use WebP/AVIF formats and responsive images with `srcset`
 - [x] **Add bundle size analysis** - Use `vite-bundle-visualizer` to identify large dependencies
 - [x] **Add caching headers** - Configure proper cache-control for static assets
@@ -142,10 +152,12 @@ A categorized list of improvements for the entire application, from critical fix
 ## 🔒 Security Enhancements
 
 ### 🎨 Frontend Security
+
 - [x] **Remove right-click disable** - Replaced the rigid contextmenu blocker in `App.jsx` with a custom, high-fidelity medieval context menu portal component.
 - [x] **Add privacy policy page** - Document data collection practices (cookies, analytics, forms)
 
 ### ⚙️ Backend & Infrastructure Security
+
 - [ ] **Add Content Security Policy (CSP)** - Define strict CSP headers to prevent XSS
 - [ ] **Implement rate limiting** - Protect contact form and chatbot from abuse
 - [ ] **Sanitize all user inputs** - Ensure form submissions are properly validated and sanitized
@@ -160,10 +172,12 @@ A categorized list of improvements for the entire application, from critical fix
 ## 🧪 Testing & Quality
 
 ### 🎨 Frontend Testing
+
 - [ ] **Add accessibility testing** - Use axe-core or Lighthouse CI to catch a11y issues
 - [ ] **Add visual regression tests** - Use Percy or Chromatic to catch UI changes
 
 ### ⚙️ Testing Infrastructure & Automation
+
 - [ ] **Add unit tests** - Set up Vitest/Jest for testing utilities and components
 - [ ] **Implement E2E tests** - Use Playwright or Cypress for critical user flows
 - [ ] **Create test coverage reports** - Track and improve code coverage
@@ -178,11 +192,13 @@ A categorized list of improvements for the entire application, from critical fix
 ## 📝 Documentation
 
 ### 🎨 Code & Content Documentation
+
 - [ ] **Add inline JSDoc comments** - Document complex functions and components
 - [ ] **Create architecture diagram** - Visual overview of component structure and data flow
 - [ ] **Document coding conventions** - Style guide for consistent code quality
 
 ### ⚙️ System & Deployment Documentation
+
 - [ ] **Add README.md** - Document project setup, development workflow, and deployment
 - [ ] **Create CONTRIBUTING.md** - Guide for potential contributors
 - [ ] **Document environment variables** - List all required env vars with examples
@@ -196,6 +212,7 @@ A categorized list of improvements for the entire application, from critical fix
 ## 🎯 Quick Wins (Under 1 Hour Each)
 
 ### 🎨 Frontend
+
 - [x] Fix typo: "Detailled desciprion" → "Detailed description" in `skillsSection.jsx`
 - [x] Fix typo: "unkonwn" → "unknown" in `ProjectsSection.jsx`
 - [x] Add `rel="noopener noreferrer"` to all `target="_blank"` links (security best practice)
@@ -208,7 +225,8 @@ A categorized list of improvements for the entire application, from critical fix
 - [x] Add default alt text for images missing descriptions
 
 ### ⚙️ Tooling
-- [ ] Remove unused imports and dead code identified by ESLint
+
+- [x] Remove unused imports and dead code identified by ESLint
 
 ---
 
@@ -219,6 +237,7 @@ A categorized list of improvements for the entire application, from critical fix
 *Files analyzed: 90+ JSX/JS files across all sections*
 
 ### Immediate (This Week)
+
 1. [x] Fix hardcoded environment config
 2. [x] Add error boundaries
 3. [x] Fix contact form security
@@ -229,6 +248,7 @@ A categorized list of improvements for the entire application, from critical fix
 8. [x] Implement inline PDF viewer in modal
 
 ### Short Term (This Month)
+
 1. [x] Implement proper 404 page
 2. [x] Add meta tags for SEO
 3. [x] Fix image path inconsistencies
@@ -240,6 +260,7 @@ A categorized list of improvements for the entire application, from critical fix
 8. [x] Enhance custom context menu with submenus
 
 ### Medium Term (This Quarter)
+
 1. [ ] Create admin dashboard
 2. [ ] Add blog search functionality
 3. [ ] Implement PWA capabilities
@@ -247,6 +268,7 @@ A categorized list of improvements for the entire application, from critical fix
 5. [ ] Set up testing framework
 
 ### Long Term (This Year)
+
 1. [x] Complete i18n implementation
 2. [ ] Build newsletter system
 3. [ ] Add achievement leaderboards
@@ -256,6 +278,7 @@ A categorized list of improvements for the entire application, from critical fix
 ## ✨ VISUAL & INTERACTIVE ATTRACTIVENESS IDEAS (Gamification & Polish)
 
 ### 🎨 Visual & Immersive Polish (UI)
+
 - [ ] **Interactive Castle Map Navigation** - Replace or supplement section navigation with a hand-drawn interactive map of a medieval keep. Clicking on towers, libraries, dungeons, or coordinates scrolls the visitor to the corresponding section (e.g., *Scroll of Skills* = Library, *Tech Quests* = Armory).
 - [ ] **Ambient Lute Music Player** - Add optional, royalty-free background loop tracks (e.g., tavern lute music, forest rain, fire crackling) with toggle, track selector, and subtle volume control in the settings panel.
 - [ ] **Unrolling Scroll Page Loading Transition** - Use page load transitions showing a rolled scroll container that unrolls vertically with leather straps sliding out of view.
@@ -266,20 +289,23 @@ A categorized list of improvements for the entire application, from critical fix
 - [ ] **SVG Ink-Blot Hover Reveal** - Transition cards and links by expanding an organic ink-blot mask shape, revealing the full card details as if the ink is spreading on parchment.
 
 ### ⚙️ User Experience & Interaction Polish (UX)
-- [ ] **Rune Command Palette (`Ctrl+K`)** - Implement a keyboard-accessible command palette styled as a mini-grimoire dialog. Let users search blogs, projects, toggles, or navigate the castle map directly using key inputs.
+
+- [x] **KEYboard navigation** - implement intuitive keyboard shortcuts (e.g., `Ctrl+K` for search, `Esc` to close modals) and ensure to add small keyborad ui so the user can know the shortcuts.
 - [ ] **Compass scroll-to-top dial** - Replace the generic scroll-to-top button with a floating antique compass. The dial pointer rotates to point "North" (upwards) as you scroll down, and clicking it spins the compass as you ascend.
 - [ ] **Soundscape feedback on interaction** - Introduce gentle tactile sound effects (quill scratching on key presses in input forms, paper rustling when opening menus, metallic clink when toggling checkboxes).
-- [ ] **Candle Wick Reading Progress Meter** - Style the reading progress bar at the top of the screen as a burning candle, where the flame travels across and the wax drips down based on reading depth.
+- [x] **Candle Wick Reading Progress Meter** - Style the reading progress bar at the top of the screen as a burning candle, where the flame travels across and the wax drips down based on reading depth.
 - [ ] **Skeletal Hand-Sketched Wireframes** - Customize the React fallback loading skeletons to render as raw hand-sketched parchment outlines of cards, replacing standard gray loading blocks.
 - [ ] **Hover Link Portal Previews** - Show a hovering scroll preview window containing thumbnail screenshots and metadata when hovering over project links or external quests.
 
 ### ✍️ Typography & Editorial Layouts
+
 - [ ] **Gothic Drop Capitals** - Style all first letters of paragraph texts using highly decorative Gothic Initials (Drop Caps) featuring drop shadows and medieval line-art decorations.
 - [ ] **Grimoire Double-Page Split View** - On ultra-wide desktop monitors, dynamically refractor blog articles into a two-column open book layout, allowing users to "turn" pages using swipe or key controls.
 - [ ] **Fluid Typography (`clamp()`)** - Implement dynamic typography metrics using viewport clamps, yielding perfect typeface scaling from mobile viewports to widescreen displays without layout shifts.
 - [ ] **Masonry Chronicle Grid** - Layout blog cards in a masonry-style multi-column grid, making the chronicle feed feel like a scrapbooked collection of old documents.
 
 ### 🎮 Gamification & Secret Quests
+
 - [ ] **Heraldry & Crest Maker** - Add a mini-builder where users can customize their own medieval coat of arms (selecting patterns, beasts, colors, and mottos) and download or export the resulting SVG crest.
 - [ ] **Unlockable Character Sheet & Titles** - Integrate the visitor XP system with actual level ranks (e.g., Level 1: *Apprentice Scribe*, Level 5: *Code Squire*, Level 10: *Full-Stack Archmage*). Display the active title/badge next to the profile/name.
 - [ ] **Inventory System for Achievements** - Present unlocked achievements as item icons inside a leather-bound "inventory bag" popover, with item stats and lore cards for each item.

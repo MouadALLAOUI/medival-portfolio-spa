@@ -956,26 +956,74 @@
   }
 }
 
-/* ===== NEW READING PROGRESS BAR & FLOATING STATS ===== */
+/* ===== CANDLE WICK READING PROGRESS BAR ===== */
 .progressBarWrapper {
   position: fixed;
   top: var(--navbar-height, 64px);
   left: 0;
   right: 0;
-  height: 3px;
-  background: var(--border);
+  height: 6px;
+  background: rgba(139, 69, 19, 0.15);
   z-index: 100;
+  border-bottom: 1px solid rgba(139, 69, 19, 0.1);
 }
 
 .progressBar {
   height: 100%;
-  background: var(--accent);
+  background: linear-gradient(90deg, #8b5a2b 0%, #d4af37 60%, #f5d060 100%);
   transition: width 100ms linear;
-  border-radius: 0 2px 2px 0;
+  border-radius: 0 3px 3px 0;
+  position: relative;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
 
   :global([data-theme="medieval"]) & {
-    background: var(--gold);
+    background: linear-gradient(90deg, #5c3310 0%, #8b5a2b 50%, #d4af37 100%);
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
   }
+}
+
+.candleFlame {
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  line-height: 1;
+  filter: drop-shadow(0 0 4px rgba(255, 160, 0, 0.8));
+  animation: flicker 0.8s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.waxDrips {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  height: 12px;
+  pointer-events: none;
+}
+
+.drip {
+  position: absolute;
+  top: 0;
+  width: 3px;
+  height: 0;
+  background: linear-gradient(180deg, #d4af37 0%, #8b5a2b 100%);
+  border-radius: 0 0 3px 3px;
+  animation: waxDrip 3s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+@keyframes flicker {
+  0% { transform: translateY(-50%) scale(1) rotate(-3deg); opacity: 1; }
+  50% { transform: translateY(-50%) scale(1.1) rotate(2deg); opacity: 0.9; }
+  100% { transform: translateY(-50%) scale(0.95) rotate(-1deg); opacity: 1; }
+}
+
+@keyframes waxDrip {
+  0%, 100% { height: 0; opacity: 0; }
+  20% { height: 4px; opacity: 0.7; }
+  60% { height: 10px; opacity: 0.5; }
+  80% { height: 12px; opacity: 0.3; }
 }
 
 .readingStats {
