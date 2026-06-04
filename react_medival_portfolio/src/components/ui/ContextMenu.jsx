@@ -1,6 +1,6 @@
 import { createPortal } from 'react-dom';
 import { useRef, useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ChevronRight, Check } from 'lucide-react';
 import useContextMenu from '../../hooks/useContextMenu';
 import { useTheme } from '../../lib/contexts/ThemeProvider';
@@ -16,7 +16,6 @@ import styles from './ContextMenu.module.scss';
  */
 export default function ContextMenu() {
   const navigate = useNavigate();
-  const location = useLocation();
   const { x, y, visible, closeMenu, targetElement } = useContextMenu();
   const { theme, themes, switchTheme } = useTheme();
   const { setBoolean, isCompleted } = useAchievements();
@@ -25,7 +24,6 @@ export default function ContextMenu() {
 
   const menuRef = useRef(null);
   const [coords, setCoords] = useState({ x: 0, y: 0 });
-  const [copied, setCopied] = useState(false);
   const [shouldRender, setShouldRender] = useState(false);
   const [isHiding, setIsHiding] = useState(false);
   const [submenuSide, setSubmenuSide] = useState('right');

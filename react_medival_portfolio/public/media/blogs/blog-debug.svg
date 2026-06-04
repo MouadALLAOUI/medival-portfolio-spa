@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0e1a0e"/>
+      <stop offset="100%" style="stop-color:#1a2d1a"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="200" fill="url(#bg)"/>
+  <text x="200" y="80" text-anchor="middle" font-size="50" fill="#27ae60" opacity="0.15">🔍</text>
+  <text x="200" y="130" text-anchor="middle" font-family="serif" font-size="18" fill="#f5e6ca" opacity="0.9">Debug Like a Pro</text>
+  <text x="200" y="155" text-anchor="middle" font-family="serif" font-size="12" fill="#8b5a2b">The Inquisitor's Art</text>
+</svg>
