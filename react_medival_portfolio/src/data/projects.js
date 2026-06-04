@@ -1,5 +1,3 @@
-import { getAssetById } from './mediaManager.js';
-
 const projects = [
   {
     id: "project-gantt-graph-process",

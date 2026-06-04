@@ -8,6 +8,7 @@ import PdfViewerProvider from './lib/contexts/PdfViewerProvider'
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts'
 import { getActiveSeasonalTheme } from './lib/utils/seasonalThemes'
 import ContextMenu from './components/ui/ContextMenu'
+import KeyboardShortcutsHelp from './components/KeyboardShortcutsHelp/KeyboardShortcutsHelp'
 import AppRoutes from './routes/routes'
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary'
 import { useSettings } from './lib/useSettings'
@@ -114,6 +115,7 @@ function AppContent() {
     <>
       <AppRoutes />
       <ContextMenu />
+      <KeyboardShortcutsHelp />
     </>
   );
 }

@@ -38,6 +38,9 @@ export default function BlogCard({ blog, isBookmarked, onToggleBookmark }) {
       <DynamicCard item={blog} config={cardConfig}>
         {/* Cover art block */}
         <div className={styles['blog-cover']} style={{ '--cover-gradient': getCoverGradient(blog.id) }}>
+          {blog.thumbnail ? (
+            <img src={blog.thumbnail} alt={blog.title} className={styles['blog-thumb']} loading="lazy" />
+          ) : null}
           <div className={styles['cover-overlay']} />
           <div className={styles['series-badge-wrap']}>
             {blog.series && (
