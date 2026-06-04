@@ -4,7 +4,7 @@
 .pageContainer {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1.5rem 8rem 1.5rem; // generous bottom padding for the fixed footer
+  padding: 2rem 1.5rem;
   min-height: 100vh;
   position: relative;
   font-family: var(--font-primary);
@@ -495,27 +495,23 @@
 
 /* Bottom navigational grimoire panel */
 .bottomNav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  margin-top: 3rem;
   width: 100%;
   background: var(--bg-card);
-  border-top: 1px solid var(--border);
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
-  z-index: 100;
-  padding: 0.75rem 0;
-  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  padding: 1.25rem 0;
 
   :global([data-theme="medieval"]) & {
     background: #f5e6ca;
-    border-top: 3px double rgba(139, 69, 19, 0.3);
-    box-shadow: 0 -4px 15px rgba(58, 41, 33, 0.1);
+    border: 3px double rgba(139, 69, 19, 0.4);
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(58, 41, 33, 0.15);
   }
 }
 
 .bottomNavContainer {
-  max-width: 1200px;
-  margin: 0 auto;
   padding: 0 1.5rem;
   display: flex;
   align-items: center;

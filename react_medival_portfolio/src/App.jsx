@@ -4,7 +4,6 @@ import SettingsProvider from './lib/contexts/settingProvider'
 import AchievementsProvider from './lib/contexts/AchievementsProvider'
 import ImageViewerProvider from './lib/contexts/ImageViewerProvider'
 import PdfViewerProvider from './lib/contexts/PdfViewerProvider'
-import { useLocation } from 'react-router-dom'
 // import { AnimatePresence } from 'framer-motion'
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts'
 import { getActiveSeasonalTheme } from './lib/utils/seasonalThemes'
@@ -16,7 +15,7 @@ import { useAlerts } from './lib/useAlerts'
 import glossary from './data/glossary'
 
 function AppContent() {
-  const { language } = useSettings();
+  const { language, _t } = useSettings();
   const { showAlert } = useAlerts();
   useKeyboardShortcuts();
 
@@ -40,6 +39,28 @@ function AppContent() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [showAlert]);
+
+  // // Last Visited Greeting
+  // useEffect(() => {
+  //   const lastVisited = localStorage.getItem("mp_last_visited");
+  //   const now = Date.now();
+
+  //   if (lastVisited) {
+  //     const timestamp = parseInt(lastVisited, 10);
+  //     if (!isNaN(timestamp)) {
+  //       const localeMap = { en: 'en-US', fr: 'fr-FR', ar: 'ar-MA', 'medieval-en': 'en-GB', 'medieval-fr': 'fr-FR' };
+  //       const locale = localeMap[language] || 'en-US';
+  //       const formattedDate = new Date(timestamp).toLocaleString(locale, {
+  //         dateStyle: 'medium',
+  //         timeStyle: 'short',
+  //       });
+
+  //       showAlert(t('COMMON.visitor.welcomeBack', { date: formattedDate }), 'greeting', 5000);
+  //     }
+  //   }
+
+  //   localStorage.setItem("mp_last_visited", String(now));
+  // }, [language, showAlert, t]);
 
   useEffect(() => {
     const dict = glossary[language] || glossary.en;
@@ -98,8 +119,6 @@ function AppContent() {
 }
 
 function App() {
-  const location = useLocation();
-
   const seasonalTheme = getActiveSeasonalTheme();
 
   useEffect(() => {

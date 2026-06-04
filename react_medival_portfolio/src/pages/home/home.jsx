@@ -50,13 +50,13 @@ export default function Home() {
         };
 
         const observer = new IntersectionObserver(revealCallback, observerOptions);
-        const elementsToReveal = document.querySelectorAll(".parchment, .scroll-content, .timeline-item-reveal");
+        const elementsToReveal = document.querySelectorAll("section[id], .parchment, .scroll-content, .timeline-item-reveal");
         elementsToReveal.forEach((el) => observer.observe(el));
 
         return () => {
             observer.disconnect();
         };
-    }, []);
+    }, [incrementCounter]);
 
 
 

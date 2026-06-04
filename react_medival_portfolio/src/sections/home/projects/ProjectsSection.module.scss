@@ -120,11 +120,11 @@
   z-index: 0;
   min-height: 200px;
 
-  :global([data-theme="medieval"]) & {
-    background-image: linear-gradient(to bottom, #1c1917, #292524);
-    border: 2px solid rgba(180, 83, 9, 0.2);
-    border-radius: 14px;
-  }
+  // :global([data-theme="medieval"]) & {
+  //   background-image: linear-gradient(to bottom, #1c1917, #292524);
+  //   border: 2px solid rgba(180, 83, 9, 0.2);
+  //   border-radius: 14px;
+  // }
 
   &::before {
     content: '';
@@ -148,12 +148,12 @@
     transform: translateY(-4px);
     box-shadow: var(--card-shadow-hover);
 
-    :global([data-theme="medieval"]) & {
-      border-color: rgb(245 158 11 / 1);
-      transform: translateY(-4px) rotate(1deg);
-      color: rgb(254 243 199 / 1);
-      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    }
+    // :global([data-theme="medieval"]) & {
+    //   border-color: rgb(245 158 11 / 1);
+    //   transform: translateY(-4px) rotate(1deg);
+    //   color: rgb(254 243 199 / 1);
+    //   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    // }
   }
 
   &:active {
@@ -196,13 +196,13 @@
   color: var(--text-primary);
   margin-bottom: 8px;
 
-  :global([data-theme="medieval"]) & {
-    font-family: 'Uncial Antiqua', 'MedievalSharp', cursive;
-    color: rgb(253 230 138 / 1);
-    letter-spacing: 0.025em;
-    text-shadow: 0 0 6px rgba(255, 170, 0, 0.5);
-    line-height: 28px;
-  }
+  // :global([data-theme="medieval"]) & {
+  //   font-family: 'Uncial Antiqua', 'MedievalSharp', cursive;
+  //   color: rgb(253 230 138 / 1);
+  //   letter-spacing: 0.025em;
+  //   text-shadow: 0 0 6px rgba(255, 170, 0, 0.5);
+  //   line-height: 28px;
+  // }
 }
 
 .project-description {
@@ -309,11 +309,11 @@
   border-radius: 24px;
   color: var(--text-primary);
 
-  :global([data-theme="medieval"]) & {
-    background-image: linear-gradient(to bottom, #1c1917, #292524);
-    border: 2px solid rgba(180, 83, 9, 0.3);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  }
+  // :global([data-theme="medieval"]) & {
+  //   background-image: linear-gradient(to bottom, #1c1917, #292524);
+  //   border: 2px solid rgba(180, 83, 9, 0.3);
+  //   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  // }
 
   &.active {
     transform: scale(1);
@@ -340,10 +340,10 @@
     border-bottom: 2px solid var(--border);
     padding-bottom: 12px;
 
-    :global([data-theme="medieval"]) & {
-      color: rgb(253 230 138 / 1);
-      border-bottom-color: rgba(217, 119, 6, 0.3);
-    }
+    // :global([data-theme="medieval"]) & {
+    //   color: rgb(253 230 138 / 1);
+    //   border-bottom-color: rgba(217, 119, 6, 0.3);
+    // }
 
     &:hover {
       border-color: rgb(245 158 11 / 1);
@@ -395,9 +395,9 @@
     margin-bottom: 12px;
     letter-spacing: 0.025em;
 
-    :global([data-theme="medieval"]) & {
-      color: rgb(252 211 77 / 1);
-    }
+    // :global([data-theme="medieval"]) & {
+    //   color: rgb(252 211 77 / 1);
+    // }
   }
 
   p {
@@ -405,9 +405,9 @@
     margin-bottom: 24px;
     font-family: sans-serif;
 
-    :global([data-theme="medieval"]) & {
-      color: rgba(254, 243, 199, 0.9);
-    }
+    // :global([data-theme="medieval"]) & {
+    //   color: rgba(254, 243, 199, 0.9);
+    // }
   }
 
   ul,
@@ -417,9 +417,9 @@
     padding-left: 32px;
     color: var(--text-secondary);
 
-    :global([data-theme="medieval"]) & {
-      color: rgba(254, 243, 199, 0.9);
-    }
+    // :global([data-theme="medieval"]) & {
+    //   color: rgba(254, 243, 199, 0.9);
+    // }
 
     li {
       display: flex;
@@ -506,10 +506,10 @@
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 
-  :global([data-theme="medieval"]) & {
-    border: 2.5px solid var(--gold-val);
-    box-shadow: 0 4px 12px rgba(44, 24, 16, 0.4);
-  }
+  // :global([data-theme="medieval"]) & {
+  //   border: 2.5px solid var(--gold-val);
+  //   box-shadow: 0 4px 12px rgba(44, 24, 16, 0.4);
+  // }
 
   @include mobile {
     height: 180px;
@@ -591,16 +591,16 @@
     right: 10px;
   }
 
-  :global([data-theme="medieval"]) & {
-    background: rgba(58, 41, 33, 0.8);
-    color: var(--gold-val);
-    border: 1px solid var(--gold-val);
+  // :global([data-theme="medieval"]) & {
+  //   background: rgba(58, 41, 33, 0.8);
+  //   color: var(--gold-val);
+  //   border: 1px solid var(--gold-val);
 
-    &:hover {
-      background: var(--gold-val);
-      color: var(--dark-brown-val);
-    }
-  }
+  //   &:hover {
+  //     background: var(--gold-val);
+  //     color: var(--dark-brown-val);
+  //   }
+  // }
 }
 
 .carousel-dots {
@@ -629,24 +629,24 @@
     transform: scale(1.2);
   }
 
-  :global([data-theme="medieval"]) & {
-    background: rgba(201, 168, 76, 0.4);
+  // :global([data-theme="medieval"]) & {
+  //   background: rgba(201, 168, 76, 0.4);
 
-    &:hover {
-      background: var(--gold-light-val);
-    }
+  //   &:hover {
+  //     background: var(--gold-light-val);
+  //   }
 
-    &.active {
-      background: var(--gold-val);
-    }
-  }
+  //   &.active {
+  //     background: var(--gold-val);
+  //   }
+  // }
 }
 
 .duration-tag {
   display: inline-block;
   margin-left: 12px;
   background: rgba(212, 175, 55, 0.12);
-  color: var(--accent) !important;
+  color: var(--accent);
   border: 1px solid var(--border);
   padding: 0.15rem 0.55rem;
   border-radius: 4px;
@@ -655,9 +655,9 @@
   font-style: normal;
   box-shadow: 0 0 5px rgba(212, 175, 55, 0.05);
 
-  :global([data-theme="medieval"]) & {
-    background: rgba(58, 41, 33, 0.4);
-    border-color: rgba(201, 168, 76, 0.3);
-    color: var(--gold-val) !important;
-  }
+  // :global([data-theme="medieval"]) & {
+  //   background: rgba(58, 41, 33, 0.4);
+  //   border-color: rgba(201, 168, 76, 0.3);
+  //   color: var(--gold-val);
+  // }
 }

@@ -2,6 +2,7 @@ const BLOGS = {
     list: {
         title: "📜 Blog",
         welcomeTitle: "Bienvenue !",
+        searchPlaceholder: "Rechercher des parchemins...",
         welcomeDesc: "Voici ma collection d’articles techniques, d’expériences de développement et d’explorations en programmation. Ces publications regroupent les sujets que j’ai étudiés et construits au fil de mon parcours. J’espère que vous y trouverez quelque chose d’utile et d’intéressant.",
         filterAll: "Tous les articles",
         noResults: "Aucun article trouvé pour ce tag.",

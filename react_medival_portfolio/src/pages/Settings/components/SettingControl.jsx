@@ -20,6 +20,7 @@ const useSettingValue = (contextKey) => {
     fontSize: [settings.fontSize, settings.setFontSize],
     customCursor: [settings.customCursor, settings.setCustomCursor],
     soundEnabled: [settings.soundEnabled, settings.setSoundEnabled],
+    medievalFont: [settings.medievalFont, settings.setMedievalFont],
     // add new settings here when adding to a context
   };
 
@@ -215,7 +216,17 @@ const SettingControl = ({ setting }) => {
               type="button"
             >
               <span className={styles.optionIcon}>{opt.icon}</span>
-              <span className={styles.optionLabel}>
+              <span
+                className={styles.optionLabel}
+                style={{
+                  fontFamily: setting.id === 'medievalFont' ? (
+                    opt.id === 'Fell' ? "'IM Fell English SC', serif" :
+                    opt.id === 'Almendra' ? "'Almendra', serif" :
+                    opt.id === 'Uncial' ? "'Uncial Antiqua', cursive" :
+                    "'MedievalSharp', cursive"
+                  ) : undefined
+                }}
+              >
                 {t(`COMMON.settings.keys.${setting.id}.options.${opt.id}.label`) || opt.label}
               </span>
               {(t(`COMMON.settings.keys.${setting.id}.options.${opt.id}.description`) || opt.description) && (
