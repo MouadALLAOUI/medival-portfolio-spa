@@ -405,13 +405,13 @@
 
   pre.code-block-container,
   .code-block-container code {
-    background-color: var(--md-code-bg, var(--bg-tertiary)) !important;
-    color: var(--md-code-text, var(--text-primary)) !important;
+    background-color: var(--md-code-bg, var(--bg-tertiary));
+    color: var(--md-code-text, var(--text-primary));
   }
 
   code:not(pre code) {
-    background-color: var(--md-inline-bg, var(--bg-tertiary)) !important;
-    color: var(--md-inline-text, var(--accent)) !important;
-    border: 1px solid var(--md-inline-border, var(--border)) !important;
+    background-color: var(--md-inline-bg, var(--bg-tertiary));
+    color: var(--md-inline-text, var(--accent));
+    border: 1px solid var(--md-inline-border, var(--border));
   }
 }

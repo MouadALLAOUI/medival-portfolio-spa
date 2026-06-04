@@ -20,6 +20,31 @@ const COMMON = {
             languages: "لغات المملكة",
         }
     },
+    visitor: {
+        welcomeBack: "مرحباً بعودتك أيها المسافر! آخر زيارة لك لهذا العالم كانت في {{date}}.",
+    },
+    privacy: {
+        title: "مخطوطة الخصوصية",
+        subtitle: "كيف نتعامل مع بياناتك",
+        sections: {
+            collection: {
+                title: "أولاً. جمع البيانات",
+                desc: "نحن لا نجمع أي بيانات شخصية إلا إذا قمت بتقديمها طواعية عبر نموذج الاتصال."
+            },
+            cookies: {
+                title: "ثانياً. الكوكيز والتخزين المحلي",
+                desc: "نحن نستخدم التخزين المحلي والكوكيز فقط لتذكر تفضيلاتك (السمة، اللغة، الإنجازات)."
+            },
+            thirdParties: {
+                title: "ثالثاً. أطراف ثالثة",
+                desc: "نحن لا نشارك بياناتك مع أي أطراف ثالثة على الإطلاق!"
+            },
+            rights: {
+                title: "رابعاً. حقوقك",
+                desc: "لديك الحق في مسح التخزين المحلي الخاص بك في أي وقت لإزالة بياناتك المحفوظة."
+            }
+        }
+    },
     settings: {
         title: "مخطوطة الإعدادات",
         subtitle: "خصص تجربة محفظتك",
@@ -90,6 +115,16 @@ const COMMON = {
                     ar: { label: "العربية", description: "" },
                     'medieval-en': { label: "Medieval English", description: "" },
                     'medieval-fr': { label: "Français Médiéval", description: "" }
+                }
+            },
+            medievalFont: {
+                label: "خط القرون الوسطى",
+                description: "اختر الخط التاريخي للعناوين والقوائم",
+                options: {
+                    MedievalSharp: { label: "MedievalSharp", description: "حروف خيالية حادة" },
+                    Fell: { label: "IM Fell English", description: "أسلوب كلاسيكي تاريخي" },
+                    Almendra: { label: "Almendra", description: "خط قوطي أنيق" },
+                    Uncial: { label: "Uncial Antiqua", description: "حروف سلتية قديمة" }
                 }
             },
             pdfMode: {
@@ -197,6 +232,7 @@ const COMMON = {
     footer: {
         copyright: "© {{year}} معاذ المبرمج | صُنع بكود سحري وبكسلات مسحورة",
         disclaimer: "لا يجوز نسخ هذه المخطوطة دون إذن صريح من الساحر",
+        privacy: "سياسة الخصوصية",
     },
     thankyou: {
         title: "📜 تم إرسال رسالتك!",

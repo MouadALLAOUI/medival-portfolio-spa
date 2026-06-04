@@ -1,5 +1,5 @@
 // src/utils/assetUtils.js
-import { getAssetById } from '../../data/mediaManager'; // Adjust path based on your structure
+import { getAssetById, mediaRegistry } from '../../data/mediaManager.js'; // Adjust path based on your structure
 
 /**
  * Universal safe transformer for a single asset ID.
@@ -63,3 +63,51 @@ function getFallbackStructure(type, missingId = 'unknown') {
         isFallback: true
     };
 }
+
+// Eagerly import all markdown files at build time using Vite's import.meta.glob
+// Use relative path from this file (src/lib/utils/) up to project root, then into public/content
+const markdownModules = import.meta.glob(
+    '../../../public/content/**/*.md',
+    { query: '?raw', import: 'default', eager: true }
+);
+
+// Build a lookup map: normalized path -> content
+// Glob returns keys like "../../../public/content/projects/foo.md" (Windows uses backslashes)
+// We need to normalize to "/content/projects/foo.md" to match mediaRegistry.markdown paths
+const markdownContentMap = {};
+for (const [rawPath, content] of Object.entries(markdownModules)) {
+    // Extract everything after "public" and normalize separators
+    const match = rawPath.match(/public[/\\](.+)/);
+    if (match) {
+        const normalizedPath = '/' + match[1].replace(/\\/g, '/');
+        markdownContentMap[normalizedPath] = content;
+    }
+}
+
+/**
+ * Loads markdown content synchronously from a file by ID.
+ * Looks up the markdown path in mediaManager.markdown and returns the pre-loaded content.
+ * 
+ * @param {string} id - The unique entity ID (e.g., "project-gantt-graph-process")
+ * @returns {string} The markdown content as a string
+ * @throws {Error} When ID doesn't exist or file not found
+ */
+export const loadMarkdownAsset = (id) => {
+    if (!id) {
+        throw new Error('[AssetUtils] loadMarkdownAsset: ID is required');
+    }
+
+    const markdownPath = mediaRegistry.markdown?.[id];
+    if (!markdownPath) {
+        console.warn(`[AssetUtils] loadMarkdownAsset: No markdown path found for ID "${id}".`);
+        return '';
+    }
+
+    const content = markdownContentMap[markdownPath];
+    if (content === undefined) {
+        console.warn(`[AssetUtils] loadMarkdownAsset: Markdown file not found for path "${markdownPath}".`);
+        return '';
+    }
+
+    return content;
+};

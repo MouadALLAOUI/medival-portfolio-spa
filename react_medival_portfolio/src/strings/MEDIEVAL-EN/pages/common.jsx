@@ -21,6 +21,31 @@ const COMMON = {
             languages: "Tongues of the Realm",
         }
     },
+    visitor: {
+        welcomeBack: "Welcome back, noble traveler! Thy last presence in this realm was recorded on {{date}}.",
+    },
+    privacy: {
+        title: "Confidentiality Scroll",
+        subtitle: "How we handle thy data",
+        sections: {
+            collection: {
+                title: "I. Data Collection",
+                desc: "We collect no personal data unless thou voluntarily provideth it through the contact form."
+            },
+            cookies: {
+                title: "II. Cookies & Local Storage",
+                desc: "We use local storage and cookies only to remember thy preferences (theme, language, achievements)."
+            },
+            thirdParties: {
+                title: "III. Third Parties",
+                desc: "We do not share thy data with any third parties, forsooth!"
+            },
+            rights: {
+                title: "IV. Thy Rights",
+                desc: "Thou hast the right to clear thy local storage at any time to remove thy saved data."
+            }
+        }
+    },
     settings: {
         title: "Arcane Settings Grimoire",
         subtitle: "Customize your portfolio experience",
@@ -91,6 +116,16 @@ const COMMON = {
                     ar: { label: "العربية", description: "" },
                     'medieval-en': { label: "Medieval English", description: "" },
                     'medieval-fr': { label: "Français Médiéval", description: "" }
+                }
+            },
+            medievalFont: {
+                label: "Medieval Font",
+                description: "Select the historical typeface for titles and menus",
+                options: {
+                    MedievalSharp: { label: "MedievalSharp", description: "Sharp fantasy lettering" },
+                    Fell: { label: "IM Fell English", description: "Classic historical SC style" },
+                    Almendra: { label: "Almendra", description: "Elegant blackletter calligraphy" },
+                    Uncial: { label: "Uncial Antiqua", description: "Ancient Celtic lettering" }
                 }
             },
             pdfMode: {
@@ -194,6 +229,7 @@ const COMMON = {
     footer: {
         copyright: "© {{year}} Mouad the Coder | Crafted with magical code and enchanted pixels",
         disclaimer: "This grimoire shall not be copied without express permission from the wizard",
+        privacy: "Privacy Policy",
     },
     thankyou: {
         title: "📜 Your Message Has Been Sent!",
