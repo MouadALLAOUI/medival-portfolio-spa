@@ -395,38 +395,5 @@ export const crmefVideos = [
     episode: 1,
     relatedVideos: [],
   },
-  {
-    id: 'lesson-planning-tips',
-    title: 'Didactique de l\'Informatique : Planification de Leçons',
-    description: 'Comment scénariser une leçon d\'informatique pas à pas. De l\'analyse des objectifs d\'apprentissage à l\'élaboration des fiches de cours.',
-    url: 'https://www.w3schools.com/html/movie.mp4',
-    duration: '12:40',
-    views: '980',
-    date: '2026-04-20',
-    author: 'Mouad Allaoui',
-    category: 'Pédagogie',
-  },
-  {
-    id: 'classroom-management-spell',
-    title: 'Gestion de Classe et Animation des Groupes',
-    description: 'Astuces concrètes de gestion de classe dans un laboratoire d\'informatique (salle Génie). Maintenir l\'attention et animer les ateliers collaboratifs.',
-    url: 'https://www.w3schools.com/html/mov_bbb.mp4',
-    duration: '8:55',
-    views: '850',
-    date: '2026-05-05',
-    author: 'Mouad Allaoui',
-    category: 'Pratique',
-  },
-  {
-    id: 'eval-assessment-methods',
-    title: 'Méthodes d\'Évaluation formative en Informatique',
-    description: 'Guide pratique sur l\'évaluation des compétences pratiques en programmation et bureautique, incluant les barèmes de notation et le feedback immédiat.',
-    url: 'https://www.w3schools.com/html/movie.mp4',
-    duration: '14:20',
-    views: '720',
-    date: '2026-05-18',
-    author: 'Mouad Allaoui',
-    category: 'Évaluation',
-  }
 ];
 

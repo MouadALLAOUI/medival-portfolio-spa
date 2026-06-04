@@ -253,3 +253,103 @@
   text-align: center;
 }
 
+// ── Custom Grimoire Color Pickers ─────────────────────────────────────────────
+.customColorPickerContainer {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all var(--transition);
+
+  :global([data-theme="medieval"]) & {
+    background: rgba(140, 109, 70, 0.05);
+    border: 2px dashed var(--gold);
+  }
+}
+
+.customColorTitle {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.25rem 0;
+}
+
+.customColorSubtitle {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0 0 1.25rem 0;
+}
+
+.customColorGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 1rem;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.colorInputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.colorLabel {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.colorInputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition);
+
+  &:focus-within {
+    border-color: var(--accent);
+  }
+
+  :global([data-theme="medieval"]) & {
+    background: rgba(244, 228, 188, 0.4);
+    border-color: var(--gold);
+  }
+}
+
+.colorInput {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+
+  &::-webkit-color-swatch {
+    border-radius: 50%;
+    border: 1.5px solid var(--border-strong);
+  }
+  &::-moz-color-swatch {
+    border-radius: 50%;
+    border: 1.5px solid var(--border-strong);
+  }
+}
+
+.colorText {
+  font-family: monospace;
+  font-size: 0.78rem;
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
