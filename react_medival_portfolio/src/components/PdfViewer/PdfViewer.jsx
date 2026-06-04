@@ -14,7 +14,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url,
 ).toString();
 
-const PdfViewer = ({ file, label = 'Open Scroll', className }) => {
+const PdfViewer = ({ file, label = 'Open Scroll', className, onOpen }) => {
   const pdfCtx = usePdfSettings();
   const { t } = useSettings();
   const location = useLocation();
@@ -37,8 +37,8 @@ const PdfViewer = ({ file, label = 'Open Scroll', className }) => {
   const pdfContentRef = useRef(null);
 
   // Close all PDFs when route changes
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsOpen(false);
   }, [location]);
 
@@ -54,6 +54,9 @@ const PdfViewer = ({ file, label = 'Open Scroll', className }) => {
   }, [file]);
 
   const handleTrigger = () => {
+    if (onOpen) {
+      onOpen();
+    }
     if (pdfMode === 'newWindow') {
       window.open(file, '_blank', 'noopener,noreferrer');
       return;
@@ -75,11 +78,9 @@ const PdfViewer = ({ file, label = 'Open Scroll', className }) => {
     if (!isOpen || !file) return;
 
     let active = true;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCheckingFile(true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     setFileExists(true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     setLoading(true);
 
     fetch(file, { method: 'HEAD' })

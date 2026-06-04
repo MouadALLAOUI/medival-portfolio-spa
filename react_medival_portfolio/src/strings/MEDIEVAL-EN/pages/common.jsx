@@ -34,6 +34,15 @@ const COMMON = {
         advancedBtn: "⚙️ Advanced Settings",
         applyBtn: "Save Incantations",
         closeBtn: "Close settings",
+        customTheme: {
+            title: "🎨 Configure Your Grimoire",
+            subtitle: "Select custom colors to forge your own unique theme.",
+            bg: "Background Color",
+            cardBg: "Cards & Panels",
+            text: "Text Color",
+            accent: "Accent Color",
+            border: "Borders Color",
+        },
         sections: {
             appearance: {
                 title: "🎨 Appearance",
@@ -60,7 +69,8 @@ const COMMON = {
                     light: { label: "Arcane Light", description: "Switch to Arcane Light theme" },
                     dark: { label: "Shadow Realm", description: "Switch to Shadow Realm theme" },
                     medieval: { label: "Medieval Scroll", description: "Switch to Medieval Scroll theme" },
-                    github: { label: "GitHub Classic", description: "GitHub developer classic white-blue light mode style" }
+                    github: { label: "GitHub Classic", description: "GitHub developer classic white-blue light mode style" },
+                    custom: { label: "Custom Grimoire", description: "Forge your own customized color theme" }
                 }
             },
             markdownTheme: {

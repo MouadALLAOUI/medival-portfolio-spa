@@ -94,8 +94,9 @@ A categorized list of improvements for the entire application, from critical fix
 - [x] **Implement reduced motion support** - Respect `prefers-reduced-motion` setting
 - [x] **Add QR code generator** - Generate QR codes for easy mobile sharing of blog posts
 - [ ] **Create printable certificate** - Generate "I explored this portfolio" certificate
-- [ ] **Add random quote generator** - Display rotating tech/medieval quotes in footer
-- [ ] **Implement "bring your own theme"** - Allow users to customize color scheme
+- [x] **Add random quote generator** - Display rotating tech/medieval quotes in footer
+- [x] **Implement "bring your own theme"** - Allow users to customize color scheme
+- [x] **Add gallery page to /crmef header and create a page component (to add images during the formation)**
 - [ ] **Add GitHub contribution graph** - Show activity heatmap if connected to GitHub API
 - [x] **Create interactive timeline** - Make the About section timeline clickable with more details
 - [x] **Add skill proficiency radar chart** - Visual representation of skill levels
