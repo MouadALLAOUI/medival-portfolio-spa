@@ -33,6 +33,15 @@ const COMMON = {
         advancedBtn: "⚙️ Advanced Settings",
         applyBtn: "Save Settings",
         closeBtn: "Close settings",
+        customTheme: {
+            title: "🎨 Configure Your Grimoire",
+            subtitle: "Select custom colors to forge your own unique theme.",
+            bg: "Background Color",
+            cardBg: "Cards & Panels",
+            text: "Text Color",
+            accent: "Accent Color",
+            border: "Borders Color",
+        },
         sections: {
             appearance: {
                 title: "🎨 Appearance",
@@ -59,7 +68,8 @@ const COMMON = {
                     light: { label: "Light", description: "Switch to light theme" },
                     dark: { label: "Dark", description: "Switch to dark theme" },
                     medieval: { label: "Classic", description: "Switch to classic theme" },
-                    github: { label: "GitHub Classic", description: "Crisp developer light-blue style" }
+                    github: { label: "GitHub Classic", description: "Crisp developer light-blue style" },
+                    custom: { label: "Custom Grimoire", description: "Forge your own customized color theme" }
                 }
             },
             markdownTheme: {
@@ -91,6 +101,7 @@ const COMMON = {
             },
             soundEnabled: {
                 label: "Sound Effects",
+                description: "Enable interface audio feedback",
                 options: {
                     enabled: { label: "On" },
                     disabled: { label: "Muted" }
@@ -133,10 +144,6 @@ const COMMON = {
                     medium: { label: "Medium", description: "16px base (default)" },
                     large: { label: "Large", description: "18px base" }
                 }
-            },
-            soundEnabled: {
-                label: "Sound Effects",
-                description: "Enable interface audio feedback"
             }
         }
     },

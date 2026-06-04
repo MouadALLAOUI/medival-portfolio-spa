@@ -7,6 +7,32 @@ const CRMEF = {
         semesters: "Semestres",
         msp: "Chroniques du MSP",
         videos: "Vidéos de Formation",
+        gallery: "Galerie de Formation",
+    },
+    gallery: {
+        title: "Galerie de Formation",
+        subtitle: "Une collection de moments visuels, de schémas et de supports retraçant mon parcours de formation d'enseignant au CRMEF et au collège Annahda.",
+        viewImage: "Voir l'image 🔍",
+        teachingSession: {
+            title: "Pratique d'enseignement au collège Annahda",
+            desc: "Animation de séances d'informatique avec les collégiens pendant la formation.",
+        },
+        groupWork: {
+            title: "Travail d'équipe & séminaires collaboratifs",
+            desc: "Collaboration avec mes pairs au Centre Régional (CRMEF) sur les tâches pédagogiques.",
+        },
+        mindMap1: {
+            title: "Carte mentale pédagogique NotebookLM",
+            desc: "Une carte mentale générée pour structurer le cadre de gestion de classe.",
+        },
+        mindMap2: {
+            title: "Schéma de conception pédagogique",
+            desc: "Carte mentale montrant la répartition des domaines d'apprentissage professionnel.",
+        },
+        classroomVisual: {
+            title: "Visualisation des salles de classe",
+            desc: "Une représentation modélisée de la salle d'informatique au collège Annahda.",
+        }
     },
     profile: {
         bio: "En tant que développeur passionné par le code et l'informatique, je suis constamment à la recherche de nouvelles connaissances. J'aime concevoir des architectures robustes et des interfaces modernes et intuitives. Je mets mes compétences au service de projets ambitieux, en construisant des solutions adaptées à chaque besoin.",

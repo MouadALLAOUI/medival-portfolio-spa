@@ -33,6 +33,15 @@ const COMMON = {
         advancedBtn: "⚙️ إعدادات متقدمة",
         applyBtn: "حفظ التعاويذ",
         closeBtn: "إغلاق الإعدادات",
+        customTheme: {
+            title: "🎨 هيّئ جراموارك المخصص",
+            subtitle: "اختر ألواناً مخصصة لصناعة السمة السحرية الفريدة الخاصة بك.",
+            bg: "لون الخلفية",
+            cardBg: "البطاقات واللوحات",
+            text: "لون النص",
+            accent: "لون المميز",
+            border: "لون الحدود",
+        },
         sections: {
             appearance: {
                 title: "🎨 المظهر",
@@ -59,7 +68,8 @@ const COMMON = {
                     light: { label: "نور أركين", description: "التبديل إلى سمة نور أركين" },
                     dark: { label: "عالم الظلال", description: "التبديل إلى سمة عالم الظلال" },
                     medieval: { label: "مخطوطة القرون الوسطى", description: "التبديل إلى سمة مخطوطة القرون الوسطى" },
-                    github: { label: "جيت هاب الكلاسيكي", description: "مظهر المطور الكلاسيكي باللونين الأبيض والأزرق" }
+                    github: { label: "جيت هاب الكلاسيكي", description: "مظهر المطور الكلاسيكي باللونين الأبيض والأزرق" },
+                    custom: { label: "الجراموار المخصص", description: "اصنع مظهر ألوانك السحرية المخصصة بنفسك" }
                 }
             },
             markdownTheme: {

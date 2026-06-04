@@ -7,6 +7,32 @@ const CRMEF = {
         semesters: "Semesters",
         msp: "MSP Internship",
         videos: "Learning Videos",
+        gallery: "Formation Gallery",
+    },
+    gallery: {
+        title: "Formation Gallery",
+        subtitle: "A collection of visual moments, schematics, and materials chronicling my teacher training path at CRMEF and Middle School Annahda.",
+        viewImage: "View Image 🔍",
+        teachingSession: {
+            title: "Teaching Practice at Annahda Middle School",
+            desc: "Conducting computer science sessions with middle school students during the formation.",
+        },
+        groupWork: {
+            title: "Group Work & Collaborative Seminars",
+            desc: "Working together with peers at the Regional Center (CRMEF) on pedagogical & instructional tasks.",
+        },
+        mindMap1: {
+            title: "NotebookLM Pedagogical Mind Map",
+            desc: "A mind map generated to structure the teaching framework of classroom management.",
+        },
+        mindMap2: {
+            title: "Instructional Design Blueprint",
+            desc: "Mind map showing the breakdown of professional learning domains and student assessment cycles.",
+        },
+        classroomVisual: {
+            title: "Visualizing Classrooms",
+            desc: "A model representation of the computer science lab environment at Annahda.",
+        }
     },
     profile: {
         bio: "As a developer passionate about programming and computer science, I am constantly looking to improve my knowledge and skills. I enjoy building solid architectures and modern user interfaces. I aim to provide reliable and practical solutions for ambitious projects and real-world challenges.",
