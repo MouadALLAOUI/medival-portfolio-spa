@@ -1,0 +1,27 @@
+.parallaxWrapper {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.parallaxContent {
+  position: relative;
+  z-index: 2;
+  transform: translateY(var(--parallax-offset, 0));
+  transition: transform 0.1s ease-out;
+}
+
+.parallaxBg {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 120%;
+  height: 140%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(139, 69, 19, 0.03) 0%,
+    transparent 70%
+  );
+  z-index: 1;
+  pointer-events: none;
+}

@@ -1,10 +1,10 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import AlertProvider from './lib/contexts/AlertProvider'
 import SettingsProvider from './lib/contexts/settingProvider'
 import AchievementsProvider from './lib/contexts/AchievementsProvider'
 import ImageViewerProvider from './lib/contexts/ImageViewerProvider'
 import PdfViewerProvider from './lib/contexts/PdfViewerProvider'
-// import { AnimatePresence } from 'framer-motion'
+import AnimationProvider from './components/AnimationProvider'
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts'
 import { getActiveSeasonalTheme } from './lib/utils/seasonalThemes'
 import ContextMenu from './components/ui/ContextMenu'
@@ -14,10 +14,13 @@ import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary'
 import { useSettings } from './lib/useSettings'
 import { useAlerts } from './lib/useAlerts'
 import glossary from './data/glossary'
+import PixelDragon from './components/PixelDragon/PixelDragon'
+import WeatherOverlay from './components/WeatherOverlay/WeatherOverlay'
 
 function AppContent() {
-  const { language, _t } = useSettings();
+  const { language, _t, weather } = useSettings();
   const { showAlert } = useAlerts();
+  const [showDragon, setShowDragon] = useState(false);
   useKeyboardShortcuts();
 
   // Konami Code Easter Egg
@@ -29,7 +32,8 @@ function AppContent() {
       if (e.key === konamiCode[konamiIndex]) {
         konamiIndex++;
         if (konamiIndex === konamiCode.length) {
-          showAlert('🧙‍♂️ Secret Scroll Unlocked: Thou art a true master of the arcane!', 'royal', 5000);
+          showAlert('🐉 A pixel dragon has been summoned! Watch the skies!', 'royal', 5000);
+          setShowDragon(true);
           konamiIndex = 0;
         }
       } else {
@@ -116,6 +120,8 @@ function AppContent() {
       <AppRoutes />
       <ContextMenu />
       <KeyboardShortcutsHelp />
+      <WeatherOverlay weather={weather} />
+      {showDragon && <PixelDragon onComplete={() => setShowDragon(false)} />}
     </>
   );
 }
@@ -133,17 +139,19 @@ function App() {
 
   return (
     <SettingsProvider>
-      <AlertProvider>
-        <AchievementsProvider>
-          <ImageViewerProvider>
-            <PdfViewerProvider>
-              <ErrorBoundary>
-                <AppContent />
-              </ErrorBoundary>
-            </PdfViewerProvider>
-          </ImageViewerProvider>
-        </AchievementsProvider>
-      </AlertProvider>
+      <AnimationProvider>
+        <AlertProvider>
+          <AchievementsProvider>
+            <ImageViewerProvider>
+              <PdfViewerProvider>
+                <ErrorBoundary>
+                  <AppContent />
+                </ErrorBoundary>
+              </PdfViewerProvider>
+            </ImageViewerProvider>
+          </AchievementsProvider>
+        </AlertProvider>
+      </AnimationProvider>
     </SettingsProvider>
   )
 }

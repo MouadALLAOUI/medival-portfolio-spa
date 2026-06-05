@@ -1,7 +1,9 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import Layouts from '../templates/layouts';
 import LoadingScreen from '../components/LoadingScreen/LoadingScreen';
+import PageTransition from '../components/PageTransition';
 
 const Home = lazy(() => import('../pages/home/home'));
 const ThankYou = lazy(() => import('../pages/thankyou/thankyou'));
@@ -25,27 +27,31 @@ export const prefetchRoute = (factory) => {
 };
 
 export default function AppRoutes() {
+  const location = useLocation();
+
   return (
     <Suspense fallback={<LoadingScreen />}>
-      <Routes>
-        <Route path="/" element={<Layouts />}>
-          <Route index element={<Home />} />
-          <Route path="home" element={<Home />} />
-          <Route path="thankyou" element={<ThankYou />} />
-          <Route path="blogs" element={<BlogsPage />} />
-          <Route path="blogs/:slug" element={<BlogPost />} />
-          <Route path="privacy" element={<PrivacyPage />} />
-          <Route path="settings" element={<SettingsPage />} />
-          <Route path="achievements" element={<AchievementsPage />} />
-          <Route path="projects" element={<ProjectsPage />} />
-          <Route path="projects/:id" element={<ProjectDetailsPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-        {/* Standalone pages — no header / footer */}
-        <Route path="fallingletters" element={<FallingLetters />} />
-        <Route path="CRMEF" element={<CRMEF />} />
-        <Route path="crmef" element={<CRMEF />} />
-      </Routes>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Layouts />}>
+            <Route index element={<PageTransition><Home /></PageTransition>} />
+            <Route path="home" element={<PageTransition><Home /></PageTransition>} />
+            <Route path="thankyou" element={<PageTransition><ThankYou /></PageTransition>} />
+            <Route path="blogs" element={<PageTransition><BlogsPage /></PageTransition>} />
+            <Route path="blogs/:slug" element={<PageTransition><BlogPost /></PageTransition>} />
+            <Route path="privacy" element={<PageTransition><PrivacyPage /></PageTransition>} />
+            <Route path="settings" element={<PageTransition><SettingsPage /></PageTransition>} />
+            <Route path="achievements" element={<PageTransition><AchievementsPage /></PageTransition>} />
+            <Route path="projects" element={<PageTransition><ProjectsPage /></PageTransition>} />
+            <Route path="projects/:id" element={<PageTransition><ProjectDetailsPage /></PageTransition>} />
+            <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
+          </Route>
+          {/* Standalone pages — no header / footer */}
+          <Route path="fallingletters" element={<FallingLetters />} />
+          <Route path="CRMEF" element={<CRMEF />} />
+          <Route path="crmef" element={<CRMEF />} />
+        </Routes>
+      </AnimatePresence>
     </Suspense>
   );
 }

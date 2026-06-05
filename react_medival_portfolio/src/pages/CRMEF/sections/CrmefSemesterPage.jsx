@@ -175,6 +175,28 @@ const CrmefSemesterPage = ({ semesterId }) => {
                     )}
                   </div>
 
+                  {/* Learned & Lacks sections below files */}
+                  {(activeModule.learned || activeModule.lacks) && (
+                    <div className={styles.moduleReflections}>
+                      {activeModule.learned && (
+                        <div className={styles.moduleLearned}>
+                          <span className={styles.moduleLearnedLabel}>
+                            ✅ {t('CRMEF_SEMESTERS.learned')}:
+                          </span>
+                          {t(`DATA.semestersLearned.${semester.id}.${activeModule.id}.learned`) || activeModule.learned}
+                        </div>
+                      )}
+                      {activeModule.lacks && (
+                        <div className={styles.moduleLacks}>
+                          <span className={styles.moduleLacksLabel}>
+                            ❌ {t('CRMEF_SEMESTERS.lacks')}:
+                          </span>
+                          {t(`DATA.semestersLearned.${semester.id}.${activeModule.id}.lacks`) || activeModule.lacks}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
                   {/* Empty fallback if active module literally has no files in any category */}
                   {(!activeModule.files?.solo?.length &&
                     !activeModule.files?.group?.length &&

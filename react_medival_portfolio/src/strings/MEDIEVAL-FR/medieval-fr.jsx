@@ -2,92 +2,56 @@ import { MEDIA } from "./data/media.data";
 import { HOME } from "./pages/home";
 import { CRMEF } from "./pages/crmef";
 import { BLOGS } from "./pages/blogs";
+import { BLOG_POST } from "./pages/blogPost";
 import { COMMON } from "./pages/common";
+import { ACHIEVEMENTS } from "./pages/achievements";
+import { SETTINGS } from "./pages/settings";
+import { PROJECTS_PAGE } from "./pages/projectsPage";
+import { COMPONENTS } from "./components/components";
 import { CRMEF_LANDING } from "./data/crmef.landing";
 import { CRMEF_SEMESTERS } from "./data/crmef.semesters";
+import { BLOGS_LEGACY } from "./data/blogs.legacy";
+import { PROJECTS_LEGACY } from "./data/projects.legacy";
+import { ABOUT_LEGACY } from "./data/about.legacy";
+import { CONTEXT_MENU_LEGACY } from "./data/contextMenu.legacy";
+import { PROJECTS_DATA } from "./data/projects.data";
+import { BLOGS_DATA } from "./data/blogs.data";
+import { SKILLS_DATA } from "./data/skills.data";
+import { DESIGNS_DATA } from "./data/designs.data";
+import { HOBBIES_DATA } from "./data/hobbies.data";
+import { LEARNING_DATA } from "./data/learning.data";
+import { SEMESTERS_LEARNED } from "./data/crmef.semestersLearned";
+import { CRITIQUE_DATA } from "./data/crmef.critique";
+import { MSP_DATA } from "./data/crmef.msp";
+import { VIDEOS_DATA } from "./data/crmef.videos";
 
 const MEDIEVAL_FR = {
     HOME,
     CRMEF,
     BLOGS,
+    BLOG_POST,
     COMMON,
+    COMPONENTS,
+    ACHIEVEMENTS,
+    SETTINGS,
+    PROJECTS_PAGE,
     CRMEF_LANDING,
     CRMEF_SEMESTERS,
-    blogs: {
-        title: "Les Chroniques du Scribe",
-        subtitle: 'Bienvenue, Voyageur !',
-        allScrolls: 'Tous les Parchemins',
-        readScroll: 'Lire le Parchemin',
-        minRead: 'min de lecture',
-        post: {
-            scrollStats: 'Progression du Parchemin',
-            wordsRead: 'mots déchiffrés',
-            timeLeft: 'sabliers restants',
-            backToBlogs: 'Retourner aux Chroniques',
-            nextPost: 'Dérouler le Prochain Parchemin',
-            prevPost: 'Retourner au Parchemin Précédent',
-            publishedOn: 'Griffonné le',
-            dayOf: 'Jour de',
-            year: 'An',
-            at: 'à l\'heure de',
-            tags: 'Sceaux',
-            readTime: 'sabliers de lecture',
-            tableOfContents: 'Carte du Parchemin',
-        }
-    },
-    projects: {
-        title: 'Hauts Faits',
-        subtitle: 'Quêtes légendaires et reliques enchantées',
-        searchPlaceholder: 'Rechercher des exploits...',
-        filterAll: 'Toutes les Quêtes',
-        noResults: 'Nul exploit ne correspond',
-        viewProject: 'Inspecter l\'Exploit',
-        viewCode: 'Examiner les Runes',
-        liveDemo: 'Observer la Vision',
-        readMore: 'Dérouler l\'Aperçu de la Quête',
-        backToProjects: 'Retourner aux Quêtes',
-        notFoundTitle: 'Registre de Quêtes Introuvable',
-        notFoundText: 'Cette chronique n\'a pas encore été rédigée ou a été perdue dans les archives.',
-        clickToEnlarge: 'Inspecter la Relique',
-        featuredQuest: 'Quête En Vedette',
-        questYear: 'Inscrit en l\'an',
-        specSheet: 'Spécifications de la Quête',
-        statusLabel: 'Statut de la Quête',
-        categoryLabel: 'Classification',
-        relics: 'Reliques Enchantées',
-        questOverview: 'Aperçu de la Quête',
-        detailedChronicle: 'Chronique Détaillée',
-        prevQuest: 'Quête Précédente',
-        nextQuest: 'Quête Suivante',
-        allQuests: 'Toutes les Quêtes',
-        categories: {
-            web: 'Citadelles Web',
-            app: 'Reliques Mobiles & Bureau',
-            tool: 'Outils Alchimiques',
-        },
-        status: {
-            completed: 'Achevée',
-            'in-progress': 'En Cours',
-            archived: 'Archivée',
-        },
-    },
-    about: {
-        showMore: 'Révéler plus de Grimoires',
-        showLess: 'Refermer le Grimoire',
-    },
-    contextMenu: {
-        copy: 'Transcrire le Parchemin',
-        copyLink: 'Recopier le Lien du Sceau',
-        openInNewTab: 'Scryer dans un Nouveau Miroir',
-        search: 'Chercher via l\'Oracle',
-        share: 'Expédier par Faucon',
-        inspect: 'Inspecter les Sortilèges',
-        back: 'Battre en Retraite',
-        forward: 'Aller de l\'Avant',
-        reload: 'Ré-invoquer la Vision',
-        print: 'Graver sur Vélin',
-        selectAll: 'Saisir toutes les Runes',
-        saveAs: 'Conserver dans la Crypte',
+    blogs: BLOGS_LEGACY,
+    projects: PROJECTS_LEGACY,
+    about: ABOUT_LEGACY,
+    contextMenu: CONTEXT_MENU_LEGACY,
+    DATA: {
+        projects: PROJECTS_DATA,
+        blogs: BLOGS_DATA,
+        skills: SKILLS_DATA,
+        designs: DESIGNS_DATA,
+        hobbies: HOBBIES_DATA,
+        learning: LEARNING_DATA,
+        semestersLearned: SEMESTERS_LEARNED,
+        critique: CRITIQUE_DATA,
+        msp: MSP_DATA,
+        videos: VIDEOS_DATA,
     },
     MEDIA
 }

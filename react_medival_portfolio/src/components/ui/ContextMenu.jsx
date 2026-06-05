@@ -18,7 +18,7 @@ export default function ContextMenu() {
   const navigate = useNavigate();
   const { x, y, visible, closeMenu, targetElement } = useContextMenu();
   const { theme, themes, switchTheme } = useTheme();
-  const { setBoolean, isCompleted } = useAchievements();
+  const { setBoolean, isCompleted, incrementCounter } = useAchievements();
   const { showAlert } = useAlerts();
   const { t, language, setLanguage } = useSettings();
 
@@ -89,6 +89,7 @@ export default function ContextMenu() {
     if (visible) {
       setShouldRender(true);
       setIsHiding(false);
+      incrementCounter('context_menu_used');
     } else if (shouldRender) {
       setIsHiding(true);
       const timer = setTimeout(() => {
@@ -97,7 +98,7 @@ export default function ContextMenu() {
       }, 90); // duration matches scss hiding keyframes
       return () => clearTimeout(timer);
     }
-  }, [visible, shouldRender]);
+  }, [visible, shouldRender, incrementCounter]);
 
   // Enforce smart positioning to prevent screen overflow
   useEffect(() => {

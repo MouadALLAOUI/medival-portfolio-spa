@@ -208,6 +208,17 @@ textarea {
   animation-duration: 0.01ms !important;
   animation-iteration-count: 1 !important;
   transition-duration: 0.01ms !important;
+  transition-delay: 0ms !important;
+}
+
+[data-reduced-motion="true"],
+[data-animation-level="light"] {
+  scroll-behavior: auto !important;
+}
+
+[data-reduced-motion="true"] [class*="scroll"],
+[data-animation-level="light"] [class*="scroll"] {
+  scroll-behavior: auto !important;
 }
 
 [data-animation-level="normal"] * {

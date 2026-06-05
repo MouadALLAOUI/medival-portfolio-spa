@@ -1,19 +1,21 @@
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Keyboard, X } from 'lucide-react';
+import { useSettings } from '../../lib/useSettings';
 import styles from './KeyboardShortcutsHelp.module.scss';
-
-const SHORTCUTS = [
-  { keys: ['Ctrl', 'K'], label: 'Search scrolls', section: 'Navigation' },
-  { keys: ['Ctrl', ','], label: 'Open grimoire settings', section: 'Navigation' },
-  { keys: ['Ctrl', 'H'], label: 'Return home', section: 'Navigation' },
-  { keys: ['Ctrl', 'B'], label: 'Open blog chronicles', section: 'Navigation' },
-  { keys: ['Esc'], label: 'Close modals & panels', section: 'General' },
-  { keys: ['?'], label: 'Toggle this help panel', section: 'General' },
-];
 
 export default function KeyboardShortcutsHelp() {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useSettings();
+
+  const SHORTCUTS = [
+    { keys: ['Ctrl', 'K'], label: t('COMPONENTS.keyboardShortcuts.shortcuts.search'), section: t('COMPONENTS.keyboardShortcuts.sections.navigation') },
+    { keys: ['Ctrl', ','], label: t('COMPONENTS.keyboardShortcuts.shortcuts.settings'), section: t('COMPONENTS.keyboardShortcuts.sections.navigation') },
+    { keys: ['Ctrl', 'H'], label: t('COMPONENTS.keyboardShortcuts.shortcuts.home'), section: t('COMPONENTS.keyboardShortcuts.sections.navigation') },
+    { keys: ['Ctrl', 'B'], label: t('COMPONENTS.keyboardShortcuts.shortcuts.blogs'), section: t('COMPONENTS.keyboardShortcuts.sections.navigation') },
+    { keys: ['Esc'], label: t('COMPONENTS.keyboardShortcuts.shortcuts.closeModal'), section: t('COMPONENTS.keyboardShortcuts.sections.general') },
+    { keys: ['?'], label: t('COMPONENTS.keyboardShortcuts.shortcuts.toggleHelp'), section: t('COMPONENTS.keyboardShortcuts.sections.general') },
+  ];
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -54,8 +56,8 @@ export default function KeyboardShortcutsHelp() {
       <div className={styles.panel} onClick={(e) => e.stopPropagation()}>
         <div className={styles.header}>
           <Keyboard size={20} className={styles.headerIcon} />
-          <h3 className={styles.title}>Keyboard Shortcuts</h3>
-          <button className={styles.closeBtn} onClick={() => setIsOpen(false)} aria-label="Close">
+          <h3 className={styles.title}>{t('COMPONENTS.keyboardShortcuts.title')}</h3>
+          <button className={styles.closeBtn} onClick={() => setIsOpen(false)} aria-label={t('COMPONENTS.keyboardShortcuts.close')}>
             <X size={18} />
           </button>
         </div>
@@ -84,7 +86,7 @@ export default function KeyboardShortcutsHelp() {
         </div>
 
         <div className={styles.footer}>
-          Press <kbd className={styles.key}>?</kbd> or <kbd className={styles.key}>Esc</kbd> to close
+          {t('COMPONENTS.keyboardShortcuts.press')} <kbd className={styles.key}>?</kbd> {t('COMPONENTS.keyboardShortcuts.or')} <kbd className={styles.key}>Esc</kbd> {t('COMPONENTS.keyboardShortcuts.toClose')}
         </div>
       </div>
     </div>,

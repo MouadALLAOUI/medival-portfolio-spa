@@ -10,6 +10,7 @@ const CRMEF_SEMESTERS = {
         date: 'تاريخ الإنشاء',
     },
     learned: 'ما تعلمته',
+    lacks: 'ما ينقصني',
     selectModule: '🔮 الانتقال إلى المادة:',
     allModules: 'جميع المواد',
     chooseModule: '-- اختر المادة --',

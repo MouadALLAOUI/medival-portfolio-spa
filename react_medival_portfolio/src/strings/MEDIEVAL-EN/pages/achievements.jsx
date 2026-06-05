@@ -1,0 +1,46 @@
+const ACHIEVEMENTS = {
+    title: "Vault of Deeds",
+    subtitle: "Unfurled · XP",
+    unlocked: "Unfurled",
+    locked: "Sealed",
+    showLocked: "Reveal Sealed",
+    category: "Order",
+    rarity: "Rarity",
+    allCategories: "All",
+    allRarities: "All Rarities",
+    xpSuffix: "XP",
+    empty: "No deeds match thy search",
+    navLabel: "Deeds",
+    toggleLockedAria: "Reveal or conceal sealed deeds",
+    back: "Return",
+    card: {
+        lockedTitle: "???",
+        lockedDesc: "Continue thy quest to unlock this secret deed",
+        xpLabel: "+{{xp}} XP",
+        rarity: {
+            common: "Common",
+            uncommon: "Uncommon",
+            rare: "Rare",
+            epic: "Epic",
+            legendary: "Legendary",
+        },
+    },
+    xpBar: {
+        titles: {
+            1: "Wanderer",
+            2: "Apprentice",
+            3: "Scribe",
+            4: "Scholar",
+            5: "Artisan",
+            6: "Adept",
+            7: "Master",
+            8: "Sage",
+            9: "Archmage",
+            10: "Legend",
+        },
+        level: "Lv.",
+        unlocked: "unfurled",
+    },
+}
+
+export { ACHIEVEMENTS }
