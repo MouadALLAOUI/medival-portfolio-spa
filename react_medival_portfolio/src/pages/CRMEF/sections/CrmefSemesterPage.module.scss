@@ -232,6 +232,108 @@
   }
 }
 
+.moduleLacks {
+  font-family: var(--font-primary);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin: 0.6rem 0 0 0;
+  line-height: 1.5;
+  border-left: 2px solid #e74c3c;
+  padding-left: 0.6rem;
+  opacity: 0.85;
+
+  :global([data-theme="medieval"]) & {
+    color: var(--color-brown, #5c3a21);
+    font-family: var(--font-body);
+    border-left-color: #c0392b;
+    opacity: 0.9;
+  }
+}
+
+.moduleLacksLabel {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #e74c3c;
+  margin-bottom: 0.15rem;
+  font-style: normal;
+  font-family: var(--font-heading);
+
+  :global([data-theme="medieval"]) & {
+    color: #c0392b;
+    font-family: var(--font-cinzel);
+  }
+}
+
+// ── Learned & Lacks sections below files ──────────────────────────────────────
+.moduleReflections {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border);
+  width: 100%;
+
+  :global([data-theme="medieval"]) & {
+    border-top-color: var(--parchment-border, rgba(140, 109, 70, 0.15));
+  }
+}
+
+.moduleLearned {
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  border-left: 3px solid #27ae60;
+  background: rgba(39, 174, 96, 0.05);
+  padding: 0.6rem 0.8rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+
+  :global([data-theme="medieval"]) & {
+    color: var(--color-brown, #5c3a21);
+    font-family: var(--font-body);
+    border-left-color: #2ecc71;
+    background: rgba(46, 204, 113, 0.06);
+  }
+}
+
+.moduleLearnedLabel {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #27ae60;
+  margin-bottom: 0.2rem;
+  font-family: var(--font-heading);
+
+  :global([data-theme="medieval"]) & {
+    color: #2ecc71;
+    font-family: var(--font-cinzel);
+  }
+}
+
+.moduleReflections .moduleLacks {
+  border-left: 3px solid #e74c3c;
+  background: rgba(231, 76, 60, 0.05);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+
+  :global([data-theme="medieval"]) & {
+    border-left-color: #e74c3c;
+    background: rgba(231, 76, 60, 0.06);
+  }
+}
+
+.moduleReflections .moduleLacksLabel {
+  color: #e74c3c;
+
+  :global([data-theme="medieval"]) & {
+    color: #e74c3c;
+  }
+}
+
 // ── Workspace Files: Dynamic Elastic Columns ──────────────────────────────────
 .workspaceGroups {
   border-top: none !important; // Strip redundant border separators

@@ -6,7 +6,7 @@ import SettingsModal from '../components/SettingsModal';
 import AlertContainer from '../components/AlertContainer';
 import ImageViewer from '../components/ImageViewer';
 import ChatTrigger from '../components/ChatTrigger/ChatTrigger';
-import BackToTop from '../components/ui/BackToTop';
+import CompassToTop from '../components/ui/CompassToTop';
 import ChatProvider, { useChat } from '../lib/contexts/ChatProvider';
 import { useSettings } from '../lib/useSettings';
 import { usePdfViewer } from '../lib/usePdfViewer';
@@ -90,7 +90,7 @@ const LayoutsContent = () => {
         {isChatOpen && <ChatWindow />}
       </Suspense>
       <ChatTrigger />
-      <BackToTop />
+      <CompassToTop />
     </div>
   );
 };

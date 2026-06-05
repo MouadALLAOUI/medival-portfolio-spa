@@ -1,0 +1,190 @@
+.weatherOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  overflow: hidden;
+}
+
+/* Snow */
+.snow {
+  background: linear-gradient(180deg, rgba(200, 220, 240, 0.1) 0%, transparent 100%);
+}
+
+.snowflake {
+  position: absolute;
+  top: -10px;
+  background: radial-gradient(circle, #ffffff 0%, rgba(200, 220, 240, 0.8) 100%);
+  border-radius: 50%;
+  animation: snowfall linear infinite;
+  filter: blur(0.5px);
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translateY(-10px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0.3;
+  }
+}
+
+/* Rain */
+.rain {
+  background: linear-gradient(180deg, rgba(100, 120, 140, 0.15) 0%, transparent 100%);
+}
+
+.raindrop {
+  position: absolute;
+  top: -20px;
+  width: 2px;
+  height: 20px;
+  background: linear-gradient(180deg, transparent 0%, rgba(150, 180, 200, 0.6) 50%, rgba(150, 180, 200, 0.8) 100%);
+  border-radius: 0 0 2px 2px;
+  animation: rainfall linear infinite;
+}
+
+@keyframes rainfall {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0.5;
+  }
+}
+
+/* Leaves */
+.leaves {
+  background: linear-gradient(180deg, rgba(180, 140, 100, 0.1) 0%, transparent 100%);
+}
+
+.leaf {
+  position: absolute;
+  top: -20px;
+  width: 15px;
+  height: 15px;
+  background: linear-gradient(135deg, #c97b3a 0%, #a85d2b 50%, #8b4513 100%);
+  border-radius: 0 50% 50% 50%;
+  animation: leaffall linear infinite;
+  transform-origin: center;
+}
+
+@keyframes leaffall {
+  0% {
+    transform: translateY(-20px) rotate(0deg) translateX(0);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(25vh) rotate(90deg) translateX(30px);
+  }
+  50% {
+    transform: translateY(50vh) rotate(180deg) translateX(-20px);
+  }
+  75% {
+    transform: translateY(75vh) rotate(270deg) translateX(40px);
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg) translateX(0);
+    opacity: 0.3;
+  }
+}
+
+/* Fog */
+.fog {
+  background: rgba(200, 210, 220, 0.1);
+}
+
+.fogLayer {
+  position: absolute;
+  top: 30%;
+  width: 200%;
+  height: 200px;
+  background: radial-gradient(ellipse at center, rgba(220, 230, 240, 0.4) 0%, transparent 70%);
+  animation: fogdrift linear infinite;
+  filter: blur(30px);
+}
+
+@keyframes fogdrift {
+  0% {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateX(50%);
+    opacity: 0;
+  }
+}
+
+/* Lightning */
+.lightning {
+  position: absolute;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(255, 255, 200, 0.9) 0%, rgba(255, 255, 150, 0.6) 30%, transparent 60%);
+  animation: lightningstrike 0.2s ease-out infinite;
+  animation-delay: inherit;
+  opacity: 0;
+}
+
+@keyframes lightningstrike {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.8;
+  }
+  20% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.thunderFlash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  animation: thunderflash 4s ease-in-out infinite;
+}
+
+@keyframes thunderflash {
+  0%, 100% {
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.4;
+  }
+  9% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.2;
+  }
+  11% {
+    opacity: 0;
+  }
+}

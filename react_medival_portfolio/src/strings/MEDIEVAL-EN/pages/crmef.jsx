@@ -9,6 +9,7 @@ const CRMEF = {
         msp: "MSP Chronicles",
         videos: "Spell & Scrying Videos",
         gallery: "Tapestry of Formation",
+        critique: "Trial of the Mind",
     },
     gallery: {
         title: "Tapestry of Formation",
@@ -84,6 +85,10 @@ const CRMEF = {
             "gymnastique": "Gymnastics",
             "competitions": "Competitions",
         }
+    },
+    critique: {
+        title: "Trial of the Mind",
+        subtitle: "A detailed psychological and mental review scrutinizing my strengths, weaknesses, and quests for growth across academic arenas, communication arts, confidence forging, and professional development.",
     },
     accueil: {
         welcomeTitle: "CRMEF Professional Portal",

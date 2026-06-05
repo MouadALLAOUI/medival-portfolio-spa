@@ -1,0 +1,46 @@
+const ACHIEVEMENTS = {
+    title: "Trésor des Réalisations",
+    subtitle: "Débloqués · XP",
+    unlocked: "Débloqué",
+    locked: "Verrouillé",
+    showLocked: "Afficher les Verrouillés",
+    category: "Catégorie",
+    rarity: "Rareté",
+    allCategories: "Toutes",
+    allRarities: "Toutes les Raretés",
+    xpSuffix: "XP",
+    empty: "Aucune réalisation ne correspond à vos filtres",
+    navLabel: "Réalisations",
+    toggleLockedAria: "Afficher/masquer les réalisations verrouillées",
+    back: "Retour",
+    card: {
+        lockedTitle: "???",
+        lockedDesc: "Continuez à explorer pour débloquer cette réalisation secrète",
+        xpLabel: "+{{xp}} XP",
+        rarity: {
+            common: "Commune",
+            uncommon: "Peu Commune",
+            rare: "Rare",
+            epic: "Épique",
+            legendary: "Légendaire",
+        },
+    },
+    xpBar: {
+        titles: {
+            1: "Vagabond",
+            2: "Apprenti",
+            3: "Scribe",
+            4: "Érudit",
+            5: "Artisan",
+            6: "Adepte",
+            7: "Maître",
+            8: "Sage",
+            9: "Archimage",
+            10: "Légende",
+        },
+        level: "Niv.",
+        unlocked: "débloqué",
+    },
+}
+
+export { ACHIEVEMENTS }

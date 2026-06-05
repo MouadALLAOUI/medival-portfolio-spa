@@ -108,6 +108,8 @@ export const crmefSemesters = [
         name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.lesson-planning.name',
         professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.lesson-planning.professor',
         desc: 'CRMEF_SEMESTERS.semesters.semester-1.modules.lesson-planning.desc',
+        learned: 'How to structure effective lesson plans with clear learning objectives, apply instructional design principles, and create engaging outcome-driven classroom sessions.',
+        lacks: 'Still struggling with designing lessons for mixed-ability classes and timing activities appropriately within a 50-minute session.',
         files: {
           solo: loadMultipleAssets([
             'crmef-informatique-college-1',
@@ -127,8 +129,10 @@ export const crmefSemesters = [
       {
         id: 'learning-management',
         name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.learning-management.name',
-        professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.lesson-planning.professor',
+        professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.learning-management.professor',
         desc: 'CRMEF_SEMESTERS.semesters.semester-1.modules.learning-management.desc',
+        learned: 'How to manage classroom dynamics, establish routines, handle student behavior constructively, and foster a positive learning environment.',
+        lacks: 'Need more practice with dealing with disruptive students and maintaining authority without being overly strict.',
         files: {
           solo: loadMultipleAssets([
             'crmef-autorite-visuelle-20min',
@@ -153,6 +157,8 @@ export const crmefSemesters = [
         name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.cs-reinforcement-1.name',
         professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.cs-reinforcement-1.professor',
         desc: 'CRMEF_SEMESTERS.semesters.semester-1.modules.cs-reinforcement-1.desc',
+        learned: 'Deepened knowledge of information systems architecture, relational database concepts (SQL), and Python programming fundamentals applied to educational contexts.',
+        lacks: 'Need to strengthen Python OOP concepts and advanced SQL queries like joins and subqueries.',
         files: {
           solo: [],
           group: [],
@@ -183,6 +189,8 @@ export const crmefSemesters = [
         name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.cs-reinforcement-2.name',
         professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.cs-reinforcement-2.professor',
         desc: 'CRMEF_SEMESTERS.semesters.semester-1.modules.cs-reinforcement-2.desc',
+        learned: 'Strengthened understanding of hardware components, CPU architecture, memory hierarchy, and Boolean algebra including logic gates and circuit design.',
+        lacks: 'Still find it hard to simplify complex Boolean expressions and design multi-output combinational circuits.',
         files: {
           solo: [],
           group: loadMultipleAssets([
@@ -196,6 +204,8 @@ export const crmefSemesters = [
         name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.ict-education-didactics.name',
         professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.ict-education-didactics.professor',
         desc: 'CRMEF_SEMESTERS.semesters.semester-1.modules.ict-education-didactics.desc',
+        learned: 'Explored methods for integrating digital tools and ICT into teaching practice, and studied didactic approaches specific to computer science education.',
+        lacks: 'Lack hands-on experience with interactive platforms like Scratch and GeoGebra in actual classroom settings.',
         files: {
           solo: [],
           group: loadMultipleAssets([
@@ -215,6 +225,8 @@ export const crmefSemesters = [
         name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.education-sciences.name',
         professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.education-sciences.professor',
         desc: 'CRMEF_SEMESTERS.semesters.semester-1.modules.education-sciences.desc',
+        learned: 'Studied foundational theories of education including constructivism, behaviorism, and socio-cultural approaches, and their application to modern pedagogy.',
+        lacks: 'Need to better connect theoretical frameworks with practical classroom scenarios and real teaching situations.',
         files: {
           solo: loadMultipleAssets([
             'crmef-theorie-cognitive-arabe',
@@ -233,6 +245,8 @@ export const crmefSemesters = [
         name: 'CRMEF_SEMESTERS.semesters.semester-1.modules.research-methodology.name',
         professor: 'CRMEF_SEMESTERS.semesters.semester-1.modules.research-methodology.professor',
         desc: 'CRMEF_SEMESTERS.semesters.semester-1.modules.research-methodology.desc',
+        learned: 'Gained skills in designing and conducting action research projects, collecting classroom data, and reflecting critically on teaching practices.',
+        lacks: 'Struggle with formulating precise research questions and selecting appropriate data collection methods for small-scale classroom studies.',
         files: {
           solo: [],
           group: loadMultipleAssets([
@@ -254,6 +268,8 @@ export const crmefSemesters = [
         name: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-lesson-planning-advanced.name',
         professor: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-lesson-planning-advanced.professor',
         desc: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-lesson-planning-advanced.desc',
+        learned: 'Built on lesson planning foundations by exploring differentiated instruction strategies, adapting content for diverse learner profiles, and designing competency-based units.',
+        lacks: 'Need more experience in creating truly differentiated materials that cater to all learning levels simultaneously.',
         files: {
           solo: [],
           group: [],
@@ -265,6 +281,8 @@ export const crmefSemesters = [
         name: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-classroom-communication.name',
         professor: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-classroom-communication.professor',
         desc: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-classroom-communication.desc',
+        learned: 'Refined verbal and non-verbal communication techniques for the classroom, practiced giving constructive feedback, and developed a confident teaching posture.',
+        lacks: 'Still lack confidence in managing heated classroom discussions and handling unexpected student questions smoothly.',
         files: {
           solo: [],
           group: [],
@@ -276,6 +294,8 @@ export const crmefSemesters = [
         name: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-cs-reinforcement-3.name',
         professor: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-cs-reinforcement-3.professor',
         desc: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-cs-reinforcement-3.desc',
+        learned: 'Mastered core algorithmic concepts including sorting, searching, recursion, and Big-O complexity analysis applied to real CS curriculum problems.',
+        lacks: 'Need more practice with dynamic programming and graph algorithms to teach advanced topics confidently.',
         files: {
           solo: [],
           group: [],
@@ -287,6 +307,8 @@ export const crmefSemesters = [
         name: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-cs-reinforcement-4.name',
         professor: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-cs-reinforcement-4.professor',
         desc: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-cs-reinforcement-4.desc',
+        learned: 'Studied computer networking fundamentals (OSI model, TCP/IP, protocols) and operating system concepts including process management and security basics.',
+        lacks: 'Find it difficult to explain networking layers and OS scheduling algorithms in simple terms for secondary students.',
         files: {
           solo: [],
           group: [],
@@ -298,6 +320,8 @@ export const crmefSemesters = [
         name: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-assessment-evaluation.name',
         professor: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-assessment-evaluation.professor',
         desc: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-assessment-evaluation.desc',
+        learned: 'Explored formative and summative assessment techniques, rubric design, and data-driven evaluation strategies to measure student learning outcomes.',
+        lacks: 'Struggle with designing rubrics that are both objective and comprehensive for open-ended CS projects.',
         files: {
           solo: [],
           group: [],
@@ -309,6 +333,8 @@ export const crmefSemesters = [
         name: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-inclusive-education.name',
         professor: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-inclusive-education.professor',
         desc: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-inclusive-education.desc',
+        learned: 'Developed awareness of inclusive teaching practices, learning accessibility, and adaptive strategies for students with diverse abilities.',
+        lacks: 'Need more practical strategies for adapting CS exercises for students with learning disabilities.',
         files: {
           solo: [],
           group: [],
@@ -320,11 +346,172 @@ export const crmefSemesters = [
         name: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-capstone-project.name',
         professor: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-capstone-project.professor',
         desc: 'CRMEF_SEMESTERS.semesters.semester-2.modules.s2-capstone-project.desc',
+        learned: 'Designed and presented a comprehensive educational research project combining teaching theory and classroom practice in a reflective practicum report.',
+        lacks: 'Need to improve academic writing skills and learn how to structure a proper research paper with correct citations.',
         files: {
           solo: [],
           group: [],
           official: [],
         },
+      },
+    ],
+  },
+];
+
+export const crmefCritique = [
+  {
+    id: 'academic-confidence',
+    title: 'Academic Confidence & Self-Efficacy',
+    icon: '🧠',
+    color: '#3498db',
+    sections: [
+      {
+        subtitle: 'Strengths',
+        icon: '✅',
+        color: '#27ae60',
+        content: `I have developed a solid theoretical foundation in computer science and pedagogy. My ability to grasp complex concepts quickly—especially in algorithms, data structures, and instructional design—gives me confidence in academic settings. I perform well when given clear objectives and structured environments. My ISTA and EST backgrounds provided me with strong technical problem-solving skills that I continue to leverage.`,
+      },
+      {
+        subtitle: 'Weaknesses',
+        icon: '❌',
+        color: '#e74c3c',
+        content: `However, I often underestimate my own capabilities, especially when comparing myself to peers who seem more articulate or experienced. I tend to second-guess my answers during discussions, even when I know the material well. This imposter syndrome is particularly pronounced in unfamiliar social-academic settings where I don't yet have established credibility.`,
+      },
+      {
+        subtitle: 'Reflection',
+        icon: '🪞',
+        color: '#9b59b6',
+        content: `The gap between what I know and what I believe about myself is something I need to actively bridge. I recognize that confidence is not about knowing everything—it's about trusting my ability to figure things out. Each successful lesson delivery and each positive student interaction adds a brick to this bridge.`,
+      },
+    ],
+  },
+  {
+    id: 'communication',
+    title: 'Communication & Interpersonal Skills',
+    icon: '💬',
+    color: '#e67e22',
+    sections: [
+      {
+        subtitle: 'Strengths',
+        icon: '✅',
+        color: '#27ae60',
+        content: `In one-on-one situations and small group discussions, I communicate effectively. I can explain technical concepts in accessible terms when I have time to prepare. Written communication is one of my stronger suits—I can structure arguments clearly in writing, which helps with lesson planning and academic reports. I am a good listener and often notice details others miss in conversations.`,
+      },
+      {
+        subtitle: 'Weaknesses',
+        icon: '❌',
+        color: '#e74c3c',
+        content: `In larger groups or formal presentations, I tend to become anxious and my speech becomes rushed. I struggle with spontaneous verbal exchanges, especially when challenged or contradicted publicly. I sometimes avoid speaking up in class discussions not because I lack opinions, but because I fear being judged for how I express them. My non-verbal communication needs work—I'm told I sometimes appear disengaged when I'm actually deeply focused.`,
+      },
+      {
+        subtitle: 'Reflection',
+        icon: '🪞',
+        color: '#9b59b6',
+        content: `Teaching has forced me out of my comfort zone in ways I didn't expect. Standing in front of 30+ students daily is slowly building my public speaking resilience. I've learned that most communication anxiety is anticipatory—once I start speaking, it flows. The key is to prepare more thoroughly so my confidence has a factual foundation to rest on.`,
+      },
+    ],
+  },
+  {
+    id: 'time-management',
+    title: 'Time Management & Organization',
+    icon: '⏰',
+    color: '#1abc9c',
+    sections: [
+      {
+        subtitle: 'Strengths',
+        icon: '✅',
+        color: '#27ae60',
+        content: `When I'm motivated, I can be extremely productive. I've developed reliable systems for tracking assignments and deadlines using digital tools. I'm good at breaking large projects into smaller, manageable tasks. My experience juggling multiple internships alongside academic work has taught me to prioritize effectively under pressure.`,
+      },
+      {
+        subtitle: 'Weaknesses',
+        icon: '❌',
+        color: '#e74c3c',
+        content: `I procrastinate on tasks that don't have immediate consequences or that I find emotionally draining. I tend to overcommit—saying yes to everything because I don't want to disappoint anyone—then struggling to deliver quality on all fronts. My desk, both physical and digital, is often chaotic. I lose time searching for files or notes that should be organized from the start.`,
+      },
+      {
+        subtitle: 'Reflection',
+        icon: '🪞',
+        color: '#9b59b6',
+        content: `The CRMEF formation is teaching me that preparation is not optional in teaching—it's survival. A well-prepared lesson plan saves time, reduces anxiety, and produces better outcomes. I'm slowly applying this principle to my personal life: building habits, creating templates, and learning to say no when my plate is full.`,
+      },
+    ],
+  },
+  {
+    id: 'stress-resilience',
+    title: 'Stress Management & Emotional Resilience',
+    icon: '🛡️',
+    color: '#c0392b',
+    sections: [
+      {
+        subtitle: 'Strengths',
+        icon: '✅',
+        color: '#27ae60',
+        content: `I have a high tolerance for technical problem-solving under pressure—I remain calm when debugging complex systems or troubleshooting classroom tech issues. Physical activities like running and football help me discharge stress effectively. I've developed a habit of journaling after difficult days, which helps me process emotions rather than suppress them.`,
+      },
+      {
+        subtitle: 'Weaknesses',
+        icon: '❌',
+        color: '#e74c3c',
+        content: `When multiple stressors converge—deadlines, classroom management challenges, personal issues—I tend to shut down rather than cope constructively. I catastrophize: a single bad lesson can spiral into questioning my entire career choice. I sometimes withdraw from social interactions when stressed, which paradoxically increases my isolation and worsens the situation. Sleep quality deteriorates significantly during high-pressure periods.`,
+      },
+      {
+        subtitle: 'Reflection',
+        icon: '🪞',
+        color: '#9b59b6',
+        content: `Resilience is not about being unaffected by stress—it's about recovering faster. I'm learning that bad days are not bad lives. The teaching profession demands emotional stamina, and I'm building mine gradually. Each challenging classroom situation I navigate successfully adds to my emotional toolkit.`,
+      },
+    ],
+  },
+  {
+    id: 'teaching-identity',
+    title: 'Teaching Identity & Professional Posture',
+    icon: '🎓',
+    color: '#8e44ad',
+    sections: [
+      {
+        subtitle: 'Strengths',
+        icon: '✅',
+        color: '#27ae60',
+        content: `I genuinely care about student learning and can see the impact of my efforts when a student finally grasps a concept. I bring real-world software engineering experience into my teaching, which makes lessons more relevant and engaging. I'm tech-savvy and can leverage digital tools creatively. My patience with struggling students is one of my greatest assets—I don't give up on anyone.`,
+      },
+      {
+        subtitle: 'Weaknesses',
+        icon: '❌',
+        color: '#e74c3c',
+        content: `I struggle with classroom authority—I want to be liked by students, which sometimes conflicts with maintaining discipline. I haven't yet found my authentic teaching voice; I oscillate between being too lenient and too strict. I find it difficult to adapt my teaching pace for mixed-ability classrooms. I sometimes focus too much on technical accuracy and not enough on pedagogical engagement.`,
+      },
+      {
+        subtitle: 'Reflection',
+        icon: '🪞',
+        color: '#9b59b6',
+        content: `Teaching is a performance art that requires authenticity. I'm learning that students respect fairness and consistency more than strictness or leniency. My technical background is an asset, but it can also be a limitation if I assume students share my learning style. The journey to finding my teaching identity is ongoing—and that's okay.`,
+      },
+    ],
+  },
+  {
+    id: 'growth-mindset',
+    title: 'Growth Mindset & Self-Awareness',
+    icon: '🌱',
+    color: '#27ae60',
+    sections: [
+      {
+        subtitle: 'Strengths',
+        icon: '✅',
+        color: '#27ae60',
+        content: `I actively seek feedback and try to implement it, even when it's uncomfortable to hear. I read extensively about pedagogy, psychology, and self-improvement. I can identify my weaknesses without being paralyzed by them. I've developed a habit of reflecting after each teaching session, noting what worked and what didn't. I'm open to trying new approaches and methodologies.`,
+      },
+      {
+        subtitle: 'Weaknesses',
+        icon: '❌',
+        color: '#e74c3c',
+        content: `Sometimes self-awareness becomes self-criticism. I analyze my failures more than my successes, creating a skewed perception of my actual performance. I can be overly perfectionistic, delaying completion of tasks because they don't meet my internal standards. I sometimes struggle to distinguish between constructive self-reflection and destructive rumination.`,
+      },
+      {
+        subtitle: 'Reflection',
+        icon: '🪞',
+        color: '#9b59b6',
+        content: `The fact that I can write this critique honestly is itself evidence of growth. Self-awareness without action is just navel-gazing. My goal is to translate these reflections into concrete improvements: practicing public speaking, building consistent routines, and learning to celebrate small victories along the way.`,
       },
     ],
   },

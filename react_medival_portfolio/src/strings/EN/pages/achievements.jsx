@@ -1,0 +1,46 @@
+const ACHIEVEMENTS = {
+    title: "Achievement Vault",
+    subtitle: "Unlocked · XP",
+    unlocked: "Unlocked",
+    locked: "Locked",
+    showLocked: "Show Locked",
+    category: "Category",
+    rarity: "Rarity",
+    allCategories: "All",
+    allRarities: "All Rarities",
+    xpSuffix: "XP",
+    empty: "No achievements match your filters",
+    navLabel: "Achievements",
+    toggleLockedAria: "Toggle locked achievements visibility",
+    back: "Back",
+    card: {
+        lockedTitle: "???",
+        lockedDesc: "Keep exploring to unlock this secret achievement",
+        xpLabel: "+{{xp}} XP",
+        rarity: {
+            common: "Common",
+            uncommon: "Uncommon",
+            rare: "Rare",
+            epic: "Epic",
+            legendary: "Legendary",
+        },
+    },
+    xpBar: {
+        titles: {
+            1: "Wanderer",
+            2: "Apprentice",
+            3: "Scribe",
+            4: "Scholar",
+            5: "Artisan",
+            6: "Adept",
+            7: "Master",
+            8: "Sage",
+            9: "Archmage",
+            10: "Legend",
+        },
+        level: "Lv.",
+        unlocked: "unlocked",
+    },
+}
+
+export { ACHIEVEMENTS }

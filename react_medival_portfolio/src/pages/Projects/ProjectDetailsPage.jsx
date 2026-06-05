@@ -95,11 +95,11 @@ export default function ProjectDetailsPage() {
           <div className={styles.imageCard}>
             {project.image ? (
               <div className={styles.imageWrapper} onClick={handleImageClick}>
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className={styles.image}
-                />
+                  <img
+                    src={project.image}
+                    alt={t(`DATA.projects.${project.id}.title`) || project.title}
+                    className={styles.image}
+                  />
                 <div className={styles.imageOverlay}>
                   <span>🔍 {t('projects.clickToEnlarge') || 'Inspect Relic'}</span>
                 </div>
@@ -122,7 +122,7 @@ export default function ProjectDetailsPage() {
             <div className={styles.categoryBadge}>
               {categoryLabels[project.category] || project.category}
             </div>
-            <h1 className={styles.title}>{project.title}</h1>
+            <h1 className={styles.title}>{t(`DATA.projects.${project.id}.title`) || project.title}</h1>
             <div className={styles.yearRow}>
               <Calendar size={16} />
               <span>{t('projects.questYear') || 'Penciled in'} {project.year}</span>
@@ -194,7 +194,7 @@ export default function ProjectDetailsPage() {
           <div className={styles.overviewCard}>
             <h3 className={styles.cardTitle}>🛡️ {t('projects.questOverview') || 'Quest Overview'}</h3>
             <div className={styles.descriptionText}>
-              <p className={styles.intro}>{project.description}</p>
+              <p className={styles.intro}>{t(`DATA.projects.${project.id}.desc`) || project.description}</p>
               {project.longDescription && (
                 <>
                   <div className={styles.divider} />

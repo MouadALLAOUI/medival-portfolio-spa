@@ -153,13 +153,23 @@
     opacity: 1;
   }
 
-  30% {
-    transform: translate(50vw, -100px) scale(1.2) rotate(-5deg);
-    opacity: 0.9;
+  15% {
+    transform: translate(5vw, -30px) scale(1.1) rotate(-3deg);
+    opacity: 1;
+  }
+
+  40% {
+    transform: translate(30vw, -120px) scale(1.15) rotate(-8deg);
+    opacity: 0.95;
+  }
+
+  70% {
+    transform: translate(60vw, -200px) scale(0.8) rotate(-15deg);
+    opacity: 0.6;
   }
 
   100% {
-    transform: translate(100vw, -100vh) scale(0.2) rotate(-20deg);
+    transform: translate(100vw, -300px) scale(0.3) rotate(-25deg);
     opacity: 0;
   }
 }

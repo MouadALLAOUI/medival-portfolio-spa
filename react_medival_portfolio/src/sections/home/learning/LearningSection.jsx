@@ -15,7 +15,7 @@ const LearningSection = () => {
   const handleCardClick = (item, e) => {
     if (item.href) {
       if (e) e.preventDefault();
-      openPdf(item.href, item.title);
+      openPdf(item.href, t(`DATA.learning.${item.id}.title`) || item.title);
       trackEvent('mp:pdf-opened');
     }
   };
@@ -23,14 +23,22 @@ const LearningSection = () => {
   return (
     <CSection id="learning" title={t('HOME.LEARNING.title')} subtitle={t('HOME.LEARNING.intro')} classname="learning">
       <div className={styles['learning-grid']} id="learning-grid">
-        {learning.map((item) => (
-          <DynamicCard
-            key={item.id}
-            item={item}
-            config={PRESETS.LEARNING}
-            onClick={(item, e) => handleCardClick(item, e)}
-          />
-        ))}
+        {learning.map((item) => {
+          const translatedItem = {
+            ...item,
+            title: t(`DATA.learning.${item.id}.title`) || item.title,
+            meta: t(`DATA.learning.${item.id}.meta`) || item.meta,
+            desc: t(`DATA.learning.${item.id}.desc`) || item.desc,
+          };
+          return (
+            <DynamicCard
+              key={item.id}
+              item={translatedItem}
+              config={PRESETS.LEARNING}
+              onClick={(item, e) => handleCardClick(item, e)}
+            />
+          );
+        })}
       </div>
     </CSection>
   );

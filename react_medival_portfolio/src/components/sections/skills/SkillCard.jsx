@@ -15,9 +15,9 @@ const SkillCard = ({ skill, onClick, t }) => {
     >
       <div className={styles['skill-name-container']}>
         <span className={styles['skill-icon']}>{skill.icon}</span>
-        <h3 className={styles['skill-name']}>{skill.name}</h3>
+        <h3 className={styles['skill-name']}>{t(`DATA.skills.${skill.id}.name`) || skill.name}</h3>
       </div>
-      <p className={styles['skill-description']} dangerouslySetInnerHTML={{ __html: skill.description }} />
+      <p className={styles['skill-description']} dangerouslySetInnerHTML={{ __html: t(`DATA.skills.${skill.id}.description`) || skill.description }} />
       <div className={styles['proficiency']} title={t('HOME.SKILLS.level', { level: skill.level })}>
         {Array.from({ length: 5 }).map((_, idx) => (
           <span key={idx} className={`${styles['star']} ${idx < skill.level ? '' : styles['empty']}`}>★</span>

@@ -1,0 +1,46 @@
+const ACHIEVEMENTS = {
+    title: "خزنة الإنجازات",
+    subtitle: "المكتسبة · نقاط الخبرة",
+    unlocked: "مكتسبة",
+    locked: "مقفلة",
+    showLocked: "إظهار المقفلة",
+    category: "الفئة",
+    rarity: "الندرة",
+    allCategories: "الكل",
+    allRarities: "كل الأنواع",
+    xpSuffix: "نقاط",
+    empty: "لا توجد إنجازات تطابق فلاترك",
+    navLabel: "الإنجازات",
+    toggleLockedAria: "إظهار/إخفاء الإنجازات المقفلة",
+    back: "رجوع",
+    card: {
+        lockedTitle: "؟؟؟",
+        lockedDesc: "استمر في الاستكشاف لفتح هذا الإنجاز السري",
+        xpLabel: "+{{xp}} نقطة",
+        rarity: {
+            common: "شائعة",
+            uncommon: "غير شائعة",
+            rare: "نادرة",
+            epic: "ملحمية",
+            legendary: "أسطورية",
+        },
+    },
+    xpBar: {
+        titles: {
+            1: "تران",
+            2: "متدرب",
+            3: "كاتب",
+            4: "عالم",
+            5: "حرفي",
+            6: "خبير",
+            7: "سيد",
+            8: "حكيم",
+            9: "أرشيميدس",
+            10: "أسطورة",
+        },
+        level: "مستوى",
+        unlocked: "مكتسب",
+    },
+}
+
+export { ACHIEVEMENTS }

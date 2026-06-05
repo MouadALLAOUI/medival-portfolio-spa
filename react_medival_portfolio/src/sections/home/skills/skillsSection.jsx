@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import skillsMetadata from '../../../data/skills';
 import { skills as skillsData } from '../../../data/skills.data';
@@ -7,6 +7,7 @@ import { useTheme } from '../../../lib/contexts/ThemeProvider';
 import { getMarkdownThemeClass } from '../../../lib/markdown/markdownThemes';
 import { useImageViewer } from '../../../lib/useImageViewer';
 import { useSettings } from '../../../lib/useSettings';
+import { useAchievements } from '../../../lib/useAchievements';
 import FilterBar from '../../../components/sections/skills/FilterBar';
 import SkillCard from '../../../components/sections/skills/SkillCard';
 import styles from './skillsSection.module.scss';
@@ -27,10 +28,15 @@ const SkillsSection = () => {
   const { openImage } = useImageViewer();
   const { t } = useSettings();
   const { theme } = useTheme();
+  const { unlockAchievement } = useAchievements();
   const mdThemeClass = getMarkdownThemeClass(theme);
   const [currentGroup, setCurrentGroup] = useState('general');
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedSkill, setSelectedSkill] = useState(null);
+
+  useEffect(() => {
+    unlockAchievement('visited_skills');
+  }, [unlockAchievement]);
 
   const filteredSkills = useMemo(
     () => skills.filter((skill) => (skill.group || 'general') === currentGroup),

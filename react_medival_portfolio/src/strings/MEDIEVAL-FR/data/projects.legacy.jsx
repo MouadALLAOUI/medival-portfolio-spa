@@ -1,0 +1,38 @@
+const PROJECTS_LEGACY = {
+    title: 'Hauts Faits',
+    subtitle: 'Quêtes légendaires et reliques enchantées',
+    searchPlaceholder: 'Rechercher des exploits...',
+    filterAll: 'Toutes les Quêtes',
+    noResults: 'Nul exploit ne correspond',
+    viewProject: 'Inspecter l\'Exploit',
+    viewCode: 'Examiner les Runes',
+    liveDemo: 'Observer la Vision',
+    readMore: 'Dérouler l\'Aperçu de la Quête',
+    backToProjects: 'Retourner aux Quêtes',
+    notFoundTitle: 'Registre de Quêtes Introuvable',
+    notFoundText: 'Cette chronique n\'a pas encore été rédigée ou a été perdue dans les archives.',
+    clickToEnlarge: 'Inspecter la Relique',
+    featuredQuest: 'Quête En Vedette',
+    questYear: 'Inscrit en l\'an',
+    specSheet: 'Spécifications de la Quête',
+    statusLabel: 'Statut de la Quête',
+    categoryLabel: 'Classification',
+    relics: 'Reliques Enchantées',
+    questOverview: 'Aperçu de la Quête',
+    detailedChronicle: 'Chronique Détaillée',
+    prevQuest: 'Quête Précédente',
+    nextQuest: 'Quête Suivante',
+    allQuests: 'Toutes les Quêtes',
+    categories: {
+        web: 'Citadelles Web',
+        app: 'Reliques Mobiles & Bureau',
+        tool: 'Outils Alchimiques',
+    },
+    status: {
+        completed: 'Achevée',
+        'in-progress': 'En Cours',
+        archived: 'Archivée',
+    },
+}
+
+export { PROJECTS_LEGACY }

@@ -11,9 +11,16 @@ const HobbiesSection = () => {
   return (
     <CSection id="hobbies" title={t('HOME.HOBBIES.title')} subtitle={t('HOME.HOBBIES.desc')} classname="hobbies">
       <div className={styles['hobbies-grid']} id="hobbies-grid">
-        {hobbies.map((hobby) => (
-          <DynamicCard key={hobby.id} item={hobby} config={PRESETS.HOBBIES} />
-        ))}
+        {hobbies.map((hobby) => {
+          const translatedHobby = {
+            ...hobby,
+            title: t(`DATA.hobbies.${hobby.id}.title`) || hobby.title,
+            desc: t(`DATA.hobbies.${hobby.id}.desc`) || hobby.desc,
+          };
+          return (
+            <DynamicCard key={hobby.id} item={translatedHobby} config={PRESETS.HOBBIES} />
+          );
+        })}
       </div>
     </CSection>
   );

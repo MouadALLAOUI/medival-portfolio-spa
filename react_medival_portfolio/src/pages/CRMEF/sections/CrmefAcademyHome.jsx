@@ -1,24 +1,25 @@
 import React from 'react';
+import { useSettings } from '../../../lib/useSettings';
 import styles from './CrmefVideosPage.module.scss';
 
 export default function CrmefAcademyHome({ onStart, onBrowse, featured = [] }) {
+    const { t } = useSettings();
     return (
         <div className={styles.academyHome}>
             <div className={styles.homeIntro}>
-                <h2>Bienvenue à CRMEF Academy</h2>
+                <h2>{t('CRMEF.videos.home.title') || 'Bienvenue à CRMEF Academy'}</h2>
                 <p>
-                    Welcome to the CRMEF learning hub — browse featured courses, discover
-                    tracks by difficulty, and resume where you left off.
+                    {t('CRMEF.videos.home.subtitle') || 'Welcome to the CRMEF learning hub — browse featured courses, discover tracks by difficulty, and resume where you left off.'}
                 </p>
                 <div className={styles.homeActions}>
-                    <button type="button" className={styles.primaryBtn} onClick={onStart}>Start the First Course</button>
-                    <button type="button" className={styles.secondaryBtn} onClick={onBrowse}>Browse Library</button>
+                    <button type="button" className={styles.primaryBtn} onClick={onStart}>{t('CRMEF.videos.home.startFirst') || 'Start the First Course'}</button>
+                    <button type="button" className={styles.secondaryBtn} onClick={onBrowse}>{t('CRMEF.videos.home.browse') || 'Browse Library'}</button>
                 </div>
             </div>
 
             {featured.length > 0 && (
                 <div className={styles.homeFeatured}>
-                    <h3>Featured Courses</h3>
+                    <h3>{t('CRMEF.videos.home.featured') || 'Featured Courses'}</h3>
                     <div className={styles.featuredListSmall}>
                         {featured.map(v => (
                             <button key={v.id} type="button" className={styles.featuredCardSmall} onClick={() => onStart(v)}>

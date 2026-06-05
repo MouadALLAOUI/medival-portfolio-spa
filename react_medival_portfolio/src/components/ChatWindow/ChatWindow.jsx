@@ -103,14 +103,14 @@ const ChatWindow = () => {
           <span className={styles['avatar']}>🔮</span>
           <div className={styles['header-text']}>
             <span className={styles['header-name']}>{t('COMMON.chatbot.title')}</span>
-            <span className={styles['header-status']}>● Online</span>
+            <span className={styles['header-status']}>{t('COMPONENTS.chatWindow.online')}</span>
           </div>
         </div>
         <div className={styles['header-actions']}>
           <button
             className={styles['minimize-btn']}
             onClick={minimizeChat}
-            aria-label={isMinimized ? 'Expand chat' : 'Minimize chat'}
+            aria-label={isMinimized ? t('COMPONENTS.chatWindow.expandAria') : t('COMPONENTS.chatWindow.minimizeAria')}
           >
             {isMinimized ? '▲' : '▼'}
           </button>

@@ -100,8 +100,10 @@ export default function BlogsPage() {
     const visibleBlogs = blogs.filter((b) => !b.isDraft || isDev);
     
     return visibleBlogs.filter((blog) => {
-      const matchesSearch = blog.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                           blog.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      const translatedTitle = t(`DATA.blogs.${blog.id}.title`) || blog.title;
+      const translatedDesc = t(`DATA.blogs.${blog.id}.desc`) || blog.desc;
+      const matchesSearch = translatedTitle.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                           translatedDesc.toLowerCase().includes(searchQuery.toLowerCase()) ||
                            blog.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
       
       const matchesTag = activeTag ? blog.tags.includes(activeTag) : true;
@@ -109,7 +111,7 @@ export default function BlogsPage() {
       
       return matchesSearch && matchesTag && matchesBookmark;
     });
-  }, [searchQuery, activeTag, filterBookmarked, bookmarks, isDev]);
+  }, [searchQuery, activeTag, filterBookmarked, bookmarks, isDev, t]);
 
   const visibleTags = useMemo(() => {
     const visibleBlogs = blogs.filter((b) => !b.isDraft || isDev);

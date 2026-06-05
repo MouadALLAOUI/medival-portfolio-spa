@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { useSettings } from '../../../lib/useSettings';
 import { useAlerts } from '../../../lib/useAlerts';
 import { useAchievements } from '../../../lib/useAchievements';
+import { useSound } from '../../../lib/hooks/useSound';
 import {
   Github,
   Linkedin,
@@ -28,10 +29,25 @@ const SOCIAL_ICON_MAP = {
   default:   ExternalLink,
 };
 
+const RavenSVG = () => (
+  <svg width="80" height="60" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10 35 C5 25, 15 10, 30 15 C35 8, 50 5, 55 12 L75 8 C72 14, 65 18, 60 16 C58 20, 50 25, 45 22 C40 28, 25 35, 15 38 Z" fill="#1a1a2e" stroke="#2d2d44" strokeWidth="1"/>
+    <circle cx="35" cy="20" r="2.5" fill="#d4af37"/>
+    <path d="M28 24 L20 26 L28 25" fill="#2d2d44" stroke="#1a1a2e" strokeWidth="0.5"/>
+    <path d="M55 12 C58 8, 65 5, 72 3 C68 8, 62 10, 58 12" fill="#1a1a2e"/>
+    <path d="M45 22 C48 28, 55 35, 65 40 C60 38, 50 32, 42 25" fill="#1a1a2e" stroke="#2d2d44" strokeWidth="0.5"/>
+    <rect x="32" y="30" width="18" height="12" rx="2" fill="#f5e6ca" stroke="#8b6914" strokeWidth="1" transform="rotate(-10 41 36)"/>
+    <line x1="35" y1="34" x2="47" y2="32" stroke="#8b6914" strokeWidth="0.5" transform="rotate(-10 41 36)"/>
+    <line x1="35" y1="37" x2="47" y2="35" stroke="#8b6914" strokeWidth="0.5" transform="rotate(-10 41 36)"/>
+  </svg>
+);
+
 const ContactSection = () => {
   const { t } = useSettings();
   const { showAlert } = useAlerts();
   const { unlockAchievement } = useAchievements();
+  const formRef = useRef(null);
+  const { play: playSound } = useSound();
 
   // Load email dynamically from environment variables (set VITE_CONTACT_EMAIL in Netlify dashboard)
   const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || "";
@@ -41,8 +57,9 @@ const ContactSection = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [honeypot, setHoneypot] = useState('');
+  const [ravenVisible, setRavenVisible] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = useCallback((e) => {
     // 1. Spam bot honeypot detection
     if (honeypot.trim()) {
       e.preventDefault();
@@ -63,14 +80,25 @@ const ContactSection = () => {
       return;
     }
 
+    // 3. Show raven animation, then submit
+    e.preventDefault();
     unlockAchievement('sent_contact');
-  };
+    setRavenVisible(true);
+
+    setTimeout(() => {
+      setRavenVisible(false);
+      if (formRef.current) {
+        formRef.current.submit();
+      }
+    }, 2800);
+  }, [honeypot, name, message, showAlert, t, unlockAchievement]);
 
   return (
     <CSection id="contact" title={t('HOME.CONTACT.title')} subtitle={t('HOME.CONTACT.desc')} classname="contact">
       <div className={styles['contact-container']}>
         <div className={styles['contact-form']}>
           <form
+            ref={formRef}
             id="contact-form"
             action={`https://formsubmit.co/${contactEmail}`}
             method="POST"
@@ -97,6 +125,7 @@ const ContactSection = () => {
                 placeholder={t('HOME.CONTACT.namePlaceholder')}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                onKeyDown={() => playSound('quill')}
                 required
               />
             </div>
@@ -110,6 +139,7 @@ const ContactSection = () => {
                 placeholder={t('HOME.CONTACT.emailPlaceholder')}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                onKeyDown={() => playSound('quill')}
                 required
               />
             </div>
@@ -123,6 +153,7 @@ const ContactSection = () => {
                 placeholder={t('HOME.CONTACT.messagePlaceholder')}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
+                onKeyDown={() => playSound('quill')}
                 required
               ></textarea>
             </div>
@@ -137,6 +168,12 @@ const ContactSection = () => {
               aria-label={t('HOME.CONTACT.submit') || "Seal and Send Message"}
             ></button>
           </form>
+
+          {ravenVisible && (
+            <div className={styles['raven']} aria-hidden="true">
+              <RavenSVG />
+            </div>
+          )}
         </div>
 
         <div className={styles['contact-info']}>

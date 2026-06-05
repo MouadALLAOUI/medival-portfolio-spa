@@ -26,8 +26,14 @@ const CrmefHeader = () => {
       ],
     },
     { label: t('CRMEF.header.msp'), href: '#msp' },
-    { label: t('CRMEF.header.videos') || 'Vidéos', href: '#videos' },
-    { label: t('CRMEF.header.gallery') || 'Galerie', href: '#gallery' },
+    {
+      label: t('about.showMore'), href: '#other', isTrigger: true,
+      subItems: [
+        { label: t('CRMEF.header.critique') || 'Self-Critique', href: '#critique' },
+        { label: t('CRMEF.header.videos') || 'Vidéos', href: '#videos' },
+        { label: t('CRMEF.header.gallery') || 'Galerie', href: '#gallery' },
+      ],
+    },
   ];
 
   const handleMouseEnter = (label) => {
