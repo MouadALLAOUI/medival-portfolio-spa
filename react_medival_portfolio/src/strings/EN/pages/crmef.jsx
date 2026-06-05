@@ -8,6 +8,7 @@ const CRMEF = {
         msp: "MSP Internship",
         videos: "Learning Videos",
         gallery: "Formation Gallery",
+        critique: "Self-Critique",
     },
     gallery: {
         title: "Formation Gallery",
@@ -83,6 +84,10 @@ const CRMEF = {
             "gymnastique": "Gymnastics",
             "competitions": "Competitions",
         }
+    },
+    critique: {
+        title: "Personal Self-Critique",
+        subtitle: "A detailed psychological and mental review examining my strengths, weaknesses, and growth areas across academic performance, communication, confidence, and professional development.",
     },
     accueil: {
         welcomeTitle: "CRMEF Professional Portal",

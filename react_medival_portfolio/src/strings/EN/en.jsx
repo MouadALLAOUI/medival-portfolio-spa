@@ -3,94 +3,60 @@ import { MEDIA } from "./data/media.data";
 import { HOME } from "./pages/home";
 import { CRMEF } from "./pages/crmef";
 import { BLOGS } from "./pages/blogs";
+import { BLOG_POST } from "./pages/blogPost";
 import { COMMON } from "./pages/common";
+import { ACHIEVEMENTS } from "./pages/achievements";
+import { SETTINGS } from "./pages/settings";
+import { PROJECTS_PAGE } from "./pages/projectsPage";
+
+// COMPONENTS
+import { COMPONENTS } from "./components/components";
 
 // DATA
 import { CRMEF_LANDING } from "./data/crmef.landing";
 import { CRMEF_SEMESTERS } from "./data/crmef.semesters";
+import { BLOGS_LEGACY } from "./data/blogs.legacy";
+import { PROJECTS_LEGACY } from "./data/projects.legacy";
+import { ABOUT_LEGACY } from "./data/about.legacy";
+import { CONTEXT_MENU_LEGACY } from "./data/contextMenu.legacy";
+import { PROJECTS_DATA } from "./data/projects.data";
+import { BLOGS_DATA } from "./data/blogs.data";
+import { SKILLS_DATA } from "./data/skills.data";
+import { DESIGNS_DATA } from "./data/designs.data";
+import { HOBBIES_DATA } from "./data/hobbies.data";
+import { LEARNING_DATA } from "./data/learning.data";
+import { SEMESTERS_LEARNED } from "./data/crmef.semestersLearned";
+import { CRITIQUE_DATA } from "./data/crmef.critique";
+import { MSP_DATA } from "./data/crmef.msp";
+import { VIDEOS_DATA } from "./data/crmef.videos";
 
 const EN = {
     HOME,
     CRMEF,
     BLOGS,
+    BLOG_POST,
     COMMON,
+    COMPONENTS,
+    ACHIEVEMENTS,
+    SETTINGS,
+    PROJECTS_PAGE,
     CRMEF_LANDING,
     CRMEF_SEMESTERS,
-    blogs: {
-        title: "The Scribe's Chronicles",
-        subtitle: 'Welcome, Traveler!',
-        allScrolls: 'All Scrolls',
-        readScroll: 'Read Scroll',
-        minRead: 'min read',
-        post: {
-            scrollStats: 'Reading Progress',
-            wordsRead: 'words read',
-            timeLeft: 'min left',
-            backToBlogs: 'Back to Chronicles',
-            nextPost: 'Next Scroll',
-            prevPost: 'Previous Scroll',
-            publishedOn: 'Published on the',
-            dayOf: 'Day of',
-            year: 'Year',
-            at: 'at',
-            tags: 'Tags',
-            readTime: 'min read',
-            tableOfContents: 'Table of Contents',
-        }
-    },
-    projects: {
-        title: 'Tech Quests',
-        subtitle: 'Legendary quests and enchanted artifacts',
-        searchPlaceholder: 'Search quests...',
-        filterAll: 'All Quests',
-        noResults: 'No quests match your search',
-        viewProject: 'View Quest',
-        viewCode: 'View Code',
-        liveDemo: 'Live Demo',
-        readMore: 'Read About',
-        backToProjects: 'Back to Quests',
-        notFoundTitle: 'Quest Registry Missing',
-        notFoundText: 'This chronicle has not been penned yet or was lost in the archives.',
-        clickToEnlarge: 'Inspect Relic',
-        featuredQuest: 'Featured Quest',
-        questYear: 'Penciled in',
-        specSheet: 'Quest Specification',
-        statusLabel: 'Quest Status',
-        categoryLabel: 'Classification',
-        relics: 'Enchanted Relics',
-        questOverview: 'Quest Overview',
-        detailedChronicle: 'Detailed Chronicle',
-        prevQuest: 'Previous Quest',
-        nextQuest: 'Next Quest',
-        allQuests: 'All Quests',
-        categories: {
-            web: 'Web Citadels',
-            app: 'Mobile & Desktop Relics',
-            tool: 'Alchemical Tools',
-        },
-        status: {
-            completed: 'Completed',
-            'in-progress': 'In Progress',
-            archived: 'Archived',
-        },
-    },
-    about: {
-        showMore: 'Show More',
-        showLess: 'Show Less',
-    },
-    contextMenu: {
-        copy: 'Copy',
-        copyLink: 'Copy Link',
-        openInNewTab: 'Open in New Tab',
-        search: 'Search Selected',
-        share: 'Share',
-        inspect: 'Inspect',
-        back: 'Go Back',
-        forward: 'Go Forward',
-        reload: 'Reload Page',
-        print: 'Print Page',
-        selectAll: 'Select All',
-        saveAs: 'Save As',
+    blogs: BLOGS_LEGACY,
+    projects: PROJECTS_LEGACY,
+    about: ABOUT_LEGACY,
+    contextMenu: CONTEXT_MENU_LEGACY,
+    DATA: {
+        projects: PROJECTS_DATA,
+        blogs: BLOGS_DATA,
+        skills: SKILLS_DATA,
+        designs: DESIGNS_DATA,
+        hobbies: HOBBIES_DATA,
+        learning: LEARNING_DATA,
+        semestersLearned: SEMESTERS_LEARNED,
+        critique: CRITIQUE_DATA,
+        msp: MSP_DATA,
+        videos: VIDEOS_DATA,
     },
     MEDIA
 }

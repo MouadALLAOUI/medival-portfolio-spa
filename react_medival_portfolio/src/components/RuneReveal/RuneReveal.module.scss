@@ -1,0 +1,50 @@
+.runeReveal {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.content {
+  transition: opacity 0.3s ease;
+  opacity: 0;
+
+  &.visible {
+    opacity: 1;
+  }
+}
+
+.runes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  gap: 2px;
+}
+
+.rune {
+  color: #d4af37;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.8),
+               0 0 20px rgba(212, 175, 55, 0.6),
+               0 0 30px rgba(212, 175, 55, 0.4);
+  animation: runeFlicker 0.15s ease-in-out infinite alternate;
+  font-family: serif;
+}
+
+@keyframes runeFlicker {
+  0% {
+    opacity: 0.6;
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.1);
+    filter: brightness(1.3);
+  }
+}
+
+.revealing {
+  .content {
+    opacity: 0;
+  }
+}

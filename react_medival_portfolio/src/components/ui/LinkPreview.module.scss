@@ -1,0 +1,142 @@
+@use '../../styles/variables' as *;
+
+.preview-trigger {
+  position: relative;
+  display: inline-block;
+}
+
+.preview-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: rgba(146, 64, 14, 0.5);
+  color: rgb(253 230 138 / 1);
+  border-radius: 24px;
+  border: 1px solid rgba(217, 119, 6, 0.5);
+  transition: all 0.5s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    background-color: rgb(180 83 9 / 1);
+    color: rgb(254 243 199 / 1);
+    border-color: rgb(245 158 11 / 1);
+    transform: translateY(-4px);
+    box-shadow: 0 0 10px rgba(255, 170, 0, 0.4);
+  }
+}
+
+.link-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.preview-portal {
+  position: fixed;
+  z-index: 10000;
+  width: 280px;
+  pointer-events: auto;
+}
+
+.preview-scroll {
+  background: var(--bg-primary);
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.25),
+    0 0 16px rgba(212, 175, 55, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+
+  :global([data-theme="medieval"]) & {
+    background: linear-gradient(145deg, #f5e6ca 0%, #e8d5b0 100%);
+    border: 2px solid var(--gold);
+    box-shadow:
+      0 8px 32px rgba(44, 24, 16, 0.5),
+      0 0 20px rgba(212, 175, 55, 0.15);
+  }
+}
+
+.scroll-ornament {
+  display: flex;
+  justify-content: center;
+  padding: 2px 0;
+  opacity: 0.6;
+
+  &.bottom {
+    transform: scaleY(-1);
+  }
+}
+
+.scroll-top,
+.scroll-bottom {
+  width: 100%;
+  height: 12px;
+}
+
+.preview-content {
+  padding: 8px 12px;
+}
+
+.preview-thumbnail {
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 8px;
+  border: 1px solid var(--border);
+}
+
+.thumbnail-sketch {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.preview-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.preview-domain {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-body, serif);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.domain-icon {
+  opacity: 0.6;
+}
+
+.preview-label {
+  font-family: var(--font-heading, 'Cinzel', serif);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.preview-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-body, serif);
+  font-size: 0.65rem;
+  color: var(--accent);
+  font-style: italic;
+  margin-top: 2px;
+}
+
+.arrow-icon {
+  transition: transform 0.2s;
+
+  .preview-trigger:hover & {
+    transform: translate(2px, -2px);
+  }
+}

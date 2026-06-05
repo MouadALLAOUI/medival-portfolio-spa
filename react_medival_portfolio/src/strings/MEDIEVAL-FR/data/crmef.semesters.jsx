@@ -13,6 +13,7 @@ const CRMEF_SEMESTERS = {
         date: 'Rédigé le',
     },
     learned: 'Savoir Conquis',
+    lacks: 'Armes Manquantes',
     semesters: {
         'semester-1': {
             title: 'Première Campagne (Semestre 1)',

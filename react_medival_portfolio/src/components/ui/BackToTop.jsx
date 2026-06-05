@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { ChevronUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useSettings } from '../../lib/useSettings';
 import styles from './BackToTop.module.scss';
 
 const BackToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { t } = useSettings();
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -37,7 +39,7 @@ const BackToTop = () => {
           whileTap={{ scale: 0.9 }}
           onClick={scrollToTop}
           className={styles['back-to-top']}
-          aria-label="Scroll back to top"
+          aria-label={t('COMPONENTS.backToTop.ariaLabel')}
         >
           <ChevronUp size={24} />
         </motion.button>

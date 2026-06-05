@@ -2,6 +2,8 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { SettingsContext } from "./settings.context"
 import { translations } from "../../strings/translations";
 
+const WEATHER_OPTIONS = ['none', 'snow', 'rain', 'leaves', 'fog', 'lightning'];
+
 export default function SettingsProvider({ children }) {
     const [theme, setTheme] = useState(() => localStorage.getItem("mp_theme") || "night")
     const [language, setLanguage] = useState(() => localStorage.getItem("mp_lang") || "fr");
@@ -12,6 +14,7 @@ export default function SettingsProvider({ children }) {
     const [customCursor, setCustomCursor] = useState(() => localStorage.getItem("mp_custom_cursor") !== "false");
     const [soundEnabled, setSoundEnabled] = useState(() => localStorage.getItem("mp_sound_enabled") === "true");
     const [medievalFont, setMedievalFont] = useState(() => localStorage.getItem("mp_medieval_font") || "MedievalSharp");
+    const [weather, setWeather] = useState(() => localStorage.getItem("mp_weather") || "none");
 
     // Accessibility & Optimization settings
     const [fontSize, setFontSize] = useState(() => localStorage.getItem("mp_font_size") || "medium");
@@ -77,6 +80,11 @@ export default function SettingsProvider({ children }) {
         document.documentElement.style.setProperty('--font-medieval', fontVal);
         localStorage.setItem("mp_medieval_font", medievalFont);
     }, [medievalFont]);
+
+    // Persist weather
+    useEffect(() => {
+        localStorage.setItem("mp_weather", weather);
+    }, [weather]);
 
     const t = useCallback(
         (key, params = null) => {
@@ -146,12 +154,14 @@ export default function SettingsProvider({ children }) {
             setSoundEnabled,
             medievalFont,
             setMedievalFont,
+            weather,
+            setWeather,
             isSettingsOpen,
             openSettings,
             closeSettings,
             t
         }),
-        [theme, language, fontSize, reducedMotion, setReducedMotion, animationLevel, markdownTheme, customCursor, soundEnabled, medievalFont, isSettingsOpen, openSettings, closeSettings, t]
+        [theme, language, fontSize, reducedMotion, setReducedMotion, animationLevel, markdownTheme, customCursor, soundEnabled, medievalFont, weather, isSettingsOpen, openSettings, closeSettings, t]
     );
     return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>;
 }

@@ -15,6 +15,7 @@ import HobbiesSection from "../../sections/home/hobbies/HobbiesSection";
 import DesignSection from "../../sections/home/design/DesignSection";
 import AboutSection from "../../sections/home/about/AboutSection";
 import ContactSection from "../../sections/home/contact/ContactSection";
+import ParallaxWrapper from "../../components/ParallaxWrapper/ParallaxWrapper";
 
 export default function Home() {
     const { showAlert } = useAlerts();
@@ -67,11 +68,17 @@ export default function Home() {
                     {t('COMMON.alerts.developmentAlertBar')}
                 </p>
             </div>
-            <HeroSection />
+            <ParallaxWrapper speed={0.3}>
+                <HeroSection />
+            </ParallaxWrapper>
             <PresentationSection />
-            <LanguagesSection />
+            <ParallaxWrapper speed={0.2} direction="down">
+                <LanguagesSection />
+            </ParallaxWrapper>
             <SkillsSection />
-            <ProjectsSection />
+            <ParallaxWrapper speed={0.25}>
+                <ProjectsSection />
+            </ParallaxWrapper>
             <LearningSection />
             <HobbiesSection />
             <DesignSection />

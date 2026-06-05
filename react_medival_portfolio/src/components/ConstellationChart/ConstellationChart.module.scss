@@ -1,0 +1,31 @@
+.chartContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.canvas {
+  cursor: crosshair;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(44, 24, 16, 0.9);
+  color: #d4af37;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-family: var(--font-medieval);
+  font-size: 0.9rem;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  pointer-events: none;
+  animation: tooltipFade 0.2s ease;
+}
+
+@keyframes tooltipFade {
+  from { opacity: 0; transform: translateX(-50%) translateY(5px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}

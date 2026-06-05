@@ -1,0 +1,38 @@
+const PROJECTS_LEGACY = {
+    title: "المهام التقنية",
+    subtitle: "مهام أسطورية وقطع أثرية مسحورة",
+    searchPlaceholder: "البحث عن المهام...",
+    filterAll: "كل المهام",
+    noResults: "لا توجد مهام تطابق بحثك",
+    viewProject: "عرض المهمة",
+    viewCode: "عرض الشفرة البرمجية",
+    liveDemo: "البث الحي للمهمة",
+    readMore: "اقرأ عن المهمة",
+    backToProjects: "العودة إلى المهام",
+    notFoundTitle: "سجل المهمة مفقود",
+    notFoundText: "هذا السجل لم يُكتب بعد أو فُقد في الأرشيف الأكبر.",
+    clickToEnlarge: "فحص القطعة الأثرية",
+    featuredQuest: "المهمة المميزة",
+    questYear: "كُتبت في عام",
+    specSheet: "مواصفات المهمة",
+    statusLabel: "حالة المهمة",
+    categoryLabel: 'التصنيف',
+    relics: "القطع الأثرية المسحورة",
+    questOverview: "نظرة عامة على المهمة",
+    detailedChronicle: "التفاصيل الكاملة للمهمة",
+    prevQuest: "المهمة السابقة",
+    nextQuest: "المهمة التالية",
+    allQuests: "كل المهام",
+    categories: {
+        web: "حصون الويب",
+        app: "آثار الهاتف والمكتب",
+        tool: "أدوات الخيمياء",
+    },
+    status: {
+        completed: "مكتملة",
+        'in-progress': "قيد التنفيذ",
+        archived: "مؤرشفة",
+    },
+}
+
+export { PROJECTS_LEGACY }

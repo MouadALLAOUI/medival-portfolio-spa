@@ -1,0 +1,38 @@
+.dragonContainer {
+  position: fixed;
+  z-index: 10000;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.dragon {
+  filter: drop-shadow(0 0 8px rgba(45, 90, 39, 0.6));
+}
+
+.fireBreath {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.fireParticle {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  background: radial-gradient(circle, #ff6b35 0%, #ff0000 60%, transparent 100%);
+  border-radius: 50%;
+  left: var(--offset);
+  animation: fireBreath 0.4s ease-out var(--delay) infinite;
+}
+
+@keyframes fireBreath {
+  0% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100px) scale(0.3);
+  }
+}

@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ArrowBigDown, Menu, X } from "lucide-react";
 import { useSettings } from '../lib/useSettings';
 import { useAchievements } from '../lib/useAchievements';
+import { useSound } from '../lib/hooks/useSound';
 import styles from './Headers.module.scss';
 
 // --- Helper for Medieval Naming ---
@@ -133,6 +134,7 @@ const HeaderComponent = () => {
 	const navigate = useNavigate();
 	const { openSettings, t } = useSettings();
 	const { unlockedCount, totalCount } = useAchievements();
+	const { play: playSound } = useSound();
 	const [openMenu, setOpenMenu] = useState(null);
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false);
@@ -162,6 +164,7 @@ const HeaderComponent = () => {
 	const handleMouseEnter = (label) => {
 		if (timeoutRef.current) clearTimeout(timeoutRef.current);
 		setOpenMenu(label);
+		playSound('paper');
 	};
 	const handleMouseLeave = () => {
 		timeoutRef.current = setTimeout(() => setOpenMenu(null), 150);

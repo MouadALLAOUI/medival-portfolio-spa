@@ -10,6 +10,7 @@ const CRMEF_SEMESTERS = {
         date: 'Created',
     },
     learned: 'What I Learned',
+    lacks: 'What I Lack',
     selectModule: '🔮 Scroll to Module:',
     allModules: 'All Modules',
     chooseModule: '-- Select Module --',

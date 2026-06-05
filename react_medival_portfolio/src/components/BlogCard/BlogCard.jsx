@@ -19,6 +19,8 @@ const getCoverGradient = (id) => GRADIENTS[(id || 0) % GRADIENTS.length];
 export default function BlogCard({ blog, isBookmarked, onToggleBookmark }) {
   const { t } = useSettings();
   const readTime = calculateReadingTime(blog.blogcontent?.content);
+  const translatedTitle = t(`DATA.blogs.${blog.id}.title`) || blog.title;
+  const translatedDesc = t(`DATA.blogs.${blog.id}.desc`) || blog.desc;
 
   const cardConfig = {
     baseClass: "blog-card",
@@ -39,7 +41,7 @@ export default function BlogCard({ blog, isBookmarked, onToggleBookmark }) {
         {/* Cover art block */}
         <div className={styles['blog-cover']} style={{ '--cover-gradient': getCoverGradient(blog.id) }}>
           {blog.thumbnail ? (
-            <img src={blog.thumbnail} alt={blog.title} className={styles['blog-thumb']} loading="lazy" />
+            <img src={blog.thumbnail} alt={translatedTitle} className={styles['blog-thumb']} loading="lazy" />
           ) : null}
           <div className={styles['cover-overlay']} />
           <div className={styles['series-badge-wrap']}>
@@ -68,8 +70,8 @@ export default function BlogCard({ blog, isBookmarked, onToggleBookmark }) {
             </span>
           </div>
 
-          <h3 className={styles['blog-title']}>{blog.title}</h3>
-          <p className={styles['blog-desc']}>{blog.desc}</p>
+          <h3 className={styles['blog-title']}>{translatedTitle}</h3>
+          <p className={styles['blog-desc']}>{translatedDesc}</p>
 
           {/* Runic Tags */}
           <div className={styles['blog-tags']}>
@@ -87,7 +89,7 @@ export default function BlogCard({ blog, isBookmarked, onToggleBookmark }) {
                 e.stopPropagation();
                 onToggleBookmark(blog.slug);
               }}
-              aria-label={isBookmarked ? "Remove bookmark" : "Add bookmark"}
+              aria-label={isBookmarked ? t('COMPONENTS.blogCard.bookmarkRemove') : t('COMPONENTS.blogCard.bookmarkAdd')}
               type="button"
             >
               {isBookmarked ? <BookmarkCheck size={20} className={styles['bookmark-icon']} /> : <Bookmark size={20} className={styles['bookmark-icon']} />}

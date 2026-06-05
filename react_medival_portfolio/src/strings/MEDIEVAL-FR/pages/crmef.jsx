@@ -9,6 +9,7 @@ const CRMEF = {
         msp: "Chroniques MSP",
         videos: "Visions & Sortilèges",
         gallery: "Tapisserie de Formation",
+        critique: "Tribunal de l'Esprit",
     },
     gallery: {
         title: "Tapisserie de Formation",
@@ -84,6 +85,10 @@ const CRMEF = {
             "gymnastique": "Gymnastique",
             "competitions": "Compétitions",
         }
+    },
+    critique: {
+        title: "Le Tribunal de l'Esprit",
+        subtitle: "Un examen psychologique et mental détaillé scrutant mes forces, faiblesses et quêtes de progression dans les arènes académiques, communicationnelles, de confiance et de forge professionnelle.",
     },
     accueil: {
         welcomeTitle: "Portail Professionnel CRMEF",

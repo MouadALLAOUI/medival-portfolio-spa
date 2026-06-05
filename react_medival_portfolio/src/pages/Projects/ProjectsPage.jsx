@@ -38,10 +38,12 @@ export default function ProjectsPage() {
 
   const filtered = useMemo(() => {
     return projects.filter(p => {
+      const translatedTitle = t(`DATA.projects.${p.id}.title`) || p.title;
+      const translatedDesc = t(`DATA.projects.${p.id}.desc`) || p.description;
       const matchesSearch =
         !search ||
-        p.title.toLowerCase().includes(search.toLowerCase()) ||
-        p.description.toLowerCase().includes(search.toLowerCase()) ||
+        translatedTitle.toLowerCase().includes(search.toLowerCase()) ||
+        translatedDesc.toLowerCase().includes(search.toLowerCase()) ||
         p.tags.some(tag => tag.toLowerCase().includes(search.toLowerCase()));
 
       const matchesCategory =
@@ -52,7 +54,7 @@ export default function ProjectsPage() {
 
       return matchesSearch && matchesCategory && matchesTag;
     });
-  }, [search, activeCategory, activeTag]);
+  }, [search, activeCategory, activeTag, t]);
 
   const featured = filtered.filter(p => p.featured);
   const rest = filtered.filter(p => !p.featured);

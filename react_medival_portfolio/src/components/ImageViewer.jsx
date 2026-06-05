@@ -35,7 +35,7 @@ export default function ImageViewer() {
       <button
         className={styles['close-btn']}
         onClick={closeImage}
-        aria-label={t('COMMON.settings.closeBtn') || "Close image viewer"}
+        aria-label={t('COMPONENTS.imageViewer.closeAria')}
       >
         ×
       </button>
@@ -44,7 +44,7 @@ export default function ImageViewer() {
         <button
           className={`${styles['nav-btn']} ${styles['prev-btn']}`}
           onClick={(e) => { e.stopPropagation(); goPrev(); }}
-          aria-label="Previous image"
+          aria-label={t('COMPONENTS.imageViewer.prevAria')}
         >
           ‹
         </button>
@@ -53,7 +53,7 @@ export default function ImageViewer() {
       <div className={styles['image-container']} onClick={(e) => e.stopPropagation()}>
         <img
           src={current.src}
-          alt={current.alt || "Full size image"}
+          alt={current.alt || t('COMPONENTS.imageViewer.fullSizeAlt')}
           className={`${styles['viewer-image']} ${current.isMobile ? styles['portrait'] : ''}`}
         />
         {current.alt && (
@@ -67,7 +67,7 @@ export default function ImageViewer() {
         <button
           className={`${styles['nav-btn']} ${styles['next-btn']}`}
           onClick={(e) => { e.stopPropagation(); goNext(); }}
-          aria-label="Next image"
+          aria-label={t('COMPONENTS.imageViewer.nextAria')}
         >
           ›
         </button>
