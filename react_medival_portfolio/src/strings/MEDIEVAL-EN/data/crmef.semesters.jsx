@@ -13,6 +13,7 @@ const CRMEF_SEMESTERS = {
         date: 'Penciled on',
     },
     learned: 'Lore Gained',
+    lacks: 'Missing Enchantments',
     semesters: {
         'semester-1': {
             title: 'First Crusade (Semester 1)',

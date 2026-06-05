@@ -6,6 +6,7 @@ import CrmefSemesterPage from './sections/CrmefSemesterPage';
 import CrmefMspPage from './sections/CrmefMspPage';
 import CrmefVideosPage from './sections/CrmefVideosPage';
 import CrmefGalleryPage from './sections/CrmefGalleryPage';
+import CrmefCritiquePage from './sections/CrmefCritiquePage';
 import { useAchievements } from '../../lib/useAchievements';
 import styles from './CrmefPage.module.scss';
 
@@ -23,6 +24,7 @@ const CrmefPage = () => {
     if (hash === '#msp')       return <CrmefMspPage />;
     if (hash === '#videos')    return <CrmefVideosPage />;
     if (hash === '#gallery')   return <CrmefGalleryPage />;
+    if (hash === '#critique')  return <CrmefCritiquePage />;
     return <CrmefAccueilPage />;
   };
 

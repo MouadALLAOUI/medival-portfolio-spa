@@ -1,0 +1,38 @@
+const PROJECTS_LEGACY = {
+    title: 'Tech Quests',
+    subtitle: 'Legendary quests and enchanted artifacts',
+    searchPlaceholder: 'Search quests...',
+    filterAll: 'All Quests',
+    noResults: 'No quests match your search',
+    viewProject: 'View Quest',
+    viewCode: 'View Rune Code',
+    liveDemo: 'Scry Live Demo',
+    readMore: 'Unfurl Quest Overview',
+    backToProjects: 'Return to Quests',
+    notFoundTitle: 'Quest Registry Missing',
+    notFoundText: 'This chronicle has not been penned yet or was lost in the archives.',
+    clickToEnlarge: 'Inspect Relic',
+    featuredQuest: 'Featured Quest',
+    questYear: 'Penciled in',
+    specSheet: 'Quest Specification',
+    statusLabel: 'Quest Status',
+    categoryLabel: 'Classification',
+    relics: 'Enchanted Relics',
+    questOverview: 'Quest Overview',
+    detailedChronicle: 'Detailed Chronicle',
+    prevQuest: 'Previous Quest',
+    nextQuest: 'Next Quest',
+    allQuests: 'All Quests',
+    categories: {
+        web: 'Web Citadels',
+        app: 'Mobile & Desktop Relics',
+        tool: 'Alchemical Tools',
+    },
+    status: {
+        completed: 'Achev\'d',
+        'in-progress': 'In Progress',
+        archived: 'Archiv\'d',
+    },
+}
+
+export { PROJECTS_LEGACY }

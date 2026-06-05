@@ -27,7 +27,7 @@ export default function ProjectCard({ project, featured = false }) {
           {featured && (
             <div className={styles.featuredBadge}>
               <Trophy size={12} />
-              <span>Featured Quest</span>
+              <span>{t('COMPONENTS.projectCard.featuredQuest')}</span>
             </div>
           )}
           <span className={`${styles.statusBadge} ${styles[project.status]}`}>

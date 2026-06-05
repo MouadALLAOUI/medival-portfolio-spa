@@ -8,10 +8,12 @@ import { getMarkdownThemeClass } from '../../../lib/markdown/markdownThemes';
 import getColorForTag from '../../../lib/getColorForTag';
 import { useImageViewer } from '../../../lib/useImageViewer';
 import { useSettings } from '../../../lib/useSettings';
+import { useAchievements } from '../../../lib/useAchievements';
 import styles from './ProjectsSection.module.scss';
 import CSection from '../../../templates/Section';
 import DynamicCard from '../../../components/card';
 import FilterBar from '../../../components/sections/skills/FilterBar';
+import LinkPreview from '../../../components/ui/LinkPreview';
 
 // Merge metadata with overview data
 const projects = projectsMetadata.map(meta => {
@@ -58,10 +60,15 @@ const ProjectsSection = () => {
   const { openImage } = useImageViewer();
   const { t, language } = useSettings();
   const { theme } = useTheme();
+  const { unlockAchievement } = useAchievements();
   const mdThemeClass = getMarkdownThemeClass(theme);
   const [activeProjectId, setActiveProjectId] = useState(null);
   const [activeImgIndex, setActiveImgIndex] = useState(0);
   const [activeTag, setActiveTag] = useState('All');
+
+  useEffect(() => {
+    unlockAchievement('visited_projects');
+  }, [unlockAchievement]);
 
   const allTags = useMemo(() => {
     const tags = new Set(['All']);
@@ -119,7 +126,7 @@ const ProjectsSection = () => {
                   style={{ '--bg-img': `url(${project.overview.thumbnail || getAssetById('download').path})` }}
                 >
                   <div className={styles['card-content']}>
-                    <h3 className={styles['project-title']}>{project.title}</h3>
+                    <h3 className={styles['project-title']}>{t(`DATA.projects.${project.id}.title`) || project.title}</h3>
 
                     {(project.status || project.overview?.status) && (
                       <span className={`${styles['status-badge']} ${styles[(project.status || project.overview?.status).toLowerCase().replace(' ', '-')]}`}>
@@ -127,7 +134,7 @@ const ProjectsSection = () => {
                       </span>
                     )}
 
-                    <p className={styles['project-description']}>{project.desc}</p>
+                    <p className={styles['project-description']}>{t(`DATA.projects.${project.id}.desc`) || project.desc}</p>
 
                     <div className={styles['tech-stack']}>
                       {project.tags.map((tag) => (
@@ -153,7 +160,7 @@ const ProjectsSection = () => {
           <div className={`${styles['projects-overview']} ${activeProject ? `${styles['active']} item-${activeProject.id}` : ''}`}>
             {activeProject && (
               <>
-                <h1 className={styles['title']}>{activeProject.title}</h1>
+                <h1 className={styles['title']}>{t(`DATA.projects.${activeProject.id}.title`) || activeProject.title}</h1>
 
                 <div className={styles['thumbnail']}>
                   <img src={activeProject.overview.thumbnail || 'https://placehold.co/4000x2000'} alt={activeProject.title} loading="lazy" />
@@ -267,10 +274,12 @@ const ProjectsSection = () => {
                             {link.label}
                           </span>
                         ) : (
-                          <a key={stableKey} href={link.href || '#'} target="_blank" rel="noopener noreferrer" className={styles['overview-link']}>
-                            <span>{link.icon}</span>
-                            {link.label}
-                          </a>
+                          <LinkPreview key={stableKey} href={link.href || '#'} icon={link.icon} label={link.label}>
+                            <a href={link.href || '#'} target="_blank" rel="noopener noreferrer" className={styles['overview-link']}>
+                              <span>{link.icon}</span>
+                              {link.label}
+                            </a>
+                          </LinkPreview>
                         );
                       })}
                     </div>

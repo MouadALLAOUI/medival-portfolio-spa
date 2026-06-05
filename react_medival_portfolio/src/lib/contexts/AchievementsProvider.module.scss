@@ -120,3 +120,68 @@
   background: var(--rarity-color);
   animation: notif-drain 5000ms linear forwards;
 }
+
+// ── Holographic sheen on rare+ notifications ──────────────────────────────────
+.notifHolo {
+  --holo-angle: 45deg;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: conic-gradient(
+      from var(--holo-angle),
+      transparent 0%,
+      rgba(255, 0, 128, 0.06) 12%,
+      rgba(0, 255, 128, 0.06) 25%,
+      rgba(0, 128, 255, 0.06) 37%,
+      rgba(255, 255, 0, 0.06) 50%,
+      rgba(255, 0, 255, 0.06) 62%,
+      rgba(0, 255, 255, 0.06) 75%,
+      rgba(255, 128, 0, 0.06) 87%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+    animation: holo-rotate 3s linear infinite;
+  }
+}
+
+.notifHoloSheen {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.12) 45%,
+    rgba(255, 255, 255, 0.18) 50%,
+    rgba(255, 255, 255, 0.12) 55%,
+    transparent 80%
+  );
+  background-size: 200% 100%;
+  animation: holo-shimmer 2s ease-in-out infinite;
+  mix-blend-mode: overlay;
+}
+
+@keyframes holo-rotate {
+  from { --holo-angle: 0deg; }
+  to   { --holo-angle: 360deg; }
+}
+
+@keyframes holo-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+// Respect reduced motion
+[data-reduced-motion="true"] {
+  .notifHolo::before,
+  .notifHoloSheen {
+    animation: none !important;
+  }
+}

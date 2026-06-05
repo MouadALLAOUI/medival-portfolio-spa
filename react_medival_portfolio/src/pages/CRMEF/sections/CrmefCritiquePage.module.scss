@@ -1,0 +1,176 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.section {
+  width: 100%;
+}
+
+.sectionSubtitle {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+
+  :global([data-theme="medieval"]) & {
+    font-family: var(--font-body);
+    color: var(--color-brown, #5c3a21);
+    font-style: italic;
+  }
+}
+
+// ── Topic Cards Grid ──────────────────────────────────────────────────────────
+.critiqueGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.topicCard {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 250ms ease;
+  border-left: 4px solid var(--topic-color, var(--accent));
+
+  &:hover {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  &.expanded {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  :global([data-theme="medieval"]) & {
+    background: var(--bg-card);
+    border-color: var(--parchment-border, rgba(140, 109, 70, 0.2));
+    border-left-color: var(--topic-color, var(--gold));
+
+    &:hover,
+    &.expanded {
+      box-shadow: 0 4px 24px rgba(140, 109, 70, 0.1);
+    }
+  }
+}
+
+// ── Topic Header Button ───────────────────────────────────────────────────────
+.topicHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 200ms ease;
+
+  &:hover {
+    background: var(--bg-tertiary);
+  }
+
+  :global([data-theme="medieval"]) & {
+    &:hover {
+      background: rgba(212, 175, 55, 0.04);
+    }
+  }
+}
+
+.topicIcon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.topicTitle {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  flex: 1;
+
+  :global([data-theme="medieval"]) & {
+    font-family: var(--font-cinzel);
+    color: var(--gold);
+  }
+}
+
+.chevron {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  transition: transform 250ms ease;
+  flex-shrink: 0;
+
+  &.chevronOpen {
+    transform: rotate(180deg);
+  }
+}
+
+// ── Topic Body (Expanded) ─────────────────────────────────────────────────────
+.topicBody {
+  padding: 0 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.sectionBlock {
+  border-left: 2px solid var(--border);
+  padding-left: 1rem;
+
+  :global([data-theme="medieval"]) & {
+    border-left-color: var(--parchment-border, rgba(140, 109, 70, 0.15));
+  }
+}
+
+.sectionLabel {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid currentColor;
+  opacity: 0.9;
+
+  :global([data-theme="medieval"]) & {
+    font-family: var(--font-cinzel);
+    font-size: 0.75rem;
+  }
+}
+
+.sectionContent {
+  font-family: var(--font-primary);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  text-align: justify;
+  margin: 0;
+
+  :global([data-theme="medieval"]) & {
+    font-family: var(--font-body);
+    color: var(--color-brown, #5c3a21);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,46 @@
+const ACHIEVEMENTS = {
+    title: "Trésor des Exploits",
+    subtitle: "Dévoilés · Points d'Expérience",
+    unlocked: "Dévoilé",
+    locked: "Scellé",
+    showLocked: "Révéler les Scellés",
+    category: "Ordre",
+    rarity: "Rareté",
+    allCategories: "Tous",
+    allRarities: "Toutes les Raretés",
+    xpSuffix: "PX",
+    empty: "Nul exploit ne correspond à tes recherches",
+    navLabel: "Exploits",
+    toggleLockedAria: "Révéler ou dissimuler les exploits scellés",
+    back: "Retour",
+    card: {
+        lockedTitle: "???",
+        lockedDesc: "Continue ta quête pour débloquer cet exploit secret",
+        xpLabel: "+{{xp}} PX",
+        rarity: {
+            common: "Commune",
+            uncommon: "Peu Commune",
+            rare: "Rare",
+            epic: "Épique",
+            legendary: "Légendaire",
+        },
+    },
+    xpBar: {
+        titles: {
+            1: "Vagabond",
+            2: "Apprenti",
+            3: "Scribe",
+            4: "Érudit",
+            5: "Artisan",
+            6: "Adepte",
+            7: "Maître",
+            8: "Sage",
+            9: "Archimage",
+            10: "Légende",
+        },
+        level: "Niv.",
+        unlocked: "dévoilé",
+    },
+}
+
+export { ACHIEVEMENTS }

@@ -81,6 +81,12 @@ const AchievementsProvider = ({ children }) => {
     });
 
     showNotification(achievement);
+
+    // First achievement trigger
+    const prevCount = Object.keys(unlockedRef.current).length;
+    if (prevCount === 0) {
+      setTimeout(() => unlockAchievement('first_achievement'), 0);
+    }
   }, [showNotification]);
 
   // Increment a counter and check count-based achievements
@@ -256,6 +262,66 @@ const AchievementsProvider = ({ children }) => {
     }
   }, [theme, unlockAchievement]);
 
+  // ── Triple click listener ────────────────────────────────────
+  useEffect(() => {
+    let lastClick = 0;
+    let clickCount = 0;
+    const handler = () => {
+      const now = Date.now();
+      if (now - lastClick < 400) {
+        clickCount++;
+      } else {
+        clickCount = 1;
+      }
+      lastClick = now;
+      if (clickCount >= 3) {
+        unlockAchievement('triple_click');
+        clickCount = 0;
+      }
+    };
+    window.addEventListener('click', handler);
+    return () => window.removeEventListener('click', handler);
+  }, [unlockAchievement]);
+
+  // ── Mobile warrior detection ─────────────────────────────────
+  useEffect(() => {
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth < 768) {
+      unlockAchievement('mobile_warrior');
+    }
+  }, [unlockAchievement]);
+
+  // ── Pixel perfect detection ──────────────────────────────────
+  useEffect(() => {
+    if (window.screen.width === 1920 && window.screen.height === 1080) {
+      unlockAchievement('pixel_perfect');
+    }
+  }, [unlockAchievement]);
+
+  // ── Tab switcher detection ───────────────────────────────────
+  useEffect(() => {
+    let hiddenAt = null;
+    const onHidden = () => { hiddenAt = Date.now(); };
+    const onVisible = () => {
+      if (hiddenAt && Date.now() - hiddenAt < 5000) {
+        unlockAchievement('tab_switcher');
+      }
+      hiddenAt = null;
+    };
+    document.addEventListener('visibilitychange', onHidden);
+    document.addEventListener('visibilitychange', onVisible);
+    return () => {
+      document.removeEventListener('visibilitychange', onHidden);
+      document.removeEventListener('visibilitychange', onVisible);
+    };
+  }, [unlockAchievement]);
+
+  // ── Back button hero detection ───────────────────────────────
+  useEffect(() => {
+    const handler = () => { incrementCounter('back_button'); };
+    window.addEventListener('popstate', handler);
+    return () => window.removeEventListener('popstate', handler);
+  }, [incrementCounter]);
+
   return (
     <AchievementsContext.Provider value={{
       unlocked,
@@ -293,13 +359,15 @@ const AchievementsProvider = ({ children }) => {
 // ── Notification component ────────────────────────────────────
 const AchievementNotification = ({ achievement, onDismiss }) => {
   const rarity = RARITY_CONFIG[achievement.rarity];
+  const isHolo = ['rare', 'epic', 'legendary'].includes(achievement.rarity);
 
   return (
     <div
-      className={styles.notif}
+      className={`${styles.notif} ${isHolo ? styles.notifHolo : ''}`}
       style={{ '--rarity-color': rarity.color, '--rarity-glow': rarity.glow }}
       onClick={onDismiss}
     >
+      {isHolo && <div className={styles.notifHoloSheen} />}
       <div className={styles.notifIcon}>{achievement.icon}</div>
       <div className={styles.notifContent}>
         <div className={styles.notifHeader}>

@@ -1,0 +1,109 @@
+@use '../../styles/variables' as *;
+
+.compass-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), 0 0 12px rgba(212, 175, 55, 0.15);
+  padding: 0;
+  transition: border-color 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    border-color: var(--accent-hover);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3), 0 0 20px rgba(212, 175, 55, 0.25);
+  }
+
+  :global([data-theme="medieval"]) & {
+    background: linear-gradient(135deg, #f5e6ca 0%, #e8d5b0 100%);
+    border: 3px double var(--gold);
+    box-shadow: 0 6px 24px rgba(44, 24, 16, 0.4), 0 0 16px rgba(212, 175, 55, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    bottom: 5rem;
+    right: 1.5rem;
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}
+
+.compass-svg {
+  width: 85%;
+  height: 85%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.spinning {
+    animation: compassSpin 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+.needle-group {
+  transition: transform 0.15s ease-out;
+}
+
+.outer-ring {
+  stroke-dasharray: 352;
+  stroke-dashoffset: 352;
+  animation: drawRing 1.5s ease-out forwards;
+}
+
+.cardinal-text {
+  font-family: var(--font-heading, 'Cinzel', serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.scroll-label {
+  position: absolute;
+  bottom: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-heading, 'Cinzel', serif);
+  font-size: 0.6rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  .compass-button:hover & {
+    opacity: 1;
+  }
+}
+
+@keyframes compassSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(180deg);
+  }
+  50% {
+    transform: rotate(360deg);
+  }
+  75% {
+    transform: rotate(540deg);
+  }
+  100% {
+    transform: rotate(720deg);
+  }
+}
+
+@keyframes drawRing {
+  0% {
+    stroke-dashoffset: 352;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}

@@ -1,12 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CSection from '../../../templates/Section';
 import { crmefMspInfo } from '../../../data/crmef.data';
 import { useSettings } from '../../../lib/useSettings';
+import { useAchievements } from '../../../lib/useAchievements';
 import styles from './CrmefMspPage.module.scss';
 
 const CrmefMspPage = () => {
   const [activeTab, setActiveTab] = useState('presentation');
   const { t } = useSettings();
+  const { unlockAchievement } = useAchievements();
+
+  useEffect(() => {
+    unlockAchievement('msp_explorer');
+  }, [unlockAchievement]);
 
   const MSP_TABS = [
     { id: 'presentation', label: t('CRMEF.msp.tabs.presentation') },
@@ -16,15 +22,15 @@ const CrmefMspPage = () => {
 
   // const remerciementText = t('CRMEF.msp.presentation.remerciementText');
   // const resolvedRemerciement = remerciementText !== 'CRMEF.msp.presentation.remerciementText' ? remerciementText : crmefMspInfo.remerciement;
-  const resolvedRemerciement = crmefMspInfo.remerciement;
+  const resolvedRemerciement = t('DATA.msp.remerciement') || crmefMspInfo.remerciement;
 
   // const introductionText = t('CRMEF.msp.presentation.introductionText');
   // const resolvedIntroduction = introductionText !== 'CRMEF.msp.presentation.introductionText' ? introductionText : crmefMspInfo.introduction;
-  const resolvedIntroduction = crmefMspInfo.introduction;
+  const resolvedIntroduction = t('DATA.msp.introduction') || crmefMspInfo.introduction;
 
   // const roomsCountVal = t('CRMEF.msp.table.roomsCountValue');
   // const resolvedRoomsCount = roomsCountVal !== 'CRMEF.msp.table.roomsCountValue' ? roomsCountVal : crmefMspInfo.tableData.roomsCount;
-  const resolvedRoomsCount = crmefMspInfo.tableData.roomsCount;
+  const resolvedRoomsCount = t('DATA.msp.tableData.roomsCount') || crmefMspInfo.tableData.roomsCount;
 
   return (
     <CSection
@@ -35,8 +41,8 @@ const CrmefMspPage = () => {
     >
       {/* Header info */}
       <div className={styles.mspHeader}>
-        <div>{t('CRMEF.msp.header.lyceeName')} <span className={styles.mspValue}>{crmefMspInfo.lyceeName}</span></div>
-        <div>{t('CRMEF.msp.header.profName')} <span className={styles.mspValue}>{crmefMspInfo.profName}</span></div>
+        <div>{t('CRMEF.msp.header.lyceeName')} <span className={styles.mspValue}>{t('DATA.msp.lyceeName') || crmefMspInfo.lyceeName}</span></div>
+        <div>{t('CRMEF.msp.header.profName')} <span className={styles.mspValue}>{t('DATA.msp.profName') || crmefMspInfo.profName}</span></div>
       </div>
 
       {/* Tabs nav */}
@@ -58,7 +64,7 @@ const CrmefMspPage = () => {
 
         {activeTab === 'presentation' && (
           <>
-            <div className={styles.lyceePlaceholder}>{crmefMspInfo.imageLabel}</div>
+            <div className={styles.lyceePlaceholder}>{t('DATA.msp.imageLabel') || crmefMspInfo.imageLabel}</div>
 
             <div className={styles.textBlock}>
               <h3 className={styles.tabSubTitle}>{t('CRMEF.msp.presentation.remerciement')}</h3>

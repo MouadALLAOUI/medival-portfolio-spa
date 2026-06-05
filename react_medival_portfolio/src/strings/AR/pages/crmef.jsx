@@ -8,6 +8,7 @@ const CRMEF = {
         msp: "سجلات MSP",
         videos: "فيديوهات تعليمية",
         gallery: "معرض التكوين",
+        critique: "النقد الذاتي",
     },
     gallery: {
         title: "معرض التكوين",
@@ -83,6 +84,10 @@ const CRMEF = {
             "gymnastique": "جمباز",
             "competitions": "مسابقات",
         }
+    },
+    critique: {
+        title: "النقد الذاتي الشخصي",
+        subtitle: "مراجعة نفسية وعقلية مفصلة تفحص نقاط قوتي وضعفي ومجالات نموي في الأداء الأكاديمي والتواصل والثقة والتطوير المهني.",
     },
     accueil: {
         welcomeTitle: "بوابة CRMEF المهنية",

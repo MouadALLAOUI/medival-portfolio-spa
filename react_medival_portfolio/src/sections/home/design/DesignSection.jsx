@@ -12,21 +12,28 @@ const DesignSection = () => {
 
   const gallery = designs.map(item => ({
     src: item.src,
-    alt: item.alt,
+    alt: t(`DATA.designs.${item.id}.alt`) || item.alt,
     isMobile: item.isMobile
   }));
 
   return (
     <CSection id="design" title={t('HOME.DESIGN.title')} subtitle={t('HOME.DESIGN.desc')} classname="design">
       <div className={styles['design-grid']} id="design-grid">
-        {designs.map((design, index) => (
-          <DynamicCard
-            key={design.id}
-            item={design}
-            config={PRESETS.DESIGN}
-            onClick={() => viewImage(design.src, design.alt, gallery, index)}
-          />
-        ))}
+        {designs.map((design, index) => {
+          const translatedDesign = {
+            ...design,
+            alt: t(`DATA.designs.${design.id}.alt`) || design.alt,
+            caption: t(`DATA.designs.${design.id}.caption`) || design.caption,
+          };
+          return (
+            <DynamicCard
+              key={design.id}
+              item={translatedDesign}
+              config={PRESETS.DESIGN}
+              onClick={() => viewImage(design.src, translatedDesign.alt, gallery, index)}
+            />
+          );
+        })}
       </div>
     </CSection>
   );

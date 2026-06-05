@@ -115,14 +115,14 @@ export const SETTINGS_SECTIONS = [
       {
         id: 'animationLevel',
         label: 'Optimisation / Animations',
-        description: 'Adjust animations to optimize website performance',
+        description: 'Control all animations across the site',
         type: 'option-select',
         contextKey: 'animationLevel',
         options: [
-          { id: 'light', label: 'Light', icon: '⚡', description: 'Minimum animations, best performance' },
-          { id: 'normal', label: 'Normal', icon: '⚖️', description: 'Smooth transitions, balanced' },
-          { id: 'heavy', label: 'Heavy', icon: '🎨', description: 'Full animations and effects' },
-          { id: 'ultra', label: 'Ultra', icon: '🚀', description: 'Maximum smooth animations' },
+          { id: 'light', label: 'Light', icon: '⚡', description: 'All animations disabled — best performance' },
+          { id: 'normal', label: 'Normal', icon: '⚖️', description: 'Reduced animations — smooth transitions' },
+          { id: 'heavy', label: 'Heavy', icon: '🎨', description: 'Full animations and effects enabled' },
+          { id: 'ultra', label: 'Ultra', icon: '🚀', description: 'Maximum smoothness — extended animations' },
         ],
       },
       {

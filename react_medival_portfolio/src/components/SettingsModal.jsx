@@ -4,7 +4,17 @@ import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../lib/contexts/ThemeProvider';
 import { useSettings } from '../lib/useSettings';
 import { usePdfSettings, PDF_MODES } from '../lib/contexts/PdfSettingsContext';
+import { useSound } from '../lib/hooks/useSound';
 import styles from './SettingsModal.module.scss';
+
+const WEATHER_TYPES = [
+  { id: 'none', label: 'Clear Skies', icon: '☀️' },
+  { id: 'snow', label: 'Winter Frost', icon: '❄️' },
+  { id: 'rain', label: 'Tempest Rain', icon: '🌧️' },
+  { id: 'leaves', label: 'Autumn Leaves', icon: '🍂' },
+  { id: 'fog', label: 'Mystic Mist', icon: '🌫️' },
+  { id: 'lightning', label: 'Thunderstorm', icon: '⚡' },
+];
 
 /**
  * Universal SettingsModal
@@ -35,11 +45,13 @@ const SettingsModal = ({
     reducedMotion, setReducedMotion,
     customCursor, setCustomCursor,
     soundEnabled, setSoundEnabled,
+    weather, setWeather,
     t
   } = useSettings();
   const pdfCtx = usePdfSettings(); // may be null if PdfSettingsProvider not in tree
   const modalRef = useRef(null);
   const navigate = useNavigate();
+  const { play: playSound } = useSound();
 
   useEffect(() => {
     const handleEscape = (e) => {
@@ -100,7 +112,7 @@ const SettingsModal = ({
                   <button
                     key={themesItem.id}
                     className={`${styles.themeCard || styles['theme-card']} ${theme === themesItem.id ? (styles.active || styles['active']) : ''}`}
-                    onClick={() => switchTheme(themesItem.id)}
+                    onClick={() => { switchTheme(themesItem.id); playSound('button'); }}
                     aria-label={t(`COMMON.settings.keys.theme.options.${themesItem.id}.description`)}
                   >
                     <span className={styles.themeIcon || styles['theme-icon']}>{themesItem.icon}</span>
@@ -128,7 +140,7 @@ const SettingsModal = ({
                 ].map((lang) => (
                   <button
                     key={lang.id}
-                    onClick={() => setLanguage(lang.id)}
+                    onClick={() => { setLanguage(lang.id); playSound('paper'); }}
                     className={`${styles.langBtn || styles['lang-btn']} ${language === lang.id ? (styles.active || styles['active']) : ''}`}
                   >
                     <span className={styles.langFlag || styles['lang-flag']}>{lang.flag}</span>
@@ -162,7 +174,7 @@ const SettingsModal = ({
               <div className={styles['a11y-item']}>
                 <label className={styles['a11y-label']}>{t('COMMON.settings.motionLabel')}</label>
                 <button
-                  onClick={() => setReducedMotion(!reducedMotion)}
+                  onClick={() => { setReducedMotion(!reducedMotion); playSound('clink'); }}
                   className={`${styles['lang-btn']} ${reducedMotion ? styles['active'] : ''}`}
                   style={{ width: '100%', marginTop: '0.5rem' }}
                 >
@@ -179,7 +191,7 @@ const SettingsModal = ({
               <div className={styles['a11y-item']}>
                 <label className={styles['a11y-label']}>{t('COMMON.settings.keys.customCursor.label') || 'Medieval Cursor'}</label>
                 <button
-                  onClick={() => setCustomCursor(!customCursor)}
+                  onClick={() => { setCustomCursor(!customCursor); playSound('clink'); }}
                   className={`${styles['lang-btn']} ${customCursor ? styles['active'] : ''}`}
                   style={{ width: '100%', marginTop: '0.5rem' }}
                 >
@@ -190,13 +202,32 @@ const SettingsModal = ({
               <div className={styles['a11y-item']}>
                 <label className={styles['a11y-label']}>{t('COMMON.settings.keys.soundEnabled.label') || 'Arcane Sounds'}</label>
                 <button
-                  onClick={() => setSoundEnabled(!soundEnabled)}
+                  onClick={() => { setSoundEnabled(!soundEnabled); playSound('clink'); }}
                   className={`${styles['lang-btn']} ${soundEnabled ? styles['active'] : ''}`}
                   style={{ width: '100%', marginTop: '0.5rem' }}
                 >
                   {soundEnabled ? t('COMMON.settings.keys.soundEnabled.options.enabled.label') || 'On' : t('COMMON.settings.keys.soundEnabled.options.disabled.label') || 'Muted'}
                 </button>
               </div>
+            </div>
+          </div>
+
+          {/* Weather Effects */}
+          <div className={styles.section || styles['setting-group']}>
+            <h4 className={styles.sectionTitle || styles['group-label']}>{t('COMMON.settings.keys.weather.label') || '⚡ Weather Effects'}</h4>
+            <div className={styles.themeGrid || styles['theme-grid']}>
+              {WEATHER_TYPES.map((w) => (
+                <button
+                  key={w.id}
+                  className={`${styles.themeCard || styles['theme-card']} ${weather === w.id ? (styles.active || styles['active']) : ''}`}
+                  onClick={() => setWeather(w.id)}
+                  aria-label={w.label}
+                >
+                  <span className={styles.themeIcon || styles['theme-icon']}>{w.icon}</span>
+                  <span className={styles.themeName || styles['theme-name']}>{w.label}</span>
+                  {weather === w.id && <span className={styles.check || styles['active-check']}>✓</span>}
+                </button>
+              ))}
             </div>
           </div>
 

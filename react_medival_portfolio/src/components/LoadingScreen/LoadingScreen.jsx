@@ -1,7 +1,8 @@
 import { useSettings } from '../../lib/useSettings';
+import SkeletonWireframe from '../SkeletonWireframe';
 import styles from './LoadingScreen.module.scss';
 
-const LoadingScreen = () => {
+const LoadingScreen = ({ showSkeletons = true }) => {
   const { t } = useSettings();
 
   return (
@@ -19,6 +20,13 @@ const LoadingScreen = () => {
           {t('COMMON.pdfViewer.loading') || '🔮 Unrolling scroll of wisdom...'}
         </h2>
       </div>
+
+      {/* Hand-sketched wireframe skeletons */}
+      {showSkeletons && (
+        <div className={styles.skeletonRow}>
+          <SkeletonWireframe variant="card" count={3} />
+        </div>
+      )}
     </div>
   );
 };

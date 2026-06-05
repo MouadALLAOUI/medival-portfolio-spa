@@ -5,6 +5,7 @@ import { Film } from 'lucide-react';
 import { crmefVideos } from '../../../data/crmef.data';
 import CrmefAcademyHome from './CrmefAcademyHome';
 import { useSettings } from '../../../lib/useSettings';
+import { useAchievements } from '../../../lib/useAchievements';
 import useDebounce from './hooks/useDebounce';
 import useVideoProgress from './hooks/useVideoProgress';
 import { formatViews, parseViews } from './utils/videoHelpers';
@@ -20,6 +21,7 @@ const DEFAULT_FAVORITES_LABEL = 'Bookmarks';
 
 export default function CrmefVideosPage() {
   const { t } = useSettings();
+  const { unlockAchievement } = useAchievements();
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [rawSearch, setRawSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
@@ -242,6 +244,10 @@ export default function CrmefVideosPage() {
   }, [getPrevVideo, handleSelectVideo]);
 
   useEffect(() => {
+    unlockAchievement('video_scholar');
+  }, [unlockAchievement]);
+
+  useEffect(() => {
     const handleKeydown = (event) => {
       const active = document.activeElement;
       if (active && ['INPUT', 'TEXTAREA', 'SELECT'].includes(active.tagName)) return;
@@ -275,10 +281,10 @@ export default function CrmefVideosPage() {
       <header className={styles.header}>
         <h2 className={styles.title}>
           <Film className={styles.titleIcon} size={24} />
-          {'CRMEF Academy' || t('CRMEF.videos.title')}
+          {t('CRMEF.videos.title') || 'CRMEF Academy'}
         </h2>
         <p className={styles.subtitle}>
-          {'Navigate the academy, review lessons, and keep progress across sessions.' || t('CRMEF.videos.subtitle')}
+          {t('CRMEF.videos.subtitle') || 'Navigate the academy, review lessons, and keep progress across sessions.'}
         </p>
       </header>
 

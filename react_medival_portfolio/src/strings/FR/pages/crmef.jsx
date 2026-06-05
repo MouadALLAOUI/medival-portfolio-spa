@@ -8,6 +8,7 @@ const CRMEF = {
         msp: "Chroniques du MSP",
         videos: "Vidéos de Formation",
         gallery: "Galerie de Formation",
+        critique: "Auto-Critique",
     },
     gallery: {
         title: "Galerie de Formation",
@@ -83,6 +84,10 @@ const CRMEF = {
             "gymnastique": "Gymnastique",
             "competitions": "Compétitions",
         }
+    },
+    critique: {
+        title: "Auto-Critique Personnelle",
+        subtitle: "Un examen psychologique et mental détaillé examinant mes forces, faiblesses et axes de progression dans les domaines académiques, communicationnels, de confiance et de développement professionnel.",
     },
     accueil: {
         welcomeTitle: "Portail professionnel CRMEF",

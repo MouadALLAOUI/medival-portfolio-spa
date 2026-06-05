@@ -1,13 +1,13 @@
+@use './variables';
+@use './mixins';
+@use './animations';
+@use './base';
+@use './components';
+@use './markdown';
+@use './_markdown-themes';
+
 @import 'tailwindcss';
 @config '../../tailwind.config.js';
-
-@import './variables';
-@import './mixins';
-@import './animations';
-@import './base';
-@import './components';
-@import './markdown';
-@import './_markdown-themes';
 
 @theme {
 	/* Fonts */
@@ -134,7 +134,3 @@ html[data-theme='day'] {
 	background: var(--color-gold);
 	border-radius: var(--scroll-gw);
 }
-
-// @import './animations.scss';
-// @import './base.scss';
-// @import './components.scss';
