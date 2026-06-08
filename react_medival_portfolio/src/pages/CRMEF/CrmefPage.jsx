@@ -19,8 +19,8 @@ const CrmefPage = () => {
   }, [unlockAchievement]);
 
   const renderPage = () => {
-    if (hash === '#semestre1') return <CrmefSemesterPage semesterId="semester-1" />;
-    if (hash === '#semestre2') return <CrmefSemesterPage semesterId="semester-2" />;
+    if (hash === '#semestre1') return <CrmefSemesterPage key="semester-1" semesterId="semester-1" />;
+    if (hash === '#semestre2') return <CrmefSemesterPage key="semester-2" semesterId="semester-2" />;
     if (hash === '#msp')       return <CrmefMspPage />;
     if (hash === '#videos')    return <CrmefVideosPage />;
     if (hash === '#gallery')   return <CrmefGalleryPage />;
