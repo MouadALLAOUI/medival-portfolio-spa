@@ -1,49 +1,59 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback, useLayoutEffect } from 'react';
 
-export const useDragToScroll = (ref) => {
+export const useDragToScroll = (ref, { direction = 'horizontal', speed = 2 } = {}) => {
   const isDown = useRef(false);
-  const startX = useRef(0);
-  const scrollLeft = useRef(0);
+  const startPos = useRef({ x: 0, y: 0 });
+  const scrollPos = useRef({ x: 0, y: 0 });
+  const elRef = useRef(null);
 
-  useEffect(() => {
-    const slider = ref.current;
-    if (!slider) return;
+  const handleMouseDown = useCallback((e) => {
+    const el = elRef.current;
+    if (!el) return;
+    isDown.current = true;
+    el.classList.add('active-drag');
+    startPos.current = { x: e.pageX, y: e.pageY };
+    scrollPos.current = { x: el.scrollLeft, y: el.scrollTop };
+  }, []);
 
-    const handleMouseDown = (e) => {
-      isDown.current = true;
-      slider.classList.add('active-drag');
-      startX.current = e.pageX - slider.offsetLeft;
-      scrollLeft.current = slider.scrollLeft;
-    };
+  const handleMouseUp = useCallback(() => {
+    const el = elRef.current;
+    if (!el) return;
+    isDown.current = false;
+    el.classList.remove('active-drag');
+  }, []);
 
-    const handleMouseLeave = () => {
-      isDown.current = false;
-      slider.classList.remove('active-drag');
-    };
+  const handleMouseMove = useCallback((e) => {
+    if (!isDown.current) return;
+    const el = elRef.current;
+    if (!el) return;
+    e.preventDefault();
+    const dx = e.pageX - startPos.current.x;
+    const dy = e.pageY - startPos.current.y;
 
-    const handleMouseUp = () => {
-      isDown.current = false;
-      slider.classList.remove('active-drag');
-    };
+    if (direction === 'horizontal' || direction === 'both') {
+      el.scrollLeft = scrollPos.current.x - dx * speed;
+    }
+    if (direction === 'vertical' || direction === 'both') {
+      el.scrollTop = scrollPos.current.y - dy * speed;
+    }
+  }, [direction, speed]);
 
-    const handleMouseMove = (e) => {
-      if (!isDown.current) return;
-      e.preventDefault();
-      const x = e.pageX - slider.offsetLeft;
-      const walk = (x - startX.current) * 2; // scroll-fast
-      slider.scrollLeft = scrollLeft.current - walk;
-    };
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
 
-    slider.addEventListener('mousedown', handleMouseDown);
-    slider.addEventListener('mouseleave', handleMouseLeave);
-    slider.addEventListener('mouseup', handleMouseUp);
-    slider.addEventListener('mousemove', handleMouseMove);
+    elRef.current = el;
+    isDown.current = false;
+
+    el.addEventListener('mousedown', handleMouseDown);
+    document.addEventListener('mouseup', handleMouseUp);
+    document.addEventListener('mousemove', handleMouseMove);
 
     return () => {
-      slider.removeEventListener('mousedown', handleMouseDown);
-      slider.removeEventListener('mouseleave', handleMouseLeave);
-      slider.removeEventListener('mouseup', handleMouseUp);
-      slider.removeEventListener('mousemove', handleMouseMove);
+      el.removeEventListener('mousedown', handleMouseDown);
+      document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener('mousemove', handleMouseMove);
+      el.classList.remove('active-drag');
     };
-  }, [ref]);
+  }, [ref, handleMouseDown, handleMouseUp, handleMouseMove]);
 };
