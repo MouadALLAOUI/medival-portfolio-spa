@@ -7,41 +7,19 @@ import { X, ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from 'lucide-react';
 import styles from './CrmefGalleryPage.module.scss';
 
 const IMAGES = [
-  {
-    src: '/media/CRMEF/S2/imgs/WhatsApp Image 2026-04-17 at 14.45.25.jpeg',
-    titleKey: 'CRMEF.gallery.teachingSession.title',
-    descKey: 'CRMEF.gallery.teachingSession.desc',
-    defaultTitle: 'Teaching Practice at Annahda Middle School',
-    defaultDesc: 'Conducting computer science sessions with middle school students during the formation.',
-  },
-  {
-    src: '/media/CRMEF/S1/imgs/unnamed.png',
-    titleKey: 'CRMEF.gallery.groupWork.title',
-    descKey: 'CRMEF.gallery.groupWork.desc',
-    defaultTitle: 'Group Work & Collaborative Seminars',
-    defaultDesc: 'Working together with peers at the Regional Center (CRMEF) on pedagogical materials.',
-  },
-  {
-    src: '/media/CRMEF/S1/imgs/NotebookLM Mind Map.png',
-    titleKey: 'CRMEF.gallery.mindMap1.title',
-    descKey: 'CRMEF.gallery.mindMap1.desc',
-    defaultTitle: 'NotebookLM Pedagogical Mind Map',
-    defaultDesc: 'A mind map generated to structure the teaching framework of classroom management.',
-  },
-  {
-    src: '/media/CRMEF/S1/imgs/NotebookLM Mind Map (2).png',
-    titleKey: 'CRMEF.gallery.mindMap2.title',
-    descKey: 'CRMEF.gallery.mindMap2.desc',
-    defaultTitle: 'Instructional Design Blueprint',
-    defaultDesc: 'Mind map showing the breakdown of professional learning domains and student assessment cycles.',
-  },
-  {
-    src: '/media/CRMEF/S1/imgs/Gemini_Generated_Image_pkz39rpkz39rpkz3.png',
-    titleKey: 'CRMEF.gallery.classroomVisual.title',
-    descKey: 'CRMEF.gallery.classroomVisual.desc',
-    defaultTitle: 'Visualizing Classrooms',
-    defaultDesc: 'A model representation of the computer science lab environment at Annahda.',
-  }
+  { src: '/media/CRMEF/GAL/WhatsApp Image 2026-05-25 at 17.47.28.jpeg', defaultTitle: 'CRMEF Formation Moment', defaultDesc: 'A captured moment from the CRMEF teacher training program.' },
+  { src: '/media/CRMEF/GAL/WhatsApp Image 2026-05-25 at 17.47.26 (1).jpeg', defaultTitle: 'Pedagogical Session', defaultDesc: 'Session documenting the pedagogical approach at CRMEF.' },
+  { src: '/media/CRMEF/GAL/WhatsApp Image 2026-05-23 at 21.33.49.jpeg', defaultTitle: 'Training Workshop', defaultDesc: 'Workshop activity during the teacher training program.' },
+  { src: '/media/CRMEF/GAL/WhatsApp Image 2026-04-15 at 11.18.56.jpeg', defaultTitle: 'Classroom Activity', defaultDesc: 'Classroom activity at Annahda Middle School.' },
+  { src: '/media/CRMEF/GAL/WhatsApp Image 2026-03-11 at 20.29.34.jpeg', defaultTitle: 'Group Collaboration', defaultDesc: 'Collaborative work during the CRMEF formation.' },
+  { src: '/media/CRMEF/GAL/WhatsApp Image 2026-03-10 at 00.16.34.jpeg', defaultTitle: 'Formation Materials', defaultDesc: 'Materials and resources used during the training.' },
+  { src: '/media/CRMEF/GAL/WhatsApp Image 2026-03-09 at 16.43.17.jpeg', defaultTitle: 'Teaching Practice', defaultDesc: 'Practice teaching session at the regional center.' },
+  { src: '/media/CRMEF/GAL/WhatsApp Image 2026-03-04 at 11.36.00.jpeg', defaultTitle: 'Academic Meeting', defaultDesc: 'Meeting or seminar at the CRMEF center.' },
+  { src: '/media/CRMEF/GAL/IMG_20260427_114855.jpg', defaultTitle: 'Formation Day', defaultDesc: 'A day in the life of the CRMEF teacher training program.' },
+  { src: '/media/CRMEF/GAL/IMG_20260415_110143.jpg.jpeg', defaultTitle: 'Student Interaction', defaultDesc: 'Interacting with students during practice sessions.' },
+  { src: '/media/CRMEF/GAL/IMG-20260309-WA0116.jpg.jpeg', defaultTitle: 'Group Photo', defaultDesc: 'Group photo from the CRMEF formation.' },
+  { src: '/media/CRMEF/GAL/IMG-20260309-WA0109.jpg.jpeg', defaultTitle: 'Seminar Moment', defaultDesc: 'Moment captured during a pedagogical seminar.' },
+  { src: '/media/CRMEF/GAL/IMG-20260309-WA0107.jpg.jpeg', defaultTitle: 'Training Activity', defaultDesc: 'Activity from the CRMEF teacher training program.' },
 ];
 
 const CrmefGalleryPage = () => {
@@ -95,8 +73,8 @@ const CrmefGalleryPage = () => {
 
       <div className={styles.grid}>
         {IMAGES.map((img, index) => {
-          const title = t(img.titleKey) !== img.titleKey ? t(img.titleKey) : img.defaultTitle;
-          const desc = t(img.descKey) !== img.descKey ? t(img.descKey) : img.defaultDesc;
+          const title = img.defaultTitle;
+          const desc = img.defaultDesc;
 
           return (
             <motion.div
@@ -126,8 +104,8 @@ const CrmefGalleryPage = () => {
       <AnimatePresence>
         {lightboxIndex !== null && (() => {
           const currentImg = IMAGES[lightboxIndex];
-          const title = t(currentImg.titleKey) !== currentImg.titleKey ? t(currentImg.titleKey) : currentImg.defaultTitle;
-          const desc = t(currentImg.descKey) !== currentImg.descKey ? t(currentImg.descKey) : currentImg.defaultDesc;
+          const title = currentImg.defaultTitle;
+          const desc = currentImg.defaultDesc;
 
           return (
             <motion.div

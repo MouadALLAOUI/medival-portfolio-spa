@@ -5,7 +5,7 @@
   <link>https://mouad-portfolio.netlify.app/blogs</link>
   <description>Technical scrolls and medieval musings on web development and cybersecurity.</description>
   <language>en-us</language>
-  <lastBuildDate>Fri, 05 Jun 2026 19:11:53 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 08 Jun 2026 21:50:24 GMT</lastBuildDate>
   <atom:link href="https://mouad-portfolio.netlify.app/rss.xml" rel="self" type="application/rss+xml" />
   
     <item>
@@ -87,6 +87,766 @@
       <pubDate>Sun, 31 Aug 2025 23:00:00 GMT</pubDate>
       <description><![CDATA[Learn how to publish your HTML/CSS/JS site online using free platforms like GitHub Pages and Netlify.]]></description>
       <category>Deployment, Hosting, Beginner</category>
+    </item>
+    <item>
+      <title><![CDATA[Logo Programming: Basic Syntax]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sun, 04 Jan 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Learn the fundamentals of Logo programming and its simple, turtle-based syntax.]]></description>
+      <category>Logo, Programming, Beginner</category>
+    </item>
+    <item>
+      <title><![CDATA[Algorithm: What is an Algorithm and Pseudocode]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Tue, 06 Jan 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Understand what algorithms are and how pseudocode helps you plan solutions before coding.]]></description>
+      <category>Algorithm, Basics, Computer Science</category>
+    </item>
+    <item>
+      <title><![CDATA[Algorithm 2: Variables — Write and Read]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Thu, 08 Jan 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Explore how variables store and retrieve data within algorithms.]]></description>
+      <category>Algorithm, Variables, Basics</category>
+    </item>
+    <item>
+      <title><![CDATA[Algorithm 3: Conditional Operations]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sun, 11 Jan 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Learn how if/else statements and conditionals direct the flow of an algorithm.]]></description>
+      <category>Algorithm, Conditionals, Logic</category>
+    </item>
+    <item>
+      <title><![CDATA[Algorithm 4: Loops]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Tue, 13 Jan 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Master loops to repeat actions efficiently in your algorithms.]]></description>
+      <category>Algorithm, Loops, Programming</category>
+    </item>
+    <item>
+      <title><![CDATA[Algorithm 5: Arrays and Lists]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Fri, 16 Jan 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Discover how arrays and lists organize and manage collections of data.]]></description>
+      <category>Algorithm, Data Structures, Arrays</category>
+    </item>
+    <item>
+      <title><![CDATA[Algorithm 6: Functions and Procedures]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Mon, 19 Jan 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Learn how functions and procedures break complex problems into reusable blocks.]]></description>
+      <category>Algorithm, Functions, Programming</category>
+    </item>
+    <item>
+      <title><![CDATA[Algorithm 7: Recursion]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Wed, 21 Jan 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Understand recursion and how functions can call themselves to solve problems.]]></description>
+      <category>Algorithm, Recursion, Advanced</category>
+    </item>
+    <item>
+      <title><![CDATA[Algorithm 8: Sorting Algorithms]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sat, 24 Jan 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Compare popular sorting algorithms like bubble sort, merge sort, and quicksort.]]></description>
+      <category>Algorithm, Sorting, Data Structures</category>
+    </item>
+    <item>
+      <title><![CDATA[Algorithm 9: Searching Algorithms]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Tue, 27 Jan 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Explore searching techniques including linear search and binary search.]]></description>
+      <category>Algorithm, Searching, Data Structures</category>
+    </item>
+    <item>
+      <title><![CDATA[Algorithm 10: Time and Space Complexity (Big O)]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Thu, 29 Jan 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Learn how Big O notation measures algorithm efficiency and performance.]]></description>
+      <category>Algorithm, Big O, Complexity</category>
+    </item>
+    <item>
+      <title><![CDATA[Flowcharts: Visualizing Logic]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sun, 01 Feb 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Use flowcharts to map out algorithm steps and visualize decision logic.]]></description>
+      <category>Flowcharts, Logic, Basics</category>
+    </item>
+    <item>
+      <title><![CDATA[Debugging: How to Find and Fix Bugs]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Wed, 04 Feb 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Learn systematic techniques to identify, trace, and fix bugs in your code.]]></description>
+      <category>Debugging, Tools, Programming</category>
+    </item>
+    <item>
+      <title><![CDATA[HTML: Your First Web Page from Scratch]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sat, 07 Feb 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Build your very first HTML web page from the ground up with clean structure.]]></description>
+      <category>HTML, Beginner, Web Development</category>
+    </item>
+    <item>
+      <title><![CDATA[HTML 2: Forms, Inputs, and User Interaction]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Tue, 10 Feb 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Create interactive forms to collect user data with various input types.]]></description>
+      <category>HTML, Forms, Web Development</category>
+    </item>
+    <item>
+      <title><![CDATA[HTML 3: Semantic HTML and Accessibility]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Fri, 13 Feb 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Write meaningful HTML with semantic tags to improve accessibility and SEO.]]></description>
+      <category>HTML, Accessibility, Semantic</category>
+    </item>
+    <item>
+      <title><![CDATA[CSS: Styling Your First Website]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Tue, 17 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Apply your first CSS styles to bring color, layout, and personality to your site.]]></description>
+      <category>CSS, Beginner, Styling</category>
+    </item>
+    <item>
+      <title><![CDATA[CSS 2: Flexbox — The Complete Guide]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Fri, 20 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Master Flexbox layout to align and distribute space among items in a container.]]></description>
+      <category>CSS, Flexbox, Layout</category>
+    </item>
+    <item>
+      <title><![CDATA[CSS 3: CSS Grid Layout for Modern Pages]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Mon, 23 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Build complex two-dimensional layouts with CSS Grid for modern web pages.]]></description>
+      <category>CSS, Grid, Layout</category>
+    </item>
+    <item>
+      <title><![CDATA[CSS 4: Responsive Design with Media Queries]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Thu, 26 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Make your website adapt to any screen size using CSS media queries.]]></description>
+      <category>CSS, Responsive, Mobile</category>
+    </item>
+    <item>
+      <title><![CDATA[CSS 5: Animations and Transitions]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sat, 28 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Add smooth animations and transitions to enhance user experience.]]></description>
+      <category>CSS, Animations, Transitions</category>
+    </item>
+    <item>
+      <title><![CDATA[CSS 6: CSS Variables and Custom Properties]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Use CSS variables to create maintainable, reusable, and themeable styles.]]></description>
+      <category>CSS, Variables, Theming</category>
+    </item>
+    <item>
+      <title><![CDATA[JavaScript: Adding Interactivity to Your Site]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Wed, 04 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Make your static pages interactive with basic JavaScript event handling.]]></description>
+      <category>JavaScript, Beginner, Interactivity</category>
+    </item>
+    <item>
+      <title><![CDATA[JavaScript 2: DOM Manipulation]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sat, 07 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Learn to select, create, and modify DOM elements to build dynamic pages.]]></description>
+      <category>JavaScript, DOM, Dynamic</category>
+    </item>
+    <item>
+      <title><![CDATA[JavaScript 3: Events and Event Handling]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Handle user interactions with event listeners, bubbling, and delegation.]]></description>
+      <category>JavaScript, Events, DOM</category>
+    </item>
+    <item>
+      <title><![CDATA[JavaScript 4: Fetch API and Async Programming]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Fetch data from APIs and understand async/await for non-blocking operations.]]></description>
+      <category>JavaScript, Async, API</category>
+    </item>
+    <item>
+      <title><![CDATA[JavaScript 5: ES6+ Features You Need to Know]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Explore modern JavaScript features including arrow functions, destructuring, and modules.]]></description>
+      <category>JavaScript, ES6, Modern</category>
+    </item>
+    <item>
+      <title><![CDATA[JavaScript 6: JSON — Data Exchange Format]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Thu, 19 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Learn JSON syntax and how to parse and stringify data in JavaScript.]]></description>
+      <category>JavaScript, JSON, Data</category>
+    </item>
+    <item>
+      <title><![CDATA[Git: Version Control for Beginners]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sun, 22 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Start tracking changes in your code with Git's essential commands.]]></description>
+      <category>Git, Version Control, Beginner</category>
+    </item>
+    <item>
+      <title><![CDATA[Git 2: Branching, Merging, and Collaboration]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Tue, 24 Mar 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Use branches to work on features in parallel and merge changes safely.]]></description>
+      <category>Git, Branching, Collaboration</category>
+    </item>
+    <item>
+      <title><![CDATA[GitHub: Hosting Your First Repository]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Fri, 27 Mar 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Create a GitHub repository and push your project to the cloud.]]></description>
+      <category>GitHub, Hosting, Pages</category>
+    </item>
+    <item>
+      <title><![CDATA[VS Code: Essential Extensions and Shortcuts]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Mon, 30 Mar 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Boost your productivity with must-have extensions and keyboard shortcuts in VS Code.]]></description>
+      <category>VS Code, Tools, Extensions</category>
+    </item>
+    <item>
+      <title><![CDATA[Terminal/Command Line: Basic Commands Every Developer Should Know]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Wed, 01 Apr 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Master essential terminal commands for navigating files, directories, and system tasks.]]></description>
+      <category>Terminal, CLI, Commands</category>
+    </item>
+    <item>
+      <title><![CDATA[How the Internet Works: From Browser to Server]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sat, 04 Apr 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Understand the journey of data from your browser through networks to web servers.]]></description>
+      <category>Internet, Networking, HTTP</category>
+    </item>
+    <item>
+      <title><![CDATA[Python: Getting Started]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Tue, 07 Apr 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Install Python and write your first program in this beginner-friendly guide.]]></description>
+      <category>Python, Beginner, Setup</category>
+    </item>
+    <item>
+      <title><![CDATA[Python 2: Data Types and Variables]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Fri, 10 Apr 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Learn about Python's core data types and how to use variables effectively.]]></description>
+      <category>Python, Data Types, Variables</category>
+    </item>
+    <item>
+      <title><![CDATA[Python 3: Control Flow and Loops]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Mon, 13 Apr 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Use conditionals and loops to control program execution in Python.]]></description>
+      <category>Python, Loops, Conditionals</category>
+    </item>
+    <item>
+      <title><![CDATA[Python 4: Functions and Modules]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Thu, 16 Apr 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Write reusable functions and organize code with Python modules.]]></description>
+      <category>Python, Functions, Modules</category>
+    </item>
+    <item>
+      <title><![CDATA[Python 5: File Handling]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sun, 19 Apr 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Read from and write to files using Python's built-in file handling capabilities.]]></description>
+      <category>Python, Files, I/O</category>
+    </item>
+    <item>
+      <title><![CDATA[Python 6: Object-Oriented Programming (OOP)]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Wed, 22 Apr 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Understand classes, objects, inheritance, and encapsulation in Python.]]></description>
+      <category>Python, OOP, Classes</category>
+    </item>
+    <item>
+      <title><![CDATA[Python 7: Working with Libraries]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sat, 25 Apr 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Install and use third-party libraries with pip to extend Python's functionality.]]></description>
+      <category>Python, Libraries, pip</category>
+    </item>
+    <item>
+      <title><![CDATA[Java: Introduction and Setup]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Tue, 28 Apr 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Get started with Java by installing the JDK and writing your first program.]]></description>
+      <category>Java, Beginner, Setup</category>
+    </item>
+    <item>
+      <title><![CDATA[Java 2: OOP in Java — Classes and Objects]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Fri, 01 May 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Build object-oriented programs with classes, objects, and methods in Java.]]></description>
+      <category>Java, OOP, Classes</category>
+    </item>
+    <item>
+      <title><![CDATA[Java 3: Collections Framework]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Mon, 04 May 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Use Java's Collections framework to store and manipulate groups of objects.]]></description>
+      <category>Java, Collections, Data Structures</category>
+    </item>
+    <item>
+      <title><![CDATA[C Language: Basics and Setup]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Thu, 07 May 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Set up your C development environment and learn the language fundamentals.]]></description>
+      <category>C, Beginner, Setup</category>
+    </item>
+    <item>
+      <title><![CDATA[C 2: Pointers and Memory Management]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sun, 10 May 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Understand pointers, memory addresses, and dynamic allocation in C.]]></description>
+      <category>C, Pointers, Memory</category>
+    </item>
+    <item>
+      <title><![CDATA[C 3: Structures and File I/O]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Wed, 13 May 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Use structures to group data and perform file operations in C.]]></description>
+      <category>C, Structures, Files</category>
+    </item>
+    <item>
+      <title><![CDATA[PHP: Server-Side Scripting Basics]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sat, 16 May 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Learn the basics of PHP for building dynamic server-side web applications.]]></description>
+      <category>PHP, Backend, Beginner</category>
+    </item>
+    <item>
+      <title><![CDATA[PHP 2: Working with MySQL]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Tue, 19 May 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Connect PHP to a MySQL database and perform CRUD operations.]]></description>
+      <category>PHP, MySQL, Database</category>
+    </item>
+    <item>
+      <title><![CDATA[SQL: Database Queries for Beginners]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Fri, 22 May 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Write your first SQL queries to retrieve, filter, and sort data from a database.]]></description>
+      <category>SQL, Database, Beginner</category>
+    </item>
+    <item>
+      <title><![CDATA[SQL 2: JOINs, Subqueries, and Indexes]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Mon, 25 May 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Combine tables with JOINs and optimize queries with subqueries and indexes.]]></description>
+      <category>SQL, JOINs, Database</category>
+    </item>
+    <item>
+      <title><![CDATA[SQL 3: Database Design and Normalization]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Thu, 28 May 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Design efficient databases using normalization principles to reduce redundancy.]]></description>
+      <category>SQL, Design, Normalization</category>
+    </item>
+    <item>
+      <title><![CDATA[MS Excel: Starting a New Sheet]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sun, 31 May 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Create and set up a new Excel spreadsheet for organizing your data.]]></description>
+      <category>Excel, Beginner, Spreadsheet</category>
+    </item>
+    <item>
+      <title><![CDATA[MS Excel 2: Formulas and Functions]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Wed, 03 Jun 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Use essential Excel formulas and functions to automate calculations.]]></description>
+      <category>Excel, Formulas, Spreadsheet</category>
+    </item>
+    <item>
+      <title><![CDATA[MS Excel 3: Charts and Data Visualization]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sat, 06 Jun 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Create charts and graphs to visualize your data in Excel.]]></description>
+      <category>Excel, Charts, Visualization</category>
+    </item>
+    <item>
+      <title><![CDATA[MS Excel 4: Pivot Tables]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Tue, 09 Jun 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Summarize and analyze large datasets with powerful pivot tables.]]></description>
+      <category>Excel, Pivot Tables, Data</category>
+    </item>
+    <item>
+      <title><![CDATA[MS Excel 5: Advanced Functions]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Fri, 12 Jun 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Master VLOOKUP, INDEX-MATCH, and other advanced Excel functions.]]></description>
+      <category>Excel, VLOOKUP, Advanced</category>
+    </item>
+    <item>
+      <title><![CDATA[MS Word: Formatting and Templates]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Mon, 15 Jun 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Format documents professionally and use templates to save time in Word.]]></description>
+      <category>Word, Formatting, Templates</category>
+    </item>
+    <item>
+      <title><![CDATA[MS PowerPoint: Creating Presentations]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Thu, 18 Jun 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Design engaging slide decks with animations, layouts, and visual elements.]]></description>
+      <category>PowerPoint, Presentations, Design</category>
+    </item>
+    <item>
+      <title><![CDATA[Google Sheets: Collaboration and Basics]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sun, 21 Jun 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Get started with Google Sheets and collaborate in real time with others.]]></description>
+      <category>Google Sheets, Collaboration, Spreadsheet</category>
+    </item>
+    <item>
+      <title><![CDATA[Notion: Organizing Your Workflow]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Wed, 24 Jun 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Use Notion to organize projects, notes, and tasks in one workspace.]]></description>
+      <category>Notion, Productivity, Organization</category>
+    </item>
+    <item>
+      <title><![CDATA[Figma: UI/UX Design Basics]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sat, 27 Jun 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Learn the fundamentals of UI/UX design using Figma's powerful tools.]]></description>
+      <category>Figma, UI/UX, Design</category>
+    </item>
+    <item>
+      <title><![CDATA[Docker: Containerization for Beginners]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Tue, 30 Jun 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Package and run applications in isolated containers with Docker.]]></description>
+      <category>Docker, DevOps, Containers</category>
+    </item>
+    <item>
+      <title><![CDATA[Linux: Essential Commands]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Fri, 03 Jul 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Navigate the Linux terminal with essential commands for file and system management.]]></description>
+      <category>Linux, Commands, CLI</category>
+    </item>
+    <item>
+      <title><![CDATA[Linux 2: Shell Scripting Basics]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Mon, 06 Jul 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Write shell scripts to automate tasks and streamline your Linux workflow.]]></description>
+      <category>Linux, Shell, Scripting</category>
+    </item>
+    <item>
+      <title><![CDATA[What is a Computer? Hardware vs Software]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Thu, 09 Jul 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Understand the difference between computer hardware and software components.]]></description>
+      <category>Computer, Hardware, Software</category>
+    </item>
+    <item>
+      <title><![CDATA[Operating Systems: How They Work]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sun, 12 Jul 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Learn how operating systems manage hardware resources and run programs.]]></description>
+      <category>OS, Operating Systems, Computer</category>
+    </item>
+    <item>
+      <title><![CDATA[Computer Networks: The Basics (IP, DNS, HTTP)]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Wed, 15 Jul 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Explore fundamental networking concepts including IP addresses, DNS, and HTTP protocols.]]></description>
+      <category>Networking, IP, DNS</category>
+    </item>
+    <item>
+      <title><![CDATA[Computer Networks 2: OSI Model Explained]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sat, 18 Jul 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Break down the OSI model's seven layers and understand how data travels across networks.]]></description>
+      <category>Networking, OSI, Layers</category>
+    </item>
+    <item>
+      <title><![CDATA[Data Structures: Arrays, Linked Lists, Stacks, Queues]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Tue, 21 Jul 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Understand the most fundamental data structures and when to use each one.]]></description>
+      <category>Data Structures, Arrays, Linked Lists</category>
+    </item>
+    <item>
+      <title><![CDATA[Data Structures 2: Trees and Graphs]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Fri, 24 Jul 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Explore hierarchical and connected data structures like trees and graphs.]]></description>
+      <category>Data Structures, Trees, Graphs</category>
+    </item>
+    <item>
+      <title><![CDATA[Object-Oriented Programming: The Four Pillars]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Mon, 27 Jul 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Master encapsulation, abstraction, inheritance, and polymorphism in OOP.]]></description>
+      <category>OOP, Concepts, Programming</category>
+    </item>
+    <item>
+      <title><![CDATA[Design Patterns Every Developer Should Know]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Thu, 30 Jul 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Learn essential design patterns that solve common software architecture problems.]]></description>
+      <category>Design Patterns, Architecture, Programming</category>
+    </item>
+    <item>
+      <title><![CDATA[Binary and Number Systems Explained]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sun, 02 Aug 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Understand binary, octal, hexadecimal, and how computers represent numbers.]]></description>
+      <category>Binary, Number Systems, Computer Science</category>
+    </item>
+    <item>
+      <title><![CDATA[Boolean Logic and Logic Gates]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Wed, 05 Aug 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Learn how AND, OR, NOT gates form the foundation of digital circuits.]]></description>
+      <category>Boolean, Logic, Circuits</category>
+    </item>
+    <item>
+      <title><![CDATA[Compilers vs Interpreters: What's the Difference]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sat, 08 Aug 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Compare how compilers and interpreters translate and execute code.]]></description>
+      <category>Compilers, Interpreters, Concepts</category>
+    </item>
+    <item>
+      <title><![CDATA[Cybersecurity Basics: Protecting Your Data]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Tue, 11 Aug 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Learn the essential practices to keep your data safe from cyber threats.]]></description>
+      <category>Cybersecurity, Security, Beginner</category>
+    </item>
+    <item>
+      <title><![CDATA[Passwords and Authentication: Best Practices]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Fri, 14 Aug 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Create strong passwords and enable multi-factor authentication for better security.]]></description>
+      <category>Security, Passwords, 2FA</category>
+    </item>
+    <item>
+      <title><![CDATA[Network Security: Firewalls and Encryption]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Mon, 17 Aug 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Protect your network with firewalls and understand how encryption keeps data safe.]]></description>
+      <category>Security, Firewalls, Encryption</category>
+    </item>
+    <item>
+      <title><![CDATA[Common Web Vulnerabilities (XSS, SQL Injection)]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Thu, 20 Aug 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Identify and understand the most common web security vulnerabilities and how to prevent them.]]></description>
+      <category>Security, XSS, SQL Injection</category>
+    </item>
+    <item>
+      <title><![CDATA[Ethical Hacking: An Introduction]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sun, 23 Aug 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Discover the principles and practices of ethical hacking and penetration testing.]]></description>
+      <category>Hacking, Security, Ethical</category>
+    </item>
+    <item>
+      <title><![CDATA[Kali Linux: Getting Started with Security Tools]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Wed, 26 Aug 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Set up Kali Linux and explore its powerful suite of security testing tools.]]></description>
+      <category>Kali Linux, Security, Tools</category>
+    </item>
+    <item>
+      <title><![CDATA[Privacy on the Internet: What You Should Know]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sat, 29 Aug 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Understand online privacy risks and learn how to protect your personal information.]]></description>
+      <category>Privacy, Security, Internet</category>
+    </item>
+    <item>
+      <title><![CDATA[How to Write a Lesson Plan: Step by Step]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Tue, 01 Sep 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Follow a structured approach to create effective lesson plans for any subject.]]></description>
+      <category>Pedagogy, Lesson Plan, Teaching</category>
+    </item>
+    <item>
+      <title><![CDATA[Classroom Management Strategies That Work]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Fri, 04 Sep 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Implement proven strategies to maintain a productive and respectful learning environment.]]></description>
+      <category>Pedagogy, Classroom, Management</category>
+    </item>
+    <item>
+      <title><![CDATA[Differentiated Teaching: Reaching Every Student]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Mon, 07 Sep 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Adapt your teaching methods to meet the diverse needs of all learners.]]></description>
+      <category>Pedagogy, Differentiation, Teaching</category>
+    </item>
+    <item>
+      <title><![CDATA[Using ICT in Education: Practical Tips]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Thu, 10 Sep 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Integrate technology effectively into your teaching with practical ICT strategies.]]></description>
+      <category>ICT, Education, Technology</category>
+    </item>
+    <item>
+      <title><![CDATA[Formative Assessment: Tools and Techniques]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sun, 13 Sep 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Use formative assessments to monitor student progress and guide instruction.]]></description>
+      <category>Assessment, Pedagogy, Evaluation</category>
+    </item>
+    <item>
+      <title><![CDATA[Bloom's Taxonomy Applied to Computer Science]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Wed, 16 Sep 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Apply Bloom's Taxonomy levels to design CS curricula that develop critical thinking.]]></description>
+      <category>Bloom, Pedagogy, CS Education</category>
+    </item>
+    <item>
+      <title><![CDATA[Teaching Programming to Beginners: Common Mistakes]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sat, 19 Sep 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Avoid pitfalls when teaching programming and help beginners build confidence.]]></description>
+      <category>Teaching, Programming, Pedagogy</category>
+    </item>
+    <item>
+      <title><![CDATA[Gamification in the Classroom]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Tue, 22 Sep 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Use game elements to boost engagement and motivation in educational settings.]]></description>
+      <category>Gamification, Teaching, Engagement</category>
+    </item>
+    <item>
+      <title><![CDATA[Student Motivation: What Works and What Doesn't]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Fri, 25 Sep 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Understand the science behind student motivation and apply effective strategies.]]></description>
+      <category>Motivation, Teaching, Pedagogy</category>
+    </item>
+    <item>
+      <title><![CDATA[Reflective Teaching: Improving Through Self-Evaluation]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Mon, 28 Sep 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Develop reflective practices to continuously improve your teaching effectiveness.]]></description>
+      <category>Reflection, Teaching, Growth</category>
+    </item>
+    <item>
+      <title><![CDATA[Problem-Solving Techniques for Developers]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Thu, 01 Oct 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Sharpen your problem-solving skills with structured approaches and mental models.]]></description>
+      <category>Problem Solving, Thinking, Development</category>
+    </item>
+    <item>
+      <title><![CDATA[How to Learn Programming Effectively]]></title>
+      <link>https://mouad-portfolio.netlify.app/blogs/undefined</link>
+      <guid>https://mouad-portfolio.netlify.app/blogs/undefined</guid>
+      <pubDate>Sun, 04 Oct 2026 23:00:00 GMT</pubDate>
+      <description><![CDATA[Discover proven strategies and habits to accelerate your programming learning journey.]]></description>
+      <category>Learning, Programming, Tips</category>
     </item>
 </channel>
 </rss>

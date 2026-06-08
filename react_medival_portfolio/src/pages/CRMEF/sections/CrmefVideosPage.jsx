@@ -3,7 +3,7 @@ import React, { lazy, Suspense, useCallback, useEffect, useMemo, useState } from
 // import { getAssetById } from '../../../data/mediaManager';
 import { Film } from 'lucide-react';
 import { crmefVideos } from '../../../data/crmef.data';
-import CrmefAcademyHome from './CrmefAcademyHome';
+
 import { useSettings } from '../../../lib/useSettings';
 import { useAchievements } from '../../../lib/useAchievements';
 import useDebounce from './hooks/useDebounce';
@@ -22,7 +22,7 @@ const DEFAULT_FAVORITES_LABEL = 'Bookmarks';
 export default function CrmefVideosPage() {
   const { t } = useSettings();
   const { unlockAchievement } = useAchievements();
-  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [selectedVideo, setSelectedVideo] = useState(() => crmefVideos[0] || null);
   const [rawSearch, setRawSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
   const [sortOption, setSortOption] = useState('newest');
@@ -290,7 +290,7 @@ export default function CrmefVideosPage() {
 
       <div className={styles.layout}>
         <main className={styles.playerColumn}>
-          {selectedVideo ? (
+          {selectedVideo && (
             <>
               <Suspense fallback={<div className={styles.skeleton}>Loading video player…</div>}>
                 <VideoPlayer
@@ -325,14 +325,6 @@ export default function CrmefVideosPage() {
                 <RelatedVideos relatedVideos={relatedVideos} onSelectVideo={handleSelectVideo} />
               </Suspense>
             </>
-          ) : (
-            <CrmefAcademyHome
-              featured={featuredVideos}
-              onStart={(video) => handleSelectVideo(video || crmefVideos[0])}
-              onBrowse={() => {
-                document.getElementById('crmef-sidebar')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            />
           )}
         </main>
 

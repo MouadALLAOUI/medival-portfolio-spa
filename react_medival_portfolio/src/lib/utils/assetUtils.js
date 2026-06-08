@@ -65,21 +65,20 @@ function getFallbackStructure(type, missingId = 'unknown') {
 }
 
 // Eagerly import all markdown files at build time using Vite's import.meta.glob
-// Use relative path from this file (src/lib/utils/) up to project root, then into public/content
+// Files live in src/content/ so Vite can bundle them
 const markdownModules = import.meta.glob(
-    '../../../public/content/**/*.md',
+    '../../content/**/*.md',
     { query: '?raw', import: 'default', eager: true }
 );
 
 // Build a lookup map: normalized path -> content
-// Glob returns keys like "../../../public/content/projects/foo.md" (Windows uses backslashes)
+// Glob returns keys like "../../content/projects/foo.md" (Windows uses backslashes)
 // We need to normalize to "/content/projects/foo.md" to match mediaRegistry.markdown paths
 const markdownContentMap = {};
 for (const [rawPath, content] of Object.entries(markdownModules)) {
-    // Extract everything after "public" and normalize separators
-    const match = rawPath.match(/public[/\\](.+)/);
+    const match = rawPath.match(/content[/\\](.+)/);
     if (match) {
-        const normalizedPath = '/' + match[1].replace(/\\/g, '/');
+        const normalizedPath = '/content/' + match[1].replace(/\\/g, '/');
         markdownContentMap[normalizedPath] = content;
     }
 }

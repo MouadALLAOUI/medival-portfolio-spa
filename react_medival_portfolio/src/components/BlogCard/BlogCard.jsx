@@ -19,8 +19,11 @@ const getCoverGradient = (id) => GRADIENTS[(id || 0) % GRADIENTS.length];
 export default function BlogCard({ blog, isBookmarked, onToggleBookmark }) {
   const { t } = useSettings();
   const readTime = calculateReadingTime(blog.blogcontent?.content);
-  const translatedTitle = t(`DATA.blogs.${blog.id}.title`) || blog.title;
-  const translatedDesc = t(`DATA.blogs.${blog.id}.desc`) || blog.desc;
+  const rawTitle = t(`DATA.blogs.${blog.id}.title`);
+  const rawDesc = t(`DATA.blogs.${blog.id}.desc`);
+  const lastSegment = (key) => key.split('.').pop();
+  const translatedTitle = (rawTitle && rawTitle !== lastSegment(`DATA.blogs.${blog.id}.title`)) ? rawTitle : blog.title;
+  const translatedDesc = (rawDesc && rawDesc !== lastSegment(`DATA.blogs.${blog.id}.desc`)) ? rawDesc : blog.desc;
 
   const cardConfig = {
     baseClass: "blog-card",

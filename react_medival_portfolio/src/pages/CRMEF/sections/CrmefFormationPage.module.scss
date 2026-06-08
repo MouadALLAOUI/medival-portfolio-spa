@@ -1,0 +1,213 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.section {
+  width: 100%;
+}
+
+.tabsNav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.tabBtn {
+  background: transparent;
+  border: 2px solid var(--border-strong);
+  color: var(--text-primary);
+  padding: 0.8rem 2rem;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+
+  &:hover {
+    background: var(--bg-tertiary);
+  }
+
+  &.activeTab {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--text-inverse);
+  }
+
+  :global([data-theme="medieval"]) & {
+    border-color: var(--border-strong);
+
+    &:hover {
+      background: rgba(212, 175, 55, 0.05);
+    }
+
+    &.activeTab {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--dark-brown-val);
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+.tabContent {
+  width: 100%;
+  animation: fadeIn 0.4s ease;
+}
+
+.definitionSection,
+.gratitudeSection,
+.mapSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.textBlock {
+  width: 100%;
+}
+
+.tabSubTitle {
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 1.35rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  padding-bottom: 4px;
+
+  :global([data-theme="medieval"]) & {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+    font-family: var(--font-cinzel);
+  }
+}
+
+.tabText {
+  font-family: var(--font-primary);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  text-align: justify;
+  margin-bottom: 1rem;
+  white-space: pre-line;
+
+  :global([data-theme="medieval"]) & {
+    font-family: var(--font-body);
+  }
+}
+
+.imageWrapper {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 3px solid var(--border-strong);
+  box-shadow: var(--card-shadow);
+
+  :global([data-theme="medieval"]) & {
+    border-color: var(--gold);
+  }
+}
+
+.sectionImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.acknowledgmentsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.ackCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background: var(--bg-tertiary);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  :global([data-theme="medieval"]) & {
+    background: var(--bg-card);
+    border-color: var(--border-strong);
+  }
+}
+
+.ackName {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+
+  :global([data-theme="medieval"]) & {
+    font-family: var(--font-cinzel);
+    color: var(--gold);
+  }
+}
+
+.ackRole {
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.mapAddress {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-size: 1.05rem;
+}
+
+.addressLabel {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.addressValue {
+  color: var(--accent);
+  font-weight: 600;
+
+  :global([data-theme="medieval"]) & {
+    color: var(--gold);
+  }
+}
+
+.mapEmbed {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 3px solid var(--border-strong);
+  box-shadow: var(--card-shadow);
+
+  :global([data-theme="medieval"]) & {
+    border-color: var(--gold);
+  }
+}
+
+.mapFrame {
+  width: 100%;
+  height: 350px;
+  border: none;
+  display: block;
+}
