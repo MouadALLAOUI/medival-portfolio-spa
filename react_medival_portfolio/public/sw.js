@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v2';
+const CACHE_VERSION = '__BUILD_HASH__';
 const CACHE_NAME = `mouad-portfolio-${CACHE_VERSION}`;
 const PRECACHE = `mouad-portfolio-precache-${CACHE_VERSION}`;
 
@@ -17,16 +17,20 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Activate: clean up old versioned caches
+// Activate: clean up old versioned caches and reload clients
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(
-        keys
-          .filter((key) => key !== PRECACHE && key !== CACHE_NAME)
-          .map((key) => caches.delete(key))
-      )
-    ).then(() => self.clients.claim())
+    caches.keys().then((keys) => {
+      const oldCaches = keys.filter((key) => key !== PRECACHE && key !== CACHE_NAME);
+      return Promise.all(oldCaches.map((key) => caches.delete(key))).then(() => {
+        if (oldCaches.length > 0) {
+          self.clients.matchAll().then((clients) => {
+            clients.forEach((client) => client.navigate(client.url));
+          });
+        }
+        return self.clients.claim();
+      });
+    })
   );
 });
 

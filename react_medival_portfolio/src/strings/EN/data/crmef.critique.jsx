@@ -3,13 +3,15 @@ const CRITIQUE_DATA = {
         title: "Academic Confidence & Self-Efficacy",
         sections: {
             "Strengths": {
-                content: `I have developed a solid theoretical foundation in computer science and pedagogy. My ability to grasp complex concepts quickly—especially in algorithms, data structures, and instructional design—gives me confidence in academic settings. I perform well when given clear objectives and structured environments. My ISTA and EST backgrounds provided me with strong technical problem-solving skills that I continue to leverage.`,
+                content: `I have strong confidence in my web development abilities, which is the area where I have invested the most time and effort. I learn best through practice and problem-solving rather than theory alone. When facing technical challenges, my first reaction is usually curiosity rather than avoidance. I enjoy investigating problems and finding solutions, which allows me to make steady progress even on difficult projects. Over the years, I have developed confidence in my ability to understand complex systems and adapt to new technologies when they are relevant to my goals.`,
             },
             "Weaknesses": {
-                content: `However, I often underestimate my own capabilities, especially when comparing myself to peers who seem more articulate or experienced. I tend to second-guess my answers during discussions, even when I know the material well. This imposter syndrome is particularly pronounced in unfamiliar social-academic settings where I don't yet have established credibility.`,
+                content: `My confidence drops significantly outside my strongest domains. Although I can learn new subjects, I often perceive myself as being behind others. I experience impostor syndrome in many situations, not only in one specific context. I tend to underestimate my abilities in most areas of life while judging myself more favorably only in programming. Recently, I have also noticed that learning new topics feels slower and more demanding than it did before, which sometimes creates frustration and self-doubt.
+
+Recently, I have noticed a decline in my ability to stay focused on long learning sessions. I often look for faster ways to acquire knowledge and become impatient with lengthy explanations. While I can still solve technical problems effectively, maintaining attention on unfamiliar subjects has become more difficult. This sometimes creates the impression that my learning ability has declined, although the real issue may be concentration and mental fatigue rather than capability.`,
             },
             "Reflection": {
-                content: `The gap between what I know and what I believe about myself is something I need to actively bridge. I recognize that confidence is not about knowing everything—it's about trusting my ability to figure things out. Each successful lesson delivery and each positive student interaction adds a brick to this bridge.`,
+                content: `One of the main challenges I face is separating actual limitations from perceptions created by stress and comparison. My ability to solve problems remains strong, but my confidence does not always reflect that reality. When I encounter obstacles, the pressure usually comes from limited time and life responsibilities rather than from the technical difficulty itself. Moving forward, I need to better understand whether my perceived decline in learning speed comes from external pressures, mental fatigue, or unrealistic expectations of myself.`,
             },
         },
     },
@@ -17,13 +19,21 @@ const CRITIQUE_DATA = {
         title: "Communication & Interpersonal Skills",
         sections: {
             "Strengths": {
-                content: `In one-on-one situations and small group discussions, I communicate effectively. I can explain technical concepts in accessible terms when I have time to prepare. Written communication is one of my stronger suits—I can structure arguments clearly in writing, which helps with lesson planning and academic reports. I am a good listener and often notice details others miss in conversations.`,
+                content: `I am a good listener and naturally focus on understanding others before responding. I tend to give space for people to speak and observe details in conversations that others may miss. When I feel comfortable with someone, I can express myself openly and honestly, which allows for deep and meaningful exchanges. In teaching contexts, I am motivated by supporting students who lack confidence, and I find satisfaction in helping them reconnect with learning. My intention in communication is usually to be helpful rather than to dominate or impress.`,
             },
             "Weaknesses": {
-                content: `In larger groups or formal presentations, I tend to become anxious and my speech becomes rushed. I struggle with spontaneous verbal exchanges, especially when challenged or contradicted publicly. I sometimes avoid speaking up in class discussions not because I lack opinions, but because I fear being judged for how I express them. My non-verbal communication needs work—I'm told I sometimes appear disengaged when I'm actually deeply focused.`,
+                content: `I remain mostly silent in unfamiliar groups and tend to avoid speaking when I perceive others as more experienced or authoritative. In those situations, I often feel nervous and fear saying something incorrect or inadequate. When explaining technical concepts, I tend to overcomplicate my explanations by including too much detail, instead of adapting to the listener’s actual need. I struggle with simplicity in communication and often prioritize completeness over clarity.
+
+I also avoid conflict and tend to stay silent when disagreement occurs, preferring reflection over confrontation. This makes it difficult for me to assert authority when needed.
+
+Emotionally, I have weak boundaries in selective situations: when I feel comfortable with someone, I may overshare personal information very quickly. This usually gives temporary relief, but afterward I often feel exposed and vulnerable, as if I revealed more than I intended and lost control over how I presented myself.`,
             },
             "Reflection": {
-                content: `Teaching has forced me out of my comfort zone in ways I didn't expect. Standing in front of 30+ students daily is slowly building my public speaking resilience. I've learned that most communication anxiety is anticipatory—once I start speaking, it flows. The key is to prepare more thoroughly so my confidence has a factual foundation to rest on.`,
+                content: `My communication style is shaped by two extremes: silence in unfamiliar or high-pressure environments, and overexpression in comfortable ones. The lack of balance between these two states creates inconsistency in how I present myself to others.
+
+Effective communication for me is not only about improving speaking skills, but about learning control: when to speak, how much to say, and what to withhold. I also need to develop the ability to simplify explanations without losing confidence in my knowledge.
+
+My emotional openness is not the problem itself; the issue is timing and regulation. I need to develop stronger boundaries so that sharing personal thoughts becomes a choice, not an impulse.`,
             },
         },
     },
