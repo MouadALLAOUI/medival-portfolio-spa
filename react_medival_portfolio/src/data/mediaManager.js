@@ -427,6 +427,786 @@ export const mediaRegistry = {
           wordCount: 2500,
         }
       },
+      {
+        id: "crmef-rapport",
+        path: "/media/CRMEF/Rapport.pdf",
+        label: "Rapport CRMEF",
+        description: "Rapport général CRMEF",
+        meta: {
+          pageCount: "100",
+          date: "Jun 08, 2026",
+          size: "5 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-9mruitadabconfy2011",
+        path: "/media/CRMEF/S1/9MRUITAdabConfY2011.pdf",
+        label: "9MRUITAdabConfY2011",
+        description: "Conference 2011 document",
+        meta: {
+          pageCount: "50",
+          date: "Jan 01, 2025",
+          size: "2 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-activite-1-epistemologie2026",
+        path: "/media/CRMEF/S1/Activité 1-epistemologie2026.pdf",
+        label: "Activité 1 - Epistémologie 2026",
+        description: "Epistemology activity 2026",
+        meta: {
+          pageCount: "20",
+          date: "Jan 15, 2026",
+          size: "1 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-activite-1-epistemologie2026-corrige2",
+        path: "/media/CRMEF/S1/Activité 1-epistemologie2026_corrige2.pdf",
+        label: "Activité 1 - Epistémologie 2026 - Corrigé 2",
+        description: "Correction 2 for epistemology activity",
+        meta: {
+          pageCount: "15",
+          date: "Jan 20, 2026",
+          size: "800 KB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-activite-2-didac-pedag2026",
+        path: "/media/CRMEF/S1/Activité 2-didac-pedag2026.pdf",
+        label: "Activité 2 - Didactique et Pédagogie 2026",
+        description: "Didactic and pedagogy activity 2026",
+        meta: {
+          pageCount: "25",
+          date: "Feb 01, 2026",
+          size: "1.2 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-activite-2-didac-pedag2026-corrige",
+        path: "/media/CRMEF/S1/Activité 2-didac-pedag2026-corrige.pdf",
+        label: "Activité 2 - Didactique et Pédagogie 2026 - Corrigé",
+        description: "Correction for didactic and pedagogy activity",
+        meta: {
+          pageCount: "20",
+          date: "Feb 05, 2026",
+          size: "900 KB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-activites-concepts-didactique-informatique2026-corrige",
+        path: "/media/CRMEF/S1/activités_concepts-didactique_informatique2026-corrigé.pdf",
+        label: "Activités Concepts Didactiques Informatique 2026 - Corrigé",
+        description: "Correction for didactic concepts in informatics",
+        meta: {
+          pageCount: "30",
+          date: "Feb 10, 2026",
+          size: "1.5 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-cadre-reference-competence-numerique-canada",
+        path: "/media/CRMEF/S1/Cadre-reference-competence-numerique-canada.pdf",
+        label: "Cadre de Référence des Compétences Numériques Canada",
+        description: "Canadian digital competence framework",
+        meta: {
+          pageCount: "80",
+          date: "Mar 01, 2026",
+          size: "2.5 MB",
+          author: "Canada",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-digcompedu-cadre-reference-europeen",
+        path: "/media/CRMEF/S1/Digcompedu-cadre de référence européen des compétences numériques_resume_francais.pdf",
+        label: "Digcompedu - Cadre Européen (Résumé Français)",
+        description: "European digital competence framework summary (French)",
+        meta: {
+          pageCount: "40",
+          date: "Mar 15, 2026",
+          size: "1 MB",
+          author: "EU",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-digcomp-le-cadre-reference-europeen",
+        path: "/media/CRMEF/S1/digcomp-le cadre de référence européen des compétences numériques.pdf",
+        label: "Digcomp - Cadre Européen des Compétences Numériques",
+        description: "European digital competence framework (full)",
+        meta: {
+          pageCount: "100",
+          date: "Mar 20, 2026",
+          size: "3 MB",
+          author: "EU",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-fiche-pedagogique-mrb-group6",
+        path: "/media/CRMEF/S1/Fiche_Pedagogique_MRB_group6.pdf",
+        label: "Fiche Pédagogique MRB - Groupe 6",
+        description: "Pedagogical sheet group 6",
+        meta: {
+          pageCount: "10",
+          date: "Apr 01, 2026",
+          size: "500 KB",
+          author: "Groupe 6",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-grilles-g1-reorganisee",
+        path: "/media/CRMEF/S1/Grilles_G1_reorganisee.pdf",
+        label: "Grilles G1 Réorganisées",
+        description: "Reorganized grids G1",
+        meta: {
+          pageCount: "15",
+          date: "Apr 15, 2026",
+          size: "700 KB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-guide-pedagogique-general",
+        path: "/media/CRMEF/S1/guide pedagogique general.pdf",
+        label: "Guide Pédagogique Général",
+        description: "General pedagogical guide",
+        meta: {
+          pageCount: "120",
+          date: "May 01, 2026",
+          size: "4 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-la-gestion-alt",
+        path: "/media/CRMEF/S1/LA GESTION_.pdf",
+        label: "LA GESTION (Alt)",
+        description: "Alternative gestion document",
+        meta: {
+          pageCount: "20",
+          date: "Jan 01, 2025",
+          size: "800 KB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-les-effets-didactiques-20260304",
+        path: "/media/CRMEF/S1/les effets didactiques_20260304_100946_0000.pdf",
+        label: "Les Effets Didactiques - 04/03/2026",
+        description: "Didactic effects document from 4 March 2026",
+        meta: {
+          pageCount: "40",
+          date: "Mar 04, 2026",
+          size: "1.2 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-les-theories-apprentissage-etude-de-cas2026",
+        path: "/media/CRMEF/S1/les Théories de 'apprentissage -etude de cas2026.pdf",
+        label: "Les Théories de l'apprentissage - Étude de cas 2026",
+        description: "Learning theories - Case study 2026",
+        meta: {
+          pageCount: "25",
+          date: "Feb 15, 2026",
+          size: "900 KB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-les-theories-apprentissage-etude-de-cas-corrige2026",
+        path: "/media/CRMEF/S1/les Théories de 'apprentissage -etude de cas-corrige2026.pdf",
+        label: "Les Théories de l'apprentissage - Étude de cas 2026 - Corrigé",
+        description: "Correction for learning theories case study",
+        meta: {
+          pageCount: "20",
+          date: "Feb 20, 2026",
+          size: "700 KB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-motivation-communication-pedagogique-2",
+        path: "/media/CRMEF/S1/Motivation Communication Pédagogique (2).pptx.pdf",
+        label: "Motivation et Communication Pédagogique 2",
+        description: "Motivation and pedagogical communication (PDF)",
+        meta: {
+          pageCount: "30",
+          date: "Mar 05, 2026",
+          size: "1.5 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-motivation-communication-pedagogique-2-alt",
+        path: "/media/CRMEF/S1/Motivation Communication Pédagogique (2).pptx (1).pdf",
+        label: "Motivation et Communication Pédagogique 2 (Alt)",
+        description: "Alternative version of motivation and pedagogical communication",
+        meta: {
+          pageCount: "30",
+          date: "Mar 10, 2026",
+          size: "1.6 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-polyscope-didactique-2",
+        path: "/media/CRMEF/S1/polycope-didactique.pdf",
+        label: "Polycopié Didactique 2",
+        description: "Second didactic handout",
+        meta: {
+          pageCount: "50",
+          date: "Apr 01, 2026",
+          size: "2 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-ds2026",
+        path: "/media/CRMEF/MSP/DS2026.pdf",
+        label: "DS 2026",
+        description: "DS 2026 document",
+        meta: {
+          pageCount: "10",
+          date: "Feb 01, 2026",
+          size: "300 KB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-theories-apprentissage-arabe-2",
+        path: "/media/CRMEF/S1/PDFs/2 3نظريات التعلم .pdf",
+        label: "نظريات التعلم (2/3)",
+        description: "ثاني و ثالث فصل من كتاب نظريات التعلم، يوضح المبادئ التربوية",
+        meta: {
+          pageCount: "100",
+          date: "Jan 01, 2025",
+          size: "1.5 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-all-in-one-tice",
+        path: "/media/CRMEF/S1/PDFs/All In One_ Tice.pdf",
+        label: "All In One: TICE",
+        description: "دليل شامل لاستخدام التكنولوجيا في التربية و التواصل (TICE)",
+        meta: {
+          pageCount: "80",
+          date: "Feb 15, 2026",
+          size: "2.3 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-conceptes-generaux-2026",
+        path: "/media/CRMEF/S1/PDFs/conceptes generaux 2026.pdf",
+        label: "Concepts Généraux 2026",
+        description: "Document sur les concepts généraux de la formation CRMEF 2026",
+        meta: {
+          pageCount: "50",
+          date: "Jun 08, 2026",
+          size: "3.3 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-vision-vf-fr",
+        path: "/media/CRMEF/S1/Vision_VF_Fr.pdf",
+        label: "Vision - Version Finale (Française)",
+        description: "Document de vision stratégique en français",
+        meta: {
+          pageCount: "20",
+          date: "Jun 08, 2026",
+          size: "467 KB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-rapport-general",
+        path: "/media/CRMEF/S1/Rapport_General (1).pdf",
+        label: "Rapport Général",
+        description: "Rapport général de formation",
+        meta: {
+          pageCount: "150",
+          date: "Jun 08, 2026",
+          size: "3.0 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-portefeuille-projets",
+        path: "/media/CRMEF/S1/Portefeuille des projets (2).pdf",
+        label: "Portefeuille des Projets",
+        description: "Portfolio des projets réalisés pendant la formation",
+        meta: {
+          pageCount: "80",
+          date: "Jun 08, 2026",
+          size: "2.4 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-cours-gestion-1-globale",
+        path: "/media/CRMEF/S1/PDFs/Cours Gestion 1 globale.pdf",
+        label: "Cours de Gestion 1 - Généralités",
+        description: "Cours complet sur les principes fondamentaux de la gestion",
+        meta: {
+          pageCount: "50",
+          date: "Mar 01, 2026",
+          size: "1.8 MB",
+          author: "Prof. Ahmed",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-curr-informatiques-college",
+        path: "/media/CRMEF/S1/PDFs/curr informatiques college.pdf",
+        label: "Programme Informatique Collège",
+        description: "Programme officiel d'informatique pour le cycle collégial",
+        meta: {
+          pageCount: "40",
+          date: "Sep 01, 2025",
+          size: "900 KB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-resume-planification-abouljid",
+        path: "/media/CRMEF/S1/Resume_Planification_Abouljid_mohamed.pdf",
+        label: "Résumé de Planification - Abouljid Mohamed",
+        description: "Résumé de la planification pédagogique par Abouljid Mohamed",
+        meta: {
+          pageCount: "15",
+          date: "Apr 10, 2026",
+          size: "500 KB",
+          author: "Abouljid Mohamed",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-referentiel-unesco-tice-fr",
+        path: "/media/CRMEF/S1/Référentiel UNESCO de compétences TICE pour les enseignants-FR.pdf",
+        label: "Référentiel UNESCO de compétences TICE pour les enseignants (FR)",
+        description: "Référentiel de compétences en technologies de l'information et de la communication pour l'éducation (TICE) de l'UNESCO, en français",
+        meta: {
+          pageCount: "60",
+          date: "May 20, 2025",
+          size: "1.2 MB",
+          author: "UNESCO",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-referentiel-unesco-tice-arabe",
+        path: "/media/CRMEF/S1/Référentiel UNESCO de compétences TICE pour les enseignants.ara.pdf",
+        label: "Référentiel UNESCO de compétences TICE pour les enseignants (AR)",
+        description: "المرجع اليونيسكو للكفاءات في تكنولوجيا المعلومات والاتصالات للمعلمين، باللغة العربية",
+        meta: {
+          pageCount: "60",
+          date: "May 20, 2025",
+          size: "1.2 MB",
+          author: "UNESCO",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-note-184101213-college",
+        path: "/media/CRMEF/S2/note184101213 Collège.pdf",
+        label: "Note 184101213 - Collège",
+        description: "Note pédagogique pour le cycle collégial",
+        meta: {
+          pageCount: "20",
+          date: "Jun 05, 2026",
+          size: "400 KB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-situations-pedagogiques-feedback",
+        path: "/media/CRMEF/S2/Situations Pédagogiques – Feedback, Soutien Et Remédiation.pdf",
+        label: "Situations Pédagogiques - Feedback, Soutien Et Remédiation",
+        description: "Guide sur les situations pédagogiques, le feedback, le soutien et la réparation",
+        meta: {
+          pageCount: "30",
+          date: "Jul 01, 2026",
+          size: "600 KB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-9mruitadabconfy2011",
+        path: "/media/CRMEF/S1/9MRUITAdabConfY2011.pdf",
+        label: "9MRUITAdabConfY2011",
+        description: "Conference 2011 document",
+        meta: {
+          pageCount: "50",
+          date: "Jan 01, 2025",
+          size: "2 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-activite-1-epistemologie2026",
+        path: "/media/CRMEF/S1/Activité 1-epistemologie2026.pdf",
+        label: "Activité 1 - Épistémologie 2026",
+        description: "Épistémologie activity 2026",
+        meta: {
+          pageCount: "20",
+          date: "Jan 15, 2026",
+          size: "1 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-activite-1-epistemologie2026-corrige2",
+        path: "/media/CRMEF/S1/Activité 1-epistemologie2026_corrige2.pdf",
+        label: "Activité 1 - Épistémologie 2026 - Corrigé 2",
+        description: "Correction 2 for epistemology activity",
+        meta: {
+          pageCount: "15",
+          date: "Jan 20, 2026",
+          size: "800 KB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-activite-2-didac-pedag2026",
+        path: "/media/CRMEF/S1/Activité 2-didac-pedag2026.pdf",
+        label: "Activité 2 - Didactique et Pédagogie 2026",
+        description: "Didactic and pedagogy activity 2026",
+        meta: {
+          pageCount: "25",
+          date: "Feb 01, 2026",
+          size: "1.2 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-activite-2-didac-pedag2026-corrige",
+        path: "/media/CRMEF/S1/Activité 2-didac-pedag2026-corrige.pdf",
+        label: "Activité 2 - Didactique et Pédagogie 2026 - Corrigé",
+        description: "Correction for didactic and pedagogy activity",
+        meta: {
+          pageCount: "20",
+          date: "Feb 05, 2026",
+          size: "900 KB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-activites-concepts-didactique-informatique2026-corrige",
+        path: "/media/CRMEF/S1/activités concepts-didactique informatique2026-corrigé.pdf",
+        label: "Activités Concepts Didactiques Informatique 2026 - Corrigé",
+        description: "Correction for didactic concepts in informatics",
+        meta: {
+          pageCount: "30",
+          date: "Feb 10, 2026",
+          size: "1.5 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-cadre-reference-competence-numerique-canada",
+        path: "/media/CRMEF/S1/Cadre reference-competence-numerique-canada.pdf",
+        label: "Cadre de Référence des Compétences Numériques Canada",
+        description: "Canadian digital competence framework",
+        meta: {
+          pageCount: "80",
+          date: "Mar 01, 2026",
+          size: "2.5 MB",
+          author: "Canada",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-digcompedu-cadre-reference-europeen",
+        path: "/media/CRMEF/S1/Digcompedu-cadre de référence européen des compétences numériques_resume francais.pdf",
+        label: "Digcompedu - Cadre Européen (Résumé Français)",
+        description: "European digital competence framework summary (French)",
+        meta: {
+          pageCount: "40",
+          date: "Mar 15, 2026",
+          size: "1 MB",
+          author: "EU",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-digcomp-le-cadre-reference-europeen",
+        path: "/media/CRMEF/S1/digcomp-le cadre de référence européen des compétences numériques.pdf",
+        label: "Digcomp - Cadre Européen des Compétences Numériques",
+        description: "European digital competence framework (full)",
+        meta: {
+          pageCount: "100",
+          date: "Mar 20, 2026",
+          size: "3 MB",
+          author: "EU",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-fiche-pedagogique-mrb-group6",
+        path: "/media/CRMEF/S1/Fiche_Pedagogique_MRB_group6.pdf",
+        label: "Fiche Pédagogique MRB - Groupe 6",
+        description: "Pedagogical sheet group 6",
+        meta: {
+          pageCount: "10",
+          date: "Apr 01, 2026",
+          size: "500 KB",
+          author: "Groupe 6",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-grilles-g1-reorganisee",
+        path: "/media/CRMEF/S1/Grilles_G1_reorganisee.pdf",
+        label: "Grilles G1 Réorganisées",
+        description: "Reorganized grids G1",
+        meta: {
+          pageCount: "15",
+          date: "Apr 15, 2026",
+          size: "700 KB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-guide-pedagogique-general",
+        path: "/media/CRMEF/S1/guide pedagogique general.pdf",
+        label: "Guide Pédagogique Général",
+        description: "General pedagogical guide",
+        meta: {
+          pageCount: "120",
+          date: "May 01, 2026",
+          size: "4 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-la-gestion-alt",
+        path: "/media/CRMEF/S1/LA GESTION_.pdf",
+        label: "LA GESTION (Alt)",
+        description: "Alternative gestion document",
+        meta: {
+          pageCount: "20",
+          date: "Jan 01, 2025",
+          size: "800 KB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-les-effets-didactiques-20260304",
+        path: "/media/CRMEF/S1/les effets didactiques_20260304_100946_0000.pdf",
+        label: "Les Effets Didactiques - 04/03/2026",
+        description: "Didactic effects document from 4 March 2026",
+        meta: {
+          pageCount: "40",
+          date: "Mar 04, 2026",
+          size: "1.2 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-les-theories-apprentissage-etude-de-cas2026",
+        path: "/media/CRMEF/S1/les Théories de 'apprentissage -etude de cas2026.pdf",
+        label: "Les Théories de l'apprentissage - Étude de cas 2026",
+        description: "Learning theories - Case study 2026",
+        meta: {
+          pageCount: "25",
+          date: "Feb 15, 2026",
+          size: "900 KB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-les-theories-apprentissage-etude-de-cas-corrige2026",
+        path: "/media/CRMEF/S1/les Théories de 'apprentissage -etude de cas-corrige2026.pdf",
+        label: "Les Théories de l'apprentissage - Étude de cas 2026 - Corrigé",
+        description: "Correction for learning theories case study",
+        meta: {
+          pageCount: "20",
+          date: "Feb 20, 2026",
+          size: "700 KB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-motivation-communication-pedagogique-2",
+        path: "/media/CRMEF/S1/Motivation Communication Pédagogique (2).pptx.pdf",
+        label: "Motivation et Communication Pédagogique 2",
+        description: "Motivation and pedagogical communication (PDF)",
+        meta: {
+          pageCount: "30",
+          date: "Mar 05, 2026",
+          size: "1.5 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-motivation-communication-pedagogique-2-alt",
+        path: "/media/CRMEF/S1/Motivation Communication Pédagogique (2).pptx (1).pdf",
+        label: "Motivation et Communication Pédagogique 2 (Alt)",
+        description: "Alternative version of motivation and pedagogical communication",
+        meta: {
+          pageCount: "30",
+          date: "Mar 10, 2026",
+          size: "1.6 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-polyscope-didactique-2",
+        path: "/media/CRMEF/S1/polycope-didactique.pdf",
+        label: "Polycopié Didactique 2",
+        description: "Second didactic handout",
+        meta: {
+          pageCount: "50",
+          date: "Apr 01, 2026",
+          size: "2 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-syllabus-gestion-v3",
+        path: "/media/CRMEF/S1/syllabus gestion v3.pptx",
+        label: "Syllabus Gestion V3",
+        description: "Gestion syllabus V3 (PPTX)",
+        meta: {
+          pageCount: "30",
+          date: "May 01, 2026",
+          size: "1 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-rapport-gestion-1-mouad-allaoui-f",
+        path: "/media/CRMEF/S1/Rapport_Gestion1_MOUAD_ALLAOUI_f.docx",
+        label: "Rapport Gestion 1 - Mouad Allaooui (Final)",
+        description: "Final version of Rapport Gestion 1",
+        meta: {
+          pageCount: "10",
+          date: "Jun 08, 2026",
+          size: "35 KB",
+          author: "Mouad Allaooui",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-ds2026",
+        path: "/media/CRMEF/MSP/DS2026.pdf",
+        label: "DS 2026",
+        description: "DS 2026 document",
+        meta: {
+          pageCount: "10",
+          date: "Feb 01, 2026",
+          size: "300 KB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-rapport",
+        path: "/media/CRMEF/Rapport.pdf",
+        label: "Rapport CRMEF",
+        description: "Rapport général CRMEF",
+        meta: {
+          pageCount: "100",
+          date: "Jun 08, 2026",
+          size: "5 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-note-184101213-college",
+        path: "/media/CRMEF/S2/note184101213 Collège.pdf",
+        label: "Note 184101213 Collège",
+        description: "Note 184101213 for collège",
+        meta: {
+          pageCount: "10",
+          date: "May 01, 2026",
+          size: "300 KB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-situations-pedagogiques-feedback",
+        path: "/media/CRMEF/S2/Situations Pédagogiques – Feedback, Soutien Et Remédiation.pdf",
+        label: "Situations Pédagogiques – Feedback, Soutien Et Remédiation",
+        description: "Situations pédagogiques feedback document",
+        meta: {
+          pageCount: "50",
+          date: "Apr 01, 2026",
+          size: "1.5 MB",
+          author: "CRMEF",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-groupe-6-la-taxonomie-de-bloom",
+        path: "/media/CRMEF/S1/Groupe 6  la taxonomie de bloom.jpeg",
+        label: "Groupe 6 - La Taxonomie de Bloom",
+        description: "Bloom's taxonomy image group 6",
+        meta: {
+          pageCount: "1",
+          date: "Mar 01, 2026",
+          size: "200 KB",
+          author: "Groupe 6",
+          wordCount: 2500,
+        }
+      },
     ],
     docx: [
       {
@@ -532,6 +1312,97 @@ export const mediaRegistry = {
           date: "May 07, 2025",
           size: "3.7 MB",
           author: "Dr. Mohamed",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-new-microsoft-word-document",
+        path: "/media/CRMEF/S1/Docx/New Microsoft Word Document.docx",
+        label: "New Microsoft Word Document",
+        description: "Document Microsoft Word non nommé",
+        meta: {
+          pageCount: "1",
+          date: "Jan 01, 2025",
+          size: "20 KB",
+          author: "Instructor Team",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-rapport-gestion-1-mouad-allaoui",
+        path: "/media/CRMEF/S1/Rapport_Gestion1_MOUAD_ALLAOUI_f.docx",
+        label: "Rapport Gestion 1 - Mouad Allaooui",
+        description: "Rapport de gestion 1 par Mouad Allaooui, version finale",
+        meta: {
+          pageCount: "10",
+          date: "Jun 10, 2026",
+          size: "800 KB",
+          author: "Mouad Allaooui",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-rapport-gestion-1-mouad-allaoui-v4",
+        path: "/media/CRMEF/S1/Docx/Rapport_Gestion1_MOUAD_ALLAOUI_v4_humanise.docx",
+        label: "Rapport Gestion 1 - Mouad Allaooui (V4 Humanisé)",
+        description: "Rapport de gestion 1 par Mouad Allaooui, version 4 humanisée",
+        meta: {
+          pageCount: "10",
+          date: "Jun 08, 2026",
+          size: "30 KB",
+          author: "Mouad Allaooui",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-fiche-interrogative-group6",
+        path: "/media/CRMEF/S1/fiche  interogative_group6.docx",
+        label: "Fiche Interrogative - Groupe 6",
+        description: "Interrogative sheet group 6",
+        meta: {
+          pageCount: "5",
+          date: "Mar 15, 2026",
+          size: "50 KB",
+          author: "Groupe 6",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-fiche-pedagogique-decouverte-v-group6",
+        path: "/media/CRMEF/S1/Fiche Pedagogique Decouverte_v_group6.docx",
+        label: "Fiche Pédagogique Découverte - Groupe 6",
+        description: "Discovery pedagogical sheet group 6",
+        meta: {
+          pageCount: "8",
+          date: "Mar 20, 2026",
+          size: "80 KB",
+          author: "Groupe 6",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-fiche-powerpoint-demonstrative-3ac-group6",
+        path: "/media/CRMEF/S1/Fiche PowerPoint Démonstrative 3AC_group6.docx",
+        label: "Fiche PowerPoint Démonstrative - Groupe 6",
+        description: "Demonstrative PowerPoint sheet group 6",
+        meta: {
+          pageCount: "10",
+          date: "Mar 25, 2026",
+          size: "100 KB",
+          author: "Groupe 6",
+          wordCount: 2500,
+        }
+      },
+      {
+        id: "crmef-fiche-pedagogique-3ac-r-b-group6",
+        path: "/media/CRMEF/S1/Fiche_Pedagogique_3AC_R_B_group6.docx",
+        label: "Fiche Pédagogique 3AC R&B - Groupe 6",
+        description: "Pedagogical sheet 3AC R&B group 6",
+        meta: {
+          pageCount: "6",
+          date: "Mar 30, 2026",
+          size: "60 KB",
+          author: "Groupe 6",
           wordCount: 2500,
         }
       }
@@ -677,6 +1548,100 @@ export const mediaRegistry = {
           duration: "30 min",
         }
       },
+      {
+        id: "crmef-gestion-des-situations-d-evaluation",
+        path: "/media/CRMEF/S1/gestion des situation d'évaluation et des travaux pratiques.pptx",
+        label: "Gestion des Situations d'Évaluation",
+        description: "Management of evaluation situations and practical work",
+        meta: {
+          slideCount: "20",
+          date: "May 01, 2026",
+          size: "1 MB",
+          author: "CRMEF",
+          pageCount: 20,
+          duration: "30 min",
+        }
+      },
+      {
+        id: "crmef-methodes-pedagogiques-g6",
+        path: "/media/CRMEF/S1/Méthodes Pédagogiques_g6.pptx",
+        label: "Méthodes Pédagogiques - Groupe 6",
+        description: "Pedagogical methods - Group 6",
+        meta: {
+          slideCount: "25",
+          date: "Apr 15, 2026",
+          size: "1.2 MB",
+          author: "Groupe 6",
+          pageCount: 20,
+          duration: "30 min",
+        }
+      },
+      {
+        id: "crmef-prompt-engineering-canva",
+        path: "/media/CRMEF/S1/Prompt Engineering Canva.pptx",
+        label: "Prompt Engineering - Canva",
+        description: "Présentation sur l'ingénierie de prompts réalisée avec Canva",
+        meta: {
+          slideCount: "15",
+          date: "Apr 01, 2026",
+          size: "500 KB",
+          author: "Content Creator",
+          pageCount: 15,
+          duration: "20 min",
+        }
+      },
+      {
+        id: "crmef-syllabus-gestion-v3",
+        path: "/media/CRMEF/S1/syllabus gestion v3.pptx",
+        label: "Syllabus de Gestion - Version 3",
+        description: "Syllabus complet pour le cours de gestion, version 3",
+        meta: {
+          slideCount: "10",
+          date: "Feb 20, 2026",
+          size: "300 KB",
+          author: "Prof. Ahmed",
+          pageCount: 10,
+          duration: "15 min",
+        }
+      },
+      {
+        id: "crmef-engineering-the-learning-mind",
+        path: "/media/CRMEF/S1/PPTx/Engineering_the_Learning_Mind.pptx",
+        label: "Engineering the Learning Mind",
+        description: "Présentation sur l'ingénierie de l'apprentissage",
+        meta: {
+          slideCount: "30",
+          date: "Mar 10, 2026",
+          size: "1.2 MB",
+          author: "Academic Staff",
+          pageCount: 30,
+          duration: "45 min",
+        }
+      },
+    ],
+    xlsx: [
+      {
+        id: "crmef-planification-annuelle-2apic",
+        path: "/media/CRMEF/S1/Planification_Annuelle_2APIC__2025-2026G6.xlsx",
+        label: "Planification Annuelle 2APIC (Groupe 6)",
+        description: "Annual planning for 2APIC class by Groupe 6",
+        meta: {
+          date: "Apr 01, 2026",
+          size: "50 KB",
+          author: "Groupe 6"
+        }
+      },
+      {
+        id: "crmef-planification-moyenne-terme-groupe6",
+        path: "/media/CRMEF/S1/Planification-Moyenne-Terme-Groupe6.xlsx",
+        label: "Planification Moyenne Terme (Groupe 6)",
+        description: "Medium-term planning by Groupe 6",
+        meta: {
+          date: "Apr 15, 2026",
+          size: "45 KB",
+          author: "Groupe 6"
+        }
+      }
     ]
   },
   media: {
@@ -693,9 +1658,136 @@ export const mediaRegistry = {
           author: "Academic Staff",
           videoFormat: "1080p",
         }
+      },
+      {
+        id: "crmef-lm-epistimologie",
+        path: "/media/CRMEF/LM/epistimologie.mp4",
+        label: "Epistémologie",
+        description: "Video on epistemology",
+        meta: {
+          duration: 0,
+          date: "Feb 01, 2026",
+          size: "100 MB",
+          author: "CRMEF",
+          videoFormat: "1080p",
+        }
+      },
+      {
+        id: "crmef-lm-prompt-engeneering-final",
+        path: "/media/CRMEF/LM/prompt engeneering final.mp4",
+        label: "Prompt Engineering Final",
+        description: "Final video on prompt engineering",
+        meta: {
+          duration: 0,
+          date: "Mar 01, 2026",
+          size: "200 MB",
+          author: "CRMEF",
+          videoFormat: "1080p",
+        }
+      },
+      {
+        id: "crmef-lm-whatsapp-video-2026-02-25-22-29-43",
+        path: "/media/CRMEF/LM/WhatsApp Video 2026-02-25 at 22.29.43.mp4",
+        label: "WhatsApp Video 2026-02-25",
+        description: "Video from 25 February 2026",
+        meta: {
+          duration: 0,
+          date: "Feb 25, 2026",
+          size: "50 MB",
+          author: "CRMEF",
+          videoFormat: "720p",
+        }
+      },
+      {
+        id: "crmef-lm-whatsapp-video-2026-03-09-22-43-01",
+        path: "/media/CRMEF/LM/WhatsApp Video 2026-03-09 at 22.43.01.mp4",
+        label: "WhatsApp Video 2026-03-09",
+        description: "Video from 9 March 2026",
+        meta: {
+          duration: 0,
+          date: "Mar 09, 2026",
+          size: "60 MB",
+          author: "CRMEF",
+          videoFormat: "720p",
+        }
+      },
+      {
+        id: "crmef-lm-whatsapp-video-2026-03-09-22-59-59",
+        path: "/media/CRMEF/LM/WhatsApp Video 2026-03-09 at 22.59.59.mp4",
+        label: "WhatsApp Video 2026-03-09 (2)",
+        description: "Second video from 9 March 2026",
+        meta: {
+          duration: 0,
+          date: "Mar 09, 2026",
+          size: "70 MB",
+          author: "CRMEF",
+          videoFormat: "720p",
+        }
+      },
+      {
+        id: "crmef-lm-whatsapp-video-2026-04-27-12-48-38",
+        path: "/media/CRMEF/LM/WhatsApp Video 2026-04-27 at 12.48.38.mp4",
+        label: "WhatsApp Video 2026-04-27",
+        description: "Video from 27 April 2026",
+        meta: {
+          duration: 0,
+          date: "Apr 27, 2026",
+          size: "80 MB",
+          author: "CRMEF",
+          videoFormat: "720p",
+        }
       }
     ],
-    mp3: []
+    mp3: [
+      {
+        id: "crmef-lm-le-processeur-qui-pense",
+        path: "/media/CRMEF/LM/Le processeur qui pense.mp3",
+        label: "Le Processeur qui pense",
+        description: "Audio on the thinking processor",
+        meta: {
+          duration: 0,
+          date: "Jan 15, 2026",
+          size: "10 MB",
+          author: "CRMEF",
+        }
+      },
+      {
+        id: "crmef-lm-le-systeme-informatique",
+        path: "/media/CRMEF/LM/Le Système Informatique.mp3",
+        label: "Le Système Informatique",
+        description: "Audio on the information system",
+        meta: {
+          duration: 0,
+          date: "Jan 20, 2026",
+          size: "15 MB",
+          author: "CRMEF",
+        }
+      },
+      {
+        id: "crmef-lm-le-systeme-informatique-2",
+        path: "/media/CRMEF/LM/Le Système Informatique 2.mp3",
+        label: "Le Système Informatique 2",
+        description: "Second audio on the information system",
+        meta: {
+          duration: 0,
+          date: "Jan 25, 2026",
+          size: "12 MB",
+          author: "CRMEF",
+        }
+      },
+      {
+        id: "crmef-lm-prompt-engineering",
+        path: "/media/CRMEF/LM/prompt engineering.mp3",
+        label: "Prompt Engineering",
+        description: "Audio on prompt engineering",
+        meta: {
+          duration: 0,
+          date: "Feb 10, 2026",
+          size: "18 MB",
+          author: "CRMEF",
+        }
+      }
+    ]
   },
   images: {
     png: [
@@ -795,6 +1887,39 @@ export const mediaRegistry = {
         meta: {
           date: "Jul 17, 2024",
           size: "719 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-notebooklm-mind-map-1",
+        path: "/media/CRMEF/S1/imgs/NotebookLM Mind Map.png",
+        label: "NotebookLM Mind Map",
+        description: "Carte mentale générée par NotebookLM",
+        meta: {
+          date: "Jun 08, 2026",
+          size: "1.2 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-notebooklm-mind-map-2",
+        path: "/media/CRMEF/S1/imgs/NotebookLM Mind Map (2).png",
+        label: "NotebookLM Mind Map (2)",
+        description: "Deuxième carte mentale générée par NotebookLM",
+        meta: {
+          date: "Jun 08, 2026",
+          size: "1.9 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-unnamed-image",
+        path: "/media/CRMEF/S1/imgs/unnamed.png",
+        label: "Image Sans Nom",
+        description: "Image sans titre du dossier S1/imgs",
+        meta: {
+          date: "Jun 08, 2026",
+          size: "6.9 MB",
           author: "Content Creator",
         }
       },
@@ -2820,6 +3945,776 @@ export const mediaRegistry = {
           author: "Content Creator",
         }
       },
+      {
+        id: "crmef-whatsapp-image-2026-03-27-21-38-57",
+        path: "/media/CRMEF/S1/WhatsApp Image 2026-03-27 at 21.38.57.jpeg",
+        label: "WhatsApp Image 2026-03-27 21:38:57",
+        description: "Image prise en cours de formation CRMEF",
+        meta: {
+          date: "Mar 27, 2026",
+          size: "68 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-whatsapp-image-2026-03-27-21-38-57-2",
+        path: "/media/CRMEF/S1/WhatsApp Image 2026-03-27 at 21.38.572.jpeg",
+        label: "WhatsApp Image 2026-03-27 21:38:57 (2)",
+        description: "Deuxième image prise en cours de formation CRMEF",
+        meta: {
+          date: "Mar 27, 2026",
+          size: "106 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-whatsapp-image-2026-03-27-21-42-00",
+        path: "/media/CRMEF/S1/WhatsApp Image 2026-03-27 at 21.42.00.jpeg",
+        label: "WhatsApp Image 2026-03-27 21:42:00",
+        description: "Image de formation CRMEF",
+        meta: {
+          date: "Mar 27, 2026",
+          size: "99 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-whatsapp-image-2026-03-27-21-42-01",
+        path: "/media/CRMEF/S1/WhatsApp Image 2026-03-27 at 21.42.01.jpeg",
+        label: "WhatsApp Image 2026-03-27 21:42:01",
+        description: "Autre image de formation CRMEF",
+        meta: {
+          date: "Mar 27, 2026",
+          size: "128 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-whatsapp-image-2026-04-14-11-34-06",
+        path: "/media/CRMEF/S1/WhatsApp Image 2026-04-14 at 11.34.06.jpeg",
+        label: "WhatsApp Image 2026-04-14 11:34:06",
+        description: "Image de la session CRMEF du 14 avril 2026",
+        meta: {
+          date: "Apr 14, 2026",
+          size: "159 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-whatsapp-image-2026-02-25-22-52-54",
+        path: "/media/CRMEF/WhatsApp Image 2026-02-25 at 22.52.54.jpeg",
+        label: "WhatsApp Image 2026-02-25 22:52:54",
+        description: "Image du 25 février 2026",
+        meta: {
+          date: "Feb 25, 2026",
+          size: "100 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-whatsapp-image-2026-02-25-23-03-18",
+        path: "/media/CRMEF/WhatsApp Image 2026-02-25 at 23.03.18.jpeg",
+        label: "WhatsApp Image 2026-02-25 23:03:18",
+        description: "Image du 25 février 2026",
+        meta: {
+          date: "Feb 25, 2026",
+          size: "120 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260223-101420",
+        path: "/media/CRMEF/IMG_20260223_101420.jpg",
+        label: "IMG_20260223_101420",
+        description: "Image du 23 février 2026",
+        meta: {
+          date: "Feb 23, 2026",
+          size: "1.5 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260223-101659",
+        path: "/media/CRMEF/IMG_20260223_101659.jpg",
+        label: "IMG_20260223_101659",
+        description: "Image du 23 février 2026",
+        meta: {
+          date: "Feb 23, 2026",
+          size: "1.6 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260223-113647",
+        path: "/media/CRMEF/IMG_20260223_113647.jpg",
+        label: "IMG_20260223_113647",
+        description: "Image du 23 février 2026",
+        meta: {
+          date: "Feb 23, 2026",
+          size: "1.7 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260325-091311",
+        path: "/media/CRMEF/IMG_20260325_091311.jpg",
+        label: "IMG_20260325_091311",
+        description: "Image du 25 mars 2026",
+        meta: {
+          date: "Mar 25, 2026",
+          size: "2 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260414-132805",
+        path: "/media/CRMEF/IMG_20260414_132805.jpg",
+        label: "IMG_20260414_132805",
+        description: "Image du 14 avril 2026",
+        meta: {
+          date: "Apr 14, 2026",
+          size: "2.2 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260427-112106",
+        path: "/media/CRMEF/IMG_20260427_112106.jpg",
+        label: "IMG_20260427_112106",
+        description: "Image du 27 avril 2026",
+        meta: {
+          date: "Apr 27, 2026",
+          size: "1.8 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260121-111145",
+        path: "/media/CRMEF/S1/IMG_20260121_111145.jpg",
+        label: "IMG_20260121_111145",
+        description: "Image du 21 janvier 2026",
+        meta: {
+          date: "Jan 21, 2026",
+          size: "1.2 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260121-111156",
+        path: "/media/CRMEF/S1/IMG_20260121_111156.jpg",
+        label: "IMG_20260121_111156",
+        description: "Image du 21 janvier 2026",
+        meta: {
+          date: "Jan 21, 2026",
+          size: "1.1 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260121-150004",
+        path: "/media/CRMEF/S1/IMG_20260121_150004.jpg",
+        label: "IMG_20260121_150004",
+        description: "Image du 21 janvier 2026",
+        meta: {
+          date: "Jan 21, 2026",
+          size: "1.4 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260121-151009",
+        path: "/media/CRMEF/S1/IMG_20260121_151009.jpg",
+        label: "IMG_20260121_151009",
+        description: "Image du 21 janvier 2026",
+        meta: {
+          date: "Jan 21, 2026",
+          size: "1.3 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260121-151013",
+        path: "/media/CRMEF/S1/IMG_20260121_151013.jpg",
+        label: "IMG_20260121_151013",
+        description: "Image du 21 janvier 2026",
+        meta: {
+          date: "Jan 21, 2026",
+          size: "1.5 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260202-143122",
+        path: "/media/CRMEF/S1/IMG_20260202_143122.jpg",
+        label: "IMG_20260202_143122",
+        description: "Image du 02 février 2026",
+        meta: {
+          date: "Feb 02, 2026",
+          size: "1 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260211-151403",
+        path: "/media/CRMEF/S1/IMG_20260211_151403.jpg",
+        label: "IMG_20260211_151403",
+        description: "Image du 11 février 2026",
+        meta: {
+          date: "Feb 11, 2026",
+          size: "900 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260211-151405",
+        path: "/media/CRMEF/S1/IMG_20260211_151405.jpg",
+        label: "IMG_20260211_151405",
+        description: "Image du 11 février 2026",
+        meta: {
+          date: "Feb 11, 2026",
+          size: "850 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260211-151407",
+        path: "/media/CRMEF/S1/IMG_20260211_151407.jpg",
+        label: "IMG_20260211_151407",
+        description: "Image du 11 février 2026",
+        meta: {
+          date: "Feb 11, 2026",
+          size: "800 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260211-151413",
+        path: "/media/CRMEF/S1/IMG_20260211_151413.jpg",
+        label: "IMG_20260211_151413",
+        description: "Image du 11 février 2026",
+        meta: {
+          date: "Feb 11, 2026",
+          size: "880 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260325-091129",
+        path: "/media/CRMEF/S1/IMG_20260325_091129.jpg",
+        label: "IMG_20260325_091129",
+        description: "Image du 25 mars 2026",
+        meta: {
+          date: "Mar 25, 2026",
+          size: "1.4 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260329-211827",
+        path: "/media/CRMEF/S1/IMG_20260329_211827.jpg",
+        label: "IMG_20260329_211827",
+        description: "Image du 29 mars 2026",
+        meta: {
+          date: "Mar 29, 2026",
+          size: "1.1 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260329-211838",
+        path: "/media/CRMEF/S1/IMG_20260329_211838.jpg",
+        label: "IMG_20260329_211838",
+        description: "Image du 29 mars 2026",
+        meta: {
+          date: "Mar 29, 2026",
+          size: "1.2 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260329-211849",
+        path: "/media/CRMEF/S1/IMG_20260329_211849.jpg",
+        label: "IMG_20260329_211849",
+        description: "Image du 29 mars 2026",
+        meta: {
+          date: "Mar 29, 2026",
+          size: "1.3 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-jan-25-2026-at-8-07-pm",
+        path: "/media/CRMEF/S1/Jan 25, 2026 at 8_07 PM.jpg",
+        label: "Jan 25, 2026 at 8:07 PM",
+        description: "Image du 25 janvier 2026",
+        meta: {
+          date: "Jan 25, 2026",
+          size: "500 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-groupe-6-la-taxonomie-de-bloom",
+        path: "/media/CRMEF/S1/Groupe 6  la taxonomie de bloom.jpeg",
+        label: "Groupe 6 - La Taxonomie de Bloom",
+        description: "Bloom's taxonomy image group 6",
+        meta: {
+          date: "Mar 01, 2026",
+          size: "200 KB",
+          author: "Groupe 6",
+        }
+      },
+      {
+        id: "crmef-gal-img-20260415-110143",
+        path: "/media/CRMEF/GAL/IMG_20260415_110143.jpg.jpeg",
+        label: "GAL - IMG_20260415_110143",
+        description: "Gallery image",
+        meta: {
+          date: "Apr 15, 2026",
+          size: "1.2 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-gal-img-20260427-114855",
+        path: "/media/CRMEF/GAL/IMG_20260427_114855.jpg",
+        label: "GAL - IMG_20260427_114855",
+        description: "Gallery image",
+        meta: {
+          date: "Apr 27, 2026",
+          size: "1.3 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-gal-img-20260309-wa0107",
+        path: "/media/CRMEF/GAL/IMG-20260309-WA0107.jpg.jpeg",
+        label: "GAL - IMG-20260309-WA0107",
+        description: "Gallery WhatsApp image",
+        meta: {
+          date: "Mar 09, 2026",
+          size: "900 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-gal-img-20260309-wa0109",
+        path: "/media/CRMEF/GAL/IMG-20260309-WA0109.jpg.jpeg",
+        label: "GAL - IMG-20260309-WA0109",
+        description: "Gallery WhatsApp image",
+        meta: {
+          date: "Mar 09, 2026",
+          size: "850 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-gal-img-20260309-wa0116",
+        path: "/media/CRMEF/GAL/IMG-20260309-WA0116.jpg.jpeg",
+        label: "GAL - IMG-20260309-WA0116",
+        description: "Gallery WhatsApp image",
+        meta: {
+          date: "Mar 09, 2026",
+          size: "800 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-gal-whatsapp-image-2026-03-04-at-11-36-00",
+        path: "/media/CRMEF/GAL/WhatsApp Image 2026-03-04 at 11.36.00.jpeg",
+        label: "GAL - WhatsApp Image 2026-03-04",
+        description: "Gallery image",
+        meta: {
+          date: "Mar 04, 2026",
+          size: "600 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-gal-whatsapp-image-2026-03-09-at-16-43-17",
+        path: "/media/CRMEF/GAL/WhatsApp Image 2026-03-09 at 16.43.17.jpeg",
+        label: "GAL - WhatsApp Image 2026-03-09",
+        description: "Gallery image",
+        meta: {
+          date: "Mar 09, 2026",
+          size: "700 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-gal-whatsapp-image-2026-03-10-at-00-16-34",
+        path: "/media/CRMEF/GAL/WhatsApp Image 2026-03-10 at 00.16.34.jpeg",
+        label: "GAL - WhatsApp Image 2026-03-10",
+        description: "Gallery image",
+        meta: {
+          date: "Mar 10, 2026",
+          size: "750 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-gal-whatsapp-image-2026-03-11-at-20-29-34",
+        path: "/media/CRMEF/GAL/WhatsApp Image 2026-03-11 at 20.29.34.jpeg",
+        label: "GAL - WhatsApp Image 2026-03-11",
+        description: "Gallery image",
+        meta: {
+          date: "Mar 11, 2026",
+          size: "800 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-gal-whatsapp-image-2026-04-15-at-11-18-56",
+        path: "/media/CRMEF/GAL/WhatsApp Image 2026-04-15 at 11.18.56.jpeg",
+        label: "GAL - WhatsApp Image 2026-04-15",
+        description: "Gallery image",
+        meta: {
+          date: "Apr 15, 2026",
+          size: "650 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-gal-whatsapp-image-2026-05-23-at-21-33-49",
+        path: "/media/CRMEF/GAL/WhatsApp Image 2026-05-23 at 21.33.49.jpeg",
+        label: "GAL - WhatsApp Image 2026-05-23",
+        description: "Gallery image",
+        meta: {
+          date: "May 23, 2026",
+          size: "500 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-gal-whatsapp-image-2026-05-25-at-17-47-26-1",
+        path: "/media/CRMEF/GAL/WhatsApp Image 2026-05-25 at 17.47.26 (1).jpeg",
+        label: "GAL - WhatsApp Image 2026-05-25 (1)",
+        description: "Gallery image",
+        meta: {
+          date: "May 25, 2026",
+          size: "550 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-gal-whatsapp-image-2026-05-25-at-17-47-28",
+        path: "/media/CRMEF/GAL/WhatsApp Image 2026-05-25 at 17.47.28.jpeg",
+        label: "GAL - WhatsApp Image 2026-05-25",
+        description: "Gallery image",
+        meta: {
+          date: "May 25, 2026",
+          size: "600 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-msp-img-20260212-103241",
+        path: "/media/CRMEF/MSP/IMG_20260212_103241.jpg",
+        label: "MSP - IMG_20260212_103241",
+        description: "MSP image",
+        meta: {
+          date: "Feb 12, 2026",
+          size: "800 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-msp-img-20260212-103356",
+        path: "/media/CRMEF/MSP/IMG_20260212_103356.jpg",
+        label: "MSP - IMG_20260212_103356",
+        description: "MSP image",
+        meta: {
+          date: "Feb 12, 2026",
+          size: "850 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-msp-whatsapp-image-2026-02-05-at-12-47-14",
+        path: "/media/CRMEF/MSP/WhatsApp Image 2026-02-05 at 12.47.14.jpeg",
+        label: "MSP - WhatsApp Image 2026-02-05 12:47:14",
+        description: "MSP WhatsApp image",
+        meta: {
+          date: "Feb 05, 2026",
+          size: "400 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-msp-whatsapp-image-2026-02-05-at-12-47-23",
+        path: "/media/CRMEF/MSP/WhatsApp Image 2026-02-05 at 12.47.23.jpeg",
+        label: "MSP - WhatsApp Image 2026-02-05 12:47:23",
+        description: "MSP WhatsApp image",
+        meta: {
+          date: "Feb 05, 2026",
+          size: "450 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-msp-whatsapp-image-2026-02-05-at-12-47-24-1",
+        path: "/media/CRMEF/MSP/WhatsApp Image 2026-02-05 at 12.47.24 (1).jpeg",
+        label: "MSP - WhatsApp Image 2026-02-05 12:47:24 (1)",
+        description: "MSP WhatsApp image",
+        meta: {
+          date: "Feb 05, 2026",
+          size: "500 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-msp-whatsapp-image-2026-02-05-at-12-47-24-2",
+        path: "/media/CRMEF/MSP/WhatsApp Image 2026-02-05 at 12.47.24 (2).jpeg",
+        label: "MSP - WhatsApp Image 2026-02-05 12:47:24 (2)",
+        description: "MSP WhatsApp image",
+        meta: {
+          date: "Feb 05, 2026",
+          size: "550 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-msp-whatsapp-image-2026-02-05-at-12-47-24",
+        path: "/media/CRMEF/MSP/WhatsApp Image 2026-02-05 at 12.47.24.jpeg",
+        label: "MSP - WhatsApp Image 2026-02-05 12:47:24",
+        description: "MSP WhatsApp image",
+        meta: {
+          date: "Feb 05, 2026",
+          size: "600 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-msp-whatsapp-image-2026-02-05-at-12-47-25",
+        path: "/media/CRMEF/MSP/WhatsApp Image 2026-02-05 at 12.47.25.jpeg",
+        label: "MSP - WhatsApp Image 2026-02-05 12:47:25",
+        description: "MSP WhatsApp image",
+        meta: {
+          date: "Feb 05, 2026",
+          size: "650 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-msp-whatsapp-image-2026-02-05-at-12-47-26-1",
+        path: "/media/CRMEF/MSP/WhatsApp Image 2026-02-05 at 12.47.26 (1).jpeg",
+        label: "MSP - WhatsApp Image 2026-02-05 12:47:26 (1)",
+        description: "MSP WhatsApp image",
+        meta: {
+          date: "Feb 05, 2026",
+          size: "700 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-msp-whatsapp-image-2026-02-05-at-12-47-26-2",
+        path: "/media/CRMEF/MSP/WhatsApp Image 2026-02-05 at 12.47.26 (2).jpeg",
+        label: "MSP - WhatsApp Image 2026-02-05 12:47:26 (2)",
+        description: "MSP WhatsApp image",
+        meta: {
+          date: "Feb 05, 2026",
+          size: "750 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-msp-whatsapp-image-2026-02-05-at-12-47-26-3",
+        path: "/media/CRMEF/MSP/WhatsApp Image 2026-02-05 at 12.47.26 (3).jpeg",
+        label: "MSP - WhatsApp Image 2026-02-05 12:47:26 (3)",
+        description: "MSP WhatsApp image",
+        meta: {
+          date: "Feb 05, 2026",
+          size: "800 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-msp-whatsapp-image-2026-02-05-at-12-47-26",
+        path: "/media/CRMEF/MSP/WhatsApp Image 2026-02-05 at 12.47.26.jpeg",
+        label: "MSP - WhatsApp Image 2026-02-05 12:47:26",
+        description: "MSP WhatsApp image",
+        meta: {
+          date: "Feb 05, 2026",
+          size: "850 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-msp-whatsapp-image-2026-02-05-at-12-47-54-1",
+        path: "/media/CRMEF/MSP/WhatsApp Image 2026-02-05 at 12.47.54 (1).jpeg",
+        label: "MSP - WhatsApp Image 2026-02-05 12:47:54 (1)",
+        description: "MSP WhatsApp image",
+        meta: {
+          date: "Feb 05, 2026",
+          size: "900 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-msp-whatsapp-image-2026-02-05-at-12-47-54-2",
+        path: "/media/CRMEF/MSP/WhatsApp Image 2026-02-05 at 12.47.54 (2).jpeg",
+        label: "MSP - WhatsApp Image 2026-02-05 12:47:54 (2)",
+        description: "MSP WhatsApp image",
+        meta: {
+          date: "Feb 05, 2026",
+          size: "950 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-msp-whatsapp-image-2026-02-05-at-12-47-54",
+        path: "/media/CRMEF/MSP/WhatsApp Image 2026-02-05 at 12.47.54.jpeg",
+        label: "MSP - WhatsApp Image 2026-02-05 12:47:54",
+        description: "MSP WhatsApp image",
+        meta: {
+          date: "Feb 05, 2026",
+          size: "1 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-msp-whatsapp-image-2026-02-05-at-12-47-55-1",
+        path: "/media/CRMEF/MSP/WhatsApp Image 2026-02-05 at 12.47.55 (1).jpeg",
+        label: "MSP - WhatsApp Image 2026-02-05 12:47:55 (1)",
+        description: "MSP WhatsApp image",
+        meta: {
+          date: "Feb 05, 2026",
+          size: "1.1 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-msp-whatsapp-image-2026-02-05-at-12-47-55-2",
+        path: "/media/CRMEF/MSP/WhatsApp Image 2026-02-05 at 12.47.55 (2).jpeg",
+        label: "MSP - WhatsApp Image 2026-02-05 12:47:55 (2)",
+        description: "MSP WhatsApp image",
+        meta: {
+          date: "Feb 05, 2026",
+          size: "1.2 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-msp-whatsapp-image-2026-02-05-at-12-47-55",
+        path: "/media/CRMEF/MSP/WhatsApp Image 2026-02-05 at 12.47.55.jpeg",
+        label: "MSP - WhatsApp Image 2026-02-05 12:47:55",
+        description: "MSP WhatsApp image",
+        meta: {
+          date: "Feb 05, 2026",
+          size: "1.3 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-msp-whatsapp-image-2026-02-12-at-11-06-38",
+        path: "/media/CRMEF/MSP/WhatsApp Image 2026-02-12 at 11.06.38.jpeg",
+        label: "MSP - WhatsApp Image 2026-02-12 11:06:38",
+        description: "MSP WhatsApp image",
+        meta: {
+          date: "Feb 12, 2026",
+          size: "700 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-s2-whatsapp-image-2026-04-17-at-14-45-25",
+        path: "/media/CRMEF/S2/imgs/WhatsApp Image 2026-04-17 at 14.45.25.jpeg",
+        label: "S2 - WhatsApp Image 2026-04-17 14:45:25",
+        description: "Semester 2 image",
+        meta: {
+          date: "Apr 17, 2026",
+          size: "400 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260223-101420",
+        path: "/media/CRMEF/IMG_20260223_101420.jpg",
+        label: "IMG_20260223_101420",
+        description: "Root CRMEF image",
+        meta: {
+          date: "Feb 23, 2026",
+          size: "1.5 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260223-101659",
+        path: "/media/CRMEF/IMG_20260223_101659.jpg",
+        label: "IMG_20260223_101659",
+        description: "Root CRMEF image",
+        meta: {
+          date: "Feb 23, 2026",
+          size: "1.6 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260223-113647",
+        path: "/media/CRMEF/IMG_20260223_113647.jpg",
+        label: "IMG_20260223_113647",
+        description: "Root CRMEF image",
+        meta: {
+          date: "Feb 23, 2026",
+          size: "1.7 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260325-091311",
+        path: "/media/CRMEF/IMG_20260325_091311.jpg",
+        label: "IMG_20260325_091311",
+        description: "Root CRMEF image",
+        meta: {
+          date: "Mar 25, 2026",
+          size: "2 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260414-132805",
+        path: "/media/CRMEF/IMG_20260414_132805.jpg",
+        label: "IMG_20260414_132805",
+        description: "Root CRMEF image",
+        meta: {
+          date: "Apr 14, 2026",
+          size: "2.2 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-img-20260427-112106",
+        path: "/media/CRMEF/IMG_20260427_112106.jpg",
+        label: "IMG_20260427_112106",
+        description: "Root CRMEF image",
+        meta: {
+          date: "Apr 27, 2026",
+          size: "1.8 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-whatsapp-image-2026-02-25-at-22-52-54",
+        path: "/media/CRMEF/WhatsApp Image 2026-02-25 at 22.52.54.jpeg",
+        label: "WhatsApp Image 2026-02-25 22:52:54",
+        description: "Root CRMEF image",
+        meta: {
+          date: "Feb 25, 2026",
+          size: "400 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-whatsapp-image-2026-02-25-at-23-03-18",
+        path: "/media/CRMEF/WhatsApp Image 2026-02-25 at 23.03.18.jpeg",
+        label: "WhatsApp Image 2026-02-25 23:03:18",
+        description: "Root CRMEF image",
+        meta: {
+          date: "Feb 25, 2026",
+          size: "500 KB",
+          author: "Content Creator",
+        }
+      }
     ],
     ico: [
       {
@@ -3167,8 +5062,11 @@ export function getAssetById(id) {
 
   for (const category in mediaRegistry) {
     for (const ext in mediaRegistry[category]) {
-      const asset = mediaRegistry[category][ext].find(a => a.id === id);
-      if (asset) return asset;
+      const items = mediaRegistry[category][ext];
+      if (Array.isArray(items)) {
+        const asset = items.find(a => a.id === id);
+        if (asset) return asset;
+      }
     }
   }
 
@@ -3195,8 +5093,9 @@ export function getAssetsByExtension(ext) {
   const results = [];
 
   for (const category in mediaRegistry) {
-    if (mediaRegistry[category][targetExt]) {
-      results.push(...mediaRegistry[category][targetExt]);
+    const items = mediaRegistry[category][targetExt];
+    if (Array.isArray(items)) {
+      results.push(...items);
     }
   }
   return results;
@@ -3210,7 +5109,10 @@ export function getAllAssetsFlat() {
 
   for (const category in mediaRegistry) {
     for (const ext in mediaRegistry[category]) {
-      results.push(...mediaRegistry[category][ext]);
+      const items = mediaRegistry[category][ext];
+      if (Array.isArray(items)) {
+        results.push(...items);
+      }
     }
   }
   return results;

@@ -2,6 +2,9 @@ import { defineConfig } from 'vite';
 import react, { reactCompilerPreset } from '@vitejs/plugin-react';
 import babel from '@rolldown/plugin-babel';
 import { visualizer } from 'rollup-plugin-visualizer';
+import { createHash } from 'crypto';
+import { readFileSync, writeFileSync } from 'fs';
+import { resolve } from 'path';
 
 /** @type {import('vite').Plugin} */
 const prismLanguagePlugin = {
@@ -12,6 +15,19 @@ const prismLanguagePlugin = {
       return { code: `import Prism from 'prismjs';\n${code}`, map: null };
     }
     return null;
+  },
+};
+
+/** @type {import('vite').Plugin} */
+const swCacheVersionPlugin = {
+  name: 'sw-cache-version',
+  closeBundle() {
+    const swPath = resolve(__dirname, 'dist/sw.js');
+    let sw = readFileSync(swPath, 'utf-8');
+    const hash = createHash('md5').update(sw).digest('hex').slice(0, 8);
+    sw = sw.replace('__BUILD_HASH__', hash);
+    writeFileSync(swPath, sw);
+    console.log(`[sw-cache-version] Injected build hash: ${hash}`);
   },
 };
 
@@ -26,7 +42,8 @@ export default defineConfig({
       filename: 'bundle-stats.html',
       gzipSize: true,
       brotliSize: true,
-    })
+    }),
+    swCacheVersionPlugin,
   ],
   optimizeDeps: {
     include: [

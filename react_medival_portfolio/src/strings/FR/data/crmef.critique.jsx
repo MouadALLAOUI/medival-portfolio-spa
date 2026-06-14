@@ -3,13 +3,15 @@ const CRITIQUE_DATA = {
         title: "Confiance Académique & Auto-efficacité",
         sections: {
             "Strengths": {
-                content: `J'ai développé des bases théoriques solides en informatique et en pédagogie. Ma capacité à saisir rapidement des concepts complexes—surtout en algorithmes, structures de données et conception pédagogique—me donne confiance dans les environnements académiques. Je performe bien quand on me donne des objectifs clairs et des environnements structurés.`,
+                content: `J'ai une forte confiance en mes capacités de développement web, qui est le domaine où j'ai investi le plus de temps et d'efforts. J'apprends mieux par la pratique et la résolution de problèmes que par la seule théorie. Lorsque je suis confronté à des défis techniques, ma première réaction est généralement la curiosité plutôt que l'évitement. J'aime enquêter sur les problèmes et trouver des solutions, ce qui me permet de progresser régulièrement même sur des projets difficiles. Au fil des ans, j'ai développé la confiance en ma capacité à comprendre des systèmes complexes et à m'adapter aux nouvelles technologies lorsqu'elles sont pertinentes pour mes objectifs.`,
             },
             "Weaknesses": {
-                content: `Cependant, je sous-estime souvent mes propres capacités, surtout en me comparant à des pairs qui semblent plus articulés ou expérimentés. J'ai tendance à remettre en question mes réponses pendant les discussions, même quand je connais bien le matériel. Ce syndrome de l'imposteur est particulièrement prononcé dans les contextes sociaux-académiques familiers où je n'ai pas encore établi de crédibilité.`,
+                content: `Ma confiance diminue considérablement hors de mes domaines les plus forts. Bien que je puisse apprendre de nouveaux sujets, je me perçois souvent comme en retard par rapport aux autres. Je ressens le syndrome de l'imposteur dans de nombreuses situations, pas seulement dans un contexte spécifique. J'ai tendance à sous-estimer mes capacités dans la plupart des domaines de la vie tout en me jugeant plus favorablement seulement en programmation. Récemment, j'ai aussi remarqué que l'apprentissage de nouveaux sujets semble plus lent et exigeant qu'avant, ce qui crée parfois frustration et doute de moi-même.
+
+Récemment, j'ai remarqué une baisse de ma capacité à rester concentré sur de longues sessions d'apprentissage. Je cherche souvent des moyens plus rapides d'acquérir des connaissances et deviens impatient avec des explications longues. Bien que je puisse toujours résoudre les problèmes techniques efficacement, maintenir l'attention sur des sujets inconnus est devenu plus difficile. Cela crée parfois l'impression que ma capacité d'apprentissage a diminué, bien que le problème réel puisse être la concentration et la fatigue mentale plutôt que la capacité elle-même.`,
             },
             "Reflection": {
-                content: `L'écart entre ce que je sais et ce que je crois de moi-même est quelque chose que je dois activement combler. Je reconnais que la confiance ne consiste pas à tout savoir—c'est faire confiance à ma capacité à trouver des solutions. Chaque séance de cours réussie et chaque interaction positive avec les élèves ajoute une brique à ce pont.`,
+                content: `L'un des principaux défis auxquels je suis confronté est de séparer les limitations réelles des perceptions créées par le stress et la comparaison. Ma capacité à résoudre les problèmes reste forte, mais ma confiance ne reflète pas toujours cette réalité. Lorsque je rencontre des obstacles, la pression vient généralement du temps limité et des responsabilités de la vie plutôt que de la difficulté technique elle-même. À l'avenir, je dois mieux comprendre si ma perception de ralentissement de l'apprentissage vient des pressions externes, de la fatigue mentale ou d'attentes irréalistes envers moi-même.`,
             },
         },
     },
@@ -17,13 +19,21 @@ const CRITIQUE_DATA = {
         title: "Communication & Compétences Interpersonnelles",
         sections: {
             "Strengths": {
-                content: `En situations individuelles et en petits groupes, je communique efficacement. Je peux expliquer des concepts techniques en termes accessibles quand j'ai le temps de me préparer. La communication écrite est l'un de mes points forts—je peux structurer clairement des arguments à l'écrit, ce qui aide pour la planification de cours et les rapports académiques.`,
+                content: `Je suis un bon auditeur et je me concentre naturellement sur la compréhension des autres avant de répondre. J'ai tendance à laisser de la place aux gens pour parler et observer les détails dans les conversations que d'autres peuvent manquer. Lorsque je me sens à l'aise avec quelqu'un, je peux m'exprimer ouvertement et honnêtement, ce qui permet des échanges profonds et significatifs. Dans les contextes d'enseignement, je suis motivé par le soutien aux élèves qui manquent de confiance, et je trouve satisfaction à les aider à renouer avec l'apprentissage. Mon intention dans la communication est généralement d'être utile plutôt que de dominer ou d'impressionner.`,
             },
             "Weaknesses": {
-                content: `Dans les grands groupes ou les présentations formelles, j'ai tendance à devenir anxieux et ma parole se précipite. Je lutte avec les échanges verbaux spontanés, surtout quand je suis confronté ou contredit publiquement. J'évite parfois de prendre la parole dans les discussions de classe non pas parce que je manque d'opinions, mais parce que j'ai peur d'être jugé sur la façon dont je les exprime.`,
+                content: `Je reste surtout silencieux dans des groupes inconnus et j'ai tendance à éviter de parler lorsque je perçois les autres comme plus expérimentés ou autoritaires. Dans ces situations, je me sens souvent nerveux et je crains de dire quelque chose d'incorrect ou d'inadéquat. Lorsque j'explique des concepts techniques, j'ai tendance à compliquer trop mes explications en incluant trop de détails, au lieu de m'adapter au besoin réel de l'auditeur. Je lutte avec la simplicité dans la communication et priorise souvent l'exhaustivité plutôt que la clarté.
+
+J'évite aussi les conflits et j'ai tendance à rester silencieux lorsqu'un désaccord se produit, préférant la réflexion à la confrontation. Cela me rend difficile d'affirmer mon autorité lorsque nécessaire.
+
+Émotionnellement, j'ai des limites faibles dans des situations sélectives : lorsque je me sens à l'aise avec quelqu'un, je peux partager trop d'informations personnelles très rapidement. Cela donne généralement un soulagement temporaire, mais par la suite je me sens souvent exposé et vulnérable, comme si j'avais révélé plus que prévu et perdu le contrôle sur la façon dont je me présentais.`,
             },
             "Reflection": {
-                content: `L'enseignement m'a sorti de ma zone de confort de manière inattendue. Se tenir devant 30+ élèves chaque jour construit lentement ma résilquence à l'oratoire. J'ai appris que la plupart de l'anxiété communicationnelle est anticipatoire—une fois que je commence à parler, ça coule. La clé est de se préparer plus minutieusement pour que ma confiance repose sur des fondations factuelles.`,
+                content: `Mon style de communication est façonné par deux extrêmes : le silence dans des environnements inconnus ou sous haute pression, et l'expression excessive dans des environnements confortables. Le manque d'équilibre entre ces deux états crée de l'incohérence dans la façon dont je me présente aux autres.
+
+La communication efficace pour moi n'est pas seulement d'améliorer mes compétences oratoires, mais d'apprendre le contrôle : quand parler, combien dire et quoi retenir. Je dois aussi développer la capacité de simplifier les explications sans perdre confiance en mes connaissances.
+
+Mon ouverture émotionnelle n'est pas le problème en soi ; la question est le moment et la régulation. Je dois développer des limites plus fortes pour que le partage de pensées personnelles devienne un choix, pas une impulsion.`,
             },
         },
     },

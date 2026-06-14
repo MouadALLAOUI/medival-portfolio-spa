@@ -5,22 +5,7 @@ import { useSettings } from '../../../lib/useSettings';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from 'lucide-react';
 import styles from './CrmefGalleryPage.module.scss';
-
-const IMAGES = [
-  { src: '/media/CRMEF/GAL/WhatsApp Image 2026-05-25 at 17.47.28.jpeg', defaultTitle: 'CRMEF Formation Moment', defaultDesc: 'A captured moment from the CRMEF teacher training program.' },
-  { src: '/media/CRMEF/GAL/WhatsApp Image 2026-05-25 at 17.47.26 (1).jpeg', defaultTitle: 'Pedagogical Session', defaultDesc: 'Session documenting the pedagogical approach at CRMEF.' },
-  { src: '/media/CRMEF/GAL/WhatsApp Image 2026-05-23 at 21.33.49.jpeg', defaultTitle: 'Training Workshop', defaultDesc: 'Workshop activity during the teacher training program.' },
-  { src: '/media/CRMEF/GAL/WhatsApp Image 2026-04-15 at 11.18.56.jpeg', defaultTitle: 'Classroom Activity', defaultDesc: 'Classroom activity at Annahda Middle School.' },
-  { src: '/media/CRMEF/GAL/WhatsApp Image 2026-03-11 at 20.29.34.jpeg', defaultTitle: 'Group Collaboration', defaultDesc: 'Collaborative work during the CRMEF formation.' },
-  { src: '/media/CRMEF/GAL/WhatsApp Image 2026-03-10 at 00.16.34.jpeg', defaultTitle: 'Formation Materials', defaultDesc: 'Materials and resources used during the training.' },
-  { src: '/media/CRMEF/GAL/WhatsApp Image 2026-03-09 at 16.43.17.jpeg', defaultTitle: 'Teaching Practice', defaultDesc: 'Practice teaching session at the regional center.' },
-  { src: '/media/CRMEF/GAL/WhatsApp Image 2026-03-04 at 11.36.00.jpeg', defaultTitle: 'Academic Meeting', defaultDesc: 'Meeting or seminar at the CRMEF center.' },
-  { src: '/media/CRMEF/GAL/IMG_20260427_114855.jpg', defaultTitle: 'Formation Day', defaultDesc: 'A day in the life of the CRMEF teacher training program.' },
-  { src: '/media/CRMEF/GAL/IMG_20260415_110143.jpg.jpeg', defaultTitle: 'Student Interaction', defaultDesc: 'Interacting with students during practice sessions.' },
-  { src: '/media/CRMEF/GAL/IMG-20260309-WA0116.jpg.jpeg', defaultTitle: 'Group Photo', defaultDesc: 'Group photo from the CRMEF formation.' },
-  { src: '/media/CRMEF/GAL/IMG-20260309-WA0109.jpg.jpeg', defaultTitle: 'Seminar Moment', defaultDesc: 'Moment captured during a pedagogical seminar.' },
-  { src: '/media/CRMEF/GAL/IMG-20260309-WA0107.jpg.jpeg', defaultTitle: 'Training Activity', defaultDesc: 'Activity from the CRMEF teacher training program.' },
-];
+import { crmefGallery } from '../../../data/crmef.data';
 
 const CrmefGalleryPage = () => {
   const { t } = useSettings();
@@ -38,13 +23,13 @@ const CrmefGalleryPage = () => {
 
   const handlePrev = (e) => {
     e.stopPropagation();
-    setLightboxIndex((prev) => (prev === 0 ? IMAGES.length - 1 : prev - 1));
+    setLightboxIndex((prev) => (prev === 0 ? crmefGallery.length - 1 : prev - 1));
     setZoomScale(1);
   };
 
   const handleNext = (e) => {
     e.stopPropagation();
-    setLightboxIndex((prev) => (prev === IMAGES.length - 1 ? 0 : prev + 1));
+    setLightboxIndex((prev) => (prev === crmefGallery.length - 1 ? 0 : prev + 1));
     setZoomScale(1);
   };
 
@@ -72,13 +57,13 @@ const CrmefGalleryPage = () => {
       </div>
 
       <div className={styles.grid}>
-        {IMAGES.map((img, index) => {
-          const title = img.defaultTitle;
-          const desc = img.defaultDesc;
+        {crmefGallery.map((img, index) => {
+          const title = img.label || 'CRMEF Image';
+          const desc = img.description || 'A captured moment from the CRMEF teacher training program.';
 
           return (
             <motion.div
-              key={img.src}
+              key={img.id}
               className={styles.galleryCard}
               whileHover={{ y: -6, scale: 1.02 }}
               onClick={() => openLightbox(index)}
@@ -87,7 +72,7 @@ const CrmefGalleryPage = () => {
               transition={{ delay: index * 0.1 }}
             >
               <div className={styles.imageWrapper}>
-                <img src={img.src} alt={title} loading="lazy" />
+                <img src={img.path} alt={title} loading="lazy" />
                 <div className={styles.overlay}>
                   <span className={styles.viewLabel}>{t('CRMEF.gallery.viewImage') || 'View Image 🔍'}</span>
                 </div>
@@ -103,9 +88,9 @@ const CrmefGalleryPage = () => {
 
       <AnimatePresence>
         {lightboxIndex !== null && (() => {
-          const currentImg = IMAGES[lightboxIndex];
-          const title = currentImg.defaultTitle;
-          const desc = currentImg.defaultDesc;
+          const currentImg = crmefGallery[lightboxIndex];
+          const title = currentImg.label || 'CRMEF Image';
+          const desc = currentImg.description || 'A captured moment from the CRMEF teacher training program.';
 
           return (
             <motion.div
@@ -144,7 +129,7 @@ const CrmefGalleryPage = () => {
                 <div className={styles.stage}>
                   <motion.img
                     key={lightboxIndex}
-                    src={currentImg.src}
+                    src={currentImg.path}
                     alt={title}
                     style={{ scale: zoomScale }}
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
@@ -155,7 +140,7 @@ const CrmefGalleryPage = () => {
                 <div className={styles.captionBar}>
                   <h3 className={styles.captionTitle}>{title}</h3>
                   <p className={styles.captionDesc}>{desc}</p>
-                  <span className={styles.pageIndicator}>{lightboxIndex + 1} / {IMAGES.length}</span>
+                  <span className={styles.pageIndicator}>{lightboxIndex + 1} / {crmefGallery.length}</span>
                 </div>
               </div>
             </motion.div>
