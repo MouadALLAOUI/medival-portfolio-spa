@@ -1,7 +1,7 @@
 const PEOPLE_NAME = {
   'mouad-allaoui': 'مؤاد علاوي',
   'lhossain-ait-taleb': 'السيد لحسين آيت الطالب',
-  'abdelrahim-maadiri': 'السيد عبد الرحيم الماصيري',
+  'abdelrahim-maadiri': 'السيد عبد الرحيم معديري',
   'moubaraa-sanaa': 'السيدة مبارك سناء',
   'raja-tamri': 'الأستاذة رجاء التامري',
   'snineh': 'الأستاذ صنينح',

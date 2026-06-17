@@ -16,8 +16,8 @@ const MSP_DATA = {
         establishment: 'Annahda Middle School (ثانوية النهضة الاعدادية)',
         creationYear: '2003',
         roomsCount: '23 غرفة عادية، 1 غرفة علوم حاسوب',
-        directorName: 'السيد عبد الرحيم الماصيري',
-        mentorName: 'البروفسور لحسين آيت الطالب',
+        directorName: '{{people_abdelrahim-maadiri}}',
+        mentorName: '{{people_lhossain-ait-taleb}}',
         studentsCount: '1349 (718 ذكور / 631 إناث)',
     },
     infrastructure: {

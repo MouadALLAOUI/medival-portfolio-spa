@@ -46,4 +46,4 @@ export const FILE_TYPE_META = {
 
 /** Whether this ext triggers a forced browser download */
 export const isDownloadExt = (ext) =>
-  ['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'odt', 'odp', 'ods', 'zip', 'rar', '7z', 'tar', 'gz'].includes(ext);
+  ['odt', 'zip', 'rar', '7z', 'tar', 'gz'].includes(ext);

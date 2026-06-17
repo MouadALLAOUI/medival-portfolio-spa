@@ -4,6 +4,10 @@ import { Download, ExternalLink, Loader } from 'lucide-react';
 import { getExt, classifyFile, FILE_TYPE_META, isDownloadExt } from '../../lib/fileType';
 import { useAlerts } from '../../lib/useAlerts';
 import PdfViewer from '../PdfViewer/PdfViewer';
+import DocxViewer from '../DocxViewer/DocxViewer';
+import ImageViewer from '../ImageViewer/ImageViewer';
+import XlsxViewer from '../XlsxViewer/XlsxViewer';
+import PptxViewer from '../PptxViewer/PptxViewer';
 import FileTooltip from './FileTooltip';
 import styles from './FileLink.module.scss';
 
@@ -18,6 +22,9 @@ export default function FileLink({ filePath, label, meta = {}, className = '', p
   const fileType = classifyFile(ext);
   const { Icon, colorClass } = FILE_TYPE_META[fileType] || FILE_TYPE_META.generic;
   const isPdf = fileType === 'pdf';
+  const isDoc = fileType === 'doc';
+  const isSpreadsheet = fileType === 'spreadsheet';
+  const isPresentation = fileType === 'presentation';
   const isImage = fileType === 'image';
   const doDownload = isDownloadExt(ext);
   const displayLabel = label || `.${ext.toUpperCase()}`;
@@ -69,13 +76,41 @@ export default function FileLink({ filePath, label, meta = {}, className = '', p
               {isChecking ? <Loader size={16} className={`${styles.fileActionIcon} ${styles.spin}`} /> : <Download size={16} className={styles.fileActionIcon} />}
             </button>
           </div>
+        ) : isDoc ? (
+          <div className={styles.pdfCardActions}>
+            <DocxViewer file={filePath} label={buttonInner} className={`${styles.pdfViewerOverride} ${pdfClass}`} onOpen={() => setShowTooltip(false)} />
+            <button type="button" onClick={(e) => handleClick(e, true)} disabled={isChecking} className={`${styles.pdfDownloadBtn} ${isChecking ? styles.disabled : ''}`} title={t ? t('COMMON.pdfViewer.download') || 'Download Document' : 'Download Document'}>
+              {isChecking ? <Loader size={16} className={`${styles.fileActionIcon} ${styles.spin}`} /> : <Download size={16} className={styles.fileActionIcon} />}
+            </button>
+          </div>
+        ) : isSpreadsheet ? (
+          <div className={styles.pdfCardActions}>
+            <XlsxViewer file={filePath} label={buttonInner} className={`${styles.pdfViewerOverride} ${pdfClass}`} onOpen={() => setShowTooltip(false)} />
+            <button type="button" onClick={(e) => handleClick(e, true)} disabled={isChecking} className={`${styles.pdfDownloadBtn} ${isChecking ? styles.disabled : ''}`} title="Download Spreadsheet">
+              {isChecking ? <Loader size={16} className={`${styles.fileActionIcon} ${styles.spin}`} /> : <Download size={16} className={styles.fileActionIcon} />}
+            </button>
+          </div>
+        ) : isPresentation ? (
+          <div className={styles.pdfCardActions}>
+            <PptxViewer file={filePath} label={buttonInner} className={`${styles.pdfViewerOverride} ${pdfClass}`} onOpen={() => setShowTooltip(false)} />
+            <button type="button" onClick={(e) => handleClick(e, true)} disabled={isChecking} className={`${styles.pdfDownloadBtn} ${isChecking ? styles.disabled : ''}`} title="Download Presentation">
+              {isChecking ? <Loader size={16} className={`${styles.fileActionIcon} ${styles.spin}`} /> : <Download size={16} className={styles.fileActionIcon} />}
+            </button>
+          </div>
+        ) : isImage ? (
+          <div className={styles.pdfCardActions}>
+            <ImageViewer file={filePath} label={buttonInner} className={`${styles.pdfViewerOverride} ${pdfClass}`} onOpen={() => setShowTooltip(false)} />
+            <button type="button" onClick={(e) => handleClick(e, true)} disabled={isChecking} className={`${styles.pdfDownloadBtn} ${isChecking ? styles.disabled : ''}`} title="Download Image">
+              {isChecking ? <Loader size={16} className={`${styles.fileActionIcon} ${styles.spin}`} /> : <Download size={16} className={styles.fileActionIcon} />}
+            </button>
+          </div>
         ) : (
           <button type="button" onClick={handleClick} disabled={isChecking} className={`${styles.fileDownloadBtn} ${isChecking ? styles.disabled : ''}`} title={displayLabel}>
             <Icon size={16} className={`${styles.fileIcon} ${styles[colorClass]}`} />
             <span className={styles.fileButtonLabel}>{displayLabel}</span>
             {meta.pages && <span className={styles.fileMetaBadge}>{meta.pages} {t ? t('CRMEF_SEMESTERS.tooltip.pages')?.toLowerCase() || 'pages' : 'pages'}</span>}
             <span className={`${styles.fileExtBadge} ${styles[colorClass]}`}>.{ext.toUpperCase()}</span>
-            {isChecking ? <Loader size={13} className={`${styles.fileActionIcon} ${styles.spin}`} /> : isImage ? <ExternalLink size={13} className={styles.fileActionIcon} /> : doDownload ? <Download size={13} className={styles.fileActionIcon} /> : <ExternalLink size={13} className={styles.fileActionIcon} />}
+            {isChecking ? <Loader size={13} className={`${styles.fileActionIcon} ${styles.spin}`} /> : doDownload ? <Download size={13} className={styles.fileActionIcon} /> : <ExternalLink size={13} className={styles.fileActionIcon} />}
           </button>
         )}
       </div>

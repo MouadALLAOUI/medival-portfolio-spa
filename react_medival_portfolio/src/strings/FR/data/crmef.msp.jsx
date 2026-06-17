@@ -16,8 +16,8 @@ Au début du stage, plusieurs défis surgissent naturellement, notamment la comp
         establishment: 'Annahda Middle School (ثانوية النهضة الاعدادية)',
         creationYear: '2003',
         roomsCount: '23 salles régulières, 1 salle d\'informatique',
-        directorName: 'M. Abderrahim Massiri',
-        mentorName: 'Pr. Lhossain Ait Taleb',
+        directorName: '{{people_abdelrahim-maadiri}}',
+        mentorName: '{{people_lhossain-ait-taleb}}',
         studentsCount: '1349 (718 garçons / 631 filles)',
     },
     infrastructure: {
