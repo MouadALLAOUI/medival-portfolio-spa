@@ -16,8 +16,8 @@ At the beginning of the internship, several challenges naturally arise, includin
         establishment: 'Annahda Middle School (ثانوية النهضة الاعدادية)',
         creationYear: '2003',
         roomsCount: '23 regular rooms, 1 computer science room',
-        directorName: 'Mr. Abderrahim Massiri',
-        mentorName: 'Pr. Lhossain Ait Taleb',
+        directorName: '{{people_abdelrahim-maadiri}}',
+        mentorName: '{{people_lhossain-ait-taleb}}',
         studentsCount: '1349 (718 Male / 631 Female)',
     },
     infrastructure: {

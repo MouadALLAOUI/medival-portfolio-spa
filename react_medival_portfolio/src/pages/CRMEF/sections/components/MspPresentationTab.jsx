@@ -7,9 +7,9 @@ export default function MspPresentationTab() {
   const { t } = useSettings();
 
   const peopleParams = {};
-  PEOPLE.forEach(p => {
-    if (crmefMspInfo.peopleRefs.includes(p.id)) {
-      peopleParams[`people_${p.id}`] = t(`PEOPLE.${p.id}`);
+  Object.keys(PEOPLE).forEach(id => {
+    if (crmefMspInfo.peopleRefs.includes(id)) {
+      peopleParams[`people_${id}`] = t(`PEOPLE.${id}`);
     }
   });
 
@@ -76,8 +76,8 @@ export default function MspPresentationTab() {
                 <td>{t(tableData.establishment)}</td>
                 <td>{t(tableData.creationYear)}</td>
                 <td>{t(tableData.roomsCount)}</td>
-                <td>{t(tableData.directorName)}</td>
-                <td>{t(tableData.mentorName)}</td>
+                <td>{t(tableData.directorName, peopleParams)}</td>
+                <td>{t(tableData.mentorName, peopleParams)}</td>
                 <td>{t(tableData.studentsCount)}</td>
               </tr>
             </tbody>
