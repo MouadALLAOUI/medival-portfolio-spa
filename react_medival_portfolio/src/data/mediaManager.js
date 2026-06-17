@@ -701,6 +701,19 @@ export const mediaRegistry = {
         }
       },
       {
+        id: "crmef-rapport-msp",
+        path: "/media/CRMEF/MSP/Rapport_MSP_Mouad_Allaoui.pdf",
+        label: "Rapport MSP - Mouad Allaoui",
+        description: "Rapport de stage de la pratique surveillée (MSP) rédigé par Mouad Allaoui",
+        meta: {
+          pageCount: "25",
+          date: "Jun 06, 2026",
+          size: "1.5 MB",
+          author: "Mouad Allaoui",
+          wordCount: 5000,
+        }
+      },
+      {
         id: "crmef-theories-apprentissage-arabe-2",
         path: "/media/CRMEF/S1/PDFs/2 3نظريات التعلم .pdf",
         label: "نظريات التعلم (2/3)",
@@ -4602,6 +4615,50 @@ export const mediaRegistry = {
         meta: {
           date: "Feb 05, 2026",
           size: "1.3 MB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-msp-whatsapp-image-2026-02-05-at-12-57-54",
+        path: "/media/CRMEF/MSP/WhatsApp Image 2026-02-05 at 12.57.54.jpeg",
+        label: "MSP - WhatsApp Image 2026-02-05 12:57:54",
+        description: "MSP WhatsApp image",
+        meta: {
+          date: "Feb 05, 2026",
+          size: "500 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-msp-whatsapp-image-2026-02-05-at-12-57-54-1",
+        path: "/media/CRMEF/MSP/WhatsApp Image 2026-02-05 at 12.57.54 (1).jpeg",
+        label: "MSP - WhatsApp Image 2026-02-05 12:57:54 (1)",
+        description: "MSP WhatsApp image",
+        meta: {
+          date: "Feb 05, 2026",
+          size: "550 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-msp-whatsapp-image-2026-02-05-at-12-57-54-2",
+        path: "/media/CRMEF/MSP/WhatsApp Image 2026-02-05 at 12.57.54 (2).jpeg",
+        label: "MSP - WhatsApp Image 2026-02-05 12:57:54 (2)",
+        description: "MSP WhatsApp image",
+        meta: {
+          date: "Feb 05, 2026",
+          size: "600 KB",
+          author: "Content Creator",
+        }
+      },
+      {
+        id: "crmef-msp-whatsapp-image-2026-02-05-at-12-57-54-3",
+        path: "/media/CRMEF/MSP/WhatsApp Image 2026-02-05 at 12.57.54 (3).jpeg",
+        label: "MSP - WhatsApp Image 2026-02-05 12:57:54 (3)",
+        description: "MSP WhatsApp image",
+        meta: {
+          date: "Feb 05, 2026",
+          size: "650 KB",
           author: "Content Creator",
         }
       },

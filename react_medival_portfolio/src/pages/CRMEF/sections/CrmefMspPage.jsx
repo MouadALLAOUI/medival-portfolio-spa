@@ -1,14 +1,20 @@
 import { useState, useEffect } from 'react';
 import CSection from '../../../templates/Section';
 import { crmefMspInfo } from '../../../data/crmef.data';
+import { loadSingleAsset } from '../../../lib/utils/assetUtils';
 import { useSettings } from '../../../lib/useSettings';
 import { useAchievements } from '../../../lib/useAchievements';
+import FileLink from '../../../components/FileLink/FileLink';
+import MspPresentationTab from './components/MspPresentationTab';
+import MspObservationsTab from './components/MspObservationsTab';
+import MspDocumentsTab from './components/MspDocumentsTab';
 import styles from './CrmefMspPage.module.scss';
 
 const CrmefMspPage = () => {
   const [activeTab, setActiveTab] = useState('presentation');
   const { t } = useSettings();
   const { unlockAchievement } = useAchievements();
+  const rapportAsset = loadSingleAsset('crmef-rapport-msp');
 
   useEffect(() => {
     unlockAchievement('msp_explorer');
@@ -20,18 +26,6 @@ const CrmefMspPage = () => {
     { id: 'documents', label: t('CRMEF.msp.tabs.documents') },
   ];
 
-  // const remerciementText = t('CRMEF.msp.presentation.remerciementText');
-  // const resolvedRemerciement = remerciementText !== 'CRMEF.msp.presentation.remerciementText' ? remerciementText : crmefMspInfo.remerciement;
-  const resolvedRemerciement = t('DATA.msp.remerciement') || crmefMspInfo.remerciement;
-
-  // const introductionText = t('CRMEF.msp.presentation.introductionText');
-  // const resolvedIntroduction = introductionText !== 'CRMEF.msp.presentation.introductionText' ? introductionText : crmefMspInfo.introduction;
-  const resolvedIntroduction = t('DATA.msp.introduction') || crmefMspInfo.introduction;
-
-  // const roomsCountVal = t('CRMEF.msp.table.roomsCountValue');
-  // const resolvedRoomsCount = roomsCountVal !== 'CRMEF.msp.table.roomsCountValue' ? roomsCountVal : crmefMspInfo.tableData.roomsCount;
-  const resolvedRoomsCount = t('DATA.msp.tableData.roomsCount') || crmefMspInfo.tableData.roomsCount;
-
   return (
     <CSection
       variant="crmef"
@@ -39,13 +33,25 @@ const CrmefMspPage = () => {
       title={t('CRMEF.msp.title')}
       className={styles.section}
     >
-      {/* Header info */}
       <div className={styles.mspHeader}>
-        <div>{t('CRMEF.msp.header.lyceeName')} <span className={styles.mspValue}>{t('DATA.msp.lyceeName') || crmefMspInfo.lyceeName}</span></div>
-        <div>{t('CRMEF.msp.header.profName')} <span className={styles.mspValue}>{t('DATA.msp.profName') || crmefMspInfo.profName}</span></div>
+        <div className={styles.headerItem}>
+          <span className={styles.headerLabel}>{t('CRMEF.msp.header.lyceeName')}</span>
+          <span className={styles.headerValue}>{t(crmefMspInfo.lyceeName)}</span>
+        </div>
+        <div className={styles.headerItem}>
+          <span className={styles.headerLabel}>{t('CRMEF.msp.header.profName')}</span>
+          <span className={styles.headerValue}>{t(crmefMspInfo.profName)}</span>
+        </div>
       </div>
 
-      {/* Tabs nav */}
+      <div className={styles.downloadArea}>
+        <FileLink
+          filePath={rapportAsset.path}
+          label={t('CRMEF.msp.downloadRapport') || 'Download Rapport'}
+          t={t}
+        />
+      </div>
+
       <div className={styles.tabsNav}>
         {MSP_TABS.map(tab => (
           <button
@@ -59,72 +65,10 @@ const CrmefMspPage = () => {
         ))}
       </div>
 
-      {/* Tab content */}
       <div className={styles.tabContent}>
-
-        {activeTab === 'presentation' && (
-          <>
-            <div className={styles.lyceePlaceholder}>{t('DATA.msp.imageLabel') || crmefMspInfo.imageLabel}</div>
-
-            <div className={styles.textBlock}>
-              <h3 className={styles.tabSubTitle}>{t('CRMEF.msp.presentation.remerciement')}</h3>
-              <p className={styles.tabText}>{resolvedRemerciement}</p>
-            </div>
-
-            <div className={styles.textBlock}>
-              <h3 className={styles.tabSubTitle}>{t('CRMEF.msp.presentation.introduction')}</h3>
-              <p className={styles.tabText}>{resolvedIntroduction}</p>
-            </div>
-
-            <div className={styles.textBlock}>
-              <h3 className={styles.tabSubTitle}>{t('CRMEF.msp.presentation.generalInfo')}</h3>
-              <p className={styles.facebookLink}>
-                <a href={crmefMspInfo.fbLink} target="_blank" rel="noopener noreferrer">
-                  {t('CRMEF.msp.presentation.fbOfficiel')} {crmefMspInfo.fbLabel}
-                </a>
-              </p>
-              <div className={styles.tableWrapper}>
-                <table className={styles.medievalTable}>
-                  <thead>
-                    <tr>
-                      <th>{t('CRMEF.msp.table.establishment')}</th>
-                      <th>{t('CRMEF.msp.table.creationYear')}</th>
-                      <th>{t('CRMEF.msp.table.roomsCount')}</th>
-                      <th>{t('CRMEF.msp.table.directorName')}</th>
-                      <th>{t('CRMEF.msp.table.mentorName')}</th>
-                      <th>{t('CRMEF.msp.table.studentsCount')}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{crmefMspInfo.tableData.establishment}</td>
-                      <td>{crmefMspInfo.tableData.creationYear}</td>
-                      <td>{resolvedRoomsCount}</td>
-                      <td>{crmefMspInfo.tableData.directorName}</td>
-                      <td>{crmefMspInfo.tableData.mentorName}</td>
-                      <td>{crmefMspInfo.tableData.studentsCount}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </>
-        )}
-
-        {activeTab === 'observations' && (
-          <div className={styles.centerContent}>
-            <h3 className={styles.tabSubTitle}>{t('CRMEF.msp.observations.title')}</h3>
-            <p className={styles.tabText}>{t('CRMEF.msp.observations.desc')}</p>
-          </div>
-        )}
-
-        {activeTab === 'documents' && (
-          <div className={styles.centerContent}>
-            <h3 className={styles.tabSubTitle}>{t('CRMEF.msp.documents.title')}</h3>
-            <p className={styles.tabText}>{t('CRMEF.msp.documents.desc')}</p>
-          </div>
-        )}
-
+        {activeTab === 'presentation' && <MspPresentationTab />}
+        {activeTab === 'observations' && <MspObservationsTab />}
+        {activeTab === 'documents' && <MspDocumentsTab />}
       </div>
     </CSection>
   );

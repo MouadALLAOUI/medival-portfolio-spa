@@ -19,6 +19,7 @@ export default function SettingsProvider({ children }) {
     // Accessibility & Optimization settings
     const [fontSize, setFontSize] = useState(() => localStorage.getItem("mp_font_size") || "medium");
     const [animationLevel, setAnimationLevel] = useState(() => localStorage.getItem("mp_animation_level") || "normal");
+    const [textSelection, setTextSelection] = useState(() => localStorage.getItem("mp_text_selection") === "true");
 
     const reducedMotion = animationLevel === 'light';
     const setReducedMotion = useCallback((val) => {
@@ -85,6 +86,12 @@ export default function SettingsProvider({ children }) {
     useEffect(() => {
         localStorage.setItem("mp_weather", weather);
     }, [weather]);
+
+    // Apply text selection
+    useEffect(() => {
+        document.documentElement.setAttribute('data-text-selection', textSelection ? 'true' : 'false');
+        localStorage.setItem("mp_text_selection", String(textSelection));
+    }, [textSelection]);
 
     const t = useCallback(
         (key, params = null) => {
@@ -156,12 +163,14 @@ export default function SettingsProvider({ children }) {
             setMedievalFont,
             weather,
             setWeather,
+            textSelection,
+            setTextSelection,
             isSettingsOpen,
             openSettings,
             closeSettings,
             t
         }),
-        [theme, language, fontSize, reducedMotion, setReducedMotion, animationLevel, markdownTheme, customCursor, soundEnabled, medievalFont, weather, isSettingsOpen, openSettings, closeSettings, t]
+        [theme, language, fontSize, reducedMotion, setReducedMotion, animationLevel, markdownTheme, customCursor, soundEnabled, medievalFont, weather, textSelection, isSettingsOpen, openSettings, closeSettings, t]
     );
     return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>;
 }

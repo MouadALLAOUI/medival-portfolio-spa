@@ -57,9 +57,9 @@ const ModuleWorkspace = ({ activeModule, semester, t }) => {
       </div>
 
       <div className={styles.workspaceGroups}>
-        <FileGroupSection icon="👤" label={t('CRMEF_SEMESTERS.files.solo') || 'Solo Work'} files={activeModule.files?.solo} renderFileCard={renderFileCard} />
-        <FileGroupSection icon="👥" label={t('CRMEF_SEMESTERS.files.group') || 'Group Projects'} files={activeModule.files?.group} renderFileCard={renderFileCard} />
-        <FileGroupSection icon="📜" label={t('CRMEF_SEMESTERS.files.official') || 'Official Resources'} files={activeModule.files?.official} renderFileCard={renderFileCard} />
+        <FileGroupSection icon="👤" label={t('CRMEF_SEMESTERS.files.solo')} files={activeModule.files?.solo} renderFileCard={renderFileCard} />
+        <FileGroupSection icon="👥" label={t('CRMEF_SEMESTERS.files.group')} files={activeModule.files?.group} renderFileCard={renderFileCard} />
+        <FileGroupSection icon="📜" label={t('CRMEF_SEMESTERS.files.official')} files={activeModule.files?.official} renderFileCard={renderFileCard} />
       </div>
 
       {(activeModule.learned || activeModule.lacks) && (
@@ -67,13 +67,13 @@ const ModuleWorkspace = ({ activeModule, semester, t }) => {
           {activeModule.learned && (
             <div className={styles.moduleLearned}>
               <span className={styles.moduleLearnedLabel}>✅ {t('CRMEF_SEMESTERS.learned')}:</span>
-              {t(`DATA.semestersLearned.${semester.id}.${activeModule.id}.learned`) || activeModule.learned}
+              {t(activeModule.learned)}
             </div>
           )}
           {activeModule.lacks && (
             <div className={styles.moduleLacks}>
               <span className={styles.moduleLacksLabel}>❌ {t('CRMEF_SEMESTERS.lacks')}:</span>
-              {t(`DATA.semestersLearned.${semester.id}.${activeModule.id}.lacks`) || activeModule.lacks}
+              {t(activeModule.lacks)}
             </div>
           )}
         </div>

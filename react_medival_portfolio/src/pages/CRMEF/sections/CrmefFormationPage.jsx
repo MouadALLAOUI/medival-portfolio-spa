@@ -18,7 +18,7 @@ const CrmefFormationPage = () => {
     <CSection
       variant="crmef"
       id="formation"
-      title={t('CRMEF.formation.title') || 'About the Formation'}
+      title={t('CRMEF.formation.title')}
       className={styles.section}
     >
       <div className={styles.tabsNav}>

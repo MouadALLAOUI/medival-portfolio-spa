@@ -7,19 +7,19 @@ export default function CrmefAcademyHome({ onStart, onBrowse, featured = [] }) {
     return (
         <div className={styles.academyHome}>
             <div className={styles.homeIntro}>
-                <h2>{t('CRMEF.videos.home.title') || 'Bienvenue à CRMEF Academy'}</h2>
+                <h2>{t('CRMEF.videos.home.title')}</h2>
                 <p>
-                    {t('CRMEF.videos.home.subtitle') || 'Welcome to the CRMEF learning hub — browse featured courses, discover tracks by difficulty, and resume where you left off.'}
+                    {t('CRMEF.videos.home.subtitle')}
                 </p>
                 <div className={styles.homeActions}>
-                    <button type="button" className={styles.primaryBtn} onClick={onStart}>{t('CRMEF.videos.home.startFirst') || 'Start the First Course'}</button>
-                    <button type="button" className={styles.secondaryBtn} onClick={onBrowse}>{t('CRMEF.videos.home.browse') || 'Browse Library'}</button>
+                    <button type="button" className={styles.primaryBtn} onClick={onStart}>{t('CRMEF.videos.home.startFirst')}</button>
+                    <button type="button" className={styles.secondaryBtn} onClick={onBrowse}>{t('CRMEF.videos.home.browse')}</button>
                 </div>
             </div>
 
             {featured.length > 0 && (
                 <div className={styles.homeFeatured}>
-                    <h3>{t('CRMEF.videos.home.featured') || 'Featured Courses'}</h3>
+                    <h3>{t('CRMEF.videos.home.featured')}</h3>
                     <div className={styles.featuredListSmall}>
                         {featured.map(v => (
                             <button key={v.id} type="button" className={styles.featuredCardSmall} onClick={() => onStart(v)}>

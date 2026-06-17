@@ -281,10 +281,10 @@ export default function CrmefVideosPage() {
       <header className={styles.header}>
         <h2 className={styles.title}>
           <Film className={styles.titleIcon} size={24} />
-          {t('CRMEF.videos.title') || 'CRMEF Academy'}
+          {t('CRMEF.videos.title')}
         </h2>
         <p className={styles.subtitle}>
-          {t('CRMEF.videos.subtitle') || 'Navigate the academy, review lessons, and keep progress across sessions.'}
+          {t('CRMEF.videos.subtitle')}
         </p>
       </header>
 

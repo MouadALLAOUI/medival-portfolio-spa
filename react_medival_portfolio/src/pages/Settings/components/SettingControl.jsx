@@ -21,6 +21,7 @@ const useSettingValue = (contextKey) => {
     customCursor: [settings.customCursor, settings.setCustomCursor],
     soundEnabled: [settings.soundEnabled, settings.setSoundEnabled],
     medievalFont: [settings.medievalFont, settings.setMedievalFont],
+    textSelection: [settings.textSelection, settings.setTextSelection],
   };
 
   return map[contextKey] || [null, () => {}];

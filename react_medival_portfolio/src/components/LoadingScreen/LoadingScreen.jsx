@@ -2,7 +2,7 @@ import { useSettings } from '../../lib/useSettings';
 import SkeletonWireframe from '../SkeletonWireframe';
 import styles from './LoadingScreen.module.scss';
 
-const LoadingScreen = ({ showSkeletons = true }) => {
+const LoadingScreen = ({ showSkeletons = false }) => {
   const { t } = useSettings();
 
   return (
@@ -14,7 +14,7 @@ const LoadingScreen = ({ showSkeletons = true }) => {
           <div className={styles.sigilInner} />
           <div className={styles.sigilCore}>🔮</div>
         </div>
-        
+
         {/* Localized Status Text */}
         <h2 className={styles.statusText}>
           {t('COMMON.pdfViewer.loading') || '🔮 Unrolling scroll of wisdom...'}

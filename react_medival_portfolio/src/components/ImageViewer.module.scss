@@ -82,7 +82,7 @@
   cursor: pointer;
   transition: background 0.2s, color 0.2s, transform 0.2s;
   z-index: 10;
-  user-select: none;
+  // user-select: none;
 
   &:hover {
     background: var(--color-gold);

@@ -145,6 +145,14 @@ export const SETTINGS_SECTIONS = [
         contextKey: 'soundEnabled',
         defaultValue: false,
       },
+      {
+        id: 'textSelection',
+        label: 'Text Selection',
+        description: 'Allow selecting and copying text on the page',
+        type: 'toggle',
+        contextKey: 'textSelection',
+        defaultValue: false,
+      },
     ],
   },
 ];

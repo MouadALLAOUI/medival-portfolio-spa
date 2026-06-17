@@ -297,7 +297,7 @@
   font-weight: bold;
   cursor: pointer;
   transition: all var(--transition, 150ms ease);
-  user-select: none;
+  // user-select: none;
 
   &:hover:not(:disabled) {
     background: var(--bg-tertiary);
@@ -602,7 +602,7 @@
   font-weight: 700;
   cursor: pointer;
   transition: all var(--transition, 150ms ease);
-  user-select: none;
+  // user-select: none;
 
   &:hover:not(:disabled) {
     border-color: var(--accent);
