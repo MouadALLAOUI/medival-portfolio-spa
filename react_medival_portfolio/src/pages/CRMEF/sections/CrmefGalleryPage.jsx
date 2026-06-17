@@ -4,6 +4,7 @@ import { useSettings } from '../../../lib/useSettings';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from 'lucide-react';
+import ImageCarousel from '../../../components/ImageCarousel/ImageCarousel';
 import styles from './CrmefGalleryPage.module.scss';
 import { crmefGallery } from '../../../data/crmef.data';
 
@@ -47,14 +48,16 @@ const CrmefGalleryPage = () => {
     <CSection
       variant="crmef"
       id="gallery"
-      title={t('CRMEF.gallery.title') || 'Gallery of the Formation'}
+      title={t('CRMEF.gallery.title')}
       className={styles.section}
     >
       <div className={styles.galleryIntro}>
         <p className={styles.introText}>
-          {t('CRMEF.gallery.subtitle') || 'A collection of visual moments, schematics, and materials chronicling my teacher training path at CRMEF and Middle School Annahda.'}
+          {t('CRMEF.gallery.subtitle')}
         </p>
       </div>
+
+      <ImageCarousel images={crmefGallery} interval={5000} />
 
       <div className={styles.grid}>
         {crmefGallery.map((img, index) => {
@@ -74,7 +77,7 @@ const CrmefGalleryPage = () => {
               <div className={styles.imageWrapper}>
                 <img src={img.path} alt={title} loading="lazy" />
                 <div className={styles.overlay}>
-                  <span className={styles.viewLabel}>{t('CRMEF.gallery.viewImage') || 'View Image 🔍'}</span>
+                  <span className={styles.viewLabel}>{t('CRMEF.gallery.viewImage')}</span>
                 </div>
               </div>
               <div className={styles.cardInfo}>
@@ -94,6 +97,7 @@ const CrmefGalleryPage = () => {
 
           return (
             <motion.div
+              key="lightbox"
               className={styles.lightboxOverlay}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

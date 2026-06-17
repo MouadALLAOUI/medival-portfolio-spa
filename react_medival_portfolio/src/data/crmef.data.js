@@ -609,25 +609,54 @@ The center serves trainees from across the region, providing them with the facil
 // ---------------------------------------------
 
 export const crmefMspInfo = {
-  lyceeName: 'Collège Annahda',
-  profName: 'Lhossain Ait Taleb',
+  peopleRefs: [
+    'abdelrahim-maadiri', 'lhossain-ait-taleb',
+    'lamyae-douik', 'fatima-mazouz',
+    'abdelkarim-el-idrissi', 'nadia-cherifi',
+    'essaadia-el-idrissi'
+  ],
+  lyceeName: 'DATA.msp.lyceeName',
+  profName: 'DATA.msp.profName',
   fbLink: 'https://www.facebook.com/college.annahda.mhamid/',
   fbLabel: 'https://www.facebook.com/college.annahda.mhamid/',
-  imageLabel: '📸 Collège Annahda',
-  remerciement: `First and foremost, we would like to express our deep gratitude to our supervisor, Mr. Lhossain Ait Taleb, who kindly agreed to guide us and never hesitated to provide us with his invaluable support and advice. Our thanks also extend to all the trainers at the CRMEF center for their continuous efforts and guidance throughout our training.`,
-  introduction: `The teaching internship constitutes a major step in the academic curriculum. For us, as trainees, it is an ideal opportunity to test our abilities to integrate into a team, take initiatives, and assume our own autonomy far beyond a simple description of the tasks performed. It involves facing different realities within the host school, and as trainee teachers, we are expected to adapt to them as a natural part of our time spent there. At the beginning, challenges naturally arise regarding the complexity of the concepts to be taught, adapting to the classroom environments, and managing student discipline, though some classes offer a much smoother experience. These observations will form the core focus of this report. The primary objective of our teaching internship is to guide us toward a thorough understanding of professional life by performing as active classroom teachers, and specifically to effectively teach computer science courses to secondary school students.`,
+  image: loadSingleAsset('crmef-msp-whatsapp-image-2026-02-05-at-12-47-55-2', 'image'),
+  imageLabel: 'DATA.msp.imageLabel',
+  stagePeriod: 'CRMEF.msp.info.stagePeriod',
+  stageDates: 'DATA.msp.stageDates',
+  totalSessions: 11,
+  selfTaughtSessions: 4,
+  academie: 'DATA.msp.academie',
+  province: 'DATA.msp.province',
+  codeEtablissement: '23072C',
+  milieu: 'DATA.msp.milieu',
+  remerciement: 'DATA.msp.remerciement',
+  introduction: 'DATA.msp.introduction',
   tableData: {
-    establishment: 'Annahda Middle School (ثانوية النهضة الاعدادية)',
-    creationYear: '2003',
-    roomsCount: '23 regular rooms, 1 computer science room',
-    directorName: 'Mr. Abderrahim Massiri',
-    mentorName: 'Pr. Lhossain Ait Taleb',
-    studentsCount: '1349 (718 Male / 631 Female)',
+    establishment: 'DATA.msp.tableData.establishment',
+    creationYear: 'DATA.msp.tableData.creationYear',
+    roomsCount: 'DATA.msp.tableData.roomsCount',
+    directorName: 'DATA.msp.tableData.directorName',
+    mentorName: 'DATA.msp.tableData.mentorName',
+    studentsCount: 'DATA.msp.tableData.studentsCount',
   },
+  infrastructure: {
+    teacherCount: 'DATA.msp.infrastructure.teacherCount',
+    adminCount: 'DATA.msp.infrastructure.adminCount',
+    hasResourceRoom: true,
+    hasLibrary: true,
+    hasSportsFacilities: true,
+    computerRoomPcs: 17,
+    hasProjector: true,
+    condition: 'DATA.msp.infrastructure.condition',
+    successRate: 'DATA.msp.infrastructure.successRate',
+    redoublementRate: 'DATA.msp.infrastructure.redoublementRate',
+    abandonRate: 'DATA.msp.infrastructure.abandonRate',
+  },
+  supervisorEvaluation: 'DATA.msp.supervisorEvaluation',
   files: {
     solo: [],
     group: [],
-    official: loadMultipleAssets(['crmef-ds2026'], 'document'),
+    official: loadMultipleAssets(['crmef-ds2026', 'crmef-rapport-msp'], 'document'),
     images: loadMultipleAssets([
       'crmef-msp-img-20260212-103241',
       'crmef-msp-img-20260212-103356',
@@ -651,6 +680,563 @@ export const crmefMspInfo = {
     ], 'image'),
   }
 };
+
+export const crmefMspObser = [
+  {
+    id: 'obs-001',
+    session: {
+      number: 1,
+      date: '22-01-2026',
+      level: '3AC',
+      group: 'G1',
+      studentCount: 24,
+      duration: '3H (08:30 - 11:30)',
+      courseTitle: 'Local Examination Evaluation',
+      sessionTitle: 'Correction of the Local Examination'
+    },
+    institution: 'Collège Al Nahda - Marrakech',
+    courseInstructor: {
+      name: 'Pr. El Hocine Ait-Taleb',
+      role: 'supervisor'
+    },
+    isSelfInstructor: false,
+    observation: 'Welcomed by the school director who presented the general functioning of the establishment. Joined the computer lab where supervisor M. Aït Taleb and Mme Nadia Cherifi were correcting the local exam for the first session. Actively participated in grading 3AC student exam scripts using official marking rubrics alongside the host instructors.',
+    positivePoints: 'Direct immersion into institutional evaluation workflows and criteria-based grading rubrics. Observational data gathered regarding typical student error patterns in evaluation conditions.',
+    pointsToImprove: 'Active trainee participation in primary rubric calibrations was limited due to the standardized nature of the examination key.',
+    selfObservation: null,
+    note: 'The administrative session established institutional routines and expectations for the practice block under primary supervisor direction. Collaboration with the pedagogical team facilitated a first immersion into the school environment.',
+    rubric: { pedagogy: 9.5, management: 9.5, engagement: 9.5 },
+  },
+  {
+    id: 'obs-002',
+    session: {
+      number: 2,
+      date: '05-02-2026',
+      level: '3AC',
+      group: 'G1',
+      studentCount: 17,
+      duration: '2H (08:30 - 10:30)',
+      courseTitle: 'Spreadsheet Software (MS Excel)',
+      sessionTitle: 'Introduction to Spreadsheet Interfaces'
+    },
+    institution: 'Collège Al Nahda - Marrakech',
+    courseInstructor: {
+      name: 'Pr. El Hocine Ait-Taleb',
+      role: 'supervisor'
+    },
+    isSelfInstructor: false,
+    observation: 'Began with a guided tour of the institution visiting the director\'s office, administration, store, general surveillance, staff room, social assistant\'s office, resource room, sports fields, and the specialized technician\'s office. Subsequently observed a formal instructional block introducing MS Excel: definition, usage domains, interface elements (workbook, sheet, cell, row, column, formula bar). The instructor used a projector and distributed a course handout.',
+    positivePoints: 'Comprehensive introduction to the educational and administrative infrastructure of the host institution. Effective deployment of visual projection tools to support the software interface overview.',
+    pointsToImprove: 'Instructional pacing during technical vocabulary delivery required deceleration to properly accommodate beginner student tracking.',
+    selfObservation: null,
+    note: 'The institutional orientation highlighted infrastructure alignment, including the utility of localized resource spaces for inclusive education. The session concluded with a QCM assessment.',
+    rubric: { pedagogy: 9.5, management: 9.5, engagement: 9.5 },
+  },
+  {
+    id: 'obs-012',
+    session: {
+      number: 2,
+      date: '05-02-2026',
+      level: '3AC',
+      group: 'G1',
+      studentCount: 17,
+      duration: '1H (10:30 - 11:30)',
+      courseTitle: 'Presentation Software (MS PowerPoint)',
+      sessionTitle: 'Practical Project — Zoo Presentation Design'
+    },
+    institution: 'Collège Al Nahda - Marrakech',
+    courseInstructor: {
+      name: 'Pr. El Hocine Ait-Taleb',
+      role: 'supervisor'
+    },
+    isSelfInstructor: false,
+    observation: 'Observed a practical project session where students designed a PowerPoint presentation on the theme of a zoo. Students used features including image insertion, video embedding, audio files, and slide creation and organization. The instructor began with a recap of previously studied concepts, then presented the task instructions. Students worked in pairs while the instructor observed and intervened only when difficulties arose.',
+    positivePoints: 'Calm and conducive working atmosphere. Students cooperated effectively in pairs. The instructor maintained a close mentoring relationship with learners.',
+    pointsToImprove: 'More structured milestone checkpoints would help students pace their project progression.',
+    selfObservation: null,
+    note: 'The project-based approach effectively consolidated PowerPoint skills through creative, hands-on application.',
+    rubric: { pedagogy: 9.5, management: 9.5, engagement: 9.5 },
+  },
+  {
+    id: 'obs-003',
+    session: {
+      number: 3,
+      date: '12-02-2026',
+      level: '2AC',
+      group: 'G2',
+      studentCount: 16,
+      duration: '2H (08:30 - 10:30)',
+      courseTitle: 'Spreadsheet Software (MS Excel)',
+      sessionTitle: 'Problem-Solving Approach — Data Organization'
+    },
+    institution: 'Collège Al Nahda - Marrakech',
+    courseInstructor: {
+      name: 'Pr. El Hocine Ait-Taleb',
+      role: 'supervisor'
+    },
+    isSelfInstructor: false,
+    observation: 'Observed an inductive lesson using a structured problem situation centered on data organization for the Humanitarian Solidarity Day. The instructor began by recalling prerequisites about computer components and peripherals. Through progressive questioning, students were led to discover the utility of a spreadsheet for managing data. The instructor emphasized guidance and scaffolding over direct instruction.',
+    positivePoints: 'Strong execution of inquiry-based learning principles. High rates of student verbal contribution during the hypothesis-formulation phase.',
+    pointsToImprove: 'Transition times between the conceptual discussion phase and student logbook transcriptions could be optimized.',
+    selfObservation: null,
+    note: 'Demonstrated effective execution of a problem-solving approach to introduce abstract software utilities.',
+    rubric: { pedagogy: 9.5, management: 9.5, engagement: 9.5 },
+  },
+  {
+    id: 'obs-013',
+    session: {
+      number: 3,
+      date: '12-02-2026',
+      level: '3AC',
+      group: 'G2',
+      studentCount: 16,
+      duration: '1H (10:30 - 11:30)',
+      courseTitle: 'Presentation Software (MS PowerPoint)',
+      sessionTitle: 'Insertion of Multimedia Objects'
+    },
+    institution: 'Collège Al Nahda - Marrakech',
+    courseInstructor: {
+      name: 'Pr. El Hocine Ait-Taleb',
+      role: 'supervisor'
+    },
+    isSelfInstructor: false,
+    observation: 'Observed a session focused on developing skills for enriching PowerPoint presentations with multimedia objects: shapes, images, audio and video insertion. The session followed a coherent progression: recap of animation and transition concepts, step-by-step demonstration of insertion procedures, then hands-on practice. The instructor used the demonstrative method with regular student support during activities. Voice volume varied throughout the session to maintain student attention.',
+    positivePoints: 'Well-structured progression from theory to practice. Regular student monitoring during the practical phase ensured comprehension.',
+    pointsToImprove: 'Communication was primarily in French with occasional Arabic reformulations which could be minimized for better terminology immersion.',
+    selfObservation: null,
+    note: 'The demonstrative method combined with guided practice proved effective for teaching software manipulation skills.',
+    rubric: { pedagogy: 9.5, management: 9.5, engagement: 9.5 },
+  },
+  {
+    id: 'obs-004',
+    session: {
+      number: 4,
+      date: '19-02-2026',
+      level: '2AC',
+      group: 'G1',
+      studentCount: 17,
+      duration: '2H (08:30 - 10:30)',
+      courseTitle: 'Spreadsheet Software (MS Excel)',
+      sessionTitle: 'Calculation Formulas (SUM and AVERAGE Functions)'
+    },
+    institution: 'Collège Al Nahda - Marrakech',
+    courseInstructor: {
+      name: 'Mouad Allaoui',
+      role: 'trainee'
+    },
+    isSelfInstructor: true,
+    observation: 'Delivered an active instructional sequence introducing basic arithmetic functions (SUM and AVERAGE) within a spreadsheet. Content aligned with the 2AC curriculum and examples were adapted to the students\' level. Began with a contextual scenario highlighting the value of automated calculation, followed by practical workstation exercises. Used the demonstrative method: presenting manipulations, explaining steps, then practical activity.',
+    positivePoints: 'Logical sequence layout aligned completely with designated lesson objectives. The opening activity established clear real-world relevance for data computation rules.',
+    pointsToImprove: 'Whiteboard space organization was limited, reducing structural visibility for key formulas. Projecting voice amplitude systematically toward the rear rows requires optimization.',
+    selfObservation: 'I must improve my spatial blackboard partitioning to preserve persistent formula references. I will also incorporate targeted verbal reinforcement loops to systematically reward correct student interactions.',
+    note: 'Received targeted constructive feedback from the supervising instructor concerning voice management and whiteboard mechanics.',
+    rubric: { pedagogy: 7, management: 6.5, engagement: 5 },
+  },
+  {
+    id: 'obs-014',
+    session: {
+      number: 4,
+      date: '19-02-2026',
+      level: '2AC',
+      group: 'G2',
+      studentCount: 16,
+      duration: '1H (10:30 - 11:30)',
+      courseTitle: 'Presentation Software (MS PowerPoint)',
+      sessionTitle: 'Action Button Creation'
+    },
+    institution: 'Collège Al Nahda - Marrakech',
+    courseInstructor: {
+      name: 'Essaadia El Idrissi',
+      role: 'trainee'
+    },
+    isSelfInstructor: false,
+    observation: 'Observed a peer-led session on creating action buttons in PowerPoint. The content followed the explicit teaching method: project setting, modeling, guided practice, autonomous practice, then review and evaluation. The instructor projected her screen and demonstrated step-by-step action button creation. Students reproduced the steps with guidance, then independently created different action buttons. The instructor circulated between workstations to assist struggling students.',
+    positivePoints: 'Clear step-by-step demonstration with effective use of screen projection. Structured progression from guided to autonomous practice.',
+    pointsToImprove: 'Voice volume was occasionally low. The course was mostly explained in Arabic rather than French, which reduced terminology exposure.',
+    selfObservation: null,
+    note: 'The explicit teaching method provided a clear framework for students to acquire technical PowerPoint skills.',
+    rubric: { pedagogy: 7, management: 7, engagement: 7 },
+  },
+  {
+    id: 'obs-005',
+    session: {
+      number: 5,
+      date: '05-03-2026',
+      level: '2AC',
+      group: 'G2',
+      studentCount: 17,
+      duration: '2H (08:30 - 10:30)',
+      courseTitle: 'Spreadsheet Software (MS Excel)',
+      sessionTitle: 'Forms in Excel'
+    },
+    institution: 'Collège Al Nahda - Marrakech',
+    courseInstructor: {
+      name: 'Lamyae DOUIK',
+      role: 'trainee'
+    },
+    isSelfInstructor: false,
+    observation: 'Observed peer teacher conducting a consolidation workshop on SUM and AVERAGE functions in Excel. The session aimed to reinforce mastery of calculation syntax through practical exercises. The trainee began with a recap of acquired knowledge, followed by a discovery activity and hands-on computer exercises emphasizing individual troubleshooting across computing workstations.',
+    positivePoints: 'Conducive and orderly classroom environment established. Rigorous row monitoring facilitated individual error corrections at student desks.',
+    pointsToImprove: 'Variance in student operational speeds led to tracking discrepancies; faster groups remained idle while lagging groups caught up.',
+    selfObservation: null,
+    note: 'Highlights the pedagogical necessity of designing tiered extension tasks for differentiated classroom pacing.',
+    rubric: { pedagogy: 7, management: 7, engagement: 7 },
+  },
+  {
+    id: 'obs-015',
+    session: {
+      number: 5,
+      date: '05-03-2026',
+      level: '3AC',
+      group: 'G2',
+      studentCount: 16,
+      duration: '1H (10:30 - 11:30)',
+      courseTitle: 'Presentation Software (MS PowerPoint)',
+      sessionTitle: 'Action Button Creation'
+    },
+    institution: 'Collège Al Nahda - Marrakech',
+    courseInstructor: {
+      name: 'Fatima MAZOUZ',
+      role: 'trainee'
+    },
+    isSelfInstructor: false,
+    observation: 'Observed a peer-led session covering the same action button content as the previous session but delivered to a different group (boys). The different group dynamics provided an opportunity to observe adaptation of the same pedagogical sequence to a different audience. Approach was similar — modeling, guided practice, then autonomous practice — but classroom management required more individual interventions as boys showed a stronger tendency to explore features beyond instructions.',
+    positivePoints: 'Adapted the same content effectively to different group dynamics. Maintained structured progression.',
+    pointsToImprove: 'Voice volume was occasionally low. The instructor frequently switched to Arabic to maintain attention, reducing French terminology exposure.',
+    selfObservation: null,
+    note: 'Teaching the same content to different groups highlights the importance of adapting pedagogical strategies to audience characteristics.',
+    rubric: { pedagogy: 7, management: 7, engagement: 7 },
+  },
+  {
+    id: 'obs-016',
+    session: {
+      number: 6,
+      date: '12-03-2026',
+      level: '2AC',
+      group: 'G1',
+      studentCount: 17,
+      duration: '2H (08:30 - 10:30)',
+      courseTitle: 'Spreadsheet Software (MS Excel)',
+      sessionTitle: 'Relative and Absolute Addresses + Evaluation'
+    },
+    institution: 'Collège Al Nahda - Marrakech',
+    courseInstructor: {
+      name: 'Essaadia El Idrissi',
+      role: 'trainee'
+    },
+    isSelfInstructor: false,
+    observation: 'Observed a session covering relative and absolute cell references in Excel. Content followed a coherent progression from discovering references to using them in formulas. At the end, the instructor administered a control assessment with both theoretical and practical components. The explicit teaching method was used with regular student support. The whiteboard was underutilized.',
+    positivePoints: 'Coherent lesson progression from discovery to application. Effective combination of theory and practical assessment.',
+    pointsToImprove: 'Voice volume varied with some passages being less audible. Computer science terms were pronounced with Arabic influence. Few encouragement words used with students.',
+    selfObservation: null,
+    note: 'The dual assessment format (theory + practice) provided a comprehensive evaluation of student understanding.',
+    rubric: { pedagogy: 7, management: 7, engagement: 8 },
+  },
+  {
+    id: 'obs-006',
+    session: {
+      number: 6,
+      date: '12-03-2026',
+      level: '3AC',
+      group: 'G1',
+      studentCount: 15,
+      duration: '1H (10:30 - 11:30)',
+      courseTitle: 'Presentation Software (MS PowerPoint)',
+      sessionTitle: 'Practical Summative Assessment'
+    },
+    institution: 'Collège Al Nahda - Marrakech',
+    courseInstructor: {
+      name: 'Mouad Allaoui',
+      role: 'trainee'
+    },
+    isSelfInstructor: true,
+    observation: 'Supervised a practical laboratory assessment evaluating multi-slide presentation design. Began with a recap of essential concepts before proceeding to the control. Managed workstation distribution and administered task parameters regarding multimedia objects, layout rules, and slide settings. The explicit method was used with a recap phase, modeling, and autonomous practice.',
+    positivePoints: 'Maintained a quiet, strictly disciplined assessment environment. Exam parameters successfully tested independent software manipulation capabilities.',
+    pointsToImprove: 'Pre-testing instructional briefs must be streamlined to prevent individual repetitive inquiries during the exam window.',
+    selfObservation: 'I will list concrete assessment benchmarks explicitly on the blackboard prior to distributing materials to support student task self-management.',
+    note: 'Observed the operational execution of running live technical skill verifications within a restricted time frame.',
+    rubric: { pedagogy: 7.5, management: 7, engagement: 6 },
+  },
+  {
+    id: 'obs-017',
+    session: {
+      number: 7,
+      date: '26-03-2026',
+      level: '2AC',
+      group: 'G2',
+      studentCount: 16,
+      duration: '2H (08:30 - 10:30)',
+      courseTitle: 'Spreadsheet Software (MS Excel)',
+      sessionTitle: 'Relative and Absolute Addresses + Evaluation'
+    },
+    institution: 'Collège Al Nahda - Marrakech',
+    courseInstructor: {
+      name: 'Fatima MAZOUZ',
+      role: 'trainee'
+    },
+    isSelfInstructor: false,
+    observation: 'Observed a session on relative and absolute cell references. Content followed a coherent progression from discovering references to their use in formulas. At the end, a control assessment was given with both theoretical and practical parts. The explicit teaching method was used with regular student support. The whiteboard was underutilized.',
+    positivePoints: 'Structured progression and consistent student monitoring during exercises.',
+    pointsToImprove: 'Voice volume varied. Some terms were pronounced with Arabic influence. Few encouragement words were used.',
+    selfObservation: null,
+    note: 'Reinforces the observation that explicit instruction combined with practical application effectively consolidates technical spreadsheet skills.',
+    rubric: { pedagogy: 7, management: 8, engagement: 7 },
+  },
+  {
+    id: 'obs-007',
+    session: {
+      number: 7,
+      date: '26-03-2026',
+      level: '3AC',
+      group: 'G1',
+      studentCount: 15,
+      duration: '1H (10:30 - 11:30)',
+      courseTitle: 'Presentation Software (MS PowerPoint)',
+      sessionTitle: 'Practical Summative Assessment'
+    },
+    institution: 'Collège Al Nahda - Marrakech',
+    courseInstructor: {
+      name: 'Lamyae DOUIK',
+      role: 'trainee'
+    },
+    isSelfInstructor: false,
+    observation: 'Observed peer teacher run a practical assessment block. Students worked independently to implement advanced presentation parameters, focusing on media positioning, transitions, and functional action links. The trainee began with a recap of studied concepts and clearly defined operational requirements before task initiation. Systematic timing checks kept student workflows structured.',
+    positivePoints: 'Explicit definition of operational requirements before task initiation. Systematic timing checks kept student workflows structured.',
+    pointsToImprove: 'The application of visual milestone indicators on the board would help students regulate their project execution speed better.',
+    selfObservation: null,
+    note: 'Clear task scaffolding significantly prevents student anxiety during digital performance evaluations.',
+    rubric: { pedagogy: 7, management: 8, engagement: 8 },
+  },
+  {
+    id: 'obs-018',
+    session: {
+      number: 8,
+      date: '16-04-2026',
+      level: '2AC',
+      group: 'G2',
+      studentCount: 16,
+      duration: '2H (08:30 - 10:30)',
+      courseTitle: 'Spreadsheet Software (MS Excel)',
+      sessionTitle: 'Functions SUM, AVERAGE, MAX, and MIN'
+    },
+    institution: 'Collège Al Nahda - Marrakech',
+    courseInstructor: {
+      name: 'Essaadia El Idrissi',
+      role: 'trainee'
+    },
+    isSelfInstructor: false,
+    observation: 'Observed a session dedicated to learning the main calculation functions in Excel. Students discovered the role of each function and their utility in numerical data processing. The trainee began with a discovery activity, followed by an explanation phase. A first practical exercise in pairs was proposed, followed by independent work. The session ended with a written summary.',
+    positivePoints: 'Dynamic interactions during the session. Pair work fostered mutual assistance. Progression from guided to autonomous work helped students gain confidence.',
+    pointsToImprove: 'The transition from pair work to independent work could have been more clearly signaled.',
+    selfObservation: null,
+    note: 'The guided-to-autonomous progression is an effective scaffolding strategy for building student confidence in software skills.',
+    rubric: { pedagogy: 8, management: 8, engagement: 8 },
+  },
+  {
+    id: 'obs-008',
+    session: {
+      number: 8,
+      date: '16-04-2026',
+      level: '3AC',
+      group: 'G1',
+      studentCount: 16,
+      duration: '1H (10:30 - 11:30)',
+      courseTitle: 'Algorithmics and Programming (XLogo)',
+      sessionTitle: 'REPETE Instruction and Procedures'
+    },
+    institution: 'Collège Al Nahda - Marrakech',
+    courseInstructor: {
+      name: 'Mouad Allaoui',
+      role: 'trainee'
+    },
+    isSelfInstructor: true,
+    observation: 'Introduced the programming concept of procedures in the XLogo environment. Covered topics included Logo overview, turtle commands (AV/TD), interface familiarity, REPETE instruction, and procedure creation. Designed an initial code sequence challenge demonstrating manual repetition limits, guiding student groups to discover modular code blocks. The session began with a recap of previously studied notions, followed by a problem situation to highlight manual repetition limits, discovery and demonstration phases, then a practical pair activity to create and test procedures.',
+    positivePoints: 'Strong student interaction during the discovery phase. Fluid integration between manual blackboard syntax tracing and student terminal validation runs.',
+    pointsToImprove: 'XLogo syntax rules require a permanent visual anchor space on the blackboard to decrease typing and syntax errors during testing phases.',
+    selfObservation: 'I will explicitly partition a dedicated section of the whiteboard for core coding syntax layout. This provides students an unhindered reference anchor during independent lab execution.',
+    note: 'The inquiry-based framework proved highly effective in translating abstract coding structures into clear operational logic.',
+    rubric: { pedagogy: 8.5, management: 8, engagement: 7.5 },
+  },
+  {
+    id: 'obs-019',
+    session: {
+      number: 9,
+      date: '23-04-2026',
+      level: '2AC',
+      group: 'G1',
+      studentCount: 16,
+      duration: '2H (08:30 - 10:30)',
+      courseTitle: 'Spreadsheet Software (MS Excel)',
+      sessionTitle: 'Functions SUM, AVERAGE, MAX, and MIN'
+    },
+    institution: 'Collège Al Nahda - Marrakech',
+    courseInstructor: {
+      name: 'Fatima MAZOUZ',
+      role: 'trainee'
+    },
+    isSelfInstructor: false,
+    observation: 'Observed a session on Excel calculation functions in continuity with previous learning. The trainee began with an introductory activity to elicit the utility of functions. An explanation and demonstration phase presented each function\'s operation. Students completed a first pair exercise, then individual work. The session ended with a written synthesis. Students participated actively and collaborative work fostered peer support.',
+    positivePoints: 'Active student participation. Collaborative work fostered mutual assistance. The trainee maintained a positive classroom climate.',
+    pointsToImprove: 'Providing more structured differentiation for varying student skill levels would optimize learning outcomes.',
+    selfObservation: null,
+    note: 'Continuity in content progression across sessions helps reinforce spreadsheet skills through repeated practice.',
+    rubric: { pedagogy: 8, management: 8, engagement: 8 },
+  },
+  {
+    id: 'obs-009',
+    session: {
+      number: 9,
+      date: '23-04-2026',
+      level: '3AC',
+      group: 'G2',
+      studentCount: 16,
+      duration: '1H (10:30 - 11:30)',
+      courseTitle: 'Algorithmics and Programming (XLogo)',
+      sessionTitle: 'REPETE Instruction and Procedures'
+    },
+    institution: 'Collège Al Nahda - Marrakech',
+    courseInstructor: {
+      name: 'Lamyae DOUIK',
+      role: 'trainee'
+    },
+    isSelfInstructor: false,
+    observation: 'Observed peer lesson on creating named procedure templates in XLogo. Instruction focused on execution headers, core instruction body lines, and closing termination keywords. The trainee began with a recap of previous concepts, proposed a problem situation followed by a demonstration. Students completed a practical pair activity.',
+    positivePoints: 'Balanced blend of theoretical structural setup and direct computer modeling. Structured pair workflows enhanced collaborative student debugging.',
+    pointsToImprove: 'Explicit tracking of precise vocabulary parameters is needed to ensure students do not substitute technical syntax with informal terms.',
+    selfObservation: null,
+    note: 'The laboratory layout supported effective collaborative learning configurations for computing logic drills.',
+    rubric: { pedagogy: 8, management: 8, engagement: 8 },
+  },
+  {
+    id: 'obs-020',
+    session: {
+      number: 10,
+      date: '14-05-2026',
+      level: '2AC',
+      group: 'G1',
+      studentCount: 17,
+      duration: '2H (08:30 - 10:30)',
+      courseTitle: 'Spreadsheet Software (MS Excel)',
+      sessionTitle: 'Charts in Excel + Theoretical and Practical Assessment'
+    },
+    institution: 'Collège Al Nahda - Marrakech',
+    courseInstructor: {
+      name: 'Abdelkarim El Idrissi',
+      role: 'trainee'
+    },
+    isSelfInstructor: false,
+    observation: 'Observed a session covering chart creation in Excel. After a recap of studied functions (SUM, AVERAGE, MAX, MIN) and relative/absolute addresses, the trainee introduced chart creation. Students discovered the value of graphical representations for visualizing data. The second part was dedicated to a continuous assessment with theoretical and practical components. We participated in the correction on workstations at the end.',
+    positivePoints: 'Structured progression from recap to new content to assessment. Serious classroom climate conducive to concentration.',
+    pointsToImprove: 'Allocating more time for students to practice chart customization options would deepen their understanding.',
+    selfObservation: null,
+    note: 'The integration of new content (charts) with continuous assessment effectively combines learning and evaluation.',
+    rubric: { pedagogy: 8, management: 8, engagement: 8 },
+  },
+  {
+    id: 'obs-010',
+    session: {
+      number: 10,
+      date: '14-05-2026',
+      level: '3AC',
+      group: 'G1',
+      studentCount: 16,
+      duration: '1H (10:30 - 11:30)',
+      courseTitle: 'Algorithmics and Programming (XLogo)',
+      sessionTitle: 'Theoretical Midterm Evaluation'
+    },
+    institution: 'Collège Al Nahda - Marrakech',
+    courseInstructor: {
+      name: 'Mouad Allaoui',
+      role: 'trainee'
+    },
+    isSelfInstructor: true,
+    observation: 'Administered a formal theoretical module assessment testing XLogo primitives, code nesting logic, and functional procedure configurations. Test questions covered basic primitives, REPETE instruction, and procedures. The session began with a brief recap of key concepts before distributing test sheets. Ensured compliance with instructions and proper assessment conduct. Participated in grading student productions on workstations at the end.',
+    positivePoints: 'Maintained excellent examination discipline and focus throughout the room. Test questions accurately mapped individual comprehension parameters across student profiles.',
+    pointsToImprove: 'Allocating a short syntax-refresh overview prior to test sheet distribution would optimize student adjustment to specialized coding vocabulary.',
+    selfObservation: 'I will allocate a 5-minute pre-test review module in future testing sessions to quickly stabilize core terminal language anchors before final evaluations.',
+    note: 'Trainees directly managed final grading on workstation terminals, reinforcing assessment criteria accuracy.',
+    rubric: { pedagogy: 9, management: 8.5, engagement: 8.5 },
+  },
+  {
+    id: 'obs-021',
+    session: {
+      number: 11,
+      date: '21-05-2026',
+      level: '2AC',
+      group: 'G2',
+      studentCount: 16,
+      duration: '2H (08:30 - 10:30)',
+      courseTitle: 'Spreadsheet Software (MS Excel)',
+      sessionTitle: 'Charts in Excel + Theoretical and Practical Assessment'
+    },
+    institution: 'Collège Al Nahda - Marrakech',
+    courseInstructor: {
+      name: 'Lamyae DOUIK',
+      role: 'trainee'
+    },
+    isSelfInstructor: false,
+    observation: 'Observed a session on graphical data representation and skills assessment. After a recap of calculation functions, students discovered the steps for creating a chart. The second part was dedicated to a continuous assessment comprising theoretical and practical components. The trainee ensured compliance with instructions and time management. Students participated actively in the recap and the atmosphere was serious and focused.',
+    positivePoints: 'Active student participation during the recap phase. Well-managed time allocation between instruction and assessment.',
+    pointsToImprove: 'Providing a visual chart-type reference sheet would help students recall the steps independently during practical work.',
+    selfObservation: null,
+    note: 'The final observed session demonstrated consistent improvement in peer teaching skills throughout the practicum.',
+    rubric: { pedagogy: 8, management: 9, engagement: 8 },
+  },
+  {
+    id: 'obs-011',
+    session: {
+      number: 11,
+      date: '21-05-2026',
+      level: '3AC',
+      group: 'G2',
+      studentCount: 15,
+      duration: '1H (10:30 - 11:30)',
+      courseTitle: 'Algorithmics and Programming (XLogo)',
+      sessionTitle: 'Theoretical Midterm Evaluation'
+    },
+    institution: 'Collège Al Nahda - Marrakech',
+    courseInstructor: {
+      name: 'Essaadia El Idrissi',
+      role: 'trainee'
+    },
+    isSelfInstructor: false,
+    observation: 'Observed peer final evaluation targeting programming logic parameters inside XLogo. The assessment covered previously studied notions: basic primitives, REPETE instruction, and procedures. The trainee began with a brief recap of essential concepts before distributing test sheets. Students answered individually to theoretical questions.',
+    positivePoints: 'Highly secure exam administration protocol. Quiet working conditions allowed students to maintain strong task concentration.',
+    pointsToImprove: 'Providing a persistent countdown clock on the projection display would improve student time management.',
+    selfObservation: null,
+    note: 'The final session demonstrated solid operational control, reflecting a successful evolution from passive observation to confident teaching.',
+    rubric: { pedagogy: 9, management: 9, engagement: 9 },
+  }
+];
+
+export const crmefMspDoc = {
+  official: loadMultipleAssets(['crmef-ds2026'], 'document'),
+  images: loadMultipleAssets([
+    'crmef-msp-img-20260212-103241',
+    'crmef-msp-img-20260212-103356',
+    'crmef-msp-whatsapp-image-2026-02-05-at-12-47-14',
+    'crmef-msp-whatsapp-image-2026-02-05-at-12-47-23',
+    'crmef-msp-whatsapp-image-2026-02-05-at-12-47-24-1',
+    'crmef-msp-whatsapp-image-2026-02-05-at-12-47-24-2',
+    'crmef-msp-whatsapp-image-2026-02-05-at-12-47-24',
+    'crmef-msp-whatsapp-image-2026-02-05-at-12-47-25',
+    'crmef-msp-whatsapp-image-2026-02-05-at-12-47-26-1',
+    'crmef-msp-whatsapp-image-2026-02-05-at-12-47-26-2',
+    'crmef-msp-whatsapp-image-2026-02-05-at-12-47-26-3',
+    'crmef-msp-whatsapp-image-2026-02-05-at-12-47-26',
+    'crmef-msp-whatsapp-image-2026-02-05-at-12-47-54-1',
+    'crmef-msp-whatsapp-image-2026-02-05-at-12-47-54-2',
+    'crmef-msp-whatsapp-image-2026-02-05-at-12-47-54',
+    'crmef-msp-whatsapp-image-2026-02-05-at-12-47-55-1',
+    'crmef-msp-whatsapp-image-2026-02-05-at-12-47-55-2',
+    'crmef-msp-whatsapp-image-2026-02-05-at-12-47-55',
+    'crmef-msp-whatsapp-image-2026-02-05-at-12-57-54',
+    'crmef-msp-whatsapp-image-2026-02-05-at-12-57-54-1',
+    'crmef-msp-whatsapp-image-2026-02-05-at-12-57-54-2',
+    'crmef-msp-whatsapp-image-2026-02-05-at-12-57-54-3',
+    'crmef-msp-whatsapp-image-2026-02-12-at-11-06-38',
+  ], 'image'),
+}
 
 export const crmefVideos = [
   {

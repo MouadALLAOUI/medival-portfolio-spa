@@ -1,5 +1,6 @@
 import CrmefHeader from '../components/CrmefHeader/CrmefHeader';
 import Footer from '../components/footer';
+import ImageViewer from '../components/ImageViewer';
 import styles from './CrmefLayout.module.scss';
 
 const CrmefLayout = ({ children }) => (
@@ -9,6 +10,7 @@ const CrmefLayout = ({ children }) => (
       {children}
     </main>
     <Footer />
+    <ImageViewer />
   </div>
 );
 

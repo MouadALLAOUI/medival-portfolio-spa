@@ -17,7 +17,7 @@ const CrmefHeader = () => {
   const CRMEF_NAV = [
     { label: t('CRMEF.header.accueil'), href: '#accueil' },
     {
-      label: t('CRMEF.header.semesters') || 'Semestres',
+      label: t('CRMEF.header.semesters'),
       href: '#semestre',
       isTrigger: true,
       subItems: [
@@ -29,10 +29,10 @@ const CrmefHeader = () => {
       {
         label: t('about.showMore'), href: '#other', isTrigger: true,
         subItems: [
-          { label: t('CRMEF.header.formation') || 'Formation', href: '#formation' },
-          { label: t('CRMEF.header.critique') || 'Self-Critique', href: '#critique' },
-          { label: t('CRMEF.header.videos') || 'Vidéos', href: '#videos' },
-          { label: t('CRMEF.header.gallery') || 'Galerie', href: '#gallery' },
+          { label: t('CRMEF.header.formation'), href: '#formation' },
+          { label: t('CRMEF.header.critique'), href: '#critique' },
+          { label: t('CRMEF.header.videos'), href: '#videos' },
+          { label: t('CRMEF.header.gallery'), href: '#gallery' },
         ],
       },
   ];

@@ -576,7 +576,7 @@
   transition: all var(--transition);
   line-height: 1;
   z-index: 5;
-  user-select: none;
+  // user-select: none;
 
   &:hover {
     background: var(--accent);

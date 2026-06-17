@@ -6,8 +6,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  -moz-user-select: none;
-  user-select: none;
   transition:
     background-color 300ms ease,
     color 300ms ease,
@@ -404,3 +402,11 @@ textarea {
     font-size: 0.8em;
   }
 }
+
+/* Text selection toggle — disabled by default, enabled via Settings */
+// :root:not([data-text-selection="true"]) *,
+// :root:not([data-text-selection="true"]) *::before,
+// :root:not([data-text-selection="true"]) *::after {
+  // -moz-user-select: none;
+  // user-select: none;
+// }

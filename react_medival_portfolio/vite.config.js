@@ -39,7 +39,7 @@ export default defineConfig({
     babel({ presets: [reactCompilerPreset()] }),
     visualizer({
       open: false,
-      filename: 'bundle-stats.html',
+      filename: 'dist/bundle-stats.html',
       gzipSize: true,
       brotliSize: true,
     }),

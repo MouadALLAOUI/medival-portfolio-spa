@@ -29,6 +29,7 @@ import { SEMESTERS_LEARNED } from "./data/crmef.semestersLearned";
 import { CRITIQUE_DATA } from "./data/crmef.critique";
 import { MSP_DATA } from "./data/crmef.msp";
 import { VIDEOS_DATA } from "./data/crmef.videos";
+import { PEOPLE_NAME } from "./data/people";
 
 const EN = {
     HOME,
@@ -58,7 +59,8 @@ const EN = {
         msp: MSP_DATA,
         videos: VIDEOS_DATA,
     },
-    MEDIA
+    MEDIA,
+    PEOPLE: PEOPLE_NAME,
 }
 
 export {

@@ -26,7 +26,7 @@ const CrmefCritiquePage = () => {
       <div className={styles.critiqueGrid}>
         {crmefCritique.map((topic) => {
           const isExpanded = expandedId === topic.id;
-          const translatedTitle = t(`DATA.critique.${topic.id}.title`) || topic.title;
+          const translatedTitle = t(topic.title);
           return (
             <div
               key={topic.id}
@@ -49,7 +49,7 @@ const CrmefCritiquePage = () => {
               {isExpanded && (
                 <div className={styles.topicBody}>
                   {topic.sections.map((section, idx) => {
-                    const translatedContent = t(`DATA.critique.${topic.id}.sections.${section.subtitle}.content`) || section.content;
+                    const translatedContent = t(section.content);
                     return (
                       <div key={idx} className={styles.sectionBlock}>
                         <h4

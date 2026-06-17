@@ -1,12 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#2d0e1b"/>
-      <stop offset="100%" style="stop-color:#4a1a2d"/>
-    </linearGradient>
-  </defs>
-  <rect width="400" height="200" fill="url(#bg)"/>
-  <text x="200" y="80" text-anchor="middle" font-size="50" fill="#f5576c" opacity="0.15">⚡</text>
-  <text x="200" y="130" text-anchor="middle" font-family="serif" font-size="18" fill="#f5e6ca" opacity="0.9">Advanced CSS</text>
-  <text x="200" y="155" text-anchor="middle" font-family="serif" font-size="12" fill="#8b5a2b">Master Sorcerer's Guide</text>
-</svg>
+version https://git-lfs.github.com/spec/v1
+oid sha256:ea7c72b662d37b53cf50c4ad935181abd394ceda8aac76773ac87b29d36433ce
+size 690
