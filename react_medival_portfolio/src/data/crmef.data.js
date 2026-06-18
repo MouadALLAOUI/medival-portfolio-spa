@@ -585,38 +585,29 @@ export const crmefCritique = [
 
 export const crmefFormation = {
   definition: {
-    title: 'What is CRMEF?',
-    content: `The Centre Régional des Métiers de l'Éducation et de la Formation (CRMEF) is a Moroccan public institution dedicated to training and certifying teachers across the kingdom. Established under the Ministry of National Education, the CRMEF serves as the regional hub where aspiring educators receive professional formation in pedagogy, didactics, and classroom management.
-
-The CRMEF's mission is to prepare future teachers with the theoretical knowledge and practical skills needed to deliver quality education in Moroccan public schools. Trainees undergo a two-semester program covering educational sciences, lesson planning, classroom communication, and subject-specific reinforcement.
-
-The institution plays a vital role in Morocco's education reform strategy by ensuring that new teachers enter the profession with a solid pedagogical foundation aligned with modern teaching standards.`,
-    image: loadSingleAsset('crmef-img-20260427-112106', 'image').path,
+    title: 'DATA.formation.definition.title',
+    content: 'DATA.formation.definition.content',
+    image: loadSingleAsset('crmef-porte', 'image').path,
   },
+
   gratitude: {
-    title: 'Gratitude & Acknowledgment',
-    content: `First and foremost, we would like to express our deep gratitude to our supervisor, Mr. Lhossain Ait Taleb, who kindly agreed to guide us and never hesitated to provide us with his invaluable support and advice.
-
-Our thanks also extend to all the trainers at the CRMEF center for their continuous efforts and guidance throughout our training. Their dedication to shaping the next generation of educators is truly inspiring.
-
-We are also grateful to the administrative staff of the CRMEF for creating an environment conducive to learning and professional development. Their commitment to excellence in teacher education has left a lasting impression on all trainees.
-
-Finally, we extend our appreciation to our families and friends who supported us throughout this challenging but rewarding journey.`,
+    title: 'DATA.formation.gratitude.title',
+    content: 'DATA.formation.gratitude.content',
     acknowledgments: [
-      { name: 'Mr. Lhossain Ait Taleb', role: 'Supervisor & Mentor' },
-      { name: 'CRMEF Training Staff', role: 'Pedagogical Guidance' },
-      { name: 'CRMEF Administrative Team', role: 'Institutional Support' },
-      { name: 'Collège Annahda', role: 'Teaching Practice Host' },
+      { name: 'DATA.formation.gratitude.acknowledgments.0.name', role: 'DATA.formation.gratitude.acknowledgments.0.role' },
+      { name: 'DATA.formation.gratitude.acknowledgments.1.name', role: 'DATA.formation.gratitude.acknowledgments.1.role' },
+      { name: 'DATA.formation.gratitude.acknowledgments.2.name', role: 'DATA.formation.gratitude.acknowledgments.2.role' },
+      { name: 'DATA.formation.gratitude.acknowledgments.3.name', role: 'DATA.formation.gratitude.acknowledgments.3.role' },
+      { name: 'DATA.formation.gratitude.acknowledgments.4.name', role: 'DATA.formation.gratitude.acknowledgments.4.role' },
     ],
   },
-  map: {
-    title: 'CRMEF Location & Access',
-    address: 'CRMEF Marrakech-Safi, Morocco',
-    description: `The CRMEF center is located in the Marrakech-Safi region of Morocco. The institution operates from a dedicated campus equipped with modern classrooms, computer labs, and pedagogical resource centers.
 
-The center serves trainees from across the region, providing them with the facilities and resources needed for their two-semester formation program.`,
-    coordinates: { lat: 31.6295, lng: -7.9811 },
-    image: loadSingleAsset('crmef-img-20260414-132805', 'image').path,
+  map: {
+    title: 'DATA.formation.map.title',
+    address: 'DATA.formation.map.address',
+    description: 'DATA.formation.map.description',
+    coordinates: { lat: 31.64815272632853, lng: -8.01 },
+    image: loadSingleAsset('crmef-porte', 'image').path,
   },
 };
 
