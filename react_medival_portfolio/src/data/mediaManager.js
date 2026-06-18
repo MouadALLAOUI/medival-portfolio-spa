@@ -3935,7 +3935,17 @@ export const mediaRegistry = {
           date: "May 25, 2025",
           author: "Design Team",
         }
-      }
+      },
+      {
+        id: "crmef-porte",
+        path: "/media/CRMEF/GAL/CRMEF.jpg",
+        label: "La porte du CRMEF",
+        description: "La porte du CRMEF",
+        meta: {
+          date: "Thursday, June 18, 2026, 11:54:05 PM",
+          author: "Content Creator",
+        }
+      },
     ],
     jpeg: [
       {

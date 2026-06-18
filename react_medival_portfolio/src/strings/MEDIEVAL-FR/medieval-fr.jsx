@@ -24,6 +24,7 @@ import { SEMESTERS_LEARNED } from "./data/crmef.semestersLearned";
 import { CRITIQUE_DATA } from "./data/crmef.critique";
 import { MSP_DATA } from "./data/crmef.msp";
 import { VIDEOS_DATA } from "./data/crmef.videos";
+import { FORMATION_DATA } from "./data/crmef.formation";
 const MEDIEVAL_FR = {
     HOME,
     CRMEF,
@@ -51,6 +52,7 @@ const MEDIEVAL_FR = {
         critique: CRITIQUE_DATA,
         msp: MSP_DATA,
         videos: VIDEOS_DATA,
+        formation: FORMATION_DATA,
     },
     MEDIA,
 }

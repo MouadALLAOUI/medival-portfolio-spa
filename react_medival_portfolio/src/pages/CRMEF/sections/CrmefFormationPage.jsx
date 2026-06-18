@@ -5,9 +5,9 @@ import { useSettings } from '../../../lib/useSettings';
 import styles from './CrmefFormationPage.module.scss';
 
 const FORMATION_TABS = [
-  { id: 'definition', label: 'CRMEF Definition' },
-  { id: 'gratitude', label: 'Gratitude' },
-  { id: 'map', label: 'Map of CRMEF' },
+  { id: 'definition', labelKey: 'DATA.formation.definition.tabLabel' },
+  { id: 'gratitude', labelKey: 'DATA.formation.gratitude.tabLabel' },
+  { id: 'map', labelKey: 'DATA.formation.map.tabLabel' },
 ];
 
 const CrmefFormationPage = () => {
@@ -29,7 +29,7 @@ const CrmefFormationPage = () => {
             className={`${styles.tabBtn} ${activeTab === tab.id ? styles.activeTab : ''}`}
             onClick={() => setActiveTab(tab.id)}
           >
-            {tab.label}
+            {t(tab.labelKey)}
           </button>
         ))}
       </div>
@@ -38,8 +38,8 @@ const CrmefFormationPage = () => {
         {activeTab === 'definition' && (
           <div className={styles.definitionSection}>
             <div className={styles.textBlock}>
-              <h3 className={styles.tabSubTitle}>{crmefFormation.definition.title}</h3>
-              {crmefFormation.definition.content.split('\n\n').map((paragraph, i) => (
+              <h3 className={styles.tabSubTitle}>{t(crmefFormation.definition.title)}</h3>
+              {t(crmefFormation.definition.content).split('\n\n').map((paragraph, i) => (
                 <p key={i} className={styles.tabText}>{paragraph}</p>
               ))}
             </div>
@@ -59,8 +59,8 @@ const CrmefFormationPage = () => {
         {activeTab === 'gratitude' && (
           <div className={styles.gratitudeSection}>
             <div className={styles.textBlock}>
-              <h3 className={styles.tabSubTitle}>{crmefFormation.gratitude.title}</h3>
-              {crmefFormation.gratitude.content.split('\n\n').map((paragraph, i) => (
+              <h3 className={styles.tabSubTitle}>{t(crmefFormation.gratitude.title)}</h3>
+              {t(crmefFormation.gratitude.content).split('\n\n').map((paragraph, i) => (
                 <p key={i} className={styles.tabText}>{paragraph}</p>
               ))}
             </div>
@@ -69,8 +69,8 @@ const CrmefFormationPage = () => {
               <div className={styles.acknowledgmentsGrid}>
                 {crmefFormation.gratitude.acknowledgments.map((ack, i) => (
                   <div key={i} className={styles.ackCard}>
-                    <span className={styles.ackName}>{ack.name}</span>
-                    <span className={styles.ackRole}>{ack.role}</span>
+                    <span className={styles.ackName}>{t(ack.name)}</span>
+                    <span className={styles.ackRole}>{t(ack.role)}</span>
                   </div>
                 ))}
               </div>
@@ -81,11 +81,11 @@ const CrmefFormationPage = () => {
         {activeTab === 'map' && (
           <div className={styles.mapSection}>
             <div className={styles.textBlock}>
-              <h3 className={styles.tabSubTitle}>{crmefFormation.map.title}</h3>
-              <p className={styles.tabText}>{crmefFormation.map.description}</p>
+              <h3 className={styles.tabSubTitle}>{t(crmefFormation.map.title)}</h3>
+              <p className={styles.tabText}>{t(crmefFormation.map.description)}</p>
               <div className={styles.mapAddress}>
                 <span className={styles.addressLabel}>📍 Address:</span>
-                <span className={styles.addressValue}>{crmefFormation.map.address}</span>
+                <span className={styles.addressValue}>{t(crmefFormation.map.address)}</span>
               </div>
             </div>
 

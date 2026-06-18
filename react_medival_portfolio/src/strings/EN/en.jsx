@@ -30,6 +30,7 @@ import { CRITIQUE_DATA } from "./data/crmef.critique";
 import { MSP_DATA } from "./data/crmef.msp";
 import { MSP_OBS } from "./data/crmef.msp.obs";
 import { VIDEOS_DATA } from "./data/crmef.videos";
+import { FORMATION_DATA } from "./data/crmef.formation";
 const EN = {
     HOME,
     CRMEF,
@@ -58,6 +59,7 @@ const EN = {
         msp: MSP_DATA,
         obs: MSP_OBS,
         videos: VIDEOS_DATA,
+        formation: FORMATION_DATA,
     },
     MEDIA,
 }
