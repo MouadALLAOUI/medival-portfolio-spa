@@ -4,12 +4,12 @@ import { crmefMspInfo } from '../../../../data/crmef.data';
 import styles from '../CrmefMspPage.module.scss';
 
 export default function MspPresentationTab() {
-  const { t } = useSettings();
+  const { t, language } = useSettings();
 
   const peopleParams = {};
   Object.keys(PEOPLE).forEach(id => {
     if (crmefMspInfo.peopleRefs.includes(id)) {
-      peopleParams[`people_${id}`] = t(`PEOPLE.${id}`);
+      peopleParams[`people_${id}`] = language === 'ar' ? PEOPLE[id].name_ar : PEOPLE[id].name;
     }
   });
 

@@ -120,9 +120,8 @@ export default function SettingsProvider({ children }) {
             }
 
             if (val === undefined) {
-                // Return last key segment readable (never the full dot-path)
                 const segments = key.split('.');
-                return segments[segments.length - 1];
+                val = segments[segments.length - 1];
             }
 
             if (params && typeof params === 'object') {

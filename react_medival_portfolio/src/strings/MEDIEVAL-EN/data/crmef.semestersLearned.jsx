@@ -9,12 +9,12 @@ const SEMESTERS_LEARNED = {
             lacks: "Need more practice with dealing with disruptive students and maintaining authority without being overly strict.",
         },
         "cs-reinforcement-1": {
-            learned: "Deepened knowledge of information systems architecture, relational database concepts (SQL), and Python programming fundamentals applied to educational contexts.",
-            lacks: "Need to strengthen Python OOP concepts and advanced SQL queries like joins and subqueries.",
-        },
-        "cs-reinforcement-2": {
             learned: "Strengthened understanding of hardware components, CPU architecture, memory hierarchy, and Boolean algebra including logic gates and circuit design.",
             lacks: "Still find it hard to simplify complex Boolean expressions and design multi-output combinational circuits.",
+        },
+        "cs-reinforcement-2": {
+            learned: "Deepened knowledge of information systems architecture, relational database concepts (SQL), and Python programming fundamentals applied to educational contexts.",
+            lacks: "Need to strengthen Python OOP concepts and advanced SQL queries like joins and subqueries.",
         },
         "ict-education-didactics": {
             learned: "Explored methods for integrating digital tools and ICT into teaching practice, and studied didactic approaches specific to computer science education.",

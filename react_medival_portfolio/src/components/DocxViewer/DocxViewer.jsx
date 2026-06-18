@@ -78,7 +78,7 @@ const DocxViewer = ({ file, label = 'Open Document', className, onOpen }) => {
 
   return (
     <div className={`${styles.docxWrapper} ${className || ''}`}>
-      <button className={`${styles.trigger} docx-viewer-trigger`} onClick={handleTrigger} type="button">
+      <button className={`${styles.trigger} pdf-viewer-trigger`} onClick={handleTrigger} type="button">
         {typeof label === 'string' ? (
           <>
             <span className={styles.triggerIcon}>📄</span>

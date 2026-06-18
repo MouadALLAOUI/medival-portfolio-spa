@@ -9,12 +9,12 @@ const SEMESTERS_LEARNED = {
             lacks: "Need more practice with dealing with disruptive students and maintaining authority without being overly strict.",
         },
         "cs-reinforcement-1": {
-            learned: "Deepened knowledge of information systems architecture, relational database concepts (SQL), and Python programming fundamentals applied to educational contexts.",
-            lacks: "Need to strengthen Python OOP concepts and advanced SQL queries like joins and subqueries.",
-        },
-        "cs-reinforcement-2": {
             learned: "Strengthened understanding of hardware components, CPU architecture, memory hierarchy, and Boolean algebra including logic gates and circuit design.",
             lacks: "Still find it hard to simplify complex Boolean expressions and design multi-output combinational circuits.",
+        },
+        "cs-reinforcement-2": {
+            learned: "Deepened knowledge of information systems architecture, relational database concepts (SQL), and Python programming fundamentals applied to educational contexts.",
+            lacks: "Need to strengthen Python OOP concepts and advanced SQL queries like joins and subqueries.",
         },
         "ict-education-didactics": {
             learned: "Explored methods for integrating digital tools and ICT into teaching practice, and studied didactic approaches specific to computer science education.",
@@ -30,23 +30,23 @@ const SEMESTERS_LEARNED = {
         },
     },
     "semester-2": {
-        "s2-lesson-planning-advanced": {
+        "s2-productions-didactiques": {
             learned: "Built on lesson planning foundations by exploring differentiated instruction strategies, adapting content for diverse learner profiles, and designing competency-based units.",
             lacks: "Need more experience in creating truly differentiated materials that cater to all learning levels simultaneously.",
         },
-        "s2-classroom-communication": {
+        "s2-gestion-apprentissages-2": {
             learned: "Refined verbal and non-verbal communication techniques for the classroom, practiced giving constructive feedback, and developed a confident teaching posture.",
             lacks: "Still lack confidence in managing heated classroom discussions and handling unexpected student questions smoothly.",
         },
-        "s2-cs-reinforcement-3": {
+        "s2-reseaux-informatiques": {
             learned: "Mastered core algorithmic concepts including sorting, searching, recursion, and Big-O complexity analysis applied to real CS curriculum problems.",
             lacks: "Need more practice with dynamic programming and graph algorithms to teach advanced topics confidently.",
         },
-        "s2-cs-reinforcement-4": {
+        "s2-developpement-web-reseaux": {
             learned: "Studied computer networking fundamentals (OSI model, TCP/IP, protocols) and operating system concepts including process management and security basics.",
             lacks: "Find it difficult to explain networking layers and OS scheduling algorithms in simple terms for secondary students.",
         },
-        "s2-assessment-evaluation": {
+        "s2-evaluation-apprentissages": {
             learned: "Explored formative and summative assessment techniques, rubric design, and data-driven evaluation strategies to measure student learning outcomes.",
             lacks: "Struggle with designing rubrics that are both objective and comprehensive for open-ended CS projects.",
         },
@@ -57,6 +57,10 @@ const SEMESTERS_LEARNED = {
         "s2-capstone-project": {
             learned: "Designed and presented a comprehensive educational research project combining teaching theory and classroom practice in a reflective practicum report.",
             lacks: "Need to improve academic writing skills and learn how to structure a proper research paper with correct citations.",
+        },
+        "s2-analyse-pratiques": {
+            learned: "Learned how to systematically observe teaching sessions, analyze pedagogical decisions, and provide constructive feedback for improvement.",
+            lacks: "Still developing the ability to remain completely objective during observations and to provide feedback that is both honest and encouraging.",
         },
     },
 }

@@ -404,9 +404,9 @@ textarea {
 }
 
 /* Text selection toggle — disabled by default, enabled via Settings */
-// :root:not([data-text-selection="true"]) *,
-// :root:not([data-text-selection="true"]) *::before,
-// :root:not([data-text-selection="true"]) *::after {
-  // -moz-user-select: none;
-  // user-select: none;
-// }
+:root:not([data-text-selection="true"]) *,
+:root:not([data-text-selection="true"]) *::before,
+:root:not([data-text-selection="true"]) *::after {
+  -moz-user-select: none;
+  user-select: none;
+}

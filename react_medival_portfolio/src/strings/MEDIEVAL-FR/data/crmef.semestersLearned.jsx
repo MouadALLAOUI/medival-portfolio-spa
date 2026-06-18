@@ -9,12 +9,12 @@ const SEMESTERS_LEARNED = {
             lacks: "Besoin de plus de pratique pour gérer les élèves perturbateurs et maintenir l'autorité sans être trop strict.",
         },
         "cs-reinforcement-1": {
-            learned: "Approfondissement des connaissances en architecture des systèmes d'information, concepts de bases de données relationnelles (SQL) et fondamentaux de la programmation Python appliqués à des contextes éducatifs.",
-            lacks: "Besoin de renforcer les concepts de POO Python et les requêtes SQL avancées comme les jointures et les sous-requêtes.",
-        },
-        "cs-reinforcement-2": {
             learned: "Renforcement de la compréhension des composants matériels, architecture du CPU, hiérarchie mémoire et algèbre de Bool incluant les portes logiques et la conception de circuits.",
             lacks: "J'ai encore du mal à simplifier les expressions booléennes complexes et à concevoir des circuits combinatoires à sorties multiples.",
+        },
+        "cs-reinforcement-2": {
+            learned: "Approfondissement des connaissances en architecture des systèmes d'information, concepts de bases de données relationnelles (SQL) et fondamentaux de la programmation Python appliqués à des contextes éducatifs.",
+            lacks: "Besoin de renforcer les concepts de POO Python et les requêtes SQL avancées comme les jointures et les sous-requêtes.",
         },
         "ict-education-didactics": {
             learned: "Exploration des méthodes d'intégration des outils numériques et des TIC dans la pratique enseignante, et étude des approches didactiques spécifiques à l'éducation en informatique.",
