@@ -59,7 +59,6 @@
 .inlineContainer {
   margin-top: 0.75rem;
   border-radius: var(--radius);
-  overflow: hidden;
   max-height: 80vh;
   overflow-y: auto;
   border: 1px solid var(--border);
@@ -68,7 +67,6 @@
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  overflow: hidden; // Contain scrollable content
 
   :global([data-theme="medieval"]) & {
     border-color: var(--gold);
@@ -297,7 +295,7 @@
   font-weight: bold;
   cursor: pointer;
   transition: all var(--transition, 150ms ease);
-  // user-select: none;
+  user-select: none;
 
   &:hover:not(:disabled) {
     background: var(--bg-tertiary);
@@ -405,9 +403,11 @@
   0% {
     transform: translateY(0) rotate(0deg);
   }
+
   50% {
     transform: translateY(-8px) rotate(180deg);
   }
+
   100% {
     transform: translateY(0) rotate(360deg);
   }
@@ -602,7 +602,7 @@
   font-weight: 700;
   cursor: pointer;
   transition: all var(--transition, 150ms ease);
-  // user-select: none;
+  user-select: none;
 
   &:hover:not(:disabled) {
     border-color: var(--accent);

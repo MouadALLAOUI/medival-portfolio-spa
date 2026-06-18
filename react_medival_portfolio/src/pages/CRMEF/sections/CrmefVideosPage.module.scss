@@ -1264,6 +1264,66 @@
   box-shadow: var(--shadow-sm);
 }
 
+.fullscreen {
+  position: relative;
+  border-radius: 0;
+
+  .videoFrame, .audioFrame {
+    aspect-ratio: auto;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .nativeVideo {
+    object-fit: contain;
+  }
+
+  .controlRow, .rangeRow, .settingsRow {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+    border: none;
+  }
+
+  .controlRow {
+    bottom: 4.5rem;
+  }
+
+  .rangeRow {
+    bottom: 2rem;
+  }
+
+  .settingsRow {
+    bottom: 0;
+  }
+
+  .controlButton {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+  }
+
+  .timecode {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .speedControl label,
+  .volumeControl label {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .selectControl {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
 .videoFrame {
   position: relative;
   width: 100%;
@@ -1276,6 +1336,55 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.audioFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.audioVisualizer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+.audioIcon {
+  color: var(--accent);
+  opacity: 0.8;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.audioMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.audioTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.audioSubtitle {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 400px;
+  line-height: 1.4;
 }
 
 .controlRow,
@@ -1565,4 +1674,231 @@
   .layout {
     gap: 1.5rem;
   }
+}
+
+/* ── Breadcrumbs ── */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.breadcrumbLink {
+  color: var(--accent);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  &:hover { text-decoration: underline; }
+}
+
+.breadcrumbSep {
+  opacity: 0.4;
+}
+
+.breadcrumbCurrent {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* ── Course Progress Bar ── */
+.courseProgress {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.courseProgressBar {
+  width: 100%;
+  height: 6px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.courseProgressFill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 99px;
+  transition: width 0.4s ease;
+}
+
+.courseProgressLabel {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+/* ── Complete & Next Button ── */
+.completeNextBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  border: none;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(var(--accent-rgb, 99, 102, 241), 0.35);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  :global([data-theme="medieval"]) & {
+    background: var(--gold);
+    color: var(--dark-brown-val);
+    font-family: var(--font-cinzel);
+
+    &:hover {
+      box-shadow: 0 4px 14px rgba(201, 168, 76, 0.35);
+    }
+  }
+}
+
+/* ── Completed checkmark in playlist ── */
+.completedDot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #2ecc71;
+  color: #fff;
+  font-size: 0.6rem;
+  flex-shrink: 0;
+}
+
+/* ── Compact filter row for sidebar ── */
+.filterToggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.filterToggleBtn {
+  font-size: 0.78rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  &:hover { border-color: var(--accent); }
+}
+
+.filterToggleBtnActive {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+
+  :global([data-theme="medieval"]) & {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--dark-brown-val);
+  }
+}
+
+.compactFilterRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.compactSelect {
+  font-size: 0.78rem;
+  padding: 0.3rem 0.45rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  min-width: 80px;
+
+  :global([data-theme="medieval"]) & {
+    background: var(--parchment-dark);
+    border-color: var(--parchment-border);
+    color: var(--color-brown);
+  }
+}
+
+/* ── Stats footer inside sidebar ── */
+.statsFooter {
+  display: flex;
+  gap: 1.25rem;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  justify-content: flex-start;
+
+  :global([data-theme="medieval"]) & {
+    border-top-color: var(--parchment-border);
+    color: var(--color-brown);
+  }
+}
+
+/* ── Collapsible details section ── */
+.detailsToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-weight: 600;
+
+  &:hover { opacity: 0.8; }
+}
+
+.detailsContent {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.detailsCollapsed {
+  max-height: 0;
+  opacity: 0;
+}
+
+.detailsExpanded {
+  max-height: 3000px;
+  opacity: 1;
+}
+
+/* ── Sidebar playlist item title row with completed dot ── */
+.playlistTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+/* ── Video player sizing ── */
+.playerCardExpanded .videoFrame {
+  aspect-ratio: 16/9;
 }

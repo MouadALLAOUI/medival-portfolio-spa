@@ -8,7 +8,7 @@ import { loadSingleAsset } from '../../../../lib/utils/assetUtils';
 const ITEM_HEIGHT = 90;
 const OVERSCAN = 5;
 
-const VirtualizedPlaylist = ({ videos, selectedVideoId, onSelect, favorites, onToggleFavorite, watchLater, onToggleWatchLater, loadSavedProgress }) => {
+const VirtualizedPlaylist = ({ videos, selectedVideoId, onSelect, favorites, onToggleFavorite, watchLater, onToggleWatchLater, loadSavedProgress, completedIds }) => {
     const containerRef = useRef(null);
     const [scrollTop, setScrollTop] = useState(0);
     const visibleCount = 6;
@@ -40,6 +40,7 @@ const VirtualizedPlaylist = ({ videos, selectedVideoId, onSelect, favorites, onT
                             watchLater={watchLater}
                             onToggleWatchLater={onToggleWatchLater}
                             loadSavedProgress={loadSavedProgress}
+                            completedIds={completedIds}
                         />
                     ))}
                 </div>
@@ -48,7 +49,7 @@ const VirtualizedPlaylist = ({ videos, selectedVideoId, onSelect, favorites, onT
     );
 };
 
-const PlaylistItem = React.memo(({ video, selected, onSelect, favorites, onToggleFavorite, watchLater, onToggleWatchLater, loadSavedProgress }) => {
+const PlaylistItem = React.memo(({ video, selected, onSelect, favorites, onToggleFavorite, watchLater, onToggleWatchLater, loadSavedProgress, completedIds }) => {
     const isBookmarked = Array.isArray(favorites) && favorites.includes(video.id);
     const isWatchLater = Array.isArray(watchLater) && watchLater.includes(video.id);
     const progress = loadSavedProgress ? loadSavedProgress(video.id) : null;
@@ -138,7 +139,10 @@ const PlaylistItem = React.memo(({ video, selected, onSelect, favorites, onToggl
                 {previewTopics ? <div className={styles.previewTags}>{previewTopics}</div> : null}
             </div>
             <div className={styles.playlistInfo}>
-                <span className={styles.playlistItemTitle}>{video.title}</span>
+                <div className={styles.playlistTitleRow}>
+                    <span className={styles.playlistItemTitle}>{video.title}</span>
+                    {completedIds?.has(video.id) && <span className={styles.completedDot}>✓</span>}
+                </div>
                 <span className={styles.playlistItemAuthor}>{video.category} • {video.level}</span>
                 <div className={styles.playlistItemStats}>
                     <span>{formatViews(video.views)}</span>
@@ -150,7 +154,7 @@ const PlaylistItem = React.memo(({ video, selected, onSelect, favorites, onToggl
     );
 });
 
-const VideoPlaylist = ({ videos, selectedVideoId, onSelect, isFiltering, favorites, onToggleFavorite, watchLater, onToggleWatchLater, loadSavedProgress }) => {
+const VideoPlaylist = ({ videos, selectedVideoId, onSelect, isFiltering, favorites, onToggleFavorite, watchLater, onToggleWatchLater, loadSavedProgress, completedIds }) => {
     const sortedVideos = useMemo(() => videos, [videos]);
 
     if (isFiltering && videos.length === 0) {
@@ -158,7 +162,7 @@ const VideoPlaylist = ({ videos, selectedVideoId, onSelect, isFiltering, favorit
     }
 
     if (videos.length > 100) {
-        return <VirtualizedPlaylist videos={sortedVideos} selectedVideoId={selectedVideoId} onSelect={onSelect} favorites={favorites} onToggleFavorite={onToggleFavorite} watchLater={watchLater} onToggleWatchLater={onToggleWatchLater} loadSavedProgress={loadSavedProgress} />;
+        return <VirtualizedPlaylist videos={sortedVideos} selectedVideoId={selectedVideoId} onSelect={onSelect} favorites={favorites} onToggleFavorite={onToggleFavorite} watchLater={watchLater} onToggleWatchLater={onToggleWatchLater} loadSavedProgress={loadSavedProgress} completedIds={completedIds} />;
     }
 
     return (
@@ -174,6 +178,7 @@ const VideoPlaylist = ({ videos, selectedVideoId, onSelect, isFiltering, favorit
                     watchLater={watchLater}
                     onToggleWatchLater={onToggleWatchLater}
                     loadSavedProgress={loadSavedProgress}
+                    completedIds={completedIds}
                 />
             ))}
         </div>

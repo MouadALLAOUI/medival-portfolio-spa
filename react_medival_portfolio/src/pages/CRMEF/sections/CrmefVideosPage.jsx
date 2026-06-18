@@ -1,23 +1,18 @@
 /* eslint-disable no-constant-binary-expression */
 import React, { lazy, Suspense, useCallback, useEffect, useMemo, useState } from 'react';
-// import { getAssetById } from '../../../data/mediaManager';
-import { Film } from 'lucide-react';
+import { Film, ChevronRight, CheckCircle, ArrowRight } from 'lucide-react';
 import { crmefVideos } from '../../../data/crmef.data';
 
 import { useSettings } from '../../../lib/useSettings';
 import { useAchievements } from '../../../lib/useAchievements';
 import useDebounce from './hooks/useDebounce';
 import useVideoProgress from './hooks/useVideoProgress';
-import { formatViews, parseViews } from './utils/videoHelpers';
+import { formatViews, parseViews, formatDurationHuman, parseDuration } from './utils/videoHelpers';
 import styles from './CrmefVideosPage.module.scss';
 
 const VideoPlayer = lazy(() => import('./components/VideoPlayer'));
 const VideoMetadata = lazy(() => import('./components/VideoMetadata'));
 const Sidebar = lazy(() => import('./components/Sidebar'));
-const SeriesNavigation = lazy(() => import('./components/SeriesNavigation'));
-const RelatedVideos = lazy(() => import('./components/RelatedVideos'));
-
-const DEFAULT_FAVORITES_LABEL = 'Bookmarks';
 
 export default function CrmefVideosPage() {
   const { t } = useSettings();
@@ -35,14 +30,11 @@ export default function CrmefVideosPage() {
   const { debouncedValue: searchQuery, isDebouncing: isSearching } = useDebounce(rawSearch, 280);
   const {
     favorites,
-    recentlyWatched,
-    watchLater,
     savedProgressMap,
     loadSavedProgress,
     saveProgress,
     markCompleted,
     toggleFavorite,
-    toggleWatchLater,
     trackRecentlyWatched,
   } = useVideoProgress();
 
@@ -77,8 +69,6 @@ export default function CrmefVideosPage() {
     });
     return Array.from(set);
   }, []);
-
-  const featuredVideos = useMemo(() => crmefVideos.filter((video) => video.featured), []);
 
   const sortedVideos = useCallback(
     (videos) => {
@@ -131,16 +121,6 @@ export default function CrmefVideosPage() {
     );
   }, [searchQuery, activeCategory, selectedLevel, selectedLanguage, selectedSeries, showFavoritesOnly, favorites, sortedVideos]);
 
-  const recentVideos = useMemo(
-    () => recentlyWatched.map((id) => crmefVideos.find((video) => video.id === id)).filter(Boolean),
-    [recentlyWatched]
-  );
-
-  const watchLaterVideos = useMemo(
-    () => watchLater.map((id) => crmefVideos.find((video) => video.id === id)).filter(Boolean),
-    [watchLater]
-  );
-
   const progressSummary = useMemo(() => {
     const summary = { completed: 0, inProgress: 0, notStarted: 0 };
     crmefVideos.forEach((video) => {
@@ -156,43 +136,26 @@ export default function CrmefVideosPage() {
     return summary;
   }, [savedProgressMap, loadSavedProgress]);
 
+  const progressPercent = useMemo(() => {
+    const total = progressSummary.completed + progressSummary.inProgress + progressSummary.notStarted;
+    if (total === 0) return 0;
+    return Math.round((progressSummary.completed / total) * 100);
+  }, [progressSummary]);
+
+  const completedIds = useMemo(() => {
+    const ids = new Set();
+    crmefVideos.forEach((video) => {
+      const p = loadSavedProgress(video.id);
+      if (p?.viewed) ids.add(video.id);
+    });
+    return ids;
+  }, [savedProgressMap, loadSavedProgress]);
+
   const seriesVideos = useMemo(() => {
     if (!selectedVideo?.series) return [];
     return crmefVideos
       .filter((video) => video.series === selectedVideo.series)
       .sort((a, b) => (Number(a.episode) || 0) - (Number(b.episode) || 0));
-  }, [selectedVideo]);
-
-  const totalSeriesDuration = useMemo(() => {
-    if (!seriesVideos.length) return 0;
-    return seriesVideos.reduce((acc, v) => acc + (Number(v.duration) || 0), 0);
-  }, [seriesVideos]);
-
-  const relatedVideos = useMemo(() => {
-    if (!selectedVideo) return [];
-
-    const explicit = selectedVideo.relatedVideos?.map((id) => crmefVideos.find((video) => video.id === id)).filter(Boolean);
-    if (explicit?.length) return explicit;
-
-    const currentTags = new Set((selectedVideo.tags || []).map((tag) => String(tag).toLowerCase()));
-    const currentTopics = new Set((selectedVideo.topics || []).map((topic) => String(topic).toLowerCase()));
-
-    return crmefVideos
-      .filter((video) => video.id !== selectedVideo.id)
-      .map((video) => {
-        const tags = new Set((video.tags || []).map((tag) => String(tag).toLowerCase()));
-        const topics = new Set((video.topics || []).map((topic) => String(topic).toLowerCase()));
-        const sharedTags = [...currentTags].filter((tag) => tags.has(tag)).length;
-        const sharedTopics = [...currentTopics].filter((topic) => topics.has(topic)).length;
-        return {
-          video,
-          score: sharedTags * 2 + sharedTopics,
-        };
-      })
-      .filter(({ score }) => score > 0)
-      .sort((a, b) => b.score - a.score || a.video.title.localeCompare(b.video.title))
-      .slice(0, 6)
-      .map(({ video }) => video);
   }, [selectedVideo]);
 
   const getNextVideo = useCallback(() => {
@@ -276,6 +239,13 @@ export default function CrmefVideosPage() {
     return () => window.removeEventListener('keydown', handleKeydown);
   }, []);
 
+  const handleMarkCompleteAndNext = useCallback(() => {
+    if (!selectedVideo) return;
+    markCompleted(selectedVideo.id, selectedSavedProgress?.currentTime || 0, selectedSavedProgress?.duration || 0);
+    const next = getNextVideo();
+    if (next) handleSelectVideo(next);
+  }, [selectedVideo, selectedSavedProgress, markCompleted, getNextVideo, handleSelectVideo]);
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -292,6 +262,14 @@ export default function CrmefVideosPage() {
         <main className={styles.playerColumn}>
           {selectedVideo && (
             <>
+              <div className={styles.breadcrumbs}>
+                <button type="button" className={styles.breadcrumbLink} onClick={() => {}}>{'CRMEF'}</button>
+                <ChevronRight className={styles.breadcrumbSep} size={12} />
+                <span className={styles.breadcrumbCurrent}>{selectedVideo.series || selectedVideo.category}</span>
+                <ChevronRight className={styles.breadcrumbSep} size={12} />
+                <span className={styles.breadcrumbCurrent}>{selectedVideo.title}</span>
+              </div>
+
               <Suspense fallback={<div className={styles.skeleton}>Loading video player…</div>}>
                 <VideoPlayer
                   video={selectedVideo}
@@ -307,23 +285,34 @@ export default function CrmefVideosPage() {
                 />
               </Suspense>
 
+              <div className={styles.courseProgress}>
+                <div className={styles.courseProgressBar}>
+                  <div className={styles.courseProgressFill} style={{ width: `${progressPercent}%` }} />
+                </div>
+                <div className={styles.courseProgressLabel}>
+                  <span>{progressPercent}% complete</span>
+                  <span>{progressSummary.completed}/{progressSummary.completed + progressSummary.inProgress + progressSummary.notStarted} lessons</span>
+                </div>
+              </div>
+
               <Suspense fallback={<div className={styles.skeleton}>Loading metadata…</div>}>
                 <VideoMetadata
                   video={selectedVideo}
-                  progress={selectedSavedProgress}
                   isFavorite={favorites.includes(selectedVideo.id)}
                   onToggleFavorite={toggleFavorite}
-                  onMarkCompleted={(id, time, duration) => markCompleted(id, time, duration)}
                 />
               </Suspense>
 
-              <Suspense fallback={<div className={styles.skeleton}>Loading series…</div>}>
-                <SeriesNavigation seriesVideos={seriesVideos} selectedVideo={selectedVideo} onSelectVideo={handleSelectVideo} totalDuration={totalSeriesDuration} />
-              </Suspense>
-
-              <Suspense fallback={<div className={styles.skeleton}>Loading related lessons…</div>}>
-                <RelatedVideos relatedVideos={relatedVideos} onSelectVideo={handleSelectVideo} />
-              </Suspense>
+              <button
+                type="button"
+                className={styles.completeNextBtn}
+                onClick={handleMarkCompleteAndNext}
+                disabled={!getNextVideo()}
+              >
+                <CheckCircle size={20} />
+                {selectedSavedProgress?.viewed ? 'Completed — Next Lesson' : 'Mark as Complete & Next Lesson'}
+                <ArrowRight size={20} />
+              </button>
             </>
           )}
         </main>
@@ -344,11 +333,6 @@ export default function CrmefVideosPage() {
               showFavoritesOnly={showFavoritesOnly}
               favorites={favorites}
               onToggleFavorite={toggleFavorite}
-              watchLater={watchLater}
-              watchLaterVideos={watchLaterVideos}
-              onToggleWatchLater={toggleWatchLater}
-              featuredVideos={featuredVideos}
-              recentVideos={recentVideos}
               searchQuery={rawSearch}
               isSearching={isSearching}
               onSearchChange={setRawSearch}
@@ -360,24 +344,11 @@ export default function CrmefVideosPage() {
               onToggleFavoritesOnly={() => setShowFavoritesOnly((active) => !active)}
               loadSavedProgress={loadSavedProgress}
               onSelectVideo={handleSelectVideo}
-              progressSummary={progressSummary}
+              completedIds={completedIds}
+              totalVideos={crmefVideos.length}
+              totalViews={formatViews(crmefVideos.reduce((acc, video) => acc + Number(video.views || 0), 0))}
             />
           </Suspense>
-
-          <div className={styles.sidebarFooter}>
-            <div className={styles.quickStats}>
-              <div>{filteredVideos.length} lessons</div>
-              <div>{formatViews(filteredVideos.reduce((acc, video) => acc + Number(video.views || 0), 0))} total views</div>
-            </div>
-            <div className={styles.filterHelpers}>
-              <button type="button" className={styles.filterButton} onClick={() => setShowFavoritesOnly((active) => !active)}>
-                {showFavoritesOnly ? `Hide ${DEFAULT_FAVORITES_LABEL}` : `Show ${DEFAULT_FAVORITES_LABEL}`}
-              </button>
-              <button type="button" className={styles.filterButton} onClick={() => setSelectedSeries('All')}>
-                Reset series
-              </button>
-            </div>
-          </div>
         </aside>
       </div>
     </div>

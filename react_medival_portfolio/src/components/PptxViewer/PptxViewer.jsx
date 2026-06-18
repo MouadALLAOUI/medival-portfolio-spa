@@ -104,9 +104,13 @@ const PptxViewer = ({ file, label = 'Open Presentation', className, onOpen }) =>
 
   return (
     <div className={`${styles.wrapper} ${className || ''}`}>
-      <button className={`${styles.trigger} pptx-viewer-trigger`} onClick={handleTrigger} type="button">
-        <span className={styles.triggerIcon}>📽️</span>
-        <span className={styles.triggerLabel}>{label}</span>
+      <button className={`${styles.trigger} pdf-viewer-trigger`} onClick={handleTrigger} type="button">
+        {typeof label === 'string' ? (
+          <>
+            <span className={styles.triggerIcon}>📽️</span>
+            <span className={styles.triggerLabel}>{label}</span>
+          </>
+        ) : label}
       </button>
 
       {pdfMode === 'inline' && isOpen && (

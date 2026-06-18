@@ -342,7 +342,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
   font-family: var(--font-primary);
-  // user-select: none;
+  user-select: none;
 
   &:hover {
     border-color: var(--accent);

@@ -23,9 +23,8 @@ import { LEARNING_DATA } from "./data/learning.data";
 import { SEMESTERS_LEARNED } from "./data/crmef.semestersLearned";
 import { CRITIQUE_DATA } from "./data/crmef.critique";
 import { MSP_DATA } from "./data/crmef.msp";
+import { MSP_OBS } from "./data/crmef.msp.obs";
 import { VIDEOS_DATA } from "./data/crmef.videos";
-import { PEOPLE_NAME } from "./data/people";
-
 const AR = {
     HOME,
     CRMEF,
@@ -52,10 +51,10 @@ const AR = {
         semestersLearned: SEMESTERS_LEARNED,
         critique: CRITIQUE_DATA,
         msp: MSP_DATA,
+        obs: MSP_OBS,
         videos: VIDEOS_DATA,
     },
     MEDIA,
-    PEOPLE: PEOPLE_NAME,
 }
 
 export {

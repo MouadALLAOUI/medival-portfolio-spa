@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Play, Pause, Volume2, Maximize2, Layout, SkipForward, SkipBack, Settings2 } from 'lucide-react';
+import { Play, Pause, Volume2, Maximize2, Layout, SkipForward, SkipBack, Settings2, Music } from 'lucide-react';
 import { isYouTubeUrl, parseDuration } from '../utils/videoHelpers';
 import useYouTubePlayer from '../hooks/useYouTubePlayer';
 import styles from '../CrmefVideosPage.module.scss';
@@ -26,6 +26,7 @@ const VideoPlayer = ({
     const [isFullscreen, setIsFullscreen] = useState(false);
     const [videoError, setVideoError] = useState(false);
     const isYouTube = useMemo(() => isYouTubeUrl(video?.url), [video]);
+    const isAudio = video?.format === 'mp3';
 
     const { containerRef: ytContainerRef, playerRef: ytPlayerRef } = useYouTubePlayer({
         url: video?.url,
@@ -183,7 +184,7 @@ const VideoPlayer = ({
     };
 
     return (
-        <div className={styles.playerCard} ref={frameRef}>
+        <div className={`${styles.playerCard}${isFullscreen ? ` ${styles.fullscreen}` : ''}`} ref={frameRef}>
             <div className={styles.videoFrame}>
                 {isYouTube ? (
                     videoError ? (
@@ -197,6 +198,32 @@ const VideoPlayer = ({
                     ) : (
                         <div ref={ytContainerRef} className={styles.youtubeContainer} />
                     )
+                ) : isAudio ? (
+                    <>
+                        {videoError ? (
+                            <div className={styles.videoError}>
+                                <p>Unable to load the audio. Please check your connection or try again.</p>
+                                <div>
+                                    <button type="button" onClick={() => { setVideoError(false); videoRef.current?.load(); videoRef.current?.play?.(); }}>Retry</button>
+                                </div>
+                            </div>
+                        ) : (
+                            <div className={styles.audioFrame}>
+                                <audio
+                                    ref={videoRef}
+                                    src={video.url}
+                                    preload="metadata"
+                                />
+                                <div className={styles.audioVisualizer}>
+                                    <Music size={64} className={styles.audioIcon} />
+                                    <div className={styles.audioMeta}>
+                                        <span className={styles.audioTitle}>{video.title}</span>
+                                        <span className={styles.audioSubtitle}>{video.description}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </>
                 ) : (
                     <>
                         {videoError ? (
@@ -221,24 +248,28 @@ const VideoPlayer = ({
             </div>
 
             <div className={styles.controlRow}>
-                <button type="button" onClick={handlePlayPause} className={styles.controlButton} aria-label={isPlaying ? 'Pause video' : 'Play video'}>
+                <button type="button" onClick={handlePlayPause} className={styles.controlButton} aria-label={isPlaying ? 'Pause' : 'Play'}>
                     {isPlaying ? <Pause size={18} /> : <Play size={18} />} {isPlaying ? 'Pause' : 'Play'}
                 </button>
-                <button type="button" onClick={onPrevVideo} disabled={!canPrev} className={styles.controlButton} aria-label="Previous lesson">
+                <button type="button" onClick={onPrevVideo} disabled={!canPrev} className={styles.controlButton} aria-label={isAudio ? 'Previous track' : 'Previous lesson'}>
                     <SkipBack size={18} /> Prev
                 </button>
-                <button type="button" onClick={onNextVideo} disabled={!canNext} className={styles.controlButton} aria-label="Next lesson">
+                <button type="button" onClick={onNextVideo} disabled={!canNext} className={styles.controlButton} aria-label={isAudio ? 'Next track' : 'Next lesson'}>
                     Next <SkipForward size={18} />
                 </button>
-                <button type="button" onClick={() => setIsMuted((value) => !value)} className={styles.controlButton} aria-label={isMuted ? 'Unmute audio' : 'Mute audio'}>
+                <button type="button" onClick={() => setIsMuted((value) => !value)} className={styles.controlButton} aria-label={isMuted ? 'Unmute' : 'Mute'}>
                     <Volume2 size={18} /> {isMuted ? 'Unmute' : 'Mute'}
                 </button>
-                <button type="button" onClick={handleFullscreenToggle} className={styles.controlButton} aria-label={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}>
-                    <Maximize2 size={18} /> {isFullscreen ? 'Exit' : 'Fullscreen'}
-                </button>
-                <button type="button" onClick={handlePictureInPicture} className={styles.controlButton} aria-label="Toggle picture in picture">
-                    <Layout size={18} /> PiP
-                </button>
+                {!isAudio && (
+                    <>
+                        <button type="button" onClick={handleFullscreenToggle} className={styles.controlButton} aria-label={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}>
+                            <Maximize2 size={18} /> {isFullscreen ? 'Exit' : 'Fullscreen'}
+                        </button>
+                        <button type="button" onClick={handlePictureInPicture} className={styles.controlButton} aria-label="Toggle picture in picture">
+                            <Layout size={18} /> PiP
+                        </button>
+                    </>
+                )}
             </div>
 
             <div className={styles.rangeRow}>

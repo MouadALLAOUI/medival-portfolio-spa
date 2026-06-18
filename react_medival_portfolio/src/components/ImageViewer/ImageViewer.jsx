@@ -12,7 +12,10 @@ const ImageViewer = ({ file, label = 'Open Image', className, onOpen }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => { setIsOpen(false); }, [location]);
+  useEffect(() => {
+    const id = setTimeout(() => setIsOpen(false));
+    return () => clearTimeout(id);
+  }, [location]);
 
   const handleTrigger = () => {
     if (onOpen) onOpen();
@@ -44,7 +47,7 @@ const ImageViewer = ({ file, label = 'Open Image', className, onOpen }) => {
 
   return (
     <div className={`${styles.wrapper} ${className || ''}`}>
-      <button className={`${styles.trigger} image-viewer-trigger`} onClick={handleTrigger} type="button">
+      <button className={`${styles.trigger} pdf-viewer-trigger`} onClick={handleTrigger} type="button">
         {typeof label === 'string' ? (
           <>
             <span className={styles.triggerIcon}>🖼️</span>
